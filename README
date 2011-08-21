@@ -2,12 +2,7 @@ World of Warcraft Editor 0.1 -- General Informations
 
 Copyright (C) gLararaN (http://www.glararan.eu)
 
-	World of Warcraft Editor is OpenSource software;
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 87d3026cd181cc583caf91e2b86196bfba7a8cc4
+	World of Warcraft Editor is OpenSource software
 
 World of Warcraft Editor is Editor for World of Warcraft.
 Is based on Windows Forms and Programming Language C++ with OpenGL
