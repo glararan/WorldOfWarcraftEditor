@@ -1,0 +1,15 @@
+# WINDOWS installation Application
+
+
+# WINDOWS installation Sources
+
+1) Download from Github
+2) Unrar
+3) Open .sln
+4) Open Property page of MS VS project 
+5) Click C/C++ -> General -> Additional Include Directories -> Change path to zlib
+6) Download STD, freetype, ... libs for Visual Studio
+7) Build
+8) Copy .exe + .conf to Libs
+9) Run
+10) Enjoy
