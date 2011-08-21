@@ -11,6 +11,9 @@
 
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
+
+#include "Config.h"
 
 #include "MPQ.h"
 #include "Video.h"
@@ -24,6 +27,17 @@
 
 int fullscreen = 0;
 
+// ######################
+// ## EXPANSION SELECT ##
+// ######################
+void loadExpansion()
+{
+	Config conf("Editor.conf");
+
+	int expansion;
+
+	expansion = conf.Value("expansion_option", "expansion");
+}
 
 std::vector<AppState*> gStates;
 bool gPop = false;

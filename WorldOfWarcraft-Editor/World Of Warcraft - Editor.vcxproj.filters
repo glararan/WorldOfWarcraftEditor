@@ -48,9 +48,6 @@
     <ClCompile Include="World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MPQ.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WMO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -175,6 +172,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="World Of Warcraft - Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Chameleon\Chameleon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -336,6 +342,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chameleon\Chameleon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

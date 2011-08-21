@@ -94,8 +94,11 @@
       </FixedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <IgnoreSpecificDefaultLibraries>/NODEFAULTLIB:library</IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>/NODEFAULTLIB:libcmtd.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -121,6 +124,9 @@
   <ItemGroup>
     <ClCompile Include="AreaDB.cpp" />
     <ClCompile Include="Brush.cpp" />
+    <ClCompile Include="Chameleon\Chameleon.cpp" />
+    <ClCompile Include="ConfigFile.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBC.cpp" />
     <ClCompile Include="DBCFile.cpp" />
     <ClCompile Include="Directory.cpp" />
@@ -138,7 +144,6 @@
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MPQ.cpp" />
     <ClCompile Include="MPQ_libMPQ.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -174,6 +179,8 @@
     <ClInclude Include="Appstate.h" />
     <ClInclude Include="AreaDB.h" />
     <ClInclude Include="Brush.h" />
+    <ClInclude Include="Chameleon\Chameleon.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="DBC.h" />
     <ClInclude Include="DBCFile.h" />
     <ClInclude Include="Directory.h" />
