@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{844CF7AA-4B86-4059-B1A2-2C948C6EE606}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>WorldOfWarcraftEditor</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CLRSupport>Pure</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>Bin\Release\</OutDir>
+    <IntDir>Build\Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>C:\Users\Lukáš\Desktop\programovani\WoW Editor\Libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Users\Lukáš\Desktop\programovani\WoW Editor\Test\WorldOfWarcraft-Editor\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <FixedBaseAddress>
+      </FixedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>/NODEFAULTLIB:library</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\wow-icon.ico" />
+    <None Include="app.ico" />
+    <None Include="Config.txt" />
+    <None Include="libmpq\common.cpp.bak" />
+    <None Include="libmpq\libmpq.a" />
+    <None Include="libmpq\Makefile" />
+    <None Include="libmpq\Makefile~" />
+    <None Include="ReadMe.txt" />
+    <None Include="zlib\algorithm.txt" />
+    <None Include="zlib\ChangeLog" />
+    <None Include="zlib\CMakeLists.txt" />
+    <None Include="zlib\FAQ" />
+    <None Include="zlib\INDEX" />
+    <None Include="zlib\makedepend" />
+    <None Include="zlib\Makefile" />
+    <None Include="zlib\makefile.wat" />
+    <None Include="zlib\README" />
+    <None Include="zlib\zlib.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AreaDB.cpp" />
+    <ClCompile Include="Brush.cpp" />
+    <ClCompile Include="DBC.cpp" />
+    <ClCompile Include="DBCFile.cpp" />
+    <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FreeType.cpp" />
+    <ClCompile Include="Frustrum.cpp" />
+    <ClCompile Include="GroundEffects.cpp" />
+    <ClCompile Include="libmpq\common.cpp" />
+    <ClCompile Include="libmpq\explode.cpp" />
+    <ClCompile Include="libmpq\extract.cpp" />
+    <ClCompile Include="libmpq\huffman.cpp" />
+    <ClCompile Include="libmpq\mpq.cpp" />
+    <ClCompile Include="libmpq\wave.cpp" />
+    <ClCompile Include="Liquid.cpp" />
+    <ClCompile Include="MapTile.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="MPQ.cpp" />
+    <ClCompile Include="MPQ_libMPQ.cpp" />
+    <ClCompile Include="OpenGL.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Selection.cpp" />
+    <ClCompile Include="Shaders.cpp" />
+    <ClCompile Include="Sky.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="TexturingUI.cpp" />
+    <ClCompile Include="UI.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="Video.cpp" />
+    <ClCompile Include="WMO.cpp" />
+    <ClCompile Include="World Of Warcraft - Editor.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="zlib\adler32.c" />
+    <ClCompile Include="zlib\compress.c" />
+    <ClCompile Include="zlib\crc32.c" />
+    <ClCompile Include="zlib\deflate.c" />
+    <ClCompile Include="zlib\gzio.c" />
+    <ClCompile Include="zlib\inffast.c" />
+    <ClCompile Include="zlib\inflate.c" />
+    <ClCompile Include="zlib\inftrees.c" />
+    <ClCompile Include="zlib\trees.c" />
+    <ClCompile Include="zlib\uncompr.c" />
+    <ClCompile Include="zlib\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animated.h" />
+    <ClInclude Include="Appstate.h" />
+    <ClInclude Include="AreaDB.h" />
+    <ClInclude Include="Brush.h" />
+    <ClInclude Include="DBC.h" />
+    <ClInclude Include="DBCFile.h" />
+    <ClInclude Include="Directory.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FreeType.h" />
+    <ClInclude Include="Frustrum.h" />
+    <ClInclude Include="GroundEffects.h" />
+    <ClInclude Include="libmpq\common.h" />
+    <ClInclude Include="libmpq\explode.h" />
+    <ClInclude Include="libmpq\huffman.h" />
+    <ClInclude Include="libmpq\mpq.h" />
+    <ClInclude Include="libmpq\wave.h" />
+    <ClInclude Include="Liquid.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="MapHeaders.h" />
+    <ClInclude Include="MapTile.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelHeaders.h" />
+    <ClInclude Include="MPQ.h" />
+    <ClInclude Include="MPQ_libMPQ.h" />
+    <ClInclude Include="OpenGL.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Selection.h" />
+    <ClInclude Include="Shaders.h" />
+    <ClInclude Include="Sky.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="TexturingUI.h" />
+    <ClInclude Include="UI.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="Vec3D.h" />
+    <ClInclude Include="Video.h" />
+    <ClInclude Include="WMO.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="zlib\crc32.h" />
+    <ClInclude Include="zlib\deflate.h" />
+    <ClInclude Include="zlib\inffast.h" />
+    <ClInclude Include="zlib\inffixed.h" />
+    <ClInclude Include="zlib\inflate.h" />
+    <ClInclude Include="zlib\inftrees.h" />
+    <ClInclude Include="zlib\trees.h" />
+    <ClInclude Include="zlib\zconf.h" />
+    <ClInclude Include="zlib\zlib.h" />
+    <ClInclude Include="zlib\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.en.resx" />
+    <EmbeddedResource Include="Form1.resX">
+      <DependentUpon>Form1.h</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenGL.resx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1 @@
+void CreatePath(const char *fname);
