@@ -102,9 +102,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\..\wow-icon.ico" />
     <None Include="app.ico" />
-    <None Include="Config.txt" />
     <None Include="libmpq\common.cpp.bak" />
     <None Include="libmpq\libmpq.a" />
     <None Include="libmpq\Makefile" />

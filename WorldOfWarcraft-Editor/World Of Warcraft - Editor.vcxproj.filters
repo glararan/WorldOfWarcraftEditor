@@ -16,13 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="app.ico">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\..\wow-icon.ico">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Config.txt" />
     <None Include="zlib\algorithm.txt" />
     <None Include="zlib\CMakeLists.txt" />
     <None Include="zlib\FAQ" />
@@ -37,6 +30,7 @@
     <None Include="libmpq\libmpq.a" />
     <None Include="libmpq\Makefile" />
     <None Include="libmpq\Makefile~" />
+    <None Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

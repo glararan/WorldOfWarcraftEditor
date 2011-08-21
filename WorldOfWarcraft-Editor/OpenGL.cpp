@@ -12,6 +12,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 
 #include "Config.h"
 
@@ -27,16 +28,40 @@
 
 int fullscreen = 0;
 
+// ##################
+// ## CHECK CONFIG ##
+// ##################
+#define CONFIG_FILE "Editor.conf"
+int checkConfig()
+{
+	std::ofstream editor;
+
+	editor.open(CONFIG_FILE);
+
+	if(editor.is_open())
+	{
+		editor.close();
+	}
+	else
+	{
+		exit(1);
+	}
+
+	return 0;
+}
+
 // ######################
 // ## EXPANSION SELECT ##
 // ######################
-void loadExpansion()
+int loadExpansion()
 {
 	Config conf("Editor.conf");
 
 	int expansion;
 
 	expansion = conf.Value("expansion_option", "expansion");
+
+	return 0;
 }
 
 std::vector<AppState*> gStates;
@@ -194,9 +219,27 @@ int main(int argc, char *argv[])
 
 	gLog(APP_TITLE " " APP_VERSION "\nGame path: %s\n", gamepath);
 
+	checkConfig();
+	loadExpansion();
 
 	std::vector<MPQArchive*> archives;
-	const char* archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", "patch-3.MPQ"};
+	bool archiveNames[] = {""};
+	if(loadExpansion() == 1) // TBC
+	{
+		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", "patch-3.MPQ"};
+	}
+	else if(loadExpansion() == 2) // WotLK
+	{
+		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", "patch-3.MPQ"};
+	}
+	else if(loadExpansion() == 3) // Cataclysm
+	{
+		bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ"};
+	}
+	else
+	{
+		bool archiveNames[] = {""};
+	}
 
 	char path[512];
 
