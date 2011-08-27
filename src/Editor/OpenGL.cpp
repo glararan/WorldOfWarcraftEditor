@@ -34,16 +34,27 @@ int fullscreen = 0;
 #define CONFIG_FILE "Editor.conf"
 int checkConfig()
 {
-	std::ofstream editor;
+	FILE *EditorPTR;
 
-	editor.open(CONFIG_FILE);
+	EditorPTR = fopen("Editor.conf", "r");
 
-	if(editor.is_open())
+	if(EditorPTR) // If open Editor
 	{
-		editor.close();
+		gLog("Config exist\n");
+
+		if(EditorPTR == NULL) // If conf is empty
+		{
+			gLog("Config is empty\n");
+			exit(1);
+		}
+		else
+		{
+			gLog("Config have content\n"); // Config isn't empty
+		}
 	}
 	else
 	{
+		gLog("Config doesn't exist\n"); // Config doesn't exist
 		exit(1);
 	}
 
@@ -60,6 +71,78 @@ int loadExpansion()
 	int expansion;
 
 	expansion = conf.Value("expansion_option", "expansion");
+
+	return 0;
+}
+
+// ######################
+// ## GAMEPATH  SELECT ##
+// ######################
+bool loadPath()
+{
+	Config conf("Editor.conf");
+
+	char configPath;
+
+	configPath = conf.Value("game_option", "Path");
+
+	return 0;
+}
+
+// ######################
+// ## LANGUAGE  SELECT ##
+// ######################
+int loadLanguage()
+{
+	Config conf("Editor.conf");
+
+	int Language;
+
+	Language = conf.Value("language_option", "language");
+
+	return 0;
+}
+
+// ##################
+// ## CHECKCONFIG2 ##
+// ##################
+int checkConfig2()
+{
+	FILE *EditorPTR;
+
+	EditorPTR = fopen("Editor.conf", "r");
+
+	if(EditorPTR)
+	{
+		if(!loadExpansion())
+		{
+			gLog("Expansion isn't selected\n"); 
+			exit(1);
+		}
+		else
+		{
+			gLog("Expansion is selected - %s\n", loadExpansion());
+		}
+
+		if(!loadPath())
+		{
+			gLog("Path is selected from Registry\n");
+		}
+		else
+		{
+			gLog("Path is selected from Config - %s\n", loadPath());
+		}
+
+		if(!loadLanguage())
+		{
+			gLog("Language isn't selected\n");
+			exit(1);
+		}
+		else
+		{
+			gLog("Language is selected - %s\n", loadLanguage());
+		}
+	}
 
 	return 0;
 }
@@ -210,17 +293,18 @@ int main(int argc, char *argv[])
 		else if (!strcmp(argv[i],"-p")) usePatch = true;
 		else if (!strcmp(argv[i],"-np")) usePatch = false;
 	}
-	
-	
 
-
-	getGamePath();
+	checkConfig();
+	if(!loadPath())
+	{
+		getGamePath();
+	}
 	CreateStrips();
 
 	gLog(APP_TITLE " " APP_VERSION "\nGame path: %s\n", gamepath);
 
-	checkConfig();
 	loadExpansion();
+	checkConfig2();
 
 	std::vector<MPQArchive*> archives;
 	bool archiveNames[] = {""};

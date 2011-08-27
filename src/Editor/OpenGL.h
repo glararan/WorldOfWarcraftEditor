@@ -6,12 +6,8 @@
 #include "Appstate.h"
 #include "Font.h"
 #include "FreeType.h"
+#include "Revision.h"
 /// XXX this really needs to be refactored into a singleton class
-
-#define APP_TITLE "World of Warcraft Editor"
-
-#define APP_VERSION "v0.1"
-
 
 extern std::vector<AppState*> gStates;
 extern bool gPop;

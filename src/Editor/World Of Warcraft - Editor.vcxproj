@@ -100,9 +100,16 @@
       </IgnoreSpecificDefaultLibraries>
       <AdditionalOptions>/NODEFAULTLIB:libcmtd.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>COPY Editor.conf $(OutDir)Editor.conf</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy Config file</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="app.ico" />
+    <None Include="Editor.conf" />
     <None Include="libmpq\common.cpp.bak" />
     <None Include="libmpq\libmpq.a" />
     <None Include="libmpq\Makefile" />
@@ -123,7 +130,6 @@
     <ClCompile Include="AreaDB.cpp" />
     <ClCompile Include="Brush.cpp" />
     <ClCompile Include="Chameleon\Chameleon.cpp" />
-    <ClCompile Include="ConfigFile.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBC.cpp" />
     <ClCompile Include="DBCFile.cpp" />
@@ -158,7 +164,6 @@
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="WMO.cpp" />
-    <ClCompile Include="World Of Warcraft - Editor.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="zlib\adler32.c" />
     <ClCompile Include="zlib\compress.c" />
@@ -183,9 +188,6 @@
     <ClInclude Include="DBCFile.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="Font.h" />
-    <ClInclude Include="Form1.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="FreeType.h" />
     <ClInclude Include="Frustrum.h" />
     <ClInclude Include="GroundEffects.h" />
@@ -208,6 +210,7 @@
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Revision.h" />
     <ClInclude Include="Selection.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="Sky.h" />
@@ -233,14 +236,6 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Form1.en.resx" />
-    <EmbeddedResource Include="Form1.resX">
-      <DependentUpon>Form1.h</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OpenGL.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -31,6 +31,7 @@
     <None Include="libmpq\Makefile" />
     <None Include="libmpq\Makefile~" />
     <None Include="app.ico" />
+    <None Include="Editor.conf" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -165,23 +166,14 @@
     <ClCompile Include="libmpq\wave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World Of Warcraft - Editor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Chameleon\Chameleon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConfigFile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Form1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -344,21 +336,13 @@
     <ClInclude Include="Chameleon\Chameleon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Revision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Form1.resX">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.en.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OpenGL.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
