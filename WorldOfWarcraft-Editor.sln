@@ -1,7 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World Of Warcraft - Editor", "WorldOfWarcraft-Editor\World Of Warcraft - Editor.vcxproj", "{844CF7AA-4B86-4059-B1A2-2C948C6EE606}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World Of Warcraft - Editor", "src\Editor\World Of Warcraft - Editor.vcxproj", "{844CF7AA-4B86-4059-B1A2-2C948C6EE606}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World of Warcraft - Editor Launcher", "src\Launcher\World of Warcraft - Editor Launcher.vcxproj", "{2662E77B-E9B9-4B38-895E-685EDB832C27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +58,36 @@ Global
 		{844CF7AA-4B86-4059-B1A2-2C948C6EE606}.ReleaseUS|Win32.ActiveCfg = Release|Win32
 		{844CF7AA-4B86-4059-B1A2-2C948C6EE606}.ReleaseUS|Win32.Build.0 = Release|Win32
 		{844CF7AA-4B86-4059-B1A2-2C948C6EE606}.ReleaseUS|x64.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Debug|Win32.Build.0 = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Debug|x64.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAD|Win32.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAD|Win32.Build.0 = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAD|x64.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAS|Win32.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAS|Win32.Build.0 = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugAS|x64.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUD|Win32.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUD|Win32.Build.0 = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUD|x64.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUS|Win32.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUS|Win32.Build.0 = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.DebugUS|x64.ActiveCfg = Debug|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Release|Win32.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Release|Win32.Build.0 = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.Release|x64.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAD|Win32.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAD|Win32.Build.0 = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAD|x64.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAS|Win32.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAS|Win32.Build.0 = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseAS|x64.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUD|Win32.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUD|Win32.Build.0 = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUD|x64.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUS|Win32.ActiveCfg = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUS|Win32.Build.0 = Release|Win32
+		{2662E77B-E9B9-4B38-895E-685EDB832C27}.ReleaseUS|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
