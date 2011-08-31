@@ -10,7 +10,7 @@ Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile): te
 {
 	ifstream in(infofile);
 	if (!in.is_open()) {
-		gLog("error opening font %s\n", infofile);
+		gLog("Error opening font %s\n", infofile);
 		exit(1);
 	}
 

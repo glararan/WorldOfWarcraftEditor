@@ -9,6 +9,17 @@
 #include <winerror.h>
 #endif
 
+#ifdef _WIN64
+#pragma comment(lib,"OpenGL32.lib")
+#pragma comment(lib,"glu32.lib")
+#pragma comment(lib,"SDL.lib")
+#pragma comment(lib,"SDLmain.lib")
+
+#define NOMINMAX
+#include <windows.h>
+#include <winerror.h>
+#endif
+
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
@@ -36,25 +47,25 @@ int checkConfig()
 {
 	FILE *EditorPTR;
 
-	EditorPTR = fopen("Editor.conf", "r");
+	EditorPTR = fopen(CONFIG_FILE, "r");
 
 	if(EditorPTR) // If open Editor
 	{
-		gLog("Config exist\n");
+		gLog("[World of Warcraft Studio - Editor] - Config exist\n");
 
 		if(EditorPTR == NULL) // If conf is empty
 		{
-			gLog("Config is empty\n");
+			gLog("[World of Warcraft Studio - Editor] - Config is empty\n");
 			exit(1);
 		}
 		else
 		{
-			gLog("Config have content\n"); // Config isn't empty
+			gLog("[World of Warcraft Studio - Editor] - Config have content\n"); // Config isn't empty
 		}
 	}
 	else
 	{
-		gLog("Config doesn't exist\n"); // Config doesn't exist
+		gLog("[World of Warcraft Studio - Editor] - Config doesn't exist\n"); // Config doesn't exist
 		exit(1);
 	}
 
@@ -66,11 +77,11 @@ int checkConfig()
 // ######################
 int loadExpansion()
 {
-	Config conf("Editor.conf");
+	Config conf(CONFIG_FILE);
 
 	int expansion;
 
-	expansion = conf.Value("expansion_option", "expansion");
+	expansion = conf.Value("expansion_option", "Expansion");
 
 	return 0;
 }
@@ -80,7 +91,7 @@ int loadExpansion()
 // ######################
 bool loadPath()
 {
-	Config conf("Editor.conf");
+	Config conf(CONFIG_FILE);
 
 	char configPath;
 
@@ -90,15 +101,29 @@ bool loadPath()
 }
 
 // ######################
+// ## GAMEVER - SELECT ##
+// ######################
+int loadGameVersion()
+{
+	Config conf(CONFIG_FILE);
+
+	char gameVersion;
+
+	gameVersion = conf.Value("game_option", "GameVersion");
+
+	return 0;
+}
+
+// ######################
 // ## LANGUAGE  SELECT ##
 // ######################
 int loadLanguage()
 {
-	Config conf("Editor.conf");
+	Config conf(CONFIG_FILE);
 
 	int Language;
 
-	Language = conf.Value("language_option", "language");
+	Language = conf.Value("language_option", "Language");
 
 	return 0;
 }
@@ -110,37 +135,37 @@ int checkConfig2()
 {
 	FILE *EditorPTR;
 
-	EditorPTR = fopen("Editor.conf", "r");
+	EditorPTR = fopen(CONFIG_FILE, "r");
 
 	if(EditorPTR)
 	{
-		if(!loadExpansion())
+		if(loadExpansion() != 1 || 2 || 3)
 		{
-			gLog("Expansion isn't selected\n"); 
+			gLog("[World of Warcraft Studio - Editor] - Expansion isn't selected\n"); 
 			exit(1);
 		}
 		else
 		{
-			gLog("Expansion is selected - %s\n", loadExpansion());
+			gLog("[World of Warcraft Studio - Editor] - Expansion is selected - %s\n", loadExpansion());
 		}
 
 		if(!loadPath())
 		{
-			gLog("Path is selected from Registry\n");
+			gLog("[World of Warcraft Studio - Editor] - Path is selected from Registry\n");
 		}
 		else
 		{
-			gLog("Path is selected from Config - %s\n", loadPath());
+			gLog("[World of Warcraft Studio - Editor] - Path is selected from Config - %s\n", loadPath());
 		}
 
-		if(!loadLanguage())
+		if(loadLanguage() != 1 || 2 || 3)
 		{
-			gLog("Language isn't selected\n");
+			gLog("[World of Warcraft Studio - Editor] - Language isn't selected\n");
 			exit(1);
 		}
 		else
 		{
-			gLog("Language is selected - %s\n", loadLanguage());
+			gLog("[World of Warcraft Studio - Editor] - Language is selected - %s\n", loadLanguage());
 		}
 	}
 
@@ -224,17 +249,24 @@ void getGamePath()
 	LONG l;
 	s = 1024;
 	memset(gamepath,0,s);
-	if(l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key))
-	{
-		l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
-		l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
-	}
-	else
-	{
-		l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Wow6432Node\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key);
-		l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
-		l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
-	}
+	l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key);
+	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
+	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
+	RegCloseKey(key);
+	strcat_s(gamepath,"Data\\");
+#else
+	strcpy(gamepath,"data/");
+#endif
+
+#ifdef _WIN64
+	HKEY key;
+	DWORD t,s;
+	LONG l;
+	s = 1024;
+	memset(gamepath,0,s);
+	l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Wow6432Node\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key);
+	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
+	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
 	RegCloseKey(key);
 	strcat_s(gamepath,"Data\\");
 #else
@@ -294,14 +326,16 @@ int main(int argc, char *argv[])
 		else if (!strcmp(argv[i],"-np")) usePatch = false;
 	}
 
+	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n", gamepath);
+	gLog("[World of Warcraft Studio - Editor] - %s\n[World of Warcraft Studio - Editor] - %s\n[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
+	
 	checkConfig();
-	if(!loadPath())
+
+	/*if(!loadPath())
 	{
 		getGamePath();
-	}
+	}*/
 	CreateStrips();
-
-	gLog(APP_TITLE " " APP_VERSION "\nGame path: %s\n", gamepath);
 
 	loadExpansion();
 	checkConfig2();
@@ -314,7 +348,46 @@ int main(int argc, char *argv[])
 	}
 	else if(loadExpansion() == 2) // WotLK
 	{
-		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", "patch-3.MPQ"};
+		if(loadGameVersion() == 1) // enGB
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"enGB/locale-enGB.MPQ", "enGB/expansion-locale-enGB.MPQ", "enGB/lichking-locale-enGB.MPQ", "enGB/patch-enGB.MPQ", "enGB/patch-enGB-2.MPQ"};
+		}
+		else if(loadGameVersion() == 2) // enUS
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"enUS/locale-enUS.MPQ", "enUS/expansion-locale-enUS.MPQ", "enUS/lichking-locale-enUS.MPQ", "enUS/patch-enUS.MPQ", "enUS/patch-enUS-2.MPQ"};
+		}
+		else if(loadGameVersion() == 3) // deDE
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"deDE/locale-deDE.MPQ", "deDE/expansion-locale-deDE.MPQ", "deDE/lichking-locale-deDE.MPQ", "deDE/patch-deDE.MPQ", "deDE/patch-deDE-2.MPQ"};
+		}
+		else if(loadGameVersion() == 4) // esES
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"esES/locale-esES.MPQ", "esES/expansion-locale-esES.MPQ", "esES/lichking-locale-esES.MPQ", "esES/patch-esES.MPQ", "esES/patch-esES-2.MPQ"};
+		}
+		else if(loadGameVersion() == 5) // frFR
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"frFR/locale-frFR.MPQ", "frFR/expansion-locale-frFR.MPQ", "frFR/lichking-locale-frFR.MPQ", "frFR/patch-frFR.MPQ", "frFR/patch-frFR-2.MPQ"};
+		}
+		else if(loadGameVersion() == 6) // ruRU
+		{
+			bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", 
+			"ruRU/locale-ruRU.MPQ", "ruRU/expansion-locale-ruRU.MPQ", "ruRU/lichking-locale-ruRU.MPQ", "ruRU/patch-ruRU.MPQ", "ruRU/patch-ruRU-2.MPQ"};
+		}
+		else
+		{
+			gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.");
+			exit(1);
+		}
+
+		if(loadGameVersion())
+		{
+			gLog("[World of Warcraft Studio - Editor] - GameVersion is selected - %s\n", loadGameVersion());
+		}
 	}
 	else if(loadExpansion() == 3) // Cataclysm
 	{
@@ -322,7 +395,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		bool archiveNames[] = {""};
+		gLog("Expansion isn't - The Burning Crusade or Wrath of the Lich King or Cataclysm. Select one of third expansion.");
+		exit(1);
 	}
 
 	char path[512];
@@ -356,9 +430,9 @@ int main(int argc, char *argv[])
 	SDL_WM_SetCaption(APP_TITLE,NULL);
 
 
-	gLog("Initializing Ground Effects\n");
+	gLog("[World of Warcraft Studio - Editor] - Initializing Ground Effects\n");
 	InitGroundEffects();
-	gLog("Initializing Fonts\n");
+	gLog("[World of Warcraft Studio - Editor] - Initializing Fonts\n");
 	initFonts();
 
 	float ftime;
@@ -366,7 +440,7 @@ int main(int argc, char *argv[])
 	AppState *as;
 	gFPS = 0;
 
-	gLog("Creating Menu\n");
+	gLog("[World of Warcraft Studio - Editor] - Creating Menu\n");
 	Menu *m = new Menu();
 	as = m;
 
@@ -374,14 +448,14 @@ int main(int argc, char *argv[])
 
 	if(glExtGetGLProcs_VertexProgram_1_0_ARB()==0)
 	{
-		gLog("Unable to load ARB Vertex Program Code\n");
+		gLog("[World of Warcraft Studio - Editor] - Unable to load ARB Vertex Program Code\n");
 		return 0;
 	}
 	loadWaterShader();
 
 	bool done = false;
 	t = SDL_GetTicks();
-	gLog("Entering Main Loop\n");
+	gLog("[World of Warcraft Studio - Editor] - Entering Main Loop\n");
 	while(gStates.size()>0 && !done) {
 		last_t = t;
 		t = SDL_GetTicks();
@@ -448,7 +522,7 @@ int main(int argc, char *argv[])
 		video.flip();
 
 	}
-	gLog("Exited Main Loop\n");
+	gLog("[World of Warcraft Studio - Editor] - Exited Main Loop\n");
 
 	deleteFonts();
 	
@@ -459,7 +533,7 @@ int main(int argc, char *argv[])
 	}
 	archives.clear();
 
-	gLog("\nExiting.\n");
+	gLog("\n[World of Warcraft Studio - Editor] - Exiting.\n");
 
 	return 0;
 }

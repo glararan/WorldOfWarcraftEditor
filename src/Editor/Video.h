@@ -100,6 +100,9 @@ public:
 	void set2D();
 	void setTileMode();
 	void resize(int w, int h);
+	void GraphicVersion();
+	void GraphicSeller();
+	void GraphicRender();
 
 	TextureManager textures;
     
