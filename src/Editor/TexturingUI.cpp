@@ -5,7 +5,6 @@
 #include "UI.h"
 #include "AreaDB.h"
 
-
 //Texture Files
 std::vector<std::string>	textureNames;
 std::vector<std::string>		tilesetNames;
@@ -50,8 +49,6 @@ textureUI		*chunkTexture[4];
 textUI			*chunkTextureNames[4];
 textUI			*chunkTextureFlags[4];
 textUI			*chunkTextureEffectID[4];
-
-
 
 void LoadTextureNames()
 {
@@ -133,7 +130,6 @@ int checkTileset(const char*Texture)
 	}
 	return -1;
 }
-
 
 std::map<GLuint, ManagedItem*>::iterator FindCurTexture()
 {
@@ -314,6 +310,7 @@ void showTextureFilter(frame *button,int id)
 {
 	windowTextureFilter->hidden=false;
 }
+
 frame *CreateTexturePalette()
 {
 	windowTexturePalette=new minWindowUI(2.0f,video.yres-188.0f,284.0f,186.0f,"Texture Palette");
@@ -357,9 +354,6 @@ frame *CreateTexturePalette()
 	return windowTexturePalette;
 }
 
-
-
-
 frame *CreateSelectedTexture()
 {
 	windowSelectedTexture=new minWindowUI(video.xres-148.0f-128.0f,video.yres-162.0f-128.0f,274.0f,288.0f,"Current Texture");
@@ -383,7 +377,6 @@ frame *CreateSelectedTexture()
 	return windowSelectedTexture;
 }
 
-
 void LoadTileset(frame *button,int id)
 {
 	std::vector<std::string>::iterator i;
@@ -394,7 +387,6 @@ void LoadTileset(frame *button,int id)
 	}
 	updateTextures();
 }
-
 
 frame *CreateTilesetLoader()
 {	
@@ -553,7 +545,6 @@ frame *createMapChunkWindow()
 		chunkEffectWindow->addChild(chunkEffectModels[i]);
 	}
 
-
 	chunkTextureWindow=new window(324.0f,26.0f,300.0f,300.0f);
 	windowMapChunk->addChild(chunkTextureWindow);
 
@@ -599,7 +590,6 @@ void setChunkWindow(MapChunk *chunk)
 	sprintf(Temp,"Chunk %d, %d at (%.2f, %.2f, %.2f)",chunk->px,chunk->py,chunk->xbase,chunk->ybase,chunk->zbase);
 	chunkLocation->setText(Temp);
 
-	
 	std::string areaName;
 	try{
 		AreaDB::Record rec = gAreaDB.getByAreaID(chunk->areaID);

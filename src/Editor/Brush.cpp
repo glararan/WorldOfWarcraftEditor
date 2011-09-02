@@ -1,7 +1,5 @@
 #include "World.h"
 
-
-
 void brush::init()
 {
 	radius=CHUNKSIZE/2;
@@ -12,7 +10,7 @@ void brush::init()
 	GenerateTexture();
 }
 
-void	brush::GenerateTexture()
+void brush::GenerateTexture()
 {
 	float x,y,dist;
 	float change=2.0f/256.0f;

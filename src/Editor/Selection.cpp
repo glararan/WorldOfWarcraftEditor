@@ -1,6 +1,5 @@
 #include "World.h"
 
-
 nameEntryManager SelectionNames;
 
 nameEntry	*getSelect(unsigned int pick)
@@ -22,7 +21,6 @@ unsigned int	addNameMapChunk(MapChunk *chunk)
 {
 	return SelectionNames.add(chunk);
 }
-
 
 void deleteName(unsigned int Name)
 {

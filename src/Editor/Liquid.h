@@ -38,7 +38,6 @@ class Liquid {
 
 public:
 
-
 	Liquid(int x, int y, Vec3D base, float tilesize = LQ_DEFAULT_TILESIZE):
 		xtiles(x), ytiles(y), pos(base), tilesize(tilesize)
 	{
@@ -51,10 +50,6 @@ public:
 	void initFromWMO(MPQFile &f, WMOMaterial &mat, bool indoor);
 
 	void draw();
-
-
 };
-
-
 
 #endif

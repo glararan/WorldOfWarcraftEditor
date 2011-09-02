@@ -145,7 +145,6 @@ void Model::reload(std::string name)
 	reloadModel=new Model(name);
 }
 
-
 bool Model::isAnimated(MPQFile &f)
 {
 	// see if we have any animated bones
@@ -217,7 +216,6 @@ bool Model::isAnimated(MPQFile &f)
 	// guess not...
 	return animGeometry || animTextures || animMisc;
 }
-
 
 Vec3D fixCoordSystem(Vec3D v)
 {
@@ -571,7 +569,6 @@ void Model::initAnimated(MPQFile &f)
 	animcalc = false;
 }
 
-
 void Model::calcBones(int anim, int time)
 {
 	for (size_t i=0; i<header.nBones; i++) {
@@ -616,7 +613,6 @@ void Model::animate(int anim)
 					n += tn * ((float)ov->weights[b] / 255.0f);
 				}
 			}
-
 			/*
 			vertices[i] = v;
 			normals[i] = n;
@@ -652,9 +648,6 @@ void Model::animate(int anim)
 		}
 	}
 }
-
-
-
 
 bool ModelRenderPass::init(Model *m)
 {
@@ -957,7 +950,6 @@ void ModelHighlight()
 	glActiveTextureARB(GL_TEXTURE1);
 	glDisable(GL_TEXTURE_2D);
 
-
 	if(HColor==0)
 	{
         glColor4fv(GreenColor);
@@ -969,8 +961,6 @@ void ModelHighlight()
 		glMaterialfv(GL_FRONT, GL_EMISSION, RedColor);
 	}
 	
-
-
 	//glDisable(GL_FOG);
 	glDepthMask(GL_FALSE);
 }
@@ -1088,7 +1078,6 @@ void Model::drawModelSelect()
 
 	for (size_t i=0; i<passes.size(); i++) {
 		ModelRenderPass &p = passes[i];
-
 
 			// render
 			glPushName(p.texture);
@@ -1309,7 +1298,6 @@ void Bone::calcMatrix(Bone *allbones, int anim, int time)
 
 }
 
-
 void Model::draw()
 {
 	if(Reloaded)
@@ -1410,16 +1398,11 @@ void Model::drawHighlight()
 		}
 		// effects are unfogged..?
 		
-
-		
 		lightsOn(GL_LIGHT4);
         drawModel();
 		lightsOff(GL_LIGHT4);
 
 		glDisable(GL_FOG);
-
-		
-
 
 		// draw particle systems
 		for (size_t i=0; i<header.nParticleEmitters; i++) {
@@ -1431,7 +1414,6 @@ void Model::drawHighlight()
 			ribbons[i].draw();
 		}
 
-		
 		//Highlighting
 		// draw particle systems
 		for (size_t i=0; i<header.nParticleEmitters; i++) {
@@ -1530,7 +1512,6 @@ void Model::drawSelect()
 	//stopModelTimer(0);
 }
 
-
 void Model::lightsOn(GLuint lbase)
 {
 	// setup lights
@@ -1569,12 +1550,14 @@ int ModelManager::add(std::string name)
     do_add(name, id, model);
     return id;
 }
+
 void ModelManager::reload()
 {
 	gLog("Reloading Models\n");
 	for (std::map<std::string, int>::iterator it = names.begin(); it != names.end(); ++it)
 		((Model*)items[(*it).second])->reload((*it).first);
 }
+
 void ModelManager::resetAnim()
 {
 	for (std::map<int, ManagedItem*>::iterator it = items.begin(); it != items.end(); ++it) {
@@ -1622,8 +1605,6 @@ ModelInstance::ModelInstance(Model *m, MDDF *d) : model (m)
 	modelID=d1;
 }
 
-
-
 void ModelInstance::init2(Model *m, MPQFile &f)
 {
 	nameID=-1;
@@ -1642,8 +1623,6 @@ void ModelInstance::init2(Model *m, MPQFile &f)
 	f.read(&d1,4);
 	lcol = Vec3D(((d1&0xff0000)>>16) / 255.0f, ((d1&0x00ff00)>>8) / 255.0f, (d1&0x0000ff) / 255.0f);
 }
-
-
 
 extern nameEntry *Selection;
 extern nameEntry *CurSelection;
@@ -1755,8 +1734,6 @@ void ModelInstance::drawSelect()
 	glPopMatrix();
 }
 
-
-
 ModelInstance::~ModelInstance()
 {
 	if(nameID!=-1)
@@ -1833,8 +1810,6 @@ struct ModelEntry
 };
 
 std::map<int, ModelEntry, ltint>	ModelList;
-
-
 
 int addModelToList(Model *m, MPQFile &f)
 {

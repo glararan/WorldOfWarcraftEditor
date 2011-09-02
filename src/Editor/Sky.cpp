@@ -4,7 +4,6 @@
 
 const float skymul = 36.0f;
 
-
 void SkyColor::init(int t, int col)
 {
 	time = t;
@@ -13,8 +12,8 @@ void SkyColor::init(int t, int col)
 	color.x = ((col & 0xff0000) >> 16) / 255.0f;
 }
 
-
-struct lightinfo {
+struct lightinfo
+{
     int ia, ib, ic;
 	float fa,fb,fc,fd,fe;
 	char name[32];
@@ -64,7 +63,6 @@ void Sky::init(MPQFile &f)
 					}
 				}
 			}
-
 		}
 	}
 
@@ -117,7 +115,6 @@ const float angles[] = {90.0f, 30.0f, 15.0f, 5.0f, 0.0f, -30.0f, -90.0f};
 const int skycolors[] = {2,      3,      4,    5,    6,    7,     7};
 const int cnum = 7;
 
-
 const int hseg = 32;
 
 void Skies::draw()
@@ -144,8 +141,6 @@ void Skies::draw()
 	}
 	glEnd();
 }
-
-
 
 Skies::Skies(const char* basename, bool force)
 {
@@ -308,7 +303,6 @@ char *Skies::getSkyName()
 }
 
 // TODO: figure out what dnc.db is _really_ used for
-
 void OutdoorLightStats::init(MPQFile &f)
 {
 	float h,m;

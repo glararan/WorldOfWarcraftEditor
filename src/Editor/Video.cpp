@@ -93,12 +93,7 @@ void LoadGLSettings()
 	compareSetting(GL_TEXTURE_GEN_S,GLSettings[11]);
 	compareSetting(GL_TEXTURE_GEN_T,GLSettings[12]);
 }
-
-
-
 ////// VIDEO CLASS
-
-
 Video video;
 
 Video::Video()
@@ -127,14 +122,12 @@ void Video::resize(int xres, int yres)
 	Rect.y=0;
 	SDL_SetClipRect(primary,&Rect);
 
-
 	glViewport(0,0,xres,yres);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45.0f, (GLfloat)xres/(GLfloat)yres, 1.0f, 1024.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
 }
 
 void Video::init(int xres, int yres, bool fullscreen)
@@ -177,7 +170,6 @@ void Video::init(int xres, int yres, bool fullscreen)
 	//gluPerspective(45.0f, (GLfloat)xres/(GLfloat)yres, 0.01f, 1024.0f);
 	gluPerspective(45.0f, (GLfloat)xres/(GLfloat)yres, 1.0f, 1024.0f);
 
-
 	// hmmm...
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
@@ -191,8 +183,6 @@ void Video::close()
 	primary->h=origY;
 	SDL_Quit();
 }
-
-
 
 void Video::initExtensions()
 {
@@ -212,7 +202,6 @@ void Video::initExtensions()
 
 	glDrawRangeElements = (PFNGLDRAWRANGEELEMENTSPROC) SDL_GL_GetProcAddress("glDrawRangeElements");
 }
-
 
 void Video::flip()
 {
@@ -253,7 +242,6 @@ void Video::set3D_select()
 	glLoadIdentity();
 }
 
-
 void Video::set2D()
 {
 	glMatrixMode(GL_PROJECTION);
@@ -272,9 +260,7 @@ void Video::setTileMode()
 	glLoadIdentity();
 }
 
-
 //////// TEXTURE MANAGER
-
 GLuint TextureManager::get(std::string name)
 {
 	std::transform (name.begin(), name.end(), name.begin(), ToLower());
@@ -458,13 +444,10 @@ bool TextureManager::LoadBLP(GLuint id, Texture *tex)
 	return f.isExternal();
 }
 
-
 void TextureManager::doDelete(GLuint id)
 {
 	glDeleteTextures(1, &id);
 }
-
-
 
 #pragma pack(push,1)
 struct TGAHeader {
@@ -481,8 +464,8 @@ struct TGAHeader {
    char  bitsperpixel;
    char  imagedescriptor;
 };
-#pragma pack(pop)
 
+#pragma pack(pop)
 
 GLuint loadTGA(const char *filename, bool mipmaps)
 {

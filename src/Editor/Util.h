@@ -49,6 +49,4 @@ bool from_string(T& t, const string& s, ios_base& (*f)(ios_base&))
   return !(iss >> f >> t).fail();
 }
 
-
-
 #endif

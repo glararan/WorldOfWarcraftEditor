@@ -7,7 +7,6 @@
 #include "World.h"
 #include "UI.h"
 
-
 class Test :public AppState
 {
 	GLuint tex;
@@ -27,7 +26,6 @@ class Test :public AppState
 
 public:
 
-
 	Test(World *w, float ah0 = -90.0f, float av0 = -30.0f);
 	~Test();
 
@@ -37,9 +35,6 @@ public:
 	void keypressed(SDL_KeyboardEvent *e);
 	void mousemove(SDL_MouseMotionEvent *e);
 	void mouseclick(SDL_MouseButtonEvent *e);
-
-
 };
-
 
 #endif

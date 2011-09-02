@@ -4,7 +4,6 @@
 //#include "SFmpqapi.h"
 #include "libmpq/MPQ.h"
 
-
 class MPQArchive
 {
 	//MPQHANDLE handle;
@@ -13,7 +12,6 @@ public:
 	MPQArchive(const char* filename);
 	void close();
 };
-
 
 class MPQFile
 {
@@ -44,7 +42,6 @@ public:
 	void close();
 	bool isExternal(){return External;};
 	
-
 	void setBuffer(char *Buf, unsigned int Size)
 	{
 		if(buffer)
@@ -65,7 +62,5 @@ inline void flipcc(char *fcc)
 	fcc[1]=fcc[2];
 	fcc[2]=t;
 }
-
-
 
 #endif

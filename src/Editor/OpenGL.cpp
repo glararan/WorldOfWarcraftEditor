@@ -127,6 +127,16 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Path is selected from Config - %s\n", loadPath());
 		}
 
+		if(!loadGameVersion())
+		{
+			gLog("[World of Warcraft Studio - Editor] - Game Version isn't selected\n");
+			exit(1);
+		}
+		else
+		{
+			gLog("[World of Warcraft Studio - Editor] - GameVersion is selected - %s\n", loadGameVersion());
+		}
+
 		if(loadLanguage())
 		{
 			gLog("[World of Warcraft Studio - Editor] - Language isn't selected\n");
@@ -157,7 +167,6 @@ bool gPop = false;
 char gamepath[1024];
 char wowpath[1024];
 
-
 float gFPS;
 
 GLuint ftex;
@@ -165,24 +174,20 @@ Font *f16, *f24, *f32;
 freetype::font_data arialn13,arial12,arial14,arial16,morpheus40;	
 AreaDB gAreaDB;
 
-
 void initFonts()
 {
 	ftex = loadTGA("arial.tga",false);
-
 
 	f16 = new Font(ftex, 256, 256, 16, "arial.info");
 	f24 = new Font(ftex, 256, 256, 24, "arial.info");
 	f32 = new Font(ftex, 256, 256, 32, "arial.info");
 
-	
 	morpheus40.initMPQ("fonts\\MORPHEUS.TTF",40);
 	arialn13.initMPQ("fonts\\arialn.TTF",13);
 	
 	arial12.init("arial.ttf",12);
 	arial14.init("arial.ttf",14);
 	arial16.init("arial.ttf",16);
-	
 }
 
 void deleteFonts()
@@ -194,11 +199,8 @@ void deleteFonts()
 	delete f32;
 }
 
-
-
 FILE *flog;
 bool glogfirst = true;
-
 
 void gLog(char *str, ...)
 {
@@ -218,7 +220,6 @@ void gLog(char *str, ...)
 
 	fclose(flog);
 }
-
 
 void getGamePath()
 {
@@ -246,8 +247,6 @@ int main(int argc, char *argv[])
 
 	int xres = 1024;
 	int yres = 768;
-	//int xres = 1152;
-	//int yres = 864;
 
 	bool usePatch = true;
 
@@ -301,10 +300,12 @@ int main(int argc, char *argv[])
 		getGamePath() = loadPath();
 	}*/
 
-	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n[World of Warcraft Studio - Editor] - Game Version: %s\n", gamepath, loadGameVersion());
-	GraphicCard(); // Send to Log info about Graphic Card
-
+	getGamePath();
 	CreateStrips();
+
+	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n", gamepath);
+	gLog("[World of Warcraft Studio - Editor] - Game Version: %s\n", loadGameVersion());
+	GraphicCard(); // Send to Log info about Graphic Card
 
 	checkConfig2();
 
@@ -312,7 +313,7 @@ int main(int argc, char *argv[])
 	bool archiveNames[] = {""};
 	if(loadExpansion() == 1) // TBC
 	{
-		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "lichking.MPQ", "patch.MPQ", "patch-2.MPQ", "patch-3.MPQ"};
+		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ"};
 	}
 	else if(loadExpansion() == 2) // WotLK
 	{

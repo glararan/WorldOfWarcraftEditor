@@ -564,8 +564,6 @@ void WMOLight::setupOnce(GLint light, Vec3D dir, Vec3D lcol)
 	glEnable(light);
 }
 
-
-
 void WMOGroup::init(WMO *wmo, MPQFile &f, int num, char *names)
 {
 	this->wmo = wmo;
@@ -591,7 +589,6 @@ void WMOGroup::init(WMO *wmo, MPQFile &f, int num, char *names)
 
 	lq = 0;
 }
-
 
 struct WMOBatch {
 	signed char bytes[12];
@@ -884,8 +881,6 @@ void WMOGroup::initDisplayList()
 		if (flags2 & 0x0004) xb = 1;
 		glColor4f(xr,xg,xb,1);*/
 
-		
-
 		if((flags2&1)||((flags2&0x10)==0))
 		{
 			int a = indices[i*3];
@@ -1035,7 +1030,6 @@ void WMOGroup::drawDoodads(int doodadset, const Vec3D& ofs, const float rot)
 
 }
 
-
 void WMOGroup::drawDoodadsSelect(int doodadset, const Vec3D& ofs, const float rot)
 {
 	if(!ok)
@@ -1073,7 +1067,6 @@ void WMOGroup::drawDoodadsSelect(int doodadset, const Vec3D& ofs, const float ro
 	glDisable(GL_LIGHT2);
 
 	glColor4f(1,1,1,1);
-
 }
 
 void WMOGroup::drawLiquid()
@@ -1115,8 +1108,6 @@ void WMOGroup::setupFog()
 		wmo->fogs[fog].setup();
 	}
 }
-
-
 
 WMOGroup::~WMOGroup()
 {

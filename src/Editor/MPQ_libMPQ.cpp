@@ -7,7 +7,6 @@
 #include <cstdio>
 #include <cstring>
 
-
 typedef std::vector<mpq_archive*> ArchiveSet;
 ArchiveSet gOpenArchives;
 
@@ -142,7 +141,6 @@ MPQFile::~MPQFile()
 {
 	close();
 }
-
 
 size_t MPQFile::read(void* dest, size_t bytes)
 {
@@ -321,6 +319,5 @@ char* MPQFile::getPointer()
 {
 	return buffer + pointer;
 }
-
 
 #endif

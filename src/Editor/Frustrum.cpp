@@ -2,7 +2,6 @@
 #include "Video.h"
 #include "World.h"
 
-
 void Plane::normalize()
 {
 	float len;
@@ -12,7 +11,6 @@ void Plane::normalize()
 	c /= len;
 	d /= len;
 }
-
 
 void Frustum::retrieve()
 {
@@ -64,7 +62,6 @@ void Frustum::retrieve()
 	planes[FRONT].c = mat[11] + mat[10];
 	planes[FRONT].d = mat[15] + mat[14];
 	planes[FRONT].normalize();
-
 }
 
 bool Frustum::contains(const Vec3D &v) const
@@ -88,7 +85,6 @@ bool Frustum::intersects(const Vec3D &v1, const Vec3D &v2) const
 	points[5] = Vec3D(v2.x,v1.y-gWorld->LowerTerrain,v2.z);
 	points[6] = Vec3D(v2.x,v2.y-gWorld->LowerTerrain,v1.z);
 	points[7] = Vec3D(v2.x,v2.y-gWorld->LowerTerrain,v2.z);
-
 	
  	for (int i=0; i<6; i++) {
 		int numIn = 0;
@@ -105,7 +101,6 @@ bool Frustum::intersects(const Vec3D &v1, const Vec3D &v2) const
 
 	return true;
 }
-
 
 bool Frustum::intersectsSphere(const Vec3D& v, const float rad) const
 {

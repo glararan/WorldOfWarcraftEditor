@@ -93,7 +93,6 @@ public:
 	void tick(float dt);
 	void draw();
 	
-
 	void outdoorLighting();
 	void outdoorLighting2();
 	void outdoorLights(bool on);
@@ -121,13 +120,9 @@ public:
 	float minX,maxX,minY,maxY;
 };
 
-
 extern World *gWorld;
-
 
 void lightingDefaults();
 void myFakeLighting();
-
-
 
 #endif

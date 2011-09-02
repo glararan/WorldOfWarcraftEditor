@@ -10,14 +10,16 @@ typedef int int32;
 
 #pragma pack(push,1)
 
-struct CharModelDetails {
+struct CharModelDetails
+{
 	bool closeRHand;
 	bool closeLHand;
 
 	bool isChar;
 	bool isMounted;
 
-	void Reset() {
+	void Reset() 
+	{
 		closeRHand = false;
 		closeLHand = false;
 		isChar = false;
@@ -25,7 +27,8 @@ struct CharModelDetails {
 	}
 };
 
-struct ModelHeader {
+struct ModelHeader
+{
 	char id[4];
 	uint8 version[4];
 	uint32 nameLength;
@@ -109,7 +112,8 @@ struct ModelHeader {
 };
 
 // block B - animations
-struct ModelAnimation {
+struct ModelAnimation
+{
 	uint32 animID;
 	uint32 timeStart;
 	uint32 timeEnd;
@@ -130,7 +134,8 @@ struct ModelAnimation {
 
 
 // sub-block in block E - animation data
-struct AnimationBlock {
+struct AnimationBlock
+{
 	int16 type;		// interpolation type (0=none, 1=linear, 2=hermite)
 	int16 seq;		// global sequence id or -1
 	uint32 nRanges;
@@ -142,7 +147,8 @@ struct AnimationBlock {
 };
 
 // block E - bones
-struct ModelBoneDef {
+struct ModelBoneDef
+{
 	int32 animid;
 	int32 flags;
 	int16 parent; // parent bone index
@@ -153,11 +159,13 @@ struct ModelBoneDef {
 	Vec3D pivot;
 };
 
-struct ModelTexAnimDef {
+struct ModelTexAnimDef
+{
 	AnimationBlock trans, rot, scale;
 };
 
-struct ModelVertex {
+struct ModelVertex
+{
 	Vec3D pos;
 	uint8 weights[4];
 	uint8 bones[4];
@@ -166,7 +174,8 @@ struct ModelVertex {
 	int unk1, unk2; // always 0,0 so this is probably unused
 };
 
-struct ModelView {
+struct ModelView
+{
     uint32 nIndex, ofsIndex; // Vertices in this model (index into vertices[])
     uint32 nTris, ofsTris;	 // indices
     uint32 nProps, ofsProps; // additional vtx properties
@@ -175,9 +184,9 @@ struct ModelView {
 	int32 lod;				 // LOD bias?
 };
 
-
 /// One material + render operation
-struct ModelGeoset {
+struct ModelGeoset
+{
 	uint16 id;		// mesh part id?
 	uint16 d2;		// ?
 	uint16 vstart;	// first vertex
@@ -192,7 +201,8 @@ struct ModelGeoset {
 };
 
 /// A texture unit (sub of material)
-struct ModelTexUnit{
+struct ModelTexUnit
+{
 	// probably the texture units
 	// size always >=number of materials it seems
 	uint16 flags;		// Flags
@@ -210,7 +220,8 @@ struct ModelTexUnit{
 };
 
 // block X - render flags
-struct ModelRenderFlags {
+struct ModelRenderFlags
+{
 	uint16 flags;
 	//unsigned char f1;
 	//unsigned char f2;
@@ -218,24 +229,28 @@ struct ModelRenderFlags {
 };
 
 // block G - color defs
-struct ModelColorDef {
+struct ModelColorDef
+{
 	AnimationBlock color;
 	AnimationBlock opacity;
 };
 
 // block H - transp defs
-struct ModelTransDef {
+struct ModelTransDef
+{
 	AnimationBlock trans;
 };
 
-struct ModelTextureDef {
+struct ModelTextureDef
+{
 	uint32 type;
 	uint32 flags;
 	uint32 nameLen;
 	uint32 nameOfs;
 };
 
-struct ModelLightDef {
+struct ModelLightDef
+{
 	int16 type;
 	int16 bone;
 	Vec3D pos;
@@ -248,7 +263,8 @@ struct ModelLightDef {
 	AnimationBlock unk1;
 };
 
-struct ModelCameraDef {
+struct ModelCameraDef
+{
 	int32 id;
 	float fov, farclip, nearclip;
 	AnimationBlock transPos;
@@ -259,7 +275,8 @@ struct ModelCameraDef {
 };
 
 
-struct ModelParticleParams {
+struct ModelParticleParams
+{
 	float mid;
 	uint32 colors[3];
 	float sizes[3];
@@ -275,7 +292,8 @@ struct ModelParticleParams {
 	float f2[6];
 };
 
-struct ModelParticleEmitterDef {
+struct ModelParticleEmitterDef
+{
     int32 id;
 	int32 flags;
 	Vec3D pos;
@@ -296,8 +314,8 @@ struct ModelParticleEmitterDef {
 	AnimationBlock en;
 };
 
-
-struct ModelRibbonEmitterDef {
+struct ModelRibbonEmitterDef
+{
 	int32 id;
 	int32 bone;
 	Vec3D pos;
@@ -315,9 +333,8 @@ struct ModelRibbonEmitterDef {
 	AnimationBlock unk2;
 };
 
-
-
-struct ModelBlockQ {
+struct ModelBlockQ
+{
 	char id[4];
 	int32 dbid;
 	int32 bone;
@@ -330,18 +347,14 @@ struct ModelBlockQ {
 	uint32 ofsTimes;
 };
 
-
-struct ModelAttachmentDef {
+struct ModelAttachmentDef
+{
 	int32 id;
 	int32 bone;
 	Vec3D pos;
 	AnimationBlock unk;
 };
 
-
-
-
 #pragma pack(pop)
-
 
 #endif

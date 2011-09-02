@@ -15,10 +15,8 @@ using namespace std;
 #define HEIGHT_DEEP		-250
 #define MAPCHUNK_RADIUS	47.140452079103168293389624140323
 
-
 bool DrawMapContour=false;
 bool drawFlags=false;
-
 
 /*
 White	1.00	1.00	1.00
@@ -78,12 +76,12 @@ void HeightColor(float height, Vec3D *Color)
 	}
 	else
 		(*Color)*=0.0f;
-
 }
 
 TextureID	Contour=0;
-float			CoordGen[4];
-#define CONTOUR_WIDTH	128
+float CoordGen[4];
+#define CONTOUR_WIDTH 128
+
 void GenerateContourMap()
 {
 	unsigned char	CTexture[CONTOUR_WIDTH*4];
@@ -93,7 +91,6 @@ void GenerateContourMap()
 	CoordGen[2]=0.0f;
 	CoordGen[3]=0.0f;
 
-	
 	for(int i=0;i<(CONTOUR_WIDTH*4);i++)
 		CTexture[i]=0;
 	CTexture[3+CONTOUR_WIDTH/2]=0xff;
@@ -103,7 +100,6 @@ void GenerateContourMap()
 	glGenTextures(1, &Contour);
 	glBindTexture(GL_TEXTURE_2D, Contour);
 	
-
 	gluBuild2DMipmaps(GL_TEXTURE_2D,4,CONTOUR_WIDTH,1,GL_RGBA,GL_UNSIGNED_BYTE,CTexture);
 	/*glTexImage1D(GL_TEXTURE_1D,0,GL_RGBA,CONTOUR_WIDTH,0,GL_RGBA,GL_UNSIGNED_BYTE,CTexture);
 	
@@ -143,7 +139,6 @@ void GenerateContourMap()
 
 	glTexImage1D(GL_TEXTURE_1D,6,GL_RGBA,CONTOUR_WIDTH/64,0,GL_RGBA,GL_UNSIGNED_BYTE,CTexture);*/
 	
-
 	glEnable(GL_TEXTURE_GEN_S);
 	glTexGeni(GL_S,GL_TEXTURE_GEN_MODE,GL_OBJECT_LINEAR);
 	glTexGenfv(GL_S,GL_OBJECT_PLANE,CoordGen);
@@ -179,8 +174,6 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 
 	char fourcc[5];
 	size_t size;
-
-	
 
 	startTimer();
 	while (!theFile->isEof()) {
@@ -254,11 +247,9 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 			wmoNum = (int)size / 64;
 			wmoInstances=new MODF[wmoNum];
 			theFile->read((unsigned char *)wmoInstances,size);
-
 		}
 
 		// MCNK data will be processed separately ^_^
-
 		theFile->seek((int)nextpos);
 	}
 	gLog("Finished Processing all but MCNK's in ");
@@ -276,11 +267,7 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 	}*/
 	chunksLoaded=false;
 	nextChunk=0;
-	
 
-	
-
-	
 	gLog("Entire loading of %s took ",fname.c_str());
 	stopTimer();
 }
@@ -295,8 +282,6 @@ void MapTile::loadChunk()
 	gLog("Loaded Chunk %d of %s\n",nextChunk,fname.c_str());
 	nextChunk++;
 	
-		
-
 	if(nextChunk==256)
 	{
 		theFile->close();
@@ -306,12 +291,10 @@ void MapTile::loadChunk()
 	}
 }
 
-
 void MapTile::loadTexture()
 {
 	if(texturesLoaded)
 		return;
-
 	
 	if(textureSize<=0)
 	{
@@ -355,7 +338,6 @@ void MapTile::loadModel()
 		modelsLoaded=true;
 		return;
 	}
-	
 	
 	if(strlen(modelPos)>0)
 	{
@@ -510,7 +492,6 @@ void MapTile::draw()
 	}
 	if (!ok) return;
 
-	
 	for (int j=0; j<16; j++) {
 		for (int i=0; i<16; i++) {
 			chunks[j][i].visible = false;
@@ -539,7 +520,6 @@ void MapTile::drawSelect()
 		}
 	}
 	//topnode.drawSelect();
-	
 }
 
 void MapTile::drawColored()
@@ -703,7 +683,6 @@ void MapTile::drawTextures()
 	
 	//glTranslatef(-8,-8,0);
 	
-
 	for (int j=0; j<16; j++) {
 		for (int i=0; i<16; i++) {
 			if(((i+1+xOffset)>gWorld->minX)&&((j+1+yOffset)>gWorld->minY)&&((i+xOffset)<gWorld->maxX)&&((j+yOffset)<gWorld->maxY))
@@ -713,9 +692,6 @@ void MapTile::drawTextures()
 	glPopMatrix();
 }
 
-
-
-
 int holetab_h[4] = {0x1111, 0x2222, 0x4444, 0x8888};
 int holetab_v[4] = {0x000F, 0x00F0, 0x0F00, 0xF000};
 
@@ -724,12 +700,10 @@ bool isHole(int holes, int i, int j)
 	return (holes & holetab_h[i] & holetab_v[j])!=0;
 }
 
-
 int indexMapBuf(int x, int y)
 {
 	return ((y+1)/2)*9 + (y/2)*8 + x;
 }
-
 
 void MapChunk::init(MapTile* maintile, MPQFile &f)
 {	
@@ -745,7 +719,6 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 
 	//char header[0x80];
 	
-
 	f.read(&header, 0x80);
 
 	Flags = header.flags;
@@ -1008,8 +981,6 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 	deleted=false;
 	nameID=addNameMapChunk(this);
 
-
-
 	Vec3D *ttv = tm;
 
 	// vertices
@@ -1167,7 +1138,6 @@ void MapChunk::drawTextures()
 		glEnd();
 
 		RemoveAnim(animated[i]);
-
 	}
 	
 	glActiveTextureARB(GL_TEXTURE0_ARB);
@@ -1176,19 +1146,13 @@ void MapChunk::drawTextures()
 	glActiveTextureARB(GL_TEXTURE1_ARB);
 	glDisable(GL_TEXTURE_2D);
 
-
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, minimap);
 	glVertexPointer(3, GL_FLOAT, 0, 0);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, minishadows);
 	glColorPointer(4, GL_FLOAT, 0, 0);
 	
-	
 	glDrawElements(GL_TRIANGLE_STRIP, stripsize2, GL_UNSIGNED_SHORT, gWorld->mapstrip2);
-
-
-	
 }
-
 
 void MapChunk::initStrip(int holes)
 {
@@ -1217,7 +1181,6 @@ void MapChunk::initStrip(int holes)
 	}
 	striplen = (int)(s - strip);
 }
-
 
 void MapChunk::destroy()
 {
@@ -1295,7 +1258,6 @@ void CreateStrips()
 		memcpy(&EvenStrips[i*18],Temp,sizeof(unsigned short)*18);
 
 	}
-
 	
 	for(int i=0;i<32;i++)
 	{
@@ -1355,7 +1317,6 @@ void MapChunk::drawColor()
 	glEnd();
 	//glEnable(GL_LIGHTING);
 }
-
 
 void MapChunk::drawPass(int anim)
 {
@@ -1478,8 +1439,6 @@ void MapChunk::draw()
 	}
 	visible = true;
 
-	
-
 	if (!hasholes) {
 		bool highres = gWorld->drawhighres;
 		if (highres) {
@@ -1493,7 +1452,6 @@ void MapChunk::draw()
 			striplen = stripsize;
 		}
 	}
-	
 
 	// setup vertex buffers
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertices);
@@ -1577,7 +1535,6 @@ void MapChunk::draw()
 	glDisable(GL_LIGHTING);
 
 	drawContour();
-
 	
 	if(drawFlags)
 	{
@@ -1665,8 +1622,6 @@ void MapChunk::draw()
 	glColor4f(1,1,1,1);
 	glPopMatrix();
 	*/
-
-	
 }
 
 void MapChunk::drawNoDetail()
@@ -1737,7 +1692,6 @@ void MapChunk::drawSelect()
 	glEnd();
 
 	glPopName();
-	
 }
 
 void MapChunk::drawSelect2()
@@ -1787,14 +1741,14 @@ void MapChunk::drawSelect2()
 	
 }
 
-void	MapChunk::getSelectionCoord(float *x,float *z)
+void MapChunk::getSelectionCoord(float *x,float *z)
 {
 	int Poly=gWorld->getSelectTex();
 	*x=(tv[strip[Poly]].x+tv[strip[Poly+1]].x+tv[strip[Poly+2]].x)/3;
 	*z=(tv[strip[Poly]].z+tv[strip[Poly+1]].z+tv[strip[Poly+2]].z)/3;
 }
 
-float	MapChunk::getSelectionHeight()
+float MapChunk::getSelectionHeight()
 {
 	int Poly=gWorld->getSelectTex();
 	return (tv[strip[Poly]].y+tv[strip[Poly+1]].y+tv[strip[Poly+2]].y)/3;
@@ -1804,7 +1758,6 @@ void MapChunk::recalcNorms()
 {
 	Vec3D P1,P2,P3,P4;
 	Vec3D Norm,N1,N2,N3,N4,D;
-
 
 	if(Changed==false)
 		return;
@@ -2079,6 +2032,7 @@ L=(1-Level)
 u=pow(L*x*x/(y*y),1.0f/3.0f)
 w=sqrt(L*z/(u*y))
 */
+
 void MapChunk::eraseTextures()
 {
 	nTextures=0;
@@ -2142,7 +2096,6 @@ bool MapChunk::paintTexture(float x, float z, brush *Brush, float strength, floa
 	//Only 1 layer and its that layer
 	if((texLevel!=-1)&&(nTextures==1))
 		return true;
-
 	
 	change=CHUNKSIZE/62.0f;
 	zPos=zbase;
@@ -2150,7 +2103,6 @@ bool MapChunk::paintTexture(float x, float z, brush *Brush, float strength, floa
 	int texAbove;
 	float target,tarAbove, tPressure;
 	texAbove=nTextures-texLevel-1;
-
 
 	for(j=0;j<63;j++)
 	{
@@ -2217,7 +2169,6 @@ bool MapChunk::paintTexture(float x, float z, brush *Brush, float strength, floa
 			}*/
 
 			xPos+=change;
-			
 		}
 		zPos+=change;
 	}
@@ -2244,7 +2195,6 @@ bool MapChunk::paintTexture(float x, float z, brush *Brush, float strength, floa
 	}
 
 	return true;
-
 }
 
 void MapChunk::drawWater()
@@ -2290,7 +2240,6 @@ void MapChunk::drawWater()
 	if (haswater) {
 		lq->draw();
 	}
-
 }
 
 void MapNode::draw()
@@ -2351,8 +2300,6 @@ void MapNode::cleanup()
 		}
 	}
 }
-
-
 
 MapChunk *MapTile::getChunk(unsigned int x, unsigned int z)
 {
@@ -2421,7 +2368,6 @@ void MapTile::saveTile()
 	unsigned int NewFileSize=(unsigned int)(2*f.getSize());
 	char *Buffer;
 
-
 	Buffer=new char[NewFileSize];
 	memset(Buffer,0,NewFileSize);
 
@@ -2458,7 +2404,6 @@ void MapTile::saveTile()
 			allTextures[i]=0;
 	
 	int Change=0,lChange;
-
 	
 	f.seek(0x14+MapHeader.MTEX_Offset+4);
 	f.read(&Change,sizeof(int));
@@ -2473,8 +2418,6 @@ void MapTile::saveTile()
 	newMapHeader.MWID_Offset+=Change;
 	newMapHeader.MDDF_Offset+=Change;
 	newMapHeader.MODF_Offset+=Change;
-
-
 
 	memcpy(Buffer+0x14+newMapHeader.MMDX_Offset,f.getBuffer()+0x14+MapHeader.MMDX_Offset,MCINs[0].offset-(0x14+MapHeader.MMDX_Offset));
 	
@@ -2494,7 +2437,6 @@ void MapTile::saveTile()
 		}
 		memcpy(0x14+Buffer+newMapHeader.MDDF_Offset+8+sizeof(MDDF)*i,&TempDDF,sizeof(MDDF));
 	}
-
 
 	for(i=0;i<256;i++)
 	{
@@ -2572,7 +2514,6 @@ void MapTile::saveTile()
 				WMOExtents[0]=Rot*wmois[j].wmo->groups[k].vmin;
 				WMOExtents[1]=Rot*wmois[j].wmo->groups[k].vmax;
 
-
 				float tswap;
 				if(WMOExtents[0].x>WMOExtents[1].x)
 				{
@@ -2605,17 +2546,10 @@ void MapTile::saveTile()
 			}
 		}
 
-		
-
-
 		int Temp;
 		unsigned int MCNKSize=*((unsigned int *)(f.getBuffer()+MCINs[i].offset+4));
 
-
 		lChange=0;
-
-		
-
 
 		memcpy(Buffer+Change+MCINs[i].offset,f.getBuffer()+MCINs[i].offset,ChunkHeader[i].ofsRefs+4);
 
@@ -2632,7 +2566,6 @@ void MapTile::saveTile()
 			Normals[j*3+2]=(char)roundc(chunks[i/16][i%16].tn[j].y*127);
 		}
 
-		
 		/*gLog("Chunk %d (%d, %d)\n",i,i/16,i%16);
 		gLog("Textures: %d\n",ChunkHeader[i].nLayers);
 		gLog("\tS1: %60d\tS2: %60d\n",ChunkHeader[i].s1,ChunkHeader[i].s2);
@@ -2680,8 +2613,6 @@ void MapTile::saveTile()
 
 		//ChunkHeader[i].nLayers=chunks[i/16][i%16].nTextures;
 		
-		
-		
 		//Constructing Object References
 		Temp=4*(NumWMORefs+NumDoodadRefs);
 		memcpy(Buffer+Change+MCINs[i].offset+ChunkHeader[i].ofsRefs+4+lChange,&Temp,4);
@@ -2693,8 +2624,6 @@ void MapTile::saveTile()
 		ChunkHeader[i].ofsRefs+=lChange;
 		lChange+=4*(NumDoodadRefs-ChunkHeader[i].nDoodadRefs)+4*(NumWMORefs-ChunkHeader[i].nMapObjRefs);
 		
-		
-
 		ChunkHeader[i].nDoodadRefs=NumDoodadRefs;
 		ChunkHeader[i].nMapObjRefs=NumWMORefs;
 		ChunkHeader[i].ofsShadow+=lChange;
@@ -2710,7 +2639,6 @@ void MapTile::saveTile()
 		Temp=max((int)chunks[i/16][i%16].nTextures-1,(int)0)*64*32;
 		memcpy(Buffer+Change+MCINs[i].offset+ChunkHeader[i].ofsAlpha+4,&Temp,4);
 
-		
 		unsigned char	alphaMap[64*32],upperNibble,lowerNibble;
 		for(int j=0;j<(int)chunks[i/16][i%16].nTextures-1;j++)
 		{
@@ -2748,6 +2676,7 @@ void MapTile::saveTile()
 		
 		Change+=lChange;
 	}
+
 	memcpy(Buffer+0x5c,MCINs,sizeof(MCIN)*256);
 
 	memcpy(Buffer+0x14,&newMapHeader,sizeof(MHDR));

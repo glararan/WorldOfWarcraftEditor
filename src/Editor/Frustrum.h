@@ -22,5 +22,4 @@ struct Frustum {
 	bool intersectsSphere(const Vec3D& v, const float rad) const;
 };
 
-
 #endif

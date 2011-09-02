@@ -3,7 +3,6 @@
 #define		ENTRY_WMO		2
 #define		ENTRY_MAPCHUNK	3
 
-
 class nameEntry
 {
 private:

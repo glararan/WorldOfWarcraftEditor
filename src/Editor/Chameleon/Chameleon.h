@@ -24,12 +24,13 @@ misrepresented as being the original source code.
 René Nyffenegger rene.nyffenegger@adp-gmbh.ch
 */
 
-#ifndef _CHAMELEON_H_
-#define _CHAMELEON_H_
+#ifndef CHAMELEON_H
+#define CHAMELEON_H
 
 #include <string>
 
-class Chameleon {
+class Chameleon
+{
 public:
     Chameleon() {};
     explicit Chameleon(const std::string&);

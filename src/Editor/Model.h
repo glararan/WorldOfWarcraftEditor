@@ -21,10 +21,8 @@ Vec3D fixCoordSystem(Vec3D v);
 #include "Particle.h"
 #include "MapHeaders.h"
 
-
-class Bone {
-	
-
+class Bone
+{
 	Animated<Vec3D> trans;
 	Animated<Quaternion> rot;
 	Animated<Vec3D> scale;
@@ -40,11 +38,10 @@ public:
 	bool calc;
 	void calcMatrix(Bone* allbones, int anim, int time);
 	void init(MPQFile &f, ModelBoneDef &b, int *global);
-
 };
 
-
-class TextureAnim {
+class TextureAnim
+{
 	Animated<Vec3D> trans, rot, scale;
 
 public:
@@ -55,21 +52,24 @@ public:
 	void setup();
 };
 
-struct ModelColor {
+struct ModelColor
+{
 	Animated<Vec3D> color;
 	AnimatedShort opacity;
 
 	void init(MPQFile &f, ModelColorDef &mcd, int *global);
 };
 
-struct ModelTransparency {
+struct ModelTransparency
+{
 	AnimatedShort trans;
 
 	void init(MPQFile &f, ModelTransDef &mtd, int *global);
 };
 
 // copied from the .mdl docs? this might be completely wrong
-enum BlendModes {
+enum BlendModes
+{
 	BM_OPAQUE,
 	BM_TRANSPARENT,
 	BM_ALPHA_BLEND,
@@ -78,7 +78,8 @@ enum BlendModes {
 	BM_MODULATE
 };
 
-struct ModelRenderPass {
+struct ModelRenderPass
+{
 	uint16 indexStart, indexCount, vertexStart, vertexEnd;
 	TextureID texture, texture2;
 	bool usetex2, useenvmap, cull, trans, unlit, nozwrite;
@@ -99,7 +100,8 @@ struct ModelRenderPass {
 	}
 };
 
-struct ModelCamera {
+struct ModelCamera
+{
 	bool ok;
 
 	Vec3D pos, target;
@@ -113,7 +115,8 @@ struct ModelCamera {
 	ModelCamera():ok(false) {}
 };
 
-struct ModelLight {
+struct ModelLight
+{
 	int type, parent;
 	Vec3D pos, tpos, dir, tdir;
 	Animated<Vec3D> diffColor, ambColor;
@@ -123,8 +126,8 @@ struct ModelLight {
 	void setup(int time, GLuint l);
 };
 
-class Model: public ManagedItem {
-
+class Model: public ManagedItem
+{
 	GLuint dlist;
 	GLuint slist;
 	GLuint ghlist;
@@ -139,7 +142,6 @@ class Model: public ManagedItem {
 
 	void init(MPQFile &f);
 
-	
 	TextureAnim *texanims;
 	ModelAnimation *anims;
 	int *globalSequences;
@@ -201,7 +203,8 @@ public:
 	friend struct ModelRenderPass;
 };
 
-class ModelManager: public SimpleManager {
+class ModelManager: public SimpleManager
+{
 public:
 	int add(std::string name);
 
@@ -214,12 +217,11 @@ public:
 	void reload();
 };
 
-
-class ModelInstance {
+class ModelInstance
+{
 public:
 	Model *model;
 	
-
 	int id;
 	unsigned int nameID;
 	unsigned int modelID;

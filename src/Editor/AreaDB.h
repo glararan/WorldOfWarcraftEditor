@@ -1,5 +1,6 @@
 #ifndef AREADB_H
 #define AREADB_H
+
 #include "DBCFile.h"
 
 class AreaDB: public DBCFile
@@ -19,7 +20,6 @@ public:
 
 	Record getByAreaID(unsigned int id);
 private:
-	
 };
 
 #endif

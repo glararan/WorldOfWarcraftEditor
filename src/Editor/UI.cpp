@@ -3,7 +3,6 @@
 #include "Video.h"
 #include "UI.h"
 
-
 void frame::render()
 {
 	if(hidden)
@@ -33,7 +32,6 @@ frame *frame::processLeftClick(float mx,float my)
 	return 0;
 }
 
-
 bool frame::processLeftDrag(float mx,float my, float xDrag, float yDrag)
 {
 	if(movable)
@@ -53,7 +51,8 @@ bool frame::processRightClick(float mx,float my)
 		if((children[i]->x<mx)&&(children[i]->x+children[i]->width>mx)&&(children[i]->y<my)&&(children[i]->y+children[i]->height>my))
 			if(children[i]->processRightClick(mx-children[i]->x,my-children[i]->y))
 				return true;
-	}	
+	}
+
 	return false;
 }
 
@@ -101,7 +100,6 @@ frame *window::processLeftClick(float mx,float my)
 	return this;
 }
 
-
 //8 parts to the border image from left to right
 //left side
 //right side
@@ -124,7 +122,6 @@ void window::render()
 	glVertex2f(0,height);
 	glVertex2f(width,height);
 	glEnd();
-
 
 	for(unsigned int i=0;i<children.size();i++)
 		if(!children[i]->hidden)
@@ -161,7 +158,6 @@ void window::render()
 	glEnd();
 
 	//Draw Top Left Corner
-
 	glBegin(GL_TRIANGLE_STRIP);	
 	glTexCoord2f(4.0f/8.0f,1.0f);
 	glVertex2f(-3,13);	
@@ -237,7 +233,6 @@ void window::render()
 	glPopMatrix();
 }
 
-
 //Slider Functions
 slider::slider(float xPos, float yPos, float w,float s,float o)
 {
@@ -312,7 +307,6 @@ bool slider::processLeftDrag(float mx,float my, float xChange, float yChange)
 	return true;
 }
 
-
 //8 parts to the border image from left to right
 //left side
 //right side
@@ -330,13 +324,8 @@ void slider::render()
 	glPushMatrix();
 	glTranslatef(x,y,0);
 
-
-
-
 	glColor3f(1.0f,1.0f,1.0f);
 	
-	
-
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 	glEnable(GL_TEXTURE_2D);
 
@@ -358,7 +347,6 @@ void slider::render()
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 	
-
 	//Draw Bottom left Corner First
 	glBegin(GL_TRIANGLE_STRIP);	
 	glTexCoord2f(6.0f/8.0f,1.0f);
@@ -475,9 +463,7 @@ void slider::render()
 	glVertex2f(width*value+16.0f,height/2+16.0f);
 	glEnd();
 	
-
 	glDisable(GL_TEXTURE_2D);
-
 
 	glPopMatrix();
 }
@@ -861,7 +847,6 @@ void maximizeWindow(frame *button,int id)
 	button->parent->hidden=true;
 }
 
-
 minWindowUI::minWindowUI(float xPos, float yPos, float w, float h, const char *title) : window(xPos, yPos, w, h)
 {
 	texture=video.textures.add("interface\\tooltips\\ui-tooltip-border.blp");
@@ -909,7 +894,6 @@ void minWindowUI::render()
 	glVertex2f(0,height);
 	glVertex2f(width,height);
 	glEnd();
-
 
 	for(unsigned int i=0;i<children.size();i++)
 		if(!children[i]->hidden)
@@ -1025,7 +1009,6 @@ void minWindowUI::render()
 //Closable Window
 void closeWindow(frame *button,int id)
 {
-	
 	button->parent->hidden=true;
 }
 
@@ -1108,7 +1091,6 @@ void checkboxUI::setClickFunc(void (*f)(bool,int),int i)
 	id=i;
 	clickFunc=f;
 }
-
 
 //Scroll Bar
 

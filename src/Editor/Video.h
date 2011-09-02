@@ -43,7 +43,6 @@ extern PFNGLUNMAPBUFFERARBPROC glUnmapBufferARB;
 
 extern PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
 
-
 #define GL_BUFFER_OFFSET(i) ((char *)(0) + (i))
 //
 void SaveGLSettings();
@@ -57,7 +56,6 @@ public:
 	GLuint id;
 
 	Texture(std::string name):ManagedItem(name), w(0), h(0) {}
-
 };
 
 class TextureManager : public Manager<GLuint> {
@@ -69,7 +67,6 @@ public:
 	virtual GLuint add(std::string name);
 	void doDelete(GLuint id);
 	GLuint get(std::string name);
-
 };
 
 ////////// VIDEO CLASS
@@ -109,13 +106,10 @@ public:
 	int xres, yres;
 	int origX, origY;
 	float ratio;
-
 };
 
 extern Video video;
 
 GLuint loadTGA(const char *filename, bool mipmaps);
-
-
 
 #endif

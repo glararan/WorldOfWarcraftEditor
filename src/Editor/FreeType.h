@@ -27,7 +27,6 @@
 //catch any exceptions that we throw.
 #include <stdexcept>
 
-
 //MSVC will spit out all sorts of useless warnings if
 //you create vectors of strings, this pragma gets rid of them.
 #pragma warning(disable: 4786) 
@@ -66,8 +65,7 @@ struct font_data {
 //The current modelview matrix will also be applied to the text. 
 void print(const font_data &ft_font, float x, float y, const char *fmt, ...) ;
 void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...);
-int width(const font_data &ft_font, const char *fmt, ...) ;
-
+int width(const font_data &ft_font, const char *fmt, ...);
 }
 
 #endif

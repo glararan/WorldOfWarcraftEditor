@@ -12,6 +12,7 @@
 
 // interpolation functions
 template<class T>
+
 inline T interpolate(const float r, const T &v1, const T &v2)
 {
 	return v1*(1.0f - r) + v2*r;
@@ -40,20 +41,21 @@ inline Quaternion interpolate<Quaternion>(const float r, const Quaternion &v1, c
 	return Quaternion::slerp(r, v1, v2);
 }
 
-
 typedef std::pair<size_t, size_t> AnimRange;
 
 // global time for global sequences
 extern int globalTime;
 
-enum Interpolations {
+enum Interpolations
+{
 	INTERPOLATION_NONE,
 	INTERPOLATION_LINEAR,
 	INTERPOLATION_HERMITE
 };
 
 template <class T>
-class Identity {
+class Identity
+{
 public:
 	static const T& conv(const T& t)
 	{
@@ -81,7 +83,8 @@ public:
 	(there might be a nicer way to do this? meh meh)
 */
 template <class T, class D=T, class Conv=Identity<T> >
-class Animated {
+class Animated
+{
 public:
 
 	bool used;

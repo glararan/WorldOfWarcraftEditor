@@ -31,7 +31,6 @@ public:
 		return *this;
 	}
 
-
 	void zero()
 	{
         for (size_t j=0; j<4; j++) {
@@ -276,6 +275,5 @@ public:
 	}
 
 };
-
 
 #endif

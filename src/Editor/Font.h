@@ -1,16 +1,14 @@
-
 #ifndef FONT_H
 #define FONT_H
 
 class Font;
 
-
-struct charinfo {
+struct charinfo
+{
 	int baseline;
 	int x,y,w,h;
 	float tx1,tx2,ty1,ty2;
 };
-
 
 class Font
 {
@@ -38,8 +36,6 @@ public:
 protected:
 	float	Scale;
 	void drawchar(float x, float y, const char ch);
-
 };
-
 
 #endif

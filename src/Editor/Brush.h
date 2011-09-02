@@ -1,4 +1,5 @@
-class brush{
+class brush
+{
 private:
 	float	hardness;
 	float	iradius;
@@ -7,7 +8,6 @@ private:
 	GLuint	texID;
 	char	tex[256*256];
 
-	
 	bool	update;
 public:
 	void	GenerateTexture();

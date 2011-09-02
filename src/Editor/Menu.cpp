@@ -35,7 +35,6 @@ Menu::Menu()
 		e.x1 = e.x0 + e.font->textwidth(e.name.c_str());
 		
 		maps.push_back(e);
-
 	}
 
 	sel = -1;
@@ -53,15 +52,12 @@ Menu::Menu()
 	bg = 0;
 	lastbg = -1;
 	randBackground();
-
 }
-
 
 Menu::~Menu()
 {
     delete bg;
 }
-
 
 void Menu::randBackground()
 {
@@ -436,7 +432,6 @@ void Menu::mouseclick(SDL_MouseButtonEvent *e)
 		}
 	}
 }
-
 
 void Menu::refreshBookmarks()
 {

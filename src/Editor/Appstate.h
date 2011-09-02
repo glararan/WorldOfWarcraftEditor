@@ -4,7 +4,8 @@
 #include "SDL/SDL.h"
 #include <vector>
 
-class AppState {
+class AppState
+{
 public:
 	AppState() {};
 	virtual ~AppState() {};
@@ -18,6 +19,5 @@ public:
 
 	//virtual void onPop() {};
 };
-
 
 #endif

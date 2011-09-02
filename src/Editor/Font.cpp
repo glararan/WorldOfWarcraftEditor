@@ -74,7 +74,6 @@ void Font::drawchar(float x, float y, const char ch)
 	glVertex2f((float)x, (float)(y+Scale*c->h));
 
 	glEnd();
-
 }
 
 // ASSUME: ortho mode
@@ -86,9 +85,11 @@ void Font::drawtext(int x, int y, const char *text)
 	float xpos = x;
     const char *c = text;
 
-	while (*c!=0) {
+	while (*c!=0)
+	{
 
-		if (*c != '\n' && *c != '\r') {
+		if (*c != '\n' && *c != '\r')
+		{
 			drawchar(xpos, base - chars[*c].baseline*Scale, *c);
 			xpos += max(Scale*chars[*c].w,0.5f) + Scale*2;
 		} else {
@@ -110,7 +111,6 @@ void Font::shdrawtext(int x, int y, const char *text)
 	glColor4fv(col);
 	drawtext(x,y,text);
 }
-
 
 void Font::print(int x, int y, const char *str, ...)
 {
@@ -138,15 +138,15 @@ void Font::shprint(int x, int y, const char *str, ...)
 	shdrawtext(x,y,buf);
 }
 
-
-
 int Font::textwidth(const char *text)
 {
 	int w = 0,maxw=0;
     const char *c = text;
-	while (*c!=0) {
+	while (*c!=0)
+	{
 
-		if (*c != '\n' && *c != '\r') {
+		if (*c != '\n' && *c != '\r')
+		{
 			w += chars[*c].w +2;
 		} else {
 			if (w>maxw) maxw = w;

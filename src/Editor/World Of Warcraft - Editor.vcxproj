@@ -215,7 +215,6 @@
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Quaternion.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Revision.h" />
     <ClInclude Include="Selection.h" />
     <ClInclude Include="Shaders.h" />

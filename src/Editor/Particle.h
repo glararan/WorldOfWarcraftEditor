@@ -119,6 +119,4 @@ public:
 	void draw();
 };
 
-
-
 #endif

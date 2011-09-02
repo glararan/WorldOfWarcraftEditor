@@ -9,7 +9,6 @@
 #include "TexturingUI.h"
 using namespace std;
 
-
 #define XSENS 15.0f
 #define YSENS 15.0f
 #define SPEED 66.6f
@@ -37,10 +36,10 @@ bool RAltDown=false;
 bool LCtrlDown=false;
 bool RCtrlDown=false;
 
-bool	leftMouse=false;
-bool	leftClicked=false;
-bool	TileMode=false;
-bool	painting=false;
+bool leftMouse=false;
+bool leftClicked=false;
+bool TileMode=false;
+bool painting=false;
 
 float BrushRadius=10.0f;
 int BrushType=2;
@@ -54,8 +53,6 @@ brush textureBrush;
 bool Saving=false;
 
 frame *LastClicked;
-
-
 
 void setTextureBrushHardness(float f)
 {
@@ -77,11 +74,8 @@ void setTextureBrushLevel(float f)
 	brushLevel=(1.0f-f)*255.0f;
 }
 
-
-
 // why the hell is this class called Test, anyway
 // I should rename it to MapViewer or something when I'm not lazy
-
 Test::Test(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 {
 	LastClicked=0;
@@ -164,7 +158,6 @@ Test::Test(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 	S1->setText("Pressure: %.2f");
 	W1->addChild(S1);
 
-	
 	tileFrames.addChild(CreateTexturePalette());
 	tileFrames.addChild(CreateSelectedTexture());
 	tileFrames.addChild(CreateTilesetLoader());
@@ -201,8 +194,6 @@ void Test::tick(float t, float dt)
 		Vec3D dirRight(0,0,1);
 		rotate(0,0, &dir.x,&dir.y, av*PI/180.0f);
 		rotate(0,0, &dir.x,&dir.z, ah*PI/180.0f);
-
-		
 
 		if(LShiftDown||RShiftDown)
 		{
@@ -254,6 +245,7 @@ void Test::tick(float t, float dt)
 				CurSelection->data.model->pos-=mh*dirRight*ObjPos.x;
 			}
 		}
+
 		if(look&&(CurSelection!=0))
 		{
 			if((LShiftDown||RShiftDown)&&(CurSelection->type==ENTRY_MODEL))
@@ -284,6 +276,7 @@ void Test::tick(float t, float dt)
 					CurSelection->data.model->dir.z+=360.0f;
 			}
 		}
+
 		mh=0;
 		mv=0;
 		rh=0;
@@ -357,9 +350,7 @@ void Test::tick(float t, float dt)
 					
 					world->paintTexture(mX,mY,&textureBrush,brushLevel,1.0f-pow(1.0f-brushPressure,dt*10),video.textures.add(selectedTexture->name.c_str()));
 				}
-				
 			}
-
 		}
 	}
 	else
@@ -443,13 +434,9 @@ void Test::display(float t, float dt)
 		glColor4f(1,1,1,0);
 		glVertex2f(fx + 10.0f*cosf(ah/180.0f*PI), fz + 10.0f*sinf(ah/180.0f*PI));
 		glEnd();
-
-		
-
 	}
 	else if(TileMode)
 	{
-
 		ResetUniques();
 		video.setTileMode();
 		world->drawTileMode(ah);
@@ -468,7 +455,6 @@ void Test::display(float t, float dt)
 		glPushMatrix();
 		glScalef(world->zoom,world->zoom,1.0f);
 		glTranslatef(-world->camera.x/CHUNKSIZE,-world->camera.z/CHUNKSIZE,0);
-
 
 		glColor4f(1.0f,1.0f,1.0f,0.5f);
 		glActiveTextureARB(GL_TEXTURE1);
@@ -495,7 +481,6 @@ void Test::display(float t, float dt)
 		
 		glEnable(GL_BLEND);
 		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 
 		glActiveTextureARB(GL_TEXTURE1);
 		glDisable(GL_TEXTURE_2D);
@@ -554,10 +539,8 @@ void Test::display(float t, float dt)
 			f16->shprint(video.xres/2 - f16->textwidth(loadstr)/2, /*video.yres/2-8*/ 0, world->oob?oobstr:loadstr);
 		}
 	}	
-	else {
-
-		
-
+	else
+	{
 		ResetUniques();
 		// draw 3D view
 		video.set3D();
@@ -583,12 +566,8 @@ void Test::display(float t, float dt)
 		ResetUniques();
 		video.set3D();
 		
-		if (hud) {
-			
-				
-			
-
-			
+		if(hud)
+		{
 			video.set2D();
 			glEnable(GL_BLEND);
 			glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -602,7 +581,6 @@ void Test::display(float t, float dt)
 			glDisable(GL_LIGHTING);
 			glColor4f(1,1,1,1);
 
-		
 			f16->shprint(5,0,"%.2f fps", gFPS);
 
 			//char *sn = world->skies->getSkyName();
@@ -665,7 +643,6 @@ void Test::display(float t, float dt)
 					f16->shprint(video.xres - 250, 40, "Brush Radius: %.2f",BrushRadius);
 			}
 			//f16->shprint(video.xres - 250, 40, "Object Pos (%.2f, %.2f, %.2f)",ObjPos.x,ObjPos.y,ObjPos.z);
-
 
 			if(CurSelection!=0)
 			{
@@ -754,7 +731,6 @@ void Test::display(float t, float dt)
 				}
 			}
 			
-	
 			if((Selection!=0)&&(Selection->type!=ENTRY_FAKE))
 			{
 				unsigned int SelTex;
@@ -777,9 +753,6 @@ void Test::display(float t, float dt)
 				world->camera.x,
 				world->camera.z);
 
-				
-				
-				
 				if(DetailSelection)
 				{
 					if(CurSelection==0)
@@ -879,8 +852,6 @@ void Test::display(float t, float dt)
 				world->camera.z);
 			}
 			//f16->shprint(video.xres-300,video.yres/2,"(%.2f, %.2f, %.2f)",ObjPos.x,ObjPos.y,ObjPos.z);
-
-
 		}
 
 		if (world->loading) {
@@ -930,22 +901,28 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_ESCAPE) {
 		    gPop = true;
 		}
+
 		// movement
 		if (e->keysym.sym == SDLK_w) {
 			moving = 1.0f;
 		}
+
 		if (e->keysym.sym == SDLK_s) {
 			moving = -1.0f;
 		}
+
 		if (e->keysym.sym == SDLK_a) {
 			strafing = -1.0f;
 		}
+
 		if (e->keysym.sym == SDLK_d) {
 			strafing = 1.0f;
 		}
+
 		if (e->keysym.sym == SDLK_e) {
 			updown = -1.0f;
 		}
+
 		if (e->keysym.sym == SDLK_q) {
 			updown = 1.0f;
 		}
@@ -954,6 +931,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_i) {
 			mousedir *= -1.0f;
 		}
+
 		// move speed
 		if (e->keysym.sym == SDLK_p) {
 			if((LCtrlDown||RCtrlDown)&&(LShiftDown||RShiftDown))
@@ -961,9 +939,11 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 			else
 				movespd *= 2.0f;
 		}
+
 		if (e->keysym.sym == SDLK_o) {
 			movespd *= 0.5f;
 		}
+
 		// turn around
 		if (e->keysym.sym == SDLK_r) {
 			ah += 180.0f;
@@ -973,6 +953,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_n) {
 			world->modelmanager.v++;
 		}
+
 		if (e->keysym.sym == SDLK_b) {
 			world->modelmanager.v--;
 			if (world->modelmanager.v<0) world->modelmanager.v = 0;
@@ -984,6 +965,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 			if(terrainMode>1)
 				terrainMode=0;
 		}
+
 		if (e->keysym.sym == SDLK_l) {
 			world->lighting = !world->lighting;
 		}
@@ -991,39 +973,50 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_F1) {
 			world->drawmodels = !world->drawmodels;
 		}
+
 		if (e->keysym.sym == SDLK_F2) {
 			world->drawdoodads = !world->drawdoodads;
 		}
+
 		if (e->keysym.sym == SDLK_F3) {
 			world->drawterrain = !world->drawterrain;
 		}
+
 		if (e->keysym.sym == SDLK_F4) {
 			if(LShiftDown||RShiftDown)
 				Selecting=!Selecting;
 			else
 				hud = !hud;			
 		}
+
 		if (e->keysym.sym == SDLK_F7) {
 			world->drawlines = !world->drawlines;
 		}
+
 		if (e->keysym.sym == SDLK_F6) {
 			world->drawwmo = !world->drawwmo;
 		}
+
 		if (e->keysym.sym == SDLK_F8) {
 			DetailSelection = !DetailSelection;
 		}
+
 		if (e->keysym.sym == SDLK_F9) {
 			DrawMapContour = !DrawMapContour;
 		}
+
 		if (e->keysym.sym == SDLK_h) {
 			world->drawhighres = !world->drawhighres;
 		}
+
 		if (e->keysym.sym == SDLK_f) {
 			world->drawfog = !world->drawfog;
 		}
+
 		if (e->keysym.sym == SDLK_j) {
 			world->reloadTile(((int)world->camera.x)/TILESIZE,((int)world->camera.z)/TILESIZE);
 		}
+
 		if (e->keysym.sym == SDLK_k) {
 			world->saveTile(((int)world->camera.x)/TILESIZE,((int)world->camera.z)/TILESIZE);
 		}
@@ -1031,9 +1024,11 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_F10) {
 			video.textures.reload();
 		}
+
 		if (e->keysym.sym == SDLK_F11) {
 			world->modelmanager.reload();
 		}
+
 		if (e->keysym.sym == SDLK_F12) {
 			world->wmomanager.reload();
 		}
@@ -1041,6 +1036,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym == SDLK_KP_PLUS || e->keysym.sym == SDLK_PLUS) {
 			world->fogdistance += 60.0f;
 		}
+
 		if (e->keysym.sym == SDLK_KP_MINUS || e->keysym.sym == SDLK_MINUS) {
 			world->fogdistance -= 60.0f;
 		}
@@ -1055,6 +1051,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 			TestSelection=!TestSelection;
 			
 		}
+
 		if(e->keysym.sym == SDLK_y)
 		{
 			BrushType++;
@@ -1064,6 +1061,7 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 
 		if(e->keysym.sym == SDLK_g)
 			drawFlags=!drawFlags;
+
 		if(e->keysym.sym == SDLK_u)
 		{
 			TileMode=!TileMode;
@@ -1122,7 +1120,6 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 					// do nothing
 				}
 			}
-
 			fprintf(bf, "%s %f %f %f  %f %f  %s\n", world->basename.c_str(), world->camera.x, world->camera.y, world->camera.z, ah, av, areaName.c_str());
 			fclose(bf);
 		}
@@ -1264,10 +1261,7 @@ void Test::mouseclick(SDL_MouseButtonEvent *e)
 				else
 					CurSelection=0;
 			}
-			leftMouse=true;
-	
-			
-				
+			leftMouse=true;	
 		}
 		if(e->button==SDL_BUTTON_MIDDLE)
 			MoveObj=true;

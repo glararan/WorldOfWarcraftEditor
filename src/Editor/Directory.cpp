@@ -16,7 +16,6 @@ void CreatePath(const char *fname)
 	char	path[MAX_PATH];
 	WCHAR	buffer[MAX_PATH];
 	
-
 	strcpy(path,fname);
 
 	i=strlen(path);

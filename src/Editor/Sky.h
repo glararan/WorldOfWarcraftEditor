@@ -6,15 +6,17 @@
 #include "MPQ.h"
 #include <vector>
 
-
-struct SkyColor {
+struct SkyColor
+{
 	Vec3D color;
 	int time;
 
 	void init(int t, int col);
 };
 
-class Sky {
+class Sky 
+{
+
 public:
 	Vec3D pos;
 	float r1, r2;
@@ -40,7 +42,8 @@ public:
 	}
 };
 
-enum SkyColorNames {
+enum SkyColorNames
+{
 	LIGHT_GLOBAL_DIFFUSE,
 	LIGHT_GLOBAL_AMBIENT,
 	SKY_COLOR_0,
@@ -62,7 +65,8 @@ enum SkyColorNames {
 	SHADOW_COLOR
 };
 
-class Skies {
+class Skies
+{
 	std::vector<Sky> skies;
 	int numSkies;
 	int cs;
@@ -92,13 +96,13 @@ public:
 	//void debugDraw(unsigned int *buf, int dim);
 };
 
-
 /*
 	It seems that lighting info is also stored in lights.lit, so I
 	wonder what the heck is in Dnc.db. Maybe just light directions and/or
 	sun/moon positions...?
 */
-struct OutdoorLightStats {
+struct OutdoorLightStats
+{
 	int time; // converted from hour:min to the 2880 half-minute ticks thing used in the other Sky thing
 
 	float dayIntensity, nightIntensity, ambientIntensity, fogIntensity, fogDepth;
@@ -109,12 +113,11 @@ struct OutdoorLightStats {
 	void interpolate(OutdoorLightStats *a, OutdoorLightStats *b, float r);
 	void setupLighting();
     // void setupFog(); // TODO: add fog maybe?
-
 };
 
 
-class OutdoorLighting {
-
+class OutdoorLighting
+{
 	std::vector<OutdoorLightStats> lightStats;
 
 public:
@@ -123,8 +126,5 @@ public:
 	OutdoorLightStats getLightStats(int time);
 
 };
-
-
-
 
 #endif

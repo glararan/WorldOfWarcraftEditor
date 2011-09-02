@@ -16,7 +16,6 @@ class WMOInstance;
 class WMOManager;
 class Liquid;
 
-
 class WMOGroup {
 	WMO *wmo;
 	int flags;
@@ -158,13 +157,11 @@ public:
 	void drawSkybox();
 };
 
-
 class WMOManager: public SimpleManager {
 public:
 	int add(std::string name);
 	void reload();
 };
-
 
 class WMOInstance {
 	static std::set<int> ids;
@@ -186,6 +183,5 @@ public:
 	static void reset();
 	~WMOInstance();
 };
-
 
 #endif

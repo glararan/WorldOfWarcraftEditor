@@ -19,7 +19,6 @@ T lifeRamp(float life, float mid, const T &a, const T &b, const T &c)
 	else return interpolate<T>((life-mid) / (1.0f-mid),b,c);
 }
 
-
 void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals)
 {
 	speed.init	 (mta.params[0], f, globals);
@@ -534,9 +533,6 @@ Particle SphereParticleEmitter::newParticle(int anim, int time)
 	p.tile = randint(0, sys->rows*sys->cols-1);
 	return p;
 }
-
-
-
 
 void RibbonEmitter::init(MPQFile &f, ModelRibbonEmitterDef &mta, int *globals)
 {

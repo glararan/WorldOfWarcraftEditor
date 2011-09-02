@@ -22,13 +22,11 @@ public:
 	{
 		return --refcount==0;
 	}
-	
 };
 
-
-
 template <class IDTYPE>
-class Manager {
+class Manager
+{
 public:
 	std::map<std::string, IDTYPE> names;
 	std::map<IDTYPE, ManagedItem*> items;
@@ -67,8 +65,6 @@ public:
 		return names[name];
 	}
 
-	
-
 protected:
 	void do_add(std::string name, IDTYPE id, ManagedItem* item)
 	{
@@ -78,7 +74,8 @@ protected:
 	}
 };
 
-class SimpleManager : public Manager<int> {
+class SimpleManager : public Manager<int>
+{
 	int baseid;
 public:
 	SimpleManager() : baseid(0)
@@ -90,8 +87,6 @@ protected:
 	{
 		return baseid++;
 	}
-
-
 };
 
 #endif

@@ -110,9 +110,7 @@ public:
 	{
 		return (float*)this;
 	}
-
 };
-
 
 class Vec2D {
 public:
@@ -200,7 +198,6 @@ public:
 		return r;
 	}
 
-
 	friend std::istream& operator>>(std::istream& in, Vec2D& v)
 	{
         in >> v.x >> v.y;
@@ -211,9 +208,7 @@ public:
 	{
 		return (float*)this;
 	}
-
 };
-
 
 inline void rotate(float x0, float y0, float *x, float *y, float angle)
 {
@@ -221,7 +216,5 @@ inline void rotate(float x0, float y0, float *x, float *y, float angle)
 	*x = xa*cosf(angle) - ya*sinf(angle) + x0;
 	*y = xa*sinf(angle) + ya*cosf(angle) + y0;
 }
-
-
 
 #endif

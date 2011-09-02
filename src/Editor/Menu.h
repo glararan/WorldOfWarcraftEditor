@@ -7,25 +7,28 @@
 
 #include "World.h"
 
-struct Clickable {
+struct Clickable
+{
 	int x0, y0, x1, y1;
 
 	bool hit(int x, int y);
-
 };
 
-struct MapEntry: public Clickable {
+struct MapEntry: public Clickable
+{
 	std::string name, description;
 	Font *font;
 };
 
-struct Bookmark: public Clickable {
+struct Bookmark: public Clickable
+{
 	std::string basename, name, label;
 	Vec3D pos;
 	float ah,av;
 };
 
-enum Commands {
+enum Commands
+{
 	CMD_SELECT,
 	CMD_LOAD_WORLD,
 	CMD_DO_LOAD_WORLD,
@@ -34,7 +37,6 @@ enum Commands {
 
 class Menu :public AppState
 {
-
 	int sel,cmd,x,y,cz,cx;
 
 	World *world;
@@ -67,8 +69,6 @@ public:
 	void randBackground();
 
 	void shprint(Font *f, int x, int y, char *text);
-
 };
-
 
 #endif

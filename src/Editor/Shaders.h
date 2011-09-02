@@ -67,8 +67,6 @@ extern PFNGLGETVERTEXATTRIBIVARBPROC glGetVertexAttribiv;
 extern PFNGLGETVERTEXATTRIBPOINTERVARBPROC glGetVertexAttribPointerv;
 extern PFNGLISPROGRAMARBPROC glIsProgram;
 
-
-
 ///////////////// For GL_NV_vertex_program & GL_NV_fragment_program
 extern PFNGLAREPROGRAMSRESIDENTNVPROC		glAreProgramsResidentNV;
 extern PFNGLBINDPROGRAMNVPROC				glBindProgramNV;
@@ -94,6 +92,5 @@ extern PFNGLPROGRAMPARAMETERS4DVNVPROC		glProgramParameters4dvNV;
 extern PFNGLPROGRAMPARAMETERS4FVNVPROC		glProgramParameters4fvNV;
 extern PFNGLREQUESTRESIDENTPROGRAMSNVPROC	glRequestResidentProgramsNV;
 extern PFNGLTRACKMATRIXNVPROC				glTrackMatrixNV;
-
 
 int glExtGetGLProcs_VertexProgram_1_0_ARB();

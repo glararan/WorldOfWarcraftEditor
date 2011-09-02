@@ -8,7 +8,6 @@ struct LiquidVertex {
 	float h;
 };
 
-
 void Liquid::initFromTerrain(MPQFile &f, int flags)
 {
 	texRepeats = 4.0f;
@@ -97,7 +96,6 @@ void Liquid::initFromWMO(MPQFile &f, WMOMaterial &mat, bool indoor)
 	}
 	*/
 }
-
 
 void Liquid::initGeometry(MPQFile &f)
 {
@@ -195,7 +193,6 @@ void Liquid::initGeometry(MPQFile &f)
 	glEnable(GL_TEXTURE_2D);
 	*/
 	
-
 	/*
 	// temp: draw outlines
 	glDisable(GL_TEXTURE_2D);
@@ -211,7 +208,6 @@ void Liquid::initGeometry(MPQFile &f)
 	glEnd();
 	glEnable(GL_TEXTURE_2D);*/
 	
-
 	glEndList();
 	delete[] verts;
 
@@ -353,8 +349,6 @@ void enableWaterShader()
 		glBindProgram(GL_FRAGMENT_PROGRAM_ARB, waterShader);
 }
 
-
-
 void Liquid::draw()
 {
 	Vec3D col2;
@@ -362,13 +356,10 @@ void Liquid::draw()
 	glDepthFunc(GL_LESS);
 	size_t texidx = (size_t)(gWorld->animtime / 60.0f) % textures.size();
 	
-
-
 	//glActiveTextureARB(GL_TEXTURE0_ARB);
 	//glDisable(GL_TEXTURE_2D);
 	//glBindTexture(GL_TEXTURE_2D, textures[texidx]);
 	
-
 	trans = true;
 	const float tcol = trans ? 0.75f : 1.0f;
 	if (trans) {
@@ -395,16 +386,12 @@ void Liquid::draw()
 	glActiveTextureARB(GL_TEXTURE1_ARB);
 	glEnable(GL_TEXTURE_2D);
 
-
     glCallList(dlist);
-
 
 	glActiveTextureARB(GL_TEXTURE1_ARB);
 	glDisable(GL_TEXTURE_2D);
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 
-
-	
 	//if (type!=0) glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	
 	glColor4f(1,1,1,1);

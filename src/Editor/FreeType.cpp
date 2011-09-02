@@ -4,7 +4,6 @@
 	Sven Olsen, 2003
 */
 
-
 //Include our header file.
 #define _CRT_SECURE_NO_WARNINGS
 #include "FreeType.h"
@@ -42,7 +41,6 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 		gLog("ERROR: FT_Get_Glyph failed\n");
 		throw std::runtime_error("FT_Get_Glyph failed");
 	}
-
 
 	//Convert the glyph to a bitmap.
 	FT_Glyph_To_Bitmap( &glyph, FT_RENDER_MODE_NORMAL, 0, 1 );
@@ -103,7 +101,6 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 
 	glPushMatrix();
 	
-
 	//first we need to move over a little so that
 	//the character has the right amount of space
 	//between it and the one before it.
@@ -138,7 +135,6 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 	glPopMatrix();
 	glTranslatef(face->glyph->advance.x >> 6 ,0,0);
 
-
 	//increment the raster position as if we were a bitmap font.
 	//(only needed if you want to calculate text length)
 	//expanded_data = new GLubyte[bitmap.width * bitmap.rows];
@@ -150,8 +146,6 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 
 	return face->glyph->advance.x >> 6;
 }
-
-
 
 void font_data::init(const char * fname, unsigned int h) {
 	//Allocate some memory to store the texture ids.
@@ -227,13 +221,11 @@ void font_data::initMPQ(const char * fname, unsigned int h) {
 	//as FT_New_Face will die if the font file does not exist or is somehow broken.
 	MPQFile	f(fname);
 
-
 	if (FT_New_Memory_Face( library, (FT_Byte *)f.getBuffer(), f.getSize(), 0, &face )) 
 	{
 		gLog("ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
 		throw std::runtime_error("FT_New_Memory_Face failed (there is probably a problem with your font file)");
 	}
-
 
 	//For some twisted reason, Freetype measures font size
 	//in terms of 1/64ths of pixels.  Thus, to make a font
@@ -260,7 +252,8 @@ void font_data::initMPQ(const char * fname, unsigned int h) {
 	f.close();
 }
 
-void font_data::clean() {
+void font_data::clean()
+{
 	glDeleteLists(list_base,128);
 	glDeleteTextures(128,textures);
 	delete [] textures;
@@ -269,7 +262,8 @@ void font_data::clean() {
 /// A fairly straight forward function that pushes
 /// a projection matrix that will make object world 
 /// coordinates identical to window coordinates.
-inline void pushScreenCoordinateMatrix() {
+inline void pushScreenCoordinateMatrix()
+{
 	glPushAttrib(GL_TRANSFORM_BIT);
 	GLint	viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
@@ -282,7 +276,8 @@ inline void pushScreenCoordinateMatrix() {
 
 /// Pops the projection matrix without changing the current
 /// MatrixMode.
-inline void pop_projection_matrix() {
+inline void pop_projection_matrix()
+{
 	glPushAttrib(GL_TRANSFORM_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -291,11 +286,10 @@ inline void pop_projection_matrix() {
 
 ///Much like Nehe's glPrint function, but modified to work
 ///with freetype fonts.
-void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
-	
+void print(const font_data &ft_font, float x, float y, const char *fmt, ...) 
+{
 	// We want a coordinate system where things coresponding to window pixels.
 	//pushScreenCoordinateMatrix();					
-	
 	GLuint font=ft_font.list_base;
 	float h=ft_font.h/.63f;						//We make the height about 1.5* that of
 	
@@ -311,7 +305,6 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 	va_end(ap);											// Results Are Stored In Text
 	}
 
-
 	//Here is some code to split the text that we have been
 	//given into a set of lines.  
 	//This could be made much neater by using
@@ -320,7 +313,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 	//this tutorial with unnecessary library dependencies).
 	const char *start_line=text;
 	vector<string> lines;
-	for(const char *c=text;*c;c++) {
+	for(const char *c=text;*c;c++)
+	{
 		if(*c=='\n') {
 			string line;
 			for(const char *n=start_line;n<c;n++) line.append(1,*n);
@@ -328,7 +322,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 			start_line=c+1;
 		}
 	}
-	if(start_line) {
+	if(start_line)
+	{
 		string line;
 		const char *c;
 		for(const char *n=start_line;n<c;n++) line.append(1,*n);
@@ -355,9 +350,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 	//down by h. This is because when each character is
 	//draw it modifies the current matrix so that the next character
 	//will be drawn immediatly after it.  
-	for(int i=0;i<lines.size();i++) {
-		
-
+	for(int i=0;i<lines.size();i++)
+	{
 		glPushMatrix();
 		//glLoadIdentity();
 		glTranslatef(x,y-h*i,0);
@@ -374,30 +368,26 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)  {
 	//	float len=x-rpos[0];
 
 		glPopMatrix();
-
-		
-
 	}
-
 
 	glPopAttrib();		
 
 	//pop_projection_matrix();
 }
 
-void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...)  {	
+void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...)
+{	
 	char		text[256];								// Holds Our String
 	va_list		ap;										// Pointer To List Of Arguments
 
 	if (fmt == NULL)									// If There's No Text
 		*text=0;											// Do Nothing
-
-	else {
+	else
+	{
 	va_start(ap, fmt);									// Parses The String For Variables
 	    vsprintf(text, fmt, ap);						// And Converts Symbols To Actual Numbers
 	va_end(ap);											// Results Are Stored In Text
 	}
-
 
 	//glTranslatef(2.0f,2.0f,0.0f);
 
@@ -406,13 +396,10 @@ void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...)  
 	//glTranslatef(-2.0f,-2.0f,0.0f);
 	glColor3f(1.0f,1.0f,1.0f);
 	print(ft_font, x, y, text);
-
 }
 
-int width(const font_data &ft_font, const char *fmt, ...)  {
-	
-			
-	
+int width(const font_data &ft_font, const char *fmt, ...)
+{
 	GLuint font=ft_font.list_base;
 	float h=ft_font.h/.63f;						//We make the height about 1.5* that of
 	
@@ -428,7 +415,6 @@ int width(const font_data &ft_font, const char *fmt, ...)  {
 	va_end(ap);											// Results Are Stored In Text
 	}
 
-
 	//Here is some code to split the text that we have been
 	//given into a set of lines.  
 	//This could be made much neater by using
@@ -437,21 +423,23 @@ int width(const font_data &ft_font, const char *fmt, ...)  {
 	//this tutorial with unnecessary library dependencies).
 	const char *start_line=text;
 	vector<string> lines;
-	for(const char *c=text;*c;c++) {
-		if(*c=='\n') {
+	for(const char *c=text;*c;c++)
+	{
+		if(*c=='\n')
+		{
 			string line;
 			for(const char *n=start_line;n<c;n++) line.append(1,*n);
 			lines.push_back(line);
 			start_line=c+1;
 		}
 	}
-	if(start_line) {
+	if(start_line)
+	{
 		string line;
 		const char *c;
 		for(const char *n=start_line;n<c;n++) line.append(1,*n);
 		lines.push_back(line);
 	}
-
 
 	int maxWidth=0;
 	
@@ -463,7 +451,7 @@ int width(const font_data &ft_font, const char *fmt, ...)  {
 		if(curWidth>maxWidth);
 			maxWidth=curWidth;
 	}
+
 	return maxWidth;
 }
-
 }

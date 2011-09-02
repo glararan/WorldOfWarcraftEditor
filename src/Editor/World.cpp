@@ -5,12 +5,9 @@
 
 using namespace std;
 
-
-
 World *gWorld=0;
 #define BUFSIZE 8192
 unsigned int	SelectBuffer[BUFSIZE];
-
 
 World::World(const char* name):basename(name)
 {
@@ -31,7 +28,6 @@ World::World(const char* name):basename(name)
 	// don't load map objects while still on the menu screen
 	//initDisplay();
 }
-
 
 void World::init()
 {
@@ -99,7 +95,6 @@ void World::init()
 	minimap = 0;
 	if (nMaps) initMinimap();
 }
-
 
 void World::initMinimap()
 {
@@ -231,7 +226,6 @@ void World::initMinimap()
 	f.close();
 }
 
-
 void World::initLowresTerrain()
 {
 	char fn[256];
@@ -358,7 +352,6 @@ void initGlobalVBOs()
 
 }
 
-
 void World::initDisplay()
 {
 	// temp code until I figure out water properly
@@ -396,7 +389,6 @@ void World::initDisplay()
 
 	initLowresTerrain();
 }
-
 
 void World::initWMOs()
 {
@@ -648,7 +640,6 @@ MapTile *World::loadTile(int x, int z)
 	return maptilecache[firstnull];
 }
 
-
 void lightingDefaults()
 {
 	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 1);
@@ -736,7 +727,6 @@ void World::outdoorLighting2()
 	glLightfv(GL_LIGHT1, GL_POSITION, pos);
 	*/
 }
-
 
 void World::outdoorLights(bool on)
 {
@@ -867,10 +857,6 @@ void World::onTheFlyLoading()
 
 void World::draw()
 {
-	
-	
-	
-
 	//Now for drawing code
 
 	WMOInstance::reset();
@@ -936,7 +922,6 @@ void World::draw()
 	outdoorLightStats = ol->getLightStats(daytime);
 	skies->initSky(camera, daytime);
 
-
 	if (!hadSky) hadSky = skies->drawSky(camera);
 
 	// clearing the depth buffer only - color buffer is/has been overwritten anyway
@@ -947,9 +932,6 @@ void World::draw()
 
 	glDisable(GL_TEXTURE_2D);
 	
-	
-
-
 	outdoorLighting();
 	outdoorLights(true);
 
@@ -986,7 +968,6 @@ void World::draw()
 	glDepthFunc(GL_LEQUAL); // less z-fighting artifacts this way, I think
 	glEnable(GL_LIGHTING);
 
-
 	glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT, GL_DIFFUSE);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
@@ -1008,7 +989,6 @@ void World::draw()
 	glClientActiveTextureARB(GL_TEXTURE0_ARB);
 	SaveGLSettings();
 
-
 	glInitNames();
 	
 	//uselowlod=false;
@@ -1025,7 +1005,6 @@ void World::draw()
 	}
 	glPopMatrix();
 
-	
 	if (drawlines)
 	{
 		glDisable(GL_COLOR_MATERIAL);
@@ -1036,7 +1015,6 @@ void World::draw()
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
-
 		//glDisable(GL_FOG);
 		//glDisable(GL_DEPTH_FUNC);
 		//glDisable(GL_DEPTH_TEST);
@@ -1054,20 +1032,13 @@ void World::draw()
 		//glEnable(GL_DEPTH_TEST);
 	}
 	
-	
-	
-
 	glActiveTextureARB(GL_TEXTURE1_ARB);
 	glDisable(GL_TEXTURE_2D);
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 	glEnable(GL_TEXTURE_2D);
 
-	
-
-
 	// unbind hardware buffers
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-
 
 	glEnable(GL_CULL_FACE);
 
@@ -1184,10 +1155,8 @@ int stopTimer2()
 	return endTime-startTime[numTimers];
 }
 
-
 void World::drawSelection(int cursorX,int cursorY)
 {
-
 	startTimer();
 
 	startTimer();
@@ -1198,8 +1167,6 @@ void World::drawSelection(int cursorX,int cursorY)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	
-	
-
 	glGetIntegerv(GL_VIEWPORT,viewport);
 	gluPickMatrix(cursorX,viewport[3]-cursorY,
 			7,7,viewport);
@@ -1293,7 +1260,6 @@ extern nameEntry *Selection;
 
 void World::drawSelectionChunk(int cursorX,int cursorY)
 {
-
 	if(!Selection||(Selection->type!=ENTRY_MAPCHUNK))
 		return;
 	GLint viewport[4];
@@ -1303,8 +1269,6 @@ void World::drawSelectionChunk(int cursorX,int cursorY)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	
-	
-
 	glGetIntegerv(GL_VIEWPORT,viewport);
 	gluPickMatrix(cursorX,viewport[3]-cursorY,
 			7,7,viewport);
@@ -1407,7 +1371,6 @@ unsigned int World::getAreaID()
 	return curChunk->areaID;
 }
 
-
 void World::drawTileMode(float ah)
 {
 	glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT); 
@@ -1469,8 +1432,6 @@ void World::drawTileMode(float ah)
 	}
 	
 	glPopMatrix();	
-
-
 
 	if (current[2][2] != 0 || oob) {
 		if (oob || (camera.x<current[2][2]->xbase) || (camera.x>(current[2][2]->xbase+TILESIZE))
@@ -1596,8 +1557,8 @@ void World::paintTexture(float x, float z, brush *Brush, float strength, float p
 				maptilecache[i]->chunks[t/16][t%16].paintTexture(x, z, Brush, strength, pressure, texture);
 		}
 	}
-	return;
 
+	return;
 }
 
 void World::eraseTextures(float x, float z)
@@ -1617,8 +1578,8 @@ void World::eraseTextures(float x, float z)
 					maptilecache[i]->chunks[t/16][t%16].eraseTextures();
 		}
 	}
-	return;
 
+	return;
 }
 
 void World::saveMap()
@@ -1671,7 +1632,6 @@ void World::saveMap()
 	
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
 
 	if (current[2][2] != 0 || oob) {
 		if (oob || (camera.x<current[2][2]->xbase) || (camera.x>(current[2][2]->xbase+TILESIZE))

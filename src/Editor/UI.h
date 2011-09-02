@@ -3,7 +3,6 @@
 #include "Vec3D.h"
 #include "Quaternion.h"
 
-
 class frame
 {
 protected:
@@ -35,7 +34,6 @@ public:
 	void getOffset(float &xOff,float &yOff);
 };
 
-
 class window:public frame
 {
 private:
@@ -66,7 +64,6 @@ public:
 	bool processLeftDrag(float mx,float my, float xChange, float yChange);
 	void render();	
 };
-
 
 class gradient:public frame
 {

@@ -26,7 +26,6 @@ class World;
 #define	FLAG_LQ_OCEAN	8
 #define	FLAG_LQ_MAGMA	16
 
-
 const int mapbufsize = 9*9 + 8*8;
 
 class MapNode {
@@ -49,8 +48,8 @@ public:
 
 };
 
-
-struct MapChunkHeader {
+struct MapChunkHeader
+{
 	uint32 flags;
 	uint32 ix;
 	uint32 iy;
@@ -86,7 +85,8 @@ struct MapChunkHeader {
 	uint32 effectId;
 };
 
-class MapChunk : public MapNode {
+class MapChunk : public MapNode
+{
 public:
 	MapChunkHeader header;
 	bool Changed;
@@ -168,10 +168,8 @@ public:
 	//float getTerrainHeight(float x, float z);
 };
 
-
-
-
-class MapTile {
+class MapTile
+{
 	std::string fname;
 	
 	MPQFile	*theFile;
@@ -214,7 +212,6 @@ class MapTile {
 	void loadWMO();
 	void loadWMOInstances();
 	
-
 public:
 	void finishLoading();
 	bool isLoaded(){return texturesLoaded&modelsLoaded&wmosLoaded;};
@@ -282,7 +279,6 @@ public:
 
 int indexMapBuf(int x, int y);
 
-
 // 8x8x2 version with triangle strips, size = 8*18 + 7*2
 const int stripsize = 8*18 + 7*2;
 template <class V>
@@ -304,6 +300,7 @@ void stripify(V *in, V *out)
 // high res version, size = 16*18 + 7*2 + 8*2
 const int stripsize2 = 16*18 + 7*2 + 8*2;
 template <class V>
+
 void stripify2(V *in, V *out)
 {
 	for (int row=0; row<8; row++) { 
@@ -329,7 +326,5 @@ void stripify2(V *in, V *out)
 		if (row<7) *out++ = overrow[8];// jump start
 	}
 }
-
-
 
 #endif
