@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World Of Warcraft - Editor", "src\Editor\World Of Warcraft - Editor.vcxproj", "{844CF7AA-4B86-4059-B1A2-2C948C6EE606}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World Of Warcraft Studio - Editor", "src\Editor\World Of Warcraft - Editor.vcxproj", "{844CF7AA-4B86-4059-B1A2-2C948C6EE606}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World of Warcraft - Editor Launcher", "src\Launcher\World of Warcraft - Editor Launcher.vcxproj", "{2662E77B-E9B9-4B38-895E-685EDB832C27}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "World of Warcraft Studio - Editor - Launcher", "src\Launcher\World of Warcraft - Editor Launcher.vcxproj", "{2662E77B-E9B9-4B38-895E-685EDB832C27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
