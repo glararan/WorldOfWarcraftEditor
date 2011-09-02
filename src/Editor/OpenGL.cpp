@@ -5,17 +5,7 @@
 #pragma comment(lib,"SDLmain.lib")
 
 #define NOMINMAX
-#include <windows.h>
-#include <winerror.h>
-#endif
-
-#ifdef _WIN64
-#pragma comment(lib,"OpenGL32.lib")
-#pragma comment(lib,"glu32.lib")
-#pragma comment(lib,"SDL.lib")
-#pragma comment(lib,"SDLmain.lib")
-
-#define NOMINMAX
+#define _CRT_SECURE_NO_DEPRECATE
 #include <windows.h>
 #include <winerror.h>
 #endif
@@ -37,6 +27,8 @@
 
 #include "Shaders.h"
 
+using namespace std;
+
 int fullscreen = 0;
 
 // ##################
@@ -51,21 +43,21 @@ int checkConfig()
 
 	if(EditorPTR) // If open Editor
 	{
-		gLog("[World of Warcraft Studio - Editor] - Config exist\n");
+		gLog("[World of Warcraft Studio - Editor] - Config exist\n##############################################################\n");
 
 		if(EditorPTR == NULL) // If conf is empty
 		{
-			gLog("[World of Warcraft Studio - Editor] - Config is empty\n");
+			gLog("[World of Warcraft Studio - Editor] - Config is empty\n##############################################################\n");
 			exit(1);
 		}
 		else
 		{
-			gLog("[World of Warcraft Studio - Editor] - Config have content\n"); // Config isn't empty
+			gLog("[World of Warcraft Studio - Editor] - Config have content\n##############################################################\n"); // Config isn't empty
 		}
 	}
 	else
 	{
-		gLog("[World of Warcraft Studio - Editor] - Config doesn't exist\n"); // Config doesn't exist
+		gLog("[World of Warcraft Studio - Editor] - Config doesn't exist\n##############################################################\n"); // Config doesn't exist
 		exit(1);
 	}
 
@@ -77,9 +69,9 @@ int checkConfig()
 // ######################
 int loadExpansion()
 {
-	Config conf(CONFIG_FILE);
+	ConfigFile conf(CONFIG_FILE);
 
-	int expansion;
+	string expansion;
 
 	expansion = conf.Value("expansion_option", "Expansion");
 
@@ -91,9 +83,9 @@ int loadExpansion()
 // ######################
 bool loadPath()
 {
-	Config conf(CONFIG_FILE);
+	ConfigFile conf(CONFIG_FILE);
 
-	char configPath;
+	string configPath;
 
 	configPath = conf.Value("game_option", "Path");
 
@@ -105,9 +97,9 @@ bool loadPath()
 // ######################
 int loadGameVersion()
 {
-	Config conf(CONFIG_FILE);
+	ConfigFile conf(CONFIG_FILE);
 
-	char gameVersion;
+	string gameVersion;
 
 	gameVersion = conf.Value("game_option", "GameVersion");
 
@@ -119,9 +111,9 @@ int loadGameVersion()
 // ######################
 int loadLanguage()
 {
-	Config conf(CONFIG_FILE);
+	ConfigFile conf(CONFIG_FILE);
 
-	int Language;
+	string Language;
 
 	Language = conf.Value("language_option", "Language");
 
@@ -170,6 +162,16 @@ int checkConfig2()
 	}
 
 	return 0;
+}
+
+// ##################
+// ## GRAPHIC CARD ##
+// ##################
+void GraphicCard()
+{
+	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VENDOR));
+	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_RENDERER));
+	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VERSION));
 }
 
 std::vector<AppState*> gStates;
@@ -257,21 +259,6 @@ void getGamePath()
 #else
 	strcpy(gamepath,"data/");
 #endif
-
-#ifdef _WIN64
-	HKEY key;
-	DWORD t,s;
-	LONG l;
-	s = 1024;
-	memset(gamepath,0,s);
-	l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Wow6432Node\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key);
-	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
-	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
-	RegCloseKey(key);
-	strcat_s(gamepath,"Data\\");
-#else
-	strcpy(gamepath,"data/");
-#endif
 }
 
 void CreateStrips();
@@ -326,18 +313,26 @@ int main(int argc, char *argv[])
 		else if (!strcmp(argv[i],"-np")) usePatch = false;
 	}
 
-	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n", gamepath);
-	gLog("[World of Warcraft Studio - Editor] - %s\n[World of Warcraft Studio - Editor] - %s\n[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
-	
 	checkConfig();
 
 	/*if(!loadPath())
 	{
 		getGamePath();
+	}
+	else
+	{
+		getGamePath() = loadPath();
 	}*/
-	CreateStrips();
 
 	loadExpansion();
+	loadGameVersion();
+	loadLanguage();
+
+	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n[World of Warcraft Studio - Editor] - Game Version: %s\n", gamepath, loadGameVersion());
+	GraphicCard(); // Send to Log info about Graphic Card
+
+	CreateStrips();
+
 	checkConfig2();
 
 	std::vector<MPQArchive*> archives;

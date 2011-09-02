@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Font.h"
 #include "Video.h"
 #include <iostream>

@@ -6,6 +6,7 @@
 
 
 //Include our header file.
+#define _CRT_SECURE_NO_WARNINGS
 #include "FreeType.h"
 #include "MPQ.h"
 #include "OpenGL.h"

@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Liquid.h"
 #include "World.h"
 #include "Shaders.h"

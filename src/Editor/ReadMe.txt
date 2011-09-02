@@ -23,18 +23,4 @@ World Of Warcraft - Editor.vcxproj.filters
 World Of Warcraft - Editor.cpp
     This is the main application source file.
     Contains the code to display the form.
-
-Form1.h
-    Contains the implementation of your form class and InitializeComponent() function.
-
-AssemblyInfo.cpp
-    Contains custom attributes for modifying assembly metadata.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named World Of Warcraft - Editor.pch and a precompiled types file named StdAfx.obj.
-
 /////////////////////////////////////////////////////////////////////////////

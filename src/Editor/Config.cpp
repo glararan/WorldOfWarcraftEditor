@@ -16,7 +16,7 @@ std::string trim(std::string const& source, char const* delims = " \t\r\n") {
     return result;
 }
 
-Config::Config(std::string const& configFile) {
+ConfigFile::ConfigFile(std::string const& configFile) {
     std::ifstream file(configFile.c_str());
 
     std::string line;
@@ -44,7 +44,7 @@ Config::Config(std::string const& configFile) {
     }
 }
 
-Chameleon const& Config::Value(std::string const& section, std::string const& entry) const {
+Chameleon const& ConfigFile::Value(std::string const& section, std::string const& entry) const {
 
     std::map<std::string,Chameleon>::const_iterator ci = content_.find(section + '/' + entry);
 
@@ -53,7 +53,7 @@ Chameleon const& Config::Value(std::string const& section, std::string const& en
     return ci->second;
 }
 
-Chameleon const& Config::Value(std::string const& section, std::string const& entry, double value) {
+Chameleon const& ConfigFile::Value(std::string const& section, std::string const& entry, double value) {
     try {
         return Value(section, entry);
     } catch(const char *) {
@@ -61,7 +61,7 @@ Chameleon const& Config::Value(std::string const& section, std::string const& en
     }
 }
 
-Chameleon const& Config::Value(std::string const& section, std::string const& entry, std::string const& value) {
+Chameleon const& ConfigFile::Value(std::string const& section, std::string const& entry, std::string const& value) {
     try {
         return Value(section, entry);
     } catch(const char *) {

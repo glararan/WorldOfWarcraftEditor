@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "MapTile.h"
 #include "World.h"
 #include "Vec3D.h"
