@@ -1,14 +1,7 @@
-﻿#ifdef _WIN32
-#pragma comment(lib,"OpenGL32.lib")
-#pragma comment(lib,"glu32.lib")
-#pragma comment(lib,"SDL.lib")
-#pragma comment(lib,"SDLmain.lib")
-
-#define NOMINMAX
+﻿#define NOMINMAX
 #define _CRT_SECURE_NO_DEPRECATE
 #include <windows.h>
 #include <winerror.h>
-#endif
 
 #include <ctime>
 #include <cstdlib>
@@ -71,25 +64,17 @@ int loadExpansion()
 {
 	ConfigFile conf(CONFIG_FILE);
 
-	string expansion;
-
-	expansion = conf.Value("expansion_option", "Expansion");
-
-	return 0;
+	return (int)conf.Value("expansion_option", "Expansion");
 }
 
 // ######################
 // ## GAMEPATH  SELECT ##
 // ######################
-bool loadPath()
+char loadPath()
 {
 	ConfigFile conf(CONFIG_FILE);
 
-	string configPath;
-
-	configPath = conf.Value("game_option", "Path");
-
-	return 0;
+	return (char)conf.Value("game_option", "Path");
 }
 
 // ######################
@@ -99,11 +84,7 @@ int loadGameVersion()
 {
 	ConfigFile conf(CONFIG_FILE);
 
-	string gameVersion;
-
-	gameVersion = conf.Value("game_option", "GameVersion");
-
-	return 0;
+	return (int)conf.Value("game_option", "GameVersion");
 }
 
 // ######################
@@ -113,11 +94,7 @@ int loadLanguage()
 {
 	ConfigFile conf(CONFIG_FILE);
 
-	string Language;
-
-	Language = conf.Value("language_option", "Language");
-
-	return 0;
+	return (int)conf.Value("language_option", "Language");
 }
 
 // ##################
@@ -150,7 +127,7 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Path is selected from Config - %s\n", loadPath());
 		}
 
-		if(loadLanguage() != 1 || 2 || 3)
+		if(loadLanguage())
 		{
 			gLog("[World of Warcraft Studio - Editor] - Language isn't selected\n");
 			exit(1);
@@ -323,10 +300,6 @@ int main(int argc, char *argv[])
 	{
 		getGamePath() = loadPath();
 	}*/
-
-	loadExpansion();
-	loadGameVersion();
-	loadLanguage();
 
 	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n[World of Warcraft Studio - Editor] - Game Version: %s\n", gamepath, loadGameVersion());
 	GraphicCard(); // Send to Log info about Graphic Card
