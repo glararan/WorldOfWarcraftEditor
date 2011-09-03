@@ -115,7 +115,7 @@ int checkConfig2()
 		}
 		else
 		{
-			gLog("[World of Warcraft Studio - Editor] - Expansion is selected - %s\n", loadExpansion());
+			gLog("[World of Warcraft Studio - Editor] - Expansion is selected - %d\n", loadExpansion());
 		}
 
 		if(!loadPath())
@@ -127,24 +127,24 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Path is selected from Config - %s\n", loadPath());
 		}
 
-		if(!loadGameVersion())
+		if(loadGameVersion() != 1 || 2 || 3 || 4 || 5 || 6)
 		{
 			gLog("[World of Warcraft Studio - Editor] - Game Version isn't selected\n");
 			exit(1);
 		}
 		else
 		{
-			gLog("[World of Warcraft Studio - Editor] - GameVersion is selected - %s\n", loadGameVersion());
+			gLog("[World of Warcraft Studio - Editor] - GameVersion is selected - %d\n", loadGameVersion());
 		}
 
-		if(loadLanguage())
+		if(loadLanguage() != 1 || 2 || 3)
 		{
 			gLog("[World of Warcraft Studio - Editor] - Language isn't selected\n");
 			exit(1);
 		}
 		else
 		{
-			gLog("[World of Warcraft Studio - Editor] - Language is selected - %s\n", loadLanguage());
+			gLog("[World of Warcraft Studio - Editor] - Language is selected - %d\n", loadLanguage());
 		}
 	}
 
@@ -204,7 +204,8 @@ bool glogfirst = true;
 
 void gLog(char *str, ...)
 {
-	if (glogfirst) {
+	if (glogfirst)
+	{
 		flog = fopen("log.txt","w");
 		fclose(flog);
 		glogfirst = false;
@@ -303,8 +304,7 @@ int main(int argc, char *argv[])
 	getGamePath();
 	CreateStrips();
 
-	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n", gamepath);
-	gLog("[World of Warcraft Studio - Editor] - Game Version: %s\n", loadGameVersion());
+	gLog("[World of Warcraft Studio - Editor] - " APP_TITLE " - " APP_VERSION "\n[World of Warcraft Studio - Editor] - Game path: %s\n[World of Warcraft Studio - Editor] - Game Version: %d\n", gamepath, loadGameVersion());
 	GraphicCard(); // Send to Log info about Graphic Card
 
 	checkConfig2();
