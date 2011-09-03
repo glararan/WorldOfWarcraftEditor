@@ -228,7 +228,7 @@ void Liquid::initGeometry(MPQFile &f)
 			//sprintf(buf, "%4d,%4d ", ival[0],ival[1]);slq.append(buf);
 			sprintf(buf, "%08x ", ival);slq.append(buf);
 		}
-		gLog("%s\n", slq.c_str());
+		gLog("[World of Warcraft Studio - Editor] - %s\n", slq.c_str());
 	}
 	slq = "";
 	for (int i=0; i<ytiles*xtiles; i++) {
@@ -252,7 +252,7 @@ void loadWaterShader()
 	FILE *shader;
 	shader=fopen("shaders/water.ps", "r");
 	if(shader==0)
-		gLog("Unable to open water shader\n");
+		gLog("[World of Warcraft Studio - Editor] - Unable to open water shader\n");
 	else
 	{
 		char buffer[8192];
@@ -260,7 +260,7 @@ void loadWaterShader()
 		fclose(shader);
 		glGenPrograms(1, &waterShader);
 		if(waterShader==0)
-			gLog("Failed to get program ID for water shader.\n");
+			gLog("[World of Warcraft Studio - Editor] - Failed to get program ID for water shader.\n");
 		else
 		{
 			GLint errorPos, isNative;
@@ -269,17 +269,16 @@ void loadWaterShader()
 			glProgramString(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_FORMAT_ASCII_ARB, length, buffer);
 			glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
 
-			glGetProgramiv(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_UNDER_NATIVE_LIMITS_ARB, &isNative);
 			if((errorPos==-1)&&(isNative==1))
 			{
-				gLog("Water Shader Loaded successfully\n");
+				gLog("[World of Warcraft Studio - Editor] - Water Shader Loaded successfully\n");
 			}
 			else
 			{
 				int i, j;
 				const GLubyte *stringy;
 				char localbuffer[256];
-				gLog("Water Shader Fragment program failed to load \nReason:\n");
+				gLog("[World of Warcraft Studio - Editor] - Water Shader Fragment program failed to load \nReason:\n");
 				stringy=glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
 				gLog((char *)stringy);
 				for(i=errorPos, j=0; (i<length)&&(j<128); i++, j++)
@@ -287,17 +286,17 @@ void loadWaterShader()
 					localbuffer[j]=buffer[i];
 				}
 				localbuffer[j]=0;
-				gLog("START DUMP :\n");
-				gLog("%sEND DUMP\n",localbuffer);
+				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
+				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n",localbuffer);
 				if(isNative==0)
-					gLog("This fragment program exceeded the limit.\n\n");
+					gLog("[World of Warcraft Studio - Editor] - This fragment program exceeded the limit.\n\n");
 			}
 		}
 	}
 
 	shader=fopen("shaders/waterfog.ps", "r");
 	if(shader==0)
-		gLog("Unable to open water shader\n");
+		gLog("[World of Warcraft Studio - Editor] - Unable to open water shader\n");
 	else
 	{
 		char buffer[8192];
@@ -305,7 +304,7 @@ void loadWaterShader()
 		fclose(shader);
 		glGenPrograms(1, &waterFogShader);
 		if(waterShader==0)
-			gLog("Failed to get program ID for water fog shader.\n");
+			gLog("[World of Warcraft Studio - Editor] - Failed to get program ID for water fog shader.\n");
 		else
 		{
 			GLint errorPos, isNative;
@@ -317,14 +316,14 @@ void loadWaterShader()
 			glGetProgramiv(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_UNDER_NATIVE_LIMITS_ARB, &isNative);
 			if((errorPos==-1)&&(isNative==1))
 			{
-				gLog("Water Shader Loaded successfully\n");
+				gLog("[World of Warcraft Studio - Editor] - Water Shader Loaded successfully\n");
 			}
 			else
 			{
 				int i, j;
 				const GLubyte *stringy;
 				char localbuffer[256];
-				gLog("Water Fog Shader Fragment program failed to load \nReason:\n");
+				gLog("[World of Warcraft Studio - Editor] - Water Fog Shader Fragment program failed to load \nReason:\n");
 				stringy=glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
 				gLog((char *)stringy);
 				for(i=errorPos, j=0; (i<length)&&(j<128); i++, j++)
@@ -332,10 +331,10 @@ void loadWaterShader()
 					localbuffer[j]=buffer[i];
 				}
 				localbuffer[j]=0;
-				gLog("START DUMP :\n");
-				gLog("%sEND DUMP\n",localbuffer);
+				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
+				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n",localbuffer);
 				if(isNative==0)
-					gLog("This fragment program exceeded the limit.\n\n");
+					gLog("[World of Warcraft Studio - Editor] - This fragment program exceeded the limit.\n\n");
 			}
 		}
 	}

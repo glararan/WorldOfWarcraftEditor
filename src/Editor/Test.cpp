@@ -383,7 +383,7 @@ void Test::doSelection()
 		return;
 	int ErrorNum=glGetError();
 	if(ErrorNum)
-		gLog("OpenGL Error %d\n",ErrorNum);
+		gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
 	if(Selection->type==ENTRY_MAPCHUNK)
 	{
@@ -546,14 +546,14 @@ void Test::display(float t, float dt)
 		video.set3D();
 		int ErrorNum=glGetError();
 		if(ErrorNum)
-			gLog("OpenGL Error %d\n",ErrorNum);
+			gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 		//glEnable(GL_LIGHTING);
 		int start,end;
 		if(Selecting)
 			doSelection();
 		ErrorNum=glGetError();
 		if(ErrorNum)
-			gLog("OpenGL Error %d\n",ErrorNum);
+			gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
 		video.set3D();
 
@@ -881,7 +881,7 @@ void Test::display(float t, float dt)
 		*/
 		ErrorNum=glGetError();
 		if(ErrorNum)
-			gLog("OpenGL Error %d\n",ErrorNum);
+			gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 	}
 
 };

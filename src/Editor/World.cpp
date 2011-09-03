@@ -13,7 +13,7 @@ World::World(const char* name):basename(name)
 {
 	//::gWorld = this;
 
-	gLog("\nLoading world %s\n", name);
+	gLog("\n[World of Warcraft Studio - Editor] - Loading world %s\n", name);
 
 	for (int i=0; i<MAPTILECACHESIZE; i++) maptilecache[i] = 0;
 
@@ -471,7 +471,7 @@ World::~World()
 	if (mapstrip) delete[] mapstrip;
 	if (mapstrip2) delete[] mapstrip2;
 
-	gLog("Unloaded world %s\n", basename.c_str());
+	gLog("[World of Warcraft Studio - Editor] - Unloaded world %s\n", basename.c_str());
 }
 
 bool oktile(int i, int j)
@@ -548,7 +548,7 @@ void World::enterTileInit(int x, int z)
 void World::reloadTile(int x, int z)
 {
 	if (!oktile(x,z) || !maps[z][x]) {
-		//gLog("Tile %d,%d not in map\n", x, z);
+		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return;
 	}
 
@@ -572,12 +572,12 @@ void World::reloadTile(int x, int z)
 void World::saveTile(int x, int z)
 {
 	if (!oktile(x,z) || !maps[z][x]) {
-		//gLog("Tile %d,%d not in map\n", x, z);
+		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return;
 	}
 	for (int i=0; i<MAPTILECACHESIZE; i++) {
 		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z)) {
-			gLog("Saving Tile?\n");
+			gLog("[World of Warcraft Studio - Editor] - Saving Tile?\n");
 			maptilecache[i]->saveTile();
 		}
 	}
@@ -586,7 +586,7 @@ void World::saveTile(int x, int z)
 bool World::tileLoaded(int x, int z)
 {
 	if (!oktile(x,z) || !maps[z][x]) {
-		//gLog("Tile %d,%d not in map\n", x, z);
+		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return true;
 	}
 
@@ -603,7 +603,7 @@ bool World::tileLoaded(int x, int z)
 MapTile *World::loadTile(int x, int z)
 {
 	if (!oktile(x,z) || !maps[z][x]) {
-		//gLog("Tile %d,%d not in map\n", x, z);
+		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return 0;
 	}
 
@@ -1145,7 +1145,7 @@ void stopTimer()
 {
 	int endTime=SDL_GetTicks();
 	numTimers--;
-	gLog("%d ms\n",endTime-startTime[numTimers]);
+	gLog("[World of Warcraft Studio - Editor] - %d ms\n",endTime-startTime[numTimers]);
 }
 
 int stopTimer2()
@@ -1199,7 +1199,7 @@ void World::drawSelection(int cursorX,int cursorY)
 	}
 	glClear(GL_DEPTH_BUFFER_BIT); 
 	glInitNames();
-	gLog("Initialization Time ");
+	gLog("[World of Warcraft Studio - Editor] - Initialization Time ");
 	stopTimer();
     
 	startTimer();
@@ -1212,7 +1212,7 @@ void World::drawSelection(int cursorX,int cursorY)
 			}
 		}
 	}
-	gLog("Terrain Time ");
+	gLog("[World of Warcraft Studio - Editor] - Terrain Time ");
 	stopTimer();
 
 	startTimer();
@@ -1222,7 +1222,7 @@ void World::drawSelection(int cursorX,int cursorY)
 			gwmois[i].drawSelect();
 		}
 	}
-	gLog("WMO Time ");
+	gLog("[World of Warcraft Studio - Editor] - WMO Time ");
 	stopTimer();
 
 	startTimer();
@@ -1233,7 +1233,7 @@ void World::drawSelection(int cursorX,int cursorY)
 			if (oktile(i,j) && drawwmo && current[j][i] != 0) current[j][i]->drawObjectsSelect();
 		}
 	}
-	gLog("Map Objects ");
+	gLog("[World of Warcraft Studio - Editor] - Map Objects ");
 	stopTimer();
 
 	//outdoorLights(true);
@@ -1248,11 +1248,11 @@ void World::drawSelection(int cursorX,int cursorY)
 		}
 	}
 	//drawModelList();
-	gLog("Model ");
+	gLog("[World of Warcraft Studio - Editor] - Model ");
 	stopTimer();
 	reportModelTimes();
 
-	gLog("Entire Selection Time ");
+	gLog("[World of Warcraft Studio - Editor] - Entire Selection Time ");
 	stopTimer();
 }
 

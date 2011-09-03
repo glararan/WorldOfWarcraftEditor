@@ -30,7 +30,7 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 	//Load the Glyph for our character.
 	if(FT_Load_Glyph( face, FT_Get_Char_Index( face, ch ), FT_LOAD_DEFAULT ))
 	{
-		gLog("ERROR: FT_Load_Glyph failed\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_Load_Glyph failed\n");
 		throw std::runtime_error("FT_Load_Glyph failed");
 	}
 
@@ -38,7 +38,7 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
     FT_Glyph glyph;
     if(FT_Get_Glyph( face->glyph, &glyph ))
 	{
-		gLog("ERROR: FT_Get_Glyph failed\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_Get_Glyph failed\n");
 		throw std::runtime_error("FT_Get_Glyph failed");
 	}
 
@@ -157,7 +157,7 @@ void font_data::init(const char * fname, unsigned int h) {
 	FT_Library library;
 	if (FT_Init_FreeType( &library )) 
 	{
-		gLog("ERROR: FT_Init_FreeType failed\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_Init_FreeType failed\n");
 		throw std::runtime_error("FT_Init_FreeType failed");
 	}
 
@@ -170,7 +170,7 @@ void font_data::init(const char * fname, unsigned int h) {
 	//as FT_New_Face will die if the font file does not exist or is somehow broken.
 	if (FT_New_Face( library, fname, 0, &face )) 
 	{
-		gLog("ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
 		throw std::runtime_error("FT_New_Face failed (there is probably a problem with your font file)");
 	}
 
@@ -208,7 +208,7 @@ void font_data::initMPQ(const char * fname, unsigned int h) {
 	FT_Library library;
 	if (FT_Init_FreeType( &library )) 
 	{
-		gLog("ERROR: FT_Init_FreeType failed\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_Init_FreeType failed\n");
 		throw std::runtime_error("FT_Init_FreeType failed");
 	}
 
@@ -223,7 +223,7 @@ void font_data::initMPQ(const char * fname, unsigned int h) {
 
 	if (FT_New_Memory_Face( library, (FT_Byte *)f.getBuffer(), f.getSize(), 0, &face )) 
 	{
-		gLog("ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
+		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
 		throw std::runtime_error("FT_New_Memory_Face failed (there is probably a problem with your font file)");
 	}
 

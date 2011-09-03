@@ -9,16 +9,16 @@ WMO::WMO(std::string name): ManagedItem(name)
 	MPQFile f(name.c_str());
 	ok = !f.isEof();
 	if (!ok) {
-		gLog("Error loading WMO %s\n", name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Error loading WMO %s\n", name.c_str());
 		return;
 	}
 	Reloaded=false;
 	reloadWMO=0;
 
 	if(!f.isExternal())
-		gLog("    Loading WMO from MPQ %s\n", name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Loading WMO from MPQ %s\n", name.c_str());
 	else
-		gLog("    Loading WMO from File %s\n", name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Loading WMO from File %s\n", name.c_str());
 
 	char fourcc[5];
 	size_t size;
@@ -82,10 +82,10 @@ WMO::WMO(std::string name): ManagedItem(name)
 
 				/*
 				// material logging
-				gLog("Material %d:\t%d\t%d\t%d\t%X\t%d\t%X\t%d\t%f\t%f",
+				gLog("[World of Warcraft Studio - Editor] - Material %d:\t%d\t%d\t%d\t%X\t%d\t%X\t%d\t%f\t%f",
 					i, m->flags, m->d1, m->transparent, m->col1, m->d3, m->col2, m->d4, m->f1, m->f2);
 				for (int j=0; j<5; j++) gLog("\t%d", m->dx[j]);
-				gLog("\t - %s\n", texpath.c_str());
+				gLog("[World of Warcraft Studio - Editor] - \t - %s\n", texpath.c_str());
 				*/
 				
 			}
@@ -153,7 +153,7 @@ WMO::WMO(std::string name): ManagedItem(name)
 				string path = f.getPointer();
 				fixname(path);
 				if (path.length()) {
-					gLog("SKYBOX:\n");
+					gLog("[World of Warcraft Studio - Editor] - SKYBOX:\n");
 
 					sbid = gWorld->modelmanager.add(path);
 					skybox = (Model*)gWorld->modelmanager.items[sbid];
@@ -210,7 +210,7 @@ WMO::WMO(std::string name): ManagedItem(name)
 WMO::~WMO()
 {
 	if (ok) {
-		gLog("Unloading WMO %s\n", name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Unloading WMO %s\n", name.c_str());
 		delete[] groups;
 
 		for (vector<string>::iterator it = textures.begin(); it != textures.end(); ++it) {
@@ -526,7 +526,7 @@ void WMOLight::init(MPQFile &f)
 
 	/*
 	// light logging
-	gLog("Light %08x @ (%4.2f,%4.2f,%4.2f)\t %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f\t(%d,%d,%d,%d)\n",
+	gLog("[World of Warcraft Studio - Editor] - Light %08x @ (%4.2f,%4.2f,%4.2f)\t %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f\t(%d,%d,%d,%d)\n",
 		color, pos.x, pos.y, pos.z, intensity,
 		unk[0], unk[1], unk[2], unk[3], unk[4], r,
 		type[0], type[1], type[2], type[3]);
@@ -642,14 +642,14 @@ void WMOGroup::initDisplayList()
 	MPQFile gf(fname);
     ok = !gf.isEof();
 	if (!ok) {
-		gLog("Error loading WMO %s\n", fname);
+		gLog("[World of Warcraft Studio - Editor] - Error loading WMO %s\n", fname);
 		return;
 	}
 	
 	if(!gf.isExternal())
-		gLog("    Loading WMO from MPQ %s\n", fname);
+		gLog("[World of Warcraft Studio - Editor] - Loading WMO from MPQ %s\n", fname);
 	else
-		gLog("    Loading WMO from File %s\n", fname);
+		gLog("[World of Warcraft Studio - Editor] - Loading WMO from File %s\n", fname);
 	
 	gf.seek(0x14);
 	// read header
@@ -728,28 +728,28 @@ void WMOGroup::initDisplayList()
 			
 			/*
 			// batch logging
-			gLog("\nWMO group #%d - %s\nVertices: %d\nTriangles: %d\nIndices: %d\nBatches: %d\n",
+			gLog("\n[World of Warcraft Studio - Editor] - WMO group #%d - %s\n[World of Warcraft Studio - Editor] - Vertices: %d\n[World of Warcraft Studio - Editor] - Triangles: %d\n[World of Warcraft Studio - Editor] - Indices: %d\n[World of Warcraft Studio - Editor] - Batches: %d\n",
 				this->num, this->name.c_str(), nVertices, nTriangles, nTriangles*3, nBatches);
 			WMOBatch *ba = batches;
 			for (int i=0; i<nBatches; i++) {
-				gLog("Batch %d:\t", i);
+				gLog("[World of Warcraft Studio - Editor] - Batch %d:\t", i);
 				
 				for (int j=0; j<12; j++) {
 					if ((j%4)==0 && j!=0) gLog("| ");
-					gLog("%d\t", ba[i].bytes[j]);
+					gLog("[World of Warcraft Studio - Editor] - %d\t", ba[i].bytes[j]);
 				}
 				
-				gLog("| %d\t%d\t| %d\t%d\t", ba[i].indexStart, ba[i].indexCount, ba[i].vertexStart, ba[i].vertexEnd);
-				gLog("%d\t%d\t%s\n", ba[i].flags, ba[i].texture, wmo->textures[ba[i].texture].c_str());
+				gLog("[World of Warcraft Studio - Editor] - | %d\t%d\t| %d\t%d\t", ba[i].indexStart, ba[i].indexCount, ba[i].vertexStart, ba[i].vertexEnd);
+				gLog("[World of Warcraft Studio - Editor] - %d\t%d\t%s\n", ba[i].flags, ba[i].texture, wmo->textures[ba[i].texture].c_str());
 
 			}
 			int l = nBatches-1;
-			gLog("Max index: %d\n", ba[l].indexStart + ba[l].indexCount);
+			gLog("[World of Warcraft Studio - Editor] - Max index: %d\n", ba[l].indexStart + ba[l].indexCount);
 			*/
 			
 		}
 		else if (!strcmp(fourcc,"MOCV")) {
-			//gLog("CV: %d\n", size);
+			//gLog("[World of Warcraft Studio - Editor] - CV: %d\n", size);
 			hascv = true;
 			cv = (unsigned int*)gf.getPointer();
 		}
@@ -758,7 +758,7 @@ void WMOGroup::initDisplayList()
 			WMOLiquidHeader hlq;
 			gf.read(&hlq, 0x1E);
 
-			//gLog("WMO Liquid: %dx%d, %dx%d, (%f,%f,%f) %d\n", hlq.X, hlq.Y, hlq.A, hlq.B, hlq.pos.x, hlq.pos.y, hlq.pos.z, hlq.type);
+			//gLog("[World of Warcraft Studio - Editor] - WMO Liquid: %dx%d, %dx%d, (%f,%f,%f) %d\n", hlq.X, hlq.Y, hlq.A, hlq.B, hlq.pos.x, hlq.pos.y, hlq.pos.z, hlq.type);
 
 			lq = new Liquid(hlq.A, hlq.B, Vec3D(hlq.pos.x, hlq.pos.z, -hlq.pos.y));
 			lq->initFromWMO(gf, wmo->mat[hlq.type], (flags&0x2000)!=0);
@@ -772,7 +772,7 @@ void WMOGroup::initDisplayList()
 	// ok, make a display list
 
 	indoor = (flags&8192)!=0;
-	//gLog("Lighting: %s %X\n\n", indoor?"Indoor":"Outdoor", flags);
+	//gLog("[World of Warcraft Studio - Editor] - Lighting: %s %X\n\n", indoor?"Indoor":"Outdoor", flags);
 
 	initLighting(nLR,useLights);
 
@@ -1150,7 +1150,7 @@ int WMOManager::add(std::string name)
 	if (names.find(name) != names.end()) {
 		id = names[name];
 		items[id]->addref();
-		//gLog("Loading WMO %s [already loaded]\n",name.c_str());
+		//gLog("[World of Warcraft Studio - Editor] - Loading WMO %s [already loaded]\n",name.c_str());
 		return id;
 	}
 
@@ -1163,7 +1163,7 @@ int WMOManager::add(std::string name)
 
 void WMOManager::reload()
 {
-	gLog("Reloading WMO's\n");
+	gLog("[World of Warcraft Studio - Editor] - Reloading WMO's\n");
 	for (std::map<std::string, int>::iterator it = names.begin(); it != names.end(); ++it)
 		((WMO*)items[(*it).second])->reload((*it).first);
 }
@@ -1187,7 +1187,7 @@ WMOInstance::WMOInstance(WMO *wmo, MPQFile &f) : wmo (wmo)
 	
 	doodadset = (d2 & 0xFFFF0000) >> 16;
 
-	//gLog("WMO instance: %s (%d, %d)\n", wmo->name.c_str(), d2, d3);
+	//gLog("[World of Warcraft Studio - Editor] - WMO instance: %s (%d, %d)\n", wmo->name.c_str(), d2, d3);
 }
 
 
@@ -1204,7 +1204,7 @@ WMOInstance::WMOInstance(WMO *wmo, MODF *d) : wmo (wmo)
 	
 	doodadset = d->doodadSet;
 
-	//gLog("WMO instance: %s (%d, %d)\n", wmo->name.c_str(), d2, d3);
+	//gLog("[World of Warcraft Studio - Editor] - WMO instance: %s (%d, %d)\n", wmo->name.c_str(), d2, d3);
 }
 
 void WMOInstance::draw()

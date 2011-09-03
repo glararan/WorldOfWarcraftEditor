@@ -10,7 +10,7 @@ DBCFile::DBCFile(const std::string &filename):
 }
 void DBCFile::open()
 {
-	gLog("Opening DBC %s\n",filename.c_str());
+	gLog("[World of Warcraft Studio - Editor] - Opening DBC %s\n",filename.c_str());
 	MPQFile f(filename.c_str());
 	char header[4];
 	unsigned int na,nb,es,ss;
@@ -32,7 +32,7 @@ void DBCFile::open()
 	stringTable = data + recordSize*recordCount;
 	f.read(data,recordSize*recordCount+stringSize);
 	f.close();
-	gLog("Closed & Read in DBC %s\n",filename.c_str());
+	gLog("[World of Warcraft Studio - Editor] - Closed & Read in DBC %s\n",filename.c_str());
 }
 DBCFile::~DBCFile()
 {

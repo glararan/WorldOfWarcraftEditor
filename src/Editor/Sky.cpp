@@ -233,7 +233,7 @@ void Skies::initSky(Vec3D pos, int t)
 			for (int i=0; i<18; i++) {
 				if((skies[j].colorFor(i,t).x>1.0f)||(skies[j].colorFor(i,t).y>1.0f)||(skies[j].colorFor(i,t).z>1.0f))
 				{
-					gLog("Sky %d %d is out of bounds!\n",j,i);
+					gLog("[World of Warcraft Studio - Editor] - Sky %d %d is out of bounds!\n",j,i);
 					continue;
 				}
 				colorSet[i] += skies[j].colorFor(i,t) * skies[j].weight;

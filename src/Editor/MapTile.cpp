@@ -163,14 +163,14 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 	ok = !theFile->isEof();
 	
 	if (!ok) {
-		gLog("  Loading tile %d,%d\n",x0,z0);
-		gLog("-> Error loading %s\n",filename);
+		gLog("[World of Warcraft Studio - Editor] - Loading tile %d,%d\n",x0,z0);
+		gLog("[World of Warcraft Studio - Editor] -> Error loading %s\n",filename);
 		return;
 	}
 	if(!theFile->isExternal())
-		gLog("  Loading tile from MPQ %d,%d\n",x0,z0);
+		gLog("[World of Warcraft Studio - Editor] - Loading tile from MPQ %d,%d\n",x0,z0);
 	else
-		gLog("  Loading tile from File %d,%d\n",x0,z0);
+		gLog("[World of Warcraft Studio - Editor] - Loading tile from File %d,%d\n",x0,z0);
 
 	char fourcc[5];
 	size_t size;
@@ -252,7 +252,7 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 		// MCNK data will be processed separately ^_^
 		theFile->seek((int)nextpos);
 	}
-	gLog("Finished Processing all but MCNK's in ");
+	gLog("[World of Warcraft Studio - Editor] - Finished Processing all but MCNK's in ");
 	stopTimer();
 
 	//while(!texturesLoaded)
@@ -268,7 +268,7 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 	chunksLoaded=false;
 	nextChunk=0;
 
-	gLog("Entire loading of %s took ",fname.c_str());
+	gLog("[World of Warcraft Studio - Editor] - Entire loading of %s took ",fname.c_str());
 	stopTimer();
 }
 
@@ -279,7 +279,7 @@ void MapTile::loadChunk()
 	
 	theFile->seek((int)mcnk_offsets[nextChunk]);
 	chunks[nextChunk/16][nextChunk%16].init(this, *theFile);	
-	gLog("Loaded Chunk %d of %s\n",nextChunk,fname.c_str());
+	gLog("[World of Warcraft Studio - Editor] - Loaded Chunk %d of %s\n",nextChunk,fname.c_str());
 	nextChunk++;
 	
 	if(nextChunk==256)
@@ -314,7 +314,7 @@ void MapTile::loadTexture()
 
 	if(texturePos>=textureBuffer+textureSize)
 	{
-		gLog("Finished Loading Textures for %s\n",fname);
+		gLog("[World of Warcraft Studio - Editor] - Finished Loading Textures for %s\n",fname);
 		texturesLoaded=true;
 		//for(int i=0;i<256;i++)
 		//	chunks[i/16][i%16].loadTextures();
@@ -353,7 +353,7 @@ void MapTile::loadModel()
 
 	if(modelPos>=modelBuffer+modelSize)
 	{
-		gLog("Finished Loading Models for %s\n",fname);
+		gLog("[World of Warcraft Studio - Editor] - Finished Loading Models for %s\n",fname);
 		modelsLoaded=true;
 		//Need to load Model Instances now
 		//loadModelInstances();
@@ -414,7 +414,7 @@ void MapTile::loadWMO()
 
 	if(wmoPos>=wmoBuffer+wmoSize)
 	{
-		gLog("Finished Loading WMOs for %s\n",fname);
+		gLog("[World of Warcraft Studio - Editor] - Finished Loading WMOs for %s\n",fname);
 		wmosLoaded=true;
 		//Need to load WMO Instances now
 		loadWMOInstances();
@@ -450,7 +450,7 @@ MapTile::~MapTile()
 {
 	if (!ok) return;
 
-	gLog("Unloading tile %d,%d\n", x, z);
+	gLog("[World of Warcraft Studio - Editor] - Unloading tile %d,%d\n", x, z);
 
 	if(chunksLoaded)
 	{
@@ -829,21 +829,21 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 
 				/*
 				if (flags != 0) {
-					gLog("Texture layer flags: %x ", flags);
+					gLog("[World of Warcraft Studio - Editor] - Texture layer flags: %x ", flags);
 					int v = 0x80;
 					for (int i=0; i<8; i++,v>>=1) {
-						gLog("%c%s", (flags&v)?'1':'-', i==3?" ":"");
+						gLog("[World of Warcraft Studio - Editor] - %c%s", (flags&v)?'1':'-', i==3?" ":"");
 					}
 
-					gLog(" %s\n", mt->textures[tex].c_str());
+					gLog("[World of Warcraft Studio - Editor] - %s\n", mt->textures[tex].c_str());
 				}
 				*/
 
 				/*
 				if (mt->textures[tex]=="Tileset\\BurningStepps\\BurningSteppsLavatest02.blp") {
-					gLog("Lava tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
+					gLog("[World of Warcraft Studio - Editor] - Lava tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
 				} else {
-					gLog("---- tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
+					gLog("[World of Warcraft Studio - Editor] - ---- tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
 				}
 				*/
 
@@ -946,7 +946,7 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 				if (flags & 8) lq.append(" ocean");
 				if (flags & 16) lq.append(" magma");
 				if (flags & 32) lq.append(" slime?");
-				gLog("LQ%s (base:%f)\n", lq.c_str(), waterlevel);
+				gLog("[World of Warcraft Studio - Editor] - LQ%s (base:%f)\n", lq.c_str(), waterlevel);
 				*/
 
 			}
@@ -1669,7 +1669,7 @@ void MapChunk::drawSelect()
 	glPushName(nameID);
 	ErrorNum=glGetError();
 	if(ErrorNum)
-		gLog("OpenGL Error %d\n",ErrorNum);
+		gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
 	if (!hasholes) {
 		bool highres = gWorld->drawhighres;
@@ -1708,7 +1708,7 @@ void MapChunk::drawSelect2()
 	glPushName(nameID);
 	ErrorNum=glGetError();
 	if(ErrorNum)
-		gLog("OpenGL Error %d\n",ErrorNum);
+		gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
 	if (!hasholes) {
 		bool highres = gWorld->drawhighres;
@@ -2053,7 +2053,7 @@ int MapChunk::addTexture(GLuint texture)
 		{
 			if(alphamaps[texLevel-1]<1)
 			{
-				gLog("Alpha Map has invalid texture binding\n");
+				gLog("[World of Warcraft Studio - Editor] - Alpha Map has invalid texture binding\n");
 				nTextures--;
 				return -1;
 			}
@@ -2180,7 +2180,7 @@ bool MapChunk::paintTexture(float x, float z, brush *Brush, float strength, floa
 	{
 		if(j>2)
 		{
-			gLog("WTF how did you get here???");
+			gLog("[World of Warcraft Studio - Editor] - WTF how did you get here???");
 			continue;
 		}
 		glBindTexture(GL_TEXTURE_2D, alphamaps[j]);
@@ -2440,7 +2440,7 @@ void MapTile::saveTile()
 
 	for(i=0;i<256;i++)
 	{
-		gLog("Saving Chunk %d (%d,%d)\n",i,i/16,i%16);
+		gLog("[World of Warcraft Studio - Editor] - Saving Chunk %d (%d,%d)\n",i,i/16,i%16);
 		f.seek(MCINs[i].offset+8);
 		f.read(&ChunkHeader[i],sizeof(MapChunkHeader));
 
@@ -2467,7 +2467,7 @@ void MapTile::saveTile()
 			{
 				if(NumDoodadRefs==2048)
 				{
-					gLog("ERROR: Trying to add more than 2048 Doodads to a chunk\n");
+					gLog("[World of Warcraft Studio - Editor] - ERROR: Trying to add more than 2048 Doodads to a chunk\n");
 					break;
 				}
 				ChunkDoodadRef[NumDoodadRefs]=j;
@@ -2483,7 +2483,7 @@ void MapTile::saveTile()
 				{
 					if(NumDoodadRefs==2048)
 					{
-						gLog("ERROR: Trying to add more than 2048 Doodads to a chunk\n");
+						gLog("[World of Warcraft Studio - Editor] - ERROR: Trying to add more than 2048 Doodads to a chunk\n");
 						break;
 					}
 					ChunkDoodadRef[NumDoodadRefs]=j;
@@ -2567,10 +2567,10 @@ void MapTile::saveTile()
 		}
 
 		/*gLog("Chunk %d (%d, %d)\n",i,i/16,i%16);
-		gLog("Textures: %d\n",ChunkHeader[i].nLayers);
-		gLog("\tS1: %60d\tS2: %60d\n",ChunkHeader[i].s1,ChunkHeader[i].s2);
-		gLog("\tD1: %80d\tD2: %80d\n",ChunkHeader[i].d1,ChunkHeader[i].d2);
-		gLog("\tD3: %80d",ChunkHeader[i].d3);*/
+		gLog("[World of Warcraft Studio - Editor] - Textures: %d\n",ChunkHeader[i].nLayers);
+		gLog("[World of Warcraft Studio - Editor] - \tS1: %60d\tS2: %60d\n",ChunkHeader[i].s1,ChunkHeader[i].s2);
+		gLog("[World of Warcraft Studio - Editor] - \tD1: %80d\tD2: %80d\n",ChunkHeader[i].d1,ChunkHeader[i].d2);
+		gLog("[World of Warcraft Studio - Editor] - \tD3: %80d",ChunkHeader[i].d3);*/
 
 		ChunkHeader[i].s1=0;
 		ChunkHeader[i].s2=0;
@@ -2650,7 +2650,7 @@ void MapTile::saveTile()
 				alphaMap[k]=(upperNibble<<4)+lowerNibble;
 			}
 			//if(NewTexture)
-			//	gLog("Adding new texture alpha layer at %x\n",Change+MCINs[i].offset+ChunkHeader[i].ofsAlpha+8+64*32*j);
+			//	gLog("[World of Warcraft Studio - Editor] - Adding new texture alpha layer at %x\n",Change+MCINs[i].offset+ChunkHeader[i].ofsAlpha+8+64*32*j);
 			memcpy(Buffer+Change+MCINs[i].offset+ChunkHeader[i].ofsAlpha+8+64*32*j,&alphaMap,64*32);
 		}
 		

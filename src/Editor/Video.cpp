@@ -285,9 +285,9 @@ GLuint TextureManager::add(std::string name)
 	ext=LoadBLP(id, tex);
 
 	if(!ext)
-		gLog("      Loading Texture from MPQ %s\n",name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Loading Texture from MPQ %s\n",name.c_str());
 	else
-		gLog("      Loading Texture from File %s\n",name.c_str());
+		gLog("[World of Warcraft Studio - Editor] - Loading Texture from File %s\n",name.c_str());
 
 	do_add(name, id, tex);
 
@@ -296,7 +296,7 @@ GLuint TextureManager::add(std::string name)
 
 void TextureManager::reload()
 {
-	gLog("Reloading Textures\n");
+	gLog("[World of Warcraft Studio - Editor] - Reloading Textures\n");
 	for (std::map<std::string, GLuint>::iterator it = names.begin(); it != names.end(); ++it)
 	{
 		bool ext;
@@ -306,11 +306,11 @@ void TextureManager::reload()
 		ext=LoadBLP(id, tex);
 
 		if(!ext)
-			gLog(" Reloading Texture from MPQ %s\n",(*it).first.c_str());
+			gLog("[World of Warcraft Studio - Editor] - Reloading Texture from MPQ %s\n",(*it).first.c_str());
 		else
-			gLog(" Reloading Texture from File %s\n",(*it).first.c_str());
+			gLog("[World of Warcraft Studio - Editor] - Reloading Texture from File %s\n",(*it).first.c_str());
 	}
-	gLog("Finish Reloading Textures\n\n");
+	gLog("[World of Warcraft Studio - Editor] - Finish Reloading Textures\n\n");
 }
 
 bool TextureManager::LoadBLP(GLuint id, Texture *tex)

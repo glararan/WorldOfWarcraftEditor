@@ -388,7 +388,8 @@ int main(int argc, char *argv[])
 		archives.push_back(new MPQArchive(path));
 	}*/
 
-	for (size_t i=0; i<7; i++) {
+	for (size_t i=0; i<7; i++)
+	{
 		sprintf_s(path, "%s%s", gamepath, archiveNames[i]);
 		archives.push_back(new MPQArchive(path));
 	}
@@ -396,7 +397,7 @@ int main(int argc, char *argv[])
 	gAreaDB.open();
 
 	video.init(xres,yres,fullscreen!=0);
-	SDL_WM_SetCaption(APP_TITLE,NULL);
+	SDL_WM_SetCaption(APP_TITLE " - " APP_VERSION,NULL);
 
 
 	gLog("[World of Warcraft Studio - Editor] - Initializing Ground Effects\n");
@@ -425,7 +426,8 @@ int main(int argc, char *argv[])
 	bool done = false;
 	t = SDL_GetTicks();
 	gLog("[World of Warcraft Studio - Editor] - Entering Main Loop\n");
-	while(gStates.size()>0 && !done) {
+	while(gStates.size()>0 && !done)
+	{
 		last_t = t;
 		t = SDL_GetTicks();
 		Uint32 dt = t - last_t;
@@ -435,22 +437,27 @@ int main(int argc, char *argv[])
 		as = gStates[gStates.size()-1];
 
 		SDL_Event event;
-		while ( SDL_PollEvent(&event) ) {
-			if ( event.type == SDL_QUIT ) {
+		while ( SDL_PollEvent(&event) )
+		{
+			if ( event.type == SDL_QUIT )
+			{
 				done = true;
 			}
-			else if ( event.type == SDL_MOUSEMOTION) {
+			else if ( event.type == SDL_MOUSEMOTION)
+			{
 				if(SDL_GetAppState()&SDL_APPMOUSEFOCUS)
 					as->mousemove(&event.motion);
 			}
-			else if ( (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP)&&(SDL_GetAppState()&SDL_APPINPUTFOCUS)) {
+			else if ( (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP)&&(SDL_GetAppState()&SDL_APPINPUTFOCUS))
+			{
 				
 				if(event.button.type == SDL_MOUSEBUTTONUP)
 					as->mouseclick(&event.button);
 				else if(SDL_GetAppState()&SDL_APPMOUSEFOCUS)
 					as->mouseclick(&event.button);
 			}
-			else if ( (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)) {
+			else if ( (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP))
+			{
 				if(SDL_GetAppState()&SDL_APPINPUTFOCUS)
 					as->keypressed(&event.key);
 			}

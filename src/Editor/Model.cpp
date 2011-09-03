@@ -46,7 +46,7 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	ok = !f.isEof();
 
 	if (!ok) {
-		gLog("Error loading model [%s]\n", tempname);
+		gLog("[World of Warcraft Studio - Editor] - Error loading model [%s]\n", tempname);
 		return;
 	}
 
@@ -64,9 +64,9 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	animated = isAnimated(f) || forceAnim;  // isAnimated will set animGeometry and animTextures
 
 	if(!f.isExternal())
-		gLog("    Loading model from MPQ %s%s\n", tempname, animated ? " (animated)" : "");
+		gLog("[World of Warcraft Studio - Editor] - Loading model from MPQ %s%s\n", tempname, animated ? " (animated)" : "");
 	else
-		gLog("    Loading model from File %s%s\n", tempname, animated ? " (animated)" : "");
+		gLog("[World of Warcraft Studio - Editor] - Loading model from File %s%s\n", tempname, animated ? " (animated)" : "");
 
 	trans = 1.0f;
 
@@ -95,7 +95,7 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 Model::~Model()
 {
 	if (ok) {
-		//gLog("Unloading model %s\n", name.c_str());
+		//gLog("[World of Warcraft Studio - Editor] - Unloading model %s\n", name.c_str());
 
 		if (header.nTextures) {
 			for (size_t i=0; i<header.nTextures; i++) {
@@ -1189,7 +1189,7 @@ void ModelLight::setup(int time, GLuint l)
 		// point
 		p = Vec4D(tpos, 1.0f);
 	}
-	//gLog("Light %d (%f,%f,%f) (%f,%f,%f) [%f,%f,%f]\n", l-GL_LIGHT4, ambcol.x, ambcol.y, ambcol.z, diffcol.x, diffcol.y, diffcol.z, p.x, p.y, p.z);
+	//gLog("[World of Warcraft Studio - Editor] - Light %d (%f,%f,%f) (%f,%f,%f) [%f,%f,%f]\n", l-GL_LIGHT4, ambcol.x, ambcol.y, ambcol.z, diffcol.x, diffcol.y, diffcol.z, p.x, p.y, p.z);
 	glLightfv(l, GL_POSITION, p);
 	glLightfv(l, GL_DIFFUSE, diffcol);
 	glLightfv(l, GL_AMBIENT, ambcol);
@@ -1444,14 +1444,14 @@ void stopModelTimer(int i)
 
 void reportModelTimes()
 {
-	gLog("Total Model Time %d ms\n",modelTimes[0]);
-	gLog("Reload Time %d ms\n",modelTimes[1]);
-	gLog("Total Model Drawing Time %d ms\n",modelTimes[2]);
-	gLog("Calling Display Lists Time %d ms\n",modelTimes[3]);
-	gLog("Model Drawing Time %d ms\n",modelTimes[4]);
-	gLog("Particle Time %d ms\n",modelTimes[6]);
-	gLog("Ribbon Time %d ms\n",modelTimes[7]);
-	gLog("Reinit Time %d ms\n",modelTimes[5]);
+	gLog("[World of Warcraft Studio - Editor] - Total Model Time %d ms\n",modelTimes[0]);
+	gLog("[World of Warcraft Studio - Editor] - Reload Time %d ms\n",modelTimes[1]);
+	gLog("[World of Warcraft Studio - Editor] - Total Model Drawing Time %d ms\n",modelTimes[2]);
+	gLog("[World of Warcraft Studio - Editor] - Calling Display Lists Time %d ms\n",modelTimes[3]);
+	gLog("[World of Warcraft Studio - Editor] - Model Drawing Time %d ms\n",modelTimes[4]);
+	gLog("[World of Warcraft Studio - Editor] - Particle Time %d ms\n",modelTimes[6]);
+	gLog("[World of Warcraft Studio - Editor] - Ribbon Time %d ms\n",modelTimes[7]);
+	gLog("[World of Warcraft Studio - Editor] - Reinit Time %d ms\n",modelTimes[5]);
 	initModelTimer();
 }
 
@@ -1553,7 +1553,7 @@ int ModelManager::add(std::string name)
 
 void ModelManager::reload()
 {
-	gLog("Reloading Models\n");
+	gLog("[World of Warcraft Studio - Editor] - Reloading Models\n");
 	for (std::map<std::string, int>::iterator it = names.begin(); it != names.end(); ++it)
 		((Model*)items[(*it).second])->reload((*it).first);
 }
