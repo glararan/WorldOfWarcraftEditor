@@ -313,7 +313,41 @@ int main(int argc, char *argv[])
 	bool archiveNames[] = {""};
 	if(loadExpansion() == 1) // TBC
 	{
-		bool archiveNames[] = {"common.MPQ", "common-2.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ"};
+		if(loadGameVersion() == 1) // enGB
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"enGB/locale-enGB.MPQ", "enGB/expansion-locale-enGB.MPQ", "enGB/patch-enGB.MPQ", "enGB/patch-enGB-2.MPQ"};
+		}
+		else if(loadGameVersion() == 2) // enUS
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"enUS/locale-enUS.MPQ", "enUS/expansion-locale-enUS.MPQ", "enUS/patch-enUS.MPQ", "enUS/patch-enUS-2.MPQ"};
+		}
+		else if(loadGameVersion() == 3) // deDE
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"deDE/locale-deDE.MPQ", "deDE/expansion-locale-deDE.MPQ", "deDE/patch-deDE.MPQ", "deDE/patch-deDE-2.MPQ"};
+		}
+		else if(loadGameVersion() == 4) // esES
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"esES/locale-esES.MPQ", "esES/expansion-locale-esES.MPQ", "esES/patch-esES.MPQ", "esES/patch-esES-2.MPQ"};
+		}
+		else if(loadGameVersion() == 5) // frFR
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"frFR/locale-frFR.MPQ", "frFR/expansion-locale-frFR.MPQ", "frFR/patch-frFR.MPQ", "frFR/patch-frFR-2.MPQ"};
+		}
+		else if(loadGameVersion() == 6) // ruRU
+		{
+			bool archiveNames[] = {"common.MPQ", "expansion.MPQ", "patch.MPQ", "patch-2.MPQ",
+			"ruRU/locale-ruRU.MPQ", "ruRU/expansion-locale-ruRU.MPQ", "ruRU/patch-ruRU.MPQ", "ruRU/patch-ruRU-2.MPQ"};
+		}
+		else
+		{
+			gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.");
+			exit(1);
+		}
 	}
 	else if(loadExpansion() == 2) // WotLK
 	{
@@ -352,15 +386,44 @@ int main(int argc, char *argv[])
 			gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.");
 			exit(1);
 		}
-
-		if(loadGameVersion())
-		{
-			gLog("[World of Warcraft Studio - Editor] - GameVersion is selected - %s\n", loadGameVersion());
-		}
 	}
 	else if(loadExpansion() == 3) // Cataclysm
 	{
-		bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ"};
+		if(loadGameVersion() == 1) // enGB
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"enGB/locale-enGB.MPQ", "enGB/expansion1-locale-enGB.MPQ", "enGB/expansion2-locale-enGB.MPQ", "enGB/expansion3-locale-enGB.MPQ"};
+		}
+		else if(loadGameVersion() == 2) // enUS
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"enUS/locale-enUS.MPQ", "enUS/expansion1-locale-enUS.MPQ", "enUS/expansion2-locale-enUS.MPQ", "enUS/expansion3-locale-enUS.MPQ"};
+		}
+		else if(loadGameVersion() == 3) // deDE
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"deDE/locale-deDE.MPQ", "deDE/expansion1-locale-deDE.MPQ", "deDE/expansion2-locale-deDE.MPQ", "deDE/expansion3-locale-deDE.MPQ"};
+		}
+		else if(loadGameVersion() == 4) // esES
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"esES/locale-esES.MPQ", "esES/expansion1-locale-esES.MPQ", "esES/expansion2-locale-esES.MPQ", "esES/expansion3-locale-esES.MPQ"};
+		}
+		else if(loadGameVersion() == 5) // frFR
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"frFR/locale-frFR.MPQ", "frFR/expansion1-locale-frFR.MPQ", "frFR/expansion2-locale-frFR.MPQ", "frFR/expansion3-locale-frFR.MPQ"};
+		}
+		else if(loadGameVersion() == 6) // ruRu
+		{
+			bool archiveNames[] = {"art.MPQ", "expansion1.MPQ", "expansion2.MPQ", "expansion3.MPQ", "sound.MPQ", "world.MPQ",
+			"ruRU/locale-ruRU.MPQ", "ruRU/expansion1-locale-ruRU.MPQ", "ruRU/expansion2-locale-ruRU.MPQ", "ruRU/expansion3-locale-ruRU.MPQ"};
+		}
+		else
+		{
+			gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.");
+			exit(1);
+		}
 	}
 	else
 	{
