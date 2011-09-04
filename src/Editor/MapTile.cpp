@@ -162,7 +162,8 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 	theFile = new MPQFile(filename);
 	ok = !theFile->isEof();
 	
-	if (!ok) {
+	if (!ok)
+	{
 		gLog("[World of Warcraft Studio - Editor] - Loading tile %d,%d\n",x0,z0);
 		gLog("[World of Warcraft Studio - Editor] -> Error loading %s\n",filename);
 		return;
@@ -176,7 +177,8 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 	size_t size;
 
 	startTimer();
-	while (!theFile->isEof()) {
+	while (!theFile->isEof())
+	{
 		theFile->read(fourcc,4);
 		theFile->read(&size, 4);
 
@@ -185,15 +187,18 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 
 		size_t nextpos = theFile->getPos() + size;
 
-		if (!strcmp(fourcc,"MCIN")) {
+		if (!strcmp(fourcc,"MCIN"))
+		{
 			// mapchunk offsets/sizes
-			for (int i=0; i<256; i++) {
+			for (int i=0; i<256; i++)
+			{
 				theFile->read(&mcnk_offsets[i],4);
 				theFile->read(&mcnk_sizes[i],4);
 				theFile->seekRelative(8);
 			}
 		}
-		else if (!strcmp(fourcc,"MTEX")) {
+		else if (!strcmp(fourcc,"MTEX"))
+		{
 			// texture lists
 			if(size!=0)
 			{
@@ -206,7 +211,8 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 			else
 				texturesLoaded=true;
 		}
-		else if (!strcmp(fourcc,"MMDX")) {
+		else if (!strcmp(fourcc,"MMDX"))
+		{
 			// models ...
 			// MMID would be relative offsets for MMDX filenames
 			if(size!=0)
@@ -222,7 +228,8 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 				modelsLoaded=true;
 
 		}
-		else if (!strcmp(fourcc,"MWMO")) {
+		else if (!strcmp(fourcc,"MWMO"))
+		{
 			// map objects
 			// MWID would be relative offsets for MWMO filenames			
 			if(size!=0)
@@ -236,13 +243,15 @@ MapTile::MapTile(int x0, int z0, char* filename): x(x0), z(z0), topnode(0,0,16)
 			else
 				wmosLoaded=true;
 		}
-		else if (!strcmp(fourcc,"MDDF")) {
+		else if (!strcmp(fourcc,"MDDF"))
+		{
 			// model instance data
 			modelNum = (int)size / 36;
 			modelInstances=new MDDF[modelNum];
 			theFile->read((unsigned char *)modelInstances,size);
 		}
-		else if (!strcmp(fourcc,"MODF")) {
+		else if (!strcmp(fourcc,"MODF"))
+		{
 			// wmo instance data
 			wmoNum = (int)size / 64;
 			wmoInstances=new MODF[wmoNum];
@@ -456,8 +465,10 @@ MapTile::~MapTile()
 	{
 		topnode.cleanup();
 
-		for (int j=0; j<16; j++) {
-			for (int i=0; i<16; i++) {
+		for (int j=0; j<16; j++)
+		{
+			for (int i=0; i<16; i++)
+			{
 				chunks[j][i].destroy();
 			}
 		}
@@ -468,15 +479,18 @@ MapTile::~MapTile()
 			chunks[i/16][i%16].destroy();
 	}
 
-	for (vector<string>::iterator it = textures.begin(); it != textures.end(); ++it) {
+	for (vector<string>::iterator it = textures.begin(); it != textures.end(); ++it)
+	{
         video.textures.delbyname(*it);
 	}
 
-	for (vector<string>::iterator it = wmos.begin(); it != wmos.end(); ++it) {
+	for (vector<string>::iterator it = wmos.begin(); it != wmos.end(); ++it)
+	{
 		gWorld->wmomanager.delbyname(*it);
 	}
 
-	for (vector<string>::iterator it = models.begin(); it != models.end(); ++it) {
+	for (vector<string>::iterator it = models.begin(); it != models.end(); ++it)
+	{
 		gWorld->modelmanager.delbyname(*it);
 	}
 }
@@ -492,8 +506,10 @@ void MapTile::draw()
 	}
 	if (!ok) return;
 
-	for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			chunks[j][i].visible = false;
 			chunks[j][i].draw();
 		}
@@ -513,8 +529,10 @@ void MapTile::drawSelect()
 			loadChunk();
 	}
 	
-	for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			chunks[j][i].visible = false;
 			chunks[j][i].drawSelect();
 		}
@@ -533,8 +551,10 @@ void MapTile::drawColored()
 			loadChunk();
 	}
 	
-	/*for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	/*for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			chunks[j][i].visible = false;
 			//chunks[j][i].draw();
 		}
@@ -553,8 +573,10 @@ void MapTile::drawLines()
 			loadChunk();
 	}
 	glDisable(GL_COLOR_MATERIAL);
-	for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			//if(chunks[j][i].visible)
 			chunks[j][i].drawLines();
 		}
@@ -579,8 +601,10 @@ void MapTile::drawWater()
 	glDisable(GL_LIGHTING);
 	glEnable(GL_FRAGMENT_PROGRAM_ARB);
 	enableWaterShader();
-	for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			chunks[j][i].drawWater();
 		}
 	}
@@ -595,7 +619,8 @@ void MapTile::drawObjects()
 	if (!ok) return;
 
 	glEnable(GL_LIGHTING);
-	for (int i=0; i<nWMO; i++) {
+	for (int i=0; i<nWMO; i++)
+	{
 		wmois[i].draw();
 	}
 }
@@ -606,7 +631,8 @@ void MapTile::drawObjectsSelect()
 		return;
 	if (!ok) return;
 
-	for (int i=0; i<nWMO; i++) {
+	for (int i=0; i<nWMO; i++)
+	{
 		wmois[i].drawSelect();
 	}
 }
@@ -617,7 +643,8 @@ void MapTile::drawSky()
 		return;
 	if (!ok) return;
 
-	for (int i=0; i<nWMO; i++) {
+	for (int i=0; i<nWMO; i++)
+	{
 		wmois[i].wmo->drawSkybox();
 		if (gWorld->hadSky) break;
 	}
@@ -628,7 +655,8 @@ void MapTile::drawPortals()
 {
 	if (!ok) return;
 
-	for (int i=0; i<nWMO; i++) {
+	for (int i=0; i<nWMO; i++)
+	{
 		wmois[i].drawPortals();
 	}
 }
@@ -639,7 +667,8 @@ void MapTile::drawModels()
 	if (!ok) return;
 
 	glEnable(GL_LIGHTING);
-	for (int i=0; i<nMDX; i++) {
+	for (int i=0; i<nMDX; i++)
+	{
 		modelis[i].draw();
 	}
 }
@@ -648,7 +677,8 @@ void MapTile::drawModelsMapTile()
 {
 	if (!ok) return;
 
-	for (int i=0; i<nMDX; i++) {
+	for (int i=0; i<nMDX; i++)
+	{
 		modelis[i].drawMapTile();
 	}
 }
@@ -657,7 +687,8 @@ void MapTile::drawModelsSelect()
 {
 	if (!ok) return;
 
-	for (int i=0; i<nMDX; i++) {
+	for (int i=0; i<nMDX; i++)
+	{
 		modelis[i].drawSelect();
 	}
 }
@@ -683,8 +714,10 @@ void MapTile::drawTextures()
 	
 	//glTranslatef(-8,-8,0);
 	
-	for (int j=0; j<16; j++) {
-		for (int i=0; i<16; i++) {
+	for (int j=0; j<16; j++)
+	{
+		for (int i=0; i<16; i++)
+		{
 			if(((i+1+xOffset)>gWorld->minX)&&((j+1+yOffset)>gWorld->minY)&&((i+xOffset)<gWorld->maxX)&&((j+yOffset)<gWorld->maxY))
 				chunks[j][i].drawTextures();
 		}
@@ -737,11 +770,14 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 	hasholes = (holes != 0);
 
 	/*
-	if (hasholes) {
+	if (hasholes)
+	{
 		gLog("Holes: %d\n", holes);
 		int k=1;
-		for (int j=0; j<4; j++) {
-			for (int i=0; i<4; i++) {
+		for (int j=0; j<4; j++)
+		{
+			for (int i=0; i<4; i++)
+			{
 				gLog((holes & k)?"1":"0");
 				k <<= 1;
 			}
@@ -758,7 +794,8 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 	vmax = Vec3D(-9999999.0f,-9999999.0f,-9999999.0f);
 	glGenTextures(3, alphamaps);
 	
-	while (f.getPos() < lastpos) {
+	while (f.getPos() < lastpos)
+	{
 		f.read(fcc,4);
 		f.read(&size, 4);
 
@@ -772,8 +809,10 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 			// normal vectors
 			char nor[3];
 			Vec3D *ttn = tn;
-			for (int j=0; j<17; j++) {
-				for (int i=0; i<((j%2)?8:9); i++) {
+			for (int j=0; j<17; j++)
+			{
+				for (int i=0; i<((j%2)?8:9); i++)
+				{
 					f.read(nor,3);
 					// order Z,X,Y ?
 					//*ttn++ = Vec3D((float)nor[0]/127.0f, (float)nor[2]/127.0f, (float)nor[1]/127.0f);
@@ -781,12 +820,15 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 				}
 			}
 		}
-		else if (!strcmp(fcc,"MCVT")) {
+		else if (!strcmp(fcc,"MCVT"))
+		{
 			Vec3D *ttv = tv;
 
 			// vertices
-			for (int j=0; j<17; j++) {
-				for (int i=0; i<((j%2)?8:9); i++) {
+			for (int j=0; j<17; j++)
+			{
+				for (int i=0; i<((j%2)?8:9); i++)
+				{
 					float h,xpos,zpos;
 					f.read(&h,4);
 					xpos = i * UNITSIZE;
@@ -808,11 +850,13 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 			r = (vmax - vmin).length() * 0.5f;
 
 		}
-		else if (!strcmp(fcc,"MCLY")) {
+		else if (!strcmp(fcc,"MCLY"))
+		{
 			// texture info
 			nTextures = (int)size / 16;
 			//gLog("=\n");
-			for (int i=0; i<nTextures; i++) {
+			for (int i=0; i<nTextures; i++)
+			{
 				f.read(&tex[i],4);
 				f.read(&texFlags[i], 4);
 
@@ -828,10 +872,12 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 				}
 
 				/*
-				if (flags != 0) {
+				if (flags != 0)
+				{
 					gLog("[World of Warcraft Studio - Editor] - Texture layer flags: %x ", flags);
 					int v = 0x80;
-					for (int i=0; i<8; i++,v>>=1) {
+					for (int i=0; i<8; i++,v>>=1)
+					{
 						gLog("[World of Warcraft Studio - Editor] - %c%s", (flags&v)?'1':'-', i==3?" ":"");
 					}
 
@@ -840,9 +886,12 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 				*/
 
 				/*
-				if (mt->textures[tex]=="Tileset\\BurningStepps\\BurningSteppsLavatest02.blp") {
+				if (mt->textures[tex]=="Tileset\\BurningStepps\\BurningSteppsLavatest02.blp")
+				{
 					gLog("[World of Warcraft Studio - Editor] - Lava tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
-				} else {
+				}
+				else
+				{
 					gLog("[World of Warcraft Studio - Editor] - ---- tex:\t%d\t%d\t%d\n", unk[0], unk[1], unk[2]);
 				}
 				*/
@@ -850,14 +899,18 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 				textures[i] = video.textures.get(mt->textures[tex[i]]);
 			}
 		}
-		else if (!strcmp(fcc,"MCSH")) {
+		else if (!strcmp(fcc,"MCSH"))
+		{
 			// shadow map 64 x 64
 			unsigned char sbuf[64*64], *p, c[8];
 			p = sbuf;
-			for (int j=0; j<64; j++) {
+			for (int j=0; j<64; j++)
+			{
 				f.read(c,8);
-				for (int i=0; i<8; i++) {
-					for (int b=0x01; b!=0x100; b<<=1) {
+				for (int i=0; i<8; i++)
+				{
+					for (int b=0x01; b!=0x100; b<<=1)
+					{
 						*p++ = (c[i] & b) ? 85 : 0;
 					}
 				}
@@ -871,17 +924,21 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		}
-		else if (!strcmp(fcc,"MCAL")) {
+		else if (!strcmp(fcc,"MCAL"))
+		{
 			// alpha maps  64 x 64			
 			if (nTextures>0) {
 				//glGenTextures(3/*nTextures-1*/, alphamaps);
-				for (int i=0; i<nTextures-1; i++) {
+				for (int i=0; i<nTextures-1; i++)
+				{
 					glBindTexture(GL_TEXTURE_2D, alphamaps[i]);
 					unsigned char *p;
 					char *abuf = f.getPointer();
 					p = amap[i];
-					for (int j=0; j<63; j++) {
-						for (int i=0; i<32; i++) {
+					for (int j=0; j<63; j++)
+					{
+						for (int i=0; i<32; i++)
+						{
 							unsigned char c = *abuf++;
 							if(i!=31)
 							{
@@ -916,13 +973,15 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
                 continue;
 			}
 		}
-		else if (!strcmp(fcc,"MCLQ")) {
+		else if (!strcmp(fcc,"MCLQ"))
+		{
 			// liquid / water level
 			char fcc1[5];
 			f.read(fcc1,4);
 			flipcc(fcc1);
 			fcc1[4]=0;
-			if (!strcmp(fcc1,"MCSE")) {
+			if (!strcmp(fcc1,"MCSE"))
+			{
 				haswater = false;
 			}
 			else {
@@ -984,8 +1043,10 @@ void MapChunk::init(MapTile* maintile, MPQFile &f)
 	Vec3D *ttv = tm;
 
 	// vertices
-	for (int j=0; j<17; j++) {
-		for (int i=0; i<((j%2)?8:9); i++) {
+	for (int j=0; j<17; j++)
+	{
+		for (int i=0; i<((j%2)?8:9); i++)
+		{
 			float h,xpos,zpos;
 			f.read(&h,4);
 			xpos = i * 0.125f;
@@ -1036,7 +1097,8 @@ void MapChunk::loadTextures()
 
 void SetAnim(int anim)
 {
-	if (anim) {
+	if (anim)
+	{
 		glActiveTextureARB(GL_TEXTURE0_ARB);
 		glMatrixMode(GL_TEXTURE);
 		glPushMatrix();
@@ -1056,7 +1118,8 @@ void SetAnim(int anim)
 
 void RemoveAnim(int anim)
 {
-	if (anim) {
+	if (anim)
+	{
         glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 		glActiveTextureARB(GL_TEXTURE1_ARB);
@@ -1159,18 +1222,24 @@ void MapChunk::initStrip(int holes)
 	strip = new short[256]; // TODO: figure out exact length of strip needed
 	short *s = strip;
 	bool first = true;
-	for (int y=0; y<4; y++) {
-		for (int x=0; x<4; x++) {
-			if (!isHole(holes, x, y)) {
+	for (int y=0; y<4; y++)
+	{
+		for (int x=0; x<4; x++)
+		{
+			if (!isHole(holes, x, y))
+			{
 				// draw tile here
 				// this is ugly but sort of works
 				int i = x*2;
 				int j = y*4;
-				for (int k=0; k<2; k++) {
-					if (!first) {
+				for (int k=0; k<2; k++)
+				{
+					if (!first)
+					{
 						*s++ = indexMapBuf(i,j+k*2);
 					} else first = false;
-					for (int l=0; l<3; l++) {
+					for (int l=0; l<3; l++)
+					{
 						*s++ = indexMapBuf(i+l,j+k*2);
 						*s++ = indexMapBuf(i+l,j+k*2+2);
 					}
@@ -1278,18 +1347,22 @@ void MapChunk::drawColor()
 	if (!gWorld->frustum.intersects(vmin,vmax)) return;
 	float mydist = (gWorld->camera - vcenter).length() - r;
 	//if (mydist > gWorld->mapdrawdistance2) return;
-	if (mydist > gWorld->culldistance) {
+	if (mydist > gWorld->culldistance)
+	{
 		if (gWorld->uselowlod) this->drawNoDetail();
 		return;
 	}
 	visible = true;
 
-	if (!hasholes) {
+	if (!hasholes)
+	{
 		bool highres = gWorld->drawhighres;
-		if (highres) {
+		if (highres)
+		{
 			highres = mydist < gWorld->highresdistance2;
 		}
-		if (highres) {
+		if (highres)
+		{
 			strip = gWorld->mapstrip2;
 			striplen = stripsize2;
 		} else {
@@ -1350,7 +1423,8 @@ void MapChunk::drawPass(int anim)
 	else*/
 		glDrawElements(GL_TRIANGLE_STRIP, striplen, GL_UNSIGNED_SHORT, strip);
 
-	if (anim) {
+	if (anim)
+	{
         glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 		glActiveTextureARB(GL_TEXTURE1_ARB);
@@ -1359,7 +1433,7 @@ void MapChunk::drawPass(int anim)
 
 void MapChunk::drawLines()
 {
-	if (!gWorld->frustum.intersects(vmin,vmax))		return;
+	if (!gWorld->frustum.intersects(vmin,vmax))	return;
 	float mydist = (gWorld->camera - vcenter).length() - r;
 	//if (mydist > gWorld->mapdrawdistance2) return;
 
@@ -1398,7 +1472,6 @@ void MapChunk::drawLines()
 		glDrawElements(GL_LINE_STRIP, 9, GL_UNSIGNED_SHORT, &LineStrip[8]);
 	}
 	
-	
 	glPopMatrix();
 
 	glColor4f(1,1,1,1);
@@ -1422,7 +1495,6 @@ void MapChunk::drawContour()
 	glTexGeni(GL_S,GL_TEXTURE_GEN_MODE,GL_OBJECT_LINEAR);
 	glTexGenfv(GL_S,GL_OBJECT_PLANE,CoordGen);
 	
-
 	drawPass(0);
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_TEXTURE_GEN_S);
@@ -1430,7 +1502,7 @@ void MapChunk::drawContour()
 extern nameEntry *Selection;
 void MapChunk::draw()
 {
-	if (!gWorld->frustum.intersects(vmin,vmax))		return;
+	if (!gWorld->frustum.intersects(vmin,vmax))	return;
 	float mydist = (gWorld->camera - vcenter).length() - r;
 	//if (mydist > gWorld->mapdrawdistance2) return;
 	if (mydist > gWorld->culldistance+75) {
@@ -1439,15 +1511,20 @@ void MapChunk::draw()
 	}
 	visible = true;
 
-	if (!hasholes) {
+	if (!hasholes)
+	{
 		bool highres = gWorld->drawhighres;
-		if (highres) {
+		if (highres)
+		{
 			highres = mydist < gWorld->highresdistance2;
 		}
-		if (highres) {
+		if (highres)
+		{
 			strip = gWorld->mapstrip2;
 			striplen = stripsize2;
-		} else {
+		}
+		else
+		{
 			strip = gWorld->mapstrip;
 			striplen = stripsize;
 		}
@@ -1483,8 +1560,6 @@ void MapChunk::draw()
 		glDisable(GL_LIGHTING);
 		glDrawElements(GL_TRIANGLE_STRIP, striplen, GL_UNSIGNED_SHORT, strip);
 
-		
-
 		drawContour();
 		return;
 	}
@@ -1492,13 +1567,15 @@ void MapChunk::draw()
 	drawPass(animated[0]);
 	glPopName();
 
-	if (nTextures>1) {
+	if (nTextures>1)
+	{
 		//glDepthFunc(GL_EQUAL); // GL_LEQUAL is fine too...?
 		glDepthMask(GL_FALSE);
 	}
 
 	// additional passes: if required
-	for (int i=0; i<nTextures-1; i++) {
+	for (int i=0; i<nTextures-1; i++)
+	{
 		glActiveTextureARB(GL_TEXTURE0_ARB);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, textures[i+1]);
@@ -1508,10 +1585,10 @@ void MapChunk::draw()
 		glBindTexture(GL_TEXTURE_2D, alphamaps[i]);
 
 		drawPass(animated[i+1]);
-
 	}
 
-	if (nTextures>1) {
+	if (nTextures>1)
+	{
 		//glDepthFunc(GL_LEQUAL);
 		glDepthMask(GL_TRUE);
 	}
@@ -1568,8 +1645,6 @@ void MapChunk::draw()
 		glColor4f(1,0.3f,0.3f,0.2f);
 
 		glPushMatrix();
-
-		
 		glDisable(GL_CULL_FACE);
 		glDepthMask(false);
 		glDisable(GL_DEPTH_TEST);
@@ -1583,7 +1658,6 @@ void MapChunk::draw()
 		glDepthMask(true);
 
 		glPopMatrix();
-
 	}
 
 	glColor4f(1,1,1,1);
@@ -1602,10 +1676,13 @@ void MapChunk::draw()
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_TEXTURE_2D);
 	glTranslatef(xbase, ybase, zbase);
-	for (int i=0; i<8; i++) {
+	for (int i=0; i<8; i++)
+	{
 		int v = 1 << (7-i);
-		for (int j=0; j<4; j++) {
-			if (animated[j] & v) {
+		for (int j=0; j<4; j++)
+		{
+			if (animated[j] & v)
+			{
 				glBegin(GL_TRIANGLES);
 				glColor4fv(tcols[i]);
 
@@ -1671,12 +1748,15 @@ void MapChunk::drawSelect()
 	if(ErrorNum)
 		gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
-	if (!hasholes) {
+	if (!hasholes)
+	{
 		bool highres = gWorld->drawhighres;
-		if (highres) {
+		if (highres)
+		{
 			highres = mydist < gWorld->highresdistance2;
 		}
-		if (highres) {
+		if (highres)
+		{
 			strip = gWorld->mapstrip2;
 			striplen = stripsize2;
 		} else {
@@ -1710,15 +1790,20 @@ void MapChunk::drawSelect2()
 	if(ErrorNum)
 		gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 
-	if (!hasholes) {
+	if (!hasholes)
+	{
 		bool highres = gWorld->drawhighres;
-		if (highres) {
+		if (highres)
+		{
 			highres = mydist < gWorld->highresdistance2;
 		}
-		if (highres) {
+		if (highres)
+		{
 			strip = gWorld->mapstrip2;
 			striplen = stripsize2;
-		} else {
+		}
+		else
+		{
 			strip = gWorld->mapstrip;
 			striplen = stripsize;
 		}
@@ -1738,7 +1823,6 @@ void MapChunk::drawSelect2()
 	glEnable(GL_CULL_FACE);
 
 	glPopName();
-	
 }
 
 void MapChunk::getSelectionCoord(float *x,float *z)
@@ -1894,9 +1978,6 @@ void MapChunk::flattenTerrain(float x, float z, float h, float remain, float rad
 
 		if(dist<radius)
 		{
-
-
-
 			if(BrushType==0)//Flat
 			{
 				tv[i].y=remain*tv[i].y+(1-remain)*h;
@@ -2237,7 +2318,8 @@ void MapChunk::drawWater()
 
 	*/
 
-	if (haswater) {
+	if (haswater)
+	{
 		lq->draw();
 	}
 }
@@ -2265,23 +2347,28 @@ void MapNode::setup(MapTile *t)
 	vmin = Vec3D( 9999999.0f, 9999999.0f, 9999999.0f);
 	vmax = Vec3D(-9999999.0f,-9999999.0f,-9999999.0f);
 	mt = t;
-	if (size==2) {
+	if (size==2)
+	{
 		// children will be mapchunks
 		children[0] = &(mt->chunks[py][px]);
 		children[1] = &(mt->chunks[py][px+1]);
 		children[2] = &(mt->chunks[py+1][px]);
 		children[3] = &(mt->chunks[py+1][px+1]);
-	} else {
+	}
+	else
+	{
 		int half = size / 2;
 		children[0] = new MapNode(px, py, half);
 		children[1] = new MapNode(px+half, py, half);
 		children[2] = new MapNode(px, py+half, half);
 		children[3] = new MapNode(px+half, py+half, half);
-		for (int i=0; i<4; i++) {
+		for (int i=0; i<4; i++)
+		{
 			children[i]->setup(mt);
 		}
 	}
-	for (int i=0; i<4; i++) {
+	for (int i=0; i<4; i++)
+	{
 		if (children[i]->vmin.x < vmin.x) vmin.x = children[i]->vmin.x;
 		if (children[i]->vmin.y < vmin.y) vmin.y = children[i]->vmin.y;
 		if (children[i]->vmin.z < vmin.z) vmin.z = children[i]->vmin.z;
@@ -2293,8 +2380,10 @@ void MapNode::setup(MapTile *t)
 
 void MapNode::cleanup()
 {
-	if (size>2) {
-		for (int i=0; i<4; i++) {
+	if (size>2)
+	{
+		for (int i=0; i<4; i++)
+		{
 			children[i]->cleanup();
 			delete children[i];
 		}

@@ -6,7 +6,8 @@
 
 // base class for manager objects
 
-class ManagedItem {
+class ManagedItem
+{
 	int refcount;
 public:
 	std::string name;
@@ -39,7 +40,8 @@ public:
 
 	virtual void del(IDTYPE id)
 	{
-		if (items[id]->delref()) {
+		if (items[id]->delref())
+		{
 			ManagedItem *i = items[id];
 			doDelete(id);
 			names.erase(names.find(i->name));

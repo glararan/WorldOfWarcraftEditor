@@ -94,9 +94,12 @@ struct ModelRenderPass
 	bool operator< (const ModelRenderPass &m) const
 	{
 		//return !trans;
-		if (order<m.order) return true;
-		else if (order>m.order) return false;
-		else return blendmode == m.blendmode ? (p<m.p) : blendmode < m.blendmode;
+		if (order<m.order)
+			return true;
+		else if (order>m.order)
+			return false;
+		else
+			return blendmode == m.blendmode ? (p<m.p) : blendmode < m.blendmode;
 	}
 };
 

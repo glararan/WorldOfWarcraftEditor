@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "Test.h"
+#include "MapViewer.h"
 #include "OpenGL.h"
 #include "AreaDB.h"
 
@@ -74,9 +74,7 @@ void setTextureBrushLevel(float f)
 	brushLevel=(1.0f-f)*255.0f;
 }
 
-// why the hell is this class called Test, anyway
-// I should rename it to MapViewer or something when I'm not lazy
-Test::Test(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
+MapViewer::MapViewer(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 {
 	LastClicked=0;
 	moving = strafing = updown = 0;
@@ -168,14 +166,14 @@ Test::Test(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 	textureBrush.init();
 }
 
-Test::~Test()
+MapViewer::~MapViewer()
 {
 	delete world;
 }
 
 Vec3D	ObjPos;
 extern ManagedItem	*selectedTexture;
-void Test::tick(float t, float dt)
+void MapViewer::tick(float t, float dt)
 {
 	world->onTheFlyLoading();
 	if(dt>1)
@@ -217,7 +215,6 @@ void Test::tick(float t, float dt)
 			rotate(0,0, &dirRight.x,&dirRight.z, ah*PI/180.0f);
 		}
 
-		
 		if(CurSelection!=0)
 		{
 			ObjPos=CurSelection->data.model->pos-world->camera;
@@ -317,7 +314,8 @@ void Test::tick(float t, float dt)
 		if(TileMode==false)
 		{
 			if (moving != 0) world->camera += dir * dt * movespd * moving;
-			if (strafing != 0) {
+			if (strafing != 0)
+			{
 				Vec3D right = dir % Vec3D(0,1,0);
 				right.normalize();
 				world->camera += right * dt * movespd * strafing;
@@ -373,7 +371,7 @@ void Test::tick(float t, float dt)
 	world->tick(dt);
 }
 
-void Test::doSelection()
+void MapViewer::doSelection()
 {
 	world->drawSelection(MouseX,MouseY);
 	Sel=world->getSelection();
@@ -393,7 +391,7 @@ void Test::doSelection()
 	}
 }
 
-void Test::display(float t, float dt)
+void MapViewer::display(float t, float dt)
 {
 	if(Saving)
 	{		
@@ -402,7 +400,8 @@ void Test::display(float t, float dt)
 		Saving=false;
 	}
 	
-	if (mapmode && world->minimap) {
+	if (mapmode && world->minimap)
+	{
 		// show map
         // TODO: try to use a real map from WoW? either the large map or the minimap would be nice
 		video.clearScreen();
@@ -499,7 +498,8 @@ void Test::display(float t, float dt)
 		
 		glColor4f(1,1,1,1);
 
-		if (hud) {
+		if (hud)
+		{
 			f16->shprint(5,0,"%.2f fps", gFPS);
 
 			//char *sn = world->skies->getSkyName();
@@ -509,7 +509,8 @@ void Test::display(float t, float dt)
 			unsigned int areaID = world->getAreaID();
 			unsigned int regionID = 0;
 			/// Look up area
-			try {
+			try
+			{
 				AreaDB::Record rec = gAreaDB.getByAreaID(areaID);
 				std::string areaName = rec.getString(AreaDB::Name);
 				regionID = rec.getUInt(AreaDB::Region);
@@ -519,9 +520,11 @@ void Test::display(float t, float dt)
 				/// Not found, unknown area
 				//f16->print(5,20,"Unknown [%i]", areaID);
 			}
-			if (regionID != 0) {
+			if (regionID != 0)
+			{
 				/// Look up region
-				try {
+				try
+				{
 					AreaDB::Record rec = gAreaDB.getByAreaID(regionID);
 					std::string regionName = rec.getString(AreaDB::Name);
 					f16->shprint(5,40,"%s", regionName.c_str());
@@ -532,7 +535,8 @@ void Test::display(float t, float dt)
 			}
 		}
 
-		if (world->loading) {
+		if (world->loading)
+		{
 			const char* loadstr = "Loading...";
 			const char* oobstr = "Out of bounds";
 
@@ -590,23 +594,27 @@ void Test::display(float t, float dt)
 			unsigned int areaID = world->getAreaID();
 			unsigned int regionID = 0;
 			/// Look up area
-			try {
+			try
+			{
 				AreaDB::Record rec = gAreaDB.getByAreaID(areaID);
 				std::string areaName = rec.getString(AreaDB::Name);
 				regionID = rec.getUInt(AreaDB::Region);
 				f16->shprint(5,20,"%s", areaName.c_str());
-			} catch(AreaDB::NotFound)
+			}
+			catch(AreaDB::NotFound)
 			{
 				/// Not found, unknown area
 				//f16->print(5,20,"Unknown [%i]", areaID);
 			}
-			if (regionID != 0) {
+			if (regionID != 0)
+			{
 				/// Look up region
 				try {
 					AreaDB::Record rec = gAreaDB.getByAreaID(regionID);
 					std::string regionName = rec.getString(AreaDB::Name);
 					f16->shprint(5,40,"%s", regionName.c_str());
-				} catch(AreaDB::NotFound)
+				}
+				catch(AreaDB::NotFound)
 				{
 					//f16->print(5,40,"Unknown [%i]", regionID);
 				}
@@ -658,7 +666,6 @@ void Test::display(float t, float dt)
 						f16->shprint(10,163,"Textures Used: %d",CurSelection->data.model->model->header.nTextures);
 						for(unsigned int j=0;j<CurSelection->data.model->model->header.nTextures;j++)
 							f16->shprint(15,183+20*j,"%d - %s",j,video.textures.items[CurSelection->data.model->model->textures[j]]->name.c_str());
-						
 					}
 					else if(CurSelection->type==ENTRY_WMO)
 					{
@@ -767,7 +774,6 @@ void Test::display(float t, float dt)
 							f16->shprint(10,163,"Textures Used: %d",Selection->data.model->model->header.nTextures);
 							for(unsigned int j=0;j<Selection->data.model->model->header.nTextures;j++)
 								f16->shprint(15,183+20*j,"%d - %s",j,video.textures.items[Selection->data.model->model->textures[j]]->name.c_str());
-							
 						}
 						else if(Selection->type==ENTRY_WMO)
 						{
@@ -854,7 +860,8 @@ void Test::display(float t, float dt)
 			//f16->shprint(video.xres-300,video.yres/2,"(%.2f, %.2f, %.2f)",ObjPos.x,ObjPos.y,ObjPos.z);
 		}
 
-		if (world->loading) {
+		if (world->loading)
+		{
 			const char* loadstr = "Loading...";
 			const char* oobstr = "Out of bounds";
 
@@ -889,160 +896,194 @@ void Test::display(float t, float dt)
 extern bool DrawMapContour;
 extern bool drawFlags;
 
-void Test::keypressed(SDL_KeyboardEvent *e)
+void MapViewer::keypressed(SDL_KeyboardEvent *e)
 {
 
-	if (e->type == SDL_KEYDOWN) {
+	if (e->type == SDL_KEYDOWN)
+	{
 		if((LastClicked)&&(LastClicked->processKey(e->keysym.sym,(e->keysym.mod&KMOD_SHIFT)!=0,(e->keysym.mod&KMOD_CTRL)!=0,(e->keysym.mod&KMOD_ALT)!=0)))
 			return;
 		// key DOWN
 
 		// quit
-		if (e->keysym.sym == SDLK_ESCAPE) {
+		if (e->keysym.sym == SDLK_ESCAPE)
+		{
 		    gPop = true;
 		}
 
 		// movement
-		if (e->keysym.sym == SDLK_w) {
+		if (e->keysym.sym == SDLK_w)
+		{
 			moving = 1.0f;
 		}
 
-		if (e->keysym.sym == SDLK_s) {
+		if (e->keysym.sym == SDLK_s)
+		{
 			moving = -1.0f;
 		}
 
-		if (e->keysym.sym == SDLK_a) {
+		if (e->keysym.sym == SDLK_a)
+		{
 			strafing = -1.0f;
 		}
 
-		if (e->keysym.sym == SDLK_d) {
+		if (e->keysym.sym == SDLK_d)
+		{
 			strafing = 1.0f;
 		}
 
-		if (e->keysym.sym == SDLK_e) {
+		if (e->keysym.sym == SDLK_e)
+		{
 			updown = -1.0f;
 		}
 
-		if (e->keysym.sym == SDLK_q) {
+		if (e->keysym.sym == SDLK_q)
+		{
 			updown = 1.0f;
 		}
 
 		// invertmouse
-		if (e->keysym.sym == SDLK_i) {
+		if (e->keysym.sym == SDLK_i)
+		{
 			mousedir *= -1.0f;
 		}
 
 		// move speed
-		if (e->keysym.sym == SDLK_p) {
+		if (e->keysym.sym == SDLK_p)
+		{
 			if((LCtrlDown||RCtrlDown)&&(LShiftDown||RShiftDown))
 				Saving=true;
 			else
 				movespd *= 2.0f;
 		}
 
-		if (e->keysym.sym == SDLK_o) {
+		if (e->keysym.sym == SDLK_o)
+		{
 			movespd *= 0.5f;
 		}
 
 		// turn around
-		if (e->keysym.sym == SDLK_r) {
+		if (e->keysym.sym == SDLK_r)
+		{
 			ah += 180.0f;
 		}
 
 		// testing
-		if (e->keysym.sym == SDLK_n) {
+		if (e->keysym.sym == SDLK_n)
+		{
 			world->modelmanager.v++;
 		}
 
-		if (e->keysym.sym == SDLK_b) {
+		if (e->keysym.sym == SDLK_b)
+		{
 			world->modelmanager.v--;
 			if (world->modelmanager.v<0) world->modelmanager.v = 0;
 		}
 
 		// toggles
-		if (e->keysym.sym == SDLK_t) {
+		if (e->keysym.sym == SDLK_t)
+		{
 			terrainMode++;
 			if(terrainMode>1)
 				terrainMode=0;
 		}
 
-		if (e->keysym.sym == SDLK_l) {
+		if (e->keysym.sym == SDLK_l)
+		{
 			world->lighting = !world->lighting;
 		}
 
-		if (e->keysym.sym == SDLK_F1) {
+		if (e->keysym.sym == SDLK_F1)
+		{
 			world->drawmodels = !world->drawmodels;
 		}
 
-		if (e->keysym.sym == SDLK_F2) {
+		if (e->keysym.sym == SDLK_F2)
+		{
 			world->drawdoodads = !world->drawdoodads;
 		}
 
-		if (e->keysym.sym == SDLK_F3) {
+		if (e->keysym.sym == SDLK_F3)
+		{
 			world->drawterrain = !world->drawterrain;
 		}
 
-		if (e->keysym.sym == SDLK_F4) {
+		if (e->keysym.sym == SDLK_F4)
+		{
 			if(LShiftDown||RShiftDown)
 				Selecting=!Selecting;
 			else
 				hud = !hud;			
 		}
 
-		if (e->keysym.sym == SDLK_F7) {
+		if (e->keysym.sym == SDLK_F7)
+		{
 			world->drawlines = !world->drawlines;
 		}
 
-		if (e->keysym.sym == SDLK_F6) {
+		if (e->keysym.sym == SDLK_F6)
+		{
 			world->drawwmo = !world->drawwmo;
 		}
 
-		if (e->keysym.sym == SDLK_F8) {
+		if (e->keysym.sym == SDLK_F8)
+		{
 			DetailSelection = !DetailSelection;
 		}
 
-		if (e->keysym.sym == SDLK_F9) {
+		if (e->keysym.sym == SDLK_F9)
+		{
 			DrawMapContour = !DrawMapContour;
 		}
 
-		if (e->keysym.sym == SDLK_h) {
+		if (e->keysym.sym == SDLK_h)
+		{
 			world->drawhighres = !world->drawhighres;
 		}
 
-		if (e->keysym.sym == SDLK_f) {
+		if (e->keysym.sym == SDLK_f)
+		{
 			world->drawfog = !world->drawfog;
 		}
 
-		if (e->keysym.sym == SDLK_j) {
+		if (e->keysym.sym == SDLK_j)
+		{
 			world->reloadTile(((int)world->camera.x)/TILESIZE,((int)world->camera.z)/TILESIZE);
 		}
 
-		if (e->keysym.sym == SDLK_k) {
+		if (e->keysym.sym == SDLK_k)
+		{
 			world->saveTile(((int)world->camera.x)/TILESIZE,((int)world->camera.z)/TILESIZE);
 		}
 
-		if (e->keysym.sym == SDLK_F10) {
+		if (e->keysym.sym == SDLK_F10)
+		{
 			video.textures.reload();
 		}
 
-		if (e->keysym.sym == SDLK_F11) {
+		if (e->keysym.sym == SDLK_F11)
+		{
 			world->modelmanager.reload();
 		}
 
-		if (e->keysym.sym == SDLK_F12) {
+		if (e->keysym.sym == SDLK_F12)
+		{
 			world->wmomanager.reload();
 		}
 
-		if (e->keysym.sym == SDLK_KP_PLUS || e->keysym.sym == SDLK_PLUS) {
+		if (e->keysym.sym == SDLK_KP_PLUS || e->keysym.sym == SDLK_PLUS)
+		{
 			world->fogdistance += 60.0f;
 		}
 
-		if (e->keysym.sym == SDLK_KP_MINUS || e->keysym.sym == SDLK_MINUS) {
+		if (e->keysym.sym == SDLK_KP_MINUS || e->keysym.sym == SDLK_MINUS)
+		{
 			world->fogdistance -= 60.0f;
 		}
 
 		// minimap
-		if (e->keysym.sym == SDLK_m) {
+		if (e->keysym.sym == SDLK_m)
+		{
 			mapmode = !mapmode;
 		}
 
@@ -1073,36 +1114,44 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 			world->LowerTerrain=-120.0f;
 		/*
 		// lighting
-		if (e->keysym.sym == SDLK_1) {
+		if (e->keysym.sym == SDLK_1)
+		{
 			world->l_const -= 0.1f;
 			if (world->l_const <= 0) world->l_const = 0.0f;
 		}
-		if (e->keysym.sym == SDLK_2) {
+		if (e->keysym.sym == SDLK_2
+		{
 			world->l_const += 0.1f;
 		}
-		if (e->keysym.sym == SDLK_3) {
+		if (e->keysym.sym == SDLK_3)
+		{
 			world->l_linear -= 0.01f;
 			if (world->l_linear <= 0) world->l_linear = 0.0f;
 		}
-		if (e->keysym.sym == SDLK_4) {
+		if (e->keysym.sym == SDLK_4)
+		{
 			world->l_linear += 0.01f;
 		}
-		if (e->keysym.sym == SDLK_5) {
+		if (e->keysym.sym == SDLK_5)
+		{
 			world->l_quadratic -= 0.001f;
 			if (world->l_quadratic <= 0) world->l_quadratic = 0.0f;
 		}
-		if (e->keysym.sym == SDLK_6) {
+		if (e->keysym.sym == SDLK_6)
+		{
 			world->l_quadratic += 0.001f;
 		}
 		*/
 
-		if (e->keysym.sym == SDLK_F5) {
+		if (e->keysym.sym == SDLK_F5)
+		{
 			FILE *bf = fopen("bookmarks.txt","a");
 			// copied from above: retreive area name for bookmarks, too
 			unsigned int areaID = world->getAreaID();
 			unsigned int regionID = 0;
 			std::string areaName = "";
-			try {
+			try
+			{
 				AreaDB::Record rec = gAreaDB.getByAreaID(areaID);
 				areaName = rec.getString(AreaDB::Name);
 				//regionID = rec.getUInt(AreaDB::Region);
@@ -1110,12 +1159,15 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 			{
 				if (world->gnWMO==0) areaName = "Unknown location";
 			}
-			if (regionID != 0) {
+			if (regionID != 0)
+			{
 				/// Look up region
-				try {
+				try
+				{
 					AreaDB::Record rec = gAreaDB.getByAreaID(regionID);
 					areaName = rec.getString(AreaDB::Name);
-				} catch(AreaDB::NotFound)
+				}
+				catch(AreaDB::NotFound)
 				{
 					// do nothing
 				}
@@ -1137,49 +1189,65 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 		if (e->keysym.sym==SDLK_RCTRL)
 			RCtrlDown=true;
 
-	} else {
+	}
+	else
+	{
 		// key UP
 
-		if (e->keysym.sym == SDLK_w) {
+		if (e->keysym.sym == SDLK_w)
+		{
 			if (moving > 0) moving = 0;
 		}
-		if (e->keysym.sym == SDLK_s) {
+		if (e->keysym.sym == SDLK_s)
+		{
 			if (moving < 0) moving = 0;
 		}
-		if (e->keysym.sym == SDLK_d) {
+		if (e->keysym.sym == SDLK_d)
+		{
 			if (strafing > 0) strafing = 0;
 		}
-		if (e->keysym.sym == SDLK_a) {
+		if (e->keysym.sym == SDLK_a)
+		{
 			if (strafing < 0) strafing = 0;
 		}
-		if (e->keysym.sym == SDLK_q) {
+		if (e->keysym.sym == SDLK_q)
+		{
 			if (updown > 0) updown = 0;
 		}
-		if (e->keysym.sym == SDLK_e) {
+		if (e->keysym.sym == SDLK_e)
+		{
 			if (updown < 0) updown = 0;
 		}
-		if (e->keysym.sym == SDLK_KP8) {
+		if (e->keysym.sym == SDLK_KP8)
+		{
 			ObjMove.z=1;
 		}
-		if (e->keysym.sym == SDLK_KP2) {
+		if (e->keysym.sym == SDLK_KP2)
+		{
 			ObjMove.z=-1;
 		}
-		if (e->keysym.sym == SDLK_KP6) {
+		if (e->keysym.sym == SDLK_KP6)
+		{
 			ObjMove.x=1;
 		}
-		if (e->keysym.sym == SDLK_KP4) {
+		if (e->keysym.sym == SDLK_KP4)
+		{
 			ObjMove.x=-1;
 		}
-		if (e->keysym.sym == SDLK_KP9) {
+		if (e->keysym.sym == SDLK_KP9)
+		{
 			ObjMove.y=1;
 		}
-		if (e->keysym.sym == SDLK_KP3) {
+		if (e->keysym.sym == SDLK_KP3)
+		{
 			ObjMove.y=-1;
 		}
-		if (e->keysym.sym == SDLK_KP7) {
+		if (e->keysym.sym == SDLK_KP7)
+		{
 			ObjRot.y=1;
 		}
-		if (e->keysym.sym == SDLK_KP1) {
+		if (e->keysym.sym == SDLK_KP1)
+		{
 			ObjRot.y=-1;
 		}
 		if (e->keysym.sym==SDLK_LSHIFT)
@@ -1197,9 +1265,10 @@ void Test::keypressed(SDL_KeyboardEvent *e)
 	}
 }
 
-void Test::mousemove(SDL_MouseMotionEvent *e)
+void MapViewer::mousemove(SDL_MouseMotionEvent *e)
 {
-	if ((look && !(LShiftDown||RShiftDown||LCtrlDown||RCtrlDown||LAltDown||RAltDown)) || fullscreen) {
+	if ((look && !(LShiftDown||RShiftDown||LCtrlDown||RCtrlDown||LAltDown||RAltDown)) || fullscreen)
+	{
 		ah += e->xrel / XSENS;
 		av += mousedir * e->yrel / YSENS;
 		if (av < -80) av = -80;
@@ -1243,9 +1312,10 @@ void Test::mousemove(SDL_MouseMotionEvent *e)
 
 }
 
-void Test::mouseclick(SDL_MouseButtonEvent *e)
+void MapViewer::mouseclick(SDL_MouseButtonEvent *e)
 {
-	if (e->type == SDL_MOUSEBUTTONDOWN) {
+	if (e->type == SDL_MOUSEBUTTONDOWN)
+	{
 		if(e->button==SDL_BUTTON_RIGHT)
 			look = true;
 		if(e->button==SDL_BUTTON_LEFT)
@@ -1266,7 +1336,8 @@ void Test::mouseclick(SDL_MouseButtonEvent *e)
 		if(e->button==SDL_BUTTON_MIDDLE)
 			MoveObj=true;
 
-	} else if (e->type == SDL_MOUSEBUTTONUP) {
+	} else if (e->type == SDL_MOUSEBUTTONUP)
+	{
 		if(e->button==SDL_BUTTON_LEFT)
 		{
 			leftMouse=false;

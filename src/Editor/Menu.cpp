@@ -1,6 +1,6 @@
 #include "Menu.h"
 #include "MPQ.h"
-#include "Test.h"
+#include "MapViewer.h"
 #include "DBCFile.h"
 
 #include <fstream>
@@ -12,7 +12,8 @@ Menu::Menu()
 	f.open();
 	int y=0;
 	
-	for(DBCFile::Iterator i=f.begin(); i!=f.end(); ++i) {
+	for(DBCFile::Iterator i=f.begin(); i!=f.end(); ++i)
+	{
 		MapEntry e;
 
 		e.name = i->getString(1);
@@ -21,7 +22,8 @@ Menu::Menu()
 		int size;
 		e.x0 = 5;
 		e.y0 = y;
-		if (e.name=="Azeroth" || e.name=="Kalimdor" || e.name=="Outland" || e.name=="Northrend") {
+		if (e.name=="Azeroth" || e.name=="Kalimdor" || e.name=="Outland" || e.name=="Northrend")
+		{
 			size = 24;
 			e.font = f24;
 		} else {
@@ -89,7 +91,8 @@ void Menu::tick(float t, float dt)
 
 	if (bg==0) randBackground();
 
-	if (cmd==CMD_DO_LOAD_WORLD) {
+	if (cmd==CMD_DO_LOAD_WORLD)
+	{
 
 		if (fullscreen) SDL_ShowCursor(SDL_DISABLE);
 
@@ -98,11 +101,13 @@ void Menu::tick(float t, float dt)
 		world->initDisplay();
 		// calc coordinates
 
-		if (setpos) {
+		if (setpos)
+		{
 			cz=0;
 			cx=0;
 
-			if (world->nMaps > 0) {
+			if (world->nMaps > 0)
+			{
 
 				float fx = (x/12.0f);
 				float fz = (y/12.0f);
@@ -113,7 +118,9 @@ void Menu::tick(float t, float dt)
 				world->camera = Vec3D(fx * TILESIZE,0,fz * TILESIZE);
 				world->autoheight = true;
 
-			} else {
+			}
+			else
+			{
 				Vec3D p;
 				if (world->gwmois.size()>=1) p = world->gwmois[0].pos;
 				else p = Vec3D(0,0,0); // empty map? :|
@@ -131,7 +138,7 @@ void Menu::tick(float t, float dt)
 
 		world->enterTileInit(cx,cz);
 		
-		Test *t = new Test(world,ah,av);
+		MapViewer *t = new MapViewer(world,ah,av);
 
 		gStates.push_back(t);
 
@@ -143,7 +150,8 @@ void Menu::tick(float t, float dt)
 		delete bg;
 		bg = 0;
 	}
-	else if (cmd == CMD_BACK_TO_MENU) {
+	else if (cmd == CMD_BACK_TO_MENU)
+	{
 		/*if (fullscreen)*/ SDL_ShowCursor(SDL_ENABLE);
 		cmd = CMD_SELECT;
 		refreshBookmarks();
@@ -167,7 +175,8 @@ void Menu::display(float t, float dt)
 		glEnable(GL_COLOR_MATERIAL);
 		glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 		glColor4f(1,1,1,1);
-		for (int i=0; i<8; i++) {
+		for (int i=0; i<8; i++)
+		{
 			GLuint light = GL_LIGHT0 + i;
 			glLightf(light, GL_CONSTANT_ATTENUATION, 0);
 			glLightf(light, GL_LINEAR_ATTENUATION, 0.7f);
@@ -192,7 +201,8 @@ void Menu::display(float t, float dt)
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_LIGHTING);
 
-	if (darken) {
+	if (darken)
+	{
 		glDisable(GL_TEXTURE_2D);
 		// background is too light so tame it down a bit
 		glColor4f(0,0,0,0.35f);
@@ -212,7 +222,8 @@ void Menu::display(float t, float dt)
 	int basey = 0;
 	int tilesize = 12;
 
-	if (cmd==CMD_LOAD_WORLD) {
+	if (cmd==CMD_LOAD_WORLD)
+	{
 		const char *loadstr = "Loading...";
 
 		//f32->shprint(400, 360, "Loading...");
@@ -221,11 +232,14 @@ void Menu::display(float t, float dt)
 
 		cmd = CMD_DO_LOAD_WORLD;
 	}
-	else if (cmd==CMD_SELECT) {
+	else if (cmd==CMD_SELECT)
+	{
 
-		if ((sel != -1) && (world!=0)) {
+		if ((sel != -1) && (world!=0))
+		{
 
-			if (world->minimap) {
+			if (world->minimap)
+			{
 				// minimap time! ^_^
 				const int len = 768;
 				glColor4f(1,1,1,1);
@@ -243,9 +257,12 @@ void Menu::display(float t, float dt)
 			}
 
 			glDisable(GL_TEXTURE_2D);
-			for (int j=0; j<64; j++) {
-				for (int i=0; i<64; i++) {
-					if (world->maps[j][i]) {
+			for (int j=0; j<64; j++)
+			{
+				for (int i=0; i<64; i++)
+				{
+					if (world->maps[j][i])
+					{
 						glColor4f(0.7f,0.9f,0.8f,0.2f);
 						glBegin(GL_QUADS);
 						glVertex2i(basex+i*tilesize, basey+j*tilesize);
@@ -259,7 +276,8 @@ void Menu::display(float t, float dt)
 			glEnable(GL_TEXTURE_2D);
 
 			glColor4f(1,1,1,1);
-			if (world->nMaps == 0) {
+			if (world->nMaps == 0)
+			{
 				f16->shprint(400, 360, "Click to enter");
 			} else {
 				f16->shprint(400, 0, "Select your starting point");
@@ -328,13 +346,15 @@ void Menu::display(float t, float dt)
 #endif
 
 			f24->shprint(360, 74, "Bookmarks");
-			for (unsigned int i=0; i<bookmarks.size(); i++) {
+			for (unsigned int i=0; i<bookmarks.size(); i++)
+			{
 				f16->shdrawtext(bookmarks[i].x0, bookmarks[i].y0, bookmarks[i].label.c_str());
 			}
 
 		}
 
-		for (unsigned int i=0; i<maps.size(); i++) {
+		for (unsigned int i=0; i<maps.size(); i++)
+		{
 			if (i==sel) glColor4f(0,1,1,1);
 			else glColor4f(1,1,1,1);
 
@@ -345,7 +365,8 @@ void Menu::display(float t, float dt)
 		}
 
 		glColor4f(1,1,1,1);
-		if (sel != -1) {
+		if (sel != -1)
+		{
 			f32->shprint(video.xres/2-f32->textwidth(maps[sel].description.c_str())/2, video.yres-40, maps[sel].description.c_str());
 		}
 	}
@@ -353,8 +374,10 @@ void Menu::display(float t, float dt)
 
 void Menu::keypressed(SDL_KeyboardEvent *e)
 {
-	if (e->type == SDL_KEYDOWN) {
-		if (e->keysym.sym == SDLK_ESCAPE) {
+	if (e->type == SDL_KEYDOWN)
+	{
+		if (e->keysym.sym == SDLK_ESCAPE)
+		{
 		    gPop = true;
 		}
 	}
@@ -381,8 +404,10 @@ void Menu::mouseclick(SDL_MouseButtonEvent *e)
 
 	int osel = sel;
 
-	if ((e->x >= 200) && (e->x < 200+12*64)) {
-		if (sel!=-1 && world !=0 && (e->y<12*64)) {
+	if ((e->x >= 200) && (e->x < 200+12*64))
+	{
+		if (sel!=-1 && world !=0 && (e->y<12*64))
+		{
 			x = e->x - 200;
 			y = e->y;
 			cmd = CMD_LOAD_WORLD;
@@ -390,8 +415,10 @@ void Menu::mouseclick(SDL_MouseButtonEvent *e)
 
 		if (sel==-1) {
 			// bookmarks
-			for (unsigned int i=0; i<bookmarks.size(); i++) {
-				if (bookmarks[i].hit(e->x, e->y)) {
+			for (unsigned int i=0; i<bookmarks.size(); i++)
+			{
+				if (bookmarks[i].hit(e->x, e->y))
+				{
 					cmd = CMD_LOAD_WORLD;
 					setpos = false;
 					// setup camera, ah, av
@@ -410,22 +437,30 @@ void Menu::mouseclick(SDL_MouseButtonEvent *e)
 
 		}
 
-	} else {
+	}
+	else
+	{
 		bool found = false;
 
-		for (unsigned int i=0; i<maps.size(); i++) {
-			if (maps[i].hit(e->x, e->y)) {
+		for (unsigned int i=0; i<maps.size(); i++)
+		{
+			if (maps[i].hit(e->x, e->y))
+			{
 				sel = i;
 				found = true;
 			}
 		}
 
-		if (found) {
-			if (sel != osel) {
+		if (found)
+		{
+			if (sel != osel)
+			{
 				if (world != 0) delete world;
 				world = new World(maps[sel].name.c_str());
 			}
-		} else {
+		}
+		else
+		{
 			if (world != 0) delete world;
 			sel = -1;
 			world = 0;
@@ -444,13 +479,15 @@ void Menu::refreshBookmarks()
 	int y = 110;
 	const int x = 300;
 
-	while (!f.eof()) {
+	while (!f.eof())
+	{
 		Bookmark b;
 		f >> b.basename >> b.pos.x >> b.pos.y >> b.pos.z >> b.ah >> b.av;
 		if (f.eof()) break;
 
 		char c;
-		do {
+		do
+		{
             f >> c;
 		} while (c == ' ');
 		b.name = "";
@@ -464,8 +501,10 @@ void Menu::refreshBookmarks()
 
 		// check for the basename
 		bool mapfound = false;
-		for (unsigned int i=0; i<maps.size(); i++) {
-			if (maps[i].name == b.basename) {
+		for (unsigned int i=0; i<maps.size(); i++)
+		{
+			if (maps[i].name == b.basename)
+			{
 				mapfound = true;
 				break;
 			}

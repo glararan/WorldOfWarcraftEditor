@@ -164,7 +164,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="MapViewer.cpp" />
     <ClCompile Include="TexturingUI.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Util.cpp" />
@@ -221,7 +221,7 @@
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="Sky.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="MapViewer.h" />
     <ClInclude Include="TexturingUI.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Util.h" />

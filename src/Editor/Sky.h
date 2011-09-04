@@ -76,7 +76,6 @@ class Skies
 	bool loadFrom(const char* fname, bool forced);
 
 public:
-
 	Vec3D colorSet[18];
 
 	Skies(const char* basename, bool force=false);
@@ -115,16 +114,13 @@ struct OutdoorLightStats
     // void setupFog(); // TODO: add fog maybe?
 };
 
-
 class OutdoorLighting
 {
 	std::vector<OutdoorLightStats> lightStats;
-
 public:
 	OutdoorLighting(char *fname);
 
 	OutdoorLightStats getLightStats(int time);
-
 };
 
 #endif

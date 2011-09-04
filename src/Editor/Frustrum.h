@@ -3,16 +3,19 @@
 
 #include "Vec3D.h"
 
-struct Plane {
+struct Plane
+{
 	float a,b,c,d;
 	void normalize();
 };
 
-enum Directions {
+enum Directions
+{
 	RIGHT, LEFT, BOTTOM, TOP, BACK, FRONT
 };
 
-struct Frustum {
+struct Frustum
+{
 	Plane planes[6];
 
 	void retrieve();

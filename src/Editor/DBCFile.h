@@ -73,7 +73,8 @@ public:
 		Iterator(DBCFile &file, unsigned char *offset): 
 			record(file, offset) {}
 		/// Advance (prefix only)
-		Iterator & operator++() { 
+		Iterator & operator++()
+		{ 
 			record.offset += record.file.recordSize;
 			return *this; 
 		}	

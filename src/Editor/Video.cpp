@@ -380,7 +380,8 @@ bool TextureManager::LoadBLP(GLuint id, Texture *tex)
 
 		delete[] buf;
 	}
-	else if (attr[0]==1) {
+	else if (attr[0]==1)
+	{
 		// uncompressed
 		unsigned int pal[256];
 		f.read(pal,1024);
@@ -393,10 +394,12 @@ bool TextureManager::LoadBLP(GLuint id, Texture *tex)
 		int alphabits = attr[1];
 		bool hasalpha = alphabits!=0;
 
-		for (int i=0; i<16; i++) {
+		for (int i=0; i<16; i++)
+		{
 			if (w==0) w = 1;
 			if (h==0) h = 1;
-			if (offsets[i] && sizes[i]) {
+			if (offsets[i] && sizes[i])
+			{
 				f.seek(offsets[i]);
 				f.read(buf,sizes[i]);
 
@@ -404,22 +407,29 @@ bool TextureManager::LoadBLP(GLuint id, Texture *tex)
 				p = buf2;
 				c = buf;
 				a = buf + w*h;
-				for (int y=0; y<h; y++) {
-					for (int x=0; x<w; x++) {
+				for (int y=0; y<h; y++)
+				{
+					for (int x=0; x<w; x++)
+					{
 						unsigned int k = pal[*c++];
 						k = ((k&0x00FF0000)>>16) | ((k&0x0000FF00)) | ((k& 0x000000FF)<<16);
 						int alpha;
 						if (hasalpha) {
-							if (alphabits == 8) {
+							if (alphabits == 8)
+							{
 								alpha = (*a++);
-							} else if (alphabits == 1) {
+							} else if (alphabits == 1)
+							{
 								alpha = (*a & (1 << cnt++)) ? 0xff : 0;
-								if (cnt == 8) {
+								if (cnt == 8)
+								{
 									cnt = 0;
 									a++;
 								}
 							}
-						} else alpha = 0xff;
+						}
+						else
+							alpha = 0xff;
 
 						k |= alpha << 24;
 						*p++ = k;
@@ -428,7 +438,9 @@ bool TextureManager::LoadBLP(GLuint id, Texture *tex)
 
 				glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, buf2);
 
-			} else break;
+			}
+			else
+				break;
 			w >>= 1;
 			h >>= 1;
 		}
@@ -450,7 +462,8 @@ void TextureManager::doDelete(GLuint id)
 }
 
 #pragma pack(push,1)
-struct TGAHeader {
+struct TGAHeader
+{
    char  idlength;
    char  colourmaptype;
    char  datatypecode;
@@ -477,15 +490,18 @@ GLuint loadTGA(const char *filename, bool mipmaps)
 	GLint bppformat;
 	GLint format;
 	int bypp = h.bitsperpixel / 8;
-	if (h.bitsperpixel == 24) {
+	if (h.bitsperpixel == 24)
+	{
 		s *= 3;
 		format = GL_RGB;
 		bppformat = GL_RGB8;
-	} else if (h.bitsperpixel == 32) {
+	} else if (h.bitsperpixel == 32)
+	{
 		s *= 4;
 		format = GL_RGBA;
 		bppformat = GL_RGBA8;
-	} else return 0;
+	} else
+		return 0;
 
 	unsigned char *buf = new unsigned char[s], *buf2;
 	//unsigned char *buf2 = new unsigned char[s];
@@ -498,11 +514,13 @@ GLuint loadTGA(const char *filename, bool mipmaps)
 	glGenTextures(1,&t);
 	glBindTexture(GL_TEXTURE_2D, t);
 
-	if (mipmaps) {
+	if (mipmaps)
+	{
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
 		gluBuild2DMipmaps (GL_TEXTURE_2D, bppformat, h.width, h.height, format, GL_UNSIGNED_BYTE, buf2);
-	} else {
+	}else
+	{
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 		glTexImage2D(GL_TEXTURE_2D, 0, bppformat, h.width, h.height, 0, format, GL_UNSIGNED_BYTE, buf2);

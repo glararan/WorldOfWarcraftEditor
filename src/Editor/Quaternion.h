@@ -4,7 +4,8 @@
 #include <cmath>
 #include "Vec3D.h"
 
-class Vec4D {
+class Vec4D
+{
 public:
 	float x,y,z,w;
 
@@ -14,7 +15,8 @@ public:
 
 	Vec4D(const Vec3D& v, const float w0) : x(v.x), y(v.y), z(v.z), w(w0) {}
 
-	Vec4D& operator= (const Vec4D &v) {
+	Vec4D& operator= (const Vec4D &v)
+	{
         x = v.x;
 		y = v.y;
 		z = v.z;
@@ -104,7 +106,8 @@ public:
 	}
 };
 
-class Quaternion: public Vec4D {
+class Quaternion: public Vec4D
+{
 public:
 	Quaternion(float x0=0.0f, float y0=0.0f, float z0=0.0f, float w0=1.0f): Vec4D(x0,y0,z0,w0) {}
 
@@ -117,7 +120,8 @@ public:
 		// SLERP
 		float dot = v1*v2;
 
-		if (fabs(dot) > 0.9995f) {
+		if (fabs(dot) > 0.9995f)
+		{
 			// fall back to LERP
 			return Quaternion::lerp(r, v1, v2);
 		}
@@ -133,7 +137,6 @@ public:
 	{
 		return v1*(1.0f-r) + v2*r;
 	}
-
 };
 
 #endif

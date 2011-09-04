@@ -4,7 +4,8 @@
 #include <cmath>
 #include "Vec3D.h"
 #include "Quaternion.h"
-class Matrix {
+class Matrix
+{
 public:
 	float m[4][4];
 
@@ -14,8 +15,10 @@ public:
 
 	Matrix(const Matrix& p)
 	{
-        for (size_t j=0; j<4; j++) {
-        	for (size_t i=0; i<4; i++) {
+        for (size_t j=0; j<4; j++)
+		{
+        	for (size_t i=0; i<4; i++)
+			{
         		m[j][i] = p.m[j][i];
 			}
 		}
@@ -23,8 +26,10 @@ public:
 
 	Matrix& operator= (const Matrix& p)
 	{
-        for (size_t j=0; j<4; j++) {
-        	for (size_t i=0; i<4; i++) {
+        for (size_t j=0; j<4; j++)
+		{
+        	for (size_t i=0; i<4; i++)
+			{
         		m[j][i] = p.m[j][i];
 			}
 		}
@@ -33,8 +38,10 @@ public:
 
 	void zero()
 	{
-        for (size_t j=0; j<4; j++) {
-        	for (size_t i=0; i<4; i++) {
+        for (size_t j=0; j<4; j++)
+		{
+        	for (size_t i=0; i<4; i++)
+			{
         		m[j][i] = 0;
 			}
 		}
@@ -217,10 +224,13 @@ public:
 	const float minor(size_t x, size_t y) const
 	{
 		float s[3][3];
-		for (size_t j=0, v=0; j<4; j++) {
+		for (size_t j=0, v=0; j<4; j++)
+		{
 			if (j==y) continue;
-			for (size_t i=0, u=0; i<4; i++) {
-				if (i!=x) {
+			for (size_t i=0, u=0; i<4; i++)
+			{
+				if (i!=x)
+				{
 					s[v][u++] = m[j][i];
 				}
 			}
@@ -234,8 +244,10 @@ public:
 	const Matrix adjoint() const
 	{
 		Matrix a;
-		for (size_t j=0; j<4; j++) {
-			for (size_t i=0; i<4; i++) {
+		for (size_t j=0; j<4; j++)
+		{
+			for (size_t i=0; i<4; i++)
+			{
 				a.m[i][j] = (((i+j)&1)?-1.0f:1.0f) * minor(i,j);
 			}
 		}
@@ -247,7 +259,8 @@ public:
 		Matrix adj = this->adjoint();
 		float invdet = 1.0f / this->determinant();
         for (size_t j=0; j<4; j++) {
-        	for (size_t i=0; i<4; i++) {
+        	for (size_t i=0; i<4; i++)
+			{
 				m[j][i] = adj.m[j][i] * invdet;
 			}
 		}
@@ -255,8 +268,10 @@ public:
 
 	void transpose()
 	{
-        for (size_t j=1; j<4; j++) {
-        	for (size_t i=0; i<j; i++) {
+        for (size_t j=1; j<4; j++)
+		{
+        	for (size_t i=0; i<j; i++)
+			{
 				float f = m[j][i];
 				m[j][i] = m[i][j];
 				m[i][j] = f;
@@ -273,7 +288,6 @@ public:
 	{
 		return (float*)this;
 	}
-
 };
 
 #endif

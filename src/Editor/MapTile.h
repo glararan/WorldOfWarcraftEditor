@@ -28,7 +28,8 @@ class World;
 
 const int mapbufsize = 9*9 + 8*8;
 
-class MapNode {
+class MapNode
+{
 public:
 
 	MapNode(int x, int y, int s):px(x),py(y),size(s) {}
@@ -215,7 +216,8 @@ class MapTile
 public:
 	void finishLoading();
 	bool isLoaded(){return texturesLoaded&modelsLoaded&wmosLoaded;};
-	void partialLoad(){
+	void partialLoad()
+	{
 		if(!texturesLoaded)
 		{
 			for(int i=0;i<2;i++)
@@ -270,7 +272,6 @@ public:
 
 	bool GetVertex(float x,float z, Vec3D *V);
 	
-
 	void saveTile();
 
 	/// Get chunk for sub offset x,z
@@ -284,12 +285,14 @@ const int stripsize = 8*18 + 7*2;
 template <class V>
 void stripify(V *in, V *out)
 {
-	for (int row=0; row<8; row++) {
+	for (int row=0; row<8; row++)
+	{
 		V *thisrow = &in[indexMapBuf(0,row*2)];
 		V *nextrow = &in[indexMapBuf(0,(row+1)*2)];
 
 		if (row>0) *out++ = thisrow[0];
-		for (int col=0; col<9; col++) {
+		for (int col=0; col<9; col++)
+		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
 		}
@@ -303,13 +306,15 @@ template <class V>
 
 void stripify2(V *in, V *out)
 {
-	for (int row=0; row<8; row++) { 
+	for (int row=0; row<8; row++)
+	{ 
 		V *thisrow = &in[indexMapBuf(0,row*2)];
 		V *nextrow = &in[indexMapBuf(0,row*2+1)];
 		V *overrow = &in[indexMapBuf(0,(row+1)*2)];
 
 		if (row>0) *out++ = thisrow[0];// jump end
-		for (int col=0; col<8; col++) {
+		for (int col=0; col<8; col++)
+		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
 		}
@@ -318,7 +323,8 @@ void stripify2(V *in, V *out)
 		*out++ = overrow[8];// jump start
 		*out++ = thisrow[0];// jump end
 		*out++ = thisrow[0];
-		for (int col=0; col<8; col++) {
+		for (int col=0; col<8; col++)
+		{
 			*out++ = overrow[col];
 			*out++ = nextrow[col];
 		}

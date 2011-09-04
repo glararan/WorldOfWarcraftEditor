@@ -32,7 +32,8 @@ void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals
 	areaw.init	 (mta.params[8], f, globals);
 	grav2.init	 (mta.params[9], f, globals);
 
-	for (size_t i=0; i<3; i++) {
+	for (size_t i=0; i<3; i++)
+	{
 		colors[i] = fromARGB(mta.p.colors[i]);
 		sizes[i] = mta.p.sizes[i];// * mta.p.scales[i];
 	}
@@ -49,7 +50,8 @@ void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals
 	order = mta.s1>0 ? -1 : 0;
 	parent = model->bones + mta.bone;
 
-	switch (mta.type) {
+	switch (mta.type)
+	{
 	case 1:
 		emitter = new PlaneParticleEmitter(this);
 		break;
@@ -68,7 +70,8 @@ void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals
 	tofs = frand();
 
 	// init tiles
-	for (int i=0; i<rows*cols; i++) {
+	for (int i=0; i<rows*cols; i++)
+	{
 		TexCoordSet tc;
 		initTile(tc.tc,i);
 		tiles.push_back(tc);
@@ -93,7 +96,8 @@ void ParticleSystem::initTile(Vec2D *tc, int num)
 	otc[3].x = a.x;
 	otc[3].y = b.y;
 
-	for (int i=0; i<4; i++) {
+	for (int i=0; i<4; i++)
+	{
 		tc[(i+4-order) & 3] = otc[i];
 	}
 }
@@ -104,21 +108,25 @@ void ParticleSystem::update(float dt)
 	float grav = gravity.getValue(manim, mtime);
 
 	// spawn new particles
-	if (emitter) {
+	if (emitter)
+	{
 		float frate = rate.getValue(manim, mtime);
 		float flife = 1.0f;
 		//flife = lifespan.getValue(manim, mtime);
 
 		float ftospawn = (dt * frate / flife) + rem;
-		if (ftospawn < 1.0f) {
+		if (ftospawn < 1.0f)
+		{
 			rem = ftospawn;
 			if (rem<0) rem = 0;
 		}
-		else {
+		else
+		{
 			int tospawn = (int)ftospawn;
 			rem = ftospawn - (float)tospawn;
 			//rem = 0;
-			for (int i=0; i<tospawn; i++) {
+			for (int i=0; i<tospawn; i++)
+			{
 				Particle p = emitter->newParticle(manim, mtime);
 				// sanity check:
 				if (particles.size() < MAX_PARTICLES) particles.push_back(p);
@@ -128,11 +136,13 @@ void ParticleSystem::update(float dt)
 
 	float mspeed = 1.0f;
 
-	for (ParticleList::iterator it = particles.begin(); it != particles.end(); ) {
+	for (ParticleList::iterator it = particles.begin(); it != particles.end(); )
+	{
 		Particle &p = *it;
 		p.speed += p.down * grav * dt;
 
-		if (slowdown>0) {
+		if (slowdown>0)
+		{
 			mspeed = expf(-1.0f * slowdown * p.life);
 		}
 		p.pos += p.speed * mspeed * dt;
@@ -155,14 +165,19 @@ void ParticleSystem::setup(int anim, int time)
 	mtime = time;
 
 	/*
-	if (transform) {
+	if (transform)
+	{
 		// transform every particle by the parent trans matrix   - apparently this isn't needed
 		Matrix m = parent->mat;
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			it->tpos = m * it->pos;
 		}
-	} else {
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+	}
+	else
+	{
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			it->tpos = it->pos;
 		}
 	}
@@ -177,7 +192,8 @@ void ParticleSystem::draw()
 	glDisable(GL_LIGHTING);
 	glColor4f(1,1,1,1);
 	glBegin(GL_POINTS);
-	for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+	for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+	{
 		glVertex3fv(it->tpos);
 	}
 	glEnd();
@@ -188,7 +204,8 @@ void ParticleSystem::draw()
 	Vec3D bv0,bv1,bv2,bv3;
 
 	// setup blend mode
-	switch (blend) {
+	switch (blend)
+	{
 	case 0:
 		glDisable(GL_BLEND);
 		glDisable(GL_ALPHA_TEST);
@@ -224,7 +241,8 @@ void ParticleSystem::draw()
 	Matrix mbb;
 	mbb.unit();
 
-	if (billboard) {
+	if (billboard)
+	{
 		// get a billboard matrix
 		Matrix mtrans;
 		glGetFloatv(GL_MODELVIEW_MATRIX, &(mtrans.m[0][0]));
@@ -247,17 +265,21 @@ void ParticleSystem::draw()
 		mbb.m[2][0] = look.z;
 	}
 
-	if (type==0 || type==2) {
+	if (type==0 || type==2)
+	{
 		// TODO: figure out type 2 (deeprun tram subway sign)
 		// - doesn't seem to be any different from 0 -_-
 		// regular particles
 		float f = 0.707106781f; // sqrt(2)/2
-		if (billboard) {
+		if (billboard)
+		{
 			bv0 = mbb * Vec3D(0,-f,+f);
 			bv1 = mbb * Vec3D(0,+f,+f);
 			bv2 = mbb * Vec3D(0,+f,-f);
 			bv3 = mbb * Vec3D(0,-f,-f);
-		} else {
+		}
+		else
+		{
 			bv0 = Vec3D(-f,0,+f);
 			bv1 = Vec3D(+f,0,+f);
 			bv2 = Vec3D(+f,0,-f);
@@ -266,7 +288,8 @@ void ParticleSystem::draw()
 		// TODO: per-particle rotation in a non-expensive way?? :|
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			glColor4fv(it->color);
 
 			glTexCoord2fv(tiles[it->tile].tc[0]);
@@ -283,13 +306,15 @@ void ParticleSystem::draw()
 		}
 		glEnd();
 	}
-	else if (type==1) {
+	else if (type==1)
+	{
 		// particles from origin to position
 		bv0 = mbb * Vec3D(0,-1.0f,0);
 		bv1 = mbb * Vec3D(0,+1.0f,0);
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			glColor4fv(it->color);
 
 			glTexCoord2fv(tiles[it->tile].tc[0]);
@@ -324,7 +349,8 @@ void ParticleSystem::drawHighlight()
 	glDisable(GL_LIGHTING);
 	glColor4f(1,1,1,1);
 	glBegin(GL_POINTS);
-	for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+	for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+	{
 		glVertex3fv(it->tpos);
 	}
 	glEnd();
@@ -335,7 +361,8 @@ void ParticleSystem::drawHighlight()
 	Vec3D bv0,bv1,bv2,bv3;
 
 	// setup blend mode
-	switch (blend) {
+	switch (blend)
+	{
 	case 0:
 		glDisable(GL_BLEND);
 		glDisable(GL_ALPHA_TEST);
@@ -372,7 +399,8 @@ void ParticleSystem::drawHighlight()
 	mbb.unit();
 
 	ModelHighlight();
-	if (billboard) {
+	if (billboard)
+	{
 		// get a billboard matrix
 		Matrix mtrans;
 		glGetFloatv(GL_MODELVIEW_MATRIX, &(mtrans.m[0][0]));
@@ -395,17 +423,21 @@ void ParticleSystem::drawHighlight()
 		mbb.m[2][0] = look.z;
 	}
 
-	if (type==0 || type==2) {
+	if (type==0 || type==2)
+	{
 		// TODO: figure out type 2 (deeprun tram subway sign)
 		// - doesn't seem to be any different from 0 -_-
 		// regular particles
 		float f = 0.707106781f; // sqrt(2)/2
-		if (billboard) {
+		if (billboard)
+		{
 			bv0 = mbb * Vec3D(0,-f,+f);
 			bv1 = mbb * Vec3D(0,+f,+f);
 			bv2 = mbb * Vec3D(0,+f,-f);
 			bv3 = mbb * Vec3D(0,-f,-f);
-		} else {
+		}
+		else
+		{
 			bv0 = Vec3D(-f,0,+f);
 			bv1 = Vec3D(+f,0,+f);
 			bv2 = Vec3D(+f,0,-f);
@@ -414,7 +446,8 @@ void ParticleSystem::drawHighlight()
 		// TODO: per-particle rotation in a non-expensive way?? :|
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			//glColor4fv(it->color);
 			glColor4f(1.0f,0.25f,0.25f,it->color.w*0.5f);
 
@@ -432,13 +465,15 @@ void ParticleSystem::drawHighlight()
 		}
 		glEnd();
 	}
-	else if (type==1) {
+	else if (type==1)
+	{
 		// particles from origin to position
 		bv0 = mbb * Vec3D(0,-1.0f,0);
 		bv1 = mbb * Vec3D(0,+1.0f,0);
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it) {
+		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		{
 			glColor4fv(it->color);
 
 			glTexCoord2fv(tiles[it->tile].tc[0]);
@@ -517,8 +552,10 @@ Particle SphereParticleEmitter::newParticle(int anim, int time)
 	p.pos = sys->pos + bdir;
 	p.pos = sys->parent->mat * p.pos;
 
-	if (bdir.lengthSquared()==0) p.speed = Vec3D(0,0,0);
-	else {
+	if (bdir.lengthSquared()==0)
+		p.speed = Vec3D(0,0,0);
+	else
+	{
 		Vec3D dir = sys->parent->mrot * (bdir.normalize());
 		p.speed = dir.normalize() * spd * (1.0f+randfloat(-var,var));   // ?
 	}
@@ -574,7 +611,8 @@ void RibbonEmitter::setup(int anim, int time)
 
 	// move first segment
 	RibbonSegment &first = *segs.begin();
-	if (first.len > seglen) {
+	if (first.len > seglen)
+	{
 		// add new segment
 		first.back = (tpos-ntpos).normalize();
 		first.len0 = first.len;
@@ -583,7 +621,9 @@ void RibbonEmitter::setup(int anim, int time)
 		newseg.up = ntup;
 		newseg.len = dlen;
 		segs.push_front(newseg);
-	} else {
+	}
+	else
+	{
 		first.up = ntup;
 		first.pos = ntpos;
 		first.len += dlen;
@@ -592,15 +632,20 @@ void RibbonEmitter::setup(int anim, int time)
 	// kill stuff from the end
 	float l = 0;
 	bool erasemode = false;
-	for (std::list<RibbonSegment>::iterator it = segs.begin(); it != segs.end(); ) {
-		if (!erasemode) {
+	for (std::list<RibbonSegment>::iterator it = segs.begin(); it != segs.end(); )
+	{
+		if (!erasemode)
+		{
 			l += it->len;
-			if (l > length) {
+			if (l > length)
+			{
 				it->len = l - length;
 				erasemode = true;
 			}
 			++it;
-		} else {
+		}
+		else
+		{
 			segs.erase(it++);
 		}
 	}
@@ -641,7 +686,8 @@ void RibbonEmitter::draw()
 	glBegin(GL_QUAD_STRIP);
 	std::list<RibbonSegment>::iterator it = segs.begin();
 	float l = 0;
-	for (; it != segs.end(); ++it) {
+	for (; it != segs.end(); ++it)
+	{
         float u = l/length;
 
 		glTexCoord2f(u,0);
@@ -652,7 +698,8 @@ void RibbonEmitter::draw()
 		l += it->len;
 	}
 
-	if (segs.size() > 1) {
+	if (segs.size() > 1)
+	{
 		// last segment...?
 		--it;
 		glTexCoord2f(1,0);

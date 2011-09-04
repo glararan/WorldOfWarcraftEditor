@@ -16,7 +16,8 @@ class WMOInstance;
 class WMOManager;
 class Liquid;
 
-class WMOGroup {
+class WMOGroup
+{
 	WMO *wmo;
 	int flags;
 	Vec3D v1,v2;
@@ -51,7 +52,8 @@ public:
 	void setupFog();
 };
 
-struct WMOMaterial {
+struct WMOMaterial
+{
 	int flags;
 	int d1;
 	int transparent;
@@ -67,7 +69,8 @@ struct WMOMaterial {
 	TextureID tex;
 };
 
-struct WMOLight {
+struct WMOLight
+{
 	unsigned int flags, color;
 	Vec3D pos;
 	float intensity;
@@ -82,28 +85,33 @@ struct WMOLight {
 	static void setupOnce(GLint light, Vec3D dir, Vec3D lcol);
 };
 
-struct WMOPV {
+struct WMOPV
+{
 	Vec3D a,b,c,d;
 };
 
-struct WMOPR {
+struct WMOPR
+{
 	short portal, group, dir, reserved;
 };
 
-struct WMODoodadSet {
+struct WMODoodadSet
+{
 	char name[0x14];
 	int start;
 	int size;
 	int unused;
 };
 
-struct WMOLiquidHeader {
+struct WMOLiquidHeader
+{
 	int X, Y, A, B;
 	Vec3D pos;
 	short type;
 };
 
-struct WMOFog {
+struct WMOFog
+{
 	unsigned int flags;
 	Vec3D pos;
 	float r1, r2, fogend, fogstart;
@@ -117,12 +125,13 @@ struct WMOFog {
 	void setup();
 };
 
-class WMO: public ManagedItem {
+class WMO: public ManagedItem
+{
 private:
 	bool Reloaded;
 	WMO	*reloadWMO;
 public:
-	std::string		WMOName;
+	std::string	WMOName;
 	WMOGroup *groups;
 	int nTextures, nGroups, nP, nLights, nModels, nDoodads, nDoodadSets, nX;
 	WMOMaterial *mat;
@@ -145,7 +154,8 @@ public:
 
 	WMO(std::string name);
 	~WMO();
-	void reload(std::string name){
+	void reload(std::string name)
+	{
 		if(Reloaded)
 			delete reloadWMO;
 		Reloaded=true;
@@ -157,13 +167,15 @@ public:
 	void drawSkybox();
 };
 
-class WMOManager: public SimpleManager {
+class WMOManager: public SimpleManager
+{
 public:
 	int add(std::string name);
 	void reload();
 };
 
-class WMOInstance {
+class WMOInstance
+{
 	static std::set<int> ids;
 public:
 	WMO *wmo;

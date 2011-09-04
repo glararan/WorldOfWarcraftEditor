@@ -10,7 +10,8 @@ using namespace std;
 Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile): tex(tex), size(size), tw(tw), th(th)
 {
 	ifstream in(infofile);
-	if (!in.is_open()) {
+	if (!in.is_open())
+	{
 		gLog("Error opening font %s\n", infofile);
 		exit(1);
 	}
@@ -19,7 +20,8 @@ Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile): te
 
 	memset(chars,0,256*sizeof(charinfo));
 
-	while (!in.eof()) {
+	while (!in.eof())
+	{
 		int line[7];
 		for (int i=0; i<7; i++) in >> line[i];
 
@@ -92,7 +94,9 @@ void Font::drawtext(int x, int y, const char *text)
 		{
 			drawchar(xpos, base - chars[*c].baseline*Scale, *c);
 			xpos += max(Scale*chars[*c].w,0.5f) + Scale*2;
-		} else {
+		}
+		else
+		{
 			base += size;
 			xpos = x;
 		}
@@ -148,7 +152,9 @@ int Font::textwidth(const char *text)
 		if (*c != '\n' && *c != '\r')
 		{
 			w += chars[*c].w +2;
-		} else {
+		}
+		else
+		{
 			if (w>maxw) maxw = w;
 			w = 0;
 		}

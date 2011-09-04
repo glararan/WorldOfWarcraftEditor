@@ -1051,12 +1051,12 @@ checkboxUI::checkboxUI(float xPos,float yPos,const char *t)
 	clickFunc=0;	
 }
 
-void	checkboxUI::setText(const char *t)
+void checkboxUI::setText(const char *t)
 {
 	text->setText(t);
 }
 
-void	checkboxUI::setState(bool c)
+void checkboxUI::setState(bool c)
 {
 	checked=c;
 
@@ -1066,12 +1066,12 @@ void	checkboxUI::setState(bool c)
 		check->hidden=true;
 }
 
-bool	checkboxUI::getState()
+bool checkboxUI::getState()
 {
 	return checked;
 }
 
-frame	*checkboxUI::processLeftClick(float mx,float my)
+frame *checkboxUI::processLeftClick(float mx,float my)
 {
 	checked=!checked;
 

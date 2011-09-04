@@ -10,7 +10,8 @@
 #include "MPQ.h"
 #include "OpenGL.h"
 
-namespace freetype {
+namespace freetype
+{
 
 ///This function gets the first power of 2 >= the
 ///int that we pass it.
@@ -22,7 +23,8 @@ inline int next_p2 ( int a )
 }
 
 ///Create a display list coresponding to the give character.
-int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int fontsize ) {
+int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int fontsize )
+{
 
 	//The first thing we do is get FreeType to render our character
 	//into a bitmap.  This actually requires a couple of FreeType commands:
@@ -67,8 +69,10 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 	//will be 0 if we are in the padding zone, and whatever
 	//is the the Freetype bitmap otherwise.
 	memset(expanded_data,0,width*height*2);
-	for(int j=0; j <height;j++) {
-		for(int i=0; i < width; i++){
+	for(int j=0; j <height;j++)
+	{
+		for(int i=0; i < width; i++)
+		{
 			expanded_data[2*(i+j*width)]=expanded_data[2*(i+j*width)+1]= 
 				(i>=bitmap.width || j>=bitmap.rows) ?
 				0 : (unsigned char)min((float)(bitmap.buffer[i + bitmap.width*j])*1.5f,255.0f);
@@ -147,7 +151,8 @@ int make_dlist ( FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int 
 	return face->glyph->advance.x >> 6;
 }
 
-void font_data::init(const char * fname, unsigned int h) {
+void font_data::init(const char * fname, unsigned int h)
+{
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
 
@@ -198,7 +203,8 @@ void font_data::init(const char * fname, unsigned int h) {
 	FT_Done_FreeType(library);
 }
 
-void font_data::initMPQ(const char * fname, unsigned int h) {
+void font_data::initMPQ(const char * fname, unsigned int h)
+{
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
 
@@ -299,7 +305,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	if (fmt == NULL)									// If There's No Text
 		*text=0;											// Do Nothing
 
-	else {
+	else
+	{
 	va_start(ap, fmt);									// Parses The String For Variables
 	    vsprintf(text, fmt, ap);						// And Converts Symbols To Actual Numbers
 	va_end(ap);											// Results Are Stored In Text
@@ -315,7 +322,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	vector<string> lines;
 	for(const char *c=text;*c;c++)
 	{
-		if(*c=='\n') {
+		if(*c=='\n')
+		{
 			string line;
 			for(const char *n=start_line;n<c;n++) line.append(1,*n);
 			lines.push_back(line);
@@ -409,7 +417,8 @@ int width(const font_data &ft_font, const char *fmt, ...)
 	if (fmt == NULL)									// If There's No Text
 		*text=0;											// Do Nothing
 
-	else {
+	else
+	{
 	va_start(ap, fmt);									// Parses The String For Variables
 	    vsprintf(text, fmt, ap);						// And Converts Symbols To Actual Numbers
 	va_end(ap);											// Results Are Stored In Text

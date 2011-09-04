@@ -3,7 +3,8 @@
 #include "World.h"
 #include "Shaders.h"
 
-struct LiquidVertex {
+struct LiquidVertex
+{
 	unsigned char c[4];
 	float h;
 };
@@ -18,17 +19,20 @@ void Liquid::initFromTerrain(MPQFile &f, int flags)
 	16 - magma
 	*/
 	ydir = 1.0f;
-	if (flags & 16) {
+	if (flags & 16)
+	{
 		// magma:
 		initTextures("XTextures\\lava\\lava", 1, 30);
 		type = 0; // not colored
 	}
-	else if (flags & 4) {
+	else if (flags & 4)
+	{
 		// river/lake
 		initTextures("XTextures\\river\\lake_a", 1, 30); // TODO: rivers etc.?
 		type = 2; // dynamic colors
 	}
-	else {
+	else
+	{
 		// ocean
 		initTextures("XTextures\\ocean\\ocean_h", 1, 30);
 		/*
@@ -51,18 +55,22 @@ void Liquid::initFromWMO(MPQFile &f, WMOMaterial &mat, bool indoor)
 	trans = false;
 
 	// tmpflag is the flags value for the last drawn tile
-	if (tmpflag & 1) {
+	if (tmpflag & 1)
+	{
 		initTextures("XTextures\\slime\\slime", 1, 30);
 		type = 0;
 		texRepeats = 2.0f;
 	}
-	else if (tmpflag & 2) {
+	else if (tmpflag & 2)
+	{
 		initTextures("XTextures\\lava\\lava", 1, 30);
 		type = 0;
 	}
-	else {
+	else
+	{
 		initTextures("XTextures\\river\\lake_a", 1, 30);
-		if (indoor) {
+		if (indoor)
+		{
 			trans = true;
 			type = 1;
 			col = Vec3D( ((mat.col2&0xFF0000)>>16)/255.0f, ((mat.col2&0xFF00)>>8)/255.0f, (mat.col2&0xFF)/255.0f);
@@ -110,8 +118,10 @@ void Liquid::initGeometry(MPQFile &f)
 	// generate vertices
 	verts = new Vec3D[(xtiles+1)*(ytiles+1)];
 	//color = new unsigned char[(xtiles+1)*(ytiles+1)];
-	for (int j=0; j<ytiles+1; j++) {
-		for (int i=0; i<xtiles+1; i++) {
+	for (int j=0; j<ytiles+1; j++)
+	{
+		for (int i=0; i<xtiles+1; i++)
+		{
 			size_t p = j*(xtiles+1)+i;
 			float h = map[p].h;
 			if (h > 100000) h = pos.y;
@@ -127,10 +137,13 @@ void Liquid::initGeometry(MPQFile &f)
 	glNormal3f(0, 1, 0);
 	glBegin(GL_QUADS);
 	// draw tiles
-	for (int j=0; j<ytiles; j++) {
-		for (int i=0; i<xtiles; i++) {
+	for (int j=0; j<ytiles; j++)
+	{
+		for (int i=0; i<xtiles; i++)
+		{
 			unsigned char f = flags[j*xtiles+i];
-			if ((f&8)==0) {
+			if ((f&8)==0)
+			{
 				tmpflag = f;
 				// 15 seems to be "don't draw"
 				size_t p = j*(xtiles+1)+i;
@@ -168,8 +181,10 @@ void Liquid::initGeometry(MPQFile &f)
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_TRIANGLES);
-	for (int j=0; j<ytiles+1; j++) {
-		for (int i=0; i<xtiles+1; i++) {
+	for (int j=0; j<ytiles+1; j++)
+	{
+		for (int i=0; i<xtiles+1; i++)
+		{
 			size_t p = j*(xtiles+1)+i;
 			Vec3D v = verts[p];
 			//short s = *( (short*) (f.getPointer() + p*8) );
@@ -217,9 +232,11 @@ void Liquid::initGeometry(MPQFile &f)
 	// LOGGING: debug info
 	std::string slq;
 	char buf[32];
-	for (int j=0; j<ytiles+1; j++) {
+	for (int j=0; j<ytiles+1; j++)
+	{
 		slq = "";
-		for (int i=0; i<xtiles+1; i++) {
+		for (int i=0; i<xtiles+1; i++)
+		{
 			//short ival[2];
 			unsigned int ival;
 			float fval;
@@ -231,7 +248,8 @@ void Liquid::initGeometry(MPQFile &f)
 		gLog("[World of Warcraft Studio - Editor] - %s\n", slq.c_str());
 	}
 	slq = "";
-	for (int i=0; i<ytiles*xtiles; i++) {
+	for (int i=0; i<ytiles*xtiles; i++)
+	{
 		unsigned char bval;
 		f.read(&bval,1);
 		if (bval==15) {
@@ -361,15 +379,19 @@ void Liquid::draw()
 	
 	trans = true;
 	const float tcol = trans ? 0.75f : 1.0f;
-	if (trans) {
+	if (trans)
+	{
 		glEnable(GL_BLEND);
 		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDepthMask(GL_FALSE);
 	}
 
-	if (type==0) glColor4f(1,1,1,tcol);
-	else {
-		if (type==2) {
+	if (type==0)
+		glColor4f(1,1,1,tcol);
+	else
+	{
+		if (type==2)
+		{
 			// dynamic color lookup! ^_^
 			col = gWorld->skies->colorSet[WATER_COLOR_LIGHT]; // TODO: add variable water color
 			col2 = gWorld->skies->colorSet[WATER_COLOR_DARK];
@@ -394,7 +416,8 @@ void Liquid::draw()
 	//if (type!=0) glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	
 	glColor4f(1,1,1,1);
-	if (trans) {
+	if (trans)
+	{
 		glDepthMask(GL_TRUE);
 		glDisable(GL_BLEND);
 	}
@@ -403,7 +426,8 @@ void Liquid::draw()
 void Liquid::initTextures(char *basename, int first, int last)
 {
 	char buf[256];
-	for (int i=first; i<=last; i++) {
+	for (int i=first; i<=last; i++)
+	{
 		sprintf_s(buf, "%s.%d.blp", basename, i);
 		textures.push_back(video.textures.add(buf));
 	}
@@ -412,7 +436,8 @@ void Liquid::initTextures(char *basename, int first, int last)
 
 Liquid::~Liquid()
 {
-	for (size_t i=0; i<textures.size(); i++) {
+	for (size_t i=0; i<textures.size(); i++)
+	{
 		video.textures.del(textures[i]);
 	}
 }

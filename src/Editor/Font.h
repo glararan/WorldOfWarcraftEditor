@@ -34,7 +34,7 @@ public:
 	void setScale(float sc);
 
 protected:
-	float	Scale;
+	float Scale;
 	void drawchar(float x, float y, const char ch);
 };
 

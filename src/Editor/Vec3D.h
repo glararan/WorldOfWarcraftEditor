@@ -4,7 +4,8 @@
 #include <iostream>
 #include <cmath>
 
-class Vec3D {
+class Vec3D
+{
 public:
 	float x,y,z;
 
@@ -12,7 +13,8 @@ public:
 
 	Vec3D(const Vec3D& v) : x(v.x), y(v.y), z(v.z) {}
 
-	Vec3D& operator= (const Vec3D &v) {
+	Vec3D& operator= (const Vec3D &v)
+	{
         x = v.x;
 		y = v.y;
 		z = v.z;
@@ -112,7 +114,8 @@ public:
 	}
 };
 
-class Vec2D {
+class Vec2D
+{
 public:
 	float x,y;
 	
@@ -120,7 +123,8 @@ public:
 
 	Vec2D(const Vec2D& v) : x(v.x), y(v.y) {}
 
-	Vec2D& operator= (const Vec2D &v) {
+	Vec2D& operator= (const Vec2D &v)
+	{
         x = v.x;
 		y = v.y;
 		return *this;

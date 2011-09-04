@@ -8,7 +8,8 @@ WMO::WMO(std::string name): ManagedItem(name)
 {
 	MPQFile f(name.c_str());
 	ok = !f.isEof();
-	if (!ok) {
+	if (!ok)
+	{
 		gLog("[World of Warcraft Studio - Editor] - Error loading WMO %s\n", name.c_str());
 		return;
 	}
@@ -31,7 +32,8 @@ WMO::WMO(std::string name): ManagedItem(name)
 
 	char *texbuf=0;
 
-	while (!f.isEof()) {
+	while (!f.isEof())
+	{
 		f.read(fourcc,4);
 		f.read(&size, 4);
 
@@ -40,7 +42,8 @@ WMO::WMO(std::string name): ManagedItem(name)
 
 		size_t nextpos = f.getPos() + size;
 
-		if (!strcmp(fourcc,"MOHD")) {
+		if (!strcmp(fourcc,"MOHD"))
+		{
 			unsigned int col;
 			// header
 			f.read(&nTextures, 4);
@@ -61,16 +64,19 @@ WMO::WMO(std::string name): ManagedItem(name)
 			mat = new WMOMaterial[nTextures];
 
 		}
-		else if (!strcmp(fourcc,"MOTX")) {
+		else if (!strcmp(fourcc,"MOTX"))
+		{
 			// textures
 			texbuf = new char[size];
 			f.read(texbuf, size);
 		}
-		else if (!strcmp(fourcc,"MOMT")) {
+		else if (!strcmp(fourcc,"MOMT"))
+		{
 			// materials
 			//WMOMaterialBlock bl;
 
-			for (int i=0; i<nTextures; i++) {
+			for (int i=0; i<nTextures; i++)
+			{
 				WMOMaterial *m = &mat[i];
 				f.read(m, 0x40);
 
@@ -90,25 +96,30 @@ WMO::WMO(std::string name): ManagedItem(name)
 				
 			}
 		}
-		else if (!strcmp(fourcc,"MOGN")) {
+		else if (!strcmp(fourcc,"MOGN"))
+		{
 			groupnames = (char*)f.getPointer();
 		}
-		else if (!strcmp(fourcc,"MOGI")) {
+		else if (!strcmp(fourcc,"MOGI"))
+		{
 			// group info - important information! ^_^
 			for (int i=0; i<nGroups; i++) {
 				groups[i].init(this, f, i, groupnames);
 
 			}
 		}
-		else if (!strcmp(fourcc,"MOLT")) {
+		else if (!strcmp(fourcc,"MOLT"))
+		{
 			// Lights?
-			for (int i=0; i<nLights; i++) {
+			for (int i=0; i<nLights; i++)
+			{
 				WMOLight l;
 				l.init(f);
 				lights.push_back(l);
 			}
 		}
-		else if (!strcmp(fourcc,"MODN")) {
+		else if (!strcmp(fourcc,"MODN"))
+		{
 			// models ...
 			// MMID would be relative offsets for MMDX filenames
 			if (size) {
@@ -118,7 +129,8 @@ WMO::WMO(std::string name): ManagedItem(name)
 
 				char *p=ddnames,*end=p+size;
 				int t=0;
-				while (p<end) {
+				while (p<end)
+				{
 					string path(p);
 					p+=strlen(p)+1;
 					while ((p<end) && (*p==0)) p++;
@@ -129,16 +141,20 @@ WMO::WMO(std::string name): ManagedItem(name)
 				f.seekRelative((int)size);
 			}
 		}
-		else if (!strcmp(fourcc,"MODS")) {
-			for (int i=0; i<nDoodadSets; i++) {
+		else if (!strcmp(fourcc,"MODS"))
+		{
+			for (int i=0; i<nDoodadSets; i++)
+			{
 				WMODoodadSet dds;
 				f.read(&dds, 32);
 				doodadsets.push_back(dds);
 			}
 		}
-		else if (!strcmp(fourcc,"MODD")) {
+		else if (!strcmp(fourcc,"MODD"))
+		{
 			nModels = (int)size / 0x28;
-			for (int i=0; i<nModels; i++) {
+			for (int i=0; i<nModels; i++)
+			{
 				int ofs;
 				f.read(&ofs,4);
 				Model *m = (Model*)gWorld->modelmanager.items[gWorld->modelmanager.get(ddnames + ofs)];
@@ -148,26 +164,32 @@ WMO::WMO(std::string name): ManagedItem(name)
 			}
 
 		}
-		else if (!strcmp(fourcc,"MOSB")) {
-			if (size>4) {
+		else if (!strcmp(fourcc,"MOSB"))
+		{
+			if (size>4)
+			{
 				string path = f.getPointer();
 				fixname(path);
-				if (path.length()) {
+				if (path.length())
+				{
 					gLog("[World of Warcraft Studio - Editor] - SKYBOX:\n");
 
 					sbid = gWorld->modelmanager.add(path);
 					skybox = (Model*)gWorld->modelmanager.items[sbid];
 
-					if (!skybox->ok) {
+					if (!skybox->ok)
+					{
 						gWorld->modelmanager.del(sbid);
 						skybox = 0;
 					}
 				}
 			}
 		}
-		else if (!strcmp(fourcc,"MOPV")) {
+		else if (!strcmp(fourcc,"MOPV"))
+		{
 			WMOPV p;
-			for (int i=0; i<nP; i++) {
+			for (int i=0; i<nP; i++)
+			{
 				f.read(ff,12);
 				p.a = Vec3D(ff[0],ff[2],-ff[1]);
 				f.read(ff,12);
@@ -179,16 +201,20 @@ WMO::WMO(std::string name): ManagedItem(name)
 				pvs.push_back(p);
 			}
 		}
-		else if (!strcmp(fourcc,"MOPR")) {
+		else if (!strcmp(fourcc,"MOPR"))
+		{
 			int nn = (int)size / 8;
 			WMOPR *pr = (WMOPR*)f.getPointer();
-			for (int i=0; i<nn; i++) {
+			for (int i=0; i<nn; i++)
+			{
 				prs.push_back(*pr++);
 			}
 		}
-		else if (!strcmp(fourcc,"MFOG")) {
+		else if (!strcmp(fourcc,"MFOG"))
+		{
 			int nfogs = (int)size / 0x30;
-			for (int i=0; i<nfogs; i++) {
+			for (int i=0; i<nfogs; i++)
+			{
 				WMOFog fog;
 				fog.init(f);
 				fogs.push_back(fog);
@@ -209,21 +235,25 @@ WMO::WMO(std::string name): ManagedItem(name)
 
 WMO::~WMO()
 {
-	if (ok) {
+	if (ok)
+	{
 		gLog("[World of Warcraft Studio - Editor] - Unloading WMO %s\n", name.c_str());
 		delete[] groups;
 
-		for (vector<string>::iterator it = textures.begin(); it != textures.end(); ++it) {
+		for (vector<string>::iterator it = textures.begin(); it != textures.end(); ++it)
+		{
             video.textures.delbyname(*it);
 		}
 
-		for (vector<string>::iterator it = models.begin(); it != models.end(); ++it) {
+		for (vector<string>::iterator it = models.begin(); it != models.end(); ++it)
+		{
 			gWorld->modelmanager.delbyname(*it);
 		}
 
 		delete[] mat;
 
-		if (skybox) {
+		if (skybox)
+		{
 			//delete skybox;
 			gWorld->modelmanager.del(sbid);
 		}
@@ -241,17 +271,21 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	}
 	if (!ok) return;
 	
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		groups[i].draw(ofs, rot);
 	}
 
-	if (gWorld->drawdoodads) {
-		for (int i=0; i<nGroups; i++) {
+	if (gWorld->drawdoodads)
+	{
+		for (int i=0; i<nGroups; i++)
+		{
 			groups[i].drawDoodads(doodadset, ofs, rot);
 		}
 	}
 
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		groups[i].drawLiquid();
 	}
 
@@ -261,7 +295,8 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_TEXTURE_2D);
 	glBegin(GL_TRIANGLES);
-	for (int i=0; i<nLights; i++) {
+	for (int i=0; i<nLights; i++)
+	{
 		glColor4fv(lights[i].fcolor);
 		glVertex3fv(lights[i].pos);
 		glVertex3fv(lights[i].pos + Vec3D(-0.5f,1,0));
@@ -278,7 +313,8 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	// draw fog positions..?
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	for (size_t i=0; i<fogs.size(); i++) {
+	for (size_t i=0; i<fogs.size(); i++)
+	{
 		WMOFog &fog = fogs[i];
 		glColor4f(1,1,1,1);
 		glBegin(GL_LINE_LOOP);
@@ -297,7 +333,8 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	// draw group boundingboxes
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		WMOGroup &g = groups[i];
 		float fc[2] = {1,0};
 		glColor4f(fc[i%2],fc[(i/2)%2],fc[(i/3)%2],1);
@@ -317,7 +354,8 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	}
 	// draw portal relations
 	glBegin(GL_LINES);
-	for (size_t i=0; i<prs.size(); i++) {
+	for (size_t i=0; i<prs.size(); i++)
+	{
 		WMOPR &pr = prs[i];
 		WMOPV &pv = pvs[pr.portal];
 		if (pr.dir>0) glColor4f(1,0,0,1);
@@ -330,7 +368,8 @@ void WMO::draw(int doodadset, const Vec3D &ofs, const float rot)
 	glEnd();
 	glColor4f(1,1,1,1);
 	// draw portals
-	for (int i=0; i<nP; i++) {
+	for (int i=0; i<nP; i++)
+	{
 		glBegin(GL_LINE_STRIP);
 		glVertex3fv(pvs[i].d);
 		glVertex3fv(pvs[i].c);
@@ -352,17 +391,21 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	}
 	if (!ok) return;
 	
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		groups[i].draw(ofs, rot);
 	}
 
-	if (gWorld->drawdoodads) {
-		for (int i=0; i<nGroups; i++) {
+	if (gWorld->drawdoodads)
+	{
+		for (int i=0; i<nGroups; i++)
+		{
 			groups[i].drawDoodadsSelect(doodadset, ofs, rot);
 		}
 	}
 
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		groups[i].drawLiquid();
 	}
 
@@ -372,7 +415,8 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_TEXTURE_2D);
 	glBegin(GL_TRIANGLES);
-	for (int i=0; i<nLights; i++) {
+	for (int i=0; i<nLights; i++)
+	{
 		glColor4fv(lights[i].fcolor);
 		glVertex3fv(lights[i].pos);
 		glVertex3fv(lights[i].pos + Vec3D(-0.5f,1,0));
@@ -389,7 +433,8 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	// draw fog positions..?
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	for (size_t i=0; i<fogs.size(); i++) {
+	for (size_t i=0; i<fogs.size(); i++)
+	{
 		WMOFog &fog = fogs[i];
 		glColor4f(1,1,1,1);
 		glBegin(GL_LINE_LOOP);
@@ -408,7 +453,8 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	// draw group boundingboxes
 	glDisable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	for (int i=0; i<nGroups; i++) {
+	for (int i=0; i<nGroups; i++)
+	{
 		WMOGroup &g = groups[i];
 		float fc[2] = {1,0};
 		glColor4f(fc[i%2],fc[(i/2)%2],fc[(i/3)%2],1);
@@ -428,7 +474,8 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	}
 	// draw portal relations
 	glBegin(GL_LINES);
-	for (size_t i=0; i<prs.size(); i++) {
+	for (size_t i=0; i<prs.size(); i++)
+	{
 		WMOPR &pr = prs[i];
 		WMOPV &pv = pvs[pr.portal];
 		if (pr.dir>0) glColor4f(1,0,0,1);
@@ -441,7 +488,8 @@ void WMO::drawSelect(int doodadset, const Vec3D &ofs, const float rot)
 	glEnd();
 	glColor4f(1,1,1,1);
 	// draw portals
-	for (int i=0; i<nP; i++) {
+	for (int i=0; i<nP; i++)
+	{
 		glBegin(GL_LINE_STRIP);
 		glVertex3fv(pvs[i].d);
 		glVertex3fv(pvs[i].c);
@@ -462,7 +510,8 @@ void WMO::drawSkybox()
 		return;
 	}
 
-	if (skybox&&((unsigned int)skybox!=0xbaadf00d)) {
+	if (skybox&&((unsigned int)skybox!=0xbaadf00d))
+	{
 		// TODO: only draw sky if we are "inside" the WMO... ?
 
 		// We need to clear the depth buffer, because the skybox model can (will?)
@@ -492,7 +541,8 @@ void WMO::drawPortals()
 {
 	// not used ;)
 	glBegin(GL_QUADS);
-	for (int i=0; i<nP; i++) {
+	for (int i=0; i<nP; i++)
+	{
 		glVertex3fv(pvs[i].d);
 		glVertex3fv(pvs[i].c);
 		glVertex3fv(pvs[i].b);
@@ -590,7 +640,8 @@ void WMOGroup::init(WMO *wmo, MPQFile &f, int num, char *names)
 	lq = 0;
 }
 
-struct WMOBatch {
+struct WMOBatch
+{
 	signed char bytes[12];
 	unsigned int indexStart;
 	unsigned short indexCount, vertexStart, vertexEnd;
@@ -608,7 +659,8 @@ void setGLColor(unsigned int col)
     glColor4ub(r,g,b,1);
 }
 
-struct WMOGroupHeader {
+struct WMOGroupHeader
+{
     int nameStart, nameStart2, flags;
 	float box1[3], box2[3];
 	short portalStart, portalCount;
@@ -668,7 +720,8 @@ void WMOGroup::initDisplayList()
 	unsigned int *cv;
 	hascv = false;
 
-	while (!gf.isEof()) {
+	while (!gf.isEof())
+	{
 		gf.read(fourcc,4);
 		gf.read(&size, 4);
 
@@ -679,23 +732,27 @@ void WMOGroup::initDisplayList()
 
 		// why copy stuff when I can just map it from memory ^_^
 		
-		if (!strcmp(fourcc,"MOPY")) {
+		if (!strcmp(fourcc,"MOPY"))
+		{
 			// materials per triangle
 			nTriangles = (int)size / 2;
 			materials = (unsigned short*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MOVI")) {
+		else if (!strcmp(fourcc,"MOVI"))
+		{
 			// indices
 			indices =  (unsigned short*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MOVT")) {
+		else if (!strcmp(fourcc,"MOVT"))
+		{
 			nVertices = (int)size / 12;
 			// let's hope it's padded to 12 bytes, not 16...
 			vertices =  (Vec3D*)gf.getPointer();
 			vmin = Vec3D( 9999999.0f, 9999999.0f, 9999999.0f);
 			vmax = Vec3D(-9999999.0f,-9999999.0f,-9999999.0f);
 			rad = 0;
-			for (int i=0; i<nVertices; i++) {
+			for (int i=0; i<nVertices; i++)
+			{
 				Vec3D v(vertices[i].x, vertices[i].z, -vertices[i].y);
 				if (v.x < vmin.x) vmin.x = v.x;
 				if (v.y < vmin.y) vmin.y = v.y;
@@ -707,22 +764,27 @@ void WMOGroup::initDisplayList()
 			center = (vmax + vmin) * 0.5f;
 			rad = (vmax-center).length();
 		}
-		else if (!strcmp(fourcc,"MONR")) {
+		else if (!strcmp(fourcc,"MONR"))
+		{
 			normals =  (Vec3D*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MOTV")) {
+		else if (!strcmp(fourcc,"MOTV"))
+		{
 			texcoords =  (Vec2D*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MOLR")) {
+		else if (!strcmp(fourcc,"MOLR"))
+		{
 			nLR = (int)size / 2;
 			useLights =  (short*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MODR")) {
+		else if (!strcmp(fourcc,"MODR"))
+		{
 			nDoodads = (int)size / 2;
 			ddr = new short[nDoodads];
 			gf.read(ddr,size);
 		}
-		else if (!strcmp(fourcc,"MOBA")) {
+		else if (!strcmp(fourcc,"MOBA"))
+		{
 			nBatches = (int)size / 24;
 			batches = (WMOBatch*)gf.getPointer();
 			
@@ -731,10 +793,12 @@ void WMOGroup::initDisplayList()
 			gLog("\n[World of Warcraft Studio - Editor] - WMO group #%d - %s\n[World of Warcraft Studio - Editor] - Vertices: %d\n[World of Warcraft Studio - Editor] - Triangles: %d\n[World of Warcraft Studio - Editor] - Indices: %d\n[World of Warcraft Studio - Editor] - Batches: %d\n",
 				this->num, this->name.c_str(), nVertices, nTriangles, nTriangles*3, nBatches);
 			WMOBatch *ba = batches;
-			for (int i=0; i<nBatches; i++) {
+			for (int i=0; i<nBatches; i++)
+			{
 				gLog("[World of Warcraft Studio - Editor] - Batch %d:\t", i);
 				
-				for (int j=0; j<12; j++) {
+				for (int j=0; j<12; j++)
+				{
 					if ((j%4)==0 && j!=0) gLog("| ");
 					gLog("[World of Warcraft Studio - Editor] - %d\t", ba[i].bytes[j]);
 				}
@@ -748,12 +812,14 @@ void WMOGroup::initDisplayList()
 			*/
 			
 		}
-		else if (!strcmp(fourcc,"MOCV")) {
+		else if (!strcmp(fourcc,"MOCV"))
+		{
 			//gLog("[World of Warcraft Studio - Editor] - CV: %d\n", size);
 			hascv = true;
 			cv = (unsigned int*)gf.getPointer();
 		}
-		else if (!strcmp(fourcc,"MLIQ")) {
+		else if (!strcmp(fourcc,"MLIQ"))
+		{
 			// liquids
 			WMOLiquidHeader hlq;
 			gf.read(&hlq, 0x1E);
@@ -792,7 +858,8 @@ void WMOGroup::initDisplayList()
 
 	// assume that texturing is on, for unit 1
 
-	for (int b=0; b<nBatches; b++) {
+	for (int b=0; b<nBatches; b++)
+	{
 		WMOBatch *batch = &batches[b];
 		WMOMaterial *mat = &wmo->mat[batch->texture];
 
@@ -802,7 +869,8 @@ void WMOGroup::initDisplayList()
 
 		bool atest = (mat->transparent) != 0;
 
-		if (atest) {
+		if (atest)
+		{
 			glEnable(GL_ALPHA_TEST);
 			float aval = 0;
             if (mat->flags & 0x80) aval = 0.3f;
@@ -810,8 +878,10 @@ void WMOGroup::initDisplayList()
 			glAlphaFunc(GL_GREATER, aval);
 		}
 
-		if (mat->flags & 0x04) glDisable(GL_CULL_FACE);
-		else glEnable(GL_CULL_FACE);
+		if (mat->flags & 0x04)
+			glDisable(GL_CULL_FACE);
+		else
+			glEnable(GL_CULL_FACE);
 
 		/*
 		float fr,fg,fb;
@@ -822,7 +892,8 @@ void WMOGroup::initDisplayList()
 		*/
 
 		bool overbright = ((mat->flags & 0x10) && !hascv);
-		if (overbright) {
+		if (overbright)
+		{
 			// TODO: use emissive color from the WMO Material instead of 1,1,1,1
 			GLfloat em[4] = {1,1,1,1};
 			glMaterialfv(GL_FRONT, GL_EMISSION, em);
@@ -830,9 +901,11 @@ void WMOGroup::initDisplayList()
 		
 		// render
 		glBegin(GL_TRIANGLES);
-		for (int t=0, i=batch->indexStart; t<batch->indexCount; t++,i++) {
+		for (int t=0, i=batch->indexStart; t<batch->indexCount; t++,i++)
+		{
 			int a = indices[i];
-			if (indoor && hascv) {
+			if (indoor && hascv)
+			{
 	            setGLColor(cv[a]);
 			}
 			glNormal3f(normals[a].x, normals[a].z, -normals[a].y);
@@ -841,12 +914,14 @@ void WMOGroup::initDisplayList()
 		}
 		glEnd();
 
-		if (overbright) {
+		if (overbright)
+		{
 			GLfloat em[4] = {0,0,0,1};
 			glMaterialfv(GL_FRONT, GL_EMISSION, em);
 		}
 
-		if (atest) {
+		if (atest)
+		{
 			glDisable(GL_ALPHA_TEST);
 		}
 		glPopName();
@@ -915,21 +990,25 @@ void WMOGroup::initLighting(int nLR, short *useLights)
 		return;
 	dl_light = 0;
 	// "real" lighting?
-	if ((flags&0x2000) && hascv) {
+	if ((flags&0x2000) && hascv)
+	{
 
 		Vec3D dirmin(1,1,1);
 		float lenmin;
 		int lmin;
 
-		for (int i=0; i<nDoodads; i++) {
+		for (int i=0; i<nDoodads; i++)
+		{
 			lenmin = 999999.0f*999999.0f;
 			lmin = 0;
 			ModelInstance &mi = wmo->modelis[ddr[i]];
-			for (int j=0; j<wmo->nLights; j++) {
+			for (int j=0; j<wmo->nLights; j++)
+			{
 				WMOLight &l = wmo->lights[j];
 				Vec3D dir = l.pos - mi.pos;
 				float ll = dir.lengthSquared();
-				if (ll < lenmin) {
+				if (ll < lenmin)
+				{
 					lenmin = ll;
 					dirmin = dir;
 					lmin = j;
@@ -940,7 +1019,9 @@ void WMOGroup::initLighting(int nLR, short *useLights)
 		}
 
 		outdoorLights = false;
-	} else {
+	}
+	else
+	{
 		outdoorLights = true;
 	}
 }
@@ -958,12 +1039,16 @@ void WMOGroup::draw(const Vec3D& ofs, const float rot)
 	if (dist >= gWorld->culldistance) return;
 	visible = true;
 	
-	if (hascv) {
+	if (hascv)
+	{
 		glDisable(GL_LIGHTING);
 		gWorld->outdoorLights(false);
-	} else {
+	}
+	else
+	{
 		if (gWorld->lighting) {
-			if (gWorld->skies->hasSkies()) {
+			if (gWorld->skies->hasSkies())
+			{
 				gWorld->outdoorLights(true);
 			} else {
 				// set up some kind of default outdoor light... ?
@@ -973,21 +1058,23 @@ void WMOGroup::draw(const Vec3D& ofs, const float rot)
 				glLightfv(GL_LIGHT0, GL_DIFFUSE, Vec4D(0.8f,0.8f,0.8f,1));
 				glLightfv(GL_LIGHT0, GL_POSITION, Vec4D(1,1,1,0));
 			}
-		} else glDisable(GL_LIGHTING);
+		}
+		else
+			glDisable(GL_LIGHTING);
 	}
 	setupFog();
 
 	glCallList(dl);
 	//glCallList(dl+1);
 
-	if (hascv) {
-		if (gWorld->lighting) {
+	if (hascv)
+	{
+		if (gWorld->lighting)
+		{
 			glEnable(GL_LIGHTING);
 			//glCallList(dl_light);
 		}
 	}
-
-
 }
 
 void WMOGroup::drawDoodads(int doodadset, const Vec3D& ofs, const float rot)
@@ -1010,13 +1097,15 @@ void WMOGroup::drawDoodads(int doodadset, const Vec3D& ofs, const float rot)
 
 	// draw doodads
 	glColor4f(1,1,1,1);
-	for (int i=0; i<nDoodads; i++) {
+	for (int i=0; i<nDoodads; i++)
+	{
 		short dd = ddr[i];
 		if ((dd >= wmo->doodadsets[doodadset].start) && (dd < (wmo->doodadsets[doodadset].start+wmo->doodadsets[doodadset].size))) {
 
 			ModelInstance &mi = wmo->modelis[dd];
 
-			if (!outdoorLights) {
+			if (!outdoorLights)
+			{
 				WMOLight::setupOnce(GL_LIGHT2, mi.ldir, mi.lcol);
 			}
 			setupFog();
@@ -1027,15 +1116,16 @@ void WMOGroup::drawDoodads(int doodadset, const Vec3D& ofs, const float rot)
 	glDisable(GL_LIGHT2);
 
 	glColor4f(1,1,1,1);
-
 }
 
 void WMOGroup::drawDoodadsSelect(int doodadset, const Vec3D& ofs, const float rot)
 {
 	if(!ok)
 		return;
-	if (!visible) return;
-	if (nDoodads==0) return;
+	if (!visible)
+		return;
+	if (nDoodads==0)
+		return;
 
 	gWorld->outdoorLights(outdoorLights);
 	setupFog();
@@ -1050,13 +1140,15 @@ void WMOGroup::drawDoodadsSelect(int doodadset, const Vec3D& ofs, const float ro
 
 	// draw doodads
 	glColor4f(1,1,1,1);
-	for (int i=0; i<nDoodads; i++) {
+	for (int i=0; i<nDoodads; i++)
+	{
 		short dd = ddr[i];
 		if ((dd >= wmo->doodadsets[doodadset].start) && (dd < (wmo->doodadsets[doodadset].start+wmo->doodadsets[doodadset].size))) {
 
 			ModelInstance &mi = wmo->modelis[dd];
 
-			if (!outdoorLights) {
+			if (!outdoorLights)
+			{
 				WMOLight::setupOnce(GL_LIGHT2, mi.ldir, mi.lcol);
 			}
 
@@ -1073,15 +1165,20 @@ void WMOGroup::drawLiquid()
 {
 	if(!ok)
 		return;
-	if (!visible) return;
+	if (!visible)
+		return;
 
 	// draw liquid
 	// TODO: culling for liquid boundingbox or something
-	if (lq) {
+	if (lq)
+	{
 		setupFog();
-		if (outdoorLights) {
+		if (outdoorLights)
+		{
 			gWorld->outdoorLights(true);
-		} else {
+		}
+		else
+		{
 			// TODO: setup some kind of indoor lighting... ?
 			gWorld->outdoorLights(false);
 			glEnable(GL_LIGHT2);
@@ -1102,7 +1199,8 @@ void WMOGroup::setupFog()
 {
 	if(!ok)
 		return;
-	if (outdoorLights || fog==-1) {
+	if (outdoorLights || fog==-1)
+	{
 		gWorld->setupFog();
 	} else {
 		wmo->fogs[fog].setup();
@@ -1111,12 +1209,15 @@ void WMOGroup::setupFog()
 
 WMOGroup::~WMOGroup()
 {
-	if (dl) glDeleteLists(dl, 1);
-	if (dl_light) glDeleteLists(dl_light, 1);
-	if (nDoodads) delete[] ddr;
-	if (lq) delete lq;
+	if (dl)
+		glDeleteLists(dl, 1);
+	if (dl_light)
+		glDeleteLists(dl_light, 1);
+	if (nDoodads)
+		delete[] ddr;
+	if (lq)
+		delete lq;
 }
-
 
 void WMOFog::init(MPQFile &f)
 {
@@ -1133,13 +1234,16 @@ void WMOFog::init(MPQFile &f)
 
 void WMOFog::setup()
 {
-	if (gWorld->drawfog) {
+	if (gWorld->drawfog)
+	{
 		glFogfv(GL_FOG_COLOR, color);
 		glFogf(GL_FOG_START, fogstart);
 		glFogf(GL_FOG_END, fogend);
 
 		glEnable(GL_FOG);
-	} else {
+	}
+	else
+	{
 		glDisable(GL_FOG);
 	}
 }
@@ -1147,7 +1251,8 @@ void WMOFog::setup()
 int WMOManager::add(std::string name)
 {
 	int id;
-	if (names.find(name) != names.end()) {
+	if (names.find(name) != names.end())
+	{
 		id = names[name];
 		items[id]->addref();
 		//gLog("[World of Warcraft Studio - Editor] - Loading WMO %s [already loaded]\n",name.c_str());
@@ -1167,7 +1272,6 @@ void WMOManager::reload()
 	for (std::map<std::string, int>::iterator it = names.begin(); it != names.end(); ++it)
 		((WMO*)items[(*it).second])->reload((*it).first);
 }
-
 
 WMOInstance::WMOInstance(WMO *wmo, MPQFile &f) : wmo (wmo)
 {
@@ -1189,7 +1293,6 @@ WMOInstance::WMOInstance(WMO *wmo, MPQFile &f) : wmo (wmo)
 
 	//gLog("[World of Warcraft Studio - Editor] - WMO instance: %s (%d, %d)\n", wmo->name.c_str(), d2, d3);
 }
-
 
 WMOInstance::WMOInstance(WMO *wmo, MODF *d) : wmo (wmo)
 {

@@ -14,13 +14,11 @@
 
 const float detail_size = 8.0f;
 
-class World {
-
+class World
+{
 	MapTile *maptilecache[MAPTILECACHESIZE];
 	MapTile *current[5][5];
 	int ex,ez;
-
-	
 
 public:
 	float LowerTerrain;

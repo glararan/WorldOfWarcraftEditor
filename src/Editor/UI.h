@@ -134,7 +134,6 @@ private:
 	void (*clickFunc)(frame *,int);
 	int		id;
 
-	
 	bool	clicked;
 	textUI	*text;
 public:
@@ -235,7 +234,7 @@ public:
 		if(num>0)
 			ScrollKnob->y=14.0f+(height-48.0f)*value/num;
 	};
-	void	setNum(int i)
+	void setNum(int i)
 	{
 		num=i;
 		if(value>=num)

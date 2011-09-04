@@ -65,7 +65,8 @@ public:
 
 // Convert opacity values stored as shorts to floating point
 // I wonder why Blizzard decided to save 2 bytes by doing this
-class ShortToFloat {
+class ShortToFloat
+{
 public:
 	static const float conv(const short t)
 	{
@@ -99,25 +100,32 @@ public:
 
 	T getValue(int anim, int time)
 	{
-		if (type != INTERPOLATION_NONE) {
+		if (type != INTERPOLATION_NONE)
+		{
 			AnimRange range;
 
 			// obtain a time value and a data range
-			if (seq!=-1) {
+			if (seq!=-1)
+			{
 				if (globals[seq]==0) time = 0;
 				else time = globalTime % globals[seq];
 				range.first = 0;
 				range.second = data.size()-1;
-			} else {
+			}
+			else
+			{
 				range = ranges[anim];
 				time %= times[times.size()-1]; // I think this might not be necessary?
 			}
 
- 			if (range.first != range.second) {
+ 			if (range.first != range.second)
+			{
 				int t1, t2;
 				size_t pos=0;
-				for (size_t i=range.first; i<range.second; i++) {
-					if (time >= times[i] && time < times[i+1]) {
+				for (size_t i=range.first; i<range.second; i++)
+				{
+					if (time >= times[i] && time < times[i+1])
+					{
 						pos = i;
 						break;
 					}
@@ -127,14 +135,18 @@ public:
 				float r = (time-t1)/(float)(t2-t1);
 
 				if (type == INTERPOLATION_LINEAR) return interpolate<T>(r,data[pos],data[pos+1]);
-				else {
+				else
+				{
 					// INTERPOLATION_HERMITE is only used in cameras afaik?
 					return interpolateHermite<T>(r,data[pos],data[pos+1],in[pos],out[pos]);
 				}
-			} else {
+			} else
+			{
 				return data[range.first];
 			}
-		} else {
+		}
+		else
+		{
 			// default value
 			return data[0];
 		}
@@ -145,21 +157,25 @@ public:
 		globals = gs;
 		type = b.type;
 		seq = b.seq;
-		if (seq!=-1) {
+		if (seq!=-1)
+		{
             assert(gs);
 		}
 		used = type != INTERPOLATION_NONE;
 
 		// ranges
-		if (b.nRanges > 0) {
+		if (b.nRanges > 0)
+		{
 			uint32 *pranges = (uint32*)(f.getBuffer() + b.ofsRanges);
-			for (size_t i=0, k=0; i<b.nRanges; i++) {
+			for (size_t i=0, k=0; i<b.nRanges; i++)
+			{
 				AnimRange r;
 				r.first = pranges[k++];
 				r.second = pranges[k++];
 				ranges.push_back(r);
 			}
-		} else if (type!=0 && seq==-1) {
+		} else if (type!=0 && seq==-1)
+		{
 			AnimRange r;
 			r.first = 0;
 			r.second = b.nKeys - 1;
@@ -173,13 +189,15 @@ public:
 
 		// keyframes
 		D *keys = (D*)(f.getBuffer() + b.ofsKeys);
-		switch (type) {
+		switch (type)
+		{
 			case INTERPOLATION_NONE:
 			case INTERPOLATION_LINEAR:
 				for (size_t i=0; i<b.nKeys; i++) data.push_back(Conv::conv(keys[i]));
 				break;
 			case INTERPOLATION_HERMITE:
-				for (size_t i=0; i<b.nKeys; i++) {
+				for (size_t i=0; i<b.nKeys; i++)
+				{
 					data.push_back(Conv::conv(keys[i*3]));
 					in.push_back(Conv::conv(keys[i*3+1]));
 					out.push_back(Conv::conv(keys[i*3+2]));
@@ -190,15 +208,18 @@ public:
 
 	void fix(T fixfunc(const T))
 	{
-		switch (type) {
+		switch (type)
+		{
 			case INTERPOLATION_NONE:
 			case INTERPOLATION_LINEAR:
-				for (size_t i=0; i<data.size(); i++) {
+				for (size_t i=0; i<data.size(); i++)
+				{
                     data[i] = fixfunc(data[i]);
 				}
 				break;
 			case INTERPOLATION_HERMITE:
-				for (size_t i=0; i<data.size(); i++) {
+				for (size_t i=0; i<data.size(); i++)
+				{
                     data[i] = fixfunc(data[i]);
                     in[i] = fixfunc(in[i]);
                     out[i] = fixfunc(out[i]);

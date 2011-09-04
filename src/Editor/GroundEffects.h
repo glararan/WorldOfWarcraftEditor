@@ -1,10 +1,12 @@
-struct GroundEffectDoodad{
+struct GroundEffectDoodad
+{
 	unsigned int	id;
 	unsigned int	doodadID;
 	const char		*Model;
 };
 
-struct GroundEffectTexture{
+struct GroundEffectTexture
+{
 	unsigned int	id;
 	unsigned int	seed;
 	unsigned int	unknown1;

@@ -45,7 +45,8 @@ using std::string;
 
 //This holds all of the information related to any
 //freetype font that we want to create.  
-struct font_data {
+struct font_data
+{
 	float h;			///< Holds the height of the font.
 	GLuint * textures;	///< Holds the texture id's 
 	GLuint list_base;	///< Holds the first display list id

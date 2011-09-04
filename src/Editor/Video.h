@@ -50,7 +50,8 @@ void LoadGLSettings();
 
 ////////// TEXTURE MANAGER
 
-class Texture : public ManagedItem {
+class Texture : public ManagedItem
+{
 public:
 	int w,h;
 	GLuint id;
@@ -58,7 +59,8 @@ public:
 	Texture(std::string name):ManagedItem(name), w(0), h(0) {}
 };
 
-class TextureManager : public Manager<GLuint> {
+class TextureManager : public Manager<GLuint>
+{
 	
 	bool LoadBLP(GLuint id, Texture *tex);
 

@@ -1,5 +1,5 @@
-#ifndef TEST_H
-#define TEST_H
+#ifndef MAPVIEWER_H
+#define MAPVIEWER_H
 
 #include "Appstate.h"
 #include "Video.h"
@@ -7,7 +7,7 @@
 #include "World.h"
 #include "UI.h"
 
-class Test :public AppState
+class MapViewer :public AppState
 {
 	GLuint tex;
 
@@ -26,8 +26,8 @@ class Test :public AppState
 
 public:
 
-	Test(World *w, float ah0 = -90.0f, float av0 = -30.0f);
-	~Test();
+	MapViewer(World *w, float ah0 = -90.0f, float av0 = -30.0f);
+	~MapViewer();
 
 	void tick(float t, float dt);
 	void display(float t, float dt);

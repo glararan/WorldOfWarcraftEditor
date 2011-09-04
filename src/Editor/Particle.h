@@ -9,7 +9,8 @@ class RibbonEmitter;
 
 #include <list>
 
-struct Particle {
+struct Particle
+{
 	Vec3D pos, speed, down, origin;
 	//Vec3D tpos;
 	float size, life, maxlife;
@@ -19,7 +20,8 @@ struct Particle {
 
 typedef std::list<Particle> ParticleList;
 
-class ParticleEmitter {
+class ParticleEmitter
+{
 protected:
 	ParticleSystem *sys;
 public:
@@ -27,23 +29,27 @@ public:
 	virtual Particle newParticle(int anim, int time) = 0;
 };
 
-class PlaneParticleEmitter: public ParticleEmitter {
+class PlaneParticleEmitter: public ParticleEmitter
+{
 public:
 	PlaneParticleEmitter(ParticleSystem *sys): ParticleEmitter(sys) {}
 	Particle newParticle(int anim, int time);
 };
 
-class SphereParticleEmitter: public ParticleEmitter {
+class SphereParticleEmitter: public ParticleEmitter
+{
 public:
 	SphereParticleEmitter(ParticleSystem *sys): ParticleEmitter(sys) {}
 	Particle newParticle(int anim, int time);
 };
 
-struct TexCoordSet {
+struct TexCoordSet
+{
     Vec2D tc[4];
 };
 
-class ParticleSystem {
+class ParticleSystem
+{
 	Animated<float> speed, variation, spread, lat, gravity, lifespan, rate, areal, areaw, grav2;
 	Vec4D colors[3];
 	float sizes[3];
@@ -83,13 +89,14 @@ public:
 	friend class SphereParticleEmitter;
 };
 
-
-struct RibbonSegment {
+struct RibbonSegment
+{
 	Vec3D pos, up, back;
 	float len,len0;
 };
 
-class RibbonEmitter {
+class RibbonEmitter
+{
 	Animated<Vec3D> color;
 	AnimatedShort opacity;
 	Animated<float> above, below;

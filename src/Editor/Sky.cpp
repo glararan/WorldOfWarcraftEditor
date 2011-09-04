@@ -41,21 +41,27 @@ void Sky::init(MPQFile &f)
 	int ll[18];
 	int buf[64];
 
-	for (int k=0; k<4; k++) {
-		if (k==0 || k==2) {
+	for (int k=0; k<4; k++)
+	{
+		if (k==0 || k==2)
+		{
 			f.seek(addr + k * 0x15f0);
 			f.read(ll, 18*4);
 
-			for (int i=0; i<18; i++) {
+			for (int i=0; i<18; i++)
+			{
 				f.read(buf,64*4);
 				int *p=buf;
 
 				int idx = (k/2)*18 + i;
 
-				if (ll[i]==0) mmin[idx] = -1;
-				else {
+				if (ll[i]==0)
+					mmin[idx] = -1;
+				else
+				{
 					mmin[idx] = *p;
-					for (int l=0; l<ll[i]; l++) {
+					for (int l=0; l<ll[i]; l++)
+					{
 						SkyColor sc;
 						sc.init(p[0],p[1]);
 						p+=2;
@@ -71,14 +77,16 @@ void Sky::init(MPQFile &f)
 
 Vec3D Sky::colorFor(int r, int t) const
 {
-	if (mmin[r]<0) {
+	if (mmin[r]<0)
+	{
 		return Vec3D(0,0,0);
 	}
 	Vec3D c1,c2;
 	int t1,t2;
 	size_t last = colorRows[r].size()-1;
 
-	if (t<mmin[r]) {
+	if (t<mmin[r])
+	{
 		// reverse interpolate
 		c1 = colorRows[r][last].color;
 		c2 = colorRows[r][0].color;
@@ -86,16 +94,22 @@ Vec3D Sky::colorFor(int r, int t) const
 		t2 = colorRows[r][0].time + 2880;
 		t += 2880;
 	}
-	else {
-		for (size_t i=last; i>=0; i--) {
-			if (colorRows[r][i].time <= t) {
+	else
+	{
+		for (size_t i=last; i>=0; i--)
+		{
+			if (colorRows[r][i].time <= t)
+			{
 				c1 = colorRows[r][i].color;
 				t1 = colorRows[r][i].time;
 
-				if (i==last) {
+				if (i==last)
+				{
 					c2 = colorRows[r][0].color;
 					t2 = colorRows[r][0].time + 2880;
-				} else {
+				}
+				else
+				{
 					c2 = colorRows[r][i+1].color;
 					t2 = colorRows[r][i+1].time;
 				}
@@ -123,14 +137,17 @@ void Skies::draw()
 	// TODO: do this as a vertex array and use glColorPointer? :|
 	Vec3D basepos1[cnum], basepos2[cnum];
 	glBegin(GL_QUADS);
-	for (int h=0; h<hseg; h++) {
-		for (int i=0; i<cnum; i++) {
+	for (int h=0; h<hseg; h++)
+	{
+		for (int i=0; i<cnum; i++)
+		{
 			basepos1[i] = basepos2[i] = Vec3D(cosf(angles[i]*PI/180.0f)*rad,sinf(angles[i]*PI/180.0f)*rad,0);
 			rotate(0,0,&basepos1[i].x, &basepos1[i].z,PI*2.0f/hseg*h);
 			rotate(0,0,&basepos2[i].x, &basepos2[i].z,PI*2.0f/hseg*(h+1));
 		}
 
-		for (int v=0; v<cnum-1; v++) {
+		for (int v=0; v<cnum-1; v++)
+		{
 			glColor3fv(colorSet[skycolors[v]]);
 			glVertex3fv(basepos2[v]);
 			glVertex3fv(basepos1[v]);
@@ -166,14 +183,16 @@ bool Skies::loadFrom(const char *fname, bool forced)
 	numSkies = ns;
 	if (forced && numSkies>1) numSkies = 1;
 
-	for (int i=0; i<numSkies; i++) {
+	for (int i=0; i<numSkies; i++)
+	{
 		Sky s(f);
 		skies.push_back(s);
 	}
 	// sanity seek
 	f.seek(8 + ns*64);
 
-	for (int i=0; i<numSkies; i++) {
+	for (int i=0; i<numSkies; i++)
+	{
 		skies[i].init(f);
 	}
 
@@ -198,39 +217,47 @@ void Skies::findSkyWeights(Vec3D pos)
 	int maxsky = (int)skies.size()-1;
 	skies[maxsky].weight = 1.0f;
 	cs = maxsky;
-	for (int i=maxsky-1; i>=0; i--) {
+	for (int i=maxsky-1; i>=0; i--)
+	{
 		Sky &s = skies[i];
         float dist = (pos - s.pos).length();
-		if (dist < s.r1) {
+		if (dist < s.r1)
+		{
 			// we're in a sky, zero out the rest
 			s.weight = 1.0f;
 			cs = i;
 			for (size_t j=i+1; j<skies.size(); j++) skies[j].weight = 0.0f;
 		}
-		else if (dist < s.r2) {
+		else if (dist < s.r2)
+		{
 			// we're in an outer area, scale down the other weights
 			float r = (dist - s.r1)/(s.r2 - s.r1);
 			s.weight = 1.0f - r;
 			for (size_t j=i+1; j<skies.size(); j++) skies[j].weight *= r;
 		}
-		else s.weight = 0.0f;
+		else
+			s.weight = 0.0f;
 	}
 	// weights are all normalized at this point :D
 }
 
 void Skies::initSky(Vec3D pos, int t)
 {
-	if (numSkies==0) return;
+	if (numSkies==0)
+		return;
 
 	findSkyWeights(pos);
 
-	for (int i=0; i<18; i++) colorSet[i] = Vec3D(0,0,0);
+	for (int i=0; i<18; i++)
+		colorSet[i] = Vec3D(0,0,0);
 
 	// interpolation
-	for (size_t j=0; j<skies.size(); j++) {
+	for (size_t j=0; j<skies.size(); j++)
+	{
 		if (skies[j].weight>0) {
 			// now calculate the color rows
-			for (int i=0; i<18; i++) {
+			for (int i=0; i<18; i++)
+			{
 				if((skies[j].colorFor(i,t).x>1.0f)||(skies[j].colorFor(i,t).y>1.0f)||(skies[j].colorFor(i,t).z>1.0f))
 				{
 					gLog("[World of Warcraft Studio - Editor] - Sky %d %d is out of bounds!\n",j,i);
@@ -246,11 +273,13 @@ void Skies::initSky(Vec3D pos, int t)
 void drawCircle(unsigned int *buf, int dim, float x, float y, float r, unsigned int col)
 {
     float circ = 2*r*PI;
-	for (int i=0; i<circ; i++) {
+	for (int i=0; i<circ; i++)
+	{
 		float phi = 2*PI*i/circ;
 		int px = (int)(x + r * cosf(phi));
 		int py = (int)(y + r * sinf(phi));
-		if (px>=0 && px<dim && py>=0 && py<dim) {
+		if (px>=0 && px<dim && py>=0 && py<dim)
+		{
             buf[py*dim+px] = col;
 		}
 	}
@@ -259,7 +288,8 @@ void drawCircle(unsigned int *buf, int dim, float x, float y, float r, unsigned 
 void Skies::debugDraw(unsigned int *buf, int dim)
 {
 	float worldSize = 64.0f*533.333333f;
-	for (size_t i=1; i<skies.size(); i++) {
+	for (size_t i=1; i<skies.size(); i++)
+	{
 		Sky &s = skies[i];
 		float cx = dim * s.pos.x / worldSize;
 		float cy = dim * s.pos.z / worldSize;
@@ -273,7 +303,8 @@ void Skies::debugDraw(unsigned int *buf, int dim)
 
 bool Skies::drawSky(const Vec3D &pos)
 {
-	if (numSkies==0) return false;
+	if (numSkies==0)
+		return false;
 
 	// drawing the sky: we'll undo the camera translation
 	glPushMatrix();
@@ -283,7 +314,8 @@ bool Skies::drawSky(const Vec3D &pos)
 
 	// if it's night, draw the stars
 	float ni = gWorld->outdoorLightStats.nightIntensity;
-	if (ni > 0) {
+	if (ni > 0)
+	{
 		const float sc = 0.1f;
 		glScalef(sc,sc,sc);
 		glEnable(GL_TEXTURE_2D);
@@ -298,8 +330,10 @@ bool Skies::drawSky(const Vec3D &pos)
 
 char *Skies::getSkyName()
 {
-	if (cs==-1) return "[no sky]";
-	else return skies[cs].name;
+	if (cs==-1)
+		return "[no sky]";
+	else
+		return skies[cs].name;
 }
 
 // TODO: figure out what dnc.db is _really_ used for
@@ -370,7 +404,8 @@ void OutdoorLightStats::init(MPQFile &f)
     time = (int)h * 60 * 2 + (int)m * 2;
 
 	// HACK: make day & night intensity exclusive; set day intensity to 1.0
-	if (dayIntensity > 0) {
+	if (dayIntensity > 0)
+	{
 		dayIntensity = 1.0f;
 		nightIntensity = 0.0f;
 	}
@@ -406,7 +441,8 @@ void OutdoorLightStats::setupLighting()
 
 	la[0] = la[1] = la[2] = 0.0f;
 	
-	if (dayIntensity > 0) {
+	if (dayIntensity > 0)
+	{
 		ld[0] = dayColor.x * dayIntensity;
 		ld[1] = dayColor.y * dayIntensity;
 		ld[2] = dayColor.z * dayIntensity;
@@ -418,9 +454,12 @@ void OutdoorLightStats::setupLighting()
 		glLightfv(GL_LIGHT0, GL_DIFFUSE, ld);
 		glLightfv(GL_LIGHT0, GL_POSITION,lp);
 		glEnable(GL_LIGHT0);
-	} else glDisable(GL_LIGHT0);
+	}
+	else
+		glDisable(GL_LIGHT0);
 
-	if (nightIntensity > 0) {
+	if (nightIntensity > 0)
+	{
 		ld[0] = nightColor.x * nightIntensity;
 		ld[1] = nightColor.y * nightIntensity;
 		ld[2] = nightColor.z * nightIntensity;
@@ -432,7 +471,9 @@ void OutdoorLightStats::setupLighting()
 		glLightfv(GL_LIGHT1, GL_DIFFUSE, ld);
 		glLightfv(GL_LIGHT1, GL_POSITION,lp);
 		glEnable(GL_LIGHT1);
-	} else glDisable(GL_LIGHT1);
+	}
+	else
+		glDisable(GL_LIGHT1);
 
 	// light 2 will be ambient -> max. 3 lights for outdoors...
 	la[0] = ambientColor.x * ambientIntensity;
@@ -471,7 +512,8 @@ OutdoorLighting::OutdoorLighting(char *fname)
 	f.read(&d, 4); // d is now the final offset
 	f.seek(8 + n * 8);
 
-	while (f.getPos() < d) {
+	while (f.getPos() < d)
+	{
 		OutdoorLightStats ols;
 		ols.init(f);
 

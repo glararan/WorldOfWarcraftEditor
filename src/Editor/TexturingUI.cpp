@@ -192,7 +192,6 @@ inline bool TextureInPalette(const char *TexName)
 	for(i=0;i<48;i++)
 		tilesetFiltering|=tilesetFilter[i];
 	
-
 	if(tilesetFiltering)
 	{
 		tilesetFiltering=false;
@@ -404,7 +403,6 @@ frame *CreateTilesetLoader()
 	}
 	windowTilesetLoader->hidden=true;
 
-
 	return windowTilesetLoader;
 }
 
@@ -459,7 +457,6 @@ frame *CreateTextureFilter()
 		windowTextureFilter->addChild(check);
 	}
 	//windowTextureFilter->hidden=true;
-
 
 	return windowTextureFilter;
 }
@@ -591,7 +588,8 @@ void setChunkWindow(MapChunk *chunk)
 	chunkLocation->setText(Temp);
 
 	std::string areaName;
-	try{
+	try
+	{
 		AreaDB::Record rec = gAreaDB.getByAreaID(chunk->areaID);
 		areaName = rec.getString(AreaDB::Name);
 	}

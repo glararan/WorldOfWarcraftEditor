@@ -6,7 +6,8 @@
 
 #include "Chameleon\Chameleon.h"
 
-class ConfigFile {
+class ConfigFile
+{
   std::map<std::string,Chameleon> content_;
 
 public:

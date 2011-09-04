@@ -14,7 +14,7 @@
 #include "Video.h"
 #include "Appstate.h"
 
-#include "Test.h"
+#include "MapViewer.h"
 #include "Menu.h"
 #include "Areadb.h"
 
@@ -251,43 +251,54 @@ int main(int argc, char *argv[])
 
 	bool usePatch = true;
 
-	for (int i=1; i<argc; i++) {
+	for (int i=1; i<argc; i++)
+	{
 		if (!strcmp(argv[i],"-f")) fullscreen = 1;
 		else if (!strcmp(argv[i],"-w")) fullscreen = 0;
-		else if (!strcmp(argv[i],"-1024") || !strcmp(argv[i],"-1024x768")) {
+		else if (!strcmp(argv[i],"-1024") || !strcmp(argv[i],"-1024x768"))
+		{
 			xres = 1024;
 			yres = 768;
 		}
-		else if (!strcmp(argv[i],"-1280") || !strcmp(argv[i],"-1280x1024")) {
+		else if (!strcmp(argv[i],"-1280") || !strcmp(argv[i],"-1280x1024"))
+		{
 			xres = 1280;
 			yres = 1024;
 		}
-		else if (!strcmp(argv[i],"-1280x960")) {
+		else if (!strcmp(argv[i],"-1280x960"))
+		{
 			xres = 1280;
 			yres = 960;
 		}
-		else if (!strcmp(argv[i],"-1400") || !strcmp(argv[i],"-1400x1050")) {
+		else if (!strcmp(argv[i],"-1400") || !strcmp(argv[i],"-1400x1050"))
+		{
 			xres = 1400;
 			yres = 1050;
 		}
-		else if (!strcmp(argv[i],"-1280x800")) {
+		else if (!strcmp(argv[i],"-1280x800"))
+		{
 			xres = 1280;
 			yres = 800;
 		}
-		else if (!strcmp(argv[i],"-1600") || !strcmp(argv[i],"-1600x1200")) {
+		else if (!strcmp(argv[i],"-1600") || !strcmp(argv[i],"-1600x1200"))
+		{
 			xres = 1600;
 			yres = 1200;
 		}
-		else if (!strcmp(argv[i],"-1920") || !strcmp(argv[i],"-1920x1200")) {
+		else if (!strcmp(argv[i],"-1920") || !strcmp(argv[i],"-1920x1200"))
+		{
 			xres = 1920;
 			yres = 1200;
 		}
-		else if (!strcmp(argv[i],"-2048") || !strcmp(argv[i],"-2048x1536")) {
+		else if (!strcmp(argv[i],"-2048") || !strcmp(argv[i],"-2048x1536"))
+		{
 			xres = 2048;
 			yres = 1536;
 		}
-		else if (!strcmp(argv[i],"-p")) usePatch = true;
-		else if (!strcmp(argv[i],"-np")) usePatch = false;
+		else if (!strcmp(argv[i],"-p"))
+			usePatch = true;
+		else if (!strcmp(argv[i],"-np"))
+			usePatch = false;
 	}
 
 	checkConfig();
@@ -548,7 +559,8 @@ int main(int argc, char *argv[])
 		frames++;
 		fcount++;
 		ft += dt;
-		if (ft >= 1000) {
+		if (ft >= 1000)
+		{
             float fps = (float)fcount / (float)ft * 1000.0f;
 			gFPS = fps;
 			char buf[32];
@@ -567,7 +579,8 @@ int main(int argc, char *argv[])
 	
 	video.close();
 
-	for (std::vector<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it) {
+	for (std::vector<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it)
+	{
         (*it)->close();
 	}
 	archives.clear();
@@ -594,10 +607,13 @@ int randint(int lower, int upper)
 
 void fixnamen(char *name, size_t len)
 {
-	for (size_t i=0; i<len; i++) {
-		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1])) {
+	for (size_t i=0; i<len; i++)
+	{
+		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1]))
+		{
 			name[i] |= 0x20;
-		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z') {
+		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z')
+		{
 			name[i] &= ~0x20;
 		}
 	}
@@ -605,10 +621,13 @@ void fixnamen(char *name, size_t len)
 
 void fixname(std::string &name)
 {
-	for (size_t i=0; i<name.length(); i++) {
-		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1])) {
+	for (size_t i=0; i<name.length(); i++)
+	{
+		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1]))
+		{
 			name[i] |= 0x20;
-		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z') {
+		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z')
+		{
 			name[i] &= ~0x20;
 		}
 	}

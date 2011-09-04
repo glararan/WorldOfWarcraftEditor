@@ -6,8 +6,8 @@
 
 int globalTime = 0;
 
-#define	MAX_CHECK	4096
-unsigned int	UniqueUsed[MAX_CHECK];
+#define	MAX_CHECK 4096
+unsigned int UniqueUsed[MAX_CHECK];
 int	Uniques;
 int HColor;
 
@@ -45,7 +45,8 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	MPQFile f(tempname);
 	ok = !f.isEof();
 
-	if (!ok) {
+	if (!ok)
+	{
 		gLog("[World of Warcraft Studio - Editor] - Error loading model [%s]\n", tempname);
 		return;
 	}
@@ -57,7 +58,8 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	if (false
 	|| name=="World\\Kalimdor\\Orgrimmar\\Passivedoodads\\Orgrimmarbonfire\\Orgrimmarsmokeemitter.Mdx"	
 	//|| name=="World\\Kalimdor\\Orgrimmar\\Passivedoodads\\Orgrimmarbonfire\\Orgrimmarbonfire01.Mdx"	
-	) {
+	)
+	{
         header.nParticleEmitters = 0;
 	}
 
@@ -80,7 +82,8 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	transparency = 0;
 	particleSystems = 0;
 	ribbons = 0;
-	if (header.nGlobalSequences) {
+	if (header.nGlobalSequences)
+	{
 		globalSequences = new int[header.nGlobalSequences];
 		memcpy(globalSequences, (f.getBuffer() + header.ofsGlobalSequences), header.nGlobalSequences * 4);
 	}
@@ -97,9 +100,12 @@ Model::~Model()
 	if (ok) {
 		//gLog("[World of Warcraft Studio - Editor] - Unloading model %s\n", name.c_str());
 
-		if (header.nTextures) {
-			for (size_t i=0; i<header.nTextures; i++) {
-				if (textures[i]!=0) {
+		if (header.nTextures)
+		{
+			for (size_t i=0; i<header.nTextures; i++)
+			{
+				if (textures[i]!=0)
+				{
 					//Texture *tex = (Texture*)video.textures.items[textures[i]];
 					video.textures.del(textures[i]);
 				}
@@ -109,7 +115,8 @@ Model::~Model()
 
 		delete[] globalSequences;
 
-		if (animated) {
+		if (animated)
+		{
 			// unload all sorts of crap
 			//delete[] vertices;
 			//delete[] normals;
@@ -117,7 +124,8 @@ Model::~Model()
 			delete[] anims;
 			delete[] origVertices;
 			if (animBones) delete[] bones;
-			if (!animGeometry) {
+			if (!animGeometry)
+			{
 				glDeleteBuffersARB(1, &nbuf);
 			}
 			glDeleteBuffersARB(1, &vbuf);
@@ -131,7 +139,9 @@ Model::~Model()
 			if (particleSystems) delete[] particleSystems;
 			if (ribbons) delete[] ribbons;
 
-		} else {
+		}
+		else
+		{
 			glDeleteLists(dlist, 1);
 		}
 		if(Reloaded)
@@ -155,12 +165,17 @@ bool Model::isAnimated(MPQFile &f)
 	ind = false;
 
 	ModelVertex *verts = (ModelVertex*)(f.getBuffer() + header.ofsVertices);
-	for (size_t i=0; i<header.nVertices && !animGeometry; i++) {
-		for (size_t b=0; b<4; b++) {
-			if (verts[i].weights[b]>0) {
+	for (size_t i=0; i<header.nVertices && !animGeometry; i++)
+	{
+		for (size_t b=0; b<4; b++)
+		{
+			if (verts[i].weights[b]>0)
+			{
 				ModelBoneDef &bb = bo[verts[i].bones[b]];
-				if (bb.translation.type || bb.rotation.type || bb.scaling.type || (bb.flags&8)) {
-					if (bb.flags&8) {
+				if (bb.translation.type || bb.rotation.type || bb.scaling.type || (bb.flags&8))
+				{
+					if (bb.flags&8)
+					{
 						// if we have billboarding, the model will need per-instance animation
 						ind = true;
 					}
@@ -171,11 +186,15 @@ bool Model::isAnimated(MPQFile &f)
 		}
 	}
 
-	if (animGeometry) animBones = true;
-	else {
-		for (size_t i=0; i<header.nBones; i++) {
+	if (animGeometry)
+		animBones = true;
+	else
+	{
+		for (size_t i=0; i<header.nBones; i++)
+		{
 			ModelBoneDef &bb = bo[i];
-			if (bb.translation.type || bb.rotation.type || bb.scaling.type) {
+			if (bb.translation.type || bb.rotation.type || bb.scaling.type)
+			{
 				animBones = true;
 				break;
 			}
@@ -192,10 +211,13 @@ bool Model::isAnimated(MPQFile &f)
 	if (animMisc) animBones = true;
 
 	// animated colors
-	if (header.nColors) {
+	if (header.nColors)
+	{
 		ModelColorDef *cols = (ModelColorDef*)(f.getBuffer() + header.ofsColors);
-		for (size_t i=0; i<header.nColors; i++) {
-			if (cols[i].color.type!=0 || cols[i].opacity.type!=0) {
+		for (size_t i=0; i<header.nColors; i++)
+		{
+			if (cols[i].color.type!=0 || cols[i].opacity.type!=0)
+			{
 				animMisc = true;
 				break;
 			}
@@ -203,10 +225,13 @@ bool Model::isAnimated(MPQFile &f)
 	}
 
 	// animated opacity
-	if (header.nTransparency && !animMisc) {
+	if (header.nTransparency && !animMisc)
+	{
 		ModelTransDef *trs = (ModelTransDef*)(f.getBuffer() + header.ofsTransparency);
-		for (size_t i=0; i<header.nTransparency; i++) {
-			if (trs[i].trans.type!=0) {
+		for (size_t i=0; i<header.nTransparency; i++)
+		{
+			if (trs[i].trans.type!=0)
+			{
 				animMisc = true;
 				break;
 			}
@@ -244,17 +269,20 @@ void Model::initCommon(MPQFile &f)
 	//Vec3D vmin = Vec3D( 9999999.0f, 9999999.0f, 9999999.0f);
 	//Vec3D vmax = Vec3D(-9999999.0f,-9999999.0f,-9999999.0f);
 	// vertices, normals
-	for (size_t i=0; i<header.nVertices; i++) {
+	for (size_t i=0; i<header.nVertices; i++)
+	{
 		origVertices[i].pos = fixCoordSystem(origVertices[i].pos);
 		origVertices[i].normal = fixCoordSystem(origVertices[i].normal);
 
-		if (!animGeometry) {
+		if (!animGeometry)
+		{
 			vertices[i] = origVertices[i].pos;
 			normals[i] = origVertices[i].normal.normalize();
 		}
 
 		float len = origVertices[i].pos.lengthSquared();
-		if (len > rad){ 
+		if (len > rad)
+		{ 
 			rad = len;
 		}
 		/*
@@ -271,17 +299,22 @@ void Model::initCommon(MPQFile &f)
 
 	// textures
 	ModelTextureDef *texdef = (ModelTextureDef*)(f.getBuffer() + header.ofsTextures);
-	if (header.nTextures) {
+	if (header.nTextures)
+	{
 		textures = new TextureID[header.nTextures];
-		for (size_t i=0; i<header.nTextures; i++) {
+		for (size_t i=0; i<header.nTextures; i++)
+		{
 			char texname[256];
-			if (texdef[i].type == 0) {
+			if (texdef[i].type == 0)
+			{
 				strncpy_s(texname, f.getBuffer() + texdef[i].nameOfs, texdef[i].nameLen);
 				texname[texdef[i].nameLen] = 0;
 				std::string path(texname);
 				fixname(path);
 				textures[i] = video.textures.add(texname);
-			} else {
+			}
+			else
+			{
 				// special texture - only on characters and such...
                 textures[i] = 0;
 			}
@@ -289,14 +322,16 @@ void Model::initCommon(MPQFile &f)
 	}
 
 	// init colors
-	if (header.nColors) {
+	if (header.nColors)
+	{
 		colors = new ModelColor[header.nColors];
 		ModelColorDef *colorDefs = (ModelColorDef*)(f.getBuffer() + header.ofsColors);
 		for (size_t i=0; i<header.nColors; i++) colors[i].init(f, colorDefs[i], globalSequences);
 	}
 	// init transparency
 	int16 *transLookup = (int16*)(f.getBuffer() + header.ofsTransparencyLookup);
-	if (header.nTransparency) {
+	if (header.nTransparency)
+	{
 		transparency = new ModelTransparency[header.nTransparency];
 		ModelTransDef *trDefs = (ModelTransDef*)(f.getBuffer() + header.ofsTransparency);
 		for (size_t i=0; i<header.nTransparency; i++) transparency[i].init(f, trDefs[i], globalSequences);
@@ -311,7 +346,8 @@ void Model::initCommon(MPQFile &f)
 	uint16 *triangles = (uint16*)(f.getBuffer() + view->ofsTris);
 	nIndices = view->nTris;
 	indices = new uint16[nIndices];
-	for (size_t i = 0; i<nIndices; i++) {
+	for (size_t i = 0; i<nIndices; i++)
+	{
         indices[i] = indexLookup[triangles[i]];
 	}
 
@@ -324,19 +360,23 @@ void Model::initCommon(MPQFile &f)
 	int16 *texunitlookup = (int16*)(f.getBuffer() + header.ofsTexUnitLookup);
 
 	/*
-	for (size_t i = 0; i<view->nSub; i++) {
+	for (size_t i = 0; i<view->nSub; i++)
+	{
 		ModelRenderPass pass;
 		pass.usetex2 = false;
 		pass.indexStart = ops[i].istart;
 		pass.indexCount = ops[i].icount;
 
 		// textures
-		for (size_t j = 0; j<view->nTex; j++) {
-			if (tex[j].op==i) {
+		for (size_t j = 0; j<view->nTex; j++)
+		{
+			if (tex[j].op==i)
+			{
 
 				TextureID texid = textures[texlookup[tex[j].textureid]];
 
-				if (tex[j].texunit==0) {
+				if (tex[j].texunit==0)
+				{
 					pass.texture = texid;
 					
 					// TODO: figure out these flags properly -_-
@@ -360,17 +400,24 @@ void Model::initCommon(MPQFile &f)
 					pass.p = ops[i].v.x;
 
 
-					if (animTextures) {
-						if (tex[j].flags & 16) {
+					if (animTextures)
+					{
+						if (tex[j].flags & 16)
+						{
 							pass.texanim = -1; // no texture animation
-						} else {
+						}
+						else
+						{
 							pass.texanim = texanimlookup[tex[j].texanimid];
 						}
-					} else {
+					}
+					else
+					{
 						pass.texanim = -1; // no texture animation
 					}
 				}
-				else if (tex[j].texunit==1) {
+				else if (tex[j].texunit==1)
+				{
 					pass.texture2 = texid;
 					//pass.usetex2 = true;
 				}
@@ -380,7 +427,8 @@ void Model::initCommon(MPQFile &f)
         passes.push_back(pass);
 	}
 	*/
-	for (size_t j = 0; j<view->nTex; j++) {
+	for (size_t j = 0; j<view->nTex; j++)
+	{
 		ModelRenderPass pass;
 		pass.usetex2 = false;
 		pass.texture2 = 0;
@@ -414,13 +462,19 @@ void Model::initCommon(MPQFile &f)
 
 		pass.p = ops[geoset].v.x;
 
-		if (animTextures) {
-			if (tex[j].flags & 16) {
+		if (animTextures)
+		{
+			if (tex[j].flags & 16)
+			{
 				pass.texanim = -1; // no texture animation
-			} else {
+			}
+			else
+			{
 				pass.texanim = texanimlookup[tex[j].texanimid];
 			}
-		} else {
+		}
+		else
+		{
 			pass.texanim = -1; // no texture animation
 		}
 
@@ -460,7 +514,6 @@ void Model::initStatic(MPQFile &f)
 
 	glEndList();
 
-
 	rhlist = glGenLists(1);
 	glNewList(rhlist, GL_COMPILE);
 
@@ -498,16 +551,19 @@ void Model::initAnimated(MPQFile &f)
 
 	initCommon(f);
 
-	if (animBones) {
+	if (animBones)
+	{
 		// init bones...
 		bones = new Bone[header.nBones];
 		ModelBoneDef *mb = (ModelBoneDef*)(f.getBuffer() + header.ofsBones);
-		for (size_t i=0; i<header.nBones; i++) {
+		for (size_t i=0; i<header.nBones; i++)
+		{
 			bones[i].init(f, mb[i], globalSequences);
 		}
 	}
 
-	if (!animGeometry) {
+	if (!animGeometry)
+	{
 		glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 		glBufferDataARB(GL_ARRAY_BUFFER_ARB, vbufsize, vertices, GL_STATIC_DRAW_ARB);
 		glGenBuffersARB(1,&nbuf);
@@ -522,16 +578,19 @@ void Model::initAnimated(MPQFile &f)
 	glBufferDataARB(GL_ARRAY_BUFFER_ARB, 2*size, texcoords, GL_STATIC_DRAW_ARB);
 	delete[] texcoords;
 
-	if (animTextures) {
+	if (animTextures)
+	{
 		texanims = new TextureAnim[header.nTexAnims];
 		ModelTexAnimDef *ta = (ModelTexAnimDef*)(f.getBuffer() + header.ofsTexAnims);
-		for (size_t i=0; i<header.nTexAnims; i++) {
+		for (size_t i=0; i<header.nTexAnims; i++)
+		{
 			texanims[i].init(f, ta[i], globalSequences);
 		}
 	}
 
 	// particle systems
-	if (header.nParticleEmitters) {
+	if (header.nParticleEmitters)
+	{
 		ModelParticleEmitterDef *pdefs = (ModelParticleEmitterDef *)(f.getBuffer() + header.ofsParticleEmitters);
 		particleSystems = new ParticleSystem[header.nParticleEmitters];
 		for (size_t i=0; i<header.nParticleEmitters; i++) {
@@ -541,23 +600,27 @@ void Model::initAnimated(MPQFile &f)
 	}
 
 	// ribbons
-	if (header.nRibbonEmitters) {
+	if (header.nRibbonEmitters)
+	{
 		ModelRibbonEmitterDef *rdefs = (ModelRibbonEmitterDef *)(f.getBuffer() + header.ofsRibbonEmitters);
 		ribbons = new RibbonEmitter[header.nRibbonEmitters];
-		for (size_t i=0; i<header.nRibbonEmitters; i++) {
+		for (size_t i=0; i<header.nRibbonEmitters; i++)
+		{
 			ribbons[i].model = this;
 			ribbons[i].init(f, rdefs[i], globalSequences);
 		}
 	}
 
 	// just use the first camera, meh
-	if (header.nCameras>0) {
+	if (header.nCameras>0)
+	{
 		ModelCameraDef *camDefs = (ModelCameraDef*)(f.getBuffer() + header.ofsCameras);
 		cam.init(f, camDefs[0], globalSequences);
 	}
 
 	// init lights
-	if (header.nLights) {
+	if (header.nLights)
+	{
 		lights = new ModelLight[header.nLights];
 		ModelLightDef *lDefs = (ModelLightDef*)(f.getBuffer() + header.ofsLights);
 		for (size_t i=0; i<header.nLights; i++) lights[i].init(f, lDefs[i], globalSequences);
@@ -571,11 +634,13 @@ void Model::initAnimated(MPQFile &f)
 
 void Model::calcBones(int anim, int time)
 {
-	for (size_t i=0; i<header.nBones; i++) {
+	for (size_t i=0; i<header.nBones; i++)
+	{
 		bones[i].calc = false;
 	}
 
-	for (size_t i=0; i<header.nBones; i++) {
+	for (size_t i=0; i<header.nBones; i++)
+	{
 		bones[i].calcMatrix(bones, anim, time);
 	}
 }
@@ -590,11 +655,13 @@ void Model::animate(int anim)
 	animtime = t;
 	this->anim = anim;
 
-	if (animBones) {
+	if (animBones)
+	{
 		calcBones(anim, t);
 	}
 
-	if (animGeometry) {
+	if (animGeometry)
+	{
 
 		glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
         glBufferDataARB(GL_ARRAY_BUFFER_ARB, 2*vbufsize, NULL, GL_STREAM_DRAW_ARB);
@@ -602,11 +669,14 @@ void Model::animate(int anim)
 
 		// transform vertices
 		ModelVertex *ov = origVertices;
-		for (size_t i=0,k=0; i<header.nVertices; ++i,++ov) {
+		for (size_t i=0,k=0; i<header.nVertices; ++i,++ov)
+		{
 			Vec3D v(0,0,0), n(0,0,0);
 
-			for (size_t b=0; b<4; b++) {
-				if (ov->weights[b]>0) {
+			for (size_t b=0; b<4; b++)
+			{
+				if (ov->weights[b]>0)
+				{
 					Vec3D tv = bones[ov->bones[b]].mat * ov->pos;
 					Vec3D tn = bones[ov->bones[b]].mrot * ov->normal;
 					v += tv * ((float)ov->weights[b] / 255.0f);
@@ -625,25 +695,30 @@ void Model::animate(int anim)
 
 	}
 
-	for (size_t i=0; i<header.nLights; i++) {
+	for (size_t i=0; i<header.nLights; i++)
+	{
 		if (lights[i].parent>=0) {
 			lights[i].tpos = bones[lights[i].parent].mat * lights[i].pos;
 			lights[i].tdir = bones[lights[i].parent].mrot * lights[i].dir;
 		}
 	}
 
-	for (size_t i=0; i<header.nParticleEmitters; i++) {
+	for (size_t i=0; i<header.nParticleEmitters; i++)
+	{
 		// random time distribution for teh win ..?
 		int pt = a.timeStart + (t + (int)(tmax*particleSystems[i].tofs)) % tmax;
 		particleSystems[i].setup(anim, pt);
 	}
 
-	for (size_t i=0; i<header.nRibbonEmitters; i++) {
+	for (size_t i=0; i<header.nRibbonEmitters; i++)
+	{
 		ribbons[i].setup(anim, t);
 	}
 
-	if (animTextures) {
-		for (size_t i=0; i<header.nTexAnims; i++) {
+	if (animTextures)
+	{
+		for (size_t i=0; i<header.nTexAnims; i++)
+		{
 			texanims[i].calc(anim, t);
 		}
 	}
@@ -652,7 +727,8 @@ void Model::animate(int anim)
 bool ModelRenderPass::init(Model *m)
 {
 	// blend mode
-	switch (blendmode) {
+	switch (blendmode)
+	{
 	case BM_OPAQUE:	// 0
 		glDisable(GL_BLEND);
 		glDisable(GL_ALPHA_TEST);
@@ -683,11 +759,13 @@ bool ModelRenderPass::init(Model *m)
 		glBlendFunc(GL_DST_COLOR, GL_SRC_COLOR);
 	}
 
-	if (nozwrite) {
+	if (nozwrite)
+	{
 		glDepthMask(GL_FALSE);
 	}
 
-	if (cull) {
+	if (cull)
+	{
         glEnable(GL_CULL_FACE);
 	} else {
         glDisable(GL_CULL_FACE);
@@ -696,20 +774,23 @@ bool ModelRenderPass::init(Model *m)
 	glPushName(texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	if (usetex2) {
+	if (usetex2)
+	{
 		glActiveTextureARB(GL_TEXTURE1);
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, texture2);
 	}
 
-	if (unlit) {
+	if (unlit)
+	{
 		glDisable(GL_LIGHTING);
 		// unfogged = unlit?
 		if((blendmode==3)||(blendmode==4))
 			glDisable(GL_FOG);
 	}
 
-	if (useenvmap) {
+	if (useenvmap)
+	{
 		// env mapping
 		glEnable(GL_TEXTURE_GEN_S);
 		glEnable(GL_TEXTURE_GEN_T);
@@ -721,7 +802,8 @@ bool ModelRenderPass::init(Model *m)
 		glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, maptype);
 	}
 
-	if (texanim!=-1) {
+	if (texanim!=-1)
+	{
 		glMatrixMode(GL_TEXTURE);
 		glPushMatrix();
 
@@ -733,12 +815,16 @@ bool ModelRenderPass::init(Model *m)
 	Vec4D ecol(0,0,0,0);
 
 	// emissive colors
-	if (color!=-1) {
+	if (color!=-1)
+	{
 		Vec3D c = m->colors[color].color.getValue(m->anim,m->animtime);
 		ocol.w *= m->colors[color].opacity.getValue(m->anim,m->animtime);
-		if (unlit) {
+		if (unlit)
+		{
 			ocol.x = c.x; ocol.y = c.y; ocol.z = c.z;
-		} else {
+		}
+		else
+		{
 			ocol.x = ocol.y = ocol.z = 0;
 		}
 		ecol = Vec4D(c, 1.0f);
@@ -746,7 +832,8 @@ bool ModelRenderPass::init(Model *m)
 	glMaterialfv(GL_FRONT, GL_EMISSION, ecol);
 
 	// opacity
-	if (opacity!=-1) {
+	if (opacity!=-1)
+	{
 		ocol.w *= m->transparency[opacity].trans.getValue(m->anim,m->animtime);
 	}
 
@@ -760,7 +847,8 @@ bool ModelRenderPass::init(Model *m)
 
 void ModelRenderPass::deinit()
 {
-	switch (blendmode) {
+	switch (blendmode)
+	{
 	case BM_OPAQUE:
 		break;
 	case BM_TRANSPARENT:
@@ -771,25 +859,30 @@ void ModelRenderPass::deinit()
 	default:
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // default blend func
 	}
-	if (nozwrite) {
+	if (nozwrite)
+	{
 		glDepthMask(GL_TRUE);
 	}
-	if (texanim!=-1) {
+	if (texanim!=-1)
+	{
 		glMatrixMode(GL_TEXTURE);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	}
-	if (unlit) {
+	if (unlit)
+	{
 		glEnable(GL_LIGHTING);
 		//if (gWorld && gWorld->drawfog) glEnable(GL_FOG);
 		if((blendmode==3)||(blendmode==4))
 			glEnable(GL_FOG);
 	}
-	if (useenvmap) {
+	if (useenvmap)
+	{
 		glDisable(GL_TEXTURE_GEN_S);
 		glDisable(GL_TEXTURE_GEN_T);
 	}
-	if (usetex2) {
+	if (usetex2)
+	{
 		glActiveTextureARB(GL_TEXTURE1);
 		glDisable(GL_TEXTURE_2D);
 		glActiveTextureARB(GL_TEXTURE0);
@@ -802,16 +895,20 @@ void Model::drawModel()
 {
 	// assume these client states are enabled: GL_VERTEX_ARRAY, GL_NORMAL_ARRAY, GL_TEXTURE_COORD_ARRAY
 
-	if (animated) {
+	if (animated)
+	{
 
-		if (animGeometry) {
+		if (animGeometry)
+		{
 
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glNormalPointer(GL_FLOAT, 0, GL_BUFFER_OFFSET(vbufsize));
 
-		} else {
+		}
+		else
+		{
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, nbuf);
@@ -827,21 +924,25 @@ void Model::drawModel()
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glAlphaFunc (GL_GREATER, 0.3f);
 
-	for (size_t i=0; i<passes.size(); i++) {
+	for (size_t i=0; i<passes.size(); i++)
+	{
 		ModelRenderPass &p = passes[i];
 		int result=(int)strstr(this->name.c_str(),"Ghostlandsweb");
 
-		if (p.init(this)&&(result==0)) {
+		if (p.init(this)&&(result==0))
+		{
 			// we don't want to render completely transparent parts
 			// render
-			if (animated) {
+			if (animated)
+			{
 				//glDrawElements(GL_TRIANGLES, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
 				// a GDC OpenGL Performace Tuning paper recommended glDrawRangeElements over glDrawElements
 				// I can't notice a difference but I guess it can't hurt
 				glDrawRangeElements(GL_TRIANGLES, p.vertexStart, p.vertexEnd, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
 			} else {
 				glBegin(GL_TRIANGLES);
-				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++) {
+				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++)
+				{
 					uint16 a = indices[b];
 					glNormal3fv(normals[a]);
 					glTexCoord2fv(origVertices[a].texcoords);
@@ -869,16 +970,18 @@ void Model::drawModelTileMode()
 {
 	// assume these client states are enabled: GL_VERTEX_ARRAY, GL_NORMAL_ARRAY, GL_TEXTURE_COORD_ARRAY
 
-	if (animated) {
-
-		if (animGeometry) {
-
+	if (animated)
+	{
+		if (animGeometry)
+		{
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glNormalPointer(GL_FLOAT, 0, GL_BUFFER_OFFSET(vbufsize));
 
-		} else {
+		}
+		else
+		{
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, nbuf);
@@ -894,22 +997,28 @@ void Model::drawModelTileMode()
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glAlphaFunc (GL_GREATER, 0.3f);
 
-	for (size_t i=0; i<passes.size(); i++) {
+	for (size_t i=0; i<passes.size(); i++)
+	{
 		ModelRenderPass &p = passes[i];
 
 		p.unlit=true;
-		if (p.init(this)) {
+		if (p.init(this))
+		{
 			// we don't want to render completely transparent parts
 			
 			// render
-			if (animated) {
+			if (animated)
+			{
 				//glDrawElements(GL_TRIANGLES, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
 				// a GDC OpenGL Performace Tuning paper recommended glDrawRangeElements over glDrawElements
 				// I can't notice a difference but I guess it can't hurt
 				glDrawRangeElements(GL_TRIANGLES, p.vertexStart, p.vertexEnd, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
-			} else {
+			}
+			else
+			{
 				glBegin(GL_TRIANGLES);
-				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++) {
+				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++)
+				{
 					uint16 a = indices[b];
 					//glNormal3fv(normals[a]);
 					glTexCoord2fv(origVertices[a].texcoords);
@@ -921,7 +1030,6 @@ void Model::drawModelTileMode()
 		}
 
 		p.deinit();
-
 	}
 	// done with all render ops
 
@@ -939,7 +1047,6 @@ void ModelHighlight()
 	Vec4D	RedColor(1.0,0.25,0.25,0.5);
 	Vec4D	GreenColor(0.25,1.0,0.25,0.5);
 	float Highlight=0.5;
-	
 
 	glDisable(GL_ALPHA_TEST);
  	glEnable(GL_BLEND);
@@ -986,16 +1093,20 @@ void Model::drawModelHighlight()
 {
 	// assume these client states are enabled: GL_VERTEX_ARRAY, GL_NORMAL_ARRAY, GL_TEXTURE_COORD_ARRAY
 
-	if (animated) {
+	if (animated)
+	{
 
-		if (animGeometry) {
+		if (animGeometry)
+		{
 
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glNormalPointer(GL_FLOAT, 0, GL_BUFFER_OFFSET(vbufsize));
 
-		} else {
+		}
+		else
+		{
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, nbuf);
@@ -1011,21 +1122,27 @@ void Model::drawModelHighlight()
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glAlphaFunc (GL_GREATER, 0.3f);
 
-	for (size_t i=0; i<passes.size(); i++) {
+	for (size_t i=0; i<passes.size(); i++)
+	{
 		ModelRenderPass &p = passes[i];
 
-		if (p.init(this)) {
+		if (p.init(this))
+		{
 			// we don't want to render completely transparent parts
 			ModelHighlight();
 			// render
-			if (animated) {
+			if (animated)
+			{
 				//glDrawElements(GL_TRIANGLES, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
 				// a GDC OpenGL Performace Tuning paper recommended glDrawRangeElements over glDrawElements
 				// I can't notice a difference but I guess it can't hurt
 				glDrawRangeElements(GL_TRIANGLES, p.vertexStart, p.vertexEnd, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
-			} else {
+			}
+			else
+			{
 				glBegin(GL_TRIANGLES);
-				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++) {
+				for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++)
+				{
 					uint16 a = indices[b];
 					//glNormal3fv(normals[a]);
 					//glTexCoord2fv(origVertices[a].texcoords);
@@ -1037,7 +1154,6 @@ void Model::drawModelHighlight()
 		}
 
 		p.deinit();
-
 	}
 	// done with all render ops
 
@@ -1054,16 +1170,20 @@ void Model::drawModelSelect()
 {
 	// assume these client states are enabled: GL_VERTEX_ARRAY, GL_NORMAL_ARRAY, GL_TEXTURE_COORD_ARRAY
 
-	/*if (animated) {
+	/*if (animated)
+	{
 
-		if (animGeometry) {
+		if (animGeometry)
+		{
 
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			//glNormalPointer(GL_FLOAT, 0, GL_BUFFER_OFFSET(vbufsize));
 
-		} else {
+		}
+		else
+		{
 			glBindBufferARB(GL_ARRAY_BUFFER_ARB, vbuf);
 			glVertexPointer(3, GL_FLOAT, 0, 0);
 			//glBindBufferARB(GL_ARRAY_BUFFER_ARB, nbuf);
@@ -1076,31 +1196,35 @@ void Model::drawModelSelect()
 		//glTexCoordPointer(2, GL_FLOAT, sizeof(ModelVertex), &origVertices[0].texcoords);
 	}*/
 
-	for (size_t i=0; i<passes.size(); i++) {
+	for (size_t i=0; i<passes.size(); i++)
+	{
 		ModelRenderPass &p = passes[i];
 
 			// render
 			glPushName(p.texture);
 			glBegin(GL_TRIANGLES);
-			for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++) {
+			for (size_t k = 0, b=p.indexStart; k<p.indexCount; k++,b++)
+			{
 				uint16 a = indices[b];
 				glVertex3fv(vertices[a]);
 			}
 			glEnd();
 			glPopName();
-
 	}
 }
 
 void TextureAnim::calc(int anim, int time)
 {
-	if (trans.used) {
+	if (trans.used)
+	{
 		tval = trans.getValue(anim, time);
 	}
-	if (rot.used) {
+	if (rot.used)
+	{
         rval = rot.getValue(anim, time);
 	}
-	if (scale.used) {
+	if (scale.used)
+	{
         sval = scale.getValue(anim, time);
 	}
 }
@@ -1108,13 +1232,16 @@ void TextureAnim::calc(int anim, int time)
 void TextureAnim::setup()
 {
 	glLoadIdentity();
-	if (trans.used) {
+	if (trans.used)
+	{
 		glTranslatef(tval.x, tval.y, tval.z);
 	}
-	if (rot.used) {
+	if (rot.used)
+	{
 		glRotatef(rval.x, 0, 0, 1); // this is wrong, I have no idea what I'm doing here ;)
 	}
-	if (scale.used) {
+	if (scale.used)
+	{
 		glScalef(sval.x, sval.y, sval.z);
 	}
 }
@@ -1182,10 +1309,13 @@ void ModelLight::setup(int time, GLuint l)
 	Vec4D ambcol(ambColor.getValue(0, time) * ambIntensity.getValue(0, time), 1.0f);
 	Vec4D diffcol(diffColor.getValue(0, time) * diffIntensity.getValue(0, time), 1.0f);
 	Vec4D p;
-	if (type==0) {
+	if (type==0)
+	{
 		// directional
 		p = Vec4D(tdir, 0.0f);
-	} else {
+	}
+	else
+	{
 		// point
 		p = Vec4D(tpos, 1.0f);
 	}
@@ -1224,22 +1354,27 @@ void Bone::calcMatrix(Bone *allbones, int anim, int time)
 	Quaternion q;
 
 	bool tr = rot.used || scale.used || trans.used || billboard;
-	if (tr) {
+	if (tr)
+	{
 		m.translation(pivot);
 		
-		if (trans.used) {
+		if (trans.used)
+		{
 			Vec3D tr = trans.getValue(anim, time);
 			m *= Matrix::newTranslation(tr);
 		}
-		if (rot.used) {
+		if (rot.used)
+		{
 			q = rot.getValue(anim, time);
 			m *= Matrix::newQuatRotate(q);
 		}
-		if (scale.used) {
+		if (scale.used)
+		{
 			Vec3D sc = scale.getValue(anim, time);
 			m *= Matrix::newScale(sc);
 		}
-		if (billboard) {
+		if (billboard)
+		{
 			Matrix mtrans;
 			glGetFloatv(GL_MODELVIEW_MATRIX, &(mtrans.m[0][0]));
 			mtrans.transpose();
@@ -1279,23 +1414,30 @@ void Bone::calcMatrix(Bone *allbones, int anim, int time)
 		}
 
 		m *= Matrix::newTranslation(pivot*-1.0f);
-		
-	} else m.unit();
+	}
+	else
+		m.unit();
 
-	if (parent>=0) {
+	if (parent>=0)
+	{
 		allbones[parent].calcMatrix(allbones, anim, time);
 		mat = allbones[parent].mat * m;
 	} else mat = m;
 
 	// transform matrix for normal vectors ... ??
-	if (rot.used) {
-		if (parent>=0) {
+	if (rot.used)
+	{
+		if (parent>=0)
+		{
 			mrot = allbones[parent].mrot * Matrix::newQuatRotate(q);
-		} else mrot = Matrix::newQuatRotate(q);
-	} else mrot.unit();
+		}
+		else
+			mrot = Matrix::newQuatRotate(q);
+	}
+	else
+		mrot.unit();
 
 	calc = true;
-
 }
 
 void Model::draw()
@@ -1307,12 +1449,17 @@ void Model::draw()
 	}
 	if (!ok) return;
 
-	if (!animated) {
+	if (!animated)
+	{
 		glCallList(dlist);
-	} else {
+	}
+	else
+	{
 		if (ind) animate(0);
-		else {
-			if (!animcalc) {
+		else
+		{
+			if (!animcalc)
+			{
 				animate(0);
 				animcalc = true;
 			}
@@ -1325,12 +1472,14 @@ void Model::draw()
 		glDisable(GL_FOG);
 
 		// draw particle systems
-		for (size_t i=0; i<header.nParticleEmitters; i++) {
+		for (size_t i=0; i<header.nParticleEmitters; i++)
+		{
 			//particleSystems[i].draw();
 		}
 
 		// draw ribbons
-		for (size_t i=0; i<header.nRibbonEmitters; i++) {
+		for (size_t i=0; i<header.nRibbonEmitters; i++)
+		{
 			ribbons[i].draw();
 		}
 
@@ -1347,12 +1496,17 @@ void Model::drawTileMode()
 	}
 	if (!ok) return;
 
-	if (!animated) {
+	if (!animated)
+	{
 		glCallList(tmlist);
-	} else {
+	}
+	else
+	{
 		if (ind) animate(0);
-		else {
-			if (!animcalc) {
+		else
+		{
+			if (!animcalc)
+			{
 				animate(0);
 				animcalc = true;
 			}
@@ -1361,15 +1515,16 @@ void Model::drawTileMode()
 
 
 		// draw particle systems
-		for (size_t i=0; i<header.nParticleEmitters; i++) {
+		for (size_t i=0; i<header.nParticleEmitters; i++)
+		{
 			particleSystems[i].draw();
 		}
 
 		// draw ribbons
-		for (size_t i=0; i<header.nRibbonEmitters; i++) {
+		for (size_t i=0; i<header.nRibbonEmitters; i++)
+		{
 			ribbons[i].draw();
 		}
-
 	}
 }
 
@@ -1382,16 +1537,22 @@ void Model::drawHighlight()
 	}
 	if (!ok) return;
 
-	if (!animated) {
+	if (!animated)
+	{
 		glCallList(dlist);
 		if(HColor==0)
 			glCallList(ghlist);
 		else
 			glCallList(rhlist);
-	} else {
-		if (ind) animate(0);
-		else {
-			if (!animcalc) {
+	}
+	else
+	{
+		if (ind)
+			animate(0);
+		else
+		{
+			if (!animcalc)
+			{
 				animate(0);
 				animcalc = true;
 			}
@@ -1405,25 +1566,29 @@ void Model::drawHighlight()
 		glDisable(GL_FOG);
 
 		// draw particle systems
-		for (size_t i=0; i<header.nParticleEmitters; i++) {
+		for (size_t i=0; i<header.nParticleEmitters; i++)
+		{
 			particleSystems[i].draw();
 		}
 
 		// draw ribbons
-		for (size_t i=0; i<header.nRibbonEmitters; i++) {
+		for (size_t i=0; i<header.nRibbonEmitters; i++)
+		{
 			ribbons[i].draw();
 		}
 
 		//Highlighting
 		// draw particle systems
-		for (size_t i=0; i<header.nParticleEmitters; i++) {
+		for (size_t i=0; i<header.nParticleEmitters; i++)
+		{
 			particleSystems[i].drawHighlight();
 		}
 		drawModelHighlight();
 
 		if (gWorld && gWorld->drawfog) glEnable(GL_FOG);
 	}
-	if (gWorld && gWorld->drawfog) glEnable(GL_FOG);
+	if (gWorld && gWorld->drawfog)
+		glEnable(GL_FOG);
 }
 
 void startTimer();
@@ -1465,18 +1630,24 @@ void Model::drawSelect()
 		return;
 	}
 	//stopModelTimer(1);
-	if (!ok) return;
+	if (!ok)
+		return;
 	
 	//startTimer();
-	if (!animated) {
+	if (!animated)
+	{
 		//startTimer();
 		glCallList(slist);
 		//drawModelSelect();
 		//stopModelTimer(3);
-	} else {
+	}
+	else
+	{
 		if (ind) animate(0);
-		else {
-			if (!animcalc) {
+		else
+		{
+			if (!animcalc)
+			{
 				animate(0);
 				animcalc = true;
 			}
@@ -1491,7 +1662,8 @@ void Model::drawSelect()
 		glDisable(GL_FOG);
 
 		// draw particle systems
-		/*for (size_t i=0; i<header.nParticleEmitters; i++) {
+		/*for (size_t i=0; i<header.nParticleEmitters; i++)
+		{
 			particleSystems[i].draw();
 		}*/
 		//stopModelTimer(6);
@@ -1499,13 +1671,15 @@ void Model::drawSelect()
 
 		//startTimer();
 		// draw ribbons
-		for (size_t i=0; i<header.nRibbonEmitters; i++) {
+		for (size_t i=0; i<header.nRibbonEmitters; i++)
+		{
 			ribbons[i].draw();
 		}
 		//stopModelTimer(7);
 
 		//startTimer();
-		if (gWorld && gWorld->drawfog) glEnable(GL_FOG);
+		if (gWorld && gWorld->drawfog)
+			glEnable(GL_FOG);
 		//stopModelTimer(5);
 	}
 	//stopModelTimer(2);
@@ -1531,7 +1705,8 @@ void Model::updateEmitters(float dt)
 		return;
 	}
 	if (!ok) return;
-	for (size_t i=0; i<header.nParticleEmitters; i++) {
+	for (size_t i=0; i<header.nParticleEmitters; i++)
+	{
 		particleSystems[i].update(dt);
 	}
 }
@@ -1539,15 +1714,18 @@ void Model::updateEmitters(float dt)
 int ModelManager::add(std::string name)
 {
 	int id;
-	if (names.find(name) != names.end()) {
+	if (names.find(name) != names.end())
+	{
 		id = names[name];
 		items[id]->addref();
+
 		return id;
 	}
 	// load new
 	Model *model = new Model(name);
 	id = nextID();
     do_add(name, id, model);
+
     return id;
 }
 
@@ -1560,14 +1738,16 @@ void ModelManager::reload()
 
 void ModelManager::resetAnim()
 {
-	for (std::map<int, ManagedItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+	for (std::map<int, ManagedItem*>::iterator it = items.begin(); it != items.end(); ++it)
+	{
 		((Model*)it->second)->animcalc = false;
 	}
 }
 
 void ModelManager::updateEmitters(float dt)
 {
-	for (std::map<int, ManagedItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+	for (std::map<int, ManagedItem*>::iterator it = items.begin(); it != items.end(); ++it)
+	{
 		((Model*)it->second)->updateEmitters(dt);
 	}
 }
@@ -1658,6 +1838,7 @@ void ModelInstance::draw()
 	}
 	else
 		model->draw();
+
 	glPopName();
 	glPopMatrix();
 }
@@ -1680,6 +1861,7 @@ void ModelInstance::drawMapTile()
 
 	if(nameID==-1)
 		nameID=addNameModel(this);
+
 	glPushName(nameID);
 	model->draw();
 	glPopName();
@@ -1691,7 +1873,8 @@ void ModelInstance::drawHighlight()
 	//if ((pos - gWorld->camera).lengthSquared() > (gWorld->modeldrawdistance2+(model->rad*model->rad*sc))) return;
 	float dist = (pos - gWorld->camera).length() - model->rad;
 	if (dist > gWorld->modeldrawdistance) return;
-	if (!gWorld->frustum.intersectsSphere(pos, model->rad*sc)) return;
+	if (!gWorld->frustum.intersectsSphere(pos, model->rad*sc))
+		return;
 
 	glPushMatrix();
 	glTranslatef(pos.x, pos.y, pos.z);
@@ -1704,6 +1887,7 @@ void ModelInstance::drawHighlight()
 
 	if(nameID==-1)
 		nameID=addNameModel(this);
+
 	glPushName(nameID);
 	model->drawHighlight();
 	glPopName();
@@ -1714,8 +1898,10 @@ void ModelInstance::drawSelect()
 {
 	//if ((pos - gWorld->camera).lengthSquared() > (gWorld->modeldrawdistance2+(model->rad*model->rad*sc))) return;
 	float dist = (pos - gWorld->camera).length() - model->rad;
-	if (dist > gWorld->modeldrawdistance) return;
-	if (!gWorld->frustum.intersectsSphere(pos, model->rad*sc)) return;
+	if (dist > gWorld->modeldrawdistance)
+		return;
+	if (!gWorld->frustum.intersectsSphere(pos, model->rad*sc))
+		return;
 
 	glPushMatrix();
 	glTranslatef(pos.x, pos.y, pos.z);
@@ -1728,6 +1914,7 @@ void ModelInstance::drawSelect()
 
 	if(nameID==-1)
 		nameID=addNameModel(this);
+
 	glPushName(nameID);
 	model->drawSelect();
 	glPopName();
@@ -1756,7 +1943,8 @@ void ModelInstance::draw2(const Vec3D& ofs, const float rot)
 	Vec3D tpos(ofs + pos);
 	rotate(ofs.x,ofs.z,&tpos.x,&tpos.z,rot*PI/180.0f);
 	//if ( (tpos - gWorld->camera).lengthSquared() > (gWorld->doodaddrawdistance2*model->rad*sc) ) return;
-	if (!gWorld->frustum.intersectsSphere(tpos, model->rad*sc)) return;
+	if (!gWorld->frustum.intersectsSphere(tpos, model->rad*sc))
+		return;
 
 	glPushMatrix();
 
@@ -1773,8 +1961,10 @@ void ModelInstance::draw2Select(const Vec3D& ofs, const float rot)
 {
 	Vec3D tpos(ofs + pos);
 	rotate(ofs.x,ofs.z,&tpos.x,&tpos.z,rot*PI/180.0f);
-	if ( (tpos - gWorld->camera).lengthSquared() > (gWorld->doodaddrawdistance2*model->rad*sc) ) return;
-	if (!gWorld->frustum.intersectsSphere(tpos, model->rad*sc)) return;
+	if ( (tpos - gWorld->camera).lengthSquared() > (gWorld->doodaddrawdistance2*model->rad*sc) )
+		return;
+	if (!gWorld->frustum.intersectsSphere(tpos, model->rad*sc))
+		return;
 
 	glPushMatrix();
 
@@ -1835,14 +2025,12 @@ void removeModels(int id)
 
 void drawModelList()
 {
-	
 	for(std::map<int, ModelEntry, ltint>::iterator i=ModelList.begin();i!=ModelList.end();i++)
 		(*i).second.instance->draw();
 }
 
 void drawModelListSelect()
 {
-	
 	for(std::map<int, ModelEntry, ltint>::iterator i=ModelList.begin();i!=ModelList.end();i++)
 		(*i).second.instance->drawSelect();
 }

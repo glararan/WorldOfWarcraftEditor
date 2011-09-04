@@ -12,8 +12,8 @@ void loadWaterShader();
 const float LQ_DEFAULT_TILESIZE = CHUNKSIZE / 8.0f;
 
 // handle liquids like oceans, lakes, rivers, slime, magma
-class Liquid {
-
+class Liquid
+{
 	int xtiles, ytiles;
 	GLuint dlist;
 
