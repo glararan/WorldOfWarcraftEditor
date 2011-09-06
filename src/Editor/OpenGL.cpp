@@ -199,10 +199,10 @@ void deleteFonts()
 	delete f32;
 }
 
-FILE *flog;
+FILE* flog;
 bool glogfirst = true;
 
-void gLog(char *str, ...)
+void gLog(char* str, ...)
 {
 	if (glogfirst)
 	{
@@ -251,7 +251,7 @@ int main(int argc, char *argv[])
 
 	bool usePatch = true;
 
-	for (int i=1; i<argc; i++)
+	for (int i = 1; i < argc; ++i)
 	{
 		if (!strcmp(argv[i],"-f")) fullscreen = 1;
 		else if (!strcmp(argv[i],"-w")) fullscreen = 0;
@@ -630,7 +630,7 @@ int main(int argc, char *argv[])
 
 	if(loadExpansion() == 1) // TBC
 	{
-		for (size_t i=0; i<7; i++)
+		for (size_t i = 0; i < 7; ++i)
 		{
 			sprintf_s(path, "%s%s", gamepath, archiveNames[i]);
 			archives.push_back(new MPQArchive(path));
@@ -639,7 +639,7 @@ int main(int argc, char *argv[])
 	}
 	else if(loadExpansion() == 2) // WotLK
 	{
-		for (size_t i=0; i<10; i++)
+		for (size_t i = 0; i < 10; ++i)
 		{
 			sprintf_s(path, "%s%s", gamepath, archiveNames[i]);
 			archives.push_back(new MPQArchive(path));
@@ -648,7 +648,7 @@ int main(int argc, char *argv[])
 	}
 	else if(loadExpansion() == 3) // Cataclysm
 	{
-		for (size_t i=0; i<9; i++)
+		for (size_t i = 0; i < 9; ++i)
 		{
 			sprintf_s(path, "%s%s", gamepath, archiveNames[i]);
 			archives.push_back(new MPQArchive(path));
@@ -663,8 +663,8 @@ int main(int argc, char *argv[])
 
 	gAreaDB.open();
 
-	video.init(xres,yres,fullscreen!=0);
-	SDL_WM_SetCaption(APP_TITLE " - " APP_VERSION,NULL);
+	video.init(xres, yres, fullscreen! = 0);
+	SDL_WM_SetCaption(APP_TITLE " - " APP_VERSION, NULL);
 
 
 	gLog("[World of Warcraft Studio - Editor] - Initializing Ground Effects\n");
@@ -674,16 +674,16 @@ int main(int argc, char *argv[])
 
 	float ftime;
 	Uint32 t, last_t, frames = 0, time = 0, fcount = 0, ft = 0;
-	AppState *as;
+	AppState* as;
 	gFPS = 0;
 
 	gLog("[World of Warcraft Studio - Editor] - Creating Menu\n");
-	Menu *m = new Menu();
+	Menu* m = new Menu();
 	as = m;
 
 	gStates.push_back(as);
 
-	if(glExtGetGLProcs_VertexProgram_1_0_ARB()==0)
+	if(glExtGetGLProcs_VertexProgram_1_0_ARB() == 0)
 	{
 		gLog("[World of Warcraft Studio - Editor] - Unable to load ARB Vertex Program Code\n");
 		return 0;
@@ -693,7 +693,7 @@ int main(int argc, char *argv[])
 	bool done = false;
 	t = SDL_GetTicks();
 	gLog("[World of Warcraft Studio - Editor] - Entering Main Loop\n");
-	while(gStates.size()>0 && !done)
+	while(gStates.size() > 0 && !done)
 	{
 		last_t = t;
 		t = SDL_GetTicks();
@@ -733,8 +733,6 @@ int main(int argc, char *argv[])
 				video.resize(event.resize.w,event.resize.h);
 			}
 		}
-
-
 
 		if(SDL_GetAppState()&SDL_APPACTIVE)
 		{
@@ -802,10 +800,11 @@ void fixnamen(char *name, size_t len)
 {
 	for (size_t i=0; i<len; i++)
 	{
-		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1]))
+		if (i > 0 && name[i] >='A' && name[i] <='Z' && isalpha(name[i-1]))
 		{
 			name[i] |= 0x20;
-		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z')
+		} 
+		else if ((i==0 || !isalpha(name[i-1])) && name[i] >= 'a' && name[i]<='z')
 		{
 			name[i] &= ~0x20;
 		}
@@ -814,12 +813,13 @@ void fixnamen(char *name, size_t len)
 
 void fixname(std::string &name)
 {
-	for (size_t i=0; i<name.length(); i++)
+	for (size_t i = 0; i < name.length(); ++i)
 	{
 		if (i>0 && name[i]>='A' && name[i]<='Z' && isalpha(name[i-1]))
 		{
 			name[i] |= 0x20;
-		} else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z')
+		} 
+		else if ((i==0 || !isalpha(name[i-1])) && name[i]>='a' && name[i]<='z')
 		{
 			name[i] &= ~0x20;
 		}
