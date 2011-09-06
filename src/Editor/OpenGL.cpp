@@ -736,12 +736,13 @@ int main(int argc, char *argv[])
 
 		if(SDL_GetAppState()&SDL_APPACTIVE)
 		{
-			as->tick(ftime, dt/1000.0f);
+			as->tick(ftime, dt / 1000.0f);
 
-			as->display(ftime, dt/1000.0f);
+			as->display(ftime, dt / 1000.0f);
 		}
 
-		if (gPop) {
+		if (gPop) 
+		{
 			gPop = false;
 			gStates.pop_back();
 			delete as;
