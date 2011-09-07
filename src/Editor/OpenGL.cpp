@@ -339,7 +339,7 @@ int main(int argc, char *argv[])
 				archiveNames.push_back("expansion.MPQ");
 				archiveNames.push_back("patch.MPQ");
 				archiveNames.push_back("patch-2.MPQ");
-
+			
 				switch(loadGameVersion())
 				{
 					case 1: // enGB
@@ -353,62 +353,62 @@ int main(int argc, char *argv[])
 					}
 
 					case 2: // enUS
-						{
-							archiveNames.push_back("enUS/locale-enUS.MPQ");
-							archiveNames.push_back("enUS/expansion-locale-enUS.MPQ");
-							archiveNames.push_back("enUS/patch-enUS.MPQ");
-							archiveNames.push_back("enUS/patch-enUS-2.MPQ");
+					{
+						archiveNames.push_back("enUS/locale-enUS.MPQ");
+						archiveNames.push_back("enUS/expansion-locale-enUS.MPQ");
+						archiveNames.push_back("enUS/patch-enUS.MPQ");
+						archiveNames.push_back("enUS/patch-enUS-2.MPQ");
 
 							break;
-						}
+					}
 
 					case 3: // deDE
-						{
-							archiveNames.push_back("deDE/locale-edeDE.MPQ");
-							archiveNames.push_back("deDE/expansion-locale-deDE.MPQ");
-							archiveNames.push_back("deDE/patch-deDE.MPQ");
-							archiveNames.push_back("deDE/patch-deDE-2.MPQ");
+					{
+						archiveNames.push_back("deDE/locale-edeDE.MPQ");
+						archiveNames.push_back("deDE/expansion-locale-deDE.MPQ");
+						archiveNames.push_back("deDE/patch-deDE.MPQ");
+						archiveNames.push_back("deDE/patch-deDE-2.MPQ");
 
 							break;
-						}
+					}
 
 					case 4: // esES
-						{
-							archiveNames.push_back("esES/locale-esES.MPQ");
-							archiveNames.push_back("esES/expansion-locale-esES.MPQ");
-							archiveNames.push_back("esES/patch-esES.MPQ");
-							archiveNames.push_back("esES/patch-esES-2.MPQ");
+					{
+						archiveNames.push_back("esES/locale-esES.MPQ");
+						archiveNames.push_back("esES/expansion-locale-esES.MPQ");
+						archiveNames.push_back("esES/patch-esES.MPQ");
+						archiveNames.push_back("esES/patch-esES-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 5: // frFR
-						{
-							archiveNames.push_back("frFR/locale-frFR.MPQ");
-							archiveNames.push_back("frFR/expansion-locale-frFR.MPQ");
-							archiveNames.push_back("frFR/patch-frFR.MPQ");
-							archiveNames.push_back("frFR/patch-frFR-2.MPQ");
+					{
+						archiveNames.push_back("frFR/locale-frFR.MPQ");
+						archiveNames.push_back("frFR/expansion-locale-frFR.MPQ");
+						archiveNames.push_back("frFR/patch-frFR.MPQ");
+						archiveNames.push_back("frFR/patch-frFR-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 6: // ruRU
-						{
-							archiveNames.push_back("ruRU/locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/expansion-locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/patch-ruRU.MPQ");
-							archiveNames.push_back("ruRU/patch-ruRU-2.MPQ");
+					{
+						archiveNames.push_back("ruRU/locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/expansion-locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/patch-ruRU.MPQ");
+						archiveNames.push_back("ruRU/patch-ruRU-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					default: // ERROR
-						{
-							gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-							exit(1);
+					{
+						gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
+						exit(1);
 
-							break;
-						}
+						break;
+					}
 
 				} // End switch
 
@@ -419,89 +419,89 @@ int main(int argc, char *argv[])
 			}
 
 			case 2: // WotLK
+			{
+				archiveNames.push_back("common.MPQ");
+				archiveNames.push_back("common-2.MPQ");
+				archiveNames.push_back("expansion.MPQ");
+				archiveNames.push_back("lichking.MPQ");
+				archiveNames.push_back("patch.MPQ");
+				archiveNames.push_back("patch-2.MPQ");
+			
+				switch(loadGameVersion())
 				{
-					archiveNames.push_back("common.MPQ");
-					archiveNames.push_back("common-2.MPQ");
-					archiveNames.push_back("expansion.MPQ");
-					archiveNames.push_back("lichking.MPQ");
-					archiveNames.push_back("patch.MPQ");
-					archiveNames.push_back("patch-2.MPQ");
-
-					switch(loadGameVersion())
-					{
 					case 1: // enGB
-						{
-							archiveNames.push_back("enGB/locale-enGB.MPQ");
-							archiveNames.push_back("enGB/expansion-locale-enGB.MPQ");
-							archiveNames.push_back("enGB/lichking-locale-enGB.MPQ");
-							archiveNames.push_back("enGB/patch-enGB.MPQ");
-							archiveNames.push_back("enGB/patch-enGB-2.MPQ");
+					{
+						archiveNames.push_back("enGB/locale-enGB.MPQ");
+						archiveNames.push_back("enGB/expansion-locale-enGB.MPQ");
+						archiveNames.push_back("enGB/lichking-locale-enGB.MPQ");
+						archiveNames.push_back("enGB/patch-enGB.MPQ");
+						archiveNames.push_back("enGB/patch-enGB-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 2: // enUS
-						{
-							archiveNames.push_back("enUS/locale-enUS.MPQ");
-							archiveNames.push_back("enUS/expansion-locale-enUS.MPQ");
-							archiveNames.push_back("enUS/lichking-locale-enUS.MPQ");
-							archiveNames.push_back("enUS/patch-enUS.MPQ");
-							archiveNames.push_back("enUS/patch-enUS-2.MPQ");
+					{
+						archiveNames.push_back("enUS/locale-enUS.MPQ");
+						archiveNames.push_back("enUS/expansion-locale-enUS.MPQ");
+						archiveNames.push_back("enUS/lichking-locale-enUS.MPQ");
+						archiveNames.push_back("enUS/patch-enUS.MPQ");
+						archiveNames.push_back("enUS/patch-enUS-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 3: // deDE
-						{
-							archiveNames.push_back("deDE/locale-deDE.MPQ");
-							archiveNames.push_back("deDE/expansion-locale-deDE.MPQ");
-							archiveNames.push_back("deDE/lichking-locale-deDE.MPQ");
-							archiveNames.push_back("deDE/patch-deDE.MPQ");
-							archiveNames.push_back("deDE/patch-deDE-2.MPQ");
+					{
+						archiveNames.push_back("deDE/locale-deDE.MPQ");
+						archiveNames.push_back("deDE/expansion-locale-deDE.MPQ");
+						archiveNames.push_back("deDE/lichking-locale-deDE.MPQ");
+						archiveNames.push_back("deDE/patch-deDE.MPQ");
+						archiveNames.push_back("deDE/patch-deDE-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 4: // esES
-						{
-							archiveNames.push_back("esES/locale-esES.MPQ");
-							archiveNames.push_back("esES/expansion-locale-esES.MPQ");
-							archiveNames.push_back("esES/lichking-locale-esES.MPQ");
-							archiveNames.push_back("esES/patch-esES.MPQ");
-							archiveNames.push_back("esES/patch-esES-2.MPQ");
+					{
+						archiveNames.push_back("esES/locale-esES.MPQ");
+						archiveNames.push_back("esES/expansion-locale-esES.MPQ");
+						archiveNames.push_back("esES/lichking-locale-esES.MPQ");
+						archiveNames.push_back("esES/patch-esES.MPQ");
+						archiveNames.push_back("esES/patch-esES-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 5: // frFR
-						{
-							archiveNames.push_back("frFR/locale-frFR.MPQ");
-							archiveNames.push_back("frFR/expansion-locale-frFR.MPQ");
-							archiveNames.push_back("frFR/lichking-locale-frFR.MPQ");
-							archiveNames.push_back("frFR/patch-frFR.MPQ");
-							archiveNames.push_back("frFR/patch-frFR-2.MPQ");
+					{
+						archiveNames.push_back("frFR/locale-frFR.MPQ");
+						archiveNames.push_back("frFR/expansion-locale-frFR.MPQ");
+						archiveNames.push_back("frFR/lichking-locale-frFR.MPQ");
+						archiveNames.push_back("frFR/patch-frFR.MPQ");
+						archiveNames.push_back("frFR/patch-frFR-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 6: // ruRU
-						{
-							archiveNames.push_back("ruRU/locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/expansion-locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/lichking-locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/patch-ruRU.MPQ");
-							archiveNames.push_back("ruRU/patch-ruRU-2.MPQ");
+					{
+						archiveNames.push_back("ruRU/locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/expansion-locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/lichking-locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/patch-ruRU.MPQ");
+						archiveNames.push_back("ruRU/patch-ruRU-2.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					default:
-						{
-							gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-							exit(1);
+					{
+						gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
+						exit(1);
 
-							break;
-						}
+						break;
+					}
 
 					} // End switch
 
@@ -513,12 +513,13 @@ int main(int argc, char *argv[])
 
 				case 3: // Cataclysm
 				{
-						archiveNames.push_back("art.MPQ");
-						archiveNames.push_back("expansion1.MPQ");
-						archiveNames.push_back("expansion2.MPQ");
-						archiveNames.push_back("expansion3.MPQ");
-						archiveNames.push_back("sound.MPQ");
-						archiveNames.push_back("world.MPQ");
+					archiveNames.push_back("art.MPQ");
+					archiveNames.push_back("expansion1.MPQ");
+					archiveNames.push_back("expansion2.MPQ");
+					archiveNames.push_back("expansion3.MPQ");
+					archiveNames.push_back("sound.MPQ");
+					archiveNames.push_back("world.MPQ");
+				
 
 				switch(loadGameVersion())
 				{
@@ -533,62 +534,62 @@ int main(int argc, char *argv[])
 					}
 
 					case 2: // enUS
-						{
-							archiveNames.push_back("enUS/locale-enUS.MPQ");
-							archiveNames.push_back("enUS/expansion1-locale-enUS.MPQ");
-							archiveNames.push_back("enUS/expansion2-locale-enUS.MPQ");
-							archiveNames.push_back("enUS/expansion3-locale-enUS.MPQ");
+					{
+						archiveNames.push_back("enUS/locale-enUS.MPQ");
+						archiveNames.push_back("enUS/expansion1-locale-enUS.MPQ");
+						archiveNames.push_back("enUS/expansion2-locale-enUS.MPQ");
+						archiveNames.push_back("enUS/expansion3-locale-enUS.MPQ");
 
-							break;
-						}
+						break;
+					}
 			
 					case 3: // deDE
-						{
-							archiveNames.push_back("deDE/locale-deDE.MPQ");
-							archiveNames.push_back("deDE/expansion1-locale-deDE.MPQ");
-							archiveNames.push_back("deDE/expansion2-locale-deDE.MPQ");
-							archiveNames.push_back("deDE/expansion3-locale-deDE.MPQ");
+					{
+						archiveNames.push_back("deDE/locale-deDE.MPQ");
+						archiveNames.push_back("deDE/expansion1-locale-deDE.MPQ");
+						archiveNames.push_back("deDE/expansion2-locale-deDE.MPQ");
+						archiveNames.push_back("deDE/expansion3-locale-deDE.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 4: // esES
-						{
-							archiveNames.push_back("esES/locale-esES.MPQ");
-							archiveNames.push_back("esES/expansion1-locale-esES.MPQ");
-							archiveNames.push_back("esES/expansion2-locale-esES.MPQ");
-							archiveNames.push_back("esES/expansion3-locale-esES.MPQ");
+					{
+						archiveNames.push_back("esES/locale-esES.MPQ");
+						archiveNames.push_back("esES/expansion1-locale-esES.MPQ");
+						archiveNames.push_back("esES/expansion2-locale-esES.MPQ");
+						archiveNames.push_back("esES/expansion3-locale-esES.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 5: // frFR
-						{
-							archiveNames.push_back("frFR/locale-frFR.MPQ");
-							archiveNames.push_back("frFR/expansion1-locale-frFR.MPQ");
-							archiveNames.push_back("frFR/expansion2-locale-frFR.MPQ");
-							archiveNames.push_back("frFR/expansion3-locale-frFR.MPQ");
+					{
+						archiveNames.push_back("frFR/locale-frFR.MPQ");
+						archiveNames.push_back("frFR/expansion1-locale-frFR.MPQ");
+						archiveNames.push_back("frFR/expansion2-locale-frFR.MPQ");
+						archiveNames.push_back("frFR/expansion3-locale-frFR.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					case 6: // ruRU
-						{
-							archiveNames.push_back("ruRU/locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/expansion1-locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/expansion2-locale-ruRU.MPQ");
-							archiveNames.push_back("ruRU/expansion3-locale-ruRU.MPQ");
+					{
+						archiveNames.push_back("ruRU/locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/expansion1-locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/expansion2-locale-ruRU.MPQ");
+						archiveNames.push_back("ruRU/expansion3-locale-ruRU.MPQ");
 
-							break;
-						}
+						break;
+					}
 
 					default:
-						{
-							gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-							exit(1);
+					{
+						gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
+						exit(1);
 
-							break;
-						}
+						break;
+					}
 
 				} // End switch
 
