@@ -291,9 +291,9 @@ void Menu::display(float t, float dt)
 		
 			
 			//f32->shprint(300,0,"World of Warcraft map viewer");
-			int w=freetype::width(morpheus40,"World of Warcraft Editor");
-			freetype::shprint(morpheus40,video.xres/2.0f-w/2.0f,1.0f," ");
-			freetype::shprint(morpheus40,video.xres/2.0f-w/2.0f,1.0f,"World of Warcraft Editor");
+			int w=freetype::width(morpheus,"World of Warcraft Editor");
+			freetype::shprint(morpheus,video.xres/2.0f-w/2.0f,1.0f," ");
+			freetype::shprint(morpheus,video.xres/2.0f-w/2.0f,1.0f,"World of Warcraft Editor");
 
 			f16->shprint(video.xres - 20 - f16->textwidth(APP_VERSION), 10, APP_VERSION);
 			

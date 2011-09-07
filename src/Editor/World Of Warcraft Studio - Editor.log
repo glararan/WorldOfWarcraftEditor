@@ -1,0 +1,42 @@
+[World of Warcraft Studio - Editor] - Config exist
+##############################################################
+[World of Warcraft Studio - Editor] - Config have content
+##############################################################
+[World of Warcraft Studio - Editor] - World of Warcraft Editor - 0.0.2
+[World of Warcraft Studio - Editor] - Game path: C:\WoW\Data\
+[World of Warcraft Studio - Editor] - Game Version: 1
+[World of Warcraft Studio - Editor] - (null)
+[World of Warcraft Studio - Editor] - (null)
+[World of Warcraft Studio - Editor] - (null)
+[World of Warcraft Studio - Editor] - Expansion: 2
+[World of Warcraft Studio - Editor] - GameVersion: 1
+[World of Warcraft Studio - Editor] - Language: 1
+[World of Warcraft Studio - Editor] - Loading MPQ archives for WotLK
+[World of Warcraft Studio - Editor] - Starting loading archives
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\common.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\common-2.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\expansion.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\lichking.MPQ
+[World of Warcraft Studio - Editor] - Error opening archive C:\WoW\Data\lichking.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\patch.MPQ
+[World of Warcraft Studio - Editor] - Error opening archive C:\WoW\Data\patch.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\patch-2.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\enGB\locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\enGB\expansion-locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\enGB\lichking-locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Opening C:\WoW\Data\enGB\patch-enGB.MPQ
+[World of Warcraft Studio - Editor] - Loading archives success
+[World of Warcraft Studio - Editor] - Opening DBC DBFilesClient\AreaTable.dbc
+[World of Warcraft Studio - Editor] - Attempting to Load File DBFilesClient\AreaTable.dbc
+[World of Warcraft Studio - Editor] - File DBFilesClient\AreaTable.dbc found inside C:\WoW\Data\enGB\locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Closed & Read in DBC DBFilesClient\AreaTable.dbc
+[World of Warcraft Studio - Editor] - Initializing Ground Effects
+[World of Warcraft Studio - Editor] - Opening DBC DBFilesClient\GroundEffectTexture.dbc
+[World of Warcraft Studio - Editor] - Attempting to Load File DBFilesClient\GroundEffectTexture.dbc
+[World of Warcraft Studio - Editor] - File DBFilesClient\GroundEffectTexture.dbc found inside C:\WoW\Data\enGB\locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Closed & Read in DBC DBFilesClient\GroundEffectTexture.dbc
+[World of Warcraft Studio - Editor] - Opening DBC DBFilesClient\GroundEffectDoodad.dbc
+[World of Warcraft Studio - Editor] - Attempting to Load File DBFilesClient\GroundEffectDoodad.dbc
+[World of Warcraft Studio - Editor] - File DBFilesClient\GroundEffectDoodad.dbc found inside C:\WoW\Data\enGB\locale-enGB.MPQ
+[World of Warcraft Studio - Editor] - Closed & Read in DBC DBFilesClient\GroundEffectDoodad.dbc
+[World of Warcraft Studio - Editor] - Initializing Fonts
