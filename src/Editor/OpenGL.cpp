@@ -144,7 +144,6 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Language: %d\n", loadLanguage());
 
 	}
-
 	return 0;
 }
 
