@@ -552,7 +552,7 @@ void MapViewer::display(float t, float dt)
 		if(ErrorNum)
 			gLog("[World of Warcraft Studio - Editor] - OpenGL Error %d\n",ErrorNum);
 		//glEnable(GL_LIGHTING);
-		int start,end;
+		int start, end;
 		if(Selecting)
 			doSelection();
 		ErrorNum=glGetError();

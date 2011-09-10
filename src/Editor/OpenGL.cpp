@@ -172,18 +172,18 @@ AreaDB gAreaDB;
 
 void initFonts()
 {
-	ftex = loadTGA("arial.tga",false);
+	ftex = loadTGA("fonts\\arial.tga",false);
 
-	f16 = new Font(ftex, 256, 256, 16, "arial.info");
-	f24 = new Font(ftex, 256, 256, 24, "arial.info");
-	f32 = new Font(ftex, 256, 256, 32, "arial.info");
+	f16 = new Font(ftex, 256, 256, 16, "fonts\\arial.info");
+	f24 = new Font(ftex, 256, 256, 24, "fonts\\arial.info");
+	f32 = new Font(ftex, 256, 256, 32, "fonts\\arial.info");
 
-	morpheus.initMPQ("fonts\\MORPHEUS.TTF",40);
-	arialn13.initMPQ("fonts\\ARIALN.TTF",13);
+	morpheus.initMPQ("fonts\\morpheus.ttf",40);
+	arialn13.initMPQ("fonts\\arialn.ttf",13);
 	
-	arial12.init("arial.ttf",12);
-	arial14.init("arial.ttf",14);
-	arial16.init("arial.ttf",16);
+	arial12.init("fonts\\arial.ttf",12);
+	arial14.init("fonts\\arial.ttf",14);
+	arial16.init("fonts\\arial.ttf",16);
 }
 
 void deleteFonts()
@@ -207,6 +207,19 @@ void gLog(char* str, ...)
 		glogfirst = false;
 	}
 
+	flog = fopen("World Of Warcraft Studio - Editor.log","a");
+
+	va_list ap;
+
+	va_start (ap, str);
+	vfprintf (flog, str, ap);
+	va_end (ap);
+
+	fclose(flog);
+}
+
+void gLog_const(const char* str, ...)
+{
 	flog = fopen("World Of Warcraft Studio - Editor.log","a");
 
 	va_list ap;
@@ -692,7 +705,7 @@ int main(int argc, char *argv[])
 
 	gAreaDB.open();
 
-	video.init(xres, yres, fullscreen! = 0);
+	video.init(xres, yres, fullscreen != 0);
 	SDL_WM_SetCaption(APP_TITLE " - " APP_VERSION, NULL);
 
 	gLog("[World of Warcraft Studio - Editor] - Initializing Ground Effects\n");

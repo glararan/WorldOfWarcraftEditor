@@ -287,7 +287,7 @@ void loadWaterShader()
 			glProgramString(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_FORMAT_ASCII_ARB, length, buffer);
 			glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
 
-			if((errorPos==-1)&&(isNative==1))
+			if((errorPos == -1) && (isNative == 1))
 			{
 				gLog("[World of Warcraft Studio - Editor] - Water Shader Loaded successfully\n");
 			}

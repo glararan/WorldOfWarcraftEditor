@@ -457,7 +457,7 @@ int width(const font_data &ft_font, const char *fmt, ...)
 		int	curWidth=0;
 		for(int j=0;j<lines[i].size();j++)
 			curWidth+=ft_font.charWidths[lines[i].c_str()[j]];
-		if(curWidth>maxWidth);
+		if(curWidth>maxWidth)
 			maxWidth=curWidth;
 	}
 

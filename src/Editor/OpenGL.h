@@ -14,7 +14,7 @@ extern bool gPop;
 
 void gLog(char *str, ...);
 extern Font *f16, *f24, *f32;
-extern freetype::font_data arialn13,arial12,arial14,arial16,morpheus40;
+extern freetype::font_data arialn13,arial12,arial14,arial16,morpheus;
 
 extern float gFPS;
 

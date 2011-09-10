@@ -373,7 +373,7 @@ void MapTile::loadModel()
 
 void MapTile::loadModelInstances(int id)
 {
-	for (int i=0; i<modelNum; i++)
+	for (int i = 0; i < modelNum; i++)
 	{
 		if(modelInstances[i].nameID!=id)
 			continue;
@@ -433,7 +433,7 @@ void MapTile::loadWMO()
 
 void MapTile::loadWMOInstances()
 {
-	for (int i=0; i < wmoNum; i++)
+	for (int i = 0; i < wmoNum; i++)
 	{
 		WMO *wmo = (WMO*)gWorld->wmomanager.items[gWorld->wmomanager.get(wmos[wmoInstances[i].nameID])];
 		WMOInstance inst(wmo, &wmoInstances[i]);

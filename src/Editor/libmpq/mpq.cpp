@@ -20,7 +20,6 @@
  *  $Id: mpq.cpp,v 1.1 2005/04/09 22:09:18 ufoz Exp $
  */
 
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -57,7 +56,7 @@ int libmpq_archive_open(mpq_archive *mpq_a, unsigned char *mpq_filename) {
 	memset(mpq_a->header, 0, sizeof(mpq_header));
 
 	/* Check if file exists and is readable */
-	fd = _open((const char*)mpq_filename, O_RDONLY|O_BINARY);
+	fd = open((const char*)mpq_filename, O_RDONLY|O_BINARY);
 	if (fd == LIBMPQ_EFILE) {
 		return LIBMPQ_EFILE;
 	}
@@ -72,8 +71,8 @@ int libmpq_archive_open(mpq_archive *mpq_a, unsigned char *mpq_filename) {
 
 	while (!ncnt) {
 		mpq_a->header->id = 0;
-		_lseek(mpq_a->fd, mpq_a->mpqpos, SEEK_SET);
-		rb = _read(mpq_a->fd, mpq_a->header, sizeof(mpq_header));
+		lseek(mpq_a->fd, mpq_a->mpqpos, SEEK_SET);
+		rb = read(mpq_a->fd, mpq_a->header, sizeof(mpq_header));
 
 		/* if different number of bytes read, break the loop */
 		if (rb != sizeof(mpq_header)) {
@@ -98,7 +97,7 @@ int libmpq_archive_open(mpq_archive *mpq_a, unsigned char *mpq_filename) {
 	}
 
 	if (mpq_a->header->offset != sizeof(mpq_header)) {
-		_lseek(mpq_a->fd, mpq_a->header->offset, SEEK_SET);
+		lseek(mpq_a->fd, mpq_a->header->offset, SEEK_SET);
 	}
 
 	/* get the right positions of the hash table and the block table. */
@@ -154,7 +153,7 @@ int libmpq_archive_close(mpq_archive *mpq_a) {
 	}
 
 	/* Check if file descriptor is valid. */
-	if ((_close(mpq_a->fd)) == LIBMPQ_EFILE) {
+	if ((close(mpq_a->fd)) == LIBMPQ_EFILE) {
 		return LIBMPQ_EFILE;
 	}
 

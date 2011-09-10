@@ -73,7 +73,7 @@
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\Lukáš\Desktop\programovani\WoW Editor\Test\WorldOfWarcraft-Editor\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>
       </CompileAsManaged>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -81,6 +81,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UndefinePreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -135,6 +136,13 @@
   <ItemGroup>
     <ClCompile Include="AreaDB.cpp" />
     <ClCompile Include="Brush.cpp" />
+    <ClCompile Include="bzlib\blocksort.c" />
+    <ClCompile Include="bzlib\bzlib.c" />
+    <ClCompile Include="bzlib\compress.c" />
+    <ClCompile Include="bzlib\crctable.c" />
+    <ClCompile Include="bzlib\decompress.c" />
+    <ClCompile Include="bzlib\huffman.c" />
+    <ClCompile Include="bzlib\randtable.c" />
     <ClCompile Include="Chameleon\Chameleon.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBC.cpp" />
@@ -144,12 +152,22 @@
     <ClCompile Include="FreeType.cpp" />
     <ClCompile Include="Frustrum.cpp" />
     <ClCompile Include="GroundEffects.cpp" />
-    <ClCompile Include="libmpq\common.cpp" />
+    <ClCompile Include="libmpq\common.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="libmpq\explode.cpp" />
-    <ClCompile Include="libmpq\extract.cpp" />
-    <ClCompile Include="libmpq\huffman.cpp" />
-    <ClCompile Include="libmpq\mpq.cpp" />
-    <ClCompile Include="libmpq\wave.cpp" />
+    <ClCompile Include="libmpq\extract.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="libmpq\huffman.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="libmpq\mpq.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="libmpq\wave.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="Liquid.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -171,23 +189,47 @@
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="WMO.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="zlib\adler32.c" />
-    <ClCompile Include="zlib\compress.c" />
-    <ClCompile Include="zlib\crc32.c" />
-    <ClCompile Include="zlib\deflate.c" />
-    <ClCompile Include="zlib\gzio.c" />
-    <ClCompile Include="zlib\inffast.c" />
-    <ClCompile Include="zlib\inflate.c" />
-    <ClCompile Include="zlib\inftrees.c" />
-    <ClCompile Include="zlib\trees.c" />
-    <ClCompile Include="zlib\uncompr.c" />
-    <ClCompile Include="zlib\zutil.c" />
+    <ClCompile Include="zlib\adler32.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\compress.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\crc32.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\deflate.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\gzio.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\inffast.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\inflate.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\inftrees.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\trees.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\uncompr.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="zlib\zutil.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animated.h" />
     <ClInclude Include="Appstate.h" />
     <ClInclude Include="AreaDB.h" />
     <ClInclude Include="Brush.h" />
+    <ClInclude Include="bzlib\bzlib.h" />
+    <ClInclude Include="bzlib\bzlib_private.h" />
     <ClInclude Include="Chameleon\Chameleon.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DBC.h" />

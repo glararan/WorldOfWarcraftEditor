@@ -6,7 +6,7 @@
  */
 
 /* @(#) $Id: gzio.c,v 1.1 2005/04/09 22:09:50 ufoz Exp $ */
-#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 
 #include "zutil.h"
