@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\Bin\Release\</OutDir>
-    <IntDir>Build\Release\</IntDir>
+    <IntDir>..\..\Build\Release\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -68,29 +68,39 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <MultiProcessorCompilation>
-      </MultiProcessorCompilation>
-      <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\programovani\WoW Editor\Test\src\Editor\Chameleon;C:\programovani\WoW Editor\Test\src\libmpq;C:\programovani\WoW Editor\Test\src\zlib;C:\programovani\WoW Editor\Test\src\bzlib2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsManaged>
       </CompileAsManaged>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <CallingConvention>Cdecl</CallingConvention>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UndefinePreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <StringPooling>false</StringPooling>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+      <DisableSpecificWarnings>4996;4355;4244;4985;4267;4619</DisableSpecificWarnings>
+      <AdditionalOptions> /Zm1000 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>OpenGL32.lib;glu32.lib;SDL.lib;SDLmain.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenGL32.lib;glu32.lib;SDL.lib;SDLmain.lib;freetype.lib;bzlib2.lib;libmpq.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\programovani\WoW Editor\Test\Bin\Release\Data\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -116,34 +126,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="app.ico" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Editor.conf" />
-    <None Include="libmpq\common.cpp.bak" />
-    <None Include="libmpq\libmpq.a" />
-    <None Include="libmpq\Makefile" />
-    <None Include="libmpq\Makefile~" />
     <None Include="ReadMe.txt" />
-    <None Include="zlib\algorithm.txt" />
-    <None Include="zlib\ChangeLog" />
-    <None Include="zlib\CMakeLists.txt" />
-    <None Include="zlib\FAQ" />
-    <None Include="zlib\INDEX" />
-    <None Include="zlib\makedepend" />
-    <None Include="zlib\Makefile" />
-    <None Include="zlib\makefile.wat" />
-    <None Include="zlib\README" />
-    <None Include="zlib\zlib.3" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AreaDB.cpp" />
     <ClCompile Include="Brush.cpp" />
-    <ClCompile Include="bzlib\blocksort.c" />
-    <ClCompile Include="bzlib\bzlib.c" />
-    <ClCompile Include="bzlib\compress.c" />
-    <ClCompile Include="bzlib\crctable.c" />
-    <ClCompile Include="bzlib\decompress.c" />
-    <ClCompile Include="bzlib\huffman.c" />
-    <ClCompile Include="bzlib\randtable.c" />
-    <ClCompile Include="Chameleon\Chameleon.cpp" />
+    <ClCompile Include="Chameleon\Chameleon.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)chameleon\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DBC.cpp" />
     <ClCompile Include="DBCFile.cpp" />
@@ -152,27 +144,13 @@
     <ClCompile Include="FreeType.cpp" />
     <ClCompile Include="Frustrum.cpp" />
     <ClCompile Include="GroundEffects.cpp" />
-    <ClCompile Include="libmpq\common.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="libmpq\explode.cpp" />
-    <ClCompile Include="libmpq\extract.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="libmpq\huffman.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="libmpq\mpq.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="libmpq\wave.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)libmpq\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="Liquid.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MPQ_libMPQ.cpp" />
+    <ClCompile Include="MPQ.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)mpq\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Selection.cpp" />
@@ -189,47 +167,12 @@
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="WMO.cpp" />
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="zlib\adler32.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\compress.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\crc32.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\deflate.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\gzio.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\inffast.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\inflate.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\inftrees.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\trees.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\uncompr.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="zlib\zutil.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)zlib\</ObjectFileName>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animated.h" />
     <ClInclude Include="Appstate.h" />
     <ClInclude Include="AreaDB.h" />
     <ClInclude Include="Brush.h" />
-    <ClInclude Include="bzlib\bzlib.h" />
-    <ClInclude Include="bzlib\bzlib_private.h" />
     <ClInclude Include="Chameleon\Chameleon.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DBC.h" />
@@ -239,11 +182,6 @@
     <ClInclude Include="FreeType.h" />
     <ClInclude Include="Frustrum.h" />
     <ClInclude Include="GroundEffects.h" />
-    <ClInclude Include="libmpq\common.h" />
-    <ClInclude Include="libmpq\explode.h" />
-    <ClInclude Include="libmpq\huffman.h" />
-    <ClInclude Include="libmpq\mpq.h" />
-    <ClInclude Include="libmpq\wave.h" />
     <ClInclude Include="Liquid.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MapHeaders.h" />
@@ -253,7 +191,6 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelHeaders.h" />
     <ClInclude Include="MPQ.h" />
-    <ClInclude Include="MPQ_libMPQ.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Quaternion.h" />
@@ -271,16 +208,6 @@
     <ClInclude Include="Video.h" />
     <ClInclude Include="WMO.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="zlib\crc32.h" />
-    <ClInclude Include="zlib\deflate.h" />
-    <ClInclude Include="zlib\inffast.h" />
-    <ClInclude Include="zlib\inffixed.h" />
-    <ClInclude Include="zlib\inflate.h" />
-    <ClInclude Include="zlib\inftrees.h" />
-    <ClInclude Include="zlib\trees.h" />
-    <ClInclude Include="zlib\zconf.h" />
-    <ClInclude Include="zlib\zlib.h" />
-    <ClInclude Include="zlib\zutil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

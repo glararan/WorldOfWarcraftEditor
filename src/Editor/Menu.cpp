@@ -78,9 +78,15 @@ void Menu::randBackground()
     char path[256];
 	sprintf_s(path, "Interface\\Glues\\Models\\UI_%s\\UI_%s.mdx", randui, randui);
 	
+	gLog("Test Menu.cpp 1 - Start");
     bg = new Model(path);
+	gLog("Test Menu.cpp 1 - Success");
+	gLog("Test Menu.cpp 2 - Start");
 	bg->ind = true;
+	gLog("Test Menu.cpp 2 - Success");
+	gLog("Test Menu.cpp 3 - Start");
 	lastbg = randnum;
+	gLog("Test Menu.cpp 3 - Success");
 }
 
 void Menu::tick(float t, float dt)
@@ -339,7 +345,7 @@ void Menu::display(float t, float dt)
 
 #ifdef SFMPQAPI
 			f16->shprint(300, video.yres - 40, "World of Warcraft is (C) Blizzard Entertainment\n"
-				"World of Warcraft Editor is (C) gLararaN.eu"
+				"World of Warcraft Studio - Editor is (C) gLararaN, Chipsi."
 			);
 #else
 			f16->shprint(300, video.yres - 20, "World of Warcraft is (C) Blizzard Entertainment");

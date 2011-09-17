@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-#include "Chameleon\Chameleon.h"
+#include "Chameleon.h"
 
 class ConfigFile
 {

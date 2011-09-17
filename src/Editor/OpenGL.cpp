@@ -1,12 +1,13 @@
 ﻿#define NOMINMAX
-#define _CRT_SECURE_NO_DEPRECATE
 #include <windows.h>
 #include <winerror.h>
+#include <sys\stat.h>
 
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <deque>
 
 #include "Config.h"
 
@@ -157,8 +158,13 @@ void GraphicCard()
 	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VERSION));
 }
 
-std::vector<AppState*> gStates;
+vector<AppState*> gStates;
 bool gPop = false;
+
+bool hasInputPath = false;
+char InputPath[1024] = ".";
+char path[512];
+deque<MPQArchive*> archives;
 
 char gamepath[1024];
 char wowpath[1024];
@@ -170,20 +176,20 @@ Font *f16, *f24, *f32;
 freetype::font_data arialn13,arial12,arial14,arial16,morpheus;	
 AreaDB gAreaDB;
 
-void initFonts()
+void InitFonts()
 {
-	ftex = loadTGA("fonts\\arial.tga",false);
+	ftex = loadTGA("Data\\fonts\\arial.tga",false);
 
-	f16 = new Font(ftex, 256, 256, 16, "fonts\\arial.info");
-	f24 = new Font(ftex, 256, 256, 24, "fonts\\arial.info");
-	f32 = new Font(ftex, 256, 256, 32, "fonts\\arial.info");
+	f16 = new Font(ftex, 256, 256, 16, "Data\\fonts\\arial.info");
+	f24 = new Font(ftex, 256, 256, 24, "Data\\fonts\\arial.info");
+	f32 = new Font(ftex, 256, 256, 32, "Data\\fonts\\arial.info");
 
-	morpheus.initMPQ("fonts\\morpheus.ttf",40);
-	arialn13.initMPQ("fonts\\arialn.ttf",13);
+	morpheus.initMPQ("Data\\fonts\\morpheus.ttf",40);
+	arialn13.initMPQ("Data\\fonts\\arialn.ttf",13);
 	
-	arial12.init("fonts\\arial.ttf",12);
-	arial14.init("fonts\\arial.ttf",14);
-	arial16.init("fonts\\arial.ttf",16);
+	arial12.init("Data\\fonts\\arial.ttf",12);
+	arial14.init("Data\\fonts\\arial.ttf",14);
+	arial16.init("Data\\fonts\\arial.ttf",16);
 }
 
 void deleteFonts()
@@ -247,6 +253,149 @@ void getGamePath()
 #else
 	strcpy(gamepath,"data/");
 #endif
+}
+
+bool scan_patches(char* scanmatch, vector<string>& pArchiveNames)
+{
+	int i;
+
+	for(i = 1; i <= 99; i++)
+	{
+		if(i != 1)
+		{
+			sprintf(path, "%s-%d.MPQ", scanmatch, i);
+		}
+		else
+		{
+			sprintf(path, "%s.MPQ", scanmatch);
+		}
+
+#ifdef _WIN32
+		if(FILE* h = fopen(path, "rb"))
+#endif
+		{
+			fclose(h);
+			pArchiveNames.push_back(path);
+		}
+	}
+
+	return(true);
+}
+
+bool fillArchiveNameVector(vector<string>& pArchiveNames)
+{
+	if(!hasInputPath)
+		getGamePath();
+
+	string in_path(InputPath);
+	vector<string> locales, languageLocales;
+
+	languageLocales.push_back("enGB");
+	languageLocales.push_back("enUS");
+	languageLocales.push_back("deDE");
+	languageLocales.push_back("esES");
+	languageLocales.push_back("frFR");
+	languageLocales.push_back("ruRU");
+
+	for(vector<string>::iterator i = languageLocales.begin(); i != languageLocales.end(); ++i)
+	{
+		string localePath = in_path + *i;
+		struct stat status;
+		if(stat(localePath.c_str(), &status))
+			continue;
+		if((status.st_mode & S_IFDIR) == 0)
+			continue;
+		gLog("[World of Warcraft Studio - Editor] - Found locales '%s'\n", i->c_str());
+		locales.push_back(*i);
+	}
+
+	gLog("[World of Warcraft Studio - Editor] - Addind data files from locale dir.\n");
+	for(vector<string>::iterator i = locales.begin(); i != locales.end(); ++i)
+	{
+		switch(loadExpansion())
+		{
+		case 1:
+			{
+				pArchiveNames.push_back(InputPath + string("common.MPQ"));
+				pArchiveNames.push_back(InputPath + string("expansion.MPQ"));
+				pArchiveNames.push_back(InputPath + string("patch.MPQ"));
+				pArchiveNames.push_back(InputPath + string("patch-2.MPQ"));
+
+				pArchiveNames.push_back(in_path + *i + "\\locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\expansion-locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\patch-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\patch-" + *i + "-2.MPQ");
+
+				break;
+			}
+
+		case 2:
+			{
+				pArchiveNames.push_back(InputPath + string("common.MPQ"));
+				pArchiveNames.push_back(InputPath + string("common-2.MPQ"));
+				pArchiveNames.push_back(InputPath + string("expansion.MPQ"));
+				pArchiveNames.push_back(InputPath + string("lichking.MPQ"));
+				pArchiveNames.push_back(InputPath + string("patch.MPQ"));
+				pArchiveNames.push_back(InputPath + string("patch-2.MPQ"));
+
+				pArchiveNames.push_back(in_path + *i + "\\locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\expansion-locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\lichking-locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\patch-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\patch-" + *i + "-2.MPQ");
+
+				break;
+			}
+
+		case 3:
+			{
+				pArchiveNames.push_back(InputPath + string("art.MPQ"));
+				pArchiveNames.push_back(InputPath + string("expansion1.MPQ"));
+				pArchiveNames.push_back(InputPath + string("expansion2.MPQ"));
+				pArchiveNames.push_back(InputPath + string("expansion3.MPQ"));
+				pArchiveNames.push_back(InputPath + string("sound.MPQ"));
+				pArchiveNames.push_back(InputPath + string("world.MPQ"));
+
+				pArchiveNames.push_back(in_path + *i + "\\locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\expansion1-locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\expansion2-locale-" + *i + ".MPQ");
+				pArchiveNames.push_back(in_path + *i + "\\expansion3-locale-" + *i + ".MPQ");
+
+				break;
+			}
+
+		default:
+			{
+				gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
+				exit(1);
+
+				break;
+			}
+		}
+	}
+
+	gLog("[World of Warcraft Studio - Editor] - Scanning patch levels from data dir.\n");
+	sprintf(path, "%spatch", InputPath);
+	if(!scan_patches(path, pArchiveNames))
+		return(false);
+
+	gLog("[World of Warcraft Studio - Editor] - Scanning patch levels from locale dir.\n");
+	bool foundOne = false;
+	for(vector<string>::iterator i = locales.begin(); i != locales.end(); ++i)
+	{
+		gLog("[World of Warcraft Studio - Editor] - Custom Locale: %s\n", i->c_str());
+		sprintf(path, "%s%s/patch-%s", InputPath, i->c_str(), i->c_str());
+		if(scan_patches(path, pArchiveNames))
+			foundOne = true;
+	}
+
+	if(!foundOne)
+	{
+		gLog("[World of Warcraft Studio - Editor] - No one custom Locales found\n");
+		return false;
+	}
+
+	return true;
 }
 
 void CreateStrips();
@@ -342,8 +491,7 @@ int main(int argc, char *argv[])
 
 	checkConfig2();
 
-	std::vector<MPQArchive*> archives;
-	vector<string> archiveNames;
+	/*deque<string> archiveNames;
 	switch(loadExpansion())
 	{
 	case 1: // TBC
@@ -425,9 +573,18 @@ int main(int argc, char *argv[])
 
 			} // End switch
 
-		gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for TBC\n");
+			char* locales[] = {"", "enGB", "enUS", "deDE", "esES", "frFR", "ruRU"};
+			char temp[255];
+			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
 
-		break;
+			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
+			{
+				gLog_const((*it).c_str());
+			}
+
+			gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for TBC\n");
+
+			break;
 		}
 
 	case 2: // WotLK
@@ -507,7 +664,7 @@ int main(int argc, char *argv[])
 					break;
 				}
 
-			default:
+			default: // ERROR
 				{
 					gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
 					exit(1);
@@ -517,9 +674,18 @@ int main(int argc, char *argv[])
 
 			} // End switch
 
-		gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for WotLK\n");
+			char* locales[] = {"", "enGB", "enUS", "deDE", "esES", "frFR", "ruRU"};
+			char temp[255];
+			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
 
-		break;
+			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
+			{
+				gLog_const((*it).c_str());
+			}
+
+			gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for WotLK\n");
+
+			break;
 		}
 
 	case 3: // Cataclysm
@@ -593,7 +759,7 @@ int main(int argc, char *argv[])
 					break;
 				}
 
-			default:
+			default: // ERROR
 				{
 					gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
 					exit(1);
@@ -607,7 +773,7 @@ int main(int argc, char *argv[])
 			char temp[255];
 			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
 
-			for(vector<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
+			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
 			{
 				gLog_const((*it).c_str());
 			}
@@ -617,78 +783,49 @@ int main(int argc, char *argv[])
 			break;
 		}
 	
-	default:
+	default: // ERROR
 		{
-			gLog("Expansion isn't - The Burning Crusade or Wrath of the Lich King or Cataclysm. Select one of third expansion.\n");
+			gLog("[World of Warcraft Studio - Editor] - Expansion isn't - The Burning Crusade or Wrath of the Lich King or Cataclysm. Select one of third expansion.\n");
 			exit(1);
 			break;
 		}
 
-	}
-
-	char path[512];
-
-	//Patches
-	/*
-	if (usePatch) {
-		// patch goes first -> fake priority handling
-		sprintf(path, "%s%s", gamepath, "patch-9.MPQ");
-		archives.push_back(new MPQArchive(path));
-		sprintf(path, "%s%s", gamepath, "patch-8.MPQ");
-		archives.push_back(new MPQArchive(path));
-		sprintf(path, "%s%s", gamepath, "patch-7.MPQ");
-		archives.push_back(new MPQArchive(path));
-		sprintf(path, "%s%s", gamepath, "patch-6.MPQ");
-		archives.push_back(new MPQArchive(path));
-		sprintf(path, "%s%s", gamepath, "patch-5.MPQ");
-		archives.push_back(new MPQArchive(path));
-		sprintf(path, "%s%s", gamepath, "patch-4.MPQ");
-		archives.push_back(new MPQArchive(path));
 	}*/
 
+	std::vector<std::string> archiveNames;
+	fillArchiveNameVector(archiveNames);
 	switch(loadExpansion())
 	{
 	case 1: // TBC
 		{
-			gLog("[World of Warcraft Studio - Editor] - Starting loading archives\n");
-
-			for (size_t i = 0; i < 7; i++)
+			for (size_t i = 0; i < archiveNames.size(); i++)
 			{
-				sprintf(path, "%s%s", gamepath, (archiveNames[i]).c_str());
-				archives.push_back(new MPQArchive(path));
+				MPQArchive *archive = new MPQArchive(archiveNames[i].c_str());
+				gLog("[World of Warcraft Studio - Editor] - Loading: %s\n", archiveNames[i].c_str());
 			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading archives success\n");
 
 			break;
 		}
 
 	case 2: // WotLK
 		{
-			gLog("[World of Warcraft Studio - Editor] - Starting loading archives\n");
-
-			for (size_t i = 0; i < 10; i++)
+			for (size_t i = 0; i < archiveNames.size(); i++)
 			{
-				sprintf(path, "%s%s", gamepath, (archiveNames[i]).c_str());
-				archives.push_back(new MPQArchive(path));
+				MPQArchive *archive = new MPQArchive(archiveNames[i].c_str());
+				//gLog("[World of Warcraft Studio - Editor] - Loading: %s\n", archiveNames[i].c_str());
+				gLog("Test\n");
 			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading archives success\n");
 
 			break;
 		}
 
 	case 3: // Cataclysm
 		{
-			gLog("[World of Warcraft Studio - Editor] - Starting loading archives\n");
-
-			for (size_t i = 0; i < 9; i++)
+			for (size_t i = 0; i < archiveNames.size(); i++)
 			{
-				sprintf(path, "%s%s", gamepath, (archiveNames[i]).c_str());
-				archives.push_back(new MPQArchive(path));
+				MPQArchive *archive = new MPQArchive(archiveNames[i].c_str());
+				gLog("[World of Warcraft Studio - Editor] - Loading: %s\n", archiveNames[i].c_str());
 			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading archives success\n");
 
 			break;
 		}
@@ -705,13 +842,13 @@ int main(int argc, char *argv[])
 
 	gAreaDB.open();
 
-	video.init(xres, yres, fullscreen != 0);
 	SDL_WM_SetCaption(APP_TITLE " - " APP_VERSION, NULL);
+	video.init(xres, yres, fullscreen != 0);
 
 	gLog("[World of Warcraft Studio - Editor] - Initializing Ground Effects\n");
 	InitGroundEffects();
 	gLog("[World of Warcraft Studio - Editor] - Initializing Fonts\n");
-	initFonts();
+	InitFonts();
 
 	float ftime;
 	Uint32 t, last_t, frames = 0, time = 0, fcount = 0, ft = 0;
@@ -811,7 +948,7 @@ int main(int argc, char *argv[])
 	
 	video.close();
 
-	for (std::vector<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it)
+	for (deque<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it)
         (*it)->close();
 		
 	archives.clear();

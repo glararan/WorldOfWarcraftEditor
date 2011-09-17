@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "Font.h"
 #include "Video.h"
 #include <iostream>
@@ -84,7 +83,7 @@ void Font::drawtext(int x, int y, const char *text)
 	glBindTexture(GL_TEXTURE_2D, tex);
 
     float base = y + size*Scale;
-	float xpos = x;
+	float xpos = (float)x;
     const char *c = text;
 
 	while (*c!=0)
@@ -98,7 +97,7 @@ void Font::drawtext(int x, int y, const char *text)
 		else
 		{
 			base += size;
-			xpos = x;
+			xpos = (float)x;
 		}
 		c++;
 	}
@@ -110,7 +109,7 @@ void Font::shdrawtext(int x, int y, const char *text)
 	glGetFloatv(GL_CURRENT_COLOR, col);
 	glColor4f(0,0,0,1);
 
-	drawtext(x+2*Scale,y+2*Scale,text);
+	drawtext((float)x+2*Scale,(float)y+2*Scale,text);
 
 	glColor4fv(col);
 	drawtext(x,y,text);

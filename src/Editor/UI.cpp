@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "OpenGL.h"
 #include "Video.h"
 #include "UI.h"

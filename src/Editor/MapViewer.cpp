@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "MapViewer.h"
 #include "OpenGL.h"
 #include "AreaDB.h"

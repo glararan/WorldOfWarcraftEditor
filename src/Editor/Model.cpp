@@ -70,6 +70,7 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	else
 		gLog("[World of Warcraft Studio - Editor] - Loading model from File %s%s\n", tempname, animated ? " (animated)" : "");
 
+	gLog("Test Model.cpp 1 - Start");
 	trans = 1.0f;
 
 	vbuf = nbuf = tbuf = 0;
@@ -82,17 +83,28 @@ Model::Model(std::string name, bool forceAnim) : ManagedItem(name), forceAnim(fo
 	transparency = 0;
 	particleSystems = 0;
 	ribbons = 0;
+	gLog("Test Model.cpp 1 - Success");
+	gLog("Test Model.cpp 2 - Start");
 	if (header.nGlobalSequences)
 	{
+		gLog("Test Model.cpp 2(1) - Start");
 		globalSequences = new int[header.nGlobalSequences];
+		gLog("Test Model.cpp 2(1) - Success");
+		gLog("Test Model.cpp 2(2) - Start");
 		memcpy(globalSequences, (f.getBuffer() + header.ofsGlobalSequences), header.nGlobalSequences * 4);
+		gLog("Test Model.cpp 2(2) - Success");
 	}
+	gLog("Test Model.cpp 2 - Success");
 
+	gLog("Test Model.cpp 3 - Start");
 	if (animated) initAnimated(f);
 	else initStatic(f);
+	gLog("Test Model.cpp 3 - Success");
 
+	gLog("Test Model.cpp 4 - Start");
 	f.close();
 	Reloaded=false;
+	gLog("Test Model.cpp 4 - Success");
 }
 
 Model::~Model()

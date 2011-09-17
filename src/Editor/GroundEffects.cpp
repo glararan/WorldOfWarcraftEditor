@@ -21,12 +21,12 @@ DBCFile	groundEffectDoodadDBC("DBFilesClient\\GroundEffectDoodad.dbc");
 void InitGroundEffects()
 {
 	string Temp;
-	char	*Temp2;
+	char *Temp2;
 	GroundEffectTexture	tmpGroundEffectTexture;
 	groundEffectTextureDBC.open();
-	for(DBCFile::Iterator i=groundEffectTextureDBC.begin();i!=groundEffectTextureDBC.end();i++)
+	for(DBCFile::Iterator i = groundEffectTextureDBC.begin(); i != groundEffectTextureDBC.end();i++)
 	{
-		tmpGroundEffectTexture.id=i->getUInt(0);
+		tmpGroundEffectTexture.id = i->getUInt(0);
 		//Old Pre 1.11 Patch method
 		/*Temp=i->getString(4);
 		std::transform (Temp.begin(), Temp.end(), Temp.begin(), ToLower());
@@ -49,11 +49,11 @@ void InitGroundEffects()
 
 	GroundEffectDoodad	tmpGroundEffectDoodad;
 	groundEffectDoodadDBC.open();
-	for(DBCFile::Iterator i=groundEffectDoodadDBC.begin();i!=groundEffectDoodadDBC.end();i++)
+	for(DBCFile::Iterator i = groundEffectDoodadDBC.begin(); i != groundEffectDoodadDBC.end();i++)
 	{
-		tmpGroundEffectDoodad.id=i->getUInt(0);
-		tmpGroundEffectDoodad.doodadID=i->getUInt(1);
-		tmpGroundEffectDoodad.Model=i->getString(2);
+		tmpGroundEffectDoodad.id = i->getUInt(0);
+		tmpGroundEffectDoodad.doodadID = i->getUInt(1);
+		tmpGroundEffectDoodad.Model = i->getString(2);
 
 		groundEffectDoodadData[tmpGroundEffectDoodad.doodadID]=tmpGroundEffectDoodad;
 	}
@@ -61,7 +61,7 @@ void InitGroundEffects()
 
 const char* getGroundEffectDoodad(unsigned int effectID, int DoodadNum)
 {
-	if(groundEffectTextureData[effectID].doodad[DoodadNum]!=-1)
+	if(groundEffectTextureData[effectID].doodad[DoodadNum] != -1)
 		return groundEffectDoodadData[groundEffectTextureData[effectID].doodad[DoodadNum]].Model;
 	else
 		return 0;
@@ -72,10 +72,10 @@ unsigned int findEffectID(const char *tex)
 	//Blizzard decided to remove texture names from DBC's
 	return 0;
 	
-	for(std::map<int,GroundEffectTexture>::iterator i=groundEffectTextureData.begin();i!=groundEffectTextureData.end();i++)
+	for(std::map<int,GroundEffectTexture>::iterator i = groundEffectTextureData.begin(); i != groundEffectTextureData.end();i++)
 	{
-		const char *Tmp=i->second.texture;
-		if(strcmp(Tmp,tex)==0)
+		const char *Tmp = i->second.texture;
+		if(strcmp(Tmp,tex) == 0)
 			return  i->second.id;
 	}
 	return 0;

@@ -16,22 +16,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
-    <None Include="zlib\algorithm.txt" />
-    <None Include="zlib\CMakeLists.txt" />
-    <None Include="zlib\FAQ" />
-    <None Include="zlib\ChangeLog" />
-    <None Include="zlib\INDEX" />
-    <None Include="zlib\makedepend" />
-    <None Include="zlib\Makefile" />
-    <None Include="zlib\makefile.wat" />
-    <None Include="zlib\README" />
-    <None Include="zlib\zlib.3" />
-    <None Include="libmpq\common.cpp.bak" />
-    <None Include="libmpq\libmpq.a" />
-    <None Include="libmpq\Makefile" />
-    <None Include="libmpq\Makefile~" />
     <None Include="app.ico" />
     <None Include="Editor.conf" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -91,9 +78,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MPQ_libMPQ.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -112,57 +96,6 @@
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zlib\adler32.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\compress.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\crc32.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\deflate.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\gzio.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\inffast.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\inflate.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\inftrees.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\trees.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\uncompr.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zlib\zutil.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\common.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\explode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\extract.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\huffman.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\mpq.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libmpq\wave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -172,25 +105,7 @@
     <ClCompile Include="MapViewer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bzlib\blocksort.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\bzlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\compress.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\crctable.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\decompress.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\huffman.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bzlib\randtable.c">
+    <ClCompile Include="MPQ.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -267,9 +182,6 @@
     <ClInclude Include="ModelHeaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MPQ_libMPQ.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -291,54 +203,6 @@
     <ClInclude Include="Vec3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MPQ.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\crc32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\deflate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\inffast.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\inffixed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\inflate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\inftrees.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\trees.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\zconf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\zlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib\zutil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libmpq\common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libmpq\explode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libmpq\huffman.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libmpq\mpq.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libmpq\wave.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Quaternion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -357,13 +221,10 @@
     <ClInclude Include="MapViewer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bzlib\bzlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="bzlib\bzlib_private.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Animated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MPQ.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

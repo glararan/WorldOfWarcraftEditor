@@ -1,11 +1,3 @@
-/*
-	A quick and simple opengl font library that uses GNU freetype2, written
-	and distributed as part of a tutorial for nehe.gamedev.net.
-	Sven Olsen, 2003
-*/
-
-//Include our header file.
-#define _CRT_SECURE_NO_WARNINGS
 #include "FreeType.h"
 #include "MPQ.h"
 #include "OpenGL.h"
@@ -156,7 +148,7 @@ void font_data::init(const char * fname, unsigned int h)
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
 
-	this->h=h;
+	this->h=(float)h;
 
 	//Create and initilize a freetype font library.
 	FT_Library library;
@@ -208,7 +200,7 @@ void font_data::initMPQ(const char * fname, unsigned int h)
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
 
-	this->h=h;
+	this->h=(float)h;
 
 	//Create and initilize a freetype font library.
 	FT_Library library;
@@ -358,7 +350,7 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	//down by h. This is because when each character is
 	//draw it modifies the current matrix so that the next character
 	//will be drawn immediatly after it.  
-	for(int i=0;i<lines.size();i++)
+	for(int i = 0;i < lines.size();i++)
 	{
 		glPushMatrix();
 		//glLoadIdentity();
@@ -452,10 +444,10 @@ int width(const font_data &ft_font, const char *fmt, ...)
 
 	int maxWidth=0;
 	
-	for(int i=0;i<lines.size();i++)
+	for(int i = 0;i < lines.size();i++)
 	{
 		int	curWidth=0;
-		for(int j=0;j<lines[i].size();j++)
+		for(int j = 0;j < lines[i].size();j++)
 			curWidth+=ft_font.charWidths[lines[i].c_str()[j]];
 		if(curWidth>maxWidth)
 			maxWidth=curWidth;

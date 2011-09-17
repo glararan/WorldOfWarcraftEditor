@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "World.h"
 
 #include <cassert>
@@ -7,7 +6,7 @@ using namespace std;
 
 World *gWorld=0;
 #define BUFSIZE 8192
-unsigned int	SelectBuffer[BUFSIZE];
+unsigned int SelectBuffer[BUFSIZE];
 
 World::World(const char* name):basename(name)
 {

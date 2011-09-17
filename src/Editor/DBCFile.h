@@ -1,5 +1,6 @@
 #ifndef DBCFILE_H
 #define DBCFILE_H
+
 #include <cassert>
 #include <string>
 
@@ -10,7 +11,7 @@ public:
 	~DBCFile();
 
 	// Open database. It must be openened before it can be used.
-	void open();
+	bool open();
 
 	// Database exceptions
 	class Exception
@@ -24,6 +25,7 @@ public:
 	private:
 		std::string message;
 	};
+
 	class NotFound: public Exception
 	{
 	public:
@@ -35,6 +37,12 @@ public:
 	class Record
 	{
 	public:
+		Record& operator= (const Record& r)
+        {
+            file = r.file;
+            offset = r.offset;
+            return *this;
+        }
 		float getFloat(size_t field) const
 		{
 			assert(field < file.fieldCount);
@@ -80,7 +88,8 @@ public:
 		}	
 		/// Return address of current instance
 		Record const & operator*() const { return record; }
-		const Record* operator->() const {
+		const Record* operator->() const
+		{
 			return &record;
 		}
 		/// Comparison

@@ -12,7 +12,8 @@
 extern std::vector<AppState*> gStates;
 extern bool gPop;
 
-void gLog(char *str, ...);
+void gLog(char* str, ...);
+void gLog_const(const char* str, ...);
 extern Font *f16, *f24, *f32;
 extern freetype::font_data arialn13,arial12,arial14,arial16,morpheus;
 
