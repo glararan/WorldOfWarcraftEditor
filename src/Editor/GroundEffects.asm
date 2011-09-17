@@ -72,9 +72,9 @@ PUBLIC	?beg@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::beg
 PUBLIC	?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::cur
 PUBLIC	?end@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::end
 CONST	SEGMENT
-$SG33858 DB	'DBFilesClient\GroundEffectTexture.dbc', 00H
+$SG33870 DB	'DBFilesClient\GroundEffectTexture.dbc', 00H
 	ORG $+2
-$SG33866 DB	'DBFilesClient\GroundEffectDoodad.dbc', 00H
+$SG33878 DB	'DBFilesClient\GroundEffectDoodad.dbc', 00H
 CONST	ENDS
 ;	COMDAT ?end@?$_Iosb@H@std@@2W4_Seekdir@12@B
 CONST	SEGMENT
@@ -599,14 +599,14 @@ _field$ = 8						; size = 4
 ?getUInt@Record@DBCFile@@QBEII@Z PROC			; DBCFile::Record::getUInt, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 44
+; Line 54
 	push	ebp
 	mov	ebp, esp
-; Line 46
+; Line 56
 	mov	eax, DWORD PTR [ecx]
 	mov	ecx, DWORD PTR _field$[ebp]
 	mov	eax, DWORD PTR [eax+ecx*4]
-; Line 47
+; Line 57
 	pop	ebp
 	ret	4
 ?getUInt@Record@DBCFile@@QBEII@Z ENDP			; DBCFile::Record::getUInt
@@ -618,16 +618,16 @@ _TEXT	SEGMENT
 _field$ = 8						; size = 4
 ?getString@Record@DBCFile@@QBEPBDI@Z PROC		; DBCFile::Record::getString, COMDAT
 ; _this$ = ecx
-; Line 54
+; Line 64
 	push	ebp
 	mov	ebp, esp
-; Line 58
+; Line 68
 	mov	eax, DWORD PTR [ecx]
 	mov	edx, DWORD PTR _field$[ebp]
 	mov	ecx, DWORD PTR [ecx+4]
 	mov	eax, DWORD PTR [eax+edx*4]
 	add	eax, DWORD PTR [ecx+48]
-; Line 59
+; Line 69
 	pop	ebp
 	ret	4
 ?getString@Record@DBCFile@@QBEPBDI@Z ENDP		; DBCFile::Record::getString
@@ -638,13 +638,13 @@ PUBLIC	??EIterator@DBCFile@@QAEAAV01@XZ		; DBCFile::Iterator::operator++
 _TEXT	SEGMENT
 ??EIterator@DBCFile@@QAEAAV01@XZ PROC			; DBCFile::Iterator::operator++, COMDAT
 ; _this$ = ecx
-; Line 77
+; Line 87
 	mov	eax, ecx
-; Line 78
+; Line 88
 	mov	ecx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [ecx+28]
 	add	DWORD PTR [eax], edx
-; Line 80
+; Line 90
 	ret	0
 ??EIterator@DBCFile@@QAEAAV01@XZ ENDP			; DBCFile::Iterator::operator++
 _TEXT	ENDS
@@ -654,9 +654,9 @@ PUBLIC	??CIterator@DBCFile@@QBEPBVRecord@1@XZ		; DBCFile::Iterator::operator->
 _TEXT	SEGMENT
 ??CIterator@DBCFile@@QBEPBVRecord@1@XZ PROC		; DBCFile::Iterator::operator->, COMDAT
 ; _this$ = ecx
-; Line 83
+; Line 94
 	mov	eax, ecx
-; Line 85
+; Line 96
 	ret	0
 ??CIterator@DBCFile@@QBEPBVRecord@1@XZ ENDP		; DBCFile::Iterator::operator->
 _TEXT	ENDS
@@ -667,16 +667,16 @@ _TEXT	SEGMENT
 _b$ = 8							; size = 4
 ??9Iterator@DBCFile@@QBE_NABV01@@Z PROC			; DBCFile::Iterator::operator!=, COMDAT
 ; _this$ = ecx
-; Line 92
+; Line 103
 	push	ebp
 	mov	ebp, esp
-; Line 93
+; Line 104
 	mov	eax, DWORD PTR [ecx]
 	mov	edx, DWORD PTR _b$[ebp]
 	xor	ecx, ecx
 	cmp	eax, DWORD PTR [edx]
 	setne	al
-; Line 94
+; Line 105
 	pop	ebp
 	ret	4
 ??9Iterator@DBCFile@@QBE_NABV01@@Z ENDP			; DBCFile::Iterator::operator!=
@@ -1157,7 +1157,7 @@ __Pnode$ = 8						; size = 4
 	mov	ebp, esp
 ; Line 607
 	mov	eax, DWORD PTR __Pnode$[ebp]
-	add	eax, 60					; 0000003cH
+	add	eax, 84					; 00000054H
 ; Line 608
 	pop	ebp
 	ret	0
@@ -1174,7 +1174,7 @@ __Pnode$ = 8						; size = 4
 	mov	ebp, esp
 ; Line 612
 	mov	eax, DWORD PTR __Pnode$[ebp]
-	add	eax, 61					; 0000003dH
+	add	eax, 85					; 00000055H
 ; Line 613
 	pop	ebp
 	ret	0
@@ -1377,14 +1377,14 @@ __Pnode$ = 8						; size = 4
 ; Line 642
 	mov	eax, DWORD PTR __Pnode$[ebp]
 	mov	ecx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN1@Max
 	npad	1
 $LL2@Max:
 ; Line 643
 	mov	eax, ecx
 	mov	ecx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LL2@Max
 $LN1@Max:
 ; Line 645
@@ -1404,14 +1404,14 @@ __Pnode$ = 8						; size = 4
 ; Line 649
 	mov	eax, DWORD PTR __Pnode$[ebp]
 	mov	ecx, DWORD PTR [eax]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN1@Min
 	npad	2
 $LL2@Min:
 ; Line 650
 	mov	eax, ecx
 	mov	ecx, DWORD PTR [eax]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LL2@Min
 $LN1@Min:
 ; Line 652
@@ -1729,8 +1729,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@0@IPAU120@@Z
 _TEXT	SEGMENT
-$T42278 = -12						; size = 12
-$T42283 = 8						; size = 4
+$T42291 = -12						; size = 12
+$T42296 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@0@IPAU120@@Z PROC ; std::_Allocate<std::_Tree_nod<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Node>, COMDAT
@@ -1746,9 +1746,9 @@ ___formal$ = 12						; size = 4
 ; Line 35
 	je	SHORT $LN5@Allocate
 ; Line 36
-	cmp	ecx, 67108863				; 03ffffffH
+	cmp	ecx, 48806446				; 02e8ba2eH
 	ja	SHORT $LN1@Allocate
-	shl	ecx, 6
+	imul	ecx, 88					; 00000058H
 	push	ecx
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
@@ -1757,15 +1757,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	eax, DWORD PTR $T42283[ebp]
+	lea	eax, DWORD PTR $T42296[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42278[ebp]
-	mov	DWORD PTR $T42283[ebp], 0
+	lea	ecx, DWORD PTR $T42291[ebp]
+	mov	DWORD PTR $T42296[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42278[ebp]
+	lea	ecx, DWORD PTR $T42291[ebp]
 	push	ecx
-	mov	DWORD PTR $T42278[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42291[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -1809,8 +1809,8 @@ PUBLIC	??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@0@IPAU120@@Z
 _TEXT	SEGMENT
-$T42293 = -12						; size = 12
-$T42297 = 8						; size = 4
+$T42306 = -12						; size = 12
+$T42310 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@0@IPAU120@@Z PROC ; std::_Allocate<std::_Tree_nod<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Node>, COMDAT
@@ -1836,15 +1836,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	eax, DWORD PTR $T42297[ebp]
+	lea	eax, DWORD PTR $T42310[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42293[ebp]
-	mov	DWORD PTR $T42297[ebp], 0
+	lea	ecx, DWORD PTR $T42306[ebp]
+	mov	DWORD PTR $T42310[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42293[ebp]
+	lea	ecx, DWORD PTR $T42306[ebp]
 	push	ecx
-	mov	DWORD PTR $T42293[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42306[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -1859,8 +1859,8 @@ PUBLIC	??$_Allocate@D@std@@YAPADIPAD@Z			; std::_Allocate<char>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T42302 = -12						; size = 12
-$T42306 = 8						; size = 4
+$T42315 = -12						; size = 12
+$T42319 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -1885,15 +1885,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@3
 $LN1@Allocate@3:
 ; Line 37
-	lea	eax, DWORD PTR $T42306[ebp]
+	lea	eax, DWORD PTR $T42319[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42302[ebp]
-	mov	DWORD PTR $T42306[ebp], 0
+	lea	ecx, DWORD PTR $T42315[ebp]
+	mov	DWORD PTR $T42319[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42302[ebp]
+	lea	ecx, DWORD PTR $T42315[ebp]
 	push	ecx
-	mov	DWORD PTR $T42302[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42315[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@3:
 $LN5@Allocate@3:
@@ -1973,7 +1973,7 @@ _TEXT	SEGMENT
 	mov	eax, ecx
 ; Line 84
 	mov	ecx, DWORD PTR [eax]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LN8@operator@2
 ; Line 85
 	mov	ecx, DWORD PTR [ecx+8]
@@ -1983,16 +1983,16 @@ _TEXT	SEGMENT
 $LN8@operator@2:
 ; Line 86
 	mov	edx, DWORD PTR [ecx]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	jne	SHORT $LN40@operator@2
 ; Line 88
 	mov	ecx, DWORD PTR [edx+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN21@operator@2
 $LL22@operator@2:
 	mov	edx, ecx
 	mov	ecx, DWORD PTR [edx+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LL22@operator@2
 ; Line 98
 	mov	DWORD PTR [eax], edx
@@ -2001,7 +2001,7 @@ $LL22@operator@2:
 $LN40@operator@2:
 ; Line 93
 	mov	edx, DWORD PTR [ecx+4]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	jne	SHORT $LN3@operator@2
 $LL4@operator@2:
 	mov	ecx, DWORD PTR [eax]
@@ -2010,12 +2010,12 @@ $LL4@operator@2:
 ; Line 94
 	mov	DWORD PTR [eax], edx
 	mov	edx, DWORD PTR [edx+4]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	je	SHORT $LL4@operator@2
 $LN3@operator@2:
 ; Line 95
 	mov	ecx, DWORD PTR [eax]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN1@operator@2
 ; Line 88
 $LN21@operator@2:
@@ -2110,7 +2110,7 @@ _TEXT	SEGMENT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\xmemory
 ; Line 219
-	mov	eax, 89478485				; 05555555H
+	mov	eax, 59652323				; 038e38e3H
 ; Line 220
 	ret	0
 ?max_size@?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@std@@QBEIXZ ENDP ; std::allocator<std::pair<int const ,GroundEffectTexture> >::max_size
@@ -2606,7 +2606,7 @@ __Val2$ = 12						; size = 4
 	mov	esi, DWORD PTR __Val2$[ebp]
 	push	edi
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -2688,8 +2688,8 @@ PUBLIC	?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTe
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@I@Z
 _TEXT	SEGMENT
-$T42647 = -12						; size = 12
-$T42639 = 8						; size = 4
+$T42660 = -12						; size = 12
+$T42652 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@I@Z PROC ; std::allocator<std::_Tree_nod<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Node>::allocate, COMDAT
 ; _this$ = ecx
@@ -2703,24 +2703,24 @@ __Count$ = 8						; size = 4
 	xor	eax, eax
 	test	ecx, ecx
 	je	SHORT $LN1@allocate
-	cmp	ecx, 67108863				; 03ffffffH
+	cmp	ecx, 48806446				; 02e8ba2eH
 	ja	SHORT $LN3@allocate
-	shl	ecx, 6
+	imul	ecx, 88					; 00000058H
 	push	ecx
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	eax, DWORD PTR $T42639[ebp]
+	lea	eax, DWORD PTR $T42652[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42647[ebp]
-	mov	DWORD PTR $T42639[ebp], 0
+	lea	ecx, DWORD PTR $T42660[ebp]
+	mov	DWORD PTR $T42652[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42647[ebp]
+	lea	ecx, DWORD PTR $T42660[ebp]
 	push	ecx
-	mov	DWORD PTR $T42647[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42660[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -2775,8 +2775,8 @@ PUBLIC	?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDo
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@I@Z
 _TEXT	SEGMENT
-$T42695 = -12						; size = 12
-$T42687 = 8						; size = 4
+$T42708 = -12						; size = 12
+$T42700 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@I@Z PROC ; std::allocator<std::_Tree_nod<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Node>::allocate, COMDAT
 ; _this$ = ecx
@@ -2799,15 +2799,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	eax, DWORD PTR $T42687[ebp]
+	lea	eax, DWORD PTR $T42700[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42695[ebp]
-	mov	DWORD PTR $T42687[ebp], 0
+	lea	ecx, DWORD PTR $T42708[ebp]
+	mov	DWORD PTR $T42700[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42695[ebp]
+	lea	ecx, DWORD PTR $T42708[ebp]
 	push	ecx
-	mov	DWORD PTR $T42695[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42708[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -2829,21 +2829,21 @@ _TEXT	SEGMENT
 	mov	eax, ecx
 ; Line 59
 	mov	edx, DWORD PTR [eax]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	jne	SHORT $LN3@operator@4
 ; Line 61
 	mov	ecx, DWORD PTR [edx+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN34@operator@4
 ; Line 63
 	mov	edx, DWORD PTR [ecx]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	jne	SHORT $LN17@operator@4
 	npad	5
 $LL18@operator@4:
 	mov	ecx, edx
 	mov	edx, DWORD PTR [ecx]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	je	SHORT $LL18@operator@4
 $LN17@operator@4:
 	mov	DWORD PTR [eax], ecx
@@ -2852,7 +2852,7 @@ $LN17@operator@4:
 $LN34@operator@4:
 ; Line 68
 	mov	edx, DWORD PTR [edx+4]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	jne	SHORT $LN1@operator@4
 $LL2@operator@4:
 	mov	ecx, DWORD PTR [eax]
@@ -2861,7 +2861,7 @@ $LL2@operator@4:
 ; Line 69
 	mov	DWORD PTR [eax], edx
 	mov	edx, DWORD PTR [edx+4]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 	je	SHORT $LL2@operator@4
 $LN1@operator@4:
 ; Line 70
@@ -2894,8 +2894,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T42778 = -12						; size = 12
-$T42770 = 8						; size = 4
+$T42791 = -12						; size = 12
+$T42783 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -2917,15 +2917,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@3
 $LN3@allocate@3:
-	lea	eax, DWORD PTR $T42770[ebp]
+	lea	eax, DWORD PTR $T42783[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T42778[ebp]
-	mov	DWORD PTR $T42770[ebp], 0
+	lea	ecx, DWORD PTR $T42791[ebp]
+	mov	DWORD PTR $T42783[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T42778[ebp]
+	lea	ecx, DWORD PTR $T42791[ebp]
 	push	ecx
-	mov	DWORD PTR $T42778[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T42791[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@3:
 $LN1@allocate@3:
@@ -2956,7 +2956,7 @@ __Wherenode$ = 8					; size = 4
 	mov	DWORD PTR [edx+8], esi
 ; Line 1767
 	mov	esi, DWORD PTR [eax]
-	cmp	BYTE PTR [esi+61], 0
+	cmp	BYTE PTR [esi+85], 0
 	jne	SHORT $LN5@Lrotate
 ; Line 1768
 	mov	DWORD PTR [esi+4], edx
@@ -3023,7 +3023,7 @@ __Wherenode$ = 8					; size = 4
 	mov	DWORD PTR [edx], esi
 ; Line 1797
 	mov	esi, DWORD PTR [eax+8]
-	cmp	BYTE PTR [esi+61], 0
+	cmp	BYTE PTR [esi+85], 0
 	jne	SHORT $LN5@Rrotate
 ; Line 1798
 	mov	DWORD PTR [esi+4], edx
@@ -3343,7 +3343,7 @@ _TEXT	SEGMENT
 ?max_size@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QBEIXZ PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::max_size, COMDAT
 ; _this$ = ecx
 ; Line 874
-	mov	eax, 89478485				; 05555555H
+	mov	eax, 59652323				; 038e38e3H
 ; Line 875
 	ret	0
 ?max_size@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QBEIXZ ENDP ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::max_size
@@ -3493,8 +3493,8 @@ PUBLIC	?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@st
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@XZ
 _TEXT	SEGMENT
-$T43238 = -16						; size = 12
-$T43216 = -4						; size = 4
+$T43251 = -16						; size = 12
+$T43229 = -4						; size = 4
 ?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@XZ PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Buynode, COMDAT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\xtree
@@ -3504,7 +3504,7 @@ $T43216 = -4						; size = 4
 	sub	esp, 16					; 00000010H
 	push	esi
 ; Line 560
-	push	64					; 00000040H
+	push	88					; 00000058H
 	mov	esi, ecx
 	call	??2@YAPAXI@Z				; operator new
 	xor	ecx, ecx
@@ -3521,7 +3521,7 @@ $T43216 = -4						; size = 4
 	mov	edx, DWORD PTR [esi+4]
 	mov	DWORD PTR [eax+8], edx
 ; Line 565
-	mov	WORD PTR [eax+60], cx
+	mov	WORD PTR [eax+84], cx
 	pop	esi
 ; Line 568
 	mov	esp, ebp
@@ -3529,15 +3529,15 @@ $T43216 = -4						; size = 4
 	ret	0
 ; Line 560
 $LN5@Buynode:
-	lea	eax, DWORD PTR $T43216[ebp]
-	mov	DWORD PTR $T43216[ebp], ecx
+	lea	eax, DWORD PTR $T43229[ebp]
+	mov	DWORD PTR $T43229[ebp], ecx
 	push	eax
-	lea	ecx, DWORD PTR $T43238[ebp]
+	lea	ecx, DWORD PTR $T43251[ebp]
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T43238[ebp]
+	lea	ecx, DWORD PTR $T43251[ebp]
 	push	ecx
-	mov	DWORD PTR $T43238[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T43251[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN27@Buynode:
 $LN26@Buynode:
@@ -3548,8 +3548,8 @@ PUBLIC	?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@XZ
 _TEXT	SEGMENT
-$T43291 = -16						; size = 12
-$T43269 = -4						; size = 4
+$T43304 = -16						; size = 12
+$T43282 = -4						; size = 4
 ?_Buynode@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@XZ PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Buynode, COMDAT
 ; _this$ = ecx
 ; Line 559
@@ -3583,15 +3583,15 @@ $T43269 = -4						; size = 4
 	ret	0
 ; Line 560
 $LN5@Buynode@2:
-	lea	eax, DWORD PTR $T43269[ebp]
-	mov	DWORD PTR $T43269[ebp], ecx
+	lea	eax, DWORD PTR $T43282[ebp]
+	mov	DWORD PTR $T43282[ebp], ecx
 	push	eax
-	lea	ecx, DWORD PTR $T43291[ebp]
+	lea	ecx, DWORD PTR $T43304[ebp]
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T43291[ebp]
+	lea	ecx, DWORD PTR $T43304[ebp]
 	push	ecx
-	mov	DWORD PTR $T43291[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T43304[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN27@Buynode@2:
 $LN26@Buynode@2:
@@ -3617,7 +3617,7 @@ __Val2$ = 12						; size = 4
 	mov	esi, DWORD PTR __Val2$[ebp]
 	push	edi
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -3759,7 +3759,7 @@ __Val2$ = 12						; size = 4
 	mov	esi, DWORD PTR __Val2$[ebp]
 	push	edi
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -3905,7 +3905,7 @@ __Keyval$ = 8						; size = 4
 	mov	eax, DWORD PTR [ecx+4]
 	mov	ecx, DWORD PTR [eax+4]
 ; Line 1745
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	jne	SHORT $LN3@Lbound
 	mov	edx, DWORD PTR __Keyval$[ebp]
 	mov	edx, DWORD PTR [edx]
@@ -3924,7 +3924,7 @@ $LN2@Lbound:
 	mov	ecx, DWORD PTR [ecx]
 $LN1@Lbound:
 ; Line 1745
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LL4@Lbound
 $LN3@Lbound:
 ; Line 1755
@@ -3936,8 +3936,8 @@ PUBLIC	??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$a
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@1@@Z
 _TEXT	SEGMENT
-$T43560 = -16						; size = 12
-$T43537 = -4						; size = 4
+$T43573 = -16						; size = 12
+$T43550 = -4						; size = 4
 __Parg$ = 8						; size = 4
 __Al$ = 12						; size = 1
 ??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@1@@Z PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >, COMDAT
@@ -3949,7 +3949,7 @@ __Al$ = 12						; size = 1
 	push	esi
 	mov	esi, ecx
 ; Line 544
-	push	64					; 00000040H
+	push	88					; 00000058H
 	mov	DWORD PTR [esi+8], 0
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
@@ -3967,10 +3967,10 @@ __Al$ = 12						; size = 1
 ; Line 549
 	mov	ecx, DWORD PTR [esi+4]
 	mov	al, 1
-	mov	BYTE PTR [ecx+60], al
+	mov	BYTE PTR [ecx+84], al
 ; Line 550
 	mov	edx, DWORD PTR [esi+4]
-	mov	BYTE PTR [edx+61], al
+	mov	BYTE PTR [edx+85], al
 ; Line 551
 	mov	eax, esi
 	pop	esi
@@ -3979,15 +3979,15 @@ __Al$ = 12						; size = 1
 	ret	8
 ; Line 544
 $LN15@Tree_val:
-	lea	eax, DWORD PTR $T43537[ebp]
+	lea	eax, DWORD PTR $T43550[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T43560[ebp]
-	mov	DWORD PTR $T43537[ebp], 0
+	lea	ecx, DWORD PTR $T43573[ebp]
+	mov	DWORD PTR $T43550[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T43560[ebp]
+	lea	ecx, DWORD PTR $T43573[ebp]
 	push	ecx
-	mov	DWORD PTR $T43560[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T43573[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN37@Tree_val:
 $LN36@Tree_val:
@@ -4039,8 +4039,8 @@ PUBLIC	??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$al
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@1@@Z
 _TEXT	SEGMENT
-$T43676 = -16						; size = 12
-$T43653 = -4						; size = 4
+$T43689 = -16						; size = 12
+$T43666 = -4						; size = 4
 __Parg$ = 8						; size = 4
 __Al$ = 12						; size = 1
 ??0?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@1@@Z PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >, COMDAT
@@ -4082,15 +4082,15 @@ __Al$ = 12						; size = 1
 	ret	8
 ; Line 544
 $LN15@Tree_val@2:
-	lea	eax, DWORD PTR $T43653[ebp]
+	lea	eax, DWORD PTR $T43666[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T43676[ebp]
-	mov	DWORD PTR $T43653[ebp], 0
+	lea	ecx, DWORD PTR $T43689[ebp]
+	mov	DWORD PTR $T43666[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T43676[ebp]
+	lea	ecx, DWORD PTR $T43689[ebp]
 	push	ecx
-	mov	DWORD PTR $T43676[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T43689[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN37@Tree_val@2:
 $LN36@Tree_val@2:
@@ -4179,9 +4179,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T43822 = -40						; size = 12
+$T43835 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T43799 = -24						; size = 4
+$T43812 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -4257,15 +4257,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T43799[ebp]
+	lea	ecx, DWORD PTR $T43812[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T43822[ebp]
-	mov	DWORD PTR $T43799[ebp], 0
+	lea	ecx, DWORD PTR $T43835[ebp]
+	mov	DWORD PTR $T43812[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T43822[ebp]
+	lea	edx, DWORD PTR $T43835[ebp]
 	push	edx
-	mov	DWORD PTR $T43822[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T43835[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -4470,7 +4470,7 @@ __Newnode$ = 20						; size = 4
 	mov	ebp, esp
 ; Line 1632
 	mov	eax, DWORD PTR [ecx+8]
-	cmp	eax, 89478484				; 05555554H
+	cmp	eax, 59652322				; 038e38e2H
 	jb	SHORT $LN17@Insert
 ; Line 1637
 	mov	eax, DWORD PTR __Newnode$[ebp]
@@ -4532,7 +4532,7 @@ $LN11@Insert:
 ; Line 1664
 	mov	edx, DWORD PTR [edi+4]
 	mov	eax, edi
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	$LN9@Insert
 	push	esi
 	npad	5
@@ -4545,16 +4545,16 @@ $LL10@Insert:
 ; Line 1669
 	mov	esi, DWORD PTR [esi+8]
 ; Line 1670
-	cmp	BYTE PTR [esi+60], bl
+	cmp	BYTE PTR [esi+84], bl
 	jne	SHORT $LN7@Insert
 ; Line 1672
-	mov	BYTE PTR [edx+60], 1
+	mov	BYTE PTR [edx+84], 1
 ; Line 1673
-	mov	BYTE PTR [esi+60], 1
+	mov	BYTE PTR [esi+84], 1
 ; Line 1675
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1676
 	mov	eax, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR [eax+4]
@@ -4571,7 +4571,7 @@ $LN7@Insert:
 	mov	esi, DWORD PTR [edx]
 	mov	DWORD PTR [eax+8], esi
 	mov	esi, DWORD PTR [edx]
-	cmp	BYTE PTR [esi+61], bl
+	cmp	BYTE PTR [esi+85], bl
 	jne	SHORT $LN110@Insert
 	mov	DWORD PTR [esi+4], eax
 $LN110@Insert:
@@ -4596,11 +4596,11 @@ $LN106@Insert:
 $LN111@Insert:
 ; Line 1686
 	mov	edx, DWORD PTR [eax+4]
-	mov	BYTE PTR [edx+60], 1
+	mov	BYTE PTR [edx+84], 1
 ; Line 1688
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1689
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
@@ -4608,7 +4608,7 @@ $LN111@Insert:
 	mov	edi, DWORD PTR [esi+8]
 	mov	DWORD PTR [edx], edi
 	mov	edi, DWORD PTR [esi+8]
-	cmp	BYTE PTR [edi+61], bl
+	cmp	BYTE PTR [edi+85], bl
 	jne	SHORT $LN173@Insert
 	mov	DWORD PTR [edi+4], edx
 $LN173@Insert:
@@ -4640,16 +4640,16 @@ $LN8@Insert:
 ; Line 1695
 	mov	esi, DWORD PTR [esi]
 ; Line 1696
-	cmp	BYTE PTR [esi+60], bl
+	cmp	BYTE PTR [esi+84], bl
 	jne	SHORT $LN3@Insert
 ; Line 1698
-	mov	BYTE PTR [edx+60], 1
+	mov	BYTE PTR [edx+84], 1
 ; Line 1699
-	mov	BYTE PTR [esi+60], 1
+	mov	BYTE PTR [esi+84], 1
 ; Line 1701
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1702
 	mov	eax, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR [eax+4]
@@ -4666,7 +4666,7 @@ $LN3@Insert:
 	mov	esi, DWORD PTR [edx+8]
 	mov	DWORD PTR [eax], esi
 	mov	esi, DWORD PTR [edx+8]
-	cmp	BYTE PTR [esi+61], bl
+	cmp	BYTE PTR [esi+85], bl
 	jne	SHORT $LN252@Insert
 	mov	DWORD PTR [esi+4], eax
 $LN252@Insert:
@@ -4691,11 +4691,11 @@ $LN248@Insert:
 $LN253@Insert:
 ; Line 1712
 	mov	edx, DWORD PTR [eax+4]
-	mov	BYTE PTR [edx+60], 1
+	mov	BYTE PTR [edx+84], 1
 ; Line 1714
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1715
 	mov	edx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [edx+4]
@@ -4703,7 +4703,7 @@ $LN253@Insert:
 	mov	edi, DWORD PTR [esi]
 	mov	DWORD PTR [edx+8], edi
 	mov	edi, DWORD PTR [esi]
-	cmp	BYTE PTR [edi+61], bl
+	cmp	BYTE PTR [edi+85], bl
 	jne	SHORT $LN315@Insert
 	mov	DWORD PTR [edi+4], edx
 $LN315@Insert:
@@ -4730,7 +4730,7 @@ $LN376@Insert:
 $LN316@Insert:
 ; Line 1664
 	mov	edx, DWORD PTR [eax+4]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	je	$LL10@Insert
 	pop	esi
 $LN9@Insert:
@@ -4741,7 +4741,7 @@ $LN9@Insert:
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	mov	DWORD PTR [eax], edi
 	pop	edi
-	mov	BYTE PTR [ecx+60], 1
+	mov	BYTE PTR [ecx+84], 1
 	pop	ebx
 ; Line 1721
 	pop	ebp
@@ -5107,7 +5107,7 @@ __Right$ = 8						; size = 4
 	push	edi
 	lea	esi, DWORD PTR [ecx+4]
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -5228,8 +5228,8 @@ PUBLIC	??0?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$alloc
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@1@@Z
 _TEXT	SEGMENT
-$T45894 = -16						; size = 12
-$T45828 = -4						; size = 4
+$T45907 = -16						; size = 12
+$T45841 = -4						; size = 4
 __Parg$ = 8						; size = 4
 __Al$ = 12						; size = 4
 ??0?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@1@@Z PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >, COMDAT
@@ -5240,7 +5240,7 @@ __Al$ = 12						; size = 4
 	sub	esp, 16					; 00000010H
 	push	esi
 	mov	esi, ecx
-	push	64					; 00000040H
+	push	88					; 00000058H
 	mov	DWORD PTR [esi+8], 0
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
@@ -5254,9 +5254,9 @@ __Al$ = 12						; size = 4
 	mov	DWORD PTR [eax+8], eax
 	mov	ecx, DWORD PTR [esi+4]
 	mov	al, 1
-	mov	BYTE PTR [ecx+60], al
+	mov	BYTE PTR [ecx+84], al
 	mov	edx, DWORD PTR [esi+4]
-	mov	BYTE PTR [edx+61], al
+	mov	BYTE PTR [edx+85], al
 ; Line 699
 	mov	eax, esi
 	pop	esi
@@ -5265,15 +5265,15 @@ __Al$ = 12						; size = 4
 	ret	8
 ; Line 698
 $LN20@Tree:
-	lea	eax, DWORD PTR $T45828[ebp]
+	lea	eax, DWORD PTR $T45841[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T45894[ebp]
-	mov	DWORD PTR $T45828[ebp], 0
+	lea	ecx, DWORD PTR $T45907[ebp]
+	mov	DWORD PTR $T45841[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T45894[ebp]
+	lea	ecx, DWORD PTR $T45907[ebp]
 	push	ecx
-	mov	DWORD PTR $T45894[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T45907[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN43@Tree:
 $LN42@Tree:
@@ -5294,7 +5294,7 @@ __Keyval$ = 12						; size = 4
 ; Line 1450
 	mov	ecx, DWORD PTR [ecx+4]
 	mov	eax, DWORD PTR [ecx+4]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	jne	SHORT $LN36@lower_boun
 	mov	edx, DWORD PTR __Keyval$[ebp]
 	mov	edx, DWORD PTR [edx]
@@ -5307,7 +5307,7 @@ $LN4@lower_boun:
 	mov	ecx, eax
 	mov	eax, DWORD PTR [eax]
 $LN3@lower_boun:
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LL6@lower_boun
 $LN36@lower_boun:
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
@@ -5321,8 +5321,8 @@ PUBLIC	??0?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$alloca
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@1@@Z
 _TEXT	SEGMENT
-$T46107 = -16						; size = 12
-$T46039 = -4						; size = 4
+$T46128 = -16						; size = 12
+$T46052 = -4						; size = 4
 __Parg$ = 8						; size = 4
 __Al$ = 12						; size = 4
 ??0?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@1@@Z PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >, COMDAT
@@ -5358,15 +5358,15 @@ __Al$ = 12						; size = 4
 	ret	8
 ; Line 698
 $LN20@Tree@2:
-	lea	eax, DWORD PTR $T46039[ebp]
+	lea	eax, DWORD PTR $T46052[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T46107[ebp]
-	mov	DWORD PTR $T46039[ebp], 0
+	lea	ecx, DWORD PTR $T46128[ebp]
+	mov	DWORD PTR $T46052[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T46107[ebp]
+	lea	ecx, DWORD PTR $T46128[ebp]
 	push	ecx
-	mov	DWORD PTR $T46107[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T46128[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN43@Tree@2:
 $LN42@Tree@2:
@@ -5605,7 +5605,7 @@ __Where$ = 12						; size = 4
 	push	ebx
 ; Line 1204
 	mov	ebx, DWORD PTR __Where$[ebp]
-	cmp	BYTE PTR [ebx+61], 0
+	cmp	BYTE PTR [ebx+85], 0
 	push	esi
 	push	edi
 	mov	DWORD PTR _this$[ebp], ecx
@@ -5621,7 +5621,7 @@ $LN40@erase@2:
 	call	??E?$_Tree_unchecked_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ ; std::_Tree_unchecked_const_iterator<std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >,std::_Iterator_base0>::operator++
 ; Line 1214
 	mov	ecx, DWORD PTR [ebx]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	je	SHORT $LN39@erase@2
 ; Line 1215
 	mov	edi, DWORD PTR [ebx+8]
@@ -5629,7 +5629,7 @@ $LN40@erase@2:
 	jmp	SHORT $LN291@erase@2
 $LN39@erase@2:
 	mov	eax, DWORD PTR [ebx+8]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LN37@erase@2
 ; Line 1217
 	mov	edi, ecx
@@ -5645,7 +5645,7 @@ $LN37@erase@2:
 	jne	SHORT $LN35@erase@2
 $LN291@erase@2:
 ; Line 1227
-	cmp	BYTE PTR [edi+61], 0
+	cmp	BYTE PTR [edi+85], 0
 	mov	esi, DWORD PTR [ebx+4]
 	jne	SHORT $LN34@erase@2
 ; Line 1228
@@ -5676,7 +5676,7 @@ $LN30@erase@2:
 	cmp	DWORD PTR [eax], ebx
 	jne	SHORT $LN29@erase@2
 ; Line 1241
-	cmp	BYTE PTR [edi+61], 0
+	cmp	BYTE PTR [edi+85], 0
 	je	SHORT $LN43@erase@2
 	mov	eax, esi
 	jmp	SHORT $LN44@erase@2
@@ -5695,7 +5695,7 @@ $LN29@erase@2:
 	cmp	DWORD PTR [ecx+8], ebx
 	jne	SHORT $LN165@erase@2
 ; Line 1246
-	cmp	BYTE PTR [edi+61], 0
+	cmp	BYTE PTR [edi+85], 0
 	je	SHORT $LN45@erase@2
 	mov	eax, esi
 	mov	DWORD PTR [ecx+8], eax
@@ -5725,7 +5725,7 @@ $LN35@erase@2:
 	jmp	SHORT $LN25@erase@2
 $LN26@erase@2:
 ; Line 1261
-	cmp	BYTE PTR [edi+61], 0
+	cmp	BYTE PTR [edi+85], 0
 	mov	esi, DWORD PTR [eax+4]
 	jne	SHORT $LN24@erase@2
 ; Line 1262
@@ -5765,15 +5765,15 @@ $LN20@erase@2:
 	mov	edx, DWORD PTR [ebx+4]
 	mov	DWORD PTR [eax+4], edx
 ; Line 1282
-	mov	dl, BYTE PTR [ebx+60]
-	mov	cl, BYTE PTR [eax+60]
-	mov	BYTE PTR [eax+60], dl
-	mov	BYTE PTR [ebx+60], cl
+	mov	dl, BYTE PTR [ebx+84]
+	mov	cl, BYTE PTR [eax+84]
+	mov	BYTE PTR [eax+84], dl
+	mov	BYTE PTR [ebx+84], cl
 $LN165@erase@2:
 ; Line 1285
 	mov	eax, DWORD PTR __Erasednode$[ebp]
 	mov	bl, 1
-	cmp	BYTE PTR [eax+60], bl
+	cmp	BYTE PTR [eax+84], bl
 	jne	$LN19@erase@2
 ; Line 1289
 	mov	ecx, DWORD PTR _this$[ebp]
@@ -5782,7 +5782,7 @@ $LN165@erase@2:
 	je	$LN16@erase@2
 	npad	8
 $LL18@erase@2:
-	cmp	BYTE PTR [edi+60], bl
+	cmp	BYTE PTR [edi+84], bl
 	jne	$LN16@erase@2
 ; Line 1290
 	mov	eax, DWORD PTR [esi]
@@ -5791,86 +5791,86 @@ $LL18@erase@2:
 ; Line 1292
 	mov	eax, DWORD PTR [esi+8]
 ; Line 1293
-	cmp	BYTE PTR [eax+60], 0
+	cmp	BYTE PTR [eax+84], 0
 	jne	SHORT $LN14@erase@2
 ; Line 1295
-	mov	BYTE PTR [eax+60], bl
+	mov	BYTE PTR [eax+84], bl
 ; Line 1297
 	push	esi
-	mov	BYTE PTR [esi+60], 0
+	mov	BYTE PTR [esi+84], 0
 	call	?_Lrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Lrotate
 ; Line 1298
 	mov	eax, DWORD PTR [esi+8]
 	mov	ecx, DWORD PTR _this$[ebp]
 $LN14@erase@2:
 ; Line 1301
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 ; Line 1303
 	jne	SHORT $LN293@erase@2
 ; Line 1304
 	mov	edx, DWORD PTR [eax]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	SHORT $LN11@erase@2
 	mov	edx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	je	SHORT $LN294@erase@2
 $LN11@erase@2:
 ; Line 1312
 	mov	edx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	SHORT $LN9@erase@2
 ; Line 1314
 	mov	edx, DWORD PTR [eax]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1316
 	push	eax
-	mov	BYTE PTR [eax+60], 0
+	mov	BYTE PTR [eax+84], 0
 	call	?_Rrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Rrotate
 ; Line 1317
 	mov	eax, DWORD PTR [esi+8]
 	mov	ecx, DWORD PTR _this$[ebp]
 $LN9@erase@2:
 ; Line 1320
-	mov	dl, BYTE PTR [esi+60]
-	mov	BYTE PTR [eax+60], dl
+	mov	dl, BYTE PTR [esi+84]
+	mov	BYTE PTR [eax+84], dl
 ; Line 1321
-	mov	BYTE PTR [esi+60], bl
+	mov	BYTE PTR [esi+84], bl
 ; Line 1322
 	mov	eax, DWORD PTR [eax+8]
 ; Line 1323
 	push	esi
-	mov	BYTE PTR [eax+60], bl
+	mov	BYTE PTR [eax+84], bl
 	call	?_Lrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Lrotate
 ; Line 1324
 	jmp	SHORT $LN16@erase@2
 $LN15@erase@2:
 ; Line 1330
-	cmp	BYTE PTR [eax+60], 0
+	cmp	BYTE PTR [eax+84], 0
 	jne	SHORT $LN7@erase@2
 ; Line 1332
-	mov	BYTE PTR [eax+60], bl
+	mov	BYTE PTR [eax+84], bl
 ; Line 1334
 	push	esi
-	mov	BYTE PTR [esi+60], 0
+	mov	BYTE PTR [esi+84], 0
 	call	?_Rrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Rrotate
 ; Line 1335
 	mov	eax, DWORD PTR [esi]
 	mov	ecx, DWORD PTR _this$[ebp]
 $LN7@erase@2:
 ; Line 1337
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 ; Line 1339
 	jne	SHORT $LN293@erase@2
 ; Line 1341
 	mov	edx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	SHORT $LN4@erase@2
 	mov	edx, DWORD PTR [eax]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	SHORT $LN4@erase@2
 $LN294@erase@2:
 ; Line 1343
-	mov	BYTE PTR [eax+60], 0
+	mov	BYTE PTR [eax+84], 0
 $LN293@erase@2:
 ; Line 1289
 	mov	eax, DWORD PTR [ecx+4]
@@ -5884,33 +5884,33 @@ $LN293@erase@2:
 $LN4@erase@2:
 ; Line 1348
 	mov	edx, DWORD PTR [eax]
-	cmp	BYTE PTR [edx+60], bl
+	cmp	BYTE PTR [edx+84], bl
 	jne	SHORT $LN2@erase@2
 ; Line 1350
 	mov	edx, DWORD PTR [eax+8]
-	mov	BYTE PTR [edx+60], bl
+	mov	BYTE PTR [edx+84], bl
 ; Line 1352
 	push	eax
-	mov	BYTE PTR [eax+60], 0
+	mov	BYTE PTR [eax+84], 0
 	call	?_Lrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Lrotate
 ; Line 1353
 	mov	eax, DWORD PTR [esi]
 	mov	ecx, DWORD PTR _this$[ebp]
 $LN2@erase@2:
 ; Line 1356
-	mov	dl, BYTE PTR [esi+60]
-	mov	BYTE PTR [eax+60], dl
+	mov	dl, BYTE PTR [esi+84]
+	mov	BYTE PTR [eax+84], dl
 ; Line 1357
-	mov	BYTE PTR [esi+60], bl
+	mov	BYTE PTR [esi+84], bl
 ; Line 1358
 	mov	eax, DWORD PTR [eax]
 ; Line 1359
 	push	esi
-	mov	BYTE PTR [eax+60], bl
+	mov	BYTE PTR [eax+84], bl
 	call	?_Rrotate@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Rrotate
 $LN16@erase@2:
 ; Line 1364
-	mov	BYTE PTR [edi+60], bl
+	mov	BYTE PTR [edi+84], bl
 $LN19@erase@2:
 ; Line 1370
 	mov	ecx, DWORD PTR __Erasednode$[ebp]
@@ -6309,7 +6309,7 @@ __Rootnode$ = 8						; size = 4
 ; Line 1611
 	mov	edi, DWORD PTR __Rootnode$[ebp]
 ; Line 1612
-	cmp	BYTE PTR [edi+61], 0
+	cmp	BYTE PTR [edi+85], 0
 	mov	ebx, ecx
 	mov	esi, edi
 	jne	SHORT $LN1@Erase
@@ -6325,7 +6325,7 @@ $LL3@Erase:
 	push	edi
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
-	cmp	BYTE PTR [esi+61], 0
+	cmp	BYTE PTR [esi+85], 0
 	mov	edi, esi
 	je	SHORT $LL3@Erase
 $LN1@Erase:
@@ -6388,9 +6388,9 @@ _TEXT	SEGMENT
 __Addleft$ = -4						; size = 1
 ___$ReturnUdt$ = 8					; size = 4
 __Node$ = 12						; size = 4
-$T47276 = 16						; size = 4
-$T47274 = 16						; size = 4
-__Where$39595 = 16					; size = 4
+$T47289 = 16						; size = 4
+$T47287 = 16						; size = 4
+__Where$39607 = 16					; size = 4
 __Leftish$ = 16						; size = 1
 ?_Linsert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@_N@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@_N@Z PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Linsert, COMDAT
 ; _this$ = ecx
@@ -6404,7 +6404,7 @@ __Leftish$ = 16						; size = 1
 	mov	ebx, ecx
 	mov	ecx, DWORD PTR [ebx+4]
 	mov	eax, DWORD PTR [ecx+4]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	push	esi
 	mov	esi, ecx
 	mov	cl, 1
@@ -6437,19 +6437,19 @@ $LN15@Linsert:
 	mov	eax, DWORD PTR [eax+8]
 $LN16@Linsert:
 ; Line 950
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LL12@Linsert
 $LN11@Linsert:
 ; Line 969
 	mov	edi, esi
-	mov	DWORD PTR __Where$39595[ebp], edi
+	mov	DWORD PTR __Where$39607[ebp], edi
 ; Line 970
 	test	cl, cl
 	je	SHORT $LN99@Linsert
 ; Line 972
 	mov	eax, DWORD PTR [ebx+4]
 ; Line 973
-	lea	ecx, DWORD PTR $T47274[ebp]
+	lea	ecx, DWORD PTR $T47287[ebp]
 	cmp	esi, DWORD PTR [eax]
 	jne	SHORT $LN4@Linsert
 	push	edx
@@ -6472,7 +6472,7 @@ $LN11@Linsert:
 $LN4@Linsert:
 ; Line 975
 	call	??F?$_Tree_unchecked_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ ; std::_Tree_unchecked_const_iterator<std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >,std::_Iterator_base0>::operator--
-	mov	edi, DWORD PTR __Where$39595[ebp]
+	mov	edi, DWORD PTR __Where$39607[ebp]
 	mov	edx, DWORD PTR __Node$[ebp]
 $LN99@Linsert:
 ; Line 977
@@ -6484,7 +6484,7 @@ $LN99@Linsert:
 	mov	ecx, DWORD PTR __Addleft$[ebp]
 	push	esi
 	push	ecx
-	lea	edx, DWORD PTR $T47276[ebp]
+	lea	edx, DWORD PTR $T47289[ebp]
 	push	edx
 	mov	ecx, ebx
 	call	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@1@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Insert
@@ -6523,9 +6523,9 @@ _TEXT	SEGMENT
 __Addleft$ = -4						; size = 1
 ___$ReturnUdt$ = 8					; size = 4
 __Node$ = 12						; size = 4
-$T47596 = 16						; size = 4
-$T47594 = 16						; size = 4
-__Where$39689 = 16					; size = 4
+$T47609 = 16						; size = 4
+$T47607 = 16						; size = 4
+__Where$39701 = 16					; size = 4
 __Leftish$ = 16						; size = 1
 ?_Linsert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@_N@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@_N@Z PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Linsert, COMDAT
 ; _this$ = ecx
@@ -6577,14 +6577,14 @@ $LN16@Linsert@2:
 $LN11@Linsert@2:
 ; Line 969
 	mov	edi, esi
-	mov	DWORD PTR __Where$39689[ebp], edi
+	mov	DWORD PTR __Where$39701[ebp], edi
 ; Line 970
 	test	cl, cl
 	je	SHORT $LN99@Linsert@2
 ; Line 972
 	mov	eax, DWORD PTR [ebx+4]
 ; Line 973
-	lea	ecx, DWORD PTR $T47594[ebp]
+	lea	ecx, DWORD PTR $T47607[ebp]
 	cmp	esi, DWORD PTR [eax]
 	jne	SHORT $LN4@Linsert@2
 	push	edx
@@ -6607,7 +6607,7 @@ $LN11@Linsert@2:
 $LN4@Linsert@2:
 ; Line 975
 	call	??F?$_Tree_unchecked_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ ; std::_Tree_unchecked_const_iterator<std::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >,std::_Iterator_base0>::operator--
-	mov	edi, DWORD PTR __Where$39689[ebp]
+	mov	edi, DWORD PTR __Where$39701[ebp]
 	mov	edx, DWORD PTR __Node$[ebp]
 $LN99@Linsert@2:
 ; Line 977
@@ -6619,7 +6619,7 @@ $LN99@Linsert@2:
 	mov	ecx, DWORD PTR __Addleft$[ebp]
 	push	esi
 	push	ecx
-	lea	edx, DWORD PTR $T47596[ebp]
+	lea	edx, DWORD PTR $T47609[ebp]
 	push	edx
 	mov	ecx, ebx
 	call	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@1@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Insert
@@ -6673,7 +6673,7 @@ __Val$ = 12						; size = 4
 	push	edi
 	lea	esi, DWORD PTR [ecx+4]
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -7072,7 +7072,7 @@ _TEXT	SEGMENT
 ; Line 1415
 	mov	eax, DWORD PTR [edi+4]
 	mov	ebx, DWORD PTR [eax+4]
-	cmp	BYTE PTR [ebx+61], 0
+	cmp	BYTE PTR [ebx+85], 0
 	mov	esi, ebx
 	jne	SHORT $LN7@clear
 $LL9@clear:
@@ -7084,7 +7084,7 @@ $LL9@clear:
 	push	ebx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
-	cmp	BYTE PTR [esi+61], 0
+	cmp	BYTE PTR [esi+85], 0
 	mov	ebx, esi
 	je	SHORT $LL9@clear
 $LN7@clear:
@@ -7158,7 +7158,7 @@ PUBLIC	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z
 _TEXT	SEGMENT
-$T48603 = -8						; size = 8
+$T48616 = -8						; size = 8
 ___$ReturnUdt$ = 8					; size = 4
 __Where$ = 12						; size = 4
 __Next$ = 16						; size = 4
@@ -7255,7 +7255,7 @@ $LN11@Insert@3:
 	jge	SHORT $LN332@Insert@3
 ; Line 1162
 	mov	ecx, DWORD PTR [eax+8]
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 ; Line 1163
 	push	edi
 	mov	edi, DWORD PTR ___$ReturnUdt$[ebp]
@@ -7304,7 +7304,7 @@ $LN332@Insert@3:
 $LN3@Insert@3:
 ; Line 1173
 	mov	edx, DWORD PTR [ebx+8]
-	cmp	BYTE PTR [edx+61], 0
+	cmp	BYTE PTR [edx+85], 0
 ; Line 1174
 	push	edi
 	mov	edi, DWORD PTR ___$ReturnUdt$[ebp]
@@ -7340,7 +7340,7 @@ $LN333@Insert@3:
 ; Line 1180
 	push	0
 	push	edi
-	lea	eax, DWORD PTR $T48603[ebp]
+	lea	eax, DWORD PTR $T48616[ebp]
 	push	eax
 	mov	ecx, esi
 	call	?_Linsert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@std@@_N@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@_N@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Linsert
@@ -7360,7 +7360,7 @@ PUBLIC	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@@Z
 _TEXT	SEGMENT
-$T49258 = -8						; size = 8
+$T49271 = -8						; size = 8
 ___$ReturnUdt$ = 8					; size = 4
 __Where$ = 12						; size = 4
 __Next$ = 16						; size = 4
@@ -7542,7 +7542,7 @@ $LN333@Insert@4:
 ; Line 1180
 	push	0
 	push	edi
-	lea	eax, DWORD PTR $T49258[ebp]
+	lea	eax, DWORD PTR $T49271[ebp]
 	push	eax
 	mov	ecx, esi
 	call	?_Linsert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@std@@_N@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@_N@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Linsert
@@ -7580,7 +7580,7 @@ __Src$ = 16						; size = 4
 	push	edi
 	lea	esi, DWORD PTR [ecx+4]
 	lea	edi, DWORD PTR [eax+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	mov	DWORD PTR [eax], edx
 	rep movsd
 	pop	edi
@@ -7627,9 +7627,9 @@ _TEXT	SEGMENT
 _tex$ = 8						; size = 4
 ?findEffectID@@YAIPBD@Z PROC				; findEffectID
 ; File c:\programovani\wow editor\test\src\editor\groundeffects.cpp
-; Line 73
+; Line 75
 	xor	eax, eax
-; Line 82
+; Line 84
 	ret	0
 ?findEffectID@@YAIPBD@Z ENDP				; findEffectID
 _TEXT	ENDS
@@ -7671,7 +7671,7 @@ PUBLIC	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$a
 ; Function compile flags: /Ogtp
 ;	COMDAT ?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@0@Z
 _TEXT	SEGMENT
-$T50216 = -4						; size = 4
+$T50229 = -4						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 __First$ = 12						; size = 4
 __Last$ = 16						; size = 4
@@ -7712,28 +7712,28 @@ $LN97@erase@4:
 	je	SHORT $LN1@erase@4
 $LL2@erase@4:
 ; Line 1388
-	cmp	BYTE PTR [ecx+61], 0
+	cmp	BYTE PTR [ecx+85], 0
 	mov	edx, ecx
 	jne	SHORT $LN59@erase@4
 	mov	eax, DWORD PTR [ecx+8]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	jne	SHORT $LN99@erase@4
 	mov	ecx, eax
 	mov	eax, DWORD PTR [ecx]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	jne	SHORT $LN73@erase@4
 	npad	1
 $LL74@erase@4:
 	mov	ecx, eax
 	mov	eax, DWORD PTR [ecx]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LL74@erase@4
 $LN73@erase@4:
 	mov	DWORD PTR __First$[ebp], ecx
 	jmp	SHORT $LN59@erase@4
 $LN99@erase@4:
 	mov	eax, DWORD PTR [ecx+4]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	jne	SHORT $LN57@erase@4
 $LL58@erase@4:
 	cmp	ecx, DWORD PTR [eax+8]
@@ -7741,13 +7741,13 @@ $LL58@erase@4:
 	mov	ecx, eax
 	mov	DWORD PTR __First$[ebp], ecx
 	mov	eax, DWORD PTR [eax+4]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LL58@erase@4
 $LN57@erase@4:
 	mov	DWORD PTR __First$[ebp], eax
 $LN59@erase@4:
 	push	edx
-	lea	edx, DWORD PTR $T50216[ebp]
+	lea	edx, DWORD PTR $T50229[ebp]
 	push	edx
 	mov	ecx, esi
 	call	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::erase
@@ -7769,7 +7769,7 @@ PUBLIC	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$al
 ; Function compile flags: /Ogtp
 ;	COMDAT ?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@0@Z
 _TEXT	SEGMENT
-$T50552 = -4						; size = 4
+$T50565 = -4						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 __First$ = 12						; size = 4
 __Last$ = 16						; size = 4
@@ -7844,7 +7844,7 @@ $LN57@erase@5:
 	mov	DWORD PTR __First$[ebp], eax
 $LN59@erase@5:
 	push	edx
-	lea	edx, DWORD PTR $T50552[ebp]
+	lea	edx, DWORD PTR $T50565[ebp]
 	push	edx
 	mov	ecx, esi
 	call	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::erase
@@ -7866,8 +7866,8 @@ PUBLIC	??$_Buynode@U?$pair@$$CBHUGroundEffectTexture@@@std@@@?$_Tree_val@V?$_Tma
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Buynode@U?$pair@$$CBHUGroundEffectTexture@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectTexture@@@1@@Z
 _TEXT	SEGMENT
-$T50950 = -12						; size = 12
-$T50896 = 8						; size = 4
+$T50963 = -12						; size = 12
+$T50909 = 8						; size = 4
 __Val$ = 8						; size = 4
 ??$_Buynode@U?$pair@$$CBHUGroundEffectTexture@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectTexture@@@1@@Z PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Buynode<std::pair<int const ,GroundEffectTexture> >, COMDAT
 ; _this$ = ecx
@@ -7877,7 +7877,7 @@ __Val$ = 8						; size = 4
 	sub	esp, 12					; 0000000cH
 	push	esi
 ; Line 588
-	push	64					; 00000040H
+	push	88					; 00000058H
 	mov	esi, ecx
 	call	??2@YAPAXI@Z				; operator new
 	xor	edx, edx
@@ -7892,7 +7892,7 @@ __Val$ = 8						; size = 4
 	mov	DWORD PTR [eax+8], ecx
 ; Line 592
 	lea	ecx, DWORD PTR [eax+12]
-	mov	WORD PTR [eax+60], dx
+	mov	WORD PTR [eax+84], dx
 	cmp	ecx, edx
 	je	SHORT $LN45@Buynode@3
 	mov	edx, DWORD PTR __Val$[ebp]
@@ -7901,7 +7901,7 @@ __Val$ = 8						; size = 4
 	mov	DWORD PTR [ecx], esi
 	lea	edi, DWORD PTR [ecx+4]
 	lea	esi, DWORD PTR [edx+4]
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	rep movsd
 	pop	edi
 $LN45@Buynode@3:
@@ -7912,15 +7912,15 @@ $LN45@Buynode@3:
 	ret	4
 ; Line 588
 $LN12@Buynode@3:
-	mov	DWORD PTR $T50896[ebp], edx
-	lea	edx, DWORD PTR $T50896[ebp]
+	mov	DWORD PTR $T50909[ebp], edx
+	lea	edx, DWORD PTR $T50909[ebp]
 	push	edx
-	lea	ecx, DWORD PTR $T50950[ebp]
+	lea	ecx, DWORD PTR $T50963[ebp]
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T50950[ebp]
+	lea	eax, DWORD PTR $T50963[ebp]
 	push	eax
-	mov	DWORD PTR $T50950[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T50963[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN68@Buynode@3:
 $LN67@Buynode@3:
@@ -7931,8 +7931,8 @@ PUBLIC	??$_Buynode@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@?$_Tree_val@V?$_Tmap
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Buynode@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectDoodad@@@1@@Z
 _TEXT	SEGMENT
-$T51144 = -12						; size = 12
-$T51090 = 8						; size = 4
+$T51157 = -12						; size = 12
+$T51103 = 8						; size = 4
 __Val$ = 8						; size = 4
 ??$_Buynode@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectDoodad@@@1@@Z PROC ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Buynode<std::pair<int const ,GroundEffectDoodad> >, COMDAT
 ; _this$ = ecx
@@ -7977,15 +7977,15 @@ $LN45@Buynode@4:
 	ret	4
 ; Line 588
 $LN12@Buynode@4:
-	lea	edx, DWORD PTR $T51090[ebp]
-	mov	DWORD PTR $T51090[ebp], ecx
+	lea	edx, DWORD PTR $T51103[ebp]
+	mov	DWORD PTR $T51103[ebp], ecx
 	push	edx
-	lea	ecx, DWORD PTR $T51144[ebp]
+	lea	ecx, DWORD PTR $T51157[ebp]
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	eax, DWORD PTR $T51144[ebp]
+	lea	eax, DWORD PTR $T51157[ebp]
 	push	eax
-	mov	DWORD PTR $T51144[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T51157[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN68@Buynode@4:
 $LN67@Buynode@4:
@@ -8035,7 +8035,7 @@ PUBLIC	?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$a
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXXZ
 _TEXT	SEGMENT
-$T51351 = -4						; size = 4
+$T51364 = -4						; size = 4
 ?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@IAEXXZ PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Tidy, COMDAT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\xtree
@@ -8048,7 +8048,7 @@ $T51351 = -4						; size = 4
 	mov	edx, DWORD PTR [eax]
 	push	eax
 	push	edx
-	lea	eax, DWORD PTR $T51351[ebp]
+	lea	eax, DWORD PTR $T51364[ebp]
 	push	eax
 	call	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@0@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::erase
 ; Line 1867
@@ -8061,7 +8061,7 @@ PUBLIC	?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$al
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@IAEXXZ
 _TEXT	SEGMENT
-$T51443 = -4						; size = 4
+$T51456 = -4						; size = 4
 ?_Tidy@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@IAEXXZ PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Tidy, COMDAT
 ; _this$ = ecx
 ; Line 1865
@@ -8073,7 +8073,7 @@ $T51443 = -4						; size = 4
 	mov	edx, DWORD PTR [eax]
 	push	eax
 	push	edx
-	lea	eax, DWORD PTR $T51443[ebp]
+	lea	eax, DWORD PTR $T51456[ebp]
 	push	eax
 	call	?erase@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@0@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::erase
 ; Line 1867
@@ -8155,10 +8155,10 @@ EXTRN	_memset:PROC
 ; Function compile flags: /Ogtp
 ;	COMDAT ??A?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAEAAUGroundEffectTexture@@ABH@Z
 _TEXT	SEGMENT
-$T35881 = -96						; size = 48
-$T35875 = -48						; size = 44
-__Wherenode$51633 = -4					; size = 4
-$T51544 = 8						; size = 4
+$T35889 = -144						; size = 68
+$T35895 = -76						; size = 72
+__Wherenode$51646 = -4					; size = 4
+$T51557 = 8						; size = 4
 __Keyval$ = 8						; size = 4
 ??A?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAEAAUGroundEffectTexture@@ABH@Z PROC ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::operator[], COMDAT
 ; _this$ = ecx
@@ -8166,30 +8166,29 @@ __Keyval$ = 8						; size = 4
 ; Line 210
 	push	ebp
 	mov	ebp, esp
-	sub	esp, 96					; 00000060H
+	sub	esp, 144				; 00000090H
 	push	ebx
 	mov	ebx, ecx
 ; Line 211
 	mov	ecx, DWORD PTR [ebx+4]
 	mov	eax, DWORD PTR [ecx+4]
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	push	esi
 	mov	esi, DWORD PTR __Keyval$[ebp]
-	mov	DWORD PTR __Wherenode$51633[ebp], ecx
+	mov	DWORD PTR __Wherenode$51646[ebp], ecx
 	jne	SHORT $LN9@operator@5
 	mov	edx, DWORD PTR [esi]
-	npad	2
 $LL10@operator@5:
 	cmp	DWORD PTR [eax+12], edx
 	jge	SHORT $LN8@operator@5
 	mov	eax, DWORD PTR [eax+8]
 	jmp	SHORT $LN7@operator@5
 $LN8@operator@5:
-	mov	DWORD PTR __Wherenode$51633[ebp], eax
+	mov	DWORD PTR __Wherenode$51646[ebp], eax
 	mov	eax, DWORD PTR [eax]
-	mov	ecx, DWORD PTR __Wherenode$51633[ebp]
+	mov	ecx, DWORD PTR __Wherenode$51646[ebp]
 $LN7@operator@5:
-	cmp	BYTE PTR [eax+61], 0
+	cmp	BYTE PTR [eax+85], 0
 	je	SHORT $LL10@operator@5
 $LN9@operator@5:
 ; Line 213
@@ -8201,30 +8200,30 @@ $LN9@operator@5:
 $LN1@operator@5:
 	push	edi
 ; Line 215
-	push	44					; 0000002cH
-	lea	ecx, DWORD PTR $T35875[ebp]
+	push	68					; 00000044H
+	lea	ecx, DWORD PTR $T35889[ebp]
 	push	0
 	push	ecx
 	call	_memset
 	mov	edx, DWORD PTR [esi]
 	add	esp, 12					; 0000000cH
-	mov	DWORD PTR $T35881[ebp], edx
-	mov	ecx, 11					; 0000000bH
-	lea	esi, DWORD PTR $T35875[ebp]
-	lea	edi, DWORD PTR $T35881[ebp+4]
-	lea	eax, DWORD PTR $T35881[ebp]
+	mov	DWORD PTR $T35895[ebp], edx
+	mov	ecx, 17					; 00000011H
+	lea	esi, DWORD PTR $T35889[ebp]
+	lea	edi, DWORD PTR $T35895[ebp+4]
+	lea	eax, DWORD PTR $T35895[ebp]
 	rep movsd
 	push	eax
 	mov	ecx, ebx
 	call	??$_Buynode@U?$pair@$$CBHUGroundEffectTexture@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectTexture@@@1@@Z ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Buynode<std::pair<int const ,GroundEffectTexture> >
-	mov	ecx, DWORD PTR __Wherenode$51633[ebp]
+	mov	ecx, DWORD PTR __Wherenode$51646[ebp]
 	push	eax
 	push	ecx
-	lea	edx, DWORD PTR $T51544[ebp]
+	lea	edx, DWORD PTR $T51557[ebp]
 	push	edx
 	mov	ecx, ebx
 	call	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::_Insert
-	mov	eax, DWORD PTR $T51544[ebp]
+	mov	eax, DWORD PTR $T51557[ebp]
 	pop	edi
 	pop	esi
 ; Line 216
@@ -8262,7 +8261,7 @@ __ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?
 xdata$x	ENDS
 ;	COMDAT ??1?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T51870 = -20						; size = 4
+$T51883 = -20						; size = 4
 _this$ = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??1?$_Tree@V?$_Tmap_traits@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@$0A@@std@@@std@@QAE@XZ PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >::~_Tree<std::_Tmap_traits<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> >,0> >, COMDAT
@@ -8289,7 +8288,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T51870[ebp]
+	lea	eax, DWORD PTR $T51883[ebp]
 	push	eax
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -8326,8 +8325,8 @@ PUBLIC	??A?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHU
 ; Function compile flags: /Ogtp
 ;	COMDAT ??A?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAEAAUGroundEffectDoodad@@ABH@Z
 _TEXT	SEGMENT
-$T51913 = -16						; size = 16
-$T51916 = 8						; size = 4
+$T51926 = -16						; size = 16
+$T51929 = 8						; size = 4
 __Keyval$ = 8						; size = 4
 ??A?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAEAAUGroundEffectDoodad@@ABH@Z PROC ; std::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >::operator[], COMDAT
 ; _this$ = ecx
@@ -8370,21 +8369,21 @@ $LN1@operator@6:
 ; Line 215
 	mov	ecx, DWORD PTR [ecx]
 	xor	eax, eax
-	lea	edx, DWORD PTR $T51913[ebp]
-	mov	DWORD PTR $T51913[ebp], ecx
+	lea	edx, DWORD PTR $T51926[ebp]
+	mov	DWORD PTR $T51926[ebp], ecx
 	push	edx
 	mov	ecx, esi
-	mov	DWORD PTR $T51913[ebp+4], eax
-	mov	DWORD PTR $T51913[ebp+8], eax
-	mov	DWORD PTR $T51913[ebp+12], eax
+	mov	DWORD PTR $T51926[ebp+4], eax
+	mov	DWORD PTR $T51926[ebp+8], eax
+	mov	DWORD PTR $T51926[ebp+12], eax
 	call	??$_Buynode@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@1@$$QAU?$pair@$$CBHUGroundEffectDoodad@@@1@@Z ; std::_Tree_val<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Buynode<std::pair<int const ,GroundEffectDoodad> >
 	push	eax
 	push	edi
-	lea	eax, DWORD PTR $T51916[ebp]
+	lea	eax, DWORD PTR $T51929[ebp]
 	push	eax
 	mov	ecx, esi
 	call	?_Insert@?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@V?$_Tree_const_iterator@V?$_Tree_val@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@2@@Z ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::_Insert
-	mov	eax, DWORD PTR $T51916[ebp]
+	mov	eax, DWORD PTR $T51929[ebp]
 	pop	edi
 ; Line 216
 	add	eax, 16					; 00000010H
@@ -8421,7 +8420,7 @@ __ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$
 xdata$x	ENDS
 ;	COMDAT ??1?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T52252 = -20						; size = 4
+$T52268 = -20						; size = 4
 _this$ = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??1?$_Tree@V?$_Tmap_traits@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@$0A@@std@@@std@@QAE@XZ PROC ; std::_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >::~_Tree<std::_Tmap_traits<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> >,0> >, COMDAT
@@ -8448,7 +8447,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T52252[ebp]
+	lea	eax, DWORD PTR $T52268[ebp]
 	push	eax
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -8497,7 +8496,7 @@ __ehfuncinfo$??1?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair
 xdata$x	ENDS
 ;	COMDAT ??1?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T52424 = -20						; size = 4
+$T52437 = -20						; size = 4
 _this$ = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??1?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAE@XZ PROC ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::~map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >, COMDAT
@@ -8521,7 +8520,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T52424[ebp]
+	lea	eax, DWORD PTR $T52437[ebp]
 	push	eax
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -8569,7 +8568,7 @@ __ehfuncinfo$??1?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@
 xdata$x	ENDS
 ;	COMDAT ??1?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T52602 = -20						; size = 4
+$T52615 = -20						; size = 4
 _this$ = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??1?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAE@XZ PROC ; std::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >::~map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >, COMDAT
@@ -8593,7 +8592,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T52602[ebp]
+	lea	eax, DWORD PTR $T52615[ebp]
 	push	eax
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -8629,7 +8628,7 @@ PUBLIC	__$ArrayPad$
 PUBLIC	?InitGroundEffects@@YAXXZ			; InitGroundEffects
 EXTRN	?end@DBCFile@@QAE?AVIterator@1@XZ:PROC		; DBCFile::end
 EXTRN	?begin@DBCFile@@QAE?AVIterator@1@XZ:PROC	; DBCFile::begin
-EXTRN	?open@DBCFile@@QAEXXZ:PROC			; DBCFile::open
+EXTRN	?open@DBCFile@@QAE_NXZ:PROC			; DBCFile::open
 xdata$x	SEGMENT
 __unwindtable$?InitGroundEffects@@YAXXZ DD 0ffffffffH
 	DD	FLAT:__unwindfunclet$?InitGroundEffects@@YAXXZ$0
@@ -8643,13 +8642,13 @@ __ehfuncinfo$?InitGroundEffects@@YAXXZ DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-_tmpGroundEffectTexture$ = -116				; size = 44
-$T52644 = -72						; size = 8
-_i$33875 = -64						; size = 8
-$T52645 = -56						; size = 4
-$T52643 = -56						; size = 4
-_i$33899 = -52						; size = 8
-$T52642 = -52						; size = 8
+_tmpGroundEffectTexture$ = -140				; size = 68
+$T52657 = -72						; size = 8
+_i$33887 = -64						; size = 8
+$T52658 = -56						; size = 4
+$T52656 = -56						; size = 4
+_i$33911 = -52						; size = 8
+$T52655 = -52						; size = 8
 _Temp$ = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
@@ -8662,7 +8661,7 @@ __$EHRec$ = -12						; size = 12
 	push	__ehhandler$?InitGroundEffects@@YAXXZ
 	mov	eax, DWORD PTR fs:0
 	push	eax
-	sub	esp, 104				; 00000068H
+	sub	esp, 128				; 00000080H
 	mov	eax, DWORD PTR ___security_cookie
 	xor	eax, ebp
 	mov	DWORD PTR __$ArrayPad$[ebp], eax
@@ -8680,99 +8679,100 @@ __$EHRec$ = -12						; size = 12
 ; Line 26
 	mov	ecx, OFFSET ?groundEffectTextureDBC@@3VDBCFile@@A ; groundEffectTextureDBC
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
-	call	?open@DBCFile@@QAEXXZ			; DBCFile::open
-; Line 27
-	lea	eax, DWORD PTR _i$33875[ebp]
+	call	?open@DBCFile@@QAE_NXZ			; DBCFile::open
+; Line 28
+	lea	eax, DWORD PTR _i$33887[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectTextureDBC@@3VDBCFile@@A ; groundEffectTextureDBC
 	call	?begin@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::begin
-	lea	ecx, DWORD PTR $T52642[ebp]
+	lea	ecx, DWORD PTR $T52655[ebp]
 	push	ecx
 	mov	ecx, OFFSET ?groundEffectTextureDBC@@3VDBCFile@@A ; groundEffectTextureDBC
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$33875[ebp]
+	mov	ecx, DWORD PTR _i$33887[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	je	SHORT $LN4@InitGround
-	npad	6
+	npad	3
 $LL36@InitGround:
-; Line 43
+; Line 44
 	mov	edx, DWORD PTR [ecx+4]
 	mov	eax, DWORD PTR [ecx]
-	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+20], edx
-; Line 44
-	mov	edx, DWORD PTR [ecx+8]
-	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+24], edx
+	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+4], edx
 ; Line 45
-	mov	edx, DWORD PTR [ecx+12]
+	mov	edx, DWORD PTR [ecx+8]
+	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+8], edx
 ; Line 46
-	mov	ecx, DWORD PTR [ecx+16]
-	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+28], edx
+	mov	edx, DWORD PTR [ecx+12]
 ; Line 47
-	lea	edx, DWORD PTR $T52643[ebp]
-	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+32], ecx
+	mov	ecx, DWORD PTR [ecx+16]
+	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+12], edx
+; Line 48
+	lea	edx, DWORD PTR $T52656[ebp]
+	mov	DWORD PTR _tmpGroundEffectTexture$[ebp+16], ecx
 	push	edx
 	mov	ecx, OFFSET ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A ; groundEffectTextureData
 	mov	DWORD PTR _tmpGroundEffectTexture$[ebp], eax
-	mov	DWORD PTR $T52643[ebp], eax
+	mov	DWORD PTR $T52656[ebp], eax
 	call	??A?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAEAAUGroundEffectTexture@@ABH@Z ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::operator[]
 	mov	edi, eax
-	mov	ecx, 11					; 0000000bH
+	mov	ecx, 17					; 00000011H
 	lea	esi, DWORD PTR _tmpGroundEffectTexture$[ebp]
 	rep movsd
-	mov	eax, DWORD PTR _i$33875[ebp+4]
+	mov	eax, DWORD PTR _i$33887[ebp+4]
 	mov	ecx, DWORD PTR [eax+28]
-	add	DWORD PTR _i$33875[ebp], ecx
-	lea	edx, DWORD PTR $T52642[ebp]
+	add	DWORD PTR _i$33887[ebp], ecx
+	lea	edx, DWORD PTR $T52655[ebp]
 	push	edx
 	mov	ecx, OFFSET ?groundEffectTextureDBC@@3VDBCFile@@A ; groundEffectTextureDBC
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$33875[ebp]
+	mov	ecx, DWORD PTR _i$33887[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	jne	SHORT $LL36@InitGround
 $LN4@InitGround:
-; Line 51
-	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
-	call	?open@DBCFile@@QAEXXZ			; DBCFile::open
 ; Line 52
-	lea	eax, DWORD PTR _i$33899[ebp]
+	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
+	call	?open@DBCFile@@QAE_NXZ			; DBCFile::open
+; Line 54
+	lea	eax, DWORD PTR _i$33911[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
 	call	?begin@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::begin
-	lea	ecx, DWORD PTR $T52644[ebp]
+	lea	ecx, DWORD PTR $T52657[ebp]
 	push	ecx
 	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$33899[ebp]
+	mov	ecx, DWORD PTR _i$33911[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	je	SHORT $LN1@InitGround
 $LL60@InitGround:
-; Line 56
-	mov	edx, DWORD PTR _i$33899[ebp+4]
+; Line 57
+	mov	edx, DWORD PTR _i$33911[ebp+4]
 	mov	esi, DWORD PTR [edx+48]
-	mov	edi, DWORD PTR [ecx+4]
-	mov	ebx, DWORD PTR [ecx]
-	add	esi, DWORD PTR [ecx+8]
 ; Line 58
-	lea	eax, DWORD PTR $T52645[ebp]
+	mov	edi, DWORD PTR [ecx+8]
+	mov	ebx, DWORD PTR [ecx]
+	add	esi, DWORD PTR [ecx+4]
+; Line 60
+	lea	eax, DWORD PTR $T52658[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadData@@3V?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@A ; groundEffectDoodadData
-	mov	DWORD PTR $T52645[ebp], edi
+	mov	DWORD PTR $T52658[ebp], edi
 	call	??A?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAEAAUGroundEffectDoodad@@ABH@Z ; std::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >::operator[]
 	mov	DWORD PTR [eax], ebx
-	mov	DWORD PTR [eax+4], edi
-	mov	DWORD PTR [eax+8], esi
-	mov	ecx, DWORD PTR _i$33899[ebp+4]
+	mov	DWORD PTR [eax+4], esi
+	mov	DWORD PTR [eax+8], edi
+	mov	ecx, DWORD PTR _i$33911[ebp+4]
 	mov	edx, DWORD PTR [ecx+28]
-	add	DWORD PTR _i$33899[ebp], edx
-	lea	eax, DWORD PTR $T52644[ebp]
+	add	DWORD PTR _i$33911[ebp], edx
+	lea	eax, DWORD PTR $T52657[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$33899[ebp]
+	mov	ecx, DWORD PTR _i$33911[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	jne	SHORT $LL60@InitGround
 $LN1@InitGround:
-; Line 60
+; Line 62
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
 	pop	ecx
@@ -8793,7 +8793,7 @@ __unwindfunclet$?InitGroundEffects@@YAXXZ$0:
 __ehhandler$?InitGroundEffects@@YAXXZ:
 	mov	edx, DWORD PTR [esp+8]
 	lea	eax, DWORD PTR [edx+12]
-	mov	ecx, DWORD PTR [edx-120]
+	mov	ecx, DWORD PTR [edx-144]
 	xor	ecx, eax
 	call	@__security_check_cookie@4
 	mov	ecx, DWORD PTR [edx-4]
@@ -8806,51 +8806,51 @@ text$x	ENDS
 PUBLIC	?getGroundEffectDoodad@@YAPBDIH@Z		; getGroundEffectDoodad
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T52896 = 8						; size = 4
-$T52895 = 8						; size = 4
-$T52894 = 8						; size = 4
+$T52909 = 8						; size = 4
+$T52908 = 8						; size = 4
+$T52907 = 8						; size = 4
 _effectID$ = 8						; size = 4
-_DoodadNum$ = 12					; size = 4
+_amount$ = 12						; size = 4
 ?getGroundEffectDoodad@@YAPBDIH@Z PROC			; getGroundEffectDoodad
-; Line 63
+; Line 65
 	push	ebp
 	mov	ebp, esp
 	push	esi
-; Line 64
+; Line 66
 	mov	esi, DWORD PTR _effectID$[ebp]
 	push	edi
-	mov	edi, DWORD PTR _DoodadNum$[ebp]
-	lea	eax, DWORD PTR $T52894[ebp]
+	mov	edi, DWORD PTR _amount$[ebp]
+	lea	eax, DWORD PTR $T52907[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A ; groundEffectTextureData
-	mov	DWORD PTR $T52894[ebp], esi
+	mov	DWORD PTR $T52907[ebp], esi
 	call	??A?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAEAAUGroundEffectTexture@@ABH@Z ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::operator[]
-	cmp	DWORD PTR [eax+edi*4+20], -1
+	cmp	DWORD PTR [eax+edi*4+4], -1
 	je	SHORT $LN2@getGroundE
-; Line 65
-	lea	ecx, DWORD PTR $T52896[ebp]
+; Line 67
+	lea	ecx, DWORD PTR $T52909[ebp]
 	push	ecx
 	mov	ecx, OFFSET ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A ; groundEffectTextureData
-	mov	DWORD PTR $T52896[ebp], esi
+	mov	DWORD PTR $T52909[ebp], esi
 	call	??A?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAEAAUGroundEffectTexture@@ABH@Z ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::operator[]
-	mov	edx, DWORD PTR [eax+edi*4+20]
-	lea	eax, DWORD PTR $T52895[ebp]
+	mov	edx, DWORD PTR [eax+edi*4+4]
+	lea	eax, DWORD PTR $T52908[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadData@@3V?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@A ; groundEffectDoodadData
-	mov	DWORD PTR $T52895[ebp], edx
+	mov	DWORD PTR $T52908[ebp], edx
 	call	??A?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAEAAUGroundEffectDoodad@@ABH@Z ; std::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >::operator[]
-	mov	eax, DWORD PTR [eax+8]
+	mov	eax, DWORD PTR [eax+4]
 	pop	edi
 	pop	esi
-; Line 68
+; Line 70
 	pop	ebp
 	ret	0
 $LN2@getGroundE:
 	pop	edi
-; Line 67
+; Line 69
 	xor	eax, eax
 	pop	esi
-; Line 68
+; Line 70
 	pop	ebp
 	ret	0
 ?getGroundEffectDoodad@@YAPBDIH@Z ENDP			; getGroundEffectDoodad
@@ -8859,8 +8859,8 @@ PUBLIC	??0?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBH
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T53050 = -16						; size = 12
-$T52942 = -4						; size = 4
+$T53063 = -16						; size = 12
+$T52955 = -4						; size = 4
 ??0?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@QAE@XZ PROC ; std::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >::map<int,GroundEffectTexture,std::less<int>,std::allocator<std::pair<int const ,GroundEffectTexture> > >, COMDAT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\map
@@ -8870,7 +8870,7 @@ $T52942 = -4						; size = 4
 	sub	esp, 16					; 00000010H
 	push	esi
 	mov	esi, ecx
-	push	64					; 00000040H
+	push	88					; 00000058H
 	mov	DWORD PTR [esi+8], 0
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
@@ -8884,9 +8884,9 @@ $T52942 = -4						; size = 4
 	mov	DWORD PTR [eax+8], eax
 	mov	ecx, DWORD PTR [esi+4]
 	mov	al, 1
-	mov	BYTE PTR [ecx+60], al
+	mov	BYTE PTR [ecx+84], al
 	mov	edx, DWORD PTR [esi+4]
-	mov	BYTE PTR [edx+61], al
+	mov	BYTE PTR [edx+85], al
 ; Line 107
 	mov	eax, esi
 	pop	esi
@@ -8895,15 +8895,15 @@ $T52942 = -4						; size = 4
 	ret	0
 ; Line 106
 $LN25@map:
-	lea	eax, DWORD PTR $T52942[ebp]
+	lea	eax, DWORD PTR $T52955[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T53050[ebp]
-	mov	DWORD PTR $T52942[ebp], 0
+	lea	ecx, DWORD PTR $T53063[ebp]
+	mov	DWORD PTR $T52955[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T53050[ebp]
+	lea	ecx, DWORD PTR $T53063[ebp]
 	push	ecx
-	mov	DWORD PTR $T53050[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T53063[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN49@map:
 $LN48@map:
@@ -8914,8 +8914,8 @@ PUBLIC	??0?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHU
 ; Function compile flags: /Ogtp
 ;	COMDAT ??0?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T53221 = -16						; size = 12
-$T53113 = -4						; size = 4
+$T53234 = -16						; size = 12
+$T53126 = -4						; size = 4
 ??0?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@QAE@XZ PROC ; std::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >::map<int,GroundEffectDoodad,std::less<int>,std::allocator<std::pair<int const ,GroundEffectDoodad> > >, COMDAT
 ; _this$ = ecx
 ; Line 106
@@ -8949,15 +8949,15 @@ $T53113 = -4						; size = 4
 	ret	0
 ; Line 106
 $LN25@map@2:
-	lea	eax, DWORD PTR $T53113[ebp]
+	lea	eax, DWORD PTR $T53126[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T53221[ebp]
-	mov	DWORD PTR $T53113[ebp], 0
+	lea	ecx, DWORD PTR $T53234[ebp]
+	mov	DWORD PTR $T53126[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T53221[ebp]
+	lea	ecx, DWORD PTR $T53234[ebp]
 	push	ecx
-	mov	DWORD PTR $T53221[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T53234[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN49@map@2:
 $LN48@map@2:
@@ -8968,15 +8968,15 @@ EXTRN	_atexit:PROC
 ; Function compile flags: /Ogtp
 ;	COMDAT ??__EgroundEffectTextureData@@YAXXZ
 text$yc	SEGMENT
-$T53427 = -16						; size = 12
-$T53286 = -4						; size = 4
+$T53445 = -16						; size = 12
+$T53299 = -4						; size = 4
 ??__EgroundEffectTextureData@@YAXXZ PROC		; `dynamic initializer for 'groundEffectTextureData'', COMDAT
 ; File c:\programovani\wow editor\test\src\editor\groundeffects.cpp
 ; Line 15
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 16					; 00000010H
-	push	64					; 00000040H
+	push	88					; 00000058H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
 	test	eax, eax
@@ -8989,25 +8989,25 @@ $T53286 = -4						; size = 4
 	mov	DWORD PTR [eax+8], eax
 	mov	ecx, DWORD PTR ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A+4
 	mov	al, 1
-	mov	BYTE PTR [ecx+60], al
+	mov	BYTE PTR [ecx+84], al
 	mov	edx, DWORD PTR ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A+4
 	push	OFFSET ??__FgroundEffectTextureData@@YAXXZ ; `dynamic atexit destructor for 'groundEffectTextureData''
-	mov	BYTE PTR [edx+61], al
+	mov	BYTE PTR [edx+85], al
 	call	_atexit
 	add	esp, 4
 	mov	esp, ebp
 	pop	ebp
 	ret	0
 $LN27@dynamic:
-	lea	eax, DWORD PTR $T53286[ebp]
+	lea	eax, DWORD PTR $T53299[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T53427[ebp]
-	mov	DWORD PTR $T53286[ebp], 0
+	lea	ecx, DWORD PTR $T53445[ebp]
+	mov	DWORD PTR $T53299[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T53427[ebp]
+	lea	ecx, DWORD PTR $T53445[ebp]
 	push	ecx
-	mov	DWORD PTR $T53427[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T53445[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN52@dynamic:
 $LN51@dynamic:
@@ -9017,8 +9017,8 @@ $LN51@dynamic:
 text$yc	ENDS
 ;	COMDAT ??__EgroundEffectDoodadData@@YAXXZ
 text$yc	SEGMENT
-$T53658 = -16						; size = 12
-$T53505 = -4						; size = 4
+$T53671 = -16						; size = 12
+$T53518 = -4						; size = 4
 ??__EgroundEffectDoodadData@@YAXXZ PROC			; `dynamic initializer for 'groundEffectDoodadData'', COMDAT
 ; Line 16
 	push	ebp
@@ -9047,15 +9047,15 @@ $T53505 = -4						; size = 4
 	pop	ebp
 	ret	0
 $LN27@dynamic@2:
-	lea	eax, DWORD PTR $T53505[ebp]
+	lea	eax, DWORD PTR $T53518[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T53658[ebp]
-	mov	DWORD PTR $T53505[ebp], 0
+	lea	ecx, DWORD PTR $T53671[ebp]
+	mov	DWORD PTR $T53518[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T53658[ebp]
+	lea	ecx, DWORD PTR $T53671[ebp]
 	push	ecx
-	mov	DWORD PTR $T53658[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T53671[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN52@dynamic@2:
 $LN51@dynamic@2:
@@ -9080,7 +9080,7 @@ __ehfuncinfo$??__EgroundEffectTextureDBC@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__EgroundEffectTextureDBC@@YAXXZ
 text$yc	SEGMENT
-$T33857 = -44						; size = 28
+$T33869 = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ??__EgroundEffectTextureDBC@@YAXXZ PROC			; `dynamic initializer for 'groundEffectTextureDBC'', COMDAT
@@ -9100,20 +9100,20 @@ __$EHRec$ = -12						; size = 12
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	push	37					; 00000025H
-	push	OFFSET $SG33858
-	lea	ecx, DWORD PTR $T33857[ebp]
-	mov	DWORD PTR $T33857[ebp+20], 15		; 0000000fH
-	mov	DWORD PTR $T33857[ebp+16], 0
-	mov	BYTE PTR $T33857[ebp], 0
+	push	OFFSET $SG33870
+	lea	ecx, DWORD PTR $T33869[ebp]
+	mov	DWORD PTR $T33869[ebp+20], 15		; 0000000fH
+	mov	DWORD PTR $T33869[ebp+16], 0
+	mov	BYTE PTR $T33869[ebp], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	lea	eax, DWORD PTR $T33857[ebp]
+	lea	eax, DWORD PTR $T33869[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectTextureDBC@@3VDBCFile@@A ; groundEffectTextureDBC
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	??0DBCFile@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; DBCFile::DBCFile
-	cmp	DWORD PTR $T33857[ebp+20], 16		; 00000010H
+	cmp	DWORD PTR $T33869[ebp+20], 16		; 00000010H
 	jb	SHORT $LN44@dynamic@3
-	mov	ecx, DWORD PTR $T33857[ebp]
+	mov	ecx, DWORD PTR $T33869[ebp]
 	push	ecx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -9134,7 +9134,7 @@ text$yc	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??__EgroundEffectTextureDBC@@YAXXZ$0:
-	lea	ecx, DWORD PTR $T33857[ebp]
+	lea	ecx, DWORD PTR $T33869[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$??__EgroundEffectTextureDBC@@YAXXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -9166,7 +9166,7 @@ __ehfuncinfo$??__EgroundEffectDoodadDBC@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__EgroundEffectDoodadDBC@@YAXXZ
 text$yc	SEGMENT
-$T33865 = -44						; size = 28
+$T33877 = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ??__EgroundEffectDoodadDBC@@YAXXZ PROC			; `dynamic initializer for 'groundEffectDoodadDBC'', COMDAT
@@ -9186,20 +9186,20 @@ __$EHRec$ = -12						; size = 12
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	push	36					; 00000024H
-	push	OFFSET $SG33866
-	lea	ecx, DWORD PTR $T33865[ebp]
-	mov	DWORD PTR $T33865[ebp+20], 15		; 0000000fH
-	mov	DWORD PTR $T33865[ebp+16], 0
-	mov	BYTE PTR $T33865[ebp], 0
+	push	OFFSET $SG33878
+	lea	ecx, DWORD PTR $T33877[ebp]
+	mov	DWORD PTR $T33877[ebp+20], 15		; 0000000fH
+	mov	DWORD PTR $T33877[ebp+16], 0
+	mov	BYTE PTR $T33877[ebp], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	lea	eax, DWORD PTR $T33865[ebp]
+	lea	eax, DWORD PTR $T33877[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadDBC@@3VDBCFile@@A ; groundEffectDoodadDBC
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	??0DBCFile@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; DBCFile::DBCFile
-	cmp	DWORD PTR $T33865[ebp+20], 16		; 00000010H
+	cmp	DWORD PTR $T33877[ebp+20], 16		; 00000010H
 	jb	SHORT $LN44@dynamic@4
-	mov	ecx, DWORD PTR $T33865[ebp]
+	mov	ecx, DWORD PTR $T33877[ebp]
 	push	ecx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -9220,7 +9220,7 @@ text$yc	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??__EgroundEffectDoodadDBC@@YAXXZ$0:
-	lea	ecx, DWORD PTR $T33865[ebp]
+	lea	ecx, DWORD PTR $T33877[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$??__EgroundEffectDoodadDBC@@YAXXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -9267,7 +9267,7 @@ __ehfuncinfo$??__FgroundEffectTextureData@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__FgroundEffectTextureData@@YAXXZ
 text$yd	SEGMENT
-$T54254 = -16						; size = 4
+$T54267 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??__FgroundEffectTextureData@@YAXXZ PROC		; `dynamic atexit destructor for 'groundEffectTextureData'', COMDAT
 	push	ebp
@@ -9286,7 +9286,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T54254[ebp]
+	lea	eax, DWORD PTR $T54267[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectTextureData@@3V?$map@HUGroundEffectTexture@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectTexture@@@std@@@3@@std@@A ; groundEffectTextureData
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -9332,7 +9332,7 @@ __ehfuncinfo$??__FgroundEffectDoodadData@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__FgroundEffectDoodadData@@YAXXZ
 text$yd	SEGMENT
-$T54472 = -16						; size = 4
+$T54485 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??__FgroundEffectDoodadData@@YAXXZ PROC			; `dynamic atexit destructor for 'groundEffectDoodadData'', COMDAT
 	push	ebp
@@ -9351,7 +9351,7 @@ __$EHRec$ = -12						; size = 12
 	mov	ecx, DWORD PTR [eax]
 	push	eax
 	push	ecx
-	lea	eax, DWORD PTR $T54472[ebp]
+	lea	eax, DWORD PTR $T54485[ebp]
 	push	eax
 	mov	ecx, OFFSET ?groundEffectDoodadData@@3V?$map@HUGroundEffectDoodad@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUGroundEffectDoodad@@@std@@@3@@std@@A ; groundEffectDoodadData
 	mov	DWORD PTR __$EHRec$[ebp+8], 0

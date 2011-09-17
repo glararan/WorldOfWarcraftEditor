@@ -990,7 +990,7 @@ CONST	ENDS
 _TEXT	SEGMENT
 tv206 = -4						; size = 4
 tv196 = -4						; size = 4
-$T89376 = -4						; size = 4
+$T89378 = -4						; size = 4
 ?normalize@Vec3D@@QAEAAV1@XZ PROC			; Vec3D::normalize, COMDAT
 ; _this$ = ecx
 ; Line 93
@@ -1020,9 +1020,9 @@ $T89376 = -4						; size = 4
 	mov	eax, esi
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T89376[ebp]
+	fstp	DWORD PTR $T89378[ebp]
 	fld	DWORD PTR [esi]
-	fld	DWORD PTR $T89376[ebp]
+	fld	DWORD PTR $T89378[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
@@ -3833,12 +3833,12 @@ PUBLIC	??$interpolate@VVec3D@@@@YA?AVVec3D@@MABV0@0@Z	; interpolate<Vec3D>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$interpolate@VVec3D@@@@YA?AVVec3D@@MABV0@0@Z
 _TEXT	SEGMENT
-$T90029 = -24						; size = 12
-$T90028 = -12						; size = 12
+$T90031 = -24						; size = 12
+$T90030 = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
 _r$ = 12						; size = 4
 _v1$ = 16						; size = 4
-$T90054 = 20						; size = 4
+$T90056 = 20						; size = 4
 _v2$ = 20						; size = 4
 ??$interpolate@VVec3D@@@@YA?AVVec3D@@MABV0@0@Z PROC	; interpolate<Vec3D>, COMDAT
 ; File c:\programovani\wow editor\test\src\editor\animated.h
@@ -3853,37 +3853,37 @@ _v2$ = 20						; size = 4
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T90029[ebp]
+	fstp	DWORD PTR $T90031[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90029[ebp+4]
+	fstp	DWORD PTR $T90031[ebp+4]
 	fld	DWORD PTR [eax+8]
 	mov	eax, DWORD PTR _v1$[ebp]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90029[ebp+8]
+	fstp	DWORD PTR $T90031[ebp+8]
 	fld1
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T90054[ebp]
+	fstp	DWORD PTR $T90056[ebp]
 	fld	DWORD PTR [eax]
-	fld	DWORD PTR $T90054[ebp]
+	fld	DWORD PTR $T90056[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T90028[ebp]
+	fstp	DWORD PTR $T90030[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90028[ebp+4]
+	fstp	DWORD PTR $T90030[ebp+4]
 	fmul	DWORD PTR [eax+8]
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
-	fstp	DWORD PTR $T90028[ebp+8]
-	fld	DWORD PTR $T90028[ebp]
-	fadd	DWORD PTR $T90029[ebp]
+	fstp	DWORD PTR $T90030[ebp+8]
+	fld	DWORD PTR $T90030[ebp]
+	fadd	DWORD PTR $T90031[ebp]
 	fstp	DWORD PTR [eax]
-	fld	DWORD PTR $T90029[ebp+4]
-	fadd	DWORD PTR $T90028[ebp+4]
+	fld	DWORD PTR $T90031[ebp+4]
+	fadd	DWORD PTR $T90030[ebp+4]
 	fstp	DWORD PTR [eax+4]
-	fld	DWORD PTR $T90028[ebp+8]
-	fadd	DWORD PTR $T90029[ebp+8]
+	fld	DWORD PTR $T90030[ebp+8]
+	fadd	DWORD PTR $T90031[ebp+8]
 	fstp	DWORD PTR [eax+8]
 ; Line 19
 	mov	esp, ebp
@@ -3901,12 +3901,12 @@ __real@4008000000000000 DQ 04008000000000000r	; 3
 CONST	ENDS
 ;	COMDAT ??$interpolateHermite@VVec3D@@@@YA?AVVec3D@@MABV0@000@Z
 _TEXT	SEGMENT
-$T90074 = -72						; size = 12
-$T90072 = -60						; size = 12
-$T90071 = -48						; size = 12
-$T90073 = -36						; size = 12
-$T90070 = -36						; size = 12
-$T90069 = -24						; size = 12
+$T90076 = -72						; size = 12
+$T90074 = -60						; size = 12
+$T90073 = -48						; size = 12
+$T90075 = -36						; size = 12
+$T90072 = -36						; size = 12
+$T90071 = -24						; size = 12
 _h1$ = -12						; size = 4
 _h2$ = -8						; size = 4
 _h3$ = -4						; size = 4
@@ -3958,15 +3958,27 @@ _out$ = 28						; size = 4
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
+	fstp	DWORD PTR $T90076[ebp]
+	fld	DWORD PTR [eax+4]
+	fmul	ST(0), ST(1)
+	fstp	DWORD PTR $T90076[ebp+4]
+	fmul	DWORD PTR [eax+8]
+	mov	eax, DWORD PTR _in$[ebp]
+	fstp	DWORD PTR $T90076[ebp+8]
+	fld	DWORD PTR [eax]
+	fld	DWORD PTR _h3$[ebp]
+	fld	ST(0)
+	fmulp	ST(2), ST(0)
+	fxch	ST(1)
 	fstp	DWORD PTR $T90074[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
 	fstp	DWORD PTR $T90074[ebp+4]
 	fmul	DWORD PTR [eax+8]
-	mov	eax, DWORD PTR _in$[ebp]
+	mov	eax, DWORD PTR _v2$[ebp]
 	fstp	DWORD PTR $T90074[ebp+8]
 	fld	DWORD PTR [eax]
-	fld	DWORD PTR _h3$[ebp]
+	fld	DWORD PTR _h2$[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
@@ -3975,40 +3987,18 @@ _out$ = 28						; size = 4
 	fmul	ST(0), ST(1)
 	fstp	DWORD PTR $T90072[ebp+4]
 	fmul	DWORD PTR [eax+8]
-	mov	eax, DWORD PTR _v2$[ebp]
-	fstp	DWORD PTR $T90072[ebp+8]
-	fld	DWORD PTR [eax]
-	fld	DWORD PTR _h2$[ebp]
-	fld	ST(0)
-	fmulp	ST(2), ST(0)
-	fxch	ST(1)
-	fstp	DWORD PTR $T90070[ebp]
-	fld	DWORD PTR [eax+4]
-	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90070[ebp+4]
-	fmul	DWORD PTR [eax+8]
 	mov	eax, DWORD PTR _v1$[ebp]
-	fstp	DWORD PTR $T90070[ebp+8]
+	fstp	DWORD PTR $T90072[ebp+8]
 	fld	DWORD PTR [eax]
 	fld	DWORD PTR _h1$[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T90069[ebp]
+	fstp	DWORD PTR $T90071[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90069[ebp+4]
-	fmul	DWORD PTR [eax+8]
-	fstp	DWORD PTR $T90069[ebp+8]
-	fld	DWORD PTR $T90069[ebp]
-	fadd	DWORD PTR $T90070[ebp]
-	fstp	DWORD PTR $T90071[ebp]
-	fld	DWORD PTR $T90069[ebp+4]
-	fadd	DWORD PTR $T90070[ebp+4]
 	fstp	DWORD PTR $T90071[ebp+4]
-	fld	DWORD PTR $T90069[ebp+8]
-	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
-	fadd	DWORD PTR $T90070[ebp+8]
+	fmul	DWORD PTR [eax+8]
 	fstp	DWORD PTR $T90071[ebp+8]
 	fld	DWORD PTR $T90071[ebp]
 	fadd	DWORD PTR $T90072[ebp]
@@ -4017,16 +4007,26 @@ _out$ = 28						; size = 4
 	fadd	DWORD PTR $T90072[ebp+4]
 	fstp	DWORD PTR $T90073[ebp+4]
 	fld	DWORD PTR $T90071[ebp+8]
+	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	fadd	DWORD PTR $T90072[ebp+8]
 	fstp	DWORD PTR $T90073[ebp+8]
 	fld	DWORD PTR $T90073[ebp]
 	fadd	DWORD PTR $T90074[ebp]
-	fstp	DWORD PTR [eax]
+	fstp	DWORD PTR $T90075[ebp]
 	fld	DWORD PTR $T90073[ebp+4]
 	fadd	DWORD PTR $T90074[ebp+4]
-	fstp	DWORD PTR [eax+4]
+	fstp	DWORD PTR $T90075[ebp+4]
 	fld	DWORD PTR $T90073[ebp+8]
 	fadd	DWORD PTR $T90074[ebp+8]
+	fstp	DWORD PTR $T90075[ebp+8]
+	fld	DWORD PTR $T90075[ebp]
+	fadd	DWORD PTR $T90076[ebp]
+	fstp	DWORD PTR [eax]
+	fld	DWORD PTR $T90075[ebp+4]
+	fadd	DWORD PTR $T90076[ebp+4]
+	fstp	DWORD PTR [eax+4]
+	fld	DWORD PTR $T90075[ebp+8]
+	fadd	DWORD PTR $T90076[ebp+8]
 	fstp	DWORD PTR [eax+8]
 ; Line 35
 	mov	esp, ebp
@@ -4278,8 +4278,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@U_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@std@@@std@@YAPAU_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@0@IPAU120@@Z
 _TEXT	SEGMENT
-$T90181 = -12						; size = 12
-$T90186 = 8						; size = 4
+$T90183 = -12						; size = 12
+$T90188 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@std@@@std@@YAPAU_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@0@IPAU120@@Z PROC ; std::_Allocate<std::_List_nod<Particle,std::allocator<Particle> >::_Node>, COMDAT
@@ -4306,15 +4306,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	eax, DWORD PTR $T90186[ebp]
+	lea	eax, DWORD PTR $T90188[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90181[ebp]
-	mov	DWORD PTR $T90186[ebp], 0
+	lea	ecx, DWORD PTR $T90183[ebp]
+	mov	DWORD PTR $T90188[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90181[ebp]
+	lea	ecx, DWORD PTR $T90183[ebp]
 	push	ecx
-	mov	DWORD PTR $T90181[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90183[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -4345,8 +4345,8 @@ PUBLIC	??$_Allocate@UTexCoordSet@@@std@@YAPAUTexCoordSet@@IPAU1@@Z ; std::_Alloc
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@UTexCoordSet@@@std@@YAPAUTexCoordSet@@IPAU1@@Z
 _TEXT	SEGMENT
-$T90193 = -12						; size = 12
-$T90197 = 8						; size = 4
+$T90195 = -12						; size = 12
+$T90199 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@UTexCoordSet@@@std@@YAPAUTexCoordSet@@IPAU1@@Z PROC ; std::_Allocate<TexCoordSet>, COMDAT
@@ -4372,15 +4372,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	eax, DWORD PTR $T90197[ebp]
+	lea	eax, DWORD PTR $T90199[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90193[ebp]
-	mov	DWORD PTR $T90197[ebp], 0
+	lea	ecx, DWORD PTR $T90195[ebp]
+	mov	DWORD PTR $T90199[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90193[ebp]
+	lea	ecx, DWORD PTR $T90195[ebp]
 	push	ecx
-	mov	DWORD PTR $T90193[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90195[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -4395,8 +4395,8 @@ PUBLIC	??$_Allocate@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegme
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@std@@@std@@YAPAU_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@0@IPAU120@@Z
 _TEXT	SEGMENT
-$T90202 = -12						; size = 12
-$T90206 = 8						; size = 4
+$T90204 = -12						; size = 12
+$T90208 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@std@@@std@@YAPAU_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@0@IPAU120@@Z PROC ; std::_Allocate<std::_List_nod<RibbonSegment,std::allocator<RibbonSegment> >::_Node>, COMDAT
@@ -4422,15 +4422,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@3
 $LN1@Allocate@3:
 ; Line 37
-	lea	eax, DWORD PTR $T90206[ebp]
+	lea	eax, DWORD PTR $T90208[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90202[ebp]
-	mov	DWORD PTR $T90206[ebp], 0
+	lea	ecx, DWORD PTR $T90204[ebp]
+	mov	DWORD PTR $T90208[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90202[ebp]
+	lea	ecx, DWORD PTR $T90204[ebp]
 	push	ecx
-	mov	DWORD PTR $T90202[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90204[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@3:
 $LN5@Allocate@3:
@@ -4445,8 +4445,8 @@ PUBLIC	??$_Allocate@U?$pair@II@std@@@std@@YAPAU?$pair@II@0@IPAU10@@Z ; std::_All
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@U?$pair@II@std@@@std@@YAPAU?$pair@II@0@IPAU10@@Z
 _TEXT	SEGMENT
-$T90211 = -12						; size = 12
-$T90215 = 8						; size = 4
+$T90213 = -12						; size = 12
+$T90217 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U?$pair@II@std@@@std@@YAPAU?$pair@II@0@IPAU10@@Z PROC ; std::_Allocate<std::pair<unsigned int,unsigned int> >, COMDAT
@@ -4472,15 +4472,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@4
 $LN1@Allocate@4:
 ; Line 37
-	lea	ecx, DWORD PTR $T90215[ebp]
+	lea	ecx, DWORD PTR $T90217[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90211[ebp]
-	mov	DWORD PTR $T90215[ebp], 0
+	lea	ecx, DWORD PTR $T90213[ebp]
+	mov	DWORD PTR $T90217[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90211[ebp]
+	lea	edx, DWORD PTR $T90213[ebp]
 	push	edx
-	mov	DWORD PTR $T90211[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90213[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@4:
 $LN5@Allocate@4:
@@ -4495,8 +4495,8 @@ PUBLIC	??$_Allocate@H@std@@YAPAHIPAH@Z			; std::_Allocate<int>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@H@std@@YAPAHIPAH@Z
 _TEXT	SEGMENT
-$T90220 = -12						; size = 12
-$T90224 = 8						; size = 4
+$T90222 = -12						; size = 12
+$T90226 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@H@std@@YAPAHIPAH@Z PROC			; std::_Allocate<int>, COMDAT
@@ -4522,15 +4522,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@5
 $LN1@Allocate@5:
 ; Line 37
-	lea	ecx, DWORD PTR $T90224[ebp]
+	lea	ecx, DWORD PTR $T90226[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90220[ebp]
-	mov	DWORD PTR $T90224[ebp], 0
+	lea	ecx, DWORD PTR $T90222[ebp]
+	mov	DWORD PTR $T90226[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90220[ebp]
+	lea	edx, DWORD PTR $T90222[ebp]
 	push	edx
-	mov	DWORD PTR $T90220[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90222[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@5:
 $LN5@Allocate@5:
@@ -4545,8 +4545,8 @@ PUBLIC	??$_Allocate@VVec3D@@@std@@YAPAVVec3D@@IPAV1@@Z	; std::_Allocate<Vec3D>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@VVec3D@@@std@@YAPAVVec3D@@IPAV1@@Z
 _TEXT	SEGMENT
-$T90229 = -12						; size = 12
-$T90233 = 8						; size = 4
+$T90231 = -12						; size = 12
+$T90235 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@VVec3D@@@std@@YAPAVVec3D@@IPAV1@@Z PROC	; std::_Allocate<Vec3D>, COMDAT
@@ -4574,15 +4574,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@6
 $LN1@Allocate@6:
 ; Line 37
-	lea	ecx, DWORD PTR $T90233[ebp]
+	lea	ecx, DWORD PTR $T90235[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90229[ebp]
-	mov	DWORD PTR $T90233[ebp], 0
+	lea	ecx, DWORD PTR $T90231[ebp]
+	mov	DWORD PTR $T90235[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90229[ebp]
+	lea	edx, DWORD PTR $T90231[ebp]
 	push	edx
-	mov	DWORD PTR $T90229[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90231[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@6:
 $LN5@Allocate@6:
@@ -4597,8 +4597,8 @@ PUBLIC	??$_Allocate@M@std@@YAPAMIPAM@Z			; std::_Allocate<float>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@M@std@@YAPAMIPAM@Z
 _TEXT	SEGMENT
-$T90238 = -12						; size = 12
-$T90242 = 8						; size = 4
+$T90240 = -12						; size = 12
+$T90244 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@M@std@@YAPAMIPAM@Z PROC			; std::_Allocate<float>, COMDAT
@@ -4624,15 +4624,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@7
 $LN1@Allocate@7:
 ; Line 37
-	lea	ecx, DWORD PTR $T90242[ebp]
+	lea	ecx, DWORD PTR $T90244[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90238[ebp]
-	mov	DWORD PTR $T90242[ebp], 0
+	lea	ecx, DWORD PTR $T90240[ebp]
+	mov	DWORD PTR $T90244[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90238[ebp]
+	lea	edx, DWORD PTR $T90240[ebp]
 	push	edx
-	mov	DWORD PTR $T90238[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90240[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@7:
 $LN5@Allocate@7:
@@ -4668,12 +4668,12 @@ PUBLIC	??$interpolate@VVec4D@@@@YA?AVVec4D@@MABV0@0@Z	; interpolate<Vec4D>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$interpolate@VVec4D@@@@YA?AVVec4D@@MABV0@0@Z
 _TEXT	SEGMENT
-$T90251 = -32						; size = 16
-$T90250 = -16						; size = 16
+$T90253 = -32						; size = 16
+$T90252 = -16						; size = 16
 ___$ReturnUdt$ = 8					; size = 4
 _r$ = 12						; size = 4
 _v1$ = 16						; size = 4
-$T90278 = 20						; size = 4
+$T90280 = 20						; size = 4
 _v2$ = 20						; size = 4
 ??$interpolate@VVec4D@@@@YA?AVVec4D@@MABV0@0@Z PROC	; interpolate<Vec4D>, COMDAT
 ; File c:\programovani\wow editor\test\src\editor\animated.h
@@ -4688,46 +4688,46 @@ _v2$ = 20						; size = 4
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T90251[ebp]
+	fstp	DWORD PTR $T90253[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90251[ebp+4]
+	fstp	DWORD PTR $T90253[ebp+4]
 	fld	DWORD PTR [eax+8]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90251[ebp+8]
+	fstp	DWORD PTR $T90253[ebp+8]
 	fld	DWORD PTR [eax+12]
 	mov	eax, DWORD PTR _v1$[ebp]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90251[ebp+12]
+	fstp	DWORD PTR $T90253[ebp+12]
 	fld1
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T90278[ebp]
+	fstp	DWORD PTR $T90280[ebp]
 	fld	DWORD PTR [eax]
-	fld	DWORD PTR $T90278[ebp]
+	fld	DWORD PTR $T90280[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T90250[ebp]
+	fstp	DWORD PTR $T90252[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90250[ebp+4]
+	fstp	DWORD PTR $T90252[ebp+4]
 	fld	DWORD PTR [eax+8]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T90250[ebp+8]
+	fstp	DWORD PTR $T90252[ebp+8]
 	fmul	DWORD PTR [eax+12]
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
-	fstp	DWORD PTR $T90250[ebp+12]
-	fld	DWORD PTR $T90250[ebp]
-	fadd	DWORD PTR $T90251[ebp]
+	fstp	DWORD PTR $T90252[ebp+12]
+	fld	DWORD PTR $T90252[ebp]
+	fadd	DWORD PTR $T90253[ebp]
 	fstp	DWORD PTR [eax]
-	fld	DWORD PTR $T90250[ebp+4]
-	fadd	DWORD PTR $T90251[ebp+4]
+	fld	DWORD PTR $T90252[ebp+4]
+	fadd	DWORD PTR $T90253[ebp+4]
 	fstp	DWORD PTR [eax+4]
-	fld	DWORD PTR $T90250[ebp+8]
-	fadd	DWORD PTR $T90251[ebp+8]
+	fld	DWORD PTR $T90252[ebp+8]
+	fadd	DWORD PTR $T90253[ebp+8]
 	fstp	DWORD PTR [eax+8]
-	fld	DWORD PTR $T90250[ebp+12]
-	fadd	DWORD PTR $T90251[ebp+12]
+	fld	DWORD PTR $T90252[ebp+12]
+	fadd	DWORD PTR $T90253[ebp+12]
 	fstp	DWORD PTR [eax+12]
 ; Line 19
 	mov	esp, ebp
@@ -5819,8 +5819,8 @@ PUBLIC	?allocate@?$allocator@U_Node@?$_List_nod@UParticle@@V?$allocator@UParticl
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@std@@@std@@QAEPAU_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@2@I@Z
 _TEXT	SEGMENT
-$T90639 = -12						; size = 12
-$T90631 = 8						; size = 4
+$T90641 = -12						; size = 12
+$T90633 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@std@@@std@@QAEPAU_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@2@I@Z PROC ; std::allocator<std::_List_nod<Particle,std::allocator<Particle> >::_Node>::allocate, COMDAT
 ; _this$ = ecx
@@ -5843,15 +5843,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	eax, DWORD PTR $T90631[ebp]
+	lea	eax, DWORD PTR $T90633[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90639[ebp]
-	mov	DWORD PTR $T90631[ebp], 0
+	lea	ecx, DWORD PTR $T90641[ebp]
+	mov	DWORD PTR $T90633[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90639[ebp]
+	lea	ecx, DWORD PTR $T90641[ebp]
 	push	ecx
-	mov	DWORD PTR $T90639[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90641[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -6175,8 +6175,8 @@ PUBLIC	?allocate@?$allocator@UTexCoordSet@@@std@@QAEPAUTexCoordSet@@I@Z ; std::a
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@UTexCoordSet@@@std@@QAEPAUTexCoordSet@@I@Z
 _TEXT	SEGMENT
-$T90866 = -12						; size = 12
-$T90860 = 8						; size = 4
+$T90868 = -12						; size = 12
+$T90862 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@UTexCoordSet@@@std@@QAEPAUTexCoordSet@@I@Z PROC ; std::allocator<TexCoordSet>::allocate, COMDAT
 ; _this$ = ecx
@@ -6199,15 +6199,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	eax, DWORD PTR $T90860[ebp]
+	lea	eax, DWORD PTR $T90862[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90866[ebp]
-	mov	DWORD PTR $T90860[ebp], 0
+	lea	ecx, DWORD PTR $T90868[ebp]
+	mov	DWORD PTR $T90862[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90866[ebp]
+	lea	ecx, DWORD PTR $T90868[ebp]
 	push	ecx
-	mov	DWORD PTR $T90866[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90868[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -6235,8 +6235,8 @@ PUBLIC	?allocate@?$allocator@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URi
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@std@@@std@@QAEPAU_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@2@I@Z
 _TEXT	SEGMENT
-$T90902 = -12						; size = 12
-$T90894 = 8						; size = 4
+$T90904 = -12						; size = 12
+$T90896 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@std@@@std@@QAEPAU_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@2@I@Z PROC ; std::allocator<std::_List_nod<RibbonSegment,std::allocator<RibbonSegment> >::_Node>::allocate, COMDAT
 ; _this$ = ecx
@@ -6259,15 +6259,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@3
 $LN3@allocate@3:
-	lea	eax, DWORD PTR $T90894[ebp]
+	lea	eax, DWORD PTR $T90896[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T90902[ebp]
-	mov	DWORD PTR $T90894[ebp], 0
+	lea	ecx, DWORD PTR $T90904[ebp]
+	mov	DWORD PTR $T90896[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T90902[ebp]
+	lea	ecx, DWORD PTR $T90904[ebp]
 	push	ecx
-	mov	DWORD PTR $T90902[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90904[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@3:
 $LN1@allocate@3:
@@ -6282,8 +6282,8 @@ PUBLIC	?allocate@?$allocator@U?$pair@II@std@@@std@@QAEPAU?$pair@II@2@I@Z ; std::
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U?$pair@II@std@@@std@@QAEPAU?$pair@II@2@I@Z
 _TEXT	SEGMENT
-$T90919 = -12						; size = 12
-$T90917 = 8						; size = 4
+$T90921 = -12						; size = 12
+$T90919 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U?$pair@II@std@@@std@@QAEPAU?$pair@II@2@I@Z PROC ; std::allocator<std::pair<unsigned int,unsigned int> >::allocate, COMDAT
 ; _this$ = ecx
@@ -6305,15 +6305,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@4
 $LN3@allocate@4:
-	lea	ecx, DWORD PTR $T90917[ebp]
-	push	ecx
 	lea	ecx, DWORD PTR $T90919[ebp]
-	mov	DWORD PTR $T90917[ebp], 0
+	push	ecx
+	lea	ecx, DWORD PTR $T90921[ebp]
+	mov	DWORD PTR $T90919[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90919[ebp]
+	lea	edx, DWORD PTR $T90921[ebp]
 	push	edx
-	mov	DWORD PTR $T90919[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90921[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@4:
 $LN1@allocate@4:
@@ -6328,8 +6328,8 @@ PUBLIC	?allocate@?$allocator@H@std@@QAEPAHI@Z		; std::allocator<int>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@H@std@@QAEPAHI@Z
 _TEXT	SEGMENT
-$T90942 = -12						; size = 12
-$T90940 = 8						; size = 4
+$T90944 = -12						; size = 12
+$T90942 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@H@std@@QAEPAHI@Z PROC		; std::allocator<int>::allocate, COMDAT
 ; _this$ = ecx
@@ -6351,15 +6351,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@5
 $LN3@allocate@5:
-	lea	ecx, DWORD PTR $T90940[ebp]
-	push	ecx
 	lea	ecx, DWORD PTR $T90942[ebp]
-	mov	DWORD PTR $T90940[ebp], 0
+	push	ecx
+	lea	ecx, DWORD PTR $T90944[ebp]
+	mov	DWORD PTR $T90942[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90942[ebp]
+	lea	edx, DWORD PTR $T90944[ebp]
 	push	edx
-	mov	DWORD PTR $T90942[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90944[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@5:
 $LN1@allocate@5:
@@ -6374,8 +6374,8 @@ PUBLIC	?allocate@?$allocator@VVec3D@@@std@@QAEPAVVec3D@@I@Z ; std::allocator<Vec
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@VVec3D@@@std@@QAEPAVVec3D@@I@Z
 _TEXT	SEGMENT
-$T90971 = -12						; size = 12
-$T90963 = 8						; size = 4
+$T90973 = -12						; size = 12
+$T90965 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@VVec3D@@@std@@QAEPAVVec3D@@I@Z PROC ; std::allocator<Vec3D>::allocate, COMDAT
 ; _this$ = ecx
@@ -6399,15 +6399,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@6
 $LN3@allocate@6:
-	lea	ecx, DWORD PTR $T90963[ebp]
+	lea	ecx, DWORD PTR $T90965[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90971[ebp]
-	mov	DWORD PTR $T90963[ebp], 0
+	lea	ecx, DWORD PTR $T90973[ebp]
+	mov	DWORD PTR $T90965[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90971[ebp]
+	lea	edx, DWORD PTR $T90973[ebp]
 	push	edx
-	mov	DWORD PTR $T90971[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90973[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@6:
 $LN1@allocate@6:
@@ -6422,8 +6422,8 @@ PUBLIC	?allocate@?$allocator@M@std@@QAEPAMI@Z		; std::allocator<float>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@M@std@@QAEPAMI@Z
 _TEXT	SEGMENT
-$T90994 = -12						; size = 12
-$T90986 = 8						; size = 4
+$T90996 = -12						; size = 12
+$T90988 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@M@std@@QAEPAMI@Z PROC		; std::allocator<float>::allocate, COMDAT
 ; _this$ = ecx
@@ -6445,15 +6445,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@7
 $LN3@allocate@7:
-	lea	ecx, DWORD PTR $T90986[ebp]
+	lea	ecx, DWORD PTR $T90988[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T90994[ebp]
-	mov	DWORD PTR $T90986[ebp], 0
+	lea	ecx, DWORD PTR $T90996[ebp]
+	mov	DWORD PTR $T90988[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T90994[ebp]
+	lea	edx, DWORD PTR $T90996[ebp]
 	push	edx
-	mov	DWORD PTR $T90994[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T90996[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@7:
 $LN1@allocate@7:
@@ -6470,8 +6470,8 @@ PUBLIC	??$lifeRamp@M@@YAMMMABM00@Z			; lifeRamp<float>
 _TEXT	SEGMENT
 tv175 = 8						; size = 4
 tv167 = 8						; size = 4
-$T91011 = 8						; size = 4
-$T91007 = 8						; size = 4
+$T91013 = 8						; size = 4
+$T91009 = 8						; size = 4
 _life$ = 8						; size = 4
 _mid$ = 12						; size = 4
 _a$ = 16						; size = 4
@@ -6492,8 +6492,8 @@ _c$ = 24						; size = 4
 	fdivp	ST(1), ST(0)
 	mov	eax, DWORD PTR _a$[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
-	fstp	DWORD PTR $T91007[ebp]
-	fld	DWORD PTR $T91007[ebp]
+	fstp	DWORD PTR $T91009[ebp]
+	fld	DWORD PTR $T91009[ebp]
 	fld	ST(0)
 	fld1
 	fsubrp	ST(1), ST(0)
@@ -6517,8 +6517,8 @@ $LN2@lifeRamp:
 	fsubrp	ST(2), ST(0)
 	fxch	ST(2)
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T91011[ebp]
-	fld	DWORD PTR $T91011[ebp]
+	fstp	DWORD PTR $T91013[ebp]
+	fld	DWORD PTR $T91013[ebp]
 	fld	ST(0)
 	fsubp	ST(2), ST(0)
 	fld	DWORD PTR [edx]
@@ -7134,11 +7134,11 @@ EXTRN	?globalTime@@3HA:DWORD				; globalTime
 ; Function compile flags: /Ogtp
 ;	COMDAT ?getValue@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAE?AVVec3D@@HH@Z
 _TEXT	SEGMENT
-_range$78231 = -8					; size = 8
+_range$78233 = -8					; size = 8
 ___$ReturnUdt$ = 8					; size = 4
 tv643 = 12						; size = 4
 tv640 = 12						; size = 4
-_r$78245 = 12						; size = 4
+_r$78247 = 12						; size = 4
 _anim$ = 12						; size = 4
 _time$ = 16						; size = 4
 ?getValue@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAE?AVVec3D@@HH@Z PROC ; Animated<Vec3D,Vec3D,Identity<Vec3D> >::getValue, COMDAT
@@ -7183,7 +7183,7 @@ $LN11@getValue:
 	xor	esi, esi
 	shr	eax, 31					; 0000001fH
 	lea	ebx, DWORD PTR [edx+eax-1]
-	mov	DWORD PTR _range$78231[ebp+4], ebx
+	mov	DWORD PTR _range$78233[ebp+4], ebx
 ; Line 115
 	jmp	SHORT $LN10@getValue
 $LN13@getValue:
@@ -7198,11 +7198,11 @@ $LN13@getValue:
 	mov	edx, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR _time$[ebp]
 	sub	ebx, edi
-	mov	DWORD PTR _range$78231[ebp+4], edx
+	mov	DWORD PTR _range$78233[ebp+4], edx
 	sar	ebx, 2
 	cdq
 	idiv	DWORD PTR [edi+ebx*4-4]
-	mov	ebx, DWORD PTR _range$78231[ebp+4]
+	mov	ebx, DWORD PTR _range$78233[ebp+4]
 	mov	edi, edx
 $LN10@getValue:
 ; Line 121
@@ -7217,7 +7217,7 @@ $LN10@getValue:
 ; Line 124
 	mov	ebx, DWORD PTR [ecx+32]
 	lea	esi, DWORD PTR [ebx+esi*4]
-	mov	ebx, DWORD PTR _range$78231[ebp+4]
+	mov	ebx, DWORD PTR _range$78233[ebp+4]
 $LL63@getValue:
 ; Line 127
 	cmp	edi, DWORD PTR [esi]
@@ -7251,7 +7251,7 @@ $LN62@getValue:
 	mov	DWORD PTR tv640[ebp], edx
 	fidiv	DWORD PTR tv640[ebp]
 	lea	eax, DWORD PTR [eax+eax*2]
-	fstp	DWORD PTR _r$78245[ebp]
+	fstp	DWORD PTR _r$78247[ebp]
 	jne	SHORT $LN4@getValue
 	mov	ecx, DWORD PTR [ecx+48]
 	mov	esi, DWORD PTR ___$ReturnUdt$[ebp]
@@ -7259,7 +7259,7 @@ $LN62@getValue:
 	lea	edx, DWORD PTR [eax+12]
 	push	edx
 	push	eax
-	mov	eax, DWORD PTR _r$78245[ebp]
+	mov	eax, DWORD PTR _r$78247[ebp]
 	push	ecx
 	mov	DWORD PTR [esp], eax
 	push	esi
@@ -7290,7 +7290,7 @@ $LN4@getValue:
 	push	eax
 	push	edx
 	push	ecx
-	mov	ecx, DWORD PTR _r$78245[ebp]
+	mov	ecx, DWORD PTR _r$78247[ebp]
 	mov	DWORD PTR [esp], ecx
 	push	esi
 	call	??$interpolateHermite@VVec3D@@@@YA?AVVec3D@@MABV0@000@Z ; interpolateHermite<Vec3D>
@@ -7342,12 +7342,12 @@ PUBLIC	?getValue@?$Animated@MFVShortToFloat@@@@QAEMHH@Z ; Animated<float,short,S
 ; Function compile flags: /Ogtp
 ;	COMDAT ?getValue@?$Animated@MFVShortToFloat@@@@QAEMHH@Z
 _TEXT	SEGMENT
-_range$78333 = -8					; size = 8
+_range$78335 = -8					; size = 8
 tv653 = 8						; size = 4
 tv650 = 8						; size = 4
 tv645 = 8						; size = 4
-_r$78347 = 8						; size = 4
-_pos$78341 = 8						; size = 4
+_r$78349 = 8						; size = 4
+_pos$78343 = 8						; size = 4
 _anim$ = 8						; size = 4
 _time$ = 12						; size = 4
 ?getValue@?$Animated@MFVShortToFloat@@@@QAEMHH@Z PROC	; Animated<float,short,ShortToFloat>::getValue, COMDAT
@@ -7405,12 +7405,12 @@ $LN13@getValue@2:
 	mov	eax, DWORD PTR _time$[ebp]
 	push	ebx
 	mov	ebx, DWORD PTR [ecx+36]
-	mov	DWORD PTR _range$78333[ebp], edx
+	mov	DWORD PTR _range$78335[ebp], edx
 	sub	ebx, edi
 	cdq
 	sar	ebx, 2
 	idiv	DWORD PTR [edi+ebx*4-4]
-	mov	eax, DWORD PTR _range$78333[ebp]
+	mov	eax, DWORD PTR _range$78335[ebp]
 	pop	ebx
 $LN10@getValue@2:
 ; Line 121
@@ -7418,7 +7418,7 @@ $LN10@getValue@2:
 	je	$LN9@getValue@2
 ; Line 124
 	xor	edi, edi
-	mov	DWORD PTR _pos$78341[ebp], edi
+	mov	DWORD PTR _pos$78343[ebp], edi
 ; Line 125
 	cmp	eax, esi
 	jae	SHORT $LN60@getValue@2
@@ -7439,7 +7439,7 @@ $LN7@getValue@2:
 	cmp	eax, esi
 	jb	SHORT $LL8@getValue@2
 ; Line 127
-	mov	edi, DWORD PTR _pos$78341[ebp]
+	mov	edi, DWORD PTR _pos$78343[ebp]
 	jmp	SHORT $LN60@getValue@2
 $LN58@getValue@2:
 ; Line 129
@@ -7459,9 +7459,9 @@ $LN60@getValue@2:
 	cmp	DWORD PTR [ecx+4], 1
 	mov	DWORD PTR tv650[ebp], edx
 	fidiv	DWORD PTR tv650[ebp]
-	fstp	DWORD PTR _r$78347[ebp]
+	fstp	DWORD PTR _r$78349[ebp]
 	jne	SHORT $LN4@getValue@2
-	fld	DWORD PTR _r$78347[ebp]
+	fld	DWORD PTR _r$78349[ebp]
 	mov	ecx, DWORD PTR [ecx+48]
 	fld	ST(0)
 	pop	edi
@@ -7492,7 +7492,7 @@ $LN4@getValue@2:
 	push	eax
 	push	edx
 	push	ecx
-	mov	ecx, DWORD PTR _r$78347[ebp]
+	mov	ecx, DWORD PTR _r$78349[ebp]
 	mov	DWORD PTR [esp], ecx
 	call	??$interpolateHermite@M@@YAMMABM000@Z	; interpolateHermite<float>
 	add	esp, 20					; 00000014H
@@ -7526,12 +7526,12 @@ PUBLIC	?getValue@?$Animated@MMV?$Identity@M@@@@QAEMHH@Z ; Animated<float,float,I
 ; Function compile flags: /Ogtp
 ;	COMDAT ?getValue@?$Animated@MMV?$Identity@M@@@@QAEMHH@Z
 _TEXT	SEGMENT
-_range$78428 = -8					; size = 8
+_range$78430 = -8					; size = 8
 tv653 = 8						; size = 4
 tv650 = 8						; size = 4
 tv645 = 8						; size = 4
-_r$78442 = 8						; size = 4
-_pos$78436 = 8						; size = 4
+_r$78444 = 8						; size = 4
+_pos$78438 = 8						; size = 4
 _anim$ = 8						; size = 4
 _time$ = 12						; size = 4
 ?getValue@?$Animated@MMV?$Identity@M@@@@QAEMHH@Z PROC	; Animated<float,float,Identity<float> >::getValue, COMDAT
@@ -7589,12 +7589,12 @@ $LN13@getValue@3:
 	mov	eax, DWORD PTR _time$[ebp]
 	push	ebx
 	mov	ebx, DWORD PTR [ecx+36]
-	mov	DWORD PTR _range$78428[ebp], edx
+	mov	DWORD PTR _range$78430[ebp], edx
 	sub	ebx, edi
 	cdq
 	sar	ebx, 2
 	idiv	DWORD PTR [edi+ebx*4-4]
-	mov	eax, DWORD PTR _range$78428[ebp]
+	mov	eax, DWORD PTR _range$78430[ebp]
 	pop	ebx
 $LN10@getValue@3:
 ; Line 121
@@ -7602,7 +7602,7 @@ $LN10@getValue@3:
 	je	$LN9@getValue@3
 ; Line 124
 	xor	edi, edi
-	mov	DWORD PTR _pos$78436[ebp], edi
+	mov	DWORD PTR _pos$78438[ebp], edi
 ; Line 125
 	cmp	eax, esi
 	jae	SHORT $LN60@getValue@3
@@ -7623,7 +7623,7 @@ $LN7@getValue@3:
 	cmp	eax, esi
 	jb	SHORT $LL8@getValue@3
 ; Line 127
-	mov	edi, DWORD PTR _pos$78436[ebp]
+	mov	edi, DWORD PTR _pos$78438[ebp]
 	jmp	SHORT $LN60@getValue@3
 $LN58@getValue@3:
 ; Line 129
@@ -7643,9 +7643,9 @@ $LN60@getValue@3:
 	cmp	DWORD PTR [ecx+4], 1
 	mov	DWORD PTR tv650[ebp], edx
 	fidiv	DWORD PTR tv650[ebp]
-	fstp	DWORD PTR _r$78442[ebp]
+	fstp	DWORD PTR _r$78444[ebp]
 	jne	SHORT $LN4@getValue@3
-	fld	DWORD PTR _r$78442[ebp]
+	fld	DWORD PTR _r$78444[ebp]
 	mov	ecx, DWORD PTR [ecx+48]
 	fld	ST(0)
 	pop	edi
@@ -7676,7 +7676,7 @@ $LN4@getValue@3:
 	push	eax
 	push	edx
 	push	ecx
-	mov	ecx, DWORD PTR _r$78442[ebp]
+	mov	ecx, DWORD PTR _r$78444[ebp]
 	mov	DWORD PTR [esp], ecx
 	call	??$interpolateHermite@M@@YAMMABM000@Z	; interpolateHermite<float>
 	add	esp, 20					; 00000014H
@@ -8387,19 +8387,19 @@ __real@3fe0000000000000 DQ 03fe0000000000000r	; 0.5
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T92332 = -36						; size = 12
-$T92327 = -36						; size = 12
-$T92333 = -24						; size = 12
+$T92334 = -36						; size = 12
+$T92329 = -36						; size = 12
+$T92335 = -24						; size = 12
 _dir$ = -24						; size = 12
-$T92329 = -24						; size = 12
-$T92328 = -24						; size = 12
+$T92331 = -24						; size = 12
+$T92330 = -24						; size = 12
 _spd$ = -12						; size = 4
 _var$ = -8						; size = 4
 _w$ = -4						; size = 4
 tv1091 = 8						; size = 4
 tv1082 = 8						; size = 4
-$T92475 = 8						; size = 4
-$T92440 = 8						; size = 4
+$T92477 = 8						; size = 4
+$T92442 = 8						; size = 4
 _l$ = 8							; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _anim$ = 12						; size = 4
@@ -8478,7 +8478,7 @@ _time$ = 16						; size = 4
 	mov	DWORD PTR [esp+4], eax
 	fstp	DWORD PTR [esp]
 	call	?randfloat@@YAMMM@Z			; randfloat
-	fstp	DWORD PTR $T92327[ebp]
+	fstp	DWORD PTR $T92329[ebp]
 	mov	ecx, DWORD PTR _w$[ebp]
 	fld	DWORD PTR _w$[ebp]
 	fchs
@@ -8486,46 +8486,46 @@ _time$ = 16						; size = 4
 	fstp	DWORD PTR [esp]
 	call	?randfloat@@YAMMM@Z			; randfloat
 	mov	eax, DWORD PTR [ebx+4]
-	fstp	DWORD PTR $T92327[ebp+8]
+	fstp	DWORD PTR $T92329[ebp+8]
 	fld	DWORD PTR [eax+1032]
 	add	esp, 8
-	fadd	DWORD PTR $T92327[ebp]
-	fstp	DWORD PTR $T92328[ebp]
+	fadd	DWORD PTR $T92329[ebp]
+	fstp	DWORD PTR $T92330[ebp]
 	fld	DWORD PTR [eax+1036]
 	fldz
 	fadd	ST(1), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92328[ebp+4]
+	fstp	DWORD PTR $T92330[ebp+4]
 	fld	DWORD PTR [eax+1040]
-	fadd	DWORD PTR $T92327[ebp+8]
-	mov	edx, DWORD PTR $T92328[ebp]
-	mov	eax, DWORD PTR $T92328[ebp+4]
+	fadd	DWORD PTR $T92329[ebp+8]
+	mov	edx, DWORD PTR $T92330[ebp]
+	mov	eax, DWORD PTR $T92330[ebp+4]
 	mov	DWORD PTR [esi], edx
-	fstp	DWORD PTR $T92328[ebp+8]
+	fstp	DWORD PTR $T92330[ebp+8]
 	mov	DWORD PTR [esi+4], eax
-	mov	ecx, DWORD PTR $T92328[ebp+8]
+	mov	ecx, DWORD PTR $T92330[ebp+8]
 	mov	DWORD PTR [esi+8], ecx
 ; Line 511
 	mov	edx, DWORD PTR [ebx+4]
 	mov	eax, DWORD PTR [edx+1116]
 	fld	DWORD PTR [eax+312]
-	fld	DWORD PTR $T92328[ebp+4]
+	fld	DWORD PTR $T92330[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+308]
-	fld	DWORD PTR $T92328[ebp]
+	fld	DWORD PTR $T92330[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(3)
 	faddp	ST(1), ST(0)
 	fld	DWORD PTR [eax+316]
-	fld	DWORD PTR $T92328[ebp+8]
+	fld	DWORD PTR $T92330[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+320]
-	fstp	DWORD PTR $T92329[ebp]
+	fstp	DWORD PTR $T92331[ebp]
 	fld	DWORD PTR [eax+328]
 	fmul	ST(0), ST(2)
 	fld	DWORD PTR [eax+324]
@@ -8535,9 +8535,9 @@ _time$ = 16						; size = 4
 	fmul	ST(0), ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+336]
-	fstp	DWORD PTR $T92329[ebp+4]
+	fstp	DWORD PTR $T92331[ebp+4]
 	fld	DWORD PTR [eax+344]
-	mov	ecx, DWORD PTR $T92329[ebp+4]
+	mov	ecx, DWORD PTR $T92331[ebp+4]
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+340]
 	fmulp	ST(3), ST(0)
@@ -8546,11 +8546,11 @@ _time$ = 16						; size = 4
 	fmul	DWORD PTR [eax+348]
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+352]
-	mov	eax, DWORD PTR $T92329[ebp]
+	mov	eax, DWORD PTR $T92331[ebp]
 	mov	DWORD PTR [esi], eax
 	mov	DWORD PTR [esi+4], ecx
-	fstp	DWORD PTR $T92329[ebp+8]
-	mov	edx, DWORD PTR $T92329[ebp+8]
+	fstp	DWORD PTR $T92331[ebp+8]
+	mov	edx, DWORD PTR $T92331[ebp+8]
 	mov	DWORD PTR [esi+8], edx
 ; Line 513
 	mov	eax, DWORD PTR [ebx+4]
@@ -8605,8 +8605,8 @@ _time$ = 16						; size = 4
 	sub	esp, 8
 	fdivrp	ST(1), ST(0)
 	mov	DWORD PTR [esp+4], ecx
-	fstp	DWORD PTR $T92440[ebp]
-	fld	DWORD PTR $T92440[ebp]
+	fstp	DWORD PTR $T92442[ebp]
+	fld	DWORD PTR $T92442[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _dir$[ebp]
 	fstp	DWORD PTR _dir$[ebp]
@@ -8620,40 +8620,40 @@ _time$ = 16						; size = 4
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92332[ebp]
+	fstp	DWORD PTR $T92334[ebp]
 	fld	DWORD PTR _dir$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T92332[ebp+4]
+	fstp	DWORD PTR $T92334[ebp+4]
 	fmul	DWORD PTR _dir$[ebp+8]
-	fstp	DWORD PTR $T92332[ebp+8]
+	fstp	DWORD PTR $T92334[ebp+8]
 	fld	DWORD PTR _var$[ebp]
 	fchs
 	fstp	DWORD PTR [esp]
 	call	?randfloat@@YAMMM@Z			; randfloat
 	fadd	QWORD PTR __real@3ff0000000000000
 	add	esp, 8
-	fstp	DWORD PTR $T92475[ebp]
-	fld	DWORD PTR $T92332[ebp]
-	fld	DWORD PTR $T92475[ebp]
+	fstp	DWORD PTR $T92477[ebp]
+	fld	DWORD PTR $T92334[ebp]
+	fld	DWORD PTR $T92477[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92333[ebp]
-	fld	DWORD PTR $T92332[ebp+4]
-	mov	edx, DWORD PTR $T92333[ebp]
+	fstp	DWORD PTR $T92335[ebp]
+	fld	DWORD PTR $T92334[ebp+4]
+	mov	edx, DWORD PTR $T92335[ebp]
 	fmul	ST(0), ST(1)
 	mov	DWORD PTR [esi+12], edx
 ; Line 519
 	mov	edx, DWORD PTR _time$[ebp]
 	push	edx
-	fstp	DWORD PTR $T92333[ebp+4]
-	mov	eax, DWORD PTR $T92333[ebp+4]
-	fmul	DWORD PTR $T92332[ebp+8]
+	fstp	DWORD PTR $T92335[ebp+4]
+	mov	eax, DWORD PTR $T92335[ebp+4]
+	fmul	DWORD PTR $T92334[ebp+8]
 	mov	DWORD PTR [esi+16], eax
 	mov	eax, DWORD PTR _anim$[ebp]
 	push	eax
-	fstp	DWORD PTR $T92333[ebp+8]
-	mov	ecx, DWORD PTR $T92333[ebp+8]
+	fstp	DWORD PTR $T92335[ebp+8]
+	mov	ecx, DWORD PTR $T92335[ebp+8]
 	mov	DWORD PTR [esi+20], ecx
 	mov	DWORD PTR [esi+52], edi
 	mov	ecx, DWORD PTR [ebx+4]
@@ -8696,12 +8696,12 @@ __real@00000000 DD 000000000r			; 0
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T92495 = -44						; size = 12
+$T92497 = -44						; size = 12
+$T92494 = -44						; size = 12
 $T92492 = -44						; size = 12
-$T92490 = -44						; size = 12
-$T92489 = -44						; size = 12
-$T92493 = -32						; size = 12
-_dir$75615 = -32					; size = 12
+$T92491 = -44						; size = 12
+$T92495 = -32						; size = 12
+_dir$75617 = -32					; size = 12
 _bdir$ = -32						; size = 12
 _spd$ = -20						; size = 4
 _w$ = -16						; size = 4
@@ -8713,9 +8713,9 @@ tv1458 = 8						; size = 4
 tv1423 = 8						; size = 4
 tv1403 = 8						; size = 4
 tv1396 = 8						; size = 4
-$T92639 = 8						; size = 4
-$T92674 = 8						; size = 4
-$T92598 = 8						; size = 4
+$T92641 = 8						; size = 4
+$T92676 = 8						; size = 4
+$T92600 = 8						; size = 4
 _t$ = 8							; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 _anim$ = 12						; size = 4
@@ -8810,45 +8810,45 @@ _time$ = 16						; size = 4
 	fldz
 	fadd	ST(1), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92489[ebp]
+	fstp	DWORD PTR $T92491[ebp]
 	fld	DWORD PTR [eax+1036]
 	fld	DWORD PTR _bdir$[ebp+4]
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92489[ebp+4]
+	fstp	DWORD PTR $T92491[ebp+4]
 	fld	DWORD PTR [eax+1040]
-	mov	eax, DWORD PTR $T92489[ebp]
+	mov	eax, DWORD PTR $T92491[ebp]
 	fadd	DWORD PTR _bdir$[ebp+8]
-	mov	ecx, DWORD PTR $T92489[ebp+4]
+	mov	ecx, DWORD PTR $T92491[ebp+4]
 	mov	DWORD PTR [esi], eax
 	mov	DWORD PTR [esi+4], ecx
-	fstp	DWORD PTR $T92489[ebp+8]
-	mov	edx, DWORD PTR $T92489[ebp+8]
+	fstp	DWORD PTR $T92491[ebp+8]
+	mov	edx, DWORD PTR $T92491[ebp+8]
 	mov	DWORD PTR [esi+8], edx
 ; Line 553
 	mov	eax, DWORD PTR [ebx+4]
 	mov	eax, DWORD PTR [eax+1116]
 	fld	DWORD PTR [eax+312]
-	fld	DWORD PTR $T92489[ebp+4]
+	fld	DWORD PTR $T92491[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+308]
-	fld	DWORD PTR $T92489[ebp]
+	fld	DWORD PTR $T92491[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(3)
 	faddp	ST(1), ST(0)
 	fld	DWORD PTR [eax+316]
-	fld	DWORD PTR $T92489[ebp+8]
+	fld	DWORD PTR $T92491[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+320]
-	fstp	DWORD PTR $T92490[ebp]
+	fstp	DWORD PTR $T92492[ebp]
 	fld	DWORD PTR [eax+328]
-	mov	ecx, DWORD PTR $T92490[ebp]
+	mov	ecx, DWORD PTR $T92492[ebp]
 	fmul	ST(0), ST(2)
 	fld	DWORD PTR [eax+324]
 	fmul	ST(0), ST(4)
@@ -8857,9 +8857,9 @@ _time$ = 16						; size = 4
 	fmul	ST(0), ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+336]
-	fstp	DWORD PTR $T92490[ebp+4]
+	fstp	DWORD PTR $T92492[ebp+4]
 	fld	DWORD PTR [eax+344]
-	mov	edx, DWORD PTR $T92490[ebp+4]
+	mov	edx, DWORD PTR $T92492[ebp+4]
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+340]
 	fmulp	ST(3), ST(0)
@@ -8870,10 +8870,10 @@ _time$ = 16						; size = 4
 	fadd	DWORD PTR [eax+352]
 	mov	DWORD PTR [esi], ecx
 	mov	DWORD PTR [esi+4], edx
-	fstp	DWORD PTR $T92490[ebp+8]
+	fstp	DWORD PTR $T92492[ebp+8]
 ; Line 555
 	fld	DWORD PTR _bdir$[ebp+8]
-	mov	eax, DWORD PTR $T92490[ebp+8]
+	mov	eax, DWORD PTR $T92492[ebp+8]
 	fld	ST(1)
 	mov	DWORD PTR [esi+8], eax
 	fmulp	ST(2), ST(0)
@@ -8910,8 +8910,8 @@ $LN86@newParticl:
 	fld1
 	mov	eax, DWORD PTR [ecx+1116]
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T92598[ebp]
-	fld	DWORD PTR $T92598[ebp]
+	fstp	DWORD PTR $T92600[ebp]
+	fld	DWORD PTR $T92600[ebp]
 	fld	QWORD PTR __real@0000000000000000
 	fmul	ST(0), ST(1)
 	fstp	DWORD PTR _bdir$[ebp]
@@ -8937,7 +8937,7 @@ $LN86@newParticl:
 	fxch	ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+384]
-	fstp	DWORD PTR _dir$75615[ebp]
+	fstp	DWORD PTR _dir$75617[ebp]
 	fld	DWORD PTR [eax+392]
 	fmul	ST(0), ST(2)
 	fld	DWORD PTR [eax+388]
@@ -8947,7 +8947,7 @@ $LN86@newParticl:
 	fmul	ST(0), ST(2)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+400]
-	fstp	DWORD PTR _dir$75615[ebp+4]
+	fstp	DWORD PTR _dir$75617[ebp+4]
 	fld	DWORD PTR [eax+408]
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+404]
@@ -8957,11 +8957,11 @@ $LN86@newParticl:
 	fmul	DWORD PTR [eax+412]
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+416]
-	fstp	DWORD PTR _dir$75615[ebp+8]
-	fld	DWORD PTR _dir$75615[ebp+4]
+	fstp	DWORD PTR _dir$75617[ebp+8]
+	fld	DWORD PTR _dir$75617[ebp+4]
 ; Line 560
-	fld	DWORD PTR _dir$75615[ebp]
-	fld	DWORD PTR _dir$75615[ebp+8]
+	fld	DWORD PTR _dir$75617[ebp]
+	fld	DWORD PTR _dir$75617[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -8977,30 +8977,30 @@ $LN86@newParticl:
 	fld	DWORD PTR tv1396[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T92639[ebp]
-	fld	DWORD PTR $T92639[ebp]
+	fstp	DWORD PTR $T92641[ebp]
+	fld	DWORD PTR $T92641[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR _dir$75615[ebp]
-	fstp	DWORD PTR _dir$75615[ebp]
-	fld	DWORD PTR _dir$75615[ebp+4]
+	fmul	DWORD PTR _dir$75617[ebp]
+	fstp	DWORD PTR _dir$75617[ebp]
+	fld	DWORD PTR _dir$75617[ebp+4]
 	fmul	ST(0), ST(1)
 	mov	edx, DWORD PTR _var$[ebp]
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], edx
-	fstp	DWORD PTR _dir$75615[ebp+4]
-	fmul	DWORD PTR _dir$75615[ebp+8]
-	fstp	DWORD PTR _dir$75615[ebp+8]
-	fld	DWORD PTR _dir$75615[ebp]
+	fstp	DWORD PTR _dir$75617[ebp+4]
+	fmul	DWORD PTR _dir$75617[ebp+8]
+	fstp	DWORD PTR _dir$75617[ebp+8]
+	fld	DWORD PTR _dir$75617[ebp]
 	fld	DWORD PTR _spd$[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92492[ebp]
-	fld	DWORD PTR _dir$75615[ebp+4]
+	fstp	DWORD PTR $T92494[ebp]
+	fld	DWORD PTR _dir$75617[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T92492[ebp+4]
-	fmul	DWORD PTR _dir$75615[ebp+8]
-	fstp	DWORD PTR $T92492[ebp+8]
+	fstp	DWORD PTR $T92494[ebp+4]
+	fmul	DWORD PTR _dir$75617[ebp+8]
+	fstp	DWORD PTR $T92494[ebp+8]
 	fld	DWORD PTR _var$[ebp]
 	fchs
 	fstp	DWORD PTR [esp]
@@ -9009,23 +9009,23 @@ $LN86@newParticl:
 	add	esp, 8
 	fadd	ST(1), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92674[ebp]
-	fld	DWORD PTR $T92492[ebp]
-	fld	DWORD PTR $T92674[ebp]
+	fstp	DWORD PTR $T92676[ebp]
+	fld	DWORD PTR $T92494[ebp]
+	fld	DWORD PTR $T92676[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T92493[ebp]
-	fld	DWORD PTR $T92492[ebp+4]
-	mov	eax, DWORD PTR $T92493[ebp]
+	fstp	DWORD PTR $T92495[ebp]
+	fld	DWORD PTR $T92494[ebp+4]
+	mov	eax, DWORD PTR $T92495[ebp]
 	fmul	ST(0), ST(1)
 	mov	DWORD PTR [esi+12], eax
-	fstp	DWORD PTR $T92493[ebp+4]
-	mov	ecx, DWORD PTR $T92493[ebp+4]
-	fmul	DWORD PTR $T92492[ebp+8]
+	fstp	DWORD PTR $T92495[ebp+4]
+	mov	ecx, DWORD PTR $T92495[ebp+4]
+	fmul	DWORD PTR $T92494[ebp+8]
 	mov	DWORD PTR [esi+16], ecx
-	fstp	DWORD PTR $T92493[ebp+8]
-	mov	edx, DWORD PTR $T92493[ebp+8]
+	fstp	DWORD PTR $T92495[ebp+8]
+	mov	edx, DWORD PTR $T92495[ebp+8]
 	fldz
 	mov	DWORD PTR [esi+20], edx
 	fxch	ST(1)
@@ -9042,9 +9042,9 @@ $LN73@newParticl:
 	fmul	ST(0), ST(3)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+384]
-	fstp	DWORD PTR $T92495[ebp]
+	fstp	DWORD PTR $T92497[ebp]
 	fld	DWORD PTR [eax+388]
-	mov	ecx, DWORD PTR $T92495[ebp]
+	mov	ecx, DWORD PTR $T92497[ebp]
 	fmul	ST(0), ST(2)
 	fld	DWORD PTR [eax+392]
 	fmul	ST(0), ST(2)
@@ -9053,9 +9053,9 @@ $LN73@newParticl:
 	fmul	ST(0), ST(3)
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [eax+400]
-	fstp	DWORD PTR $T92495[ebp+4]
+	fstp	DWORD PTR $T92497[ebp+4]
 	fld	DWORD PTR [eax+404]
-	mov	edx, DWORD PTR $T92495[ebp+4]
+	mov	edx, DWORD PTR $T92497[ebp+4]
 	fmul	ST(0), ST(2)
 	fld	DWORD PTR [eax+408]
 	fmulp	ST(2), ST(0)
@@ -9069,8 +9069,8 @@ $LN73@newParticl:
 	mov	ecx, DWORD PTR _time$[ebp]
 	mov	DWORD PTR [esi+28], edx
 	mov	edx, DWORD PTR _anim$[ebp]
-	fstp	DWORD PTR $T92495[ebp+8]
-	mov	eax, DWORD PTR $T92495[ebp+8]
+	fstp	DWORD PTR $T92497[ebp+8]
+	mov	eax, DWORD PTR $T92497[ebp+8]
 	push	ecx
 	mov	DWORD PTR [esi+32], eax
 	mov	DWORD PTR [esi+52], edi
@@ -9230,8 +9230,8 @@ PUBLIC	?_Buynode@?$_List_val@UParticle@@V?$allocator@UParticle@@@std@@@std@@QAEP
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Buynode@?$_List_val@UParticle@@V?$allocator@UParticle@@@std@@@std@@QAEPAU_Node@?$_List_nod@UParticle@@V?$allocator@UParticle@@@std@@@2@PAU342@0ABUParticle@@@Z
 _TEXT	SEGMENT
-$T92909 = -12						; size = 12
-$T92886 = 8						; size = 4
+$T92911 = -12						; size = 12
+$T92888 = 8						; size = 4
 __Next$ = 8						; size = 4
 __Prev$ = 12						; size = 4
 __Val$ = 16						; size = 4
@@ -9271,15 +9271,15 @@ $LN36@Buynode:
 	ret	12					; 0000000cH
 ; Line 508
 $LN10@Buynode:
-	lea	eax, DWORD PTR $T92886[ebp]
+	lea	eax, DWORD PTR $T92888[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T92909[ebp]
-	mov	DWORD PTR $T92886[ebp], 0
+	lea	ecx, DWORD PTR $T92911[ebp]
+	mov	DWORD PTR $T92888[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T92909[ebp]
+	lea	ecx, DWORD PTR $T92911[ebp]
 	push	ecx
-	mov	DWORD PTR $T92909[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T92911[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN47@Buynode:
 $LN46@Buynode:
@@ -9817,57 +9817,57 @@ __real@3fe6a09e60000000 DQ 03fe6a09e60000000r	; 0.707107
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T93685 = -376						; size = 12
+$T93687 = -376						; size = 12
+$T93693 = -364						; size = 12
 $T93691 = -364						; size = 12
 $T93689 = -364						; size = 12
-$T93687 = -364						; size = 12
-$T93698 = -352						; size = 12
-$T93683 = -352						; size = 12
-$T93700 = -340						; size = 12
-$T93681 = -340						; size = 12
-$T93696 = -328						; size = 12
-$T93684 = -328						; size = 12
+$T93700 = -352						; size = 12
+$T93685 = -352						; size = 12
+$T93702 = -340						; size = 12
+$T93683 = -340						; size = 12
+$T93698 = -328						; size = 12
+$T93686 = -328						; size = 12
 tv4452 = -316						; size = 8
 tv4136 = -316						; size = 8
-$T95036 = -312						; size = 4
-$T94354 = -312						; size = 4
+$T95038 = -312						; size = 4
+$T94356 = -312						; size = 4
 tv4435 = -308						; size = 8
 tv4145 = -308						; size = 8
-$T94928 = -304						; size = 4
-$T94462 = -304						; size = 4
-$T93699 = -300						; size = 12
-$T93682 = -300						; size = 12
+$T94930 = -304						; size = 4
+$T94464 = -304						; size = 4
+$T93701 = -300						; size = 12
+$T93684 = -300						; size = 12
 tv4525 = -296						; size = 8
 tv4437 = -296						; size = 8
 tv4151 = -296						; size = 8
-$T93694 = -288						; size = 12
+$T93696 = -288						; size = 12
+$T93692 = -288						; size = 12
 $T93690 = -288						; size = 12
 $T93688 = -288						; size = 12
-$T93686 = -288						; size = 12
-$T93672 = -276						; size = 12
-$T93663 = -276						; size = 12
+$T93674 = -276						; size = 12
+$T93665 = -276						; size = 12
 tv4446 = -272						; size = 8
 tv4131 = -272						; size = 8
-$T95145 = -268						; size = 4
-$T94246 = -268						; size = 4
-$T93697 = -264						; size = 12
-$T93680 = -264						; size = 12
-$T93674 = -264						; size = 12
+$T95147 = -268						; size = 4
+$T94248 = -268						; size = 4
+$T93699 = -264						; size = 12
+$T93682 = -264						; size = 12
+$T93676 = -264						; size = 12
 tv4513 = -260						; size = 8
 tv4431 = -260						; size = 8
 tv4160 = -260						; size = 8
-$T93693 = -252						; size = 12
+$T93695 = -252						; size = 12
+$T93672 = -252						; size = 12
 $T93670 = -252						; size = 12
-$T93668 = -252						; size = 12
-_camera$75425 = -252					; size = 12
+_camera$75427 = -252					; size = 12
 _bv2$ = -252						; size = 12
-$T93695 = -240						; size = 12
-$T93665 = -240						; size = 12
+$T93697 = -240						; size = 12
+$T93667 = -240						; size = 12
 _bv3$ = -240						; size = 12
 tv4482 = -236						; size = 8
 tv4422 = -236						; size = 8
 tv4166 = -236						; size = 8
-$T93661 = -228						; size = 12
+$T93663 = -228						; size = 12
 _bv0$ = -228						; size = 12
 tv4450 = -216						; size = 8
 tv4299 = -212						; size = 4
@@ -9878,18 +9878,18 @@ tv4246 = -212						; size = 4
 tv4239 = -212						; size = 4
 tv4221 = -212						; size = 4
 tv4214 = -212						; size = 4
-$T94820 = -212						; size = 4
-$T94570 = -212						; size = 4
-$T93953 = -212						; size = 4
-$T93907 = -212						; size = 4
-$T93861 = -212						; size = 4
-$T93803 = -212						; size = 4
-_invdet$93747 = -212					; size = 4
+$T94822 = -212						; size = 4
+$T94572 = -212						; size = 4
+$T93955 = -212						; size = 4
+$T93909 = -212						; size = 4
+$T93863 = -212						; size = 4
+$T93805 = -212						; size = 4
+_invdet$93749 = -212					; size = 4
+$T93668 = -208						; size = 12
 $T93666 = -208						; size = 12
-$T93664 = -208						; size = 12
 _bv1$ = -208						; size = 12
-_adj$93746 = -196					; size = 64
-_mtrans$75424 = -132					; size = 64
+_adj$93748 = -196					; size = 64
+_mtrans$75426 = -132					; size = 64
 _mbb$ = -68						; size = 64
 __$ArrayPad$ = -4					; size = 4
 ?draw@ParticleSystem@@QAEXXZ PROC			; ParticleSystem::draw
@@ -10014,114 +10014,114 @@ $LN619@draw:
 	cmp	BYTE PTR [edi+1108], bl
 	je	$LN13@draw
 ; Line 248
-	lea	edx, DWORD PTR _mtrans$75424[ebp]
+	lea	edx, DWORD PTR _mtrans$75426[ebp]
 	push	edx
 	push	2982					; 00000ba6H
 	call	DWORD PTR __imp__glGetFloatv@8
 ; Line 249
-	lea	ecx, DWORD PTR _mtrans$75424[ebp]
+	lea	ecx, DWORD PTR _mtrans$75426[ebp]
 	call	?transpose@Matrix@@QAEXXZ		; Matrix::transpose
 ; Line 250
-	lea	eax, DWORD PTR _adj$93746[ebp]
+	lea	eax, DWORD PTR _adj$93748[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _mtrans$75424[ebp]
+	lea	ecx, DWORD PTR _mtrans$75426[ebp]
 	call	?adjoint@Matrix@@QBE?BV1@XZ		; Matrix::adjoint
-	lea	ecx, DWORD PTR _mtrans$75424[ebp]
+	lea	ecx, DWORD PTR _mtrans$75426[ebp]
 	call	?determinant@Matrix@@QBEMXZ		; Matrix::determinant
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR _invdet$93747[ebp]
-	fld	DWORD PTR _adj$93746[ebp]
-	fld	DWORD PTR _invdet$93747[ebp]
+	fstp	DWORD PTR _invdet$93749[ebp]
+	fld	DWORD PTR _adj$93748[ebp]
+	fld	DWORD PTR _invdet$93749[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp]
-	fld	DWORD PTR _adj$93746[ebp+4]
+	fstp	DWORD PTR _mtrans$75426[ebp]
+	fld	DWORD PTR _adj$93748[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+4]
-	fld	DWORD PTR _adj$93746[ebp+8]
+	fstp	DWORD PTR _mtrans$75426[ebp+4]
+	fld	DWORD PTR _adj$93748[ebp+8]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+8]
-	fld	DWORD PTR _adj$93746[ebp+12]
+	fstp	DWORD PTR _mtrans$75426[ebp+8]
+	fld	DWORD PTR _adj$93748[ebp+12]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+12]
-	fld	DWORD PTR _adj$93746[ebp+16]
+	fstp	DWORD PTR _mtrans$75426[ebp+12]
+	fld	DWORD PTR _adj$93748[ebp+16]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+16]
-	fld	DWORD PTR _adj$93746[ebp+20]
+	fstp	DWORD PTR _mtrans$75426[ebp+16]
+	fld	DWORD PTR _adj$93748[ebp+20]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+20]
-	fld	DWORD PTR _adj$93746[ebp+24]
+	fstp	DWORD PTR _mtrans$75426[ebp+20]
+	fld	DWORD PTR _adj$93748[ebp+24]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+24]
-	fld	DWORD PTR _adj$93746[ebp+28]
+	fstp	DWORD PTR _mtrans$75426[ebp+24]
+	fld	DWORD PTR _adj$93748[ebp+28]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+28]
-	fld	DWORD PTR _adj$93746[ebp+32]
+	fstp	DWORD PTR _mtrans$75426[ebp+28]
+	fld	DWORD PTR _adj$93748[ebp+32]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+32]
-	fld	DWORD PTR _adj$93746[ebp+36]
+	fstp	DWORD PTR _mtrans$75426[ebp+32]
+	fld	DWORD PTR _adj$93748[ebp+36]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+36]
-	fld	DWORD PTR _adj$93746[ebp+40]
+	fstp	DWORD PTR _mtrans$75426[ebp+36]
+	fld	DWORD PTR _adj$93748[ebp+40]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75424[ebp+40]
-	fmul	DWORD PTR _adj$93746[ebp+44]
-	fstp	DWORD PTR _mtrans$75424[ebp+44]
+	fstp	DWORD PTR _mtrans$75426[ebp+40]
+	fmul	DWORD PTR _adj$93748[ebp+44]
+	fstp	DWORD PTR _mtrans$75426[ebp+44]
 ; Line 251
-	fld	DWORD PTR _mtrans$75424[ebp]
+	fld	DWORD PTR _mtrans$75426[ebp]
 	fldz
 	fmul	ST(1), ST(0)
 	fxch	ST(1)
 	fst	QWORD PTR tv4131[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+8]
+	fld	DWORD PTR _mtrans$75426[ebp+8]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4136[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+4]
+	fld	DWORD PTR _mtrans$75426[ebp+4]
 	fmul	ST(0), ST(3)
 	faddp	ST(2), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75424[ebp+12]
-	fstp	DWORD PTR _camera$75425[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+16]
+	fadd	DWORD PTR _mtrans$75426[ebp+12]
+	fstp	DWORD PTR _camera$75427[ebp]
+	fld	DWORD PTR _mtrans$75426[ebp+16]
 	fmul	ST(0), ST(1)
 	fst	QWORD PTR tv4145[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+24]
+	fld	DWORD PTR _mtrans$75426[ebp+24]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4151[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+20]
+	fld	DWORD PTR _mtrans$75426[ebp+20]
 	fmul	ST(0), ST(3)
 	faddp	ST(2), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75424[ebp+28]
-	fstp	DWORD PTR _camera$75425[ebp+4]
-	fld	DWORD PTR _mtrans$75424[ebp+32]
+	fadd	DWORD PTR _mtrans$75426[ebp+28]
+	fstp	DWORD PTR _camera$75427[ebp+4]
+	fld	DWORD PTR _mtrans$75426[ebp+32]
 	fmul	ST(0), ST(1)
 	fst	QWORD PTR tv4160[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+40]
+	fld	DWORD PTR _mtrans$75426[ebp+40]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4166[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+36]
+	fld	DWORD PTR _mtrans$75426[ebp+36]
 	fmulp	ST(3), ST(0)
 	fxch	ST(2)
 	faddp	ST(1), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75424[ebp+44]
-	fstp	DWORD PTR _camera$75425[ebp+8]
+	fadd	DWORD PTR _mtrans$75426[ebp+44]
+	fstp	DWORD PTR _camera$75427[ebp+8]
 ; Line 252
-	fld	DWORD PTR _camera$75425[ebp]
+	fld	DWORD PTR _camera$75427[ebp]
 	fsub	DWORD PTR [edi+1032]
-	fstp	DWORD PTR $T93661[ebp]
-	fld	DWORD PTR _camera$75425[ebp+4]
+	fstp	DWORD PTR $T93663[ebp]
+	fld	DWORD PTR _camera$75427[ebp+4]
 	fsub	DWORD PTR [edi+1036]
-	fstp	DWORD PTR $T93661[ebp+4]
-	fld	DWORD PTR _camera$75425[ebp+8]
+	fstp	DWORD PTR $T93663[ebp+4]
+	fld	DWORD PTR _camera$75427[ebp+8]
 	fsub	DWORD PTR [edi+1040]
-	fstp	DWORD PTR $T93661[ebp+8]
-	fld	DWORD PTR $T93661[ebp+4]
-	fld	DWORD PTR $T93661[ebp]
-	fld	DWORD PTR $T93661[ebp+8]
+	fstp	DWORD PTR $T93663[ebp+8]
+	fld	DWORD PTR $T93663[ebp+4]
+	fld	DWORD PTR $T93663[ebp]
+	fld	DWORD PTR $T93663[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -10137,44 +10137,44 @@ $LN619@draw:
 	fld	DWORD PTR tv4292[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93803[ebp]
-	fld	DWORD PTR $T93803[ebp]
+	fstp	DWORD PTR $T93805[ebp]
+	fld	DWORD PTR $T93805[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T93661[ebp]
-	fstp	DWORD PTR $T93661[ebp]
+	fmul	DWORD PTR $T93663[ebp]
+	fstp	DWORD PTR $T93663[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T93661[ebp+4]
-	fstp	DWORD PTR $T93661[ebp+4]
-	fmul	DWORD PTR $T93661[ebp+8]
-	fstp	DWORD PTR $T93661[ebp+8]
+	fmul	DWORD PTR $T93663[ebp+4]
+	fstp	DWORD PTR $T93663[ebp+4]
+	fmul	DWORD PTR $T93663[ebp+8]
+	fstp	DWORD PTR $T93663[ebp+8]
 ; Line 253
-	fld	DWORD PTR _mtrans$75424[ebp+4]
+	fld	DWORD PTR _mtrans$75426[ebp+4]
 	fadd	QWORD PTR tv4131[ebp]
 	fadd	QWORD PTR tv4136[ebp]
-	fadd	DWORD PTR _mtrans$75424[ebp+12]
-	fstp	DWORD PTR $T93663[ebp]
-	fld	DWORD PTR _mtrans$75424[ebp+20]
+	fadd	DWORD PTR _mtrans$75426[ebp+12]
+	fstp	DWORD PTR $T93665[ebp]
+	fld	DWORD PTR _mtrans$75426[ebp+20]
 	fadd	QWORD PTR tv4145[ebp]
 	fadd	QWORD PTR tv4151[ebp]
-	fadd	DWORD PTR _mtrans$75424[ebp+28]
-	fstp	DWORD PTR $T93663[ebp+4]
-	fld	DWORD PTR _mtrans$75424[ebp+36]
+	fadd	DWORD PTR _mtrans$75426[ebp+28]
+	fstp	DWORD PTR $T93665[ebp+4]
+	fld	DWORD PTR _mtrans$75426[ebp+36]
 	fadd	QWORD PTR tv4160[ebp]
 	fadd	QWORD PTR tv4166[ebp]
-	fadd	DWORD PTR _mtrans$75424[ebp+44]
-	fstp	DWORD PTR $T93663[ebp+8]
-	fld	DWORD PTR $T93663[ebp]
-	fsub	DWORD PTR _camera$75425[ebp]
-	fstp	DWORD PTR $T93664[ebp]
-	fld	DWORD PTR $T93663[ebp+4]
-	fsub	DWORD PTR _camera$75425[ebp+4]
-	fstp	DWORD PTR $T93664[ebp+4]
-	fld	DWORD PTR $T93663[ebp+8]
-	fsub	DWORD PTR _camera$75425[ebp+8]
-	fstp	DWORD PTR $T93664[ebp+8]
-	fld	DWORD PTR $T93664[ebp+4]
-	fld	DWORD PTR $T93664[ebp]
-	fld	DWORD PTR $T93664[ebp+8]
+	fadd	DWORD PTR _mtrans$75426[ebp+44]
+	fstp	DWORD PTR $T93665[ebp+8]
+	fld	DWORD PTR $T93665[ebp]
+	fsub	DWORD PTR _camera$75427[ebp]
+	fstp	DWORD PTR $T93666[ebp]
+	fld	DWORD PTR $T93665[ebp+4]
+	fsub	DWORD PTR _camera$75427[ebp+4]
+	fstp	DWORD PTR $T93666[ebp+4]
+	fld	DWORD PTR $T93665[ebp+8]
+	fsub	DWORD PTR _camera$75427[ebp+8]
+	fstp	DWORD PTR $T93666[ebp+8]
+	fld	DWORD PTR $T93666[ebp+4]
+	fld	DWORD PTR $T93666[ebp]
+	fld	DWORD PTR $T93666[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -10190,49 +10190,49 @@ $LN619@draw:
 	fld	DWORD PTR tv4264[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93861[ebp]
-	fld	DWORD PTR $T93664[ebp]
-	fld	DWORD PTR $T93861[ebp]
+	fstp	DWORD PTR $T93863[ebp]
+	fld	DWORD PTR $T93666[ebp]
+	fld	DWORD PTR $T93863[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93664[ebp]
+	fstp	DWORD PTR $T93666[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T93664[ebp+4]
-	fstp	DWORD PTR $T93664[ebp+4]
-	fmul	DWORD PTR $T93664[ebp+8]
-	fstp	DWORD PTR $T93664[ebp+8]
+	fmul	DWORD PTR $T93666[ebp+4]
+	fstp	DWORD PTR $T93666[ebp+4]
+	fmul	DWORD PTR $T93666[ebp+8]
+	fstp	DWORD PTR $T93666[ebp+8]
 ; Line 254
-	fld	DWORD PTR $T93664[ebp+4]
+	fld	DWORD PTR $T93666[ebp+4]
 	fld	ST(0)
-	fld	DWORD PTR $T93661[ebp+8]
+	fld	DWORD PTR $T93663[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T93664[ebp+8]
+	fld	DWORD PTR $T93666[ebp+8]
 	fld	ST(0)
-	fld	DWORD PTR $T93661[ebp+4]
+	fld	DWORD PTR $T93663[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93665[ebp]
-	fld	DWORD PTR $T93661[ebp]
+	fstp	DWORD PTR $T93667[ebp]
+	fld	DWORD PTR $T93663[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T93664[ebp]
+	fld	DWORD PTR $T93666[ebp]
 	fld	ST(0)
 	fmulp	ST(4), ST(0)
 	fxch	ST(2)
 	fsubrp	ST(3), ST(0)
 	fxch	ST(2)
-	fstp	DWORD PTR $T93665[ebp+4]
+	fstp	DWORD PTR $T93667[ebp+4]
 	fmulp	ST(2), ST(0)
 	fmulp	ST(2), ST(0)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93665[ebp+8]
-	fld	DWORD PTR $T93665[ebp]
-	fld	DWORD PTR $T93665[ebp+4]
-	fld	DWORD PTR $T93665[ebp+8]
+	fstp	DWORD PTR $T93667[ebp+8]
+	fld	DWORD PTR $T93667[ebp]
+	fld	DWORD PTR $T93667[ebp+4]
+	fld	DWORD PTR $T93667[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -10248,49 +10248,49 @@ $LN619@draw:
 	fld	DWORD PTR tv4239[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93907[ebp]
-	fld	DWORD PTR $T93665[ebp]
-	fld	DWORD PTR $T93907[ebp]
+	fstp	DWORD PTR $T93909[ebp]
+	fld	DWORD PTR $T93667[ebp]
+	fld	DWORD PTR $T93909[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93665[ebp]
+	fstp	DWORD PTR $T93667[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T93665[ebp+4]
-	fstp	DWORD PTR $T93665[ebp+4]
-	fmul	DWORD PTR $T93665[ebp+8]
-	fstp	DWORD PTR $T93665[ebp+8]
+	fmul	DWORD PTR $T93667[ebp+4]
+	fstp	DWORD PTR $T93667[ebp+4]
+	fmul	DWORD PTR $T93667[ebp+8]
+	fstp	DWORD PTR $T93667[ebp+8]
 ; Line 255
-	fld	DWORD PTR $T93665[ebp+8]
+	fld	DWORD PTR $T93667[ebp+8]
 	fld	ST(0)
-	fld	DWORD PTR $T93661[ebp+4]
+	fld	DWORD PTR $T93663[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T93665[ebp+4]
+	fld	DWORD PTR $T93667[ebp+4]
 	fld	ST(0)
-	fld	DWORD PTR $T93661[ebp+8]
+	fld	DWORD PTR $T93663[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93666[ebp]
-	fld	DWORD PTR $T93665[ebp]
+	fstp	DWORD PTR $T93668[ebp]
+	fld	DWORD PTR $T93667[ebp]
 	fld	ST(0)
 	fmulp	ST(4), ST(0)
-	fld	DWORD PTR $T93661[ebp]
+	fld	DWORD PTR $T93663[ebp]
 	fld	ST(0)
 	fmulp	ST(6), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(5), ST(0)
 	fxch	ST(4)
-	fstp	DWORD PTR $T93666[ebp+4]
+	fstp	DWORD PTR $T93668[ebp+4]
 	fmulp	ST(2), ST(0)
 	fmulp	ST(2), ST(0)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T93666[ebp+8]
-	fld	DWORD PTR $T93666[ebp]
-	fld	DWORD PTR $T93666[ebp+4]
-	fld	DWORD PTR $T93666[ebp+8]
+	fstp	DWORD PTR $T93668[ebp+8]
+	fld	DWORD PTR $T93668[ebp]
+	fld	DWORD PTR $T93668[ebp+4]
+	fld	DWORD PTR $T93668[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -10305,43 +10305,43 @@ $LN619@draw:
 	fstp	DWORD PTR tv4214[ebp]
 	fld	DWORD PTR tv4214[ebp]
 ; Line 257
-	mov	ecx, DWORD PTR $T93665[ebp]
+	mov	ecx, DWORD PTR $T93667[ebp]
 	fld1
 ; Line 258
-	mov	edx, DWORD PTR $T93665[ebp+4]
+	mov	edx, DWORD PTR $T93667[ebp+4]
 	fdivrp	ST(1), ST(0)
 ; Line 259
-	mov	eax, DWORD PTR $T93665[ebp+8]
+	mov	eax, DWORD PTR $T93667[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+4], ecx
 	mov	DWORD PTR _mbb$[ebp+20], edx
 	mov	DWORD PTR _mbb$[ebp+36], eax
-	fstp	DWORD PTR $T93953[ebp]
-	fld	DWORD PTR $T93666[ebp]
-	fld	DWORD PTR $T93953[ebp]
+	fstp	DWORD PTR $T93955[ebp]
+	fld	DWORD PTR $T93668[ebp]
+	fld	DWORD PTR $T93955[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93666[ebp]
+	fstp	DWORD PTR $T93668[ebp]
 ; Line 260
-	mov	ecx, DWORD PTR $T93666[ebp]
+	mov	ecx, DWORD PTR $T93668[ebp]
 	fld	ST(0)
 	mov	DWORD PTR _mbb$[ebp+8], ecx
-	fmul	DWORD PTR $T93666[ebp+4]
+	fmul	DWORD PTR $T93668[ebp+4]
 ; Line 263
-	mov	ecx, DWORD PTR $T93661[ebp]
+	mov	ecx, DWORD PTR $T93663[ebp]
 	mov	DWORD PTR _mbb$[ebp], ecx
-	fstp	DWORD PTR $T93666[ebp+4]
-	mov	edx, DWORD PTR $T93666[ebp+4]
-	fmul	DWORD PTR $T93666[ebp+8]
+	fstp	DWORD PTR $T93668[ebp+4]
+	mov	edx, DWORD PTR $T93668[ebp+4]
+	fmul	DWORD PTR $T93668[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+24], edx
 ; Line 264
-	mov	edx, DWORD PTR $T93661[ebp+4]
+	mov	edx, DWORD PTR $T93663[ebp+4]
 	mov	DWORD PTR _mbb$[ebp+16], edx
-	fstp	DWORD PTR $T93666[ebp+8]
-	mov	eax, DWORD PTR $T93666[ebp+8]
+	fstp	DWORD PTR $T93668[ebp+8]
+	mov	eax, DWORD PTR $T93668[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+40], eax
 ; Line 265
-	mov	eax, DWORD PTR $T93661[ebp+8]
+	mov	eax, DWORD PTR $T93663[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+32], eax
 $LN13@draw:
 ; Line 268
@@ -10354,30 +10354,30 @@ $LN13@draw:
 	cmp	eax, 1
 	jne	$LN4@draw
 ; Line 312
-	lea	ecx, DWORD PTR $T93688[ebp]
+	lea	ecx, DWORD PTR $T93690[ebp]
 	push	ecx
-	lea	edx, DWORD PTR $T93689[ebp]
+	lea	edx, DWORD PTR $T93691[ebp]
 	push	edx
 	lea	ecx, DWORD PTR _mbb$[ebp]
-	mov	DWORD PTR $T93688[ebp], ebx
-	mov	DWORD PTR $T93688[ebp+4], -1082130432	; bf800000H
-	mov	DWORD PTR $T93688[ebp+8], ebx
+	mov	DWORD PTR $T93690[ebp], ebx
+	mov	DWORD PTR $T93690[ebp+4], -1082130432	; bf800000H
+	mov	DWORD PTR $T93690[ebp+8], ebx
 	call	??DMatrix@@QBE?AVVec3D@@ABV1@@Z		; Matrix::operator*
 	mov	ecx, DWORD PTR [eax]
 	mov	edx, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR [eax+8]
 	mov	DWORD PTR _bv0$[ebp], ecx
 ; Line 313
-	lea	ecx, DWORD PTR $T93690[ebp]
+	lea	ecx, DWORD PTR $T93692[ebp]
 	mov	DWORD PTR _bv0$[ebp+4], edx
 	push	ecx
-	lea	edx, DWORD PTR $T93691[ebp]
+	lea	edx, DWORD PTR $T93693[ebp]
 	push	edx
 	lea	ecx, DWORD PTR _mbb$[ebp]
 	mov	DWORD PTR _bv0$[ebp+8], eax
-	mov	DWORD PTR $T93690[ebp], ebx
-	mov	DWORD PTR $T93690[ebp+4], esi
-	mov	DWORD PTR $T93690[ebp+8], ebx
+	mov	DWORD PTR $T93692[ebp], ebx
+	mov	DWORD PTR $T93692[ebp+4], esi
+	mov	DWORD PTR $T93692[ebp+8], ebx
 	call	??DMatrix@@QBE?AVVec3D@@ABV1@@Z		; Matrix::operator*
 	mov	ecx, DWORD PTR [eax]
 	mov	edx, DWORD PTR [eax+4]
@@ -10408,48 +10408,17 @@ $LL393@draw:
 	call	ebx
 ; Line 321
 	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94820[ebp], eax
-	fld	DWORD PTR $T94820[ebp]
-	lea	ecx, DWORD PTR $T93694[ebp]
+	mov	DWORD PTR $T94822[ebp], eax
+	fld	DWORD PTR $T94822[ebp]
+	lea	ecx, DWORD PTR $T93696[ebp]
 	fld	ST(0)
 	push	ecx
 	fmul	DWORD PTR _bv0$[ebp]
-	fstp	DWORD PTR $T93693[ebp]
+	fstp	DWORD PTR $T93695[ebp]
 	fld	DWORD PTR _bv0$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T93693[ebp+4]
-	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T93693[ebp+8]
-	fld	DWORD PTR $T93693[ebp]
-	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T93694[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T93693[ebp+4]
-	fstp	DWORD PTR $T93694[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T93693[ebp+8]
-	fstp	DWORD PTR $T93694[ebp+8]
-	call	DWORD PTR __imp__glVertex3fv@4
-; Line 323
-	mov	edx, DWORD PTR [esi+68]
-	mov	eax, DWORD PTR [edi+1092]
-	shl	edx, 5
-	lea	ecx, DWORD PTR [edx+eax+8]
-	push	ecx
-	call	ebx
-; Line 324
-	mov	edx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94928[ebp], edx
-	fld	DWORD PTR $T94928[ebp]
-	lea	eax, DWORD PTR $T93696[ebp]
-	fld	ST(0)
-	push	eax
-	fmul	DWORD PTR _bv1$[ebp]
-	fstp	DWORD PTR $T93695[ebp]
-	fld	ST(0)
-	fmul	DWORD PTR _bv1$[ebp+4]
 	fstp	DWORD PTR $T93695[ebp+4]
-	fmul	DWORD PTR _bv1$[ebp+8]
+	fmul	DWORD PTR _bv0$[ebp+8]
 	fstp	DWORD PTR $T93695[ebp+8]
 	fld	DWORD PTR $T93695[ebp]
 	fadd	DWORD PTR [esi+8]
@@ -10461,6 +10430,37 @@ $LL393@draw:
 	fadd	DWORD PTR $T93695[ebp+8]
 	fstp	DWORD PTR $T93696[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
+; Line 323
+	mov	edx, DWORD PTR [esi+68]
+	mov	eax, DWORD PTR [edi+1092]
+	shl	edx, 5
+	lea	ecx, DWORD PTR [edx+eax+8]
+	push	ecx
+	call	ebx
+; Line 324
+	mov	edx, DWORD PTR [esi+56]
+	mov	DWORD PTR $T94930[ebp], edx
+	fld	DWORD PTR $T94930[ebp]
+	lea	eax, DWORD PTR $T93698[ebp]
+	fld	ST(0)
+	push	eax
+	fmul	DWORD PTR _bv1$[ebp]
+	fstp	DWORD PTR $T93697[ebp]
+	fld	ST(0)
+	fmul	DWORD PTR _bv1$[ebp+4]
+	fstp	DWORD PTR $T93697[ebp+4]
+	fmul	DWORD PTR _bv1$[ebp+8]
+	fstp	DWORD PTR $T93697[ebp+8]
+	fld	DWORD PTR $T93697[ebp]
+	fadd	DWORD PTR [esi+8]
+	fstp	DWORD PTR $T93698[ebp]
+	fld	DWORD PTR [esi+12]
+	fadd	DWORD PTR $T93697[ebp+4]
+	fstp	DWORD PTR $T93698[ebp+4]
+	fld	DWORD PTR [esi+16]
+	fadd	DWORD PTR $T93697[ebp+8]
+	fstp	DWORD PTR $T93698[ebp+8]
+	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 326
 	mov	ecx, DWORD PTR [esi+68]
 	mov	edx, DWORD PTR [edi+1092]
@@ -10470,27 +10470,27 @@ $LL393@draw:
 	call	ebx
 ; Line 327
 	mov	ecx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T95036[ebp], ecx
-	fld	DWORD PTR $T95036[ebp]
+	mov	DWORD PTR $T95038[ebp], ecx
+	fld	DWORD PTR $T95038[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv1$[ebp]
-	fstp	DWORD PTR $T93697[ebp]
+	fstp	DWORD PTR $T93699[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv1$[ebp+4]
-	fstp	DWORD PTR $T93697[ebp+4]
+	fstp	DWORD PTR $T93699[ebp+4]
 	fmul	DWORD PTR _bv1$[ebp+8]
-	fstp	DWORD PTR $T93697[ebp+8]
-	fld	DWORD PTR $T93697[ebp]
+	fstp	DWORD PTR $T93699[ebp+8]
+	fld	DWORD PTR $T93699[ebp]
 	fadd	DWORD PTR [esi+44]
-	fstp	DWORD PTR $T93698[ebp]
+	fstp	DWORD PTR $T93700[ebp]
 	fld	DWORD PTR [esi+48]
-	fadd	DWORD PTR $T93697[ebp+4]
-	lea	edx, DWORD PTR $T93698[ebp]
+	fadd	DWORD PTR $T93699[ebp+4]
+	lea	edx, DWORD PTR $T93700[ebp]
 	push	edx
-	fstp	DWORD PTR $T93698[ebp+4]
+	fstp	DWORD PTR $T93700[ebp+4]
 	fld	DWORD PTR [esi+52]
-	fadd	DWORD PTR $T93697[ebp+8]
-	fstp	DWORD PTR $T93698[ebp+8]
+	fadd	DWORD PTR $T93699[ebp+8]
+	fstp	DWORD PTR $T93700[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 329
 	mov	eax, DWORD PTR [esi+68]
@@ -10501,27 +10501,27 @@ $LL393@draw:
 	call	ebx
 ; Line 330
 	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T95145[ebp], eax
-	fld	DWORD PTR $T95145[ebp]
-	lea	ecx, DWORD PTR $T93700[ebp]
+	mov	DWORD PTR $T95147[ebp], eax
+	fld	DWORD PTR $T95147[ebp]
+	lea	ecx, DWORD PTR $T93702[ebp]
 	fld	ST(0)
 	push	ecx
 	fmul	DWORD PTR _bv0$[ebp]
-	fstp	DWORD PTR $T93699[ebp]
+	fstp	DWORD PTR $T93701[ebp]
 	fld	DWORD PTR _bv0$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T93699[ebp+4]
+	fstp	DWORD PTR $T93701[ebp+4]
 	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T93699[ebp+8]
-	fld	DWORD PTR $T93699[ebp]
+	fstp	DWORD PTR $T93701[ebp+8]
+	fld	DWORD PTR $T93701[ebp]
 	fadd	DWORD PTR [esi+44]
-	fstp	DWORD PTR $T93700[ebp]
+	fstp	DWORD PTR $T93702[ebp]
 	fld	DWORD PTR [esi+48]
-	fadd	DWORD PTR $T93699[ebp+4]
-	fstp	DWORD PTR $T93700[ebp+4]
+	fadd	DWORD PTR $T93701[ebp+4]
+	fstp	DWORD PTR $T93702[ebp+4]
 	fld	DWORD PTR [esi+52]
-	fadd	DWORD PTR $T93699[ebp+8]
-	fstp	DWORD PTR $T93700[ebp+8]
+	fadd	DWORD PTR $T93701[ebp+8]
+	fstp	DWORD PTR $T93702[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 	mov	esi, DWORD PTR [esi]
 	cmp	esi, DWORD PTR [edi+1052]
@@ -10549,9 +10549,9 @@ $LN11@draw:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93668[ebp]
+	fstp	DWORD PTR $T93670[ebp]
 	fld	DWORD PTR _mbb$[ebp+16]
-	mov	edx, DWORD PTR $T93668[ebp]
+	mov	edx, DWORD PTR $T93670[ebp]
 	fmul	ST(0), ST(4)
 	mov	DWORD PTR _bv0$[ebp], edx
 	fst	QWORD PTR tv4431[ebp]
@@ -10567,9 +10567,9 @@ $LN11@draw:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93668[ebp+4]
+	fstp	DWORD PTR $T93670[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+32]
-	mov	eax, DWORD PTR $T93668[ebp+4]
+	mov	eax, DWORD PTR $T93670[ebp+4]
 	fmulp	ST(5), ST(0)
 	mov	DWORD PTR _bv0$[ebp+4], eax
 	fxch	ST(4)
@@ -10586,38 +10586,38 @@ $LN11@draw:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93668[ebp+8]
+	fstp	DWORD PTR $T93670[ebp+8]
 ; Line 277
 	fld	DWORD PTR _mbb$[ebp+4]
-	mov	ecx, DWORD PTR $T93668[ebp+8]
+	mov	ecx, DWORD PTR $T93670[ebp+8]
 	fmul	ST(0), ST(3)
 	mov	DWORD PTR _bv0$[ebp+8], ecx
 	faddp	ST(6), ST(0)
 	fld	ST(5)
 	fadd	QWORD PTR tv4422[ebp]
 	fadd	ST(0), ST(2)
-	fstp	DWORD PTR $T93670[ebp]
+	fstp	DWORD PTR $T93672[ebp]
 	fld	DWORD PTR _mbb$[ebp+20]
-	mov	edx, DWORD PTR $T93670[ebp]
+	mov	edx, DWORD PTR $T93672[ebp]
 	fmul	ST(0), ST(3)
 	mov	DWORD PTR _bv1$[ebp], edx
 	fadd	QWORD PTR tv4431[ebp]
 	fst	QWORD PTR tv4482[ebp]
 	fadd	QWORD PTR tv4437[ebp]
 	fadd	ST(0), ST(5)
-	fstp	DWORD PTR $T93670[ebp+4]
+	fstp	DWORD PTR $T93672[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+36]
-	mov	eax, DWORD PTR $T93670[ebp+4]
+	mov	eax, DWORD PTR $T93672[ebp+4]
 	fmulp	ST(3), ST(0)
 	fxch	ST(2)
 	fadd	QWORD PTR tv4446[ebp]
 	fld	QWORD PTR tv4452[ebp]
 	fadd	ST(0), ST(1)
 	fadd	ST(0), ST(3)
-	fstp	DWORD PTR $T93670[ebp+8]
+	fstp	DWORD PTR $T93672[ebp+8]
 ; Line 278
 	fld	DWORD PTR _mbb$[ebp+8]
-	mov	ecx, DWORD PTR $T93670[ebp+8]
+	mov	ecx, DWORD PTR $T93672[ebp+8]
 	fld	QWORD PTR __real@bfe6a09e60000000
 	mov	DWORD PTR _bv1$[ebp+4], eax
 	fmul	ST(1), ST(0)
@@ -10628,44 +10628,44 @@ $LN11@draw:
 	fld	ST(2)
 	faddp	ST(7), ST(0)
 	fxch	ST(6)
-	fstp	DWORD PTR $T93672[ebp]
+	fstp	DWORD PTR $T93674[ebp]
 	fld	DWORD PTR _mbb$[ebp+24]
-	mov	edx, DWORD PTR $T93672[ebp]
+	mov	edx, DWORD PTR $T93674[ebp]
 	fmul	ST(0), ST(6)
 	mov	DWORD PTR _bv2$[ebp], edx
 	fst	QWORD PTR tv4525[ebp]
 	fadd	QWORD PTR tv4482[ebp]
 	fadd	ST(0), ST(5)
-	fstp	DWORD PTR $T93672[ebp+4]
+	fstp	DWORD PTR $T93674[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+40]
-	mov	eax, DWORD PTR $T93672[ebp+4]
+	mov	eax, DWORD PTR $T93674[ebp+4]
 	fmulp	ST(6), ST(0)
 	mov	DWORD PTR _bv2$[ebp+4], eax
 	fadd	ST(0), ST(5)
 	fadd	ST(0), ST(2)
-	fstp	DWORD PTR $T93672[ebp+8]
+	fstp	DWORD PTR $T93674[ebp+8]
 ; Line 279
 	fld	QWORD PTR tv4513[ebp]
-	mov	ecx, DWORD PTR $T93672[ebp+8]
+	mov	ecx, DWORD PTR $T93674[ebp+8]
 	faddp	ST(3), ST(0)
 	mov	DWORD PTR _bv2$[ebp+8], ecx
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93674[ebp]
+	fstp	DWORD PTR $T93676[ebp]
 	fld	QWORD PTR tv4525[ebp]
-	mov	edx, DWORD PTR $T93674[ebp]
+	mov	edx, DWORD PTR $T93676[ebp]
 	fadd	QWORD PTR tv4435[ebp]
 	mov	DWORD PTR _bv3$[ebp], edx
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T93674[ebp+4]
-	mov	eax, DWORD PTR $T93674[ebp+4]
+	fstp	DWORD PTR $T93676[ebp+4]
+	mov	eax, DWORD PTR $T93676[ebp+4]
 	fxch	ST(1)
 	fadd	QWORD PTR tv4450[ebp]
 	mov	DWORD PTR _bv3$[ebp+4], eax
 	faddp	ST(1), ST(0)
-	fstp	DWORD PTR $T93674[ebp+8]
-	mov	ecx, DWORD PTR $T93674[ebp+8]
+	fstp	DWORD PTR $T93676[ebp+8]
+	mov	ecx, DWORD PTR $T93676[ebp+8]
 ; Line 281
 	jmp	SHORT $LN620@draw
 $LN10@draw:
@@ -10710,48 +10710,17 @@ $LL191@draw:
 	call	ebx
 ; Line 296
 	mov	ecx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94246[ebp], ecx
-	fld	DWORD PTR $T94246[ebp]
-	lea	edx, DWORD PTR $T93681[ebp]
+	mov	DWORD PTR $T94248[ebp], ecx
+	fld	DWORD PTR $T94248[ebp]
+	lea	edx, DWORD PTR $T93683[ebp]
 	fld	ST(0)
 	push	edx
 	fmul	DWORD PTR _bv0$[ebp]
-	fstp	DWORD PTR $T93680[ebp]
+	fstp	DWORD PTR $T93682[ebp]
 	fld	DWORD PTR _bv0$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T93680[ebp+4]
-	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T93680[ebp+8]
-	fld	DWORD PTR $T93680[ebp]
-	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T93681[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T93680[ebp+4]
-	fstp	DWORD PTR $T93681[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T93680[ebp+8]
-	fstp	DWORD PTR $T93681[ebp+8]
-	call	DWORD PTR __imp__glVertex3fv@4
-; Line 298
-	mov	eax, DWORD PTR [esi+68]
-	mov	ecx, DWORD PTR [edi+1092]
-	shl	eax, 5
-	lea	edx, DWORD PTR [eax+ecx+8]
-	push	edx
-	call	ebx
-; Line 299
-	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94354[ebp], eax
-	fld	DWORD PTR $T94354[ebp]
-	lea	ecx, DWORD PTR $T93683[ebp]
-	fld	ST(0)
-	push	ecx
-	fmul	DWORD PTR _bv1$[ebp]
-	fstp	DWORD PTR $T93682[ebp]
-	fld	ST(0)
-	fmul	DWORD PTR _bv1$[ebp+4]
 	fstp	DWORD PTR $T93682[ebp+4]
-	fmul	DWORD PTR _bv1$[ebp+8]
+	fmul	DWORD PTR _bv0$[ebp+8]
 	fstp	DWORD PTR $T93682[ebp+8]
 	fld	DWORD PTR $T93682[ebp]
 	fadd	DWORD PTR [esi+8]
@@ -10763,6 +10732,37 @@ $LL191@draw:
 	fadd	DWORD PTR $T93682[ebp+8]
 	fstp	DWORD PTR $T93683[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
+; Line 298
+	mov	eax, DWORD PTR [esi+68]
+	mov	ecx, DWORD PTR [edi+1092]
+	shl	eax, 5
+	lea	edx, DWORD PTR [eax+ecx+8]
+	push	edx
+	call	ebx
+; Line 299
+	mov	eax, DWORD PTR [esi+56]
+	mov	DWORD PTR $T94356[ebp], eax
+	fld	DWORD PTR $T94356[ebp]
+	lea	ecx, DWORD PTR $T93685[ebp]
+	fld	ST(0)
+	push	ecx
+	fmul	DWORD PTR _bv1$[ebp]
+	fstp	DWORD PTR $T93684[ebp]
+	fld	ST(0)
+	fmul	DWORD PTR _bv1$[ebp+4]
+	fstp	DWORD PTR $T93684[ebp+4]
+	fmul	DWORD PTR _bv1$[ebp+8]
+	fstp	DWORD PTR $T93684[ebp+8]
+	fld	DWORD PTR $T93684[ebp]
+	fadd	DWORD PTR [esi+8]
+	fstp	DWORD PTR $T93685[ebp]
+	fld	DWORD PTR [esi+12]
+	fadd	DWORD PTR $T93684[ebp+4]
+	fstp	DWORD PTR $T93685[ebp+4]
+	fld	DWORD PTR [esi+16]
+	fadd	DWORD PTR $T93684[ebp+8]
+	fstp	DWORD PTR $T93685[ebp+8]
+	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 301
 	mov	edx, DWORD PTR [esi+68]
 	mov	eax, DWORD PTR [edi+1092]
@@ -10772,27 +10772,27 @@ $LL191@draw:
 	call	ebx
 ; Line 302
 	mov	edx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94462[ebp], edx
-	fld	DWORD PTR $T94462[ebp]
+	mov	DWORD PTR $T94464[ebp], edx
+	fld	DWORD PTR $T94464[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv2$[ebp]
-	fstp	DWORD PTR $T93684[ebp]
+	fstp	DWORD PTR $T93686[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv2$[ebp+4]
-	fstp	DWORD PTR $T93684[ebp+4]
+	fstp	DWORD PTR $T93686[ebp+4]
 	fmul	DWORD PTR _bv2$[ebp+8]
-	fstp	DWORD PTR $T93684[ebp+8]
-	fld	DWORD PTR $T93684[ebp]
+	fstp	DWORD PTR $T93686[ebp+8]
+	fld	DWORD PTR $T93686[ebp]
 	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T93685[ebp]
+	fstp	DWORD PTR $T93687[ebp]
 	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T93684[ebp+4]
-	lea	eax, DWORD PTR $T93685[ebp]
+	fadd	DWORD PTR $T93686[ebp+4]
+	lea	eax, DWORD PTR $T93687[ebp]
 	push	eax
-	fstp	DWORD PTR $T93685[ebp+4]
+	fstp	DWORD PTR $T93687[ebp+4]
 	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T93684[ebp+8]
-	fstp	DWORD PTR $T93685[ebp+8]
+	fadd	DWORD PTR $T93686[ebp+8]
+	fstp	DWORD PTR $T93687[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 304
 	mov	ecx, DWORD PTR [esi+68]
@@ -10803,27 +10803,27 @@ $LL191@draw:
 	call	ebx
 ; Line 305
 	mov	ecx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T94570[ebp], ecx
-	fld	DWORD PTR $T94570[ebp]
-	lea	edx, DWORD PTR $T93687[ebp]
+	mov	DWORD PTR $T94572[ebp], ecx
+	fld	DWORD PTR $T94572[ebp]
+	lea	edx, DWORD PTR $T93689[ebp]
 	fld	ST(0)
 	push	edx
 	fmul	DWORD PTR _bv3$[ebp]
-	fstp	DWORD PTR $T93686[ebp]
+	fstp	DWORD PTR $T93688[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv3$[ebp+4]
-	fstp	DWORD PTR $T93686[ebp+4]
+	fstp	DWORD PTR $T93688[ebp+4]
 	fmul	DWORD PTR _bv3$[ebp+8]
-	fstp	DWORD PTR $T93686[ebp+8]
-	fld	DWORD PTR $T93686[ebp]
+	fstp	DWORD PTR $T93688[ebp+8]
+	fld	DWORD PTR $T93688[ebp]
 	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T93687[ebp]
+	fstp	DWORD PTR $T93689[ebp]
 	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T93686[ebp+4]
-	fstp	DWORD PTR $T93687[ebp+4]
+	fadd	DWORD PTR $T93688[ebp+4]
+	fstp	DWORD PTR $T93689[ebp+4]
 	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T93686[ebp+8]
-	fstp	DWORD PTR $T93687[ebp+8]
+	fadd	DWORD PTR $T93688[ebp+8]
+	fstp	DWORD PTR $T93689[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 	mov	esi, DWORD PTR [esi]
 	cmp	esi, DWORD PTR [edi+1052]
@@ -10877,58 +10877,58 @@ EXTRN	?ModelUnhighlight@@YAXXZ:PROC			; ModelUnhighlight
 EXTRN	?ModelHighlight@@YAXXZ:PROC			; ModelHighlight
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T95266 = -388						; size = 12
-$T95268 = -376						; size = 12
+$T95268 = -388						; size = 12
+$T95270 = -376						; size = 12
+$T95276 = -364						; size = 12
 $T95274 = -364						; size = 12
 $T95272 = -364						; size = 12
-$T95270 = -364						; size = 12
-$T95283 = -352						; size = 12
-$T95264 = -352						; size = 12
-$T95281 = -340						; size = 12
-$T95265 = -340						; size = 12
-$T95279 = -328						; size = 12
-$T95267 = -328						; size = 12
+$T95285 = -352						; size = 12
+$T95266 = -352						; size = 12
+$T95283 = -340						; size = 12
+$T95267 = -340						; size = 12
+$T95281 = -328						; size = 12
+$T95269 = -328						; size = 12
 tv4440 = -316						; size = 8
 tv4156 = -316						; size = 8
-$T96508 = -312						; size = 4
-$T95934 = -312						; size = 4
+$T96510 = -312						; size = 4
+$T95936 = -312						; size = 4
 tv4457 = -308						; size = 8
 tv4150 = -308						; size = 8
-$T96616 = -304						; size = 4
-$T95826 = -304						; size = 4
-$T95255 = -300						; size = 12
+$T96618 = -304						; size = 4
+$T95828 = -304						; size = 4
+$T95257 = -300						; size = 12
 tv4451 = -296						; size = 8
 tv4141 = -296						; size = 8
 tv4080 = -292						; size = 4
-$T96725 = -292						; size = 4
-$T95277 = -288						; size = 12
+$T96727 = -292						; size = 4
+$T95279 = -288						; size = 12
+$T95275 = -288						; size = 12
 $T95273 = -288						; size = 12
 $T95271 = -288						; size = 12
-$T95269 = -288						; size = 12
-$T95282 = -276						; size = 12
-$T95246 = -276						; size = 12
+$T95284 = -276						; size = 12
+$T95248 = -276						; size = 12
 tv4530 = -272						; size = 8
 tv4442 = -272						; size = 8
 tv4136 = -272						; size = 8
-$T96150 = -268						; size = 4
-$T95280 = -264						; size = 12
-$T95263 = -264						; size = 12
-$T95257 = -264						; size = 12
+$T96152 = -268						; size = 4
+$T95282 = -264						; size = 12
+$T95265 = -264						; size = 12
+$T95259 = -264						; size = 12
 tv4518 = -260						; size = 8
 tv4436 = -260						; size = 8
 tv4165 = -260						; size = 8
-$T95276 = -252						; size = 12
+$T95278 = -252						; size = 12
+$T95255 = -252						; size = 12
 $T95253 = -252						; size = 12
-$T95251 = -252						; size = 12
-_camera$75509 = -252					; size = 12
+_camera$75511 = -252					; size = 12
 _bv2$ = -252						; size = 12
-$T95278 = -240						; size = 12
-$T95248 = -240						; size = 12
+$T95280 = -240						; size = 12
+$T95250 = -240						; size = 12
 _bv3$ = -240						; size = 12
 tv4487 = -236						; size = 8
 tv4427 = -236						; size = 8
 tv4171 = -236						; size = 8
-$T95244 = -228						; size = 12
+$T95246 = -228						; size = 12
 _bv0$ = -228						; size = 12
 tv4455 = -216						; size = 8
 tv4302 = -212						; size = 4
@@ -10939,18 +10939,18 @@ tv4249 = -212						; size = 4
 tv4242 = -212						; size = 4
 tv4224 = -212						; size = 4
 tv4217 = -212						; size = 4
-$T96400 = -212						; size = 4
-$T96042 = -212						; size = 4
-$T95536 = -212						; size = 4
-$T95490 = -212						; size = 4
-$T95444 = -212						; size = 4
-$T95386 = -212						; size = 4
-_invdet$95332 = -212					; size = 4
+$T96402 = -212						; size = 4
+$T96044 = -212						; size = 4
+$T95538 = -212						; size = 4
+$T95492 = -212						; size = 4
+$T95446 = -212						; size = 4
+$T95388 = -212						; size = 4
+_invdet$95334 = -212					; size = 4
+$T95251 = -208						; size = 12
 $T95249 = -208						; size = 12
-$T95247 = -208						; size = 12
 _bv1$ = -208						; size = 12
-_adj$95331 = -196					; size = 64
-_mtrans$75508 = -132					; size = 64
+_adj$95333 = -196					; size = 64
+_mtrans$75510 = -132					; size = 64
 _mbb$ = -68						; size = 64
 __$ArrayPad$ = -4					; size = 4
 ?drawHighlight@ParticleSystem@@QAEXXZ PROC		; ParticleSystem::drawHighlight
@@ -11076,114 +11076,114 @@ $LN618@drawHighli:
 	cmp	BYTE PTR [edi+1108], bl
 	je	$LN13@drawHighli
 ; Line 406
-	lea	edx, DWORD PTR _mtrans$75508[ebp]
+	lea	edx, DWORD PTR _mtrans$75510[ebp]
 	push	edx
 	push	2982					; 00000ba6H
 	call	DWORD PTR __imp__glGetFloatv@8
 ; Line 407
-	lea	ecx, DWORD PTR _mtrans$75508[ebp]
+	lea	ecx, DWORD PTR _mtrans$75510[ebp]
 	call	?transpose@Matrix@@QAEXXZ		; Matrix::transpose
 ; Line 408
-	lea	eax, DWORD PTR _adj$95331[ebp]
+	lea	eax, DWORD PTR _adj$95333[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _mtrans$75508[ebp]
+	lea	ecx, DWORD PTR _mtrans$75510[ebp]
 	call	?adjoint@Matrix@@QBE?BV1@XZ		; Matrix::adjoint
-	lea	ecx, DWORD PTR _mtrans$75508[ebp]
+	lea	ecx, DWORD PTR _mtrans$75510[ebp]
 	call	?determinant@Matrix@@QBEMXZ		; Matrix::determinant
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR _invdet$95332[ebp]
-	fld	DWORD PTR _adj$95331[ebp]
-	fld	DWORD PTR _invdet$95332[ebp]
+	fstp	DWORD PTR _invdet$95334[ebp]
+	fld	DWORD PTR _adj$95333[ebp]
+	fld	DWORD PTR _invdet$95334[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp]
-	fld	DWORD PTR _adj$95331[ebp+4]
+	fstp	DWORD PTR _mtrans$75510[ebp]
+	fld	DWORD PTR _adj$95333[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+4]
-	fld	DWORD PTR _adj$95331[ebp+8]
+	fstp	DWORD PTR _mtrans$75510[ebp+4]
+	fld	DWORD PTR _adj$95333[ebp+8]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+8]
-	fld	DWORD PTR _adj$95331[ebp+12]
+	fstp	DWORD PTR _mtrans$75510[ebp+8]
+	fld	DWORD PTR _adj$95333[ebp+12]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+12]
-	fld	DWORD PTR _adj$95331[ebp+16]
+	fstp	DWORD PTR _mtrans$75510[ebp+12]
+	fld	DWORD PTR _adj$95333[ebp+16]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+16]
-	fld	DWORD PTR _adj$95331[ebp+20]
+	fstp	DWORD PTR _mtrans$75510[ebp+16]
+	fld	DWORD PTR _adj$95333[ebp+20]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+20]
-	fld	DWORD PTR _adj$95331[ebp+24]
+	fstp	DWORD PTR _mtrans$75510[ebp+20]
+	fld	DWORD PTR _adj$95333[ebp+24]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+24]
-	fld	DWORD PTR _adj$95331[ebp+28]
+	fstp	DWORD PTR _mtrans$75510[ebp+24]
+	fld	DWORD PTR _adj$95333[ebp+28]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+28]
-	fld	DWORD PTR _adj$95331[ebp+32]
+	fstp	DWORD PTR _mtrans$75510[ebp+28]
+	fld	DWORD PTR _adj$95333[ebp+32]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+32]
-	fld	DWORD PTR _adj$95331[ebp+36]
+	fstp	DWORD PTR _mtrans$75510[ebp+32]
+	fld	DWORD PTR _adj$95333[ebp+36]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+36]
-	fld	DWORD PTR _adj$95331[ebp+40]
+	fstp	DWORD PTR _mtrans$75510[ebp+36]
+	fld	DWORD PTR _adj$95333[ebp+40]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR _mtrans$75508[ebp+40]
-	fmul	DWORD PTR _adj$95331[ebp+44]
-	fstp	DWORD PTR _mtrans$75508[ebp+44]
+	fstp	DWORD PTR _mtrans$75510[ebp+40]
+	fmul	DWORD PTR _adj$95333[ebp+44]
+	fstp	DWORD PTR _mtrans$75510[ebp+44]
 ; Line 409
-	fld	DWORD PTR _mtrans$75508[ebp]
+	fld	DWORD PTR _mtrans$75510[ebp]
 	fldz
 	fmul	ST(1), ST(0)
 	fxch	ST(1)
 	fst	QWORD PTR tv4136[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+8]
+	fld	DWORD PTR _mtrans$75510[ebp+8]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4141[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+4]
+	fld	DWORD PTR _mtrans$75510[ebp+4]
 	fmul	ST(0), ST(3)
 	faddp	ST(2), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75508[ebp+12]
-	fstp	DWORD PTR _camera$75509[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+16]
+	fadd	DWORD PTR _mtrans$75510[ebp+12]
+	fstp	DWORD PTR _camera$75511[ebp]
+	fld	DWORD PTR _mtrans$75510[ebp+16]
 	fmul	ST(0), ST(1)
 	fst	QWORD PTR tv4150[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+24]
+	fld	DWORD PTR _mtrans$75510[ebp+24]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4156[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+20]
+	fld	DWORD PTR _mtrans$75510[ebp+20]
 	fmul	ST(0), ST(3)
 	faddp	ST(2), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75508[ebp+28]
-	fstp	DWORD PTR _camera$75509[ebp+4]
-	fld	DWORD PTR _mtrans$75508[ebp+32]
+	fadd	DWORD PTR _mtrans$75510[ebp+28]
+	fstp	DWORD PTR _camera$75511[ebp+4]
+	fld	DWORD PTR _mtrans$75510[ebp+32]
 	fmul	ST(0), ST(1)
 	fst	QWORD PTR tv4165[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+40]
+	fld	DWORD PTR _mtrans$75510[ebp+40]
 	fmul	ST(0), ST(2)
 	fst	QWORD PTR tv4171[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+36]
+	fld	DWORD PTR _mtrans$75510[ebp+36]
 	fmulp	ST(3), ST(0)
 	fxch	ST(2)
 	faddp	ST(1), ST(0)
 	faddp	ST(1), ST(0)
-	fadd	DWORD PTR _mtrans$75508[ebp+44]
-	fstp	DWORD PTR _camera$75509[ebp+8]
+	fadd	DWORD PTR _mtrans$75510[ebp+44]
+	fstp	DWORD PTR _camera$75511[ebp+8]
 ; Line 410
-	fld	DWORD PTR _camera$75509[ebp]
+	fld	DWORD PTR _camera$75511[ebp]
 	fsub	DWORD PTR [edi+1032]
-	fstp	DWORD PTR $T95244[ebp]
-	fld	DWORD PTR _camera$75509[ebp+4]
+	fstp	DWORD PTR $T95246[ebp]
+	fld	DWORD PTR _camera$75511[ebp+4]
 	fsub	DWORD PTR [edi+1036]
-	fstp	DWORD PTR $T95244[ebp+4]
-	fld	DWORD PTR _camera$75509[ebp+8]
+	fstp	DWORD PTR $T95246[ebp+4]
+	fld	DWORD PTR _camera$75511[ebp+8]
 	fsub	DWORD PTR [edi+1040]
-	fstp	DWORD PTR $T95244[ebp+8]
-	fld	DWORD PTR $T95244[ebp+4]
-	fld	DWORD PTR $T95244[ebp]
-	fld	DWORD PTR $T95244[ebp+8]
+	fstp	DWORD PTR $T95246[ebp+8]
+	fld	DWORD PTR $T95246[ebp+4]
+	fld	DWORD PTR $T95246[ebp]
+	fld	DWORD PTR $T95246[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -11199,44 +11199,44 @@ $LN618@drawHighli:
 	fld	DWORD PTR tv4295[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95386[ebp]
-	fld	DWORD PTR $T95386[ebp]
+	fstp	DWORD PTR $T95388[ebp]
+	fld	DWORD PTR $T95388[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T95244[ebp]
-	fstp	DWORD PTR $T95244[ebp]
+	fmul	DWORD PTR $T95246[ebp]
+	fstp	DWORD PTR $T95246[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T95244[ebp+4]
-	fstp	DWORD PTR $T95244[ebp+4]
-	fmul	DWORD PTR $T95244[ebp+8]
-	fstp	DWORD PTR $T95244[ebp+8]
+	fmul	DWORD PTR $T95246[ebp+4]
+	fstp	DWORD PTR $T95246[ebp+4]
+	fmul	DWORD PTR $T95246[ebp+8]
+	fstp	DWORD PTR $T95246[ebp+8]
 ; Line 411
-	fld	DWORD PTR _mtrans$75508[ebp+4]
+	fld	DWORD PTR _mtrans$75510[ebp+4]
 	fadd	QWORD PTR tv4136[ebp]
 	fadd	QWORD PTR tv4141[ebp]
-	fadd	DWORD PTR _mtrans$75508[ebp+12]
-	fstp	DWORD PTR $T95246[ebp]
-	fld	DWORD PTR _mtrans$75508[ebp+20]
+	fadd	DWORD PTR _mtrans$75510[ebp+12]
+	fstp	DWORD PTR $T95248[ebp]
+	fld	DWORD PTR _mtrans$75510[ebp+20]
 	fadd	QWORD PTR tv4150[ebp]
 	fadd	QWORD PTR tv4156[ebp]
-	fadd	DWORD PTR _mtrans$75508[ebp+28]
-	fstp	DWORD PTR $T95246[ebp+4]
-	fld	DWORD PTR _mtrans$75508[ebp+36]
+	fadd	DWORD PTR _mtrans$75510[ebp+28]
+	fstp	DWORD PTR $T95248[ebp+4]
+	fld	DWORD PTR _mtrans$75510[ebp+36]
 	fadd	QWORD PTR tv4165[ebp]
 	fadd	QWORD PTR tv4171[ebp]
-	fadd	DWORD PTR _mtrans$75508[ebp+44]
-	fstp	DWORD PTR $T95246[ebp+8]
-	fld	DWORD PTR $T95246[ebp]
-	fsub	DWORD PTR _camera$75509[ebp]
-	fstp	DWORD PTR $T95247[ebp]
-	fld	DWORD PTR $T95246[ebp+4]
-	fsub	DWORD PTR _camera$75509[ebp+4]
-	fstp	DWORD PTR $T95247[ebp+4]
-	fld	DWORD PTR $T95246[ebp+8]
-	fsub	DWORD PTR _camera$75509[ebp+8]
-	fstp	DWORD PTR $T95247[ebp+8]
-	fld	DWORD PTR $T95247[ebp+4]
-	fld	DWORD PTR $T95247[ebp]
-	fld	DWORD PTR $T95247[ebp+8]
+	fadd	DWORD PTR _mtrans$75510[ebp+44]
+	fstp	DWORD PTR $T95248[ebp+8]
+	fld	DWORD PTR $T95248[ebp]
+	fsub	DWORD PTR _camera$75511[ebp]
+	fstp	DWORD PTR $T95249[ebp]
+	fld	DWORD PTR $T95248[ebp+4]
+	fsub	DWORD PTR _camera$75511[ebp+4]
+	fstp	DWORD PTR $T95249[ebp+4]
+	fld	DWORD PTR $T95248[ebp+8]
+	fsub	DWORD PTR _camera$75511[ebp+8]
+	fstp	DWORD PTR $T95249[ebp+8]
+	fld	DWORD PTR $T95249[ebp+4]
+	fld	DWORD PTR $T95249[ebp]
+	fld	DWORD PTR $T95249[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -11252,49 +11252,49 @@ $LN618@drawHighli:
 	fld	DWORD PTR tv4267[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95444[ebp]
-	fld	DWORD PTR $T95247[ebp]
-	fld	DWORD PTR $T95444[ebp]
+	fstp	DWORD PTR $T95446[ebp]
+	fld	DWORD PTR $T95249[ebp]
+	fld	DWORD PTR $T95446[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95247[ebp]
+	fstp	DWORD PTR $T95249[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T95247[ebp+4]
-	fstp	DWORD PTR $T95247[ebp+4]
-	fmul	DWORD PTR $T95247[ebp+8]
-	fstp	DWORD PTR $T95247[ebp+8]
+	fmul	DWORD PTR $T95249[ebp+4]
+	fstp	DWORD PTR $T95249[ebp+4]
+	fmul	DWORD PTR $T95249[ebp+8]
+	fstp	DWORD PTR $T95249[ebp+8]
 ; Line 412
-	fld	DWORD PTR $T95247[ebp+4]
+	fld	DWORD PTR $T95249[ebp+4]
 	fld	ST(0)
-	fld	DWORD PTR $T95244[ebp+8]
+	fld	DWORD PTR $T95246[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T95247[ebp+8]
+	fld	DWORD PTR $T95249[ebp+8]
 	fld	ST(0)
-	fld	DWORD PTR $T95244[ebp+4]
+	fld	DWORD PTR $T95246[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95248[ebp]
-	fld	DWORD PTR $T95244[ebp]
+	fstp	DWORD PTR $T95250[ebp]
+	fld	DWORD PTR $T95246[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T95247[ebp]
+	fld	DWORD PTR $T95249[ebp]
 	fld	ST(0)
 	fmulp	ST(4), ST(0)
 	fxch	ST(2)
 	fsubrp	ST(3), ST(0)
 	fxch	ST(2)
-	fstp	DWORD PTR $T95248[ebp+4]
+	fstp	DWORD PTR $T95250[ebp+4]
 	fmulp	ST(2), ST(0)
 	fmulp	ST(2), ST(0)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95248[ebp+8]
-	fld	DWORD PTR $T95248[ebp]
-	fld	DWORD PTR $T95248[ebp+4]
-	fld	DWORD PTR $T95248[ebp+8]
+	fstp	DWORD PTR $T95250[ebp+8]
+	fld	DWORD PTR $T95250[ebp]
+	fld	DWORD PTR $T95250[ebp+4]
+	fld	DWORD PTR $T95250[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -11310,49 +11310,49 @@ $LN618@drawHighli:
 	fld	DWORD PTR tv4242[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95490[ebp]
-	fld	DWORD PTR $T95248[ebp]
-	fld	DWORD PTR $T95490[ebp]
+	fstp	DWORD PTR $T95492[ebp]
+	fld	DWORD PTR $T95250[ebp]
+	fld	DWORD PTR $T95492[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95248[ebp]
+	fstp	DWORD PTR $T95250[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR $T95248[ebp+4]
-	fstp	DWORD PTR $T95248[ebp+4]
-	fmul	DWORD PTR $T95248[ebp+8]
-	fstp	DWORD PTR $T95248[ebp+8]
+	fmul	DWORD PTR $T95250[ebp+4]
+	fstp	DWORD PTR $T95250[ebp+4]
+	fmul	DWORD PTR $T95250[ebp+8]
+	fstp	DWORD PTR $T95250[ebp+8]
 ; Line 413
-	fld	DWORD PTR $T95248[ebp+8]
+	fld	DWORD PTR $T95250[ebp+8]
 	fld	ST(0)
-	fld	DWORD PTR $T95244[ebp+4]
+	fld	DWORD PTR $T95246[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	fld	DWORD PTR $T95248[ebp+4]
+	fld	DWORD PTR $T95250[ebp+4]
 	fld	ST(0)
-	fld	DWORD PTR $T95244[ebp+8]
+	fld	DWORD PTR $T95246[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95249[ebp]
-	fld	DWORD PTR $T95248[ebp]
+	fstp	DWORD PTR $T95251[ebp]
+	fld	DWORD PTR $T95250[ebp]
 	fld	ST(0)
 	fmulp	ST(4), ST(0)
-	fld	DWORD PTR $T95244[ebp]
+	fld	DWORD PTR $T95246[ebp]
 	fld	ST(0)
 	fmulp	ST(6), ST(0)
 	fxch	ST(4)
 	fsubrp	ST(5), ST(0)
 	fxch	ST(4)
-	fstp	DWORD PTR $T95249[ebp+4]
+	fstp	DWORD PTR $T95251[ebp+4]
 	fmulp	ST(2), ST(0)
 	fmulp	ST(2), ST(0)
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T95249[ebp+8]
-	fld	DWORD PTR $T95249[ebp]
-	fld	DWORD PTR $T95249[ebp+4]
-	fld	DWORD PTR $T95249[ebp+8]
+	fstp	DWORD PTR $T95251[ebp+8]
+	fld	DWORD PTR $T95251[ebp]
+	fld	DWORD PTR $T95251[ebp+4]
+	fld	DWORD PTR $T95251[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -11367,43 +11367,43 @@ $LN618@drawHighli:
 	fstp	DWORD PTR tv4217[ebp]
 	fld	DWORD PTR tv4217[ebp]
 ; Line 415
-	mov	ecx, DWORD PTR $T95248[ebp]
+	mov	ecx, DWORD PTR $T95250[ebp]
 	fld1
 ; Line 416
-	mov	edx, DWORD PTR $T95248[ebp+4]
+	mov	edx, DWORD PTR $T95250[ebp+4]
 	fdivrp	ST(1), ST(0)
 ; Line 417
-	mov	eax, DWORD PTR $T95248[ebp+8]
+	mov	eax, DWORD PTR $T95250[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+4], ecx
 	mov	DWORD PTR _mbb$[ebp+20], edx
 	mov	DWORD PTR _mbb$[ebp+36], eax
-	fstp	DWORD PTR $T95536[ebp]
-	fld	DWORD PTR $T95249[ebp]
-	fld	DWORD PTR $T95536[ebp]
+	fstp	DWORD PTR $T95538[ebp]
+	fld	DWORD PTR $T95251[ebp]
+	fld	DWORD PTR $T95538[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95249[ebp]
+	fstp	DWORD PTR $T95251[ebp]
 ; Line 418
-	mov	ecx, DWORD PTR $T95249[ebp]
+	mov	ecx, DWORD PTR $T95251[ebp]
 	fld	ST(0)
 	mov	DWORD PTR _mbb$[ebp+8], ecx
-	fmul	DWORD PTR $T95249[ebp+4]
+	fmul	DWORD PTR $T95251[ebp+4]
 ; Line 421
-	mov	ecx, DWORD PTR $T95244[ebp]
+	mov	ecx, DWORD PTR $T95246[ebp]
 	mov	DWORD PTR _mbb$[ebp], ecx
-	fstp	DWORD PTR $T95249[ebp+4]
-	mov	edx, DWORD PTR $T95249[ebp+4]
-	fmul	DWORD PTR $T95249[ebp+8]
+	fstp	DWORD PTR $T95251[ebp+4]
+	mov	edx, DWORD PTR $T95251[ebp+4]
+	fmul	DWORD PTR $T95251[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+24], edx
 ; Line 422
-	mov	edx, DWORD PTR $T95244[ebp+4]
+	mov	edx, DWORD PTR $T95246[ebp+4]
 	mov	DWORD PTR _mbb$[ebp+16], edx
-	fstp	DWORD PTR $T95249[ebp+8]
-	mov	eax, DWORD PTR $T95249[ebp+8]
+	fstp	DWORD PTR $T95251[ebp+8]
+	mov	eax, DWORD PTR $T95251[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+40], eax
 ; Line 423
-	mov	eax, DWORD PTR $T95244[ebp+8]
+	mov	eax, DWORD PTR $T95246[ebp+8]
 	mov	DWORD PTR _mbb$[ebp+32], eax
 $LN13@drawHighli:
 ; Line 426
@@ -11416,30 +11416,30 @@ $LN13@drawHighli:
 	cmp	eax, 1
 	jne	$LN4@drawHighli
 ; Line 471
-	lea	ecx, DWORD PTR $T95271[ebp]
+	lea	ecx, DWORD PTR $T95273[ebp]
 	push	ecx
-	lea	edx, DWORD PTR $T95272[ebp]
+	lea	edx, DWORD PTR $T95274[ebp]
 	push	edx
 	lea	ecx, DWORD PTR _mbb$[ebp]
-	mov	DWORD PTR $T95271[ebp], ebx
-	mov	DWORD PTR $T95271[ebp+4], -1082130432	; bf800000H
-	mov	DWORD PTR $T95271[ebp+8], ebx
+	mov	DWORD PTR $T95273[ebp], ebx
+	mov	DWORD PTR $T95273[ebp+4], -1082130432	; bf800000H
+	mov	DWORD PTR $T95273[ebp+8], ebx
 	call	??DMatrix@@QBE?AVVec3D@@ABV1@@Z		; Matrix::operator*
 	mov	ecx, DWORD PTR [eax]
 	mov	edx, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR [eax+8]
 	mov	DWORD PTR _bv0$[ebp], ecx
 ; Line 472
-	lea	ecx, DWORD PTR $T95273[ebp]
+	lea	ecx, DWORD PTR $T95275[ebp]
 	mov	DWORD PTR _bv0$[ebp+4], edx
 	push	ecx
-	lea	edx, DWORD PTR $T95274[ebp]
+	lea	edx, DWORD PTR $T95276[ebp]
 	push	edx
 	lea	ecx, DWORD PTR _mbb$[ebp]
 	mov	DWORD PTR _bv0$[ebp+8], eax
-	mov	DWORD PTR $T95273[ebp], ebx
-	mov	DWORD PTR $T95273[ebp+4], esi
-	mov	DWORD PTR $T95273[ebp+8], ebx
+	mov	DWORD PTR $T95275[ebp], ebx
+	mov	DWORD PTR $T95275[ebp+4], esi
+	mov	DWORD PTR $T95275[ebp+8], ebx
 	call	??DMatrix@@QBE?AVVec3D@@ABV1@@Z		; Matrix::operator*
 	mov	ecx, DWORD PTR [eax]
 	mov	edx, DWORD PTR [eax+4]
@@ -11469,48 +11469,17 @@ $LL391@drawHighli:
 	call	ebx
 ; Line 480
 	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96400[ebp], eax
-	fld	DWORD PTR $T96400[ebp]
-	lea	ecx, DWORD PTR $T95277[ebp]
+	mov	DWORD PTR $T96402[ebp], eax
+	fld	DWORD PTR $T96402[ebp]
+	lea	ecx, DWORD PTR $T95279[ebp]
 	fld	ST(0)
 	push	ecx
 	fmul	DWORD PTR _bv0$[ebp]
-	fstp	DWORD PTR $T95276[ebp]
-	fld	ST(0)
-	fmul	DWORD PTR _bv0$[ebp+4]
-	fstp	DWORD PTR $T95276[ebp+4]
-	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T95276[ebp+8]
-	fld	DWORD PTR $T95276[ebp]
-	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T95277[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T95276[ebp+4]
-	fstp	DWORD PTR $T95277[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T95276[ebp+8]
-	fstp	DWORD PTR $T95277[ebp+8]
-	call	DWORD PTR __imp__glVertex3fv@4
-; Line 482
-	mov	edx, DWORD PTR [esi+68]
-	mov	eax, DWORD PTR [edi+1092]
-	shl	edx, 5
-	lea	ecx, DWORD PTR [edx+eax+8]
-	push	ecx
-	call	ebx
-; Line 483
-	mov	edx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96508[ebp], edx
-	fld	DWORD PTR $T96508[ebp]
-	lea	eax, DWORD PTR $T95279[ebp]
-	fld	ST(0)
-	push	eax
-	fmul	DWORD PTR _bv1$[ebp]
 	fstp	DWORD PTR $T95278[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR _bv1$[ebp+4]
+	fmul	DWORD PTR _bv0$[ebp+4]
 	fstp	DWORD PTR $T95278[ebp+4]
-	fmul	DWORD PTR _bv1$[ebp+8]
+	fmul	DWORD PTR _bv0$[ebp+8]
 	fstp	DWORD PTR $T95278[ebp+8]
 	fld	DWORD PTR $T95278[ebp]
 	fadd	DWORD PTR [esi+8]
@@ -11522,6 +11491,37 @@ $LL391@drawHighli:
 	fadd	DWORD PTR $T95278[ebp+8]
 	fstp	DWORD PTR $T95279[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
+; Line 482
+	mov	edx, DWORD PTR [esi+68]
+	mov	eax, DWORD PTR [edi+1092]
+	shl	edx, 5
+	lea	ecx, DWORD PTR [edx+eax+8]
+	push	ecx
+	call	ebx
+; Line 483
+	mov	edx, DWORD PTR [esi+56]
+	mov	DWORD PTR $T96510[ebp], edx
+	fld	DWORD PTR $T96510[ebp]
+	lea	eax, DWORD PTR $T95281[ebp]
+	fld	ST(0)
+	push	eax
+	fmul	DWORD PTR _bv1$[ebp]
+	fstp	DWORD PTR $T95280[ebp]
+	fld	ST(0)
+	fmul	DWORD PTR _bv1$[ebp+4]
+	fstp	DWORD PTR $T95280[ebp+4]
+	fmul	DWORD PTR _bv1$[ebp+8]
+	fstp	DWORD PTR $T95280[ebp+8]
+	fld	DWORD PTR $T95280[ebp]
+	fadd	DWORD PTR [esi+8]
+	fstp	DWORD PTR $T95281[ebp]
+	fld	DWORD PTR [esi+12]
+	fadd	DWORD PTR $T95280[ebp+4]
+	fstp	DWORD PTR $T95281[ebp+4]
+	fld	DWORD PTR [esi+16]
+	fadd	DWORD PTR $T95280[ebp+8]
+	fstp	DWORD PTR $T95281[ebp+8]
+	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 485
 	mov	ecx, DWORD PTR [esi+68]
 	mov	edx, DWORD PTR [edi+1092]
@@ -11531,27 +11531,27 @@ $LL391@drawHighli:
 	call	ebx
 ; Line 486
 	mov	ecx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96616[ebp], ecx
-	fld	DWORD PTR $T96616[ebp]
+	mov	DWORD PTR $T96618[ebp], ecx
+	fld	DWORD PTR $T96618[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv1$[ebp]
-	fstp	DWORD PTR $T95280[ebp]
+	fstp	DWORD PTR $T95282[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv1$[ebp+4]
-	fstp	DWORD PTR $T95280[ebp+4]
+	fstp	DWORD PTR $T95282[ebp+4]
 	fmul	DWORD PTR _bv1$[ebp+8]
-	fstp	DWORD PTR $T95280[ebp+8]
-	fld	DWORD PTR $T95280[ebp]
+	fstp	DWORD PTR $T95282[ebp+8]
+	fld	DWORD PTR $T95282[ebp]
 	fadd	DWORD PTR [esi+44]
-	fstp	DWORD PTR $T95281[ebp]
+	fstp	DWORD PTR $T95283[ebp]
 	fld	DWORD PTR [esi+48]
-	fadd	DWORD PTR $T95280[ebp+4]
-	lea	edx, DWORD PTR $T95281[ebp]
+	fadd	DWORD PTR $T95282[ebp+4]
+	lea	edx, DWORD PTR $T95283[ebp]
 	push	edx
-	fstp	DWORD PTR $T95281[ebp+4]
+	fstp	DWORD PTR $T95283[ebp+4]
 	fld	DWORD PTR [esi+52]
-	fadd	DWORD PTR $T95280[ebp+8]
-	fstp	DWORD PTR $T95281[ebp+8]
+	fadd	DWORD PTR $T95282[ebp+8]
+	fstp	DWORD PTR $T95283[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 488
 	mov	eax, DWORD PTR [esi+68]
@@ -11563,28 +11563,28 @@ $LL391@drawHighli:
 ; Line 489
 	fld	DWORD PTR _bv0$[ebp]
 	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96725[ebp], eax
-	fld	DWORD PTR $T96725[ebp]
-	lea	ecx, DWORD PTR $T95283[ebp]
+	mov	DWORD PTR $T96727[ebp], eax
+	fld	DWORD PTR $T96727[ebp]
+	lea	ecx, DWORD PTR $T95285[ebp]
 	fld	ST(0)
 	push	ecx
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95282[ebp]
+	fstp	DWORD PTR $T95284[ebp]
 	fld	DWORD PTR _bv0$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T95282[ebp+4]
+	fstp	DWORD PTR $T95284[ebp+4]
 	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T95282[ebp+8]
-	fld	DWORD PTR $T95282[ebp]
+	fstp	DWORD PTR $T95284[ebp+8]
+	fld	DWORD PTR $T95284[ebp]
 	fadd	DWORD PTR [esi+44]
-	fstp	DWORD PTR $T95283[ebp]
+	fstp	DWORD PTR $T95285[ebp]
 	fld	DWORD PTR [esi+48]
-	fadd	DWORD PTR $T95282[ebp+4]
-	fstp	DWORD PTR $T95283[ebp+4]
+	fadd	DWORD PTR $T95284[ebp+4]
+	fstp	DWORD PTR $T95285[ebp+4]
 	fld	DWORD PTR [esi+52]
-	fadd	DWORD PTR $T95282[ebp+8]
-	fstp	DWORD PTR $T95283[ebp+8]
+	fadd	DWORD PTR $T95284[ebp+8]
+	fstp	DWORD PTR $T95285[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 	mov	esi, DWORD PTR [esi]
 	cmp	esi, DWORD PTR [edi+1052]
@@ -11612,9 +11612,9 @@ $LN11@drawHighli:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95251[ebp]
+	fstp	DWORD PTR $T95253[ebp]
 	fld	DWORD PTR _mbb$[ebp+16]
-	mov	edx, DWORD PTR $T95251[ebp]
+	mov	edx, DWORD PTR $T95253[ebp]
 	fmul	ST(0), ST(4)
 	mov	DWORD PTR _bv0$[ebp], edx
 	fst	QWORD PTR tv4436[ebp]
@@ -11630,9 +11630,9 @@ $LN11@drawHighli:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95251[ebp+4]
+	fstp	DWORD PTR $T95253[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+32]
-	mov	eax, DWORD PTR $T95251[ebp+4]
+	mov	eax, DWORD PTR $T95253[ebp+4]
 	fmulp	ST(5), ST(0)
 	mov	DWORD PTR _bv0$[ebp+4], eax
 	fxch	ST(4)
@@ -11649,38 +11649,38 @@ $LN11@drawHighli:
 	fld	ST(0)
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95251[ebp+8]
+	fstp	DWORD PTR $T95253[ebp+8]
 ; Line 435
 	fld	DWORD PTR _mbb$[ebp+4]
-	mov	ecx, DWORD PTR $T95251[ebp+8]
+	mov	ecx, DWORD PTR $T95253[ebp+8]
 	fmul	ST(0), ST(3)
 	mov	DWORD PTR _bv0$[ebp+8], ecx
 	faddp	ST(6), ST(0)
 	fld	ST(5)
 	fadd	QWORD PTR tv4427[ebp]
 	fadd	ST(0), ST(2)
-	fstp	DWORD PTR $T95253[ebp]
+	fstp	DWORD PTR $T95255[ebp]
 	fld	DWORD PTR _mbb$[ebp+20]
-	mov	edx, DWORD PTR $T95253[ebp]
+	mov	edx, DWORD PTR $T95255[ebp]
 	fmul	ST(0), ST(3)
 	mov	DWORD PTR _bv1$[ebp], edx
 	fadd	QWORD PTR tv4436[ebp]
 	fst	QWORD PTR tv4487[ebp]
 	fadd	QWORD PTR tv4442[ebp]
 	fadd	ST(0), ST(5)
-	fstp	DWORD PTR $T95253[ebp+4]
+	fstp	DWORD PTR $T95255[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+36]
-	mov	eax, DWORD PTR $T95253[ebp+4]
+	mov	eax, DWORD PTR $T95255[ebp+4]
 	fmulp	ST(3), ST(0)
 	fxch	ST(2)
 	fadd	QWORD PTR tv4451[ebp]
 	fld	QWORD PTR tv4457[ebp]
 	fadd	ST(0), ST(1)
 	fadd	ST(0), ST(3)
-	fstp	DWORD PTR $T95253[ebp+8]
+	fstp	DWORD PTR $T95255[ebp+8]
 ; Line 436
 	fld	DWORD PTR _mbb$[ebp+8]
-	mov	ecx, DWORD PTR $T95253[ebp+8]
+	mov	ecx, DWORD PTR $T95255[ebp+8]
 	fld	QWORD PTR __real@bfe6a09e60000000
 	mov	DWORD PTR _bv1$[ebp+4], eax
 	fmul	ST(1), ST(0)
@@ -11691,44 +11691,44 @@ $LN11@drawHighli:
 	fld	ST(2)
 	faddp	ST(7), ST(0)
 	fxch	ST(6)
-	fstp	DWORD PTR $T95255[ebp]
+	fstp	DWORD PTR $T95257[ebp]
 	fld	DWORD PTR _mbb$[ebp+24]
-	mov	edx, DWORD PTR $T95255[ebp]
+	mov	edx, DWORD PTR $T95257[ebp]
 	fmul	ST(0), ST(6)
 	mov	DWORD PTR _bv2$[ebp], edx
 	fst	QWORD PTR tv4530[ebp]
 	fadd	QWORD PTR tv4487[ebp]
 	fadd	ST(0), ST(5)
-	fstp	DWORD PTR $T95255[ebp+4]
+	fstp	DWORD PTR $T95257[ebp+4]
 	fld	DWORD PTR _mbb$[ebp+40]
-	mov	eax, DWORD PTR $T95255[ebp+4]
+	mov	eax, DWORD PTR $T95257[ebp+4]
 	fmulp	ST(6), ST(0)
 	mov	DWORD PTR _bv2$[ebp+4], eax
 	fadd	ST(0), ST(5)
 	fadd	ST(0), ST(2)
-	fstp	DWORD PTR $T95255[ebp+8]
+	fstp	DWORD PTR $T95257[ebp+8]
 ; Line 437
 	fld	QWORD PTR tv4518[ebp]
-	mov	ecx, DWORD PTR $T95255[ebp+8]
+	mov	ecx, DWORD PTR $T95257[ebp+8]
 	faddp	ST(3), ST(0)
 	mov	DWORD PTR _bv2$[ebp+8], ecx
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95257[ebp]
+	fstp	DWORD PTR $T95259[ebp]
 	fld	QWORD PTR tv4530[ebp]
-	mov	edx, DWORD PTR $T95257[ebp]
+	mov	edx, DWORD PTR $T95259[ebp]
 	fadd	QWORD PTR tv4440[ebp]
 	mov	DWORD PTR _bv3$[ebp], edx
 	faddp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T95257[ebp+4]
-	mov	eax, DWORD PTR $T95257[ebp+4]
+	fstp	DWORD PTR $T95259[ebp+4]
+	mov	eax, DWORD PTR $T95259[ebp+4]
 	fxch	ST(1)
 	fadd	QWORD PTR tv4455[ebp]
 	mov	DWORD PTR _bv3$[ebp+4], eax
 	faddp	ST(1), ST(0)
-	fstp	DWORD PTR $T95257[ebp+8]
-	mov	ecx, DWORD PTR $T95257[ebp+8]
+	fstp	DWORD PTR $T95259[ebp+8]
+	mov	ecx, DWORD PTR $T95259[ebp+8]
 ; Line 439
 	jmp	SHORT $LN619@drawHighli
 $LN10@drawHighli:
@@ -11781,27 +11781,27 @@ $LL617@drawHighli:
 	call	ebx
 ; Line 455
 	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T95826[ebp], eax
-	fld	DWORD PTR $T95826[ebp]
-	lea	ecx, DWORD PTR $T95264[ebp]
+	mov	DWORD PTR $T95828[ebp], eax
+	fld	DWORD PTR $T95828[ebp]
+	lea	ecx, DWORD PTR $T95266[ebp]
 	fld	ST(0)
 	push	ecx
 	fmul	DWORD PTR _bv0$[ebp]
-	fstp	DWORD PTR $T95263[ebp]
+	fstp	DWORD PTR $T95265[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _bv0$[ebp+4]
-	fstp	DWORD PTR $T95263[ebp+4]
+	fstp	DWORD PTR $T95265[ebp+4]
 	fmul	DWORD PTR _bv0$[ebp+8]
-	fstp	DWORD PTR $T95263[ebp+8]
+	fstp	DWORD PTR $T95265[ebp+8]
 	fld	DWORD PTR [esi+8]
-	fadd	DWORD PTR $T95263[ebp]
-	fstp	DWORD PTR $T95264[ebp]
+	fadd	DWORD PTR $T95265[ebp]
+	fstp	DWORD PTR $T95266[ebp]
 	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T95263[ebp+4]
-	fstp	DWORD PTR $T95264[ebp+4]
+	fadd	DWORD PTR $T95265[ebp+4]
+	fstp	DWORD PTR $T95266[ebp+4]
 	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T95263[ebp+8]
-	fstp	DWORD PTR $T95264[ebp+8]
+	fadd	DWORD PTR $T95265[ebp+8]
+	fstp	DWORD PTR $T95266[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 457
 	mov	edx, DWORD PTR [esi+68]
@@ -11812,48 +11812,17 @@ $LL617@drawHighli:
 	call	ebx
 ; Line 458
 	mov	edx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T95934[ebp], edx
-	fld	DWORD PTR $T95934[ebp]
-	lea	eax, DWORD PTR $T95266[ebp]
+	mov	DWORD PTR $T95936[ebp], edx
+	fld	DWORD PTR $T95936[ebp]
+	lea	eax, DWORD PTR $T95268[ebp]
 	fld	ST(0)
 	push	eax
 	fmul	DWORD PTR _bv1$[ebp]
-	fstp	DWORD PTR $T95265[ebp]
-	fld	ST(0)
-	fmul	DWORD PTR _bv1$[ebp+4]
-	fstp	DWORD PTR $T95265[ebp+4]
-	fmul	DWORD PTR _bv1$[ebp+8]
-	fstp	DWORD PTR $T95265[ebp+8]
-	fld	DWORD PTR $T95265[ebp]
-	fadd	DWORD PTR [esi+8]
-	fstp	DWORD PTR $T95266[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T95265[ebp+4]
-	fstp	DWORD PTR $T95266[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T95265[ebp+8]
-	fstp	DWORD PTR $T95266[ebp+8]
-	call	DWORD PTR __imp__glVertex3fv@4
-; Line 460
-	mov	ecx, DWORD PTR [esi+68]
-	mov	edx, DWORD PTR [edi+1092]
-	shl	ecx, 5
-	lea	eax, DWORD PTR [ecx+edx+16]
-	push	eax
-	call	ebx
-; Line 461
-	mov	ecx, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96042[ebp], ecx
-	fld	DWORD PTR $T96042[ebp]
-	fld	ST(0)
-	fmul	DWORD PTR _bv2$[ebp]
 	fstp	DWORD PTR $T95267[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR _bv2$[ebp+4]
+	fmul	DWORD PTR _bv1$[ebp+4]
 	fstp	DWORD PTR $T95267[ebp+4]
-	lea	edx, DWORD PTR $T95268[ebp]
-	push	edx
-	fmul	DWORD PTR _bv2$[ebp+8]
+	fmul	DWORD PTR _bv1$[ebp+8]
 	fstp	DWORD PTR $T95267[ebp+8]
 	fld	DWORD PTR $T95267[ebp]
 	fadd	DWORD PTR [esi+8]
@@ -11865,26 +11834,26 @@ $LL617@drawHighli:
 	fadd	DWORD PTR $T95267[ebp+8]
 	fstp	DWORD PTR $T95268[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
-; Line 463
-	mov	eax, DWORD PTR [esi+68]
-	mov	ecx, DWORD PTR [edi+1092]
-	shl	eax, 5
-	lea	edx, DWORD PTR [eax+ecx+24]
-	push	edx
+; Line 460
+	mov	ecx, DWORD PTR [esi+68]
+	mov	edx, DWORD PTR [edi+1092]
+	shl	ecx, 5
+	lea	eax, DWORD PTR [ecx+edx+16]
+	push	eax
 	call	ebx
-; Line 464
-	mov	eax, DWORD PTR [esi+56]
-	mov	DWORD PTR $T96150[ebp], eax
-	fld	DWORD PTR $T96150[ebp]
-	lea	ecx, DWORD PTR $T95270[ebp]
+; Line 461
+	mov	ecx, DWORD PTR [esi+56]
+	mov	DWORD PTR $T96044[ebp], ecx
+	fld	DWORD PTR $T96044[ebp]
 	fld	ST(0)
-	push	ecx
-	fmul	DWORD PTR _bv3$[ebp]
+	fmul	DWORD PTR _bv2$[ebp]
 	fstp	DWORD PTR $T95269[ebp]
 	fld	ST(0)
-	fmul	DWORD PTR _bv3$[ebp+4]
+	fmul	DWORD PTR _bv2$[ebp+4]
 	fstp	DWORD PTR $T95269[ebp+4]
-	fmul	DWORD PTR _bv3$[ebp+8]
+	lea	edx, DWORD PTR $T95270[ebp]
+	push	edx
+	fmul	DWORD PTR _bv2$[ebp+8]
 	fstp	DWORD PTR $T95269[ebp+8]
 	fld	DWORD PTR $T95269[ebp]
 	fadd	DWORD PTR [esi+8]
@@ -11895,6 +11864,37 @@ $LL617@drawHighli:
 	fld	DWORD PTR [esi+16]
 	fadd	DWORD PTR $T95269[ebp+8]
 	fstp	DWORD PTR $T95270[ebp+8]
+	call	DWORD PTR __imp__glVertex3fv@4
+; Line 463
+	mov	eax, DWORD PTR [esi+68]
+	mov	ecx, DWORD PTR [edi+1092]
+	shl	eax, 5
+	lea	edx, DWORD PTR [eax+ecx+24]
+	push	edx
+	call	ebx
+; Line 464
+	mov	eax, DWORD PTR [esi+56]
+	mov	DWORD PTR $T96152[ebp], eax
+	fld	DWORD PTR $T96152[ebp]
+	lea	ecx, DWORD PTR $T95272[ebp]
+	fld	ST(0)
+	push	ecx
+	fmul	DWORD PTR _bv3$[ebp]
+	fstp	DWORD PTR $T95271[ebp]
+	fld	ST(0)
+	fmul	DWORD PTR _bv3$[ebp+4]
+	fstp	DWORD PTR $T95271[ebp+4]
+	fmul	DWORD PTR _bv3$[ebp+8]
+	fstp	DWORD PTR $T95271[ebp+8]
+	fld	DWORD PTR $T95271[ebp]
+	fadd	DWORD PTR [esi+8]
+	fstp	DWORD PTR $T95272[ebp]
+	fld	DWORD PTR [esi+12]
+	fadd	DWORD PTR $T95271[ebp+4]
+	fstp	DWORD PTR $T95272[ebp+4]
+	fld	DWORD PTR [esi+16]
+	fadd	DWORD PTR $T95271[ebp+8]
+	fstp	DWORD PTR $T95272[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 	mov	esi, DWORD PTR [esi]
 	cmp	esi, DWORD PTR [edi+1052]
@@ -11948,25 +11948,25 @@ PUBLIC	?draw@RibbonEmitter@@QAEXXZ			; RibbonEmitter::draw
 EXTRN	__imp__glTexCoord2f@8:PROC
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T96831 = -64						; size = 12
-$T96827 = -64						; size = 12
-$T96823 = -64						; size = 12
+$T96833 = -64						; size = 12
+$T96829 = -64						; size = 12
+$T96825 = -64						; size = 12
+$T96830 = -52						; size = 12
 $T96828 = -52						; size = 12
-$T96826 = -52						; size = 12
-$T96821 = -52						; size = 12
-$T96829 = -40						; size = 12
+$T96823 = -52						; size = 12
+$T96831 = -40						; size = 12
+$T96826 = -40						; size = 12
 $T96824 = -40						; size = 12
-$T96822 = -40						; size = 12
-$T96830 = -28						; size = 12
-$T96825 = -28						; size = 12
-$T96820 = -28						; size = 12
-$T97491 = -16						; size = 4
-$T97444 = -16						; size = 4
-$T97295 = -16						; size = 4
-$T97248 = -16						; size = 4
-$T97068 = -16						; size = 4
-$T96981 = -12						; size = 4
-_u$75840 = -8						; size = 4
+$T96832 = -28						; size = 12
+$T96827 = -28						; size = 12
+$T96822 = -28						; size = 12
+$T97493 = -16						; size = 4
+$T97446 = -16						; size = 4
+$T97297 = -16						; size = 4
+$T97250 = -16						; size = 4
+$T97070 = -16						; size = 4
+$T96983 = -12						; size = 4
+_u$75842 = -8						; size = 4
 _l$ = -4						; size = 4
 ?draw@RibbonEmitter@@QAEXXZ PROC			; RibbonEmitter::draw
 ; _this$ = ecx
@@ -12030,47 +12030,15 @@ $LL23@draw@2:
 	sub	esp, 8
 	fdiv	DWORD PTR [edi+416]
 	mov	DWORD PTR [esp+4], 0
-	fstp	DWORD PTR _u$75840[ebp]
-	mov	eax, DWORD PTR _u$75840[ebp]
+	fstp	DWORD PTR _u$75842[ebp]
+	mov	eax, DWORD PTR _u$75842[ebp]
 	mov	DWORD PTR [esp], eax
 	call	ebx
 ; Line 694
 	fld	DWORD PTR [esi+20]
 	mov	ecx, DWORD PTR [edi+456]
-	mov	DWORD PTR $T96981[ebp], ecx
-	fld	DWORD PTR $T96981[ebp]
-	lea	edx, DWORD PTR $T96821[ebp]
-	fld	ST(0)
-	push	edx
-	fmulp	ST(2), ST(0)
-	fxch	ST(1)
-	fstp	DWORD PTR $T96820[ebp]
-	fld	DWORD PTR [esi+24]
-	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T96820[ebp+4]
-	fmul	DWORD PTR [esi+28]
-	fstp	DWORD PTR $T96820[ebp+8]
-	fld	DWORD PTR [esi+8]
-	fadd	DWORD PTR $T96820[ebp]
-	fstp	DWORD PTR $T96821[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T96820[ebp+4]
-	fstp	DWORD PTR $T96821[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T96820[ebp+8]
-	fstp	DWORD PTR $T96821[ebp+8]
-	call	DWORD PTR __imp__glVertex3fv@4
-; Line 695
-	mov	eax, DWORD PTR _u$75840[ebp]
-	sub	esp, 8
-	mov	DWORD PTR [esp+4], 1065353216		; 3f800000H
-	mov	DWORD PTR [esp], eax
-	call	ebx
-; Line 696
-	fld	DWORD PTR [esi+20]
-	mov	ecx, DWORD PTR [edi+460]
-	mov	DWORD PTR $T97068[ebp], ecx
-	fld	DWORD PTR $T97068[ebp]
+	mov	DWORD PTR $T96983[ebp], ecx
+	fld	DWORD PTR $T96983[ebp]
 	lea	edx, DWORD PTR $T96823[ebp]
 	fld	ST(0)
 	push	edx
@@ -12083,14 +12051,46 @@ $LL23@draw@2:
 	fmul	DWORD PTR [esi+28]
 	fstp	DWORD PTR $T96822[ebp+8]
 	fld	DWORD PTR [esi+8]
-	fsub	DWORD PTR $T96822[ebp]
+	fadd	DWORD PTR $T96822[ebp]
 	fstp	DWORD PTR $T96823[ebp]
 	fld	DWORD PTR [esi+12]
-	fsub	DWORD PTR $T96822[ebp+4]
+	fadd	DWORD PTR $T96822[ebp+4]
 	fstp	DWORD PTR $T96823[ebp+4]
 	fld	DWORD PTR [esi+16]
-	fsub	DWORD PTR $T96822[ebp+8]
+	fadd	DWORD PTR $T96822[ebp+8]
 	fstp	DWORD PTR $T96823[ebp+8]
+	call	DWORD PTR __imp__glVertex3fv@4
+; Line 695
+	mov	eax, DWORD PTR _u$75842[ebp]
+	sub	esp, 8
+	mov	DWORD PTR [esp+4], 1065353216		; 3f800000H
+	mov	DWORD PTR [esp], eax
+	call	ebx
+; Line 696
+	fld	DWORD PTR [esi+20]
+	mov	ecx, DWORD PTR [edi+460]
+	mov	DWORD PTR $T97070[ebp], ecx
+	fld	DWORD PTR $T97070[ebp]
+	lea	edx, DWORD PTR $T96825[ebp]
+	fld	ST(0)
+	push	edx
+	fmulp	ST(2), ST(0)
+	fxch	ST(1)
+	fstp	DWORD PTR $T96824[ebp]
+	fld	DWORD PTR [esi+24]
+	fmul	ST(0), ST(1)
+	fstp	DWORD PTR $T96824[ebp+4]
+	fmul	DWORD PTR [esi+28]
+	fstp	DWORD PTR $T96824[ebp+8]
+	fld	DWORD PTR [esi+8]
+	fsub	DWORD PTR $T96824[ebp]
+	fstp	DWORD PTR $T96825[ebp]
+	fld	DWORD PTR [esi+12]
+	fsub	DWORD PTR $T96824[ebp+4]
+	fstp	DWORD PTR $T96825[ebp+4]
+	fld	DWORD PTR [esi+16]
+	fsub	DWORD PTR $T96824[ebp+8]
+	fstp	DWORD PTR $T96825[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 698
 	fld	DWORD PTR [esi+44]
@@ -12114,50 +12114,50 @@ $LN2@draw@2:
 	fld	DWORD PTR [esi+44]
 	fdiv	DWORD PTR [esi+48]
 	mov	eax, DWORD PTR [edi+456]
-	lea	ecx, DWORD PTR $T96827[ebp]
+	lea	ecx, DWORD PTR $T96829[ebp]
 	push	ecx
-	fstp	DWORD PTR $T97248[ebp]
+	fstp	DWORD PTR $T97250[ebp]
 	fld	DWORD PTR [esi+32]
-	fld	DWORD PTR $T97248[ebp]
+	fld	DWORD PTR $T97250[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
-	mov	DWORD PTR $T97295[ebp], eax
+	mov	DWORD PTR $T97297[ebp], eax
 	fxch	ST(1)
-	fstp	DWORD PTR $T96826[ebp]
+	fstp	DWORD PTR $T96828[ebp]
 	fld	DWORD PTR [esi+36]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T96826[ebp+4]
+	fstp	DWORD PTR $T96828[ebp+4]
 	fmul	DWORD PTR [esi+40]
-	fstp	DWORD PTR $T96826[ebp+8]
+	fstp	DWORD PTR $T96828[ebp+8]
 	fld	DWORD PTR [esi+20]
-	fld	DWORD PTR $T97295[ebp]
+	fld	DWORD PTR $T97297[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T96824[ebp]
+	fstp	DWORD PTR $T96826[ebp]
 	fld	DWORD PTR [esi+24]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T96824[ebp+4]
+	fstp	DWORD PTR $T96826[ebp+4]
 	fmul	DWORD PTR [esi+28]
-	fstp	DWORD PTR $T96824[ebp+8]
+	fstp	DWORD PTR $T96826[ebp+8]
 	fld	DWORD PTR [esi+8]
-	fadd	DWORD PTR $T96824[ebp]
-	fstp	DWORD PTR $T96825[ebp]
-	fld	DWORD PTR [esi+12]
-	fadd	DWORD PTR $T96824[ebp+4]
-	fstp	DWORD PTR $T96825[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fadd	DWORD PTR $T96824[ebp+8]
-	fstp	DWORD PTR $T96825[ebp+8]
-	fld	DWORD PTR $T96825[ebp]
 	fadd	DWORD PTR $T96826[ebp]
 	fstp	DWORD PTR $T96827[ebp]
-	fld	DWORD PTR $T96825[ebp+4]
+	fld	DWORD PTR [esi+12]
 	fadd	DWORD PTR $T96826[ebp+4]
 	fstp	DWORD PTR $T96827[ebp+4]
-	fld	DWORD PTR $T96825[ebp+8]
+	fld	DWORD PTR [esi+16]
 	fadd	DWORD PTR $T96826[ebp+8]
 	fstp	DWORD PTR $T96827[ebp+8]
+	fld	DWORD PTR $T96827[ebp]
+	fadd	DWORD PTR $T96828[ebp]
+	fstp	DWORD PTR $T96829[ebp]
+	fld	DWORD PTR $T96827[ebp+4]
+	fadd	DWORD PTR $T96828[ebp+4]
+	fstp	DWORD PTR $T96829[ebp+4]
+	fld	DWORD PTR $T96827[ebp+8]
+	fadd	DWORD PTR $T96828[ebp+8]
+	fstp	DWORD PTR $T96829[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 ; Line 707
 	sub	esp, 8
@@ -12168,46 +12168,46 @@ $LN2@draw@2:
 	fld	DWORD PTR [esi+44]
 	fdiv	DWORD PTR [esi+48]
 	mov	edx, DWORD PTR [edi+460]
-	fstp	DWORD PTR $T97444[ebp]
-	fld	DWORD PTR $T97444[ebp]
+	fstp	DWORD PTR $T97446[ebp]
+	fld	DWORD PTR $T97446[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR [esi+32]
-	mov	DWORD PTR $T97491[ebp], edx
-	fstp	DWORD PTR $T96830[ebp]
+	mov	DWORD PTR $T97493[ebp], edx
+	fstp	DWORD PTR $T96832[ebp]
 	fld	DWORD PTR [esi+36]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T96830[ebp+4]
+	fstp	DWORD PTR $T96832[ebp+4]
 	fmul	DWORD PTR [esi+40]
-	fstp	DWORD PTR $T96830[ebp+8]
-	fld	DWORD PTR $T97491[ebp]
+	fstp	DWORD PTR $T96832[ebp+8]
+	fld	DWORD PTR $T97493[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR [esi+20]
-	fstp	DWORD PTR $T96828[ebp]
+	fstp	DWORD PTR $T96830[ebp]
 	fld	DWORD PTR [esi+24]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T96828[ebp+4]
+	fstp	DWORD PTR $T96830[ebp+4]
 	fmul	DWORD PTR [esi+28]
-	fstp	DWORD PTR $T96828[ebp+8]
+	fstp	DWORD PTR $T96830[ebp+8]
 	fld	DWORD PTR [esi+8]
-	fsub	DWORD PTR $T96828[ebp]
-	lea	eax, DWORD PTR $T96831[ebp]
+	fsub	DWORD PTR $T96830[ebp]
+	lea	eax, DWORD PTR $T96833[ebp]
 	push	eax
-	fstp	DWORD PTR $T96829[ebp]
-	fld	DWORD PTR [esi+12]
-	fsub	DWORD PTR $T96828[ebp+4]
-	fstp	DWORD PTR $T96829[ebp+4]
-	fld	DWORD PTR [esi+16]
-	fsub	DWORD PTR $T96828[ebp+8]
-	fstp	DWORD PTR $T96829[ebp+8]
-	fld	DWORD PTR $T96829[ebp]
-	fadd	DWORD PTR $T96830[ebp]
 	fstp	DWORD PTR $T96831[ebp]
-	fld	DWORD PTR $T96829[ebp+4]
-	fadd	DWORD PTR $T96830[ebp+4]
+	fld	DWORD PTR [esi+12]
+	fsub	DWORD PTR $T96830[ebp+4]
 	fstp	DWORD PTR $T96831[ebp+4]
-	fld	DWORD PTR $T96829[ebp+8]
-	fadd	DWORD PTR $T96830[ebp+8]
+	fld	DWORD PTR [esi+16]
+	fsub	DWORD PTR $T96830[ebp+8]
 	fstp	DWORD PTR $T96831[ebp+8]
+	fld	DWORD PTR $T96831[ebp]
+	fadd	DWORD PTR $T96832[ebp]
+	fstp	DWORD PTR $T96833[ebp]
+	fld	DWORD PTR $T96831[ebp+4]
+	fadd	DWORD PTR $T96832[ebp+4]
+	fstp	DWORD PTR $T96833[ebp+4]
+	fld	DWORD PTR $T96831[ebp+8]
+	fadd	DWORD PTR $T96832[ebp+8]
+	fstp	DWORD PTR $T96833[ebp+8]
 	call	DWORD PTR __imp__glVertex3fv@4
 $LN1@draw@2:
 ; Line 710
@@ -12507,8 +12507,8 @@ PUBLIC	?_Buynode@?$_List_val@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Buynode@?$_List_val@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@std@@QAEPAU_Node@?$_List_nod@URibbonSegment@@V?$allocator@URibbonSegment@@@std@@@2@PAU342@0ABURibbonSegment@@@Z
 _TEXT	SEGMENT
-$T97919 = -12						; size = 12
-$T97902 = 8						; size = 4
+$T97921 = -12						; size = 12
+$T97904 = 8						; size = 4
 __Next$ = 8						; size = 4
 __Prev$ = 12						; size = 4
 __Val$ = 16						; size = 4
@@ -12567,15 +12567,15 @@ $LN2@Buynode@2:
 	ret	12					; 0000000cH
 ; Line 508
 $LN10@Buynode@2:
-	lea	eax, DWORD PTR $T97902[ebp]
+	lea	eax, DWORD PTR $T97904[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T97919[ebp]
-	mov	DWORD PTR $T97902[ebp], 0
+	lea	ecx, DWORD PTR $T97921[ebp]
+	mov	DWORD PTR $T97904[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T97919[ebp]
+	lea	ecx, DWORD PTR $T97921[ebp]
 	push	ecx
-	mov	DWORD PTR $T97919[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T97921[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN55@Buynode@2:
 $LN54@Buynode@2:
@@ -12713,7 +12713,7 @@ PUBLIC	??$_Uninitialized_move@PAUTexCoordSet@@PAU1@V?$allocator@UTexCoordSet@@@s
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAUTexCoordSet@@PAU1@V?$allocator@UTexCoordSet@@@std@@@std@@YAPAUTexCoordSet@@PAU1@00AAV?$allocator@UTexCoordSet@@@0@@Z
 _TEXT	SEGMENT
-__Cat$98281 = -4					; size = 1
+__Cat$98283 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -12725,7 +12725,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$98281[ebp]
+	mov	eax, DWORD PTR __Cat$98283[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -12748,7 +12748,7 @@ PUBLIC	??$_Uninitialized_move@PAVVec3D@@PAV1@V?$allocator@VVec3D@@@std@@@std@@YA
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAVVec3D@@PAV1@V?$allocator@VVec3D@@@std@@@std@@YAPAVVec3D@@PAV1@00AAV?$allocator@VVec3D@@@0@@Z
 _TEXT	SEGMENT
-__Cat$98291 = -4					; size = 1
+__Cat$98293 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -12759,7 +12759,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$98291[ebp]
+	mov	eax, DWORD PTR __Cat$98293[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -13086,7 +13086,7 @@ PUBLIC	??$_Umove@PAUTexCoordSet@@@?$vector@UTexCoordSet@@V?$allocator@UTexCoordS
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$98793 = 16					; size = 1
+__Cat$98795 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAUTexCoordSet@@@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@std@@IAEPAUTexCoordSet@@PAU2@00@Z PROC ; std::vector<TexCoordSet,std::allocator<TexCoordSet> >::_Umove<TexCoordSet *>, COMDAT
 ; _this$ = ecx
@@ -13094,7 +13094,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$98793[ebp]
+	mov	eax, DWORD PTR __Cat$98795[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -13118,7 +13118,7 @@ PUBLIC	??$_Umove@PAVVec3D@@@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@IA
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$98813 = 16					; size = 1
+__Cat$98815 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAVVec3D@@@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@IAEPAVVec3D@@PAV2@00@Z PROC ; std::vector<Vec3D,std::allocator<Vec3D> >::_Umove<Vec3D *>, COMDAT
 ; _this$ = ecx
@@ -13126,7 +13126,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$98813[ebp]
+	mov	eax, DWORD PTR __Cat$98815[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -13197,34 +13197,34 @@ __real@bff0000000000000 DQ 0bff0000000000000r	; -1
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-_p$75208 = -228						; size = 80
-$T98926 = -148						; size = 12
-$T99407 = -136						; size = 16
-$T99268 = -120						; size = 4
-$T99406 = -116						; size = 16
-$T98929 = -100						; size = 12
-$T99428 = -88						; size = 16
-$T98927 = -72						; size = 12
-$T99427 = -60						; size = 16
-$T99442 = -44						; size = 4
-$T98928 = -40						; size = 12
-$T98930 = -28						; size = 16
+_p$75210 = -228						; size = 80
+$T98928 = -148						; size = 12
+$T99411 = -136						; size = 16
+$T99270 = -120						; size = 4
+$T99410 = -116						; size = 16
+$T98931 = -100						; size = 12
+$T99432 = -88						; size = 16
+$T98929 = -72						; size = 12
+$T99431 = -60						; size = 16
+$T99444 = -44						; size = 4
+$T98930 = -40						; size = 12
+$T98932 = -28						; size = 16
 _grav$ = -12						; size = 4
 tv1627 = -8						; size = 4
 tv1620 = -8						; size = 4
 _mspeed$ = -8						; size = 4
-_i$75204 = -8						; size = 4
+_i$75206 = -8						; size = 4
 tv1332 = -4						; size = 4
-$T99363 = -4						; size = 4
-$T99300 = -4						; size = 4
-$T99396 = -4						; size = 4
-$T99333 = -4						; size = 4
-$T99258 = -4						; size = 4
-$T99254 = -4						; size = 4
-$T99269 = -4						; size = 4
-_rlife$75376 = -4					; size = 4
-_tospawn$75201 = -4					; size = 4
-_ftospawn$75197 = -4					; size = 4
+$T99365 = -4						; size = 4
+$T99302 = -4						; size = 4
+$T99398 = -4						; size = 4
+$T99335 = -4						; size = 4
+$T99260 = -4						; size = 4
+$T99256 = -4						; size = 4
+$T99271 = -4						; size = 4
+_rlife$75378 = -4					; size = 4
+_tospawn$75203 = -4					; size = 4
+_ftospawn$75199 = -4					; size = 4
 _dt$ = 8						; size = 4
 ?update@ParticleSystem@@QAEXM@Z PROC			; ParticleSystem::update
 ; _this$ = ecx
@@ -13256,10 +13256,10 @@ _dt$ = 8						; size = 4
 ; Line 117
 	fmul	DWORD PTR _dt$[ebp]
 	fadd	DWORD PTR [esi+1112]
-	fstp	DWORD PTR _ftospawn$75197[ebp]
+	fstp	DWORD PTR _ftospawn$75199[ebp]
 ; Line 118
 	fld1
-	fld	DWORD PTR _ftospawn$75197[ebp]
+	fld	DWORD PTR _ftospawn$75199[ebp]
 	fcom	ST(1)
 	fnstsw	ax
 	fstp	ST(1)
@@ -13267,7 +13267,7 @@ _dt$ = 8						; size = 4
 	jp	$LN12@update
 ; Line 121
 	fldz
-	mov	eax, DWORD PTR _ftospawn$75197[ebp]
+	mov	eax, DWORD PTR _ftospawn$75199[ebp]
 	fcompp
 	mov	DWORD PTR [esi+1112], eax
 	fnstsw	ax
@@ -13290,29 +13290,29 @@ $LN5@update:
 ; Line 142
 	fld	DWORD PTR [edi+32]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T98926[ebp]
+	fstp	DWORD PTR $T98928[ebp]
 	fld	DWORD PTR [edi+36]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T98926[ebp+4]
+	fstp	DWORD PTR $T98928[ebp+4]
 	fld	DWORD PTR [edi+40]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T98926[ebp+8]
-	fld	DWORD PTR $T98926[ebp]
+	fstp	DWORD PTR $T98928[ebp+8]
+	fld	DWORD PTR $T98928[ebp]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98927[ebp]
-	fld	DWORD PTR $T98926[ebp+4]
+	fstp	DWORD PTR $T98929[ebp]
+	fld	DWORD PTR $T98928[ebp+4]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98927[ebp+4]
-	fld	DWORD PTR $T98926[ebp+8]
+	fstp	DWORD PTR $T98929[ebp+4]
+	fld	DWORD PTR $T98928[ebp+8]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98927[ebp+8]
+	fstp	DWORD PTR $T98929[ebp+8]
 	fld	DWORD PTR [edi+20]
-	fadd	DWORD PTR $T98927[ebp]
+	fadd	DWORD PTR $T98929[ebp]
 	fstp	DWORD PTR [edi+20]
-	fld	DWORD PTR $T98927[ebp+4]
+	fld	DWORD PTR $T98929[ebp+4]
 	fadd	DWORD PTR [edi+24]
 	fstp	DWORD PTR [edi+24]
-	fld	DWORD PTR $T98927[ebp+8]
+	fld	DWORD PTR $T98929[ebp+8]
 	fadd	DWORD PTR [edi+28]
 	fstp	DWORD PTR [edi+28]
 ; Line 144
@@ -13345,28 +13345,28 @@ $LN3@update:
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T98928[ebp]
+	fstp	DWORD PTR $T98930[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR [edi+24]
-	fstp	DWORD PTR $T98928[ebp+4]
+	fstp	DWORD PTR $T98930[ebp+4]
 	fmul	DWORD PTR [edi+28]
-	fstp	DWORD PTR $T98928[ebp+8]
-	fld	DWORD PTR $T98928[ebp]
+	fstp	DWORD PTR $T98930[ebp+8]
+	fld	DWORD PTR $T98930[ebp]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98929[ebp]
-	fld	DWORD PTR $T98928[ebp+4]
+	fstp	DWORD PTR $T98931[ebp]
+	fld	DWORD PTR $T98930[ebp+4]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98929[ebp+4]
-	fld	DWORD PTR $T98928[ebp+8]
+	fstp	DWORD PTR $T98931[ebp+4]
+	fld	DWORD PTR $T98930[ebp+8]
 	fmul	ST(0), ST(3)
-	fstp	DWORD PTR $T98929[ebp+8]
+	fstp	DWORD PTR $T98931[ebp+8]
 	fld	DWORD PTR [edi+8]
-	fadd	DWORD PTR $T98929[ebp]
+	fadd	DWORD PTR $T98931[ebp]
 	fstp	DWORD PTR [edi+8]
-	fld	DWORD PTR $T98929[ebp+4]
+	fld	DWORD PTR $T98931[ebp+4]
 	fadd	DWORD PTR [edi+12]
 	fstp	DWORD PTR [edi+12]
-	fld	DWORD PTR $T98929[ebp+8]
+	fld	DWORD PTR $T98931[ebp+8]
 	fadd	DWORD PTR [edi+16]
 	fstp	DWORD PTR [edi+16]
 ; Line 150
@@ -13380,17 +13380,17 @@ $LN3@update:
 	mov	DWORD PTR [edi+60], edx
 ; Line 153
 	mov	eax, DWORD PTR [esi+1020]
-	mov	DWORD PTR $T99268[ebp], eax
-	fstp	DWORD PTR _rlife$75376[ebp]
-	fld	DWORD PTR _rlife$75376[ebp]
-	fld	DWORD PTR $T99268[ebp]
+	mov	DWORD PTR $T99270[ebp], eax
+	fstp	DWORD PTR _rlife$75378[ebp]
+	fld	DWORD PTR _rlife$75378[ebp]
+	fld	DWORD PTR $T99270[ebp]
 	fcom	ST(1)
 	fnstsw	ax
 	test	ah, 1
 	jne	$LN109@update
 	fdivr	ST(0), ST(1)
-	fstp	DWORD PTR $T99254[ebp]
-	fld	DWORD PTR $T99254[ebp]
+	fstp	DWORD PTR $T99256[ebp]
+	fld	DWORD PTR $T99256[ebp]
 	fld	ST(0)
 	fsubr	ST(0), ST(3)
 	fmul	DWORD PTR [esi+1008]
@@ -13401,11 +13401,11 @@ $LN12@update:
 	fld	ST(0)
 	call	__ftol2_sse_excpt
 	mov	edi, eax
-	mov	DWORD PTR _tospawn$75201[ebp], edi
+	mov	DWORD PTR _tospawn$75203[ebp], edi
 ; Line 126
-	fisub	DWORD PTR _tospawn$75201[ebp]
+	fisub	DWORD PTR _tospawn$75203[ebp]
 ; Line 128
-	mov	DWORD PTR _i$75204[ebp], 0
+	mov	DWORD PTR _i$75206[ebp], 0
 	fstp	DWORD PTR [esi+1112]
 	test	edi, edi
 	jle	$LN7@update
@@ -13419,7 +13419,7 @@ $LL9@update:
 	push	eax
 	mov	eax, DWORD PTR [esi+1076]
 	push	eax
-	lea	eax, DWORD PTR _p$75208[ebp]
+	lea	eax, DWORD PTR _p$75210[ebp]
 	push	eax
 	call	edx
 ; Line 132
@@ -13427,7 +13427,7 @@ $LL9@update:
 	jae	SHORT $LN8@update
 	mov	ebx, DWORD PTR [esi+1052]
 	mov	ecx, DWORD PTR [ebx+4]
-	lea	eax, DWORD PTR _p$75208[ebp]
+	lea	eax, DWORD PTR _p$75210[ebp]
 	push	eax
 	push	ecx
 	push	ebx
@@ -13438,7 +13438,7 @@ $LL9@update:
 	sub	edx, ecx
 	cmp	edx, 1
 	jb	SHORT $LN201@update
-	mov	edi, DWORD PTR _tospawn$75201[ebp]
+	mov	edi, DWORD PTR _tospawn$75203[ebp]
 	inc	ecx
 	mov	DWORD PTR [esi+1056], ecx
 	mov	DWORD PTR [ebx+4], eax
@@ -13446,9 +13446,9 @@ $LL9@update:
 	mov	DWORD PTR [ecx], eax
 $LN8@update:
 ; Line 128
-	mov	eax, DWORD PTR _i$75204[ebp]
+	mov	eax, DWORD PTR _i$75206[ebp]
 	inc	eax
-	mov	DWORD PTR _i$75204[ebp], eax
+	mov	DWORD PTR _i$75206[ebp], eax
 	cmp	eax, edi
 	jl	SHORT $LL9@update
 ; Line 132
@@ -13464,8 +13464,8 @@ $LN109@update:
 	fld	ST(3)
 	fsubrp	ST(2), ST(0)
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T99258[ebp]
-	fld	DWORD PTR $T99258[ebp]
+	fstp	DWORD PTR $T99260[ebp]
+	fld	DWORD PTR $T99260[ebp]
 	fld	ST(0)
 	fsubr	ST(0), ST(3)
 	fmul	DWORD PTR [esi+1012]
@@ -13473,59 +13473,59 @@ $LN109@update:
 $LN229@update:
 	fmulp	ST(2), ST(0)
 	faddp	ST(1), ST(0)
-	fstp	DWORD PTR $T99269[ebp]
-	mov	ecx, DWORD PTR $T99269[ebp]
+	fstp	DWORD PTR $T99271[ebp]
+	mov	ecx, DWORD PTR $T99271[ebp]
 	mov	DWORD PTR [edi+56], ecx
 ; Line 154
 	mov	edx, DWORD PTR [esi+1020]
-	mov	DWORD PTR $T99442[ebp], edx
-	fld	DWORD PTR $T99442[ebp]
+	mov	DWORD PTR $T99444[ebp], edx
+	fld	DWORD PTR $T99444[ebp]
 	fcom	ST(1)
 	fnstsw	ax
 	test	ah, 1
 	jne	$LN117@update
 	fdivr	ST(0), ST(1)
-	fstp	DWORD PTR $T99333[ebp]
+	fstp	DWORD PTR $T99335[ebp]
 	fld	DWORD PTR [esi+976]
-	fld	DWORD PTR $T99333[ebp]
+	fld	DWORD PTR $T99335[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T99428[ebp]
+	fstp	DWORD PTR $T99432[ebp]
 	fld	DWORD PTR [esi+980]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99428[ebp+4]
+	fstp	DWORD PTR $T99432[ebp+4]
 	fld	DWORD PTR [esi+984]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99428[ebp+8]
+	fstp	DWORD PTR $T99432[ebp+8]
 	fld	DWORD PTR [esi+988]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99428[ebp+12]
+	fstp	DWORD PTR $T99432[ebp+12]
 	fsubr	ST(0), ST(2)
-	fstp	DWORD PTR $T99300[ebp]
-	fld	DWORD PTR $T99300[ebp]
+	fstp	DWORD PTR $T99302[ebp]
+	fld	DWORD PTR $T99302[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR [esi+960]
-	fstp	DWORD PTR $T99427[ebp]
+	fstp	DWORD PTR $T99431[ebp]
 	fld	DWORD PTR [esi+964]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99427[ebp+4]
+	fstp	DWORD PTR $T99431[ebp+4]
 	fld	DWORD PTR [esi+968]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99427[ebp+8]
+	fstp	DWORD PTR $T99431[ebp+8]
 	fmul	DWORD PTR [esi+972]
-	fstp	DWORD PTR $T99427[ebp+12]
-	fld	DWORD PTR $T99427[ebp]
-	fadd	DWORD PTR $T99428[ebp]
-	fstp	DWORD PTR $T98930[ebp]
-	fld	DWORD PTR $T99427[ebp+4]
-	fadd	DWORD PTR $T99428[ebp+4]
-	fstp	DWORD PTR $T98930[ebp+4]
-	fld	DWORD PTR $T99427[ebp+8]
-	fadd	DWORD PTR $T99428[ebp+8]
-	fstp	DWORD PTR $T98930[ebp+8]
-	fld	DWORD PTR $T99427[ebp+12]
-	fadd	DWORD PTR $T99428[ebp+12]
+	fstp	DWORD PTR $T99431[ebp+12]
+	fld	DWORD PTR $T99431[ebp]
+	fadd	DWORD PTR $T99432[ebp]
+	fstp	DWORD PTR $T98932[ebp]
+	fld	DWORD PTR $T99431[ebp+4]
+	fadd	DWORD PTR $T99432[ebp+4]
+	fstp	DWORD PTR $T98932[ebp+4]
+	fld	DWORD PTR $T99431[ebp+8]
+	fadd	DWORD PTR $T99432[ebp+8]
+	fstp	DWORD PTR $T98932[ebp+8]
+	fld	DWORD PTR $T99431[ebp+12]
+	fadd	DWORD PTR $T99432[ebp+12]
 	jmp	$LN230@update
 $LN117@update:
 	fld	ST(1)
@@ -13533,59 +13533,59 @@ $LN117@update:
 	fld	ST(3)
 	fsubrp	ST(2), ST(0)
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T99396[ebp]
+	fstp	DWORD PTR $T99398[ebp]
 	fld	DWORD PTR [esi+992]
-	fld	DWORD PTR $T99396[ebp]
+	fld	DWORD PTR $T99398[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T99407[ebp]
+	fstp	DWORD PTR $T99411[ebp]
 	fld	DWORD PTR [esi+996]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99407[ebp+4]
+	fstp	DWORD PTR $T99411[ebp+4]
 	fld	DWORD PTR [esi+1000]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99407[ebp+8]
+	fstp	DWORD PTR $T99411[ebp+8]
 	fld	DWORD PTR [esi+1004]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99407[ebp+12]
+	fstp	DWORD PTR $T99411[ebp+12]
 	fsubr	ST(0), ST(2)
-	fstp	DWORD PTR $T99363[ebp]
+	fstp	DWORD PTR $T99365[ebp]
 	fld	DWORD PTR [esi+976]
-	fld	DWORD PTR $T99363[ebp]
+	fld	DWORD PTR $T99365[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T99406[ebp]
+	fstp	DWORD PTR $T99410[ebp]
 	fld	DWORD PTR [esi+980]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99406[ebp+4]
+	fstp	DWORD PTR $T99410[ebp+4]
 	fld	DWORD PTR [esi+984]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99406[ebp+8]
+	fstp	DWORD PTR $T99410[ebp+8]
 	fmul	DWORD PTR [esi+988]
-	fstp	DWORD PTR $T99406[ebp+12]
-	fld	DWORD PTR $T99406[ebp]
-	fadd	DWORD PTR $T99407[ebp]
-	fstp	DWORD PTR $T98930[ebp]
-	fld	DWORD PTR $T99406[ebp+4]
-	fadd	DWORD PTR $T99407[ebp+4]
-	fstp	DWORD PTR $T98930[ebp+4]
-	fld	DWORD PTR $T99406[ebp+8]
-	fadd	DWORD PTR $T99407[ebp+8]
-	fstp	DWORD PTR $T98930[ebp+8]
-	fld	DWORD PTR $T99406[ebp+12]
-	fadd	DWORD PTR $T99407[ebp+12]
+	fstp	DWORD PTR $T99410[ebp+12]
+	fld	DWORD PTR $T99410[ebp]
+	fadd	DWORD PTR $T99411[ebp]
+	fstp	DWORD PTR $T98932[ebp]
+	fld	DWORD PTR $T99410[ebp+4]
+	fadd	DWORD PTR $T99411[ebp+4]
+	fstp	DWORD PTR $T98932[ebp+4]
+	fld	DWORD PTR $T99410[ebp+8]
+	fadd	DWORD PTR $T99411[ebp+8]
+	fstp	DWORD PTR $T98932[ebp+8]
+	fld	DWORD PTR $T99410[ebp+12]
+	fadd	DWORD PTR $T99411[ebp+12]
 $LN230@update:
-	mov	eax, DWORD PTR $T98930[ebp]
-	fstp	DWORD PTR $T98930[ebp+12]
+	mov	eax, DWORD PTR $T98932[ebp]
+	fstp	DWORD PTR $T98932[ebp+12]
 ; Line 157
 	fld1
-	mov	ecx, DWORD PTR $T98930[ebp+4]
-	mov	edx, DWORD PTR $T98930[ebp+8]
+	mov	ecx, DWORD PTR $T98932[ebp+4]
+	mov	edx, DWORD PTR $T98932[ebp+8]
 	fcompp
 	mov	DWORD PTR [edi+72], eax
-	mov	eax, DWORD PTR $T98930[ebp+12]
+	mov	eax, DWORD PTR $T98932[ebp+12]
 	mov	DWORD PTR [edi+84], eax
 	mov	DWORD PTR [edi+76], ecx
 	fnstsw	ax
@@ -13712,9 +13712,9 @@ __ehfuncinfo$?reserve@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@s
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$82024 = -20					; size = 4
+__Ptr$82026 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$99813 = 8						; size = 1
+__Cat$99815 = 8						; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@std@@QAEXI@Z PROC ; std::vector<TexCoordSet,std::allocator<TexCoordSet> >::reserve, COMDAT
 ; _this$ = ecx
@@ -13758,7 +13758,7 @@ $LN5@reserve@3:
 	mov	ecx, edi
 	call	?allocate@?$allocator@UTexCoordSet@@@std@@QAEPAUTexCoordSet@@I@Z ; std::allocator<TexCoordSet>::allocate
 ; Line 754
-	mov	edx, DWORD PTR __Cat$99813[ebp]
+	mov	edx, DWORD PTR __Cat$99815[ebp]
 	mov	ecx, DWORD PTR [esi]
 	push	edx
 	push	0
@@ -13768,7 +13768,7 @@ $LN5@reserve@3:
 	push	ebx
 	push	eax
 	push	ecx
-	mov	DWORD PTR __Ptr$82024[ebp], ebx
+	mov	DWORD PTR __Ptr$82026[ebp], ebx
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAUTexCoordSet@@PAU1@V?$allocator@UTexCoordSet@@@std@@U1@@std@@YAPAUTexCoordSet@@PAU1@00AAV?$allocator@UTexCoordSet@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<TexCoordSet *,TexCoordSet *,std::allocator<TexCoordSet>,TexCoordSet>
 ; Line 760
@@ -13808,7 +13808,7 @@ $LN3@reserve@3:
 	ret	4
 __catch$?reserve@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$82024[ebp]
+	mov	eax, DWORD PTR __Ptr$82026[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -13861,9 +13861,9 @@ __ehfuncinfo$?reserve@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@QAEXI@Z 
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$82405 = -20					; size = 4
+__Ptr$82407 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$99899 = 8						; size = 1
+__Cat$99901 = 8						; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@QAEXI@Z PROC ; std::vector<Vec3D,std::allocator<Vec3D> >::reserve, COMDAT
 ; _this$ = ecx
@@ -13912,7 +13912,7 @@ $LN5@reserve@4:
 	mov	ecx, edi
 	call	?allocate@?$allocator@VVec3D@@@std@@QAEPAVVec3D@@I@Z ; std::allocator<Vec3D>::allocate
 ; Line 754
-	mov	ebx, DWORD PTR __Cat$99899[ebp]
+	mov	ebx, DWORD PTR __Cat$99901[ebp]
 	mov	ecx, DWORD PTR [esi+4]
 	mov	edx, DWORD PTR [esi]
 	push	ebx
@@ -13921,7 +13921,7 @@ $LN5@reserve@4:
 	push	eax
 	push	ecx
 	push	edx
-	mov	DWORD PTR __Ptr$82405[ebp], eax
+	mov	DWORD PTR __Ptr$82407[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAVVec3D@@PAV1@V?$allocator@VVec3D@@@std@@V1@@std@@YAPAVVec3D@@PAV1@00AAV?$allocator@VVec3D@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<Vec3D *,Vec3D *,std::allocator<Vec3D>,Vec3D>
 ; Line 760
@@ -13946,7 +13946,7 @@ $LN35@reserve@4:
 ; Line 769
 	mov	eax, DWORD PTR __Count$[ebp]
 	lea	ecx, DWORD PTR [eax+eax*2]
-	mov	eax, DWORD PTR __Ptr$82405[ebp]
+	mov	eax, DWORD PTR __Ptr$82407[ebp]
 	lea	edx, DWORD PTR [eax+ecx*4]
 ; Line 770
 	lea	ecx, DWORD PTR [edi+edi*2]
@@ -13968,7 +13968,7 @@ $LN3@reserve@4:
 	ret	4
 __catch$?reserve@?$vector@VVec3D@@V?$allocator@VVec3D@@@std@@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$82405[ebp]
+	mov	eax, DWORD PTR __Ptr$82407[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -13996,7 +13996,7 @@ PUBLIC	??$_Uninitialized_move@PAU?$pair@II@std@@PAU12@V?$allocator@U?$pair@II@st
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAU?$pair@II@std@@PAU12@V?$allocator@U?$pair@II@std@@@2@@std@@YAPAU?$pair@II@0@PAU10@00AAV?$allocator@U?$pair@II@std@@@0@@Z
 _TEXT	SEGMENT
-__Cat$99937 = -4					; size = 1
+__Cat$99939 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -14008,7 +14008,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$99937[ebp]
+	mov	eax, DWORD PTR __Cat$99939[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -14030,22 +14030,22 @@ _TEXT	ENDS
 PUBLIC	?setup@RibbonEmitter@@QAEXHH@Z			; RibbonEmitter::setup
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-_newseg$75788 = -92					; size = 44
-$T99953 = -48						; size = 12
+_newseg$75790 = -92					; size = 44
+$T99955 = -48						; size = 12
+$T99949 = -48						; size = 12
 $T99947 = -48						; size = 12
-$T99945 = -48						; size = 12
-$T99944 = -48						; size = 12
+$T99946 = -48						; size = 12
 _ntpos$ = -36						; size = 12
 _ntup$ = -24						; size = 12
 tv1719 = -12						; size = 4
 tv1712 = -12						; size = 4
-$T100650 = -12						; size = 4
-$T100144 = -12						; size = 4
+$T100652 = -12						; size = 4
+$T100146 = -12						; size = 4
 tv1766 = -8						; size = 4
 tv1759 = -8						; size = 4
 tv1741 = -8						; size = 4
 tv1734 = -8						; size = 4
-$T100014 = -8						; size = 4
+$T100016 = -8						; size = 4
 _l$ = -8						; size = 4
 _dlen$ = -8						; size = 4
 _erasemode$ = -1					; size = 1
@@ -14099,24 +14099,24 @@ _time$ = 12						; size = 4
 	fldz
 	fadd	ST(1), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T99944[ebp]
+	fstp	DWORD PTR $T99946[ebp]
 	fadd	DWORD PTR [esi+400]
-	fstp	DWORD PTR $T99944[ebp+4]
+	fstp	DWORD PTR $T99946[ebp+4]
 	fld	DWORD PTR [esi+404]
 	fadd	QWORD PTR __real@3ff0000000000000
-	fstp	DWORD PTR $T99944[ebp+8]
+	fstp	DWORD PTR $T99946[ebp+8]
 	fld	DWORD PTR [eax+312]
-	fld	DWORD PTR $T99944[ebp+4]
+	fld	DWORD PTR $T99946[ebp+4]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR [eax+308]
-	fld	DWORD PTR $T99944[ebp]
+	fld	DWORD PTR $T99946[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(3)
 	faddp	ST(1), ST(0)
 	fld	DWORD PTR [eax+316]
-	fld	DWORD PTR $T99944[ebp+8]
+	fld	DWORD PTR $T99946[ebp+8]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(2)
@@ -14172,8 +14172,8 @@ _time$ = 12						; size = 4
 	fld	DWORD PTR tv1759[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T100014[ebp]
-	fld	DWORD PTR $T100014[ebp]
+	fstp	DWORD PTR $T100016[ebp]
+	fld	DWORD PTR $T100016[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _ntup$[ebp]
 	fstp	DWORD PTR _ntup$[ebp]
@@ -14185,16 +14185,16 @@ _time$ = 12						; size = 4
 ; Line 607
 	fld	DWORD PTR _ntpos$[ebp]
 	fsub	DWORD PTR [esi+428]
-	fstp	DWORD PTR $T99945[ebp]
+	fstp	DWORD PTR $T99947[ebp]
 	fld	DWORD PTR _ntpos$[ebp+4]
 	fsub	DWORD PTR [esi+432]
-	fstp	DWORD PTR $T99945[ebp+4]
+	fstp	DWORD PTR $T99947[ebp+4]
 	fld	DWORD PTR _ntpos$[ebp+8]
 	fsub	DWORD PTR [esi+436]
-	fstp	DWORD PTR $T99945[ebp+8]
-	fld	DWORD PTR $T99945[ebp]
-	fld	DWORD PTR $T99945[ebp+4]
-	fld	DWORD PTR $T99945[ebp+8]
+	fstp	DWORD PTR $T99947[ebp+8]
+	fld	DWORD PTR $T99947[ebp]
+	fld	DWORD PTR $T99947[ebp+4]
+	fld	DWORD PTR $T99947[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -14228,16 +14228,16 @@ _time$ = 12						; size = 4
 ; Line 617
 	fld	DWORD PTR [esi+428]
 	fsub	DWORD PTR _ntpos$[ebp]
-	fstp	DWORD PTR $T99947[ebp]
+	fstp	DWORD PTR $T99949[ebp]
 	fld	DWORD PTR [esi+432]
 	fsub	DWORD PTR _ntpos$[ebp+4]
-	fstp	DWORD PTR $T99947[ebp+4]
+	fstp	DWORD PTR $T99949[ebp+4]
 	fld	DWORD PTR [esi+436]
 	fsub	DWORD PTR _ntpos$[ebp+8]
-	fstp	DWORD PTR $T99947[ebp+8]
-	fld	DWORD PTR $T99947[ebp]
-	fld	DWORD PTR $T99947[ebp+4]
-	fld	DWORD PTR $T99947[ebp+8]
+	fstp	DWORD PTR $T99949[ebp+8]
+	fld	DWORD PTR $T99949[ebp]
+	fld	DWORD PTR $T99949[ebp+4]
+	fld	DWORD PTR $T99949[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -14253,52 +14253,52 @@ _time$ = 12						; size = 4
 	fld	DWORD PTR tv1712[ebp]
 	fld1
 	fdivrp	ST(1), ST(0)
-	fstp	DWORD PTR $T100144[ebp]
-	fld	DWORD PTR $T99947[ebp]
-	fld	DWORD PTR $T100144[ebp]
+	fstp	DWORD PTR $T100146[ebp]
+	fld	DWORD PTR $T99949[ebp]
+	fld	DWORD PTR $T100146[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T99947[ebp]
-	mov	eax, DWORD PTR $T99947[ebp]
-	fld	DWORD PTR $T99947[ebp+4]
+	fstp	DWORD PTR $T99949[ebp]
+	mov	eax, DWORD PTR $T99949[ebp]
+	fld	DWORD PTR $T99949[ebp+4]
 	mov	DWORD PTR [edi+32], eax
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T99947[ebp+4]
-	mov	ecx, DWORD PTR $T99947[ebp+4]
+	fstp	DWORD PTR $T99949[ebp+4]
+	mov	ecx, DWORD PTR $T99949[ebp+4]
 	mov	DWORD PTR [edi+36], ecx
-	fmul	DWORD PTR $T99947[ebp+8]
+	fmul	DWORD PTR $T99949[ebp+8]
 ; Line 620
 	mov	ecx, DWORD PTR _ntpos$[ebp]
-	mov	DWORD PTR _newseg$75788[ebp], ecx
+	mov	DWORD PTR _newseg$75790[ebp], ecx
 ; Line 621
 	mov	ecx, DWORD PTR _ntup$[ebp]
-	fstp	DWORD PTR $T99947[ebp+8]
-	mov	edx, DWORD PTR $T99947[ebp+8]
+	fstp	DWORD PTR $T99949[ebp+8]
+	mov	edx, DWORD PTR $T99949[ebp+8]
 	mov	DWORD PTR [edi+40], edx
 	mov	eax, DWORD PTR [edi+44]
 	mov	edx, DWORD PTR _ntpos$[ebp+4]
 	mov	DWORD PTR [edi+48], eax
 	xor	eax, eax
-	mov	DWORD PTR _newseg$75788[ebp+24], eax
-	mov	DWORD PTR _newseg$75788[ebp+28], eax
-	mov	DWORD PTR _newseg$75788[ebp+32], eax
+	mov	DWORD PTR _newseg$75790[ebp+24], eax
+	mov	DWORD PTR _newseg$75790[ebp+28], eax
+	mov	DWORD PTR _newseg$75790[ebp+32], eax
 	mov	eax, DWORD PTR _ntpos$[ebp+8]
-	mov	DWORD PTR _newseg$75788[ebp+4], edx
+	mov	DWORD PTR _newseg$75790[ebp+4], edx
 	mov	edx, DWORD PTR _ntup$[ebp+4]
-	mov	DWORD PTR _newseg$75788[ebp+8], eax
+	mov	DWORD PTR _newseg$75790[ebp+8], eax
 	mov	eax, DWORD PTR _ntup$[ebp+8]
-	mov	DWORD PTR _newseg$75788[ebp+12], ecx
+	mov	DWORD PTR _newseg$75790[ebp+12], ecx
 ; Line 622
 	mov	ecx, DWORD PTR _dlen$[ebp]
-	mov	DWORD PTR _newseg$75788[ebp+16], edx
+	mov	DWORD PTR _newseg$75790[ebp+16], edx
 ; Line 623
 	mov	edx, DWORD PTR [esi+468]
 	mov	edi, DWORD PTR [edx]
-	mov	DWORD PTR _newseg$75788[ebp+20], eax
-	mov	DWORD PTR _newseg$75788[ebp+36], ecx
+	mov	DWORD PTR _newseg$75790[ebp+20], eax
+	mov	DWORD PTR _newseg$75790[ebp+36], ecx
 	mov	ecx, DWORD PTR [edi+4]
-	lea	eax, DWORD PTR _newseg$75788[ebp]
+	lea	eax, DWORD PTR _newseg$75790[ebp]
 	push	eax
 	push	ecx
 	push	edi
@@ -14411,12 +14411,12 @@ $LN4@setup:
 	push	eax
 	lea	ecx, DWORD PTR [esi+96]
 	call	?getValue@?$Animated@MFVShortToFloat@@@@QAEMHH@Z ; Animated<float,short,ShortToFloat>::getValue
-	fstp	DWORD PTR $T100650[ebp]
+	fstp	DWORD PTR $T100652[ebp]
 	mov	ebx, DWORD PTR _time$[ebp]
 	mov	edi, DWORD PTR _anim$[ebp]
 	push	ebx
 	push	edi
-	lea	ecx, DWORD PTR $T99953[ebp]
+	lea	ecx, DWORD PTR $T99955[ebp]
 	push	ecx
 	mov	ecx, esi
 	call	?getValue@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAE?AVVec3D@@HH@Z ; Animated<Vec3D,Vec3D,Identity<Vec3D> >::getValue
@@ -14424,7 +14424,7 @@ $LN4@setup:
 	mov	edx, DWORD PTR [eax+4]
 	mov	eax, DWORD PTR [eax+8]
 	mov	DWORD PTR [esi+444], edx
-	mov	edx, DWORD PTR $T100650[ebp]
+	mov	edx, DWORD PTR $T100652[ebp]
 ; Line 656
 	push	ebx
 	mov	DWORD PTR [esi+440], ecx
@@ -14591,7 +14591,7 @@ PUBLIC	??$_Umove@PAU?$pair@II@std@@@?$vector@U?$pair@II@std@@V?$allocator@U?$pai
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$100810 = 16					; size = 1
+__Cat$100812 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAU?$pair@II@std@@@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@IAEPAU?$pair@II@1@PAU21@00@Z PROC ; std::vector<std::pair<unsigned int,unsigned int>,std::allocator<std::pair<unsigned int,unsigned int> > >::_Umove<std::pair<unsigned int,unsigned int> *>, COMDAT
 ; _this$ = ecx
@@ -14599,7 +14599,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$100810[ebp]
+	mov	eax, DWORD PTR __Cat$100812[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -14832,9 +14832,9 @@ __ehfuncinfo$?reserve@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$82355 = -20					; size = 4
+__Ptr$82357 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$101223 = 8					; size = 1
+__Cat$101225 = 8					; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXI@Z PROC ; std::vector<std::pair<unsigned int,unsigned int>,std::allocator<std::pair<unsigned int,unsigned int> > >::reserve, COMDAT
 ; _this$ = ecx
@@ -14878,7 +14878,7 @@ $LN5@reserve@5:
 	mov	ecx, edi
 	call	?allocate@?$allocator@U?$pair@II@std@@@std@@QAEPAU?$pair@II@2@I@Z ; std::allocator<std::pair<unsigned int,unsigned int> >::allocate
 ; Line 754
-	mov	edx, DWORD PTR __Cat$101223[ebp]
+	mov	edx, DWORD PTR __Cat$101225[ebp]
 	mov	ecx, DWORD PTR [esi]
 	push	edx
 	push	0
@@ -14888,7 +14888,7 @@ $LN5@reserve@5:
 	push	ebx
 	push	eax
 	push	ecx
-	mov	DWORD PTR __Ptr$82355[ebp], ebx
+	mov	DWORD PTR __Ptr$82357[ebp], ebx
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAU?$pair@II@std@@PAU12@V?$allocator@U?$pair@II@std@@@2@U12@@std@@YAPAU?$pair@II@0@PAU10@00AAV?$allocator@U?$pair@II@std@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<std::pair<unsigned int,unsigned int> *,std::pair<unsigned int,unsigned int> *,std::allocator<std::pair<unsigned int,unsigned int> >,std::pair<unsigned int,unsigned int> >
 ; Line 760
@@ -14927,7 +14927,7 @@ $LN3@reserve@5:
 	ret	4
 __catch$?reserve@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$82355[ebp]
+	mov	eax, DWORD PTR __Ptr$82357[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -15094,18 +15094,18 @@ PUBLIC	?init@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAEXAAUAnimationBlock
 ; Function compile flags: /Ogtp
 ;	COMDAT ?init@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z
 _TEXT	SEGMENT
-_r$78284 = -16						; size = 8
-_r$78281 = -16						; size = 8
+_r$78286 = -16						; size = 8
+_r$78283 = -16						; size = 8
 _ptimes$ = -12						; size = 4
 tv1398 = -8						; size = 4
-_i$78288 = -8						; size = 4
+_i$78290 = -8						; size = 4
 _this$ = -4						; size = 4
 _b$ = 8							; size = 4
 tv1103 = 12						; size = 4
 _f$ = 12						; size = 4
 tv1105 = 16						; size = 4
-$T101504 = 16						; size = 4
-_i$78276 = 16						; size = 4
+$T101506 = 16						; size = 4
+_i$78278 = 16						; size = 4
 _gs$ = 16						; size = 4
 ?init@?$Animated@VVec3D@@V1@V?$Identity@VVec3D@@@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z PROC ; Animated<Vec3D,Vec3D,Identity<Vec3D> >::init, COMDAT
 ; _this$ = ecx
@@ -15144,7 +15144,7 @@ _gs$ = 16						; size = 4
 	mov	eax, DWORD PTR [eax+1028]
 	add	eax, DWORD PTR [edi+8]
 ; Line 170
-	mov	DWORD PTR _i$78276[ebp], edx
+	mov	DWORD PTR _i$78278[ebp], edx
 	cmp	ecx, edx
 	jbe	$LN292@init
 ; Line 169
@@ -15156,10 +15156,10 @@ $LL18@init:
 	mov	edx, DWORD PTR [ebx+4]
 ; Line 175
 	mov	eax, DWORD PTR [esi+20]
-	mov	DWORD PTR _r$78281[ebp], ecx
+	mov	DWORD PTR _r$78283[ebp], ecx
 	add	ebx, 8
-	lea	ecx, DWORD PTR _r$78281[ebp]
-	mov	DWORD PTR _r$78281[ebp+4], edx
+	lea	ecx, DWORD PTR _r$78283[ebp]
+	mov	DWORD PTR _r$78283[ebp+4], edx
 	mov	DWORD PTR tv1398[ebp], ebx
 	cmp	ecx, eax
 	jae	SHORT $LN294@init
@@ -15250,15 +15250,15 @@ $LN295@init:
 	mov	eax, DWORD PTR [esi+20]
 	test	eax, eax
 	je	SHORT $LN140@init
-	mov	ecx, DWORD PTR _r$78281[ebp]
-	mov	edx, DWORD PTR _r$78281[ebp+4]
+	mov	ecx, DWORD PTR _r$78283[ebp]
+	mov	edx, DWORD PTR _r$78283[ebp+4]
 	mov	DWORD PTR [eax], ecx
 	mov	DWORD PTR [eax+4], edx
 $LN140@init:
-	mov	eax, DWORD PTR _i$78276[ebp]
+	mov	eax, DWORD PTR _i$78278[ebp]
 	add	DWORD PTR [esi+20], 8
 	inc	eax
-	mov	DWORD PTR _i$78276[ebp], eax
+	mov	DWORD PTR _i$78278[ebp], eax
 	cmp	eax, DWORD PTR [edi+4]
 	jb	$LL18@init
 ; Line 188
@@ -15276,13 +15276,13 @@ $LN19@init:
 	jne	SHORT $LN292@init
 ; Line 181
 	mov	eax, DWORD PTR [edi+20]
-	mov	DWORD PTR _r$78284[ebp], edx
+	mov	DWORD PTR _r$78286[ebp], edx
 ; Line 182
-	lea	edx, DWORD PTR _r$78284[ebp]
+	lea	edx, DWORD PTR _r$78286[ebp]
 	dec	eax
 	lea	ecx, DWORD PTR [esi+16]
 	push	edx
-	mov	DWORD PTR _r$78284[ebp+4], eax
+	mov	DWORD PTR _r$78286[ebp+4], eax
 	call	?push_back@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXABU?$pair@II@2@@Z ; std::vector<std::pair<unsigned int,unsigned int>,std::allocator<std::pair<unsigned int,unsigned int> > >::push_back
 $LN292@init:
 ; Line 187
@@ -15292,7 +15292,7 @@ $LN292@init:
 ; Line 188
 	xor	ecx, ecx
 	mov	DWORD PTR _ptimes$[ebp], eax
-	mov	DWORD PTR _i$78288[ebp], ecx
+	mov	DWORD PTR _i$78290[ebp], ecx
 	cmp	DWORD PTR [edi+12], ecx
 	jbe	$LN11@init
 	jmp	SHORT $LN13@init
@@ -15302,12 +15302,12 @@ $LL298@init:
 $LN13@init:
 	mov	ebx, DWORD PTR [eax+ecx*4]
 	mov	eax, DWORD PTR [esi+36]
-	lea	edx, DWORD PTR $T101504[ebp]
-	mov	DWORD PTR $T101504[ebp], ebx
+	lea	edx, DWORD PTR $T101506[ebp]
+	mov	DWORD PTR $T101506[ebp], ebx
 	cmp	edx, eax
 	jae	SHORT $LN296@init
 	mov	edx, DWORD PTR [esi+32]
-	lea	ecx, DWORD PTR $T101504[ebp]
+	lea	ecx, DWORD PTR $T101506[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN296@init
 	mov	edi, ecx
@@ -15392,10 +15392,10 @@ $LN297@init:
 	je	SHORT $LN260@init
 	mov	DWORD PTR [eax], ebx
 $LN260@init:
-	mov	ecx, DWORD PTR _i$78288[ebp]
+	mov	ecx, DWORD PTR _i$78290[ebp]
 	add	DWORD PTR [esi+36], 4
 	inc	ecx
-	mov	DWORD PTR _i$78288[ebp], ecx
+	mov	DWORD PTR _i$78290[ebp], ecx
 	cmp	ecx, DWORD PTR [edi+12]
 	jb	$LL298@init
 $LN11@init:
@@ -15482,28 +15482,28 @@ PUBLIC	?init@?$Animated@MFVShortToFloat@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PA
 ; Function compile flags: /Ogtp
 ;	COMDAT ?init@?$Animated@MFVShortToFloat@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z
 _TEXT	SEGMENT
-_r$78384 = -16						; size = 8
-_r$78381 = -16						; size = 8
+_r$78386 = -16						; size = 8
+_r$78383 = -16						; size = 8
 _keys$ = -12						; size = 4
 _ptimes$ = -12						; size = 4
 tv3311 = -8						; size = 4
-_i$78406 = -8						; size = 4
-_i$78388 = -8						; size = 4
+_i$78408 = -8						; size = 4
+_i$78390 = -8						; size = 4
 _this$ = -4						; size = 4
 _b$ = 8							; size = 4
 tv3451 = 12						; size = 4
 tv3433 = 12						; size = 4
-$T102522 = 12						; size = 4
+$T102524 = 12						; size = 4
 _f$ = 12						; size = 4
 tv3485 = 16						; size = 4
 tv3468 = 16						; size = 4
 tv3450 = 16						; size = 4
+$T102527 = 16						; size = 4
+$T102526 = 16						; size = 4
 $T102525 = 16						; size = 4
-$T102524 = 16						; size = 4
+_i$78402 = 16						; size = 4
 $T102523 = 16						; size = 4
-_i$78400 = 16						; size = 4
-$T102521 = 16						; size = 4
-_i$78376 = 16						; size = 4
+_i$78378 = 16						; size = 4
 _gs$ = 16						; size = 4
 ?init@?$Animated@MFVShortToFloat@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z PROC ; Animated<float,short,ShortToFloat>::init, COMDAT
 ; _this$ = ecx
@@ -15541,7 +15541,7 @@ _gs$ = 16						; size = 4
 	mov	eax, DWORD PTR [eax+1028]
 	add	eax, DWORD PTR [edi+8]
 ; Line 170
-	mov	DWORD PTR _i$78376[ebp], edx
+	mov	DWORD PTR _i$78378[ebp], edx
 	cmp	ecx, edx
 	jbe	$LN14@init@2
 ; Line 169
@@ -15553,10 +15553,10 @@ $LL18@init@2:
 	mov	edx, DWORD PTR [ebx+4]
 ; Line 175
 	mov	eax, DWORD PTR [esi+20]
-	mov	DWORD PTR _r$78381[ebp], ecx
+	mov	DWORD PTR _r$78383[ebp], ecx
 	add	ebx, 8
-	lea	ecx, DWORD PTR _r$78381[ebp]
-	mov	DWORD PTR _r$78381[ebp+4], edx
+	lea	ecx, DWORD PTR _r$78383[ebp]
+	mov	DWORD PTR _r$78383[ebp+4], edx
 	mov	DWORD PTR tv3311[ebp], ebx
 	cmp	ecx, eax
 	jae	SHORT $LN32@init@2
@@ -15643,19 +15643,19 @@ $LN739@init@2:
 	mov	eax, DWORD PTR [esi+20]
 	test	eax, eax
 	je	SHORT $LN140@init@2
-	mov	ecx, DWORD PTR _r$78381[ebp]
-	mov	edx, DWORD PTR _r$78381[ebp+4]
+	mov	ecx, DWORD PTR _r$78383[ebp]
+	mov	edx, DWORD PTR _r$78383[ebp+4]
 	mov	DWORD PTR [eax], ecx
 $LN750@init@2:
 	mov	DWORD PTR [eax+4], edx
 $LN140@init@2:
 ; Line 170
-	mov	eax, DWORD PTR _i$78376[ebp]
+	mov	eax, DWORD PTR _i$78378[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
 ; Line 175
 	add	DWORD PTR [esi+20], 8
 	inc	eax
-	mov	DWORD PTR _i$78376[ebp], eax
+	mov	DWORD PTR _i$78378[ebp], eax
 	cmp	eax, DWORD PTR [ecx+4]
 	jb	$LL18@init@2
 ; Line 196
@@ -15673,15 +15673,15 @@ $LN19@init@2:
 	cmp	DWORD PTR [esi+8], -1
 	jne	SHORT $LN14@init@2
 ; Line 180
-	mov	DWORD PTR _r$78384[ebp], edx
+	mov	DWORD PTR _r$78386[ebp], edx
 ; Line 181
 	mov	edx, DWORD PTR [edi+20]
 ; Line 182
-	lea	eax, DWORD PTR _r$78384[ebp]
+	lea	eax, DWORD PTR _r$78386[ebp]
 	dec	edx
 	lea	ecx, DWORD PTR [esi+16]
 	push	eax
-	mov	DWORD PTR _r$78384[ebp+4], edx
+	mov	DWORD PTR _r$78386[ebp+4], edx
 	call	?push_back@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXABU?$pair@II@2@@Z ; std::vector<std::pair<unsigned int,unsigned int>,std::allocator<std::pair<unsigned int,unsigned int> > >::push_back
 $LN14@init@2:
 ; Line 187
@@ -15691,7 +15691,7 @@ $LN14@init@2:
 ; Line 188
 	xor	ecx, ecx
 	mov	DWORD PTR _ptimes$[ebp], eax
-	mov	DWORD PTR _i$78388[ebp], ecx
+	mov	DWORD PTR _i$78390[ebp], ecx
 	cmp	DWORD PTR [edi+12], ecx
 	jbe	$LN11@init@2
 	jmp	SHORT $LN13@init@2
@@ -15700,12 +15700,12 @@ $LL748@init@2:
 $LN13@init@2:
 	mov	edi, DWORD PTR [eax+ecx*4]
 	mov	eax, DWORD PTR [esi+36]
-	lea	edx, DWORD PTR $T102521[ebp]
-	mov	DWORD PTR $T102521[ebp], edi
+	lea	edx, DWORD PTR $T102523[ebp]
+	mov	DWORD PTR $T102523[ebp], edi
 	cmp	edx, eax
 	jae	SHORT $LN160@init@2
 	mov	edx, DWORD PTR [esi+32]
-	lea	ecx, DWORD PTR $T102521[ebp]
+	lea	ecx, DWORD PTR $T102523[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN160@init@2
 	mov	edi, ecx
@@ -15787,11 +15787,11 @@ $LN741@init@2:
 	je	SHORT $LN260@init@2
 	mov	DWORD PTR [eax], edi
 $LN260@init@2:
-	mov	ecx, DWORD PTR _i$78388[ebp]
+	mov	ecx, DWORD PTR _i$78390[ebp]
 	mov	edx, DWORD PTR _b$[ebp]
 	add	DWORD PTR [esi+36], 4
 	inc	ecx
-	mov	DWORD PTR _i$78388[ebp], ecx
+	mov	DWORD PTR _i$78390[ebp], ecx
 	cmp	ecx, DWORD PTR [edx+12]
 	jb	$LL748@init@2
 ; Line 196
@@ -15813,7 +15813,7 @@ $LN11@init@2:
 	jne	$LN5@init@2
 ; Line 199
 	cmp	DWORD PTR [edi+20], 0
-	mov	DWORD PTR _i$78406[ebp], 0
+	mov	DWORD PTR _i$78408[ebp], 0
 	jbe	$LN5@init@2
 	add	ecx, 4
 	mov	DWORD PTR tv3451[ebp], ecx
@@ -15826,9 +15826,9 @@ $LL738@init@2:
 	mov	esi, DWORD PTR _this$[ebp]
 	fild	DWORD PTR tv3485[ebp]
 	mov	eax, DWORD PTR [esi+52]
-	lea	ecx, DWORD PTR $T102523[ebp]
+	lea	ecx, DWORD PTR $T102525[ebp]
 	fdiv	QWORD PTR __real@40dfffc000000000
-	fstp	DWORD PTR $T102523[ebp]
+	fstp	DWORD PTR $T102525[ebp]
 	cmp	ecx, eax
 	jae	SHORT $LN384@init@2
 	mov	edx, DWORD PTR [esi+48]
@@ -15912,7 +15912,7 @@ $LN745@init@2:
 	mov	eax, DWORD PTR [esi+52]
 	test	eax, eax
 	je	SHORT $LN484@init@2
-	mov	edx, DWORD PTR $T102523[ebp]
+	mov	edx, DWORD PTR $T102525[ebp]
 	mov	DWORD PTR [eax], edx
 $LN484@init@2:
 	add	DWORD PTR [esi+52], ebx
@@ -15922,13 +15922,13 @@ $LN484@init@2:
 	mov	DWORD PTR tv3468[ebp], ecx
 	mov	eax, DWORD PTR [esi+68]
 	fild	DWORD PTR tv3468[ebp]
-	lea	edx, DWORD PTR $T102524[ebp]
+	lea	edx, DWORD PTR $T102526[ebp]
 	fdiv	QWORD PTR __real@40dfffc000000000
-	fstp	DWORD PTR $T102524[ebp]
+	fstp	DWORD PTR $T102526[ebp]
 	cmp	edx, eax
 	jae	SHORT $LN495@init@2
 	mov	edx, DWORD PTR [esi+64]
-	lea	ecx, DWORD PTR $T102524[ebp]
+	lea	ecx, DWORD PTR $T102526[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN495@init@2
 	mov	edi, ecx
@@ -16009,7 +16009,7 @@ $LN746@init@2:
 	mov	eax, DWORD PTR [esi+68]
 	test	eax, eax
 	je	SHORT $LN595@init@2
-	mov	edx, DWORD PTR $T102524[ebp]
+	mov	edx, DWORD PTR $T102526[ebp]
 	mov	DWORD PTR [eax], edx
 $LN595@init@2:
 	add	DWORD PTR [esi+68], ebx
@@ -16019,13 +16019,13 @@ $LN595@init@2:
 	mov	DWORD PTR tv3450[ebp], ecx
 	mov	eax, DWORD PTR [esi+84]
 	fild	DWORD PTR tv3450[ebp]
-	lea	edx, DWORD PTR $T102525[ebp]
+	lea	edx, DWORD PTR $T102527[ebp]
 	fdiv	QWORD PTR __real@40dfffc000000000
-	fstp	DWORD PTR $T102525[ebp]
+	fstp	DWORD PTR $T102527[ebp]
 	cmp	edx, eax
 	jae	SHORT $LN606@init@2
 	mov	edx, DWORD PTR [esi+80]
-	lea	ecx, DWORD PTR $T102525[ebp]
+	lea	ecx, DWORD PTR $T102527[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN606@init@2
 	mov	edi, ecx
@@ -16106,17 +16106,17 @@ $LN747@init@2:
 	mov	eax, DWORD PTR [esi+84]
 	test	eax, eax
 	je	SHORT $LN706@init@2
-	mov	edx, DWORD PTR $T102525[ebp]
+	mov	edx, DWORD PTR $T102527[ebp]
 	mov	DWORD PTR [eax], edx
 $LN706@init@2:
 ; Line 199
-	mov	eax, DWORD PTR _i$78406[ebp]
+	mov	eax, DWORD PTR _i$78408[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
 ; Line 203
 	add	DWORD PTR [esi+84], ebx
 	add	DWORD PTR tv3451[ebp], 6
 	inc	eax
-	mov	DWORD PTR _i$78406[ebp], eax
+	mov	DWORD PTR _i$78408[ebp], eax
 	cmp	eax, DWORD PTR [ecx+20]
 	jb	$LL738@init@2
 	pop	edi
@@ -16129,7 +16129,7 @@ $LN706@init@2:
 $LN8@init@2:
 ; Line 196
 	xor	ebx, ebx
-	mov	DWORD PTR _i$78400[ebp], ebx
+	mov	DWORD PTR _i$78402[ebp], ebx
 	cmp	DWORD PTR [edi+20], ebx
 	jbe	$LN5@init@2
 	npad	8
@@ -16139,9 +16139,9 @@ $LL742@init@2:
 	mov	DWORD PTR tv3433[ebp], eax
 	mov	eax, DWORD PTR [esi+52]
 	fild	DWORD PTR tv3433[ebp]
-	lea	ecx, DWORD PTR $T102522[ebp]
+	lea	ecx, DWORD PTR $T102524[ebp]
 	fdiv	QWORD PTR __real@40dfffc000000000
-	fstp	DWORD PTR $T102522[ebp]
+	fstp	DWORD PTR $T102524[ebp]
 	cmp	ecx, eax
 	jae	SHORT $LN273@init@2
 	mov	edx, DWORD PTR [esi+48]
@@ -16180,7 +16180,7 @@ $LN303@init@2:
 	push	ecx
 	lea	ecx, DWORD PTR [esi+48]
 	call	?reserve@?$vector@MV?$allocator@M@std@@@std@@QAEXI@Z ; std::vector<float,std::allocator<float> >::reserve
-	mov	ebx, DWORD PTR _i$78400[ebp]
+	mov	ebx, DWORD PTR _i$78402[ebp]
 $LN743@init@2:
 	mov	eax, DWORD PTR [esi+52]
 	test	eax, eax
@@ -16225,13 +16225,13 @@ $LN331@init@2:
 	mov	eax, DWORD PTR [esi+52]
 	test	eax, eax
 	je	SHORT $LN373@init@2
-	mov	edx, DWORD PTR $T102522[ebp]
+	mov	edx, DWORD PTR $T102524[ebp]
 	mov	DWORD PTR [eax], edx
 $LN373@init@2:
 	mov	eax, DWORD PTR _b$[ebp]
 	add	DWORD PTR [esi+52], 4
 	inc	ebx
-	mov	DWORD PTR _i$78400[ebp], ebx
+	mov	DWORD PTR _i$78402[ebp], ebx
 	cmp	ebx, DWORD PTR [eax+20]
 	jb	$LL742@init@2
 $LN5@init@2:
@@ -16249,20 +16249,20 @@ PUBLIC	?init@?$Animated@MMV?$Identity@M@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PA
 ; Function compile flags: /Ogtp
 ;	COMDAT ?init@?$Animated@MMV?$Identity@M@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z
 _TEXT	SEGMENT
-_r$78465 = -16						; size = 8
-_r$78462 = -16						; size = 8
+_r$78467 = -16						; size = 8
+_r$78464 = -16						; size = 8
 _ptimes$ = -12						; size = 4
 tv3273 = -8						; size = 4
-_i$78469 = -8						; size = 4
+_i$78471 = -8						; size = 4
 _this$ = -4						; size = 4
 _b$ = 8							; size = 4
 tv3349 = 12						; size = 4
-_i$78481 = 12						; size = 4
+_i$78483 = 12						; size = 4
 _f$ = 12						; size = 4
 tv3415 = 16						; size = 4
-_i$78495 = 16						; size = 4
-$T105313 = 16						; size = 4
-_i$78457 = 16						; size = 4
+_i$78497 = 16						; size = 4
+$T105315 = 16						; size = 4
+_i$78459 = 16						; size = 4
 _gs$ = 16						; size = 4
 ?init@?$Animated@MMV?$Identity@M@@@@QAEXAAUAnimationBlock@@AAVMPQFile@@PAH@Z PROC ; Animated<float,float,Identity<float> >::init, COMDAT
 ; _this$ = ecx
@@ -16298,7 +16298,7 @@ _gs$ = 16						; size = 4
 	mov	ecx, DWORD PTR [ecx+1028]
 	add	ecx, DWORD PTR [edi+8]
 ; Line 170
-	mov	DWORD PTR _i$78457[ebp], ebx
+	mov	DWORD PTR _i$78459[ebp], ebx
 	cmp	eax, ebx
 	jbe	$LN14@init@3
 ; Line 169
@@ -16307,12 +16307,12 @@ $LL18@init@3:
 ; Line 174
 	mov	eax, DWORD PTR [ebx+4]
 	mov	edx, DWORD PTR [ebx]
-	mov	DWORD PTR _r$78462[ebp+4], eax
+	mov	DWORD PTR _r$78464[ebp+4], eax
 ; Line 175
 	mov	eax, DWORD PTR [esi+20]
 	add	ebx, 8
-	lea	ecx, DWORD PTR _r$78462[ebp]
-	mov	DWORD PTR _r$78462[ebp], edx
+	lea	ecx, DWORD PTR _r$78464[ebp]
+	mov	DWORD PTR _r$78464[ebp], edx
 	mov	DWORD PTR tv3273[ebp], ebx
 	cmp	ecx, eax
 	jae	SHORT $LN32@init@3
@@ -16399,19 +16399,19 @@ $LN739@init@3:
 	mov	eax, DWORD PTR [esi+20]
 	test	eax, eax
 	je	SHORT $LN140@init@3
-	mov	ecx, DWORD PTR _r$78462[ebp]
-	mov	edx, DWORD PTR _r$78462[ebp+4]
+	mov	ecx, DWORD PTR _r$78464[ebp]
+	mov	edx, DWORD PTR _r$78464[ebp+4]
 	mov	DWORD PTR [eax], ecx
 $LN746@init@3:
 	mov	DWORD PTR [eax+4], edx
 $LN140@init@3:
 ; Line 170
-	mov	eax, DWORD PTR _i$78457[ebp]
+	mov	eax, DWORD PTR _i$78459[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
 ; Line 175
 	add	DWORD PTR [esi+20], 8
 	inc	eax
-	mov	DWORD PTR _i$78457[ebp], eax
+	mov	DWORD PTR _i$78459[ebp], eax
 	cmp	eax, DWORD PTR [ecx+4]
 	jb	$LL18@init@3
 ; Line 196
@@ -16432,12 +16432,12 @@ $LN19@init@3:
 ; Line 181
 	mov	edx, DWORD PTR [edi+20]
 ; Line 182
-	lea	eax, DWORD PTR _r$78465[ebp]
+	lea	eax, DWORD PTR _r$78467[ebp]
 	dec	edx
 	lea	ecx, DWORD PTR [esi+16]
 	push	eax
-	mov	DWORD PTR _r$78465[ebp], ebx
-	mov	DWORD PTR _r$78465[ebp+4], edx
+	mov	DWORD PTR _r$78467[ebp], ebx
+	mov	DWORD PTR _r$78467[ebp+4], edx
 	call	?push_back@?$vector@U?$pair@II@std@@V?$allocator@U?$pair@II@std@@@2@@std@@QAEXABU?$pair@II@2@@Z ; std::vector<std::pair<unsigned int,unsigned int>,std::allocator<std::pair<unsigned int,unsigned int> > >::push_back
 $LN14@init@3:
 ; Line 187
@@ -16447,7 +16447,7 @@ $LN14@init@3:
 ; Line 188
 	xor	ecx, ecx
 	mov	DWORD PTR _ptimes$[ebp], eax
-	mov	DWORD PTR _i$78469[ebp], ecx
+	mov	DWORD PTR _i$78471[ebp], ecx
 	cmp	DWORD PTR [edi+12], ebx
 	jbe	$LN11@init@3
 	jmp	SHORT $LN13@init@3
@@ -16456,12 +16456,12 @@ $LL744@init@3:
 $LN13@init@3:
 	mov	edi, DWORD PTR [eax+ecx*4]
 	mov	eax, DWORD PTR [esi+36]
-	lea	edx, DWORD PTR $T105313[ebp]
-	mov	DWORD PTR $T105313[ebp], edi
+	lea	edx, DWORD PTR $T105315[ebp]
+	mov	DWORD PTR $T105315[ebp], edi
 	cmp	edx, eax
 	jae	SHORT $LN160@init@3
 	mov	edx, DWORD PTR [esi+32]
-	lea	ecx, DWORD PTR $T105313[ebp]
+	lea	ecx, DWORD PTR $T105315[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN160@init@3
 	mov	edi, ecx
@@ -16543,11 +16543,11 @@ $LN741@init@3:
 	je	SHORT $LN260@init@3
 	mov	DWORD PTR [eax], edi
 $LN260@init@3:
-	mov	ecx, DWORD PTR _i$78469[ebp]
+	mov	ecx, DWORD PTR _i$78471[ebp]
 	mov	edx, DWORD PTR _b$[ebp]
 	add	DWORD PTR [esi+36], 4
 	inc	ecx
-	mov	DWORD PTR _i$78469[ebp], ecx
+	mov	DWORD PTR _i$78471[ebp], ecx
 	cmp	ecx, DWORD PTR [edx+12]
 	jb	$LL744@init@3
 ; Line 196
@@ -16568,7 +16568,7 @@ $LN11@init@3:
 	cmp	ecx, 2
 	jne	$LN5@init@3
 ; Line 199
-	mov	DWORD PTR _i$78495[ebp], ebx
+	mov	DWORD PTR _i$78497[ebp], ebx
 	cmp	DWORD PTR [edi+20], ebx
 	jbe	$LN5@init@3
 	lea	ebx, DWORD PTR [eax+8]
@@ -16847,13 +16847,13 @@ $LN743@init@3:
 	mov	DWORD PTR [eax], edx
 $LN706@init@3:
 ; Line 199
-	mov	eax, DWORD PTR _i$78495[ebp]
+	mov	eax, DWORD PTR _i$78497[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
 ; Line 203
 	add	DWORD PTR [esi+84], 4
 	inc	eax
 	add	ebx, 12					; 0000000cH
-	mov	DWORD PTR _i$78495[ebp], eax
+	mov	DWORD PTR _i$78497[ebp], eax
 	mov	DWORD PTR tv3349[ebp], ebx
 	cmp	eax, DWORD PTR [ecx+20]
 	jb	$LL742@init@3
@@ -16866,7 +16866,7 @@ $LN706@init@3:
 	ret	12					; 0000000cH
 $LN8@init@3:
 ; Line 196
-	mov	DWORD PTR _i$78481[ebp], ebx
+	mov	DWORD PTR _i$78483[ebp], ebx
 	cmp	DWORD PTR [edi+20], ebx
 	jbe	$LN5@init@3
 	mov	ebx, eax
@@ -16960,12 +16960,12 @@ $LN738@init@3:
 	mov	edx, DWORD PTR [ebx]
 	mov	DWORD PTR [eax], edx
 $LN373@init@3:
-	mov	eax, DWORD PTR _i$78481[ebp]
+	mov	eax, DWORD PTR _i$78483[ebp]
 	mov	ecx, DWORD PTR _b$[ebp]
 	add	DWORD PTR [esi+52], 4
 	inc	eax
 	add	ebx, 4
-	mov	DWORD PTR _i$78481[ebp], eax
+	mov	DWORD PTR _i$78483[ebp], eax
 	mov	DWORD PTR tv3415[ebp], ebx
 	cmp	eax, DWORD PTR [ecx+20]
 	jb	$LL7@init@3
@@ -16986,7 +16986,7 @@ EXTRN	?frand@@YAMXZ:PROC				; frand
 EXTRN	?fixCoordSystem@@YA?AVVec3D@@V1@@Z:PROC		; fixCoordSystem
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T108104 = -64						; size = 12
+$T108106 = -64						; size = 12
 tv708 = -52						; size = 4
 tv702 = -48						; size = 4
 tv713 = -44						; size = 4
@@ -17003,8 +17003,8 @@ tv1056 = -40						; size = 4
 tv1054 = -40						; size = 4
 tv1052 = -40						; size = 4
 tv718 = -40						; size = 4
-$T108103 = -40						; size = 4
-_tc$75168 = -36						; size = 32
+$T108105 = -40						; size = 4
+_tc$75170 = -36						; size = 32
 __$ArrayPad$ = -4					; size = 4
 _f$ = 8							; size = 4
 _mta$ = 12						; size = 4
@@ -17244,8 +17244,8 @@ $LN64@init@4:
 	mov	DWORD PTR [eax+4], ecx
 	mov	edx, DWORD PTR [edi+16]
 	mov	DWORD PTR [eax+8], edx
-	lea	eax, DWORD PTR $T108104[ebp]
-	mov	DWORD PTR $T108103[ebp], esp
+	lea	eax, DWORD PTR $T108106[ebp]
+	mov	DWORD PTR $T108105[ebp], esp
 	push	eax
 	call	?fixCoordSystem@@YA?AVVec3D@@V1@@Z	; fixCoordSystem
 	mov	ecx, DWORD PTR [eax]
@@ -17338,20 +17338,20 @@ $LN6@init@4:
 $LL3@init@4:
 ; Line 76
 	push	edi
-	lea	ecx, DWORD PTR _tc$75168[ebp]
+	lea	ecx, DWORD PTR _tc$75170[ebp]
 	push	ecx
 	mov	ecx, esi
-	mov	DWORD PTR _tc$75168[ebp], ebx
-	mov	DWORD PTR _tc$75168[ebp+4], ebx
-	mov	DWORD PTR _tc$75168[ebp+8], ebx
-	mov	DWORD PTR _tc$75168[ebp+12], ebx
-	mov	DWORD PTR _tc$75168[ebp+16], ebx
-	mov	DWORD PTR _tc$75168[ebp+20], ebx
-	mov	DWORD PTR _tc$75168[ebp+24], ebx
-	mov	DWORD PTR _tc$75168[ebp+28], ebx
+	mov	DWORD PTR _tc$75170[ebp], ebx
+	mov	DWORD PTR _tc$75170[ebp+4], ebx
+	mov	DWORD PTR _tc$75170[ebp+8], ebx
+	mov	DWORD PTR _tc$75170[ebp+12], ebx
+	mov	DWORD PTR _tc$75170[ebp+16], ebx
+	mov	DWORD PTR _tc$75170[ebp+20], ebx
+	mov	DWORD PTR _tc$75170[ebp+24], ebx
+	mov	DWORD PTR _tc$75170[ebp+28], ebx
 	call	?initTile@ParticleSystem@@AAEXPAVVec2D@@H@Z ; ParticleSystem::initTile
 ; Line 77
-	lea	edx, DWORD PTR _tc$75168[ebp]
+	lea	edx, DWORD PTR _tc$75170[ebp]
 	push	edx
 	lea	ecx, DWORD PTR [esi+1092]
 	call	?push_back@?$vector@UTexCoordSet@@V?$allocator@UTexCoordSet@@@std@@@std@@QAEXABUTexCoordSet@@@Z ; std::vector<TexCoordSet,std::allocator<TexCoordSet> >::push_back
@@ -17376,7 +17376,7 @@ _TEXT	ENDS
 PUBLIC	?init@RibbonEmitter@@QAEXAAVMPQFile@@AAUModelRibbonEmitterDef@@PAH@Z ; RibbonEmitter::init
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T108211 = -12						; size = 12
+$T108213 = -12						; size = 12
 _f$ = 8							; size = 4
 _mta$ = 12						; size = 4
 tv308 = 16						; size = 4
@@ -17445,7 +17445,7 @@ _globals$ = 16						; size = 4
 	mov	edx, DWORD PTR [edi+12]
 	mov	DWORD PTR [eax+4], edx
 	mov	ecx, DWORD PTR [edi+16]
-	lea	edx, DWORD PTR $T108211[ebp]
+	lea	edx, DWORD PTR $T108213[ebp]
 	push	edx
 	mov	DWORD PTR [eax+8], ecx
 	call	?fixCoordSystem@@YA?AVVec3D@@V1@@Z	; fixCoordSystem

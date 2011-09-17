@@ -5,7 +5,7 @@
 void Plane::normalize()
 {
 	float len;
-	len = sqrtf(a*a + b*b + c*c);
+	len = sqrtf(a * a + b * b + c * c);
 	a /= len;
 	b /= len;
 	c /= len;
@@ -66,8 +66,9 @@ void Frustum::retrieve()
 
 bool Frustum::contains(const Vec3D &v) const
 {
-	for (int i=0; i<6; i++) {
-		if ((planes[i].a*v.x + planes[i].b*v.y + planes[i].c*v.z + planes[i].d) <= 0)
+	for(int i = 0; i < 6; i++)
+	{
+		if((planes[i].a * v.x + planes[i].b * v.y + planes[i].c * v.z + planes[i].d) <= 0)
 		{
             return false;
 		}
@@ -87,19 +88,20 @@ bool Frustum::intersects(const Vec3D &v1, const Vec3D &v2) const
 	points[6] = Vec3D(v2.x,v2.y-gWorld->LowerTerrain,v1.z);
 	points[7] = Vec3D(v2.x,v2.y-gWorld->LowerTerrain,v2.z);
 	
- 	for (int i=0; i<6; i++)
+ 	for (int i = 0; i < 6; i++)
 	{
 		int numIn = 0;
 
-		for (int k=0; k<8; k++)
+		for(int k = 0; k < 8; k++)
 		{
-			if ((planes[i].a*points[k].x + planes[i].b*points[k].y + planes[i].c*points[k].z + planes[i].d) > 0)
+			if((planes[i].a * points[k].x + planes[i].b * points[k].y + planes[i].c * points[k].z + planes[i].d) > 0)
 			{
 				numIn++;
 			}
 		}
 
-		if (numIn == 0) return false;
+		if(numIn == 0)
+			return false;
 	}
 
 	return true;
@@ -109,9 +111,10 @@ bool Frustum::intersectsSphere(const Vec3D& v, const float rad) const
 {
 	for(int i = 0; i < 6; ++i)
 	{
-		float distance = (planes[i].a*v.x + planes[i].b*v.y + planes[i].c*v.z + planes[i].d);
-		if (distance < -rad) return false;
-		if (fabs(distance) < rad) return true;
+		float distance = (planes[i].a * v.x + planes[i].b * v.y + planes[i].c * v.z + planes[i].d);
+		if(distance < -rad) return false;
+		if(fabs(distance) < rad) return true;
 	}
+
 	return true;
 }

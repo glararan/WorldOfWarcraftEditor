@@ -12,9 +12,9 @@ void ConvertStringToWChar (LPCTSTR str, WCHAR *buffer)
 
 void CreatePath(const char *fname)
 {
-	int		i;
-	char	path[MAX_PATH];
-	WCHAR	buffer[MAX_PATH];
+	int	i;
+	char path[MAX_PATH];
+	WCHAR buffer[MAX_PATH];
 	
 	strcpy(path,fname);
 
@@ -24,6 +24,6 @@ void CreatePath(const char *fname)
 		i--;
 	path[i] = 0;
 
-	ConvertStringToWChar(path,buffer);
-	SHCreateDirectory(NULL,buffer);
+	ConvertStringToWChar(path, buffer);
+	SHCreateDirectory(NULL, buffer);
 }

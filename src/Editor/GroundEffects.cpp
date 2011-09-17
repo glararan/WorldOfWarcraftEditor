@@ -9,11 +9,11 @@ using namespace std;
 
 struct ToLower
 {
-    char operator() (char c) const  { return std::tolower(c); }
+    char operator() (char c) const  { return tolower(c); }
 };
 
-std::map<int,GroundEffectTexture>	groundEffectTextureData;
-std::map<int,GroundEffectDoodad>	groundEffectDoodadData;
+map<int, GroundEffectTexture> groundEffectTextureData;
+map<int, GroundEffectDoodad> groundEffectDoodadData;
 
 DBCFile	groundEffectTextureDBC("DBFilesClient\\GroundEffectTexture.dbc");
 DBCFile	groundEffectDoodadDBC("DBFilesClient\\GroundEffectDoodad.dbc");
@@ -24,6 +24,7 @@ void InitGroundEffects()
 	char *Temp2;
 	GroundEffectTexture	tmpGroundEffectTexture;
 	groundEffectTextureDBC.open();
+
 	for(DBCFile::Iterator i = groundEffectTextureDBC.begin(); i != groundEffectTextureDBC.end();i++)
 	{
 		tmpGroundEffectTexture.id = i->getUInt(0);
@@ -40,29 +41,30 @@ void InitGroundEffects()
 		tmpGroundEffectTexture.doodad[3]=i->getUInt(8);*/
 
 		//New Patch 1.11 method
-		tmpGroundEffectTexture.doodad[0]=i->getUInt(1);
-		tmpGroundEffectTexture.doodad[1]=i->getUInt(2);
-		tmpGroundEffectTexture.doodad[2]=i->getUInt(3);
-		tmpGroundEffectTexture.doodad[3]=i->getUInt(4);
-		groundEffectTextureData[tmpGroundEffectTexture.id]=tmpGroundEffectTexture;
+		tmpGroundEffectTexture.doodad[0] = i->getUInt(1);
+		tmpGroundEffectTexture.doodad[1] = i->getUInt(2);
+		tmpGroundEffectTexture.doodad[2] = i->getUInt(3);
+		tmpGroundEffectTexture.doodad[3] = i->getUInt(4);
+		groundEffectTextureData[tmpGroundEffectTexture.id] = tmpGroundEffectTexture;
 	}
 
-	GroundEffectDoodad	tmpGroundEffectDoodad;
+	GroundEffectDoodad tmpGroundEffectDoodad;
 	groundEffectDoodadDBC.open();
-	for(DBCFile::Iterator i = groundEffectDoodadDBC.begin(); i != groundEffectDoodadDBC.end();i++)
+
+	for(DBCFile::Iterator i = groundEffectDoodadDBC.begin(); i != groundEffectDoodadDBC.end(); i++)
 	{
 		tmpGroundEffectDoodad.id = i->getUInt(0);
-		tmpGroundEffectDoodad.doodadID = i->getUInt(1);
-		tmpGroundEffectDoodad.Model = i->getString(2);
+		tmpGroundEffectDoodad.Model = i->getString(1);
+		tmpGroundEffectDoodad.flags = i->getUInt(2);
 
-		groundEffectDoodadData[tmpGroundEffectDoodad.doodadID]=tmpGroundEffectDoodad;
+		groundEffectDoodadData[tmpGroundEffectDoodad.flags] = tmpGroundEffectDoodad;
 	}
 }
 
-const char* getGroundEffectDoodad(unsigned int effectID, int DoodadNum)
+const char* getGroundEffectDoodad(unsigned int effectID, int amount)
 {
-	if(groundEffectTextureData[effectID].doodad[DoodadNum] != -1)
-		return groundEffectDoodadData[groundEffectTextureData[effectID].doodad[DoodadNum]].Model;
+	if(groundEffectTextureData[effectID].doodad[amount] != -1)
+		return groundEffectDoodadData[groundEffectTextureData[effectID].doodad[amount]].Model;
 	else
 		return 0;
 }
@@ -72,11 +74,11 @@ unsigned int findEffectID(const char *tex)
 	//Blizzard decided to remove texture names from DBC's
 	return 0;
 	
-	for(std::map<int,GroundEffectTexture>::iterator i = groundEffectTextureData.begin(); i != groundEffectTextureData.end();i++)
+	for(map<int, GroundEffectTexture>::iterator i = groundEffectTextureData.begin(); i != groundEffectTextureData.end(); i++)
 	{
-		const char *Tmp = i->second.texture;
+		const char *Tmp = i->second.terraintype;
 		if(strcmp(Tmp,tex) == 0)
-			return  i->second.id;
+			return i->second.id;
 	}
 	return 0;
 }

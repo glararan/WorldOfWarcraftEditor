@@ -33,8 +33,8 @@ class Liquid
 	bool trans;
 
 	Vec3D *verts;
-	unsigned char  *color;
-	unsigned char	*waterFlags;
+	unsigned char *color;
+	unsigned char *waterFlags;
 
 public:
 

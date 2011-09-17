@@ -12,32 +12,33 @@ extern char wowpath[1024];
 MPQArchive::MPQArchive(const char* filename)
 {
 	int result = libmpq__archive_open(&mpq_a, filename, -1);
-	gLog("[World of Warcraft Studio - Editor] - Opening %s\n", filename);
+	gLog("[World of Warcraft Studio - Editor] - Opening : %s\n", filename);
 	if(result)
 	{
-        switch(result) {
-            case LIBMPQ_ERROR_OPEN:
-                gLog("[World of Warcraft Studio - Editor] - Error opening archive '%s': Does file really exist?\n", filename);
+        switch(result)
+		{
+			case LIBMPQ_ERROR_OPEN:
+                gLog("[World of Warcraft Studio - Editor] - Error opening archive : '%s': Does file really exist?\n", filename);
                 break;
 
-            case LIBMPQ_ERROR_FORMAT:  /* bad file format */
-                gLog("[World of Warcraft Studio - Editor] - Error opening archive '%s': Bad file format\n", filename);
+			case LIBMPQ_ERROR_FORMAT:  /* bad file format */
+                gLog("[World of Warcraft Studio - Editor] - Error opening archive : '%s': Bad file format\n", filename);
                 break;
 
-            case LIBMPQ_ERROR_SEEK:   /* seeking in file failed */
-                gLog("[World of Warcraft Studio - Editor] - Error opening archive '%s': Seeking in file failed\n", filename);
+			case LIBMPQ_ERROR_SEEK:   /* seeking in file failed */
+                gLog("[World of Warcraft Studio - Editor] - Error opening archive : '%s': Seeking in file failed\n", filename);
                 break;
 
             case LIBMPQ_ERROR_READ:   /* Read error in archive */
-                gLog("[World of Warcraft Studio - Editor] - Error opening archive '%s': Read error in archive\n", filename);
+                gLog("[World of Warcraft Studio - Editor] - Error opening archive : '%s': Read error in archive\n", filename);
                 break;
 
             case LIBMPQ_ERROR_MALLOC: /* maybe not enough memory? :) */
-                gLog("[World of Warcraft Studio - Editor] - Error opening archive '%s': Maybe not enough memory\n", filename);
+                gLog("[World of Warcraft Studio - Editor] - Error opening archive : '%s': Maybe not enough memory\n", filename);
                 break;
 
             default:
-				gLog("[World of Warcraft Studio - Editor] - Error opening archive %s\n", filename);
+				gLog("[World of Warcraft Studio - Editor] - Error opening archive : %s\n", filename);
 				break;
 		}
 		return;
@@ -51,52 +52,48 @@ void MPQArchive::close()
 	libmpq__archive_close(mpq_a);
 }
 
-MPQFile::MPQFile(const char* filename):
-	eof(false),
-	buffer(0),
-	pointer(0),
-	size(0)
+MPQFile::MPQFile(const char* filename) : eof(false), buffer(0), pointer(0), size(0)
 {
 	char Temp[1024];
 
-	gLog("[World of Warcraft Studio - Editor] - Attempting to Load File %s\n",filename);
-	sprintf(Temp,"%s\\%s",wowpath,filename);
-	strcpy(fname,Temp);
+	gLog("[World of Warcraft Studio - Editor] - Attempting to Load File : %s\n", filename);
+	sprintf(Temp, "%s\\%s", wowpath, filename);
+	strcpy(fname, Temp);
 	FILE* fd;
-	fd = fopen(Temp,"rb");
+	fd = fopen(Temp, "rb");
 
-	if(fd!=NULL)
+	if(fd != NULL)
 	{
-		gLog("[World of Warcraft Studio - Editor] - File %s found in root directory\n",filename);
-		fseek(fd,0,SEEK_END);
-		size=ftell(fd);
+		gLog("[World of Warcraft Studio - Editor] - File : %s found in root directory\n", filename);
+		fseek(fd, 0, SEEK_END);
+		size = ftell(fd);
 		
 		buffer = new char[size];
-		fseek(fd,0,SEEK_SET);
-		fread(buffer,1,size,fd);
+		fseek(fd, 0, SEEK_SET);
+		fread(buffer, 1, size, fd);
 		fclose(fd);
-		External=true;
+		External = true;
 		return;
 	}
 
-	sprintf(Temp,"%s\\data\\%s",wowpath,filename);
-	fd = fopen(Temp,"rb");
+	sprintf(Temp, "%s\\data\\%s", wowpath, filename);
+	fd = fopen(Temp, "rb");
 
-	if(fd!=NULL)
+	if(fd != NULL)
 	{
-		gLog("[World of Warcraft Studio - Editor] - File %s found in data directory\n",filename);
-		fseek(fd,0,SEEK_END);
+		gLog("[World of Warcraft Studio - Editor] - File : %s found in data directory\n", filename);
+		fseek(fd, 0, SEEK_END);
 		size=ftell(fd);
 		
 		buffer = new char[size];
-		fseek(fd,0,SEEK_SET);
-		fread(buffer,1,size,fd);
+		fseek(fd, 0, SEEK_SET);
+		fread(buffer, 1, size, fd);
 		fclose(fd);
-		External=true;
+		External = true;
 		return;
 	}
 
-	for(ArchiveSet::iterator i=gOpenArchives.begin(); i!=gOpenArchives.end();++i)
+	for(ArchiveSet::iterator i = gOpenArchives.begin(); i != gOpenArchives.end();++i)
 	{
 		mpq_archive *mpq_a = (*i)->mpq_a;
 		uint32_t fileno;
@@ -106,12 +103,12 @@ MPQFile::MPQFile(const char* filename):
 		libmpq__off_t transferred;
         libmpq__file_unpacked_size(mpq_a, fileno, &size);
 
-		gLog("[World of Warcraft Studio - Editor] - File %s found inside %s\n", filename, (char)filename[259]); 
+		gLog("[World of Warcraft Studio - Editor] - File : %s found inside : %s\n", filename, filename[259]); 
 
 		// HACK: in patch.mpq some files don't want to open and give 1 for filesize
-		if (size<=1)
+		if (size <= 1)
 		{
-			gLog("[World of Warcraft Studio - Editor] - Invalid File of size 1 for file %s (damn Blizzard :-p)\n",filename);
+			gLog("[World of Warcraft Studio - Editor] - Invalid File of size 1 for file : %s (damn Blizzard :-p)\n", filename);
 			eof = true;
 			buffer = 0;
 			return;
@@ -120,26 +117,22 @@ MPQFile::MPQFile(const char* filename):
 
 		//libmpq__file_getdata(&mpq_a, fileno, (unsigned char*)buffer);
 		libmpq__file_read(mpq_a, fileno, (unsigned char*)buffer, size, &transferred);
-		External=false;
+		External = false;
 		return;
 	}
-	gLog("[World of Warcraft Studio - Editor] - Unable to find file %s\n",filename);
+	gLog("[World of Warcraft Studio - Editor] - Unable to find file %s\n", filename);
 	eof = true;
 	buffer = 0;
 }
 
-MPQFile::MPQFile(const char* filename, bool Fake):
-	eof(false),
-	buffer(0),
-	pointer(0),
-	size(0)
+MPQFile::MPQFile(const char* filename, bool Fake) :	eof(false), buffer(0), pointer(0), size(0)
 {
 	char Temp[1024];
 
-	sprintf(Temp,"%s\\%s",wowpath,filename);
-	strcpy(fname,Temp);
+	sprintf(Temp, "%s\\%s", wowpath, filename);
+	strcpy(fname, Temp);
 
-	for(ArchiveSet::iterator i=gOpenArchives.begin(); i!=gOpenArchives.end();++i)
+	for(ArchiveSet::iterator i = gOpenArchives.begin(); i != gOpenArchives.end(); ++i)
 	{
 		mpq_archive *mpq_a = (*i)->mpq_a;
 		uint32_t fileno;
@@ -149,7 +142,7 @@ MPQFile::MPQFile(const char* filename, bool Fake):
         libmpq__file_unpacked_size(mpq_a, fileno, &size);
 		// Found!
 		// HACK: in patch.mpq some files don't want to open and give 1 for filesize
-		if (size<=1)
+		if (size <= 1)
 		{
 			eof = true;
 			buffer = 0;
@@ -158,7 +151,7 @@ MPQFile::MPQFile(const char* filename, bool Fake):
 		buffer = new char[size];
 		//libmpq__file_getdata(&mpq_a, fileno, (unsigned char*)buffer);
 		libmpq__file_read(mpq_a, fileno, (unsigned char*)buffer, size, &transferred);
-		External=false;
+		External = false;
 		return;
 	}
 	eof = true;
@@ -172,10 +165,10 @@ MPQFile::~MPQFile()
 
 size_t MPQFile::read(void* dest, size_t bytes)
 {
-	if (eof) return 0;
+	if(eof) return 0;
 
 	size_t rpos = pointer + bytes;
-	if (rpos > size)
+	if(rpos > size)
 	{
 		bytes = size - pointer;
 		eof = true;
@@ -213,21 +206,21 @@ void MPQFile::SaveFile()
 
 	CreatePath(fname);
 
-	fd = fopen(fname,"wb");
+	fd = fopen(fname, "wb");
 
-	if(fd!=NULL)
+	if(fd != NULL)
 	{
-		gLog("[World of Warcraft Studio - Editor] - Saving File %s\n",fname);
-		fseek(fd,0,SEEK_SET);
-		fwrite(buffer,1,size,fd);
+		gLog("[World of Warcraft Studio - Editor] - Saving File : %s\n", fname);
+		fseek(fd, 0, SEEK_SET);
+		fwrite(buffer, 1, size,fd);
 		fclose(fd);
-		External=true;
+		External = true;
 		return;
 	}
 }
 
 #if 0
-int _id=1;
+int _id = 1;
 
 MPQArchive::MPQArchive(const char* filename)
 {
@@ -239,7 +232,7 @@ MPQArchive::MPQArchive(const char* filename)
 	}
 	else
 	{
-		gLog("[World of Warcraft Studio - Editor] - Error opening archive %s\n", filename);
+		gLog("[World of Warcraft Studio - Editor] - Error opening archive : %s\n", filename);
 	}
 }
 

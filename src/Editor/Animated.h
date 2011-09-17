@@ -10,12 +10,14 @@
 #include "Vec3D.h"
 #include "Quaternion.h"
 
+using namespace std;
+
 // interpolation functions
 template<class T>
 
 inline T interpolate(const float r, const T &v1, const T &v2)
 {
-	return v1*(1.0f - r) + v2*r;
+	return v1 * (1.0f - r) + v2 * r;
 }
 
 template<class T>
@@ -25,13 +27,13 @@ inline T interpolateHermite(const float r, const T &v1, const T &v2, const T &in
     //return interpolate<T>(r,v1,v2);
 
 	// basis functions
-	float h1 = 2.0f*r*r*r - 3.0f*r*r + 1.0f;
-	float h2 = -2.0f*r*r*r + 3.0f*r*r;
-	float h3 = r*r*r - 2.0f*r*r + r;
-	float h4 = r*r*r - r*r;
+	float h1 = 2.0f * r * r * r - 3.0f * r * r + 1.0f;
+	float h2 = -2.0f * r * r * r + 3.0f * r * r;
+	float h3 = r * r * r - 2.0f * r * r + r;
+	float h4 = r * r * r - r * r;
 
 	// interpolation
-	return v1*h1 + v2*h2 + in*h3 + out*h4;
+	return v1 * h1 + v2 * h2 + in * h3 + out * h4;
 }
 
 // "linear" interpolation for quaternions should be slerp by default
@@ -41,7 +43,7 @@ inline Quaternion interpolate<Quaternion>(const float r, const Quaternion &v1, c
 	return Quaternion::slerp(r, v1, v2);
 }
 
-typedef std::pair<size_t, size_t> AnimRange;
+typedef pair<size_t, size_t> AnimRange;
 
 // global time for global sequences
 extern int globalTime;
@@ -83,7 +85,7 @@ public:
 		(by default this is an identity function)
 	(there might be a nicer way to do this? meh meh)
 */
-template <class T, class D=T, class Conv=Identity<T> >
+template <class T, class D = T, class Conv = Identity<T> >
 class Animated
 {
 public:
@@ -92,11 +94,11 @@ public:
 	int type, seq;
 	int *globals;
 
-	std::vector<AnimRange> ranges;
-	std::vector<int> times;
-	std::vector<T> data;
+	vector<AnimRange> ranges;
+	vector<int> times;
+	vector<T> data;
 	// for nonlinear interpolations:
-	std::vector<T> in, out;
+	vector<T> in, out;
 
 	T getValue(int anim, int time)
 	{
@@ -105,10 +107,12 @@ public:
 			AnimRange range;
 
 			// obtain a time value and a data range
-			if (seq!=-1)
+			if (seq != -1)
 			{
-				if (globals[seq]==0) time = 0;
-				else time = globalTime % globals[seq];
+				if(globals[seq] == 0)
+					time = 0;
+				else
+					time = globalTime % globals[seq];
 				range.first = 0;
 				range.second = data.size()-1;
 			}
@@ -118,13 +122,13 @@ public:
 				time %= times[times.size()-1]; // I think this might not be necessary?
 			}
 
- 			if (range.first != range.second)
+ 			if(range.first != range.second)
 			{
 				int t1, t2;
-				size_t pos=0;
-				for (size_t i=range.first; i<range.second; i++)
+				size_t pos = 0;
+				for(size_t i = range.first; i < range.second; i++)
 				{
-					if (time >= times[i] && time < times[i+1])
+					if(time >= times[i] && time < times[i+1])
 					{
 						pos = i;
 						break;
@@ -134,13 +138,15 @@ public:
 				t2 = times[pos+1];
 				float r = (time-t1)/(float)(t2-t1);
 
-				if (type == INTERPOLATION_LINEAR) return interpolate<T>(r,data[pos],data[pos+1]);
+				if (type == INTERPOLATION_LINEAR)
+					return interpolate<T>(r ,data[pos], data[pos + 1]);
 				else
 				{
 					// INTERPOLATION_HERMITE is only used in cameras afaik?
-					return interpolateHermite<T>(r,data[pos],data[pos+1],in[pos],out[pos]);
+					return interpolateHermite<T>(r, data[pos], data[pos + 1], in[pos], out[pos]);
 				}
-			} else
+			}
+			else
 			{
 				return data[range.first];
 			}
@@ -157,7 +163,7 @@ public:
 		globals = gs;
 		type = b.type;
 		seq = b.seq;
-		if (seq!=-1)
+		if(seq != -1)
 		{
             assert(gs);
 		}
@@ -167,14 +173,15 @@ public:
 		if (b.nRanges > 0)
 		{
 			uint32 *pranges = (uint32*)(f.getBuffer() + b.ofsRanges);
-			for (size_t i=0, k=0; i<b.nRanges; i++)
+			for(size_t i = 0, k = 0; i < b.nRanges; i++)
 			{
 				AnimRange r;
 				r.first = pranges[k++];
 				r.second = pranges[k++];
 				ranges.push_back(r);
 			}
-		} else if (type!=0 && seq==-1)
+		}
+		else if(type != 0 && seq == -1)
 		{
 			AnimRange r;
 			r.first = 0;
@@ -185,7 +192,8 @@ public:
 		// times
 		assert(b.nTimes == b.nKeys);
 		uint32 *ptimes = (uint32*)(f.getBuffer() + b.ofsTimes);
-		for (size_t i=0; i<b.nTimes; i++) times.push_back(ptimes[i]);
+		for(size_t i=0; i<b.nTimes; i++)
+			times.push_back(ptimes[i]);
 
 		// keyframes
 		D *keys = (D*)(f.getBuffer() + b.ofsKeys);
@@ -193,14 +201,14 @@ public:
 		{
 			case INTERPOLATION_NONE:
 			case INTERPOLATION_LINEAR:
-				for (size_t i=0; i<b.nKeys; i++) data.push_back(Conv::conv(keys[i]));
+				for (size_t i = 0; i < b.nKeys; i++) data.push_back(Conv::conv(keys[i]));
 				break;
 			case INTERPOLATION_HERMITE:
-				for (size_t i=0; i<b.nKeys; i++)
+				for (size_t i = 0; i < b.nKeys; i++)
 				{
-					data.push_back(Conv::conv(keys[i*3]));
-					in.push_back(Conv::conv(keys[i*3+1]));
-					out.push_back(Conv::conv(keys[i*3+2]));
+					data.push_back(Conv::conv(keys[i * 3]));
+					in.push_back(Conv::conv(keys[i * 3 + 1]));
+					out.push_back(Conv::conv(keys[i * 3 + 2]));
 				}
 				break;
 		}
@@ -212,13 +220,13 @@ public:
 		{
 			case INTERPOLATION_NONE:
 			case INTERPOLATION_LINEAR:
-				for (size_t i=0; i<data.size(); i++)
+				for (size_t i = 0; i < data.size(); i++)
 				{
                     data[i] = fixfunc(data[i]);
 				}
 				break;
 			case INTERPOLATION_HERMITE:
-				for (size_t i=0; i<data.size(); i++)
+				for (size_t i = 0; i < data.size(); i++)
 				{
                     data[i] = fixfunc(data[i]);
                     in[i] = fixfunc(in[i]);
@@ -230,6 +238,6 @@ public:
 
 };
 
-typedef Animated<float,short,ShortToFloat> AnimatedShort;
+typedef Animated<float, short, ShortToFloat> AnimatedShort;
 
 #endif

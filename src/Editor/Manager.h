@@ -4,14 +4,15 @@
 #include <string>
 #include <map>
 
+using namespace std;
 // base class for manager objects
 
 class ManagedItem
 {
 	int refcount;
 public:
-	std::string name;
-	ManagedItem(std::string n): name(n), refcount(0) {}
+	string name;
+	ManagedItem(string n): name(n), refcount(0) {}
 	virtual ~ManagedItem() {}
 
 	void addref()
@@ -29,14 +30,14 @@ template <class IDTYPE>
 class Manager
 {
 public:
-	std::map<std::string, IDTYPE> names;
-	std::map<IDTYPE, ManagedItem*> items;
+	map<string, IDTYPE> names;
+	map<IDTYPE, ManagedItem*> items;
 
 	Manager()
 	{
 	}
 
-	virtual IDTYPE add(std::string name) = 0;
+	virtual IDTYPE add(string name) = 0;
 
 	virtual void del(IDTYPE id)
 	{
@@ -50,25 +51,26 @@ public:
 		}
 	}
 
-	void delbyname(std::string name)
+	void delbyname(string name)
 	{
-		if (has(name)) del(get(name));
+		if(has(name))
+			del(get(name));
 	}
 
 	virtual void doDelete(IDTYPE id) {}
 
-	bool has(std::string name)
+	bool has(string name)
 	{
 		return (names.find(name) != names.end());
 	}
 
-	IDTYPE get(std::string name)
+	IDTYPE get(string name)
 	{
 		return names[name];
 	}
 
 protected:
-	void do_add(std::string name, IDTYPE id, ManagedItem* item)
+	void do_add(string name, IDTYPE id, ManagedItem* item)
 	{
 		names[name] = id;
 		item->addref();

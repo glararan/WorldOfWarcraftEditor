@@ -6,8 +6,8 @@ class Font;
 struct charinfo
 {
 	int baseline;
-	int x,y,w,h;
-	float tx1,tx2,ty1,ty2;
+	int x, y, w, h;
+	float tx1, tx2, ty1, ty2;
 };
 
 class Font
@@ -15,7 +15,7 @@ class Font
 public:
 
 	unsigned int tex;
-	int tw,th;
+	int tw, th;
 
 	int size;
 

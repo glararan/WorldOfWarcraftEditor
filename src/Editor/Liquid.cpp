@@ -18,13 +18,13 @@ void Liquid::initFromTerrain(MPQFile &f, int flags)
 	16 - magma
 	*/
 	ydir = 1.0f;
-	if (flags & 16)
+	if(flags & 16)
 	{
 		// magma:
 		initTextures("XTextures\\lava\\lava", 1, 30);
 		type = 0; // not colored
 	}
-	else if (flags & 4)
+	else if(flags & 4)
 	{
 		// river/lake
 		initTextures("XTextures\\river\\lake_a", 1, 30); // TODO: rivers etc.?
@@ -54,13 +54,13 @@ void Liquid::initFromWMO(MPQFile &f, WMOMaterial &mat, bool indoor)
 	trans = false;
 
 	// tmpflag is the flags value for the last drawn tile
-	if (tmpflag & 1)
+	if(tmpflag & 1)
 	{
 		initTextures("XTextures\\slime\\slime", 1, 30);
 		type = 0;
 		texRepeats = 2.0f;
 	}
-	else if (tmpflag & 2)
+	else if(tmpflag & 2)
 	{
 		initTextures("XTextures\\lava\\lava", 1, 30);
 		type = 0;
@@ -68,12 +68,14 @@ void Liquid::initFromWMO(MPQFile &f, WMOMaterial &mat, bool indoor)
 	else
 	{
 		initTextures("XTextures\\river\\lake_a", 1, 30);
-		if (indoor)
+		if(indoor)
 		{
 			trans = true;
 			type = 1;
 			col = Vec3D( ((mat.col2&0xFF0000)>>16)/255.0f, ((mat.col2&0xFF00)>>8)/255.0f, (mat.col2&0xFF)/255.0f);
-		} else {
+		}
+		else
+		{
 			trans = true;
 			type = 2; // outdoor water (...?)
 		}
@@ -109,21 +111,21 @@ void Liquid::initGeometry(MPQFile &f)
 	// assume: f is at the appropriate starting position
 
 	LiquidVertex *map = (LiquidVertex*) f.getPointer();
-	unsigned char *flags = (unsigned char*) (f.getPointer() + (xtiles+1)*(ytiles+1)*sizeof(LiquidVertex));
+	unsigned char *flags = (unsigned char*) (f.getPointer() + (xtiles + 1) * (ytiles + 1) * sizeof(LiquidVertex));
 	
 	//waterFlags=new unsigned char[(xtiles+1)*(ytiles+1)];
 	//memcpy(waterFlags,flags,(xtiles+1)*(ytiles+1));
 
 	// generate vertices
-	verts = new Vec3D[(xtiles+1)*(ytiles+1)];
+	verts = new Vec3D[(xtiles + 1) * (ytiles + 1)];
 	//color = new unsigned char[(xtiles+1)*(ytiles+1)];
-	for (int j=0; j<ytiles+1; j++)
+	for(int j = 0; j < ytiles + 1; j++)
 	{
-		for (int i=0; i<xtiles+1; i++)
+		for(int i = 0; i < xtiles + 1; i++)
 		{
-			size_t p = j*(xtiles+1)+i;
+			size_t p = j * (xtiles + 1) + i;
 			float h = map[p].h;
-			if (h > 100000) h = pos.y;
+			if(h > 100000) h = pos.y;
             verts[p] = Vec3D(pos.x + tilesize * i, h, pos.z + ydir * tilesize * j);
 			//color[p]= map[p].c[0];
 		}
@@ -136,39 +138,38 @@ void Liquid::initGeometry(MPQFile &f)
 	glNormal3f(0, 1, 0);
 	glBegin(GL_QUADS);
 	// draw tiles
-	for (int j=0; j<ytiles; j++)
+	for(int j = 0; j < ytiles; j++)
 	{
-		for (int i=0; i<xtiles; i++)
+		for(int i = 0; i < xtiles; i++)
 		{
-			unsigned char f = flags[j*xtiles+i];
-			if ((f&8)==0)
+			unsigned char f = flags[j * xtiles + i];
+			if((f&8) == 0)
 			{
 				tmpflag = f;
 				// 15 seems to be "don't draw"
-				size_t p = j*(xtiles+1)+i;
+				size_t p = j * (xtiles + 1) + i;
 
 				float c;
 				
-				c=(float)map[p].c[0]/255.0f;
-				glMultiTexCoord2fARB(GL_TEXTURE1_ARB,c,c);
+				c = (float)map[p].c[0]/255.0f;
+				glMultiTexCoord2fARB(GL_TEXTURE1_ARB, c, c);
 				glTexCoord2f(i / texRepeats, j / texRepeats);
 				glVertex3fv(verts[p]);
 				
-				c=(float)map[p+1].c[0]/255.0f;
-				glMultiTexCoord2fARB(GL_TEXTURE1_ARB,c,c);
-				glTexCoord2f((i+1) / texRepeats, j / texRepeats);
-				glVertex3fv(verts[p+1]);
+				c = (float)map[p+1].c[0]/255.0f;
+				glMultiTexCoord2fARB(GL_TEXTURE1_ARB, c, c);
+				glTexCoord2f((i + 1) / texRepeats, j / texRepeats);
+				glVertex3fv(verts[p + 1]);
 				
-				c=(float)map[p+xtiles+1+1].c[0]/255.0f;
-				glMultiTexCoord2fARB(GL_TEXTURE1_ARB,c,c);
-				glTexCoord2f((i+1) / texRepeats, (j+1) / texRepeats);
-				glVertex3fv(verts[p+xtiles+1+1]);
+				c = (float)map[p+xtiles+1+1].c[0]/255.0f;
+				glMultiTexCoord2fARB(GL_TEXTURE1_ARB, c, c);
+				glTexCoord2f((i + 1) / texRepeats, (j + 1) / texRepeats);
+				glVertex3fv(verts[p + xtiles + 1 + 1]);
 				
-				c=(float)map[p+xtiles+1].c[0]/255.0f;
-				glMultiTexCoord2fARB(GL_TEXTURE1_ARB,c,c);
-				glTexCoord2f(i / texRepeats, (j+1) / texRepeats);
-				glVertex3fv(verts[p+xtiles+1]);
-
+				c = (float)map[p+xtiles+1].c[0]/255.0f;
+				glMultiTexCoord2fARB(GL_TEXTURE1_ARB, c, c);
+				glTexCoord2f(i / texRepeats, (j + 1) / texRepeats);
+				glVertex3fv(verts[p + xtiles + 1]);
 			}
 		}
 	}
@@ -261,14 +262,14 @@ void Liquid::initGeometry(MPQFile &f)
 	*/
 }
 
-GLuint	waterShader;
-GLuint	waterFogShader;
+GLuint waterShader;
+GLuint waterFogShader;
 
 void loadWaterShader()
 {
 	FILE *shader;
-	shader=fopen("shaders/water.ps", "r");
-	if(shader==0)
+	shader = fopen("Data\\shaders\\water.ps", "r");
+	if(shader == 0)
 		gLog("[World of Warcraft Studio - Editor] - Unable to open water shader\n");
 	else
 	{
@@ -276,7 +277,7 @@ void loadWaterShader()
 		int length=fread(buffer, 1, 8192, shader);
 		fclose(shader);
 		glGenPrograms(1, &waterShader);
-		if(waterShader==0)
+		if(waterShader == 0)
 			gLog("[World of Warcraft Studio - Editor] - Failed to get program ID for water shader.\n");
 		else
 		{
@@ -296,23 +297,23 @@ void loadWaterShader()
 				const GLubyte *stringy;
 				char localbuffer[256];
 				gLog("[World of Warcraft Studio - Editor] - Water Shader Fragment program failed to load \nReason:\n");
-				stringy=glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
+				stringy = glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
 				gLog((char *)stringy);
-				for(i=errorPos, j=0; (i<length)&&(j<128); i++, j++)
+				for(i = errorPos, j = 0; (i < length) && (j < 128); i++, j++)
 				{
-					localbuffer[j]=buffer[i];
+					localbuffer[j] = buffer[i];
 				}
-				localbuffer[j]=0;
+				localbuffer[j] = 0;
 				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
-				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n",localbuffer);
-				if(isNative==0)
+				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n", localbuffer);
+				if(isNative == 0)
 					gLog("[World of Warcraft Studio - Editor] - This fragment program exceeded the limit.\n\n");
 			}
 		}
 	}
 
-	shader=fopen("shaders/waterfog.ps", "r");
-	if(shader==0)
+	shader = fopen("Data\\shaders\\waterfog.ps", "r");
+	if(shader == 0)
 		gLog("[World of Warcraft Studio - Editor] - Unable to open water shader\n");
 	else
 	{
@@ -320,7 +321,7 @@ void loadWaterShader()
 		int length=fread(buffer, 1, 8192, shader);
 		fclose(shader);
 		glGenPrograms(1, &waterFogShader);
-		if(waterShader==0)
+		if(waterShader == 0)
 			gLog("[World of Warcraft Studio - Editor] - Failed to get program ID for water fog shader.\n");
 		else
 		{
@@ -331,7 +332,7 @@ void loadWaterShader()
 			glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
 
 			glGetProgramiv(GL_FRAGMENT_PROGRAM_ARB, GL_PROGRAM_UNDER_NATIVE_LIMITS_ARB, &isNative);
-			if((errorPos==-1)&&(isNative==1))
+			if((errorPos == -1) && (isNative == 1))
 			{
 				gLog("[World of Warcraft Studio - Editor] - Water Shader Loaded successfully\n");
 			}
@@ -341,16 +342,16 @@ void loadWaterShader()
 				const GLubyte *stringy;
 				char localbuffer[256];
 				gLog("[World of Warcraft Studio - Editor] - Water Fog Shader Fragment program failed to load \nReason:\n");
-				stringy=glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
+				stringy = glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
 				gLog((char *)stringy);
-				for(i=errorPos, j=0; (i<length)&&(j<128); i++, j++)
+				for(i = errorPos, j = 0; (i < length) && (j < 128); i++, j++)
 				{
-					localbuffer[j]=buffer[i];
+					localbuffer[j] = buffer[i];
 				}
-				localbuffer[j]=0;
+				localbuffer[j] = 0;
 				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
-				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n",localbuffer);
-				if(isNative==0)
+				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n", localbuffer);
+				if(isNative == 0)
 					gLog("[World of Warcraft Studio - Editor] - This fragment program exceeded the limit.\n\n");
 			}
 		}
@@ -359,7 +360,7 @@ void loadWaterShader()
 
 void enableWaterShader()
 {
-	if(glIsEnabled(GL_FOG)==GL_TRUE)
+	if(glIsEnabled(GL_FOG) == GL_TRUE)
 		glBindProgram(GL_FRAGMENT_PROGRAM_ARB, waterFogShader);
 	else
 		glBindProgram(GL_FRAGMENT_PROGRAM_ARB, waterShader);
@@ -378,25 +379,25 @@ void Liquid::draw()
 	
 	trans = true;
 	const float tcol = trans ? 0.75f : 1.0f;
-	if (trans)
+	if(trans)
 	{
 		glEnable(GL_BLEND);
-		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDepthMask(GL_FALSE);
 	}
 
-	if (type==0)
-		glColor4f(1,1,1,tcol);
+	if(type == 0)
+		glColor4f(1, 1, 1, tcol);
 	else
 	{
-		if (type==2)
+		if(type == 2)
 		{
 			// dynamic color lookup! ^_^
 			col = gWorld->skies->colorSet[WATER_COLOR_LIGHT]; // TODO: add variable water color
 			col2 = gWorld->skies->colorSet[WATER_COLOR_DARK];
 		}
 		glColor4f(col.x, col.y, col.z, tcol);
-		glProgramLocalParameter4f(GL_FRAGMENT_PROGRAM_ARB,0,col2.x,col2.y,col2.z,tcol);
+		glProgramLocalParameter4f(GL_FRAGMENT_PROGRAM_ARB, 0, col2.x, col2.y, col2.z, tcol);
 		//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD); // TODO: check if ARB_texture_env_add is supported? :(
 	}
 
@@ -414,8 +415,8 @@ void Liquid::draw()
 
 	//if (type!=0) glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	
-	glColor4f(1,1,1,1);
-	if (trans)
+	glColor4f(1, 1, 1, 1);
+	if(trans)
 	{
 		glDepthMask(GL_TRUE);
 		glDisable(GL_BLEND);
@@ -425,17 +426,16 @@ void Liquid::draw()
 void Liquid::initTextures(char *basename, int first, int last)
 {
 	char buf[256];
-	for (int i=first; i<=last; i++)
+	for(int i = first; i <= last; i++)
 	{
 		sprintf_s(buf, "%s.%d.blp", basename, i);
 		textures.push_back(video.textures.add(buf));
 	}
 }
 
-
 Liquid::~Liquid()
 {
-	for (size_t i=0; i<textures.size(); i++)
+	for (size_t i = 0; i < textures.size(); i++)
 	{
 		video.textures.del(textures[i]);
 	}

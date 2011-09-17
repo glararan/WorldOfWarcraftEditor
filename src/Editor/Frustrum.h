@@ -5,7 +5,7 @@
 
 struct Plane
 {
-	float a,b,c,d;
+	float a, b, c, d;
 	void normalize();
 };
 

@@ -135,96 +135,96 @@ _BSS	SEGMENT
 ?texturePaletteCreated@@3_NA DB 01H DUP (?)		; texturePaletteCreated
 _BSS	ENDS
 CONST	SEGMENT
-$SG116346 DB	'rt', 00H
-$SG117177 DB	00H
-$SG116347 DB	'textures.txt', 00H
+$SG116357 DB	'rt', 00H
+$SG117188 DB	00H
+$SG116358 DB	'textures.txt', 00H
 	ORG $+3
-$SG116355 DB	'rt', 00H
+$SG116366 DB	'rt', 00H
 	ORG $+1
-$SG116356 DB	'tilesets.txt', 00H
+$SG116367 DB	'tilesets.txt', 00H
 	ORG $+3
-$SG116367 DB	'rt', 00H
+$SG116378 DB	'rt', 00H
 	ORG $+1
-$SG116368 DB	'filters.txt', 00H
-$SG116887 DB	'Texture Palette', 00H
-$SG116897 DB	'tileset\generic\black.blp', 00H
+$SG116379 DB	'filters.txt', 00H
+$SG116898 DB	'Texture Palette', 00H
+$SG116908 DB	'tileset\generic\black.blp', 00H
 	ORG $+2
-$SG116907 DB	'Interface\Buttons\UI-SpellbookIcon-NextPage-Down.blp', 00H
+$SG116918 DB	'Interface\Buttons\UI-SpellbookIcon-NextPage-Down.blp', 00H
 	ORG $+3
-$SG116908 DB	'Interface\Buttons\UI-SpellbookIcon-NextPage-Up.blp', 00H
+$SG116919 DB	'Interface\Buttons\UI-SpellbookIcon-NextPage-Up.blp', 00H
 	ORG $+1
-$SG116915 DB	'Interface\Buttons\UI-SpellbookIcon-PrevPage-Down.blp', 00H
+$SG116926 DB	'Interface\Buttons\UI-SpellbookIcon-PrevPage-Down.blp', 00H
 	ORG $+3
-$SG116916 DB	'Interface\Buttons\UI-SpellbookIcon-PrevPage-Up.blp', 00H
+$SG116927 DB	'Interface\Buttons\UI-SpellbookIcon-PrevPage-Up.blp', 00H
 	ORG $+1
-$SG116923 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
+$SG116934 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
 	ORG $+1
-$SG116924 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
+$SG116935 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
 	ORG $+3
-$SG116925 DB	'Load Textures', 00H
+$SG116936 DB	'Load Textures', 00H
 	ORG $+2
-$SG116932 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
+$SG116943 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
 	ORG $+1
-$SG116933 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
+$SG116944 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
 	ORG $+3
-$SG116934 DB	'Filter Textures', 00H
-$SG116941 DB	'Current Texture', 00H
-$SG116954 DB	'tileset\generic\black.blp', 00H
-	ORG $+2
+$SG116945 DB	'Filter Textures', 00H
+$SG116952 DB	'Current Texture', 00H
 $SG116965 DB	'tileset\generic\black.blp', 00H
 	ORG $+2
-$SG116990 DB	'Tileset Loading', 00H
-$SG117001 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
+$SG116976 DB	'tileset\generic\black.blp', 00H
+	ORG $+2
+$SG117001 DB	'Tileset Loading', 00H
+$SG117012 DB	'Interface\Buttons\UI-DialogBox-Button-Down.blp', 00H
 	ORG $+1
-$SG117002 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
+$SG117013 DB	'Interface\Buttons\UI-DialogBox-Button-Up.blp', 00H
 	ORG $+3
-$SG117019 DB	'Texture Filtering', 00H
+$SG117030 DB	'Texture Filtering', 00H
 	ORG $+2
-$SG117024 DB	'Filename Filters', 00H
+$SG117035 DB	'Filename Filters', 00H
 	ORG $+3
-$SG117037 DB	'Misc (Everything Else)', 00H
+$SG117048 DB	'Misc (Everything Else)', 00H
 	ORG $+1
-$SG117042 DB	'Tileset Filters', 00H
-$SG117060 DB	'Map Chunk Settings', 00H
+$SG117053 DB	'Tileset Filters', 00H
+$SG117071 DB	'Map Chunk Settings', 00H
 	ORG $+1
-$SG117069 DB	'Chunk x, y of Tile x, y at (x, y, z)', 00H
+$SG117080 DB	'Chunk x, y of Tile x, y at (x, y, z)', 00H
 	ORG $+3
-$SG117074 DB	'AreaID:', 00H
-$SG117079 DB	'Flags:', 00H
+$SG117085 DB	'AreaID:', 00H
+$SG117090 DB	'Flags:', 00H
 	ORG $+1
-$SG117084 DB	'Shadow', 00H
+$SG117095 DB	'Shadow', 00H
 	ORG $+1
-$SG117089 DB	'Impassible', 00H
+$SG117100 DB	'Impassible', 00H
 	ORG $+1
-$SG117094 DB	'River', 00H
+$SG117105 DB	'River', 00H
 	ORG $+2
-$SG117099 DB	'Ocean', 00H
+$SG117110 DB	'Ocean', 00H
 	ORG $+2
-$SG117104 DB	'Magma', 00H
+$SG117115 DB	'Magma', 00H
 	ORG $+2
-$SG117109 DB	'EffectID:', 00H
+$SG117120 DB	'EffectID:', 00H
 	ORG $+2
-$SG117114 DB	'Num Effects:', 00H
+$SG117125 DB	'Num Effects:', 00H
 	ORG $+3
-$SG117124 DB	'Effect Doodad', 00H
+$SG117135 DB	'Effect Doodad', 00H
 	ORG $+2
-$SG117132 DB	'Effect Doodad', 00H
+$SG117143 DB	'Effect Doodad', 00H
 	ORG $+2
-$SG117147 DB	'tileset\generic\black.blp', 00H
+$SG117158 DB	'tileset\generic\black.blp', 00H
 	ORG $+2
-$SG117152 DB	'Texture Name', 00H
+$SG117163 DB	'Texture Name', 00H
 	ORG $+3
-$SG117157 DB	'Flags -', 00H
-$SG117162 DB	'EffectID -', 00H
+$SG117168 DB	'Flags -', 00H
+$SG117173 DB	'EffectID -', 00H
 	ORG $+1
-$SG117172 DB	'Chunk %d, %d at (%.2f, %.2f, %.2f)', 00H
+$SG117183 DB	'Chunk %d, %d at (%.2f, %.2f, %.2f)', 00H
 	ORG $+1
-$SG117178 DB	'AreaID: %s (%d)', 00H
-$SG117179 DB	'Flags: %d', 00H
+$SG117189 DB	'AreaID: %s (%d)', 00H
+$SG117190 DB	'Flags: %d', 00H
 	ORG $+2
-$SG117184 DB	'EffectID: %d', 00H
+$SG117195 DB	'EffectID: %d', 00H
 	ORG $+3
-$SG117185 DB	'Num Effects: %d', 00H
+$SG117196 DB	'Num Effects: %d', 00H
 CONST	ENDS
 ;	COMDAT ?Name@AreaDB@@2IB
 CONST	SEGMENT
@@ -819,14 +819,14 @@ _field$ = 8						; size = 4
 ?getUInt@Record@DBCFile@@QBEII@Z PROC			; DBCFile::Record::getUInt, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 44
+; Line 54
 	push	ebp
 	mov	ebp, esp
-; Line 46
+; Line 56
 	mov	eax, DWORD PTR [ecx]
 	mov	ecx, DWORD PTR _field$[ebp]
 	mov	eax, DWORD PTR [eax+ecx*4]
-; Line 47
+; Line 57
 	pop	ebp
 	ret	4
 ?getUInt@Record@DBCFile@@QBEII@Z ENDP			; DBCFile::Record::getUInt
@@ -838,16 +838,16 @@ _TEXT	SEGMENT
 _field$ = 8						; size = 4
 ?getString@Record@DBCFile@@QBEPBDI@Z PROC		; DBCFile::Record::getString, COMDAT
 ; _this$ = ecx
-; Line 54
+; Line 64
 	push	ebp
 	mov	ebp, esp
-; Line 58
+; Line 68
 	mov	eax, DWORD PTR [ecx]
 	mov	edx, DWORD PTR _field$[ebp]
 	mov	ecx, DWORD PTR [ecx+4]
 	mov	eax, DWORD PTR [eax+edx*4]
 	add	eax, DWORD PTR [ecx+48]
-; Line 59
+; Line 69
 	pop	ebp
 	ret	4
 ?getString@Record@DBCFile@@QBEPBDI@Z ENDP		; DBCFile::Record::getString
@@ -1821,8 +1821,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@IPAV10@@Z
 _TEXT	SEGMENT
-$T129501 = -12						; size = 12
-$T129506 = 8						; size = 4
+$T129513 = -12						; size = 12
+$T129518 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@IPAV10@@Z PROC ; std::_Allocate<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >, COMDAT
@@ -1852,15 +1852,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	ecx, DWORD PTR $T129506[ebp]
+	lea	ecx, DWORD PTR $T129518[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T129501[ebp]
-	mov	DWORD PTR $T129506[ebp], 0
+	lea	ecx, DWORD PTR $T129513[ebp]
+	mov	DWORD PTR $T129518[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T129501[ebp]
+	lea	edx, DWORD PTR $T129513[ebp]
 	push	edx
-	mov	DWORD PTR $T129501[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129513[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -1875,8 +1875,8 @@ PUBLIC	??$_Allocate@D@std@@YAPADIPAD@Z			; std::_Allocate<char>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T129511 = -12						; size = 12
-$T129515 = 8						; size = 4
+$T129523 = -12						; size = 12
+$T129527 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -1901,15 +1901,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	eax, DWORD PTR $T129515[ebp]
+	lea	eax, DWORD PTR $T129527[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T129511[ebp]
-	mov	DWORD PTR $T129515[ebp], 0
+	lea	ecx, DWORD PTR $T129523[ebp]
+	mov	DWORD PTR $T129527[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T129511[ebp]
+	lea	ecx, DWORD PTR $T129523[ebp]
 	push	ecx
-	mov	DWORD PTR $T129511[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129523[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -2351,8 +2351,8 @@ PUBLIC	?allocate@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@I@Z
 _TEXT	SEGMENT
-$T129705 = -12						; size = 12
-$T129697 = 8						; size = 4
+$T129717 = -12						; size = 12
+$T129709 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@I@Z PROC ; std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::allocate, COMDAT
 ; _this$ = ecx
@@ -2378,15 +2378,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	ecx, DWORD PTR $T129697[ebp]
+	lea	ecx, DWORD PTR $T129709[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T129705[ebp]
-	mov	DWORD PTR $T129697[ebp], 0
+	lea	ecx, DWORD PTR $T129717[ebp]
+	mov	DWORD PTR $T129709[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T129705[ebp]
+	lea	edx, DWORD PTR $T129717[ebp]
 	push	edx
-	mov	DWORD PTR $T129705[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129717[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -2401,8 +2401,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T129728 = -12						; size = 12
-$T129720 = 8						; size = 4
+$T129740 = -12						; size = 12
+$T129732 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -2423,15 +2423,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	eax, DWORD PTR $T129720[ebp]
+	lea	eax, DWORD PTR $T129732[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T129728[ebp]
-	mov	DWORD PTR $T129720[ebp], 0
+	lea	ecx, DWORD PTR $T129740[ebp]
+	mov	DWORD PTR $T129732[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T129728[ebp]
+	lea	ecx, DWORD PTR $T129740[ebp]
 	push	ecx
-	mov	DWORD PTR $T129728[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129740[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -3114,9 +3114,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T130116 = -40						; size = 12
+$T130128 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T130100 = -24						; size = 4
+$T130112 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -3192,15 +3192,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T130100[ebp]
+	lea	ecx, DWORD PTR $T130112[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T130116[ebp]
-	mov	DWORD PTR $T130100[ebp], 0
+	lea	ecx, DWORD PTR $T130128[ebp]
+	mov	DWORD PTR $T130112[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T130116[ebp]
+	lea	edx, DWORD PTR $T130128[ebp]
 	push	edx
-	mov	DWORD PTR $T130116[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T130128[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -3958,27 +3958,6 @@ $LN82@assign@2:
 $LN86@assign@2:
 ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 _TEXT	ENDS
-PUBLIC	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-; Function compile flags: /Ogtp
-;	COMDAT ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z
-_TEXT	SEGMENT
-__Right$ = 8						; size = 4
-?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z PROC ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign, COMDAT
-; _this$ = ecx
-; Line 886
-	push	ebp
-	mov	ebp, esp
-; Line 887
-	mov	eax, DWORD PTR __Right$[ebp]
-	push	-1
-	push	0
-	push	eax
-	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-; Line 888
-	pop	ebp
-	ret	4
-?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-_TEXT	ENDS
 PUBLIC	??$_Destroy@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z ; std::_Destroy<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Destroy@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z
@@ -4037,6 +4016,27 @@ __Right$ = 8						; size = 4
 	ret	4
 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 _TEXT	ENDS
+PUBLIC	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+; Function compile flags: /Ogtp
+;	COMDAT ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z
+_TEXT	SEGMENT
+__Right$ = 8						; size = 4
+?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z PROC ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign, COMDAT
+; _this$ = ecx
+; Line 886
+	push	ebp
+	mov	ebp, esp
+; Line 887
+	mov	eax, DWORD PTR __Right$[ebp]
+	push	-1
+	push	0
+	push	eax
+	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+; Line 888
+	pop	ebp
+	ret	4
+?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+_TEXT	ENDS
 PUBLIC	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 ; Function compile flags: /Ogtp
 ;	COMDAT ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD@Z
@@ -4070,27 +4070,6 @@ $LL5@assign@3:
 	ret	4
 ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 _TEXT	ENDS
-PUBLIC	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
-; Function compile flags: /Ogtp
-;	COMDAT ??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z
-_TEXT	SEGMENT
-__Right$ = 8						; size = 4
-??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z PROC ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=, COMDAT
-; _this$ = ecx
-; Line 762
-	push	ebp
-	mov	ebp, esp
-; Line 763
-	mov	eax, DWORD PTR __Right$[ebp]
-	push	-1
-	push	0
-	push	eax
-	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-; Line 764
-	pop	ebp
-	ret	4
-??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
-_TEXT	ENDS
 PUBLIC	??$construct@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@AAV21@@Z ; std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::construct<std::basic_string<char,std::char_traits<char>,std::allocator<char> > &>
 ;	COMDAT xdata$x
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\iosfwd
@@ -4108,7 +4087,7 @@ __ehfuncinfo$??$construct@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@
 xdata$x	ENDS
 ;	COMDAT ??$construct@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@AAV21@@Z
 _TEXT	SEGMENT
-$T131412 = -16						; size = 4
+$T131419 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
@@ -4130,7 +4109,7 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 208
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR $T131412[ebp], ecx
+	mov	DWORD PTR $T131419[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -4157,7 +4136,7 @@ text$x	SEGMENT
 __unwindfunclet$??$construct@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@AAV21@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T131412[ebp]
+	mov	ecx, DWORD PTR $T131419[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -4189,7 +4168,7 @@ __ehfuncinfo$??$_Construct@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D
 xdata$x	ENDS
 ;	COMDAT ??$_Construct@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@@Z
 _TEXT	SEGMENT
-$T131524 = -16						; size = 4
+$T131531 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Vptr$ = 8						; size = 4
 __Ptr$ = 8						; size = 4
@@ -4213,7 +4192,7 @@ __Val$ = 12						; size = 4
 	mov	ecx, DWORD PTR __Ptr$[ebp]
 	mov	DWORD PTR __Vptr$[ebp], ecx
 ; Line 48
-	mov	DWORD PTR $T131524[ebp], ecx
+	mov	DWORD PTR $T131531[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -4240,7 +4219,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Construct@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV12@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@@Z$0:
 	mov	eax, DWORD PTR __Vptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T131524[ebp]
+	mov	ecx, DWORD PTR $T131531[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -4322,6 +4301,27 @@ $LL31@basic_stri@2:
 	pop	ebp
 	ret	4
 ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
+_TEXT	ENDS
+PUBLIC	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
+; Function compile flags: /Ogtp
+;	COMDAT ??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z
+_TEXT	SEGMENT
+__Right$ = 8						; size = 4
+??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z PROC ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=, COMDAT
+; _this$ = ecx
+; Line 762
+	push	ebp
+	mov	ebp, esp
+; Line 763
+	mov	eax, DWORD PTR __Right$[ebp]
+	push	-1
+	push	0
+	push	eax
+	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+; Line 764
+	pop	ebp
+	ret	4
+??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z ENDP ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 _TEXT	ENDS
 PUBLIC	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 ; Function compile flags: /Ogtp
@@ -4441,7 +4441,7 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@AAV32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AAV20@@Z
 _TEXT	SEGMENT
-$T132115 = -16						; size = 4
+$T132139 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
 __Pdest$ = 12						; size = 4
@@ -4463,7 +4463,7 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR $T132115[ebp], ecx
+	mov	DWORD PTR $T132139[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -4490,7 +4490,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@AAV32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@AAV20@@Z$0:
 	mov	eax, DWORD PTR __Pdest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T132115[ebp]
+	mov	ecx, DWORD PTR $T132139[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -4522,9 +4522,9 @@ __ehfuncinfo$?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$al
 xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@Z
 _TEXT	SEGMENT
-$T132258 = -16						; size = 4
+$T132270 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-__Vptr$132295 = 8					; size = 4
+__Vptr$132307 = 8					; size = 4
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
 ?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@Z PROC ; std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::construct, COMDAT
@@ -4545,8 +4545,8 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 197
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR __Vptr$132295[ebp], ecx
-	mov	DWORD PTR $T132258[ebp], ecx
+	mov	DWORD PTR __Vptr$132307[ebp], ecx
+	mov	DWORD PTR $T132270[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -4571,9 +4571,9 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@Z$0:
-	mov	eax, DWORD PTR __Vptr$132295[ebp]
+	mov	eax, DWORD PTR __Vptr$132307[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T132258[ebp]
+	mov	ecx, DWORD PTR $T132270[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -4622,7 +4622,7 @@ EXTRN	?add@TextureManager@@UAEIV?$basic_string@DU?$char_traits@D@std@@V?$allocat
 EXTRN	?video@@3VVideo@@A:BYTE				; video
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T132473 = -4						; size = 4
+$T132485 = -4						; size = 4
 ___$ReturnUdt$ = 8					; size = 4
 ?FindCurTexture@@YA?AV?$_Tree_iterator@V?$_Tree_val@V?$_Tmap_traits@IPAVManagedItem@@U?$less@I@std@@V?$allocator@U?$pair@$$CBIPAVManagedItem@@@std@@@3@$0A@@std@@@std@@@std@@XZ PROC ; FindCurTexture
 ; File c:\programovani\wow editor\test\src\editor\texturingui.cpp
@@ -4639,7 +4639,7 @@ ___$ReturnUdt$ = 8					; size = 4
 	mov	eax, OFFSET ?CurTextureName@@3PADA	; CurTextureName
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], 0
-	mov	DWORD PTR $T132473[ebp], esp
+	mov	DWORD PTR $T132485[ebp], esp
 	mov	BYTE PTR [ecx], 0
 	lea	esi, DWORD PTR [eax+1]
 $LL125@FindCurTex:
@@ -4767,7 +4767,7 @@ $LL8@updateText:
 	cmp	esi, DWORD PTR ?video@@3VVideo@@A+40
 	je	SHORT $LN5@updateText
 	npad	8
-$CheckForEnd$116789:
+$CheckForEnd$116800:
 ; Line 219
 	mov	eax, DWORD PTR [esi+16]
 	add	eax, 8
@@ -4813,7 +4813,7 @@ $LN45@updateText:
 $LN47@updateText:
 ; Line 213
 	cmp	esi, DWORD PTR ?video@@3VVideo@@A+40
-	jne	SHORT $CheckForEnd$116789
+	jne	SHORT $CheckForEnd$116800
 $LN5@updateText:
 ; Line 235
 	mov	edx, DWORD PTR ?curTextures@@3PAPAVtextureUI@@A[edi]
@@ -4911,7 +4911,7 @@ _id$ = 12						; size = 4
 	add	esp, 4
 	xor	edi, edi
 	npad	9
-$CheckForEnd2$116822:
+$CheckForEnd2$116833:
 ; Line 245
 	cmp	esi, DWORD PTR ?video@@3VVideo@@A+40
 	je	$LN6@incrementT
@@ -4929,21 +4929,21 @@ $LN33@incrementT:
 	jne	SHORT $LN1@incrementT
 ; Line 249
 	cmp	BYTE PTR [esi+21], al
-	jne	SHORT $CheckForEnd2$116822
+	jne	SHORT $CheckForEnd2$116833
 	mov	eax, DWORD PTR [esi+8]
 	cmp	BYTE PTR [eax+21], 0
 	jne	SHORT $LN128@incrementT
 	mov	esi, eax
 	mov	eax, DWORD PTR [esi]
 	cmp	BYTE PTR [eax+21], 0
-	jne	SHORT $CheckForEnd2$116822
+	jne	SHORT $CheckForEnd2$116833
 	npad	1
 $LL58@incrementT:
 	mov	esi, eax
 	mov	eax, DWORD PTR [esi]
 	cmp	BYTE PTR [eax+21], 0
 	je	SHORT $LL58@incrementT
-	jmp	SHORT $CheckForEnd2$116822
+	jmp	SHORT $CheckForEnd2$116833
 $LN128@incrementT:
 	mov	eax, DWORD PTR [esi+4]
 	cmp	BYTE PTR [eax+21], 0
@@ -4958,7 +4958,7 @@ $LL42@incrementT:
 $LN41@incrementT:
 	mov	esi, eax
 ; Line 250
-	jmp	SHORT $CheckForEnd2$116822
+	jmp	SHORT $CheckForEnd2$116833
 $LN1@incrementT:
 ; Line 257
 	cmp	BYTE PTR [esi+21], 0
@@ -4993,7 +4993,7 @@ $LN4@incrementT:
 ; Line 242
 	inc	edi
 	cmp	edi, 8
-	jl	$CheckForEnd2$116822
+	jl	$CheckForEnd2$116833
 ; Line 259
 	mov	eax, DWORD PTR [esi+16]
 	add	eax, 8
@@ -5042,7 +5042,7 @@ _id$ = 12						; size = 4
 	add	esp, 4
 	xor	edi, edi
 	npad	9
-$CheckForBegin$116851:
+$CheckForBegin$116862:
 ; Line 269
 	mov	ecx, DWORD PTR ?video@@3VVideo@@A+40
 	cmp	esi, DWORD PTR [ecx]
@@ -5063,7 +5063,7 @@ $LN37@decrementT:
 	cmp	BYTE PTR [esi+21], al
 	je	SHORT $LN52@decrementT
 	mov	esi, DWORD PTR [esi+8]
-	jmp	SHORT $CheckForBegin$116851
+	jmp	SHORT $CheckForBegin$116862
 $LN52@decrementT:
 	mov	eax, DWORD PTR [esi]
 	cmp	BYTE PTR [eax+21], 0
@@ -5071,13 +5071,13 @@ $LN52@decrementT:
 	mov	esi, eax
 	mov	eax, DWORD PTR [esi+8]
 	cmp	BYTE PTR [eax+21], 0
-	jne	SHORT $CheckForBegin$116851
+	jne	SHORT $CheckForBegin$116862
 $LL66@decrementT:
 	mov	esi, eax
 	mov	eax, DWORD PTR [esi+8]
 	cmp	BYTE PTR [eax+21], 0
 	je	SHORT $LL66@decrementT
-	jmp	SHORT $CheckForBegin$116851
+	jmp	SHORT $CheckForBegin$116862
 $LN144@decrementT:
 	mov	eax, DWORD PTR [esi+4]
 	cmp	BYTE PTR [eax+21], 0
@@ -5092,10 +5092,10 @@ $LL48@decrementT:
 	je	SHORT $LL48@decrementT
 $LN47@decrementT:
 	cmp	BYTE PTR [esi+21], 0
-	jne	SHORT $CheckForBegin$116851
+	jne	SHORT $CheckForBegin$116862
 	mov	esi, eax
 ; Line 274
-	jmp	SHORT $CheckForBegin$116851
+	jmp	SHORT $CheckForBegin$116862
 $LN1@decrementT:
 ; Line 276
 	cmp	BYTE PTR [esi+21], 0
@@ -5136,7 +5136,7 @@ $LN4@decrementT:
 ; Line 266
 	inc	edi
 	cmp	edi, 8
-	jl	$CheckForBegin$116851
+	jl	$CheckForBegin$116862
 ; Line 278
 	mov	eax, DWORD PTR [esi+16]
 	add	eax, 8
@@ -5167,7 +5167,7 @@ PUBLIC	?updatedSelectedTexture@@YAXPBVManagedItem@@@Z	; updatedSelectedTexture
 EXTRN	?setText@textUI@@QAEXPBD@Z:PROC			; textUI::setText
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T134565 = 8						; size = 4
+$T134577 = 8						; size = 4
 _T$ = 8							; size = 4
 ?updatedSelectedTexture@@YAXPBVManagedItem@@@Z PROC	; updatedSelectedTexture
 ; Line 283
@@ -5191,7 +5191,7 @@ $LN9@updatedSel:
 	mov	eax, edi
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], 0
-	mov	DWORD PTR $T134565[ebp], esp
+	mov	DWORD PTR $T134577[ebp], esp
 	mov	BYTE PTR [ecx], 0
 	lea	ebx, DWORD PTR [eax+1]
 $LL46@updatedSel:
@@ -5391,26 +5391,26 @@ __unwindtable$?CreateTexturePalette@@YAPAVframe@@XZ DD 0ffffffffH
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T134784 = -20						; size = 4
+$T134778 = -20						; size = 4
 $T134772 = -20						; size = 4
 $T134766 = -20						; size = 4
-$T134760 = -20						; size = 4
-$T134754 = -20						; size = 4
-$T134747 = -20						; size = 4
-$T134743 = -20						; size = 4
+$T134759 = -20						; size = 4
+$T134755 = -20						; size = 4
 tv1991 = -16						; size = 4
 tv1981 = -16						; size = 4
 tv1979 = -16						; size = 4
 tv1978 = -16						; size = 4
 tv1976 = -16						; size = 4
+$T134786 = -16						; size = 4
+$T134785 = -16						; size = 4
+$T134780 = -16						; size = 4
+$T134779 = -16						; size = 4
 $T134774 = -16						; size = 4
 $T134773 = -16						; size = 4
 $T134768 = -16						; size = 4
 $T134767 = -16						; size = 4
-$T134762 = -16						; size = 4
-$T134761 = -16						; size = 4
-$T134756 = -16						; size = 4
-$T134755 = -16						; size = 4
-$T134748 = -16						; size = 4
+$T134760 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ?CreateTexturePalette@@YAPAVframe@@XZ PROC		; CreateTexturePalette
 ; File c:\programovani\wow editor\test\src\editor\texturingui.cpp
@@ -5434,13 +5434,13 @@ __$EHRec$ = -12						; size = 12
 	push	72					; 00000048H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T134743[ebp], eax
+	mov	DWORD PTR $T134755[ebp], eax
 	xor	ebx, ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], ebx
 	cmp	eax, ebx
 	je	SHORT $LN6@CreateText
 	fild	DWORD PTR ?video@@3VVideo@@A+56
-	push	OFFSET $SG116887
+	push	OFFSET $SG116898
 	sub	esp, 16					; 00000010H
 	mov	DWORD PTR [esp+12], 1127874560		; 433a0000H
 	fsub	QWORD PTR __real@4067800000000000
@@ -5467,17 +5467,17 @@ $LL3@CreateText:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T134747[ebp], edi
+	mov	DWORD PTR $T134759[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	cmp	edi, ebx
 	je	$LN8@CreateText
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134748[ebp], esp
+	mov	DWORD PTR $T134760[ebp], esp
 	push	25					; 00000019H
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116897
+	push	OFFSET $SG116908
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5582,18 +5582,18 @@ $LN374@CreateText:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T134754[ebp], edi
+	mov	DWORD PTR $T134766[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 	mov	esi, 15					; 0000000fH
 	cmp	edi, ebx
 	je	SHORT $LN11@CreateText
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134755[ebp], esp
+	mov	DWORD PTR $T134767[ebp], esp
 	push	52					; 00000034H
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116907
+	push	OFFSET $SG116918
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5601,11 +5601,11 @@ $LN374@CreateText:
 	push	eax
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134756[ebp], esp
+	mov	DWORD PTR $T134768[ebp], esp
 	push	50					; 00000032H
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116908
+	push	OFFSET $SG116919
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5638,17 +5638,17 @@ $LN12@CreateText:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T134760[ebp], edi
+	mov	DWORD PTR $T134772[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
 	cmp	edi, ebx
 	je	SHORT $LN13@CreateText
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134761[ebp], esp
+	mov	DWORD PTR $T134773[ebp], esp
 	push	52					; 00000034H
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116915
+	push	OFFSET $SG116926
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5656,11 +5656,11 @@ $LN12@CreateText:
 	push	eax
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134762[ebp], esp
+	mov	DWORD PTR $T134774[ebp], esp
 	push	50					; 00000032H
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116916
+	push	OFFSET $SG116927
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5693,17 +5693,17 @@ $LN14@CreateText:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T134766[ebp], edi
+	mov	DWORD PTR $T134778[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
 	cmp	edi, ebx
 	je	SHORT $LN15@CreateText
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134767[ebp], esp
+	mov	DWORD PTR $T134779[ebp], esp
 	push	46					; 0000002eH
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116923
+	push	OFFSET $SG116934
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5711,11 +5711,11 @@ $LN14@CreateText:
 	push	eax
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134768[ebp], esp
+	mov	DWORD PTR $T134780[ebp], esp
 	push	44					; 0000002cH
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116924
+	push	OFFSET $SG116935
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5734,7 +5734,7 @@ $LN15@CreateText:
 	xor	edi, edi
 $LN16@CreateText:
 ; Line 343
-	push	OFFSET $SG116925
+	push	OFFSET $SG116936
 	mov	ecx, edi
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	?setText@buttonUI@@QAEXPBD@Z		; buttonUI::setText
@@ -5752,17 +5752,17 @@ $LN16@CreateText:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T134772[ebp], edi
+	mov	DWORD PTR $T134784[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 5
 	cmp	edi, ebx
 	je	SHORT $LN17@CreateText
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134773[ebp], esp
+	mov	DWORD PTR $T134785[ebp], esp
 	push	46					; 0000002eH
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116932
+	push	OFFSET $SG116943
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5770,11 +5770,11 @@ $LN16@CreateText:
 	push	eax
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T134774[ebp], esp
+	mov	DWORD PTR $T134786[ebp], esp
 	push	44					; 0000002cH
 	mov	DWORD PTR [ecx+20], esi
 	mov	DWORD PTR [ecx+16], ebx
-	push	OFFSET $SG116933
+	push	OFFSET $SG116944
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -5793,7 +5793,7 @@ $LN17@CreateText:
 	xor	esi, esi
 $LN18@CreateText:
 ; Line 348
-	push	OFFSET $SG116934
+	push	OFFSET $SG116945
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	?setText@buttonUI@@QAEXPBD@Z		; buttonUI::setText
@@ -5821,37 +5821,37 @@ $LN18@CreateText:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$0:
-	mov	eax, DWORD PTR $T134743[ebp]
+	mov	eax, DWORD PTR $T134755[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$1:
-	mov	eax, DWORD PTR $T134747[ebp]
+	mov	eax, DWORD PTR $T134759[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$3:
-	mov	eax, DWORD PTR $T134754[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$6:
-	mov	eax, DWORD PTR $T134760[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$9:
 	mov	eax, DWORD PTR $T134766[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$12:
+__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$6:
 	mov	eax, DWORD PTR $T134772[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$9:
+	mov	eax, DWORD PTR $T134778[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?CreateTexturePalette@@YAPAVframe@@XZ$12:
+	mov	eax, DWORD PTR $T134784[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -5909,15 +5909,15 @@ __unwindtable$?CreateSelectedTexture@@YAPAVframe@@XZ DD 0ffffffffH
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-$T135921 = -20						; size = 4
-$T135917 = -20						; size = 4
-$T135912 = -20						; size = 4
-$T135907 = -20						; size = 4
-$T135903 = -20						; size = 4
+$T135933 = -20						; size = 4
+$T135929 = -20						; size = 4
+$T135924 = -20						; size = 4
+$T135919 = -20						; size = 4
+$T135915 = -20						; size = 4
 tv642 = -16						; size = 4
 tv636 = -16						; size = 4
-$T135913 = -16						; size = 4
-$T135908 = -16						; size = 4
+$T135925 = -16						; size = 4
+$T135920 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ?CreateSelectedTexture@@YAPAVframe@@XZ PROC		; CreateSelectedTexture
 ; File c:\programovani\wow editor\test\src\editor\texturingui.cpp
@@ -5941,13 +5941,13 @@ __$EHRec$ = -12						; size = 12
 	push	72					; 00000048H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T135903[ebp], eax
+	mov	DWORD PTR $T135915[ebp], eax
 	xor	edi, edi
 	mov	DWORD PTR __$EHRec$[ebp+8], edi
 	cmp	eax, edi
 	je	SHORT $LN7@CreateSele
 	fild	DWORD PTR ?video@@3VVideo@@A+56
-	push	OFFSET $SG116941
+	push	OFFSET $SG116952
 	sub	esp, 16					; 00000010H
 	mov	DWORD PTR [esp+12], 1133510656		; 43900000H
 	fsub	QWORD PTR __real@4064400000000000
@@ -5982,7 +5982,7 @@ $LN8@CreateSele:
 	call	??2@YAPAXI@Z				; operator new
 	mov	ebx, eax
 	add	esp, 4
-	mov	DWORD PTR $T135907[ebp], ebx
+	mov	DWORD PTR $T135919[ebp], ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	cmp	ebx, edi
 	je	SHORT $LN9@CreateSele
@@ -5997,7 +5997,7 @@ $LN28@CreateSele:
 	mov	DWORD PTR [ecx+16], edi
 	mov	eax, esi
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
-	mov	DWORD PTR $T135908[ebp], esp
+	mov	DWORD PTR $T135920[ebp], esp
 	mov	BYTE PTR [ecx], 0
 	lea	edi, DWORD PTR [eax+1]
 $LL96@CreateSele:
@@ -6035,17 +6035,17 @@ $LN4@CreateSele:
 	call	??2@YAPAXI@Z				; operator new
 	mov	esi, eax
 	add	esp, 4
-	mov	DWORD PTR $T135912[ebp], esi
+	mov	DWORD PTR $T135924[ebp], esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 	cmp	esi, edi
 	je	SHORT $LN11@CreateSele
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T135913[ebp], esp
+	mov	DWORD PTR $T135925[ebp], esp
 	push	25					; 00000019H
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], edi
-	push	OFFSET $SG116954
+	push	OFFSET $SG116965
 	mov	BYTE PTR [ecx], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -6076,7 +6076,7 @@ $LN98@CreateSele:
 	je	SHORT $LN2@CreateSele
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T135917[ebp], eax
+	mov	DWORD PTR $T135929[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
 	cmp	eax, edi
 	je	SHORT $LN15@CreateSele
@@ -6097,11 +6097,11 @@ $LN2@CreateSele:
 ; Line 369
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T135921[ebp], eax
+	mov	DWORD PTR $T135933[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
 	cmp	eax, edi
 	je	SHORT $LN15@CreateSele
-	push	OFFSET $SG116965
+	push	OFFSET $SG116976
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1132724224		; 43840000H
 	mov	ecx, eax
@@ -6149,31 +6149,31 @@ $LN16@CreateSele:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?CreateSelectedTexture@@YAPAVframe@@XZ$0:
-	mov	eax, DWORD PTR $T135903[ebp]
+	mov	eax, DWORD PTR $T135915[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateSelectedTexture@@YAPAVframe@@XZ$1:
-	mov	eax, DWORD PTR $T135907[ebp]
+	mov	eax, DWORD PTR $T135919[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateSelectedTexture@@YAPAVframe@@XZ$3:
-	mov	eax, DWORD PTR $T135912[ebp]
+	mov	eax, DWORD PTR $T135924[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateSelectedTexture@@YAPAVframe@@XZ$5:
-	mov	eax, DWORD PTR $T135917[ebp]
+	mov	eax, DWORD PTR $T135929[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateSelectedTexture@@YAPAVframe@@XZ$6:
-	mov	eax, DWORD PTR $T135921[ebp]
+	mov	eax, DWORD PTR $T135933[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -6191,7 +6191,7 @@ text$x	ENDS
 PUBLIC	?LoadTileset@@YAXPAVframe@@H@Z			; LoadTileset
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T136190 = -4						; size = 4
+$T136202 = -4						; size = 4
 _button$ = 8						; size = 4
 _id$ = 12						; size = 4
 ?LoadTileset@@YAXPAVframe@@H@Z PROC			; LoadTileset
@@ -6234,7 +6234,7 @@ $LN63@LoadTilese:
 	mov	eax, esi
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], 0
-	mov	DWORD PTR $T136190[ebp], esp
+	mov	DWORD PTR $T136202[ebp], esp
 	mov	BYTE PTR [ecx], 0
 	lea	edi, DWORD PTR [eax+1]
 	npad	4
@@ -6414,14 +6414,17 @@ __unwindtable$?createMapChunkWindow@@YAPAVframe@@XZ DD 0ffffffffH
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T136551 = -24						; size = 4
+$T136547 = -24						; size = 4
+$T136543 = -24						; size = 4
 $T136539 = -24						; size = 4
 $T136535 = -24						; size = 4
-$T136531 = -24						; size = 4
-$T136527 = -24						; size = 4
-$T136523 = -24						; size = 4
 tv1340 = -20						; size = 4
 tv1333 = -20						; size = 4
 tv1326 = -20						; size = 4
+$T136534 = -20						; size = 4
+$T136530 = -20						; size = 4
+$T136526 = -20						; size = 4
 $T136522 = -20						; size = 4
 $T136518 = -20						; size = 4
 $T136514 = -20						; size = 4
@@ -6436,9 +6439,6 @@ $T136482 = -20						; size = 4
 $T136478 = -20						; size = 4
 $T136474 = -20						; size = 4
 $T136470 = -20						; size = 4
-$T136466 = -20						; size = 4
-$T136462 = -20						; size = 4
-$T136458 = -20						; size = 4
 tv1463 = -16						; size = 4
 tv1461 = -16						; size = 4
 tv1439 = -16						; size = 4
@@ -6476,13 +6476,13 @@ __$EHRec$ = -12						; size = 12
 	push	60					; 0000003cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136458[ebp], eax
+	mov	DWORD PTR $T136470[ebp], eax
 	xor	esi, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], esi
 	cmp	eax, esi
 	je	SHORT $LN9@createMapC
 	fild	DWORD PTR ?video@@3VVideo@@A+56
-	push	OFFSET $SG117060
+	push	OFFSET $SG117071
 	fld	QWORD PTR __real@3fe0000000000000
 	sub	esp, 16					; 00000010H
 	mov	DWORD PTR [esp+12], 1135116288		; 43a88000H
@@ -6514,7 +6514,7 @@ $LN10@createMapC:
 	mov	BYTE PTR [eax+45], bl
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136462[ebp], eax
+	mov	DWORD PTR $T136474[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], ebx
 	cmp	eax, esi
 	je	SHORT $LN11@createMapC
@@ -6536,11 +6536,11 @@ $LN11@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136466[ebp], eax
+	mov	DWORD PTR $T136478[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 	test	eax, eax
 	je	SHORT $LN13@createMapC
-	push	OFFSET $SG117069
+	push	OFFSET $SG117080
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1082130432		; 40800000H
 	mov	ecx, eax
@@ -6569,13 +6569,13 @@ $LN14@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136470[ebp], eax
+	mov	DWORD PTR $T136482[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
 	test	eax, eax
 	je	SHORT $LN15@createMapC
 	mov	ecx, DWORD PTR ?chunkLocation@@3PAVtextUI@@A ; chunkLocation
 	fld	DWORD PTR [ecx+24]
-	push	OFFSET $SG117074
+	push	OFFSET $SG117085
 	fadd	QWORD PTR __real@4039000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6607,13 +6607,13 @@ $LN16@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136474[ebp], eax
+	mov	DWORD PTR $T136486[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
 	test	eax, eax
 	je	SHORT $LN17@createMapC
 	mov	ecx, DWORD PTR ?chunkAreaID@@3PAVtextUI@@A ; chunkAreaID
 	fld	DWORD PTR [ecx+24]
-	push	OFFSET $SG117079
+	push	OFFSET $SG117090
 	fadd	QWORD PTR __real@4039000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6645,13 +6645,13 @@ $LN18@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136478[ebp], eax
+	mov	DWORD PTR $T136490[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 5
 	test	eax, eax
 	je	SHORT $LN19@createMapC
 	mov	ecx, DWORD PTR ?chunkFlags@@3PAVtextUI@@A ; chunkFlags
 	fld	DWORD PTR [ecx+24]
-	push	OFFSET $SG117084
+	push	OFFSET $SG117095
 	fadd	QWORD PTR __real@4036000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6674,13 +6674,13 @@ $LN20@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136482[ebp], eax
+	mov	DWORD PTR $T136494[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 6
 	test	eax, eax
 	je	SHORT $LN21@createMapC
 	mov	edx, DWORD PTR ?chunkFlags@@3PAVtextUI@@A ; chunkFlags
 	fld	DWORD PTR [edx+24]
-	push	OFFSET $SG117089
+	push	OFFSET $SG117100
 	fadd	QWORD PTR __real@4036000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6703,7 +6703,7 @@ $LN22@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136486[ebp], eax
+	mov	DWORD PTR $T136498[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 7
 	test	eax, eax
 	je	SHORT $LN23@createMapC
@@ -6711,7 +6711,7 @@ $LN22@createMapC:
 	fld	DWORD PTR [ecx+24]
 	mov	ecx, DWORD PTR [ecx+20]
 	fadd	QWORD PTR __real@403e000000000000
-	push	OFFSET $SG117094
+	push	OFFSET $SG117105
 	sub	esp, 8
 	fstp	DWORD PTR tv1414[ebp]
 	fld	DWORD PTR tv1414[ebp]
@@ -6733,7 +6733,7 @@ $LN24@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136490[ebp], eax
+	mov	DWORD PTR $T136502[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 8
 	test	eax, eax
 	je	SHORT $LN25@createMapC
@@ -6741,7 +6741,7 @@ $LN24@createMapC:
 	fld	DWORD PTR [ecx+24]
 	mov	edx, DWORD PTR [ecx+20]
 	fadd	QWORD PTR __real@403e000000000000
-	push	OFFSET $SG117099
+	push	OFFSET $SG117110
 	sub	esp, 8
 	mov	ecx, eax
 	fstp	DWORD PTR tv1407[ebp]
@@ -6763,7 +6763,7 @@ $LN26@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136494[ebp], eax
+	mov	DWORD PTR $T136506[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 9
 	test	eax, eax
 	je	SHORT $LN27@createMapC
@@ -6771,7 +6771,7 @@ $LN26@createMapC:
 	fld	DWORD PTR [ecx+24]
 	mov	ecx, DWORD PTR [ecx+20]
 	fadd	QWORD PTR __real@403e000000000000
-	push	OFFSET $SG117104
+	push	OFFSET $SG117115
 	sub	esp, 8
 	fstp	DWORD PTR tv1400[ebp]
 	fld	DWORD PTR tv1400[ebp]
@@ -6793,13 +6793,13 @@ $LN28@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136498[ebp], eax
+	mov	DWORD PTR $T136510[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 10		; 0000000aH
 	test	eax, eax
 	je	SHORT $LN29@createMapC
 	mov	edx, DWORD PTR ?chunkFlagChecks@@3PAPAVcheckboxUI@@A+16
 	fld	DWORD PTR [edx+24]
-	push	OFFSET $SG117109
+	push	OFFSET $SG117120
 	fadd	QWORD PTR __real@4041800000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6831,13 +6831,13 @@ $LN30@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136502[ebp], eax
+	mov	DWORD PTR $T136514[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 11		; 0000000bH
 	test	eax, eax
 	je	SHORT $LN31@createMapC
 	mov	ecx, DWORD PTR ?chunkEffectID@@3PAVtextUI@@A ; chunkEffectID
 	mov	edx, DWORD PTR [ecx+24]
-	push	OFFSET $SG117114
+	push	OFFSET $SG117125
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], edx
 	mov	ecx, eax
@@ -6866,7 +6866,7 @@ $LN32@createMapC:
 	push	56					; 00000038H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136506[ebp], eax
+	mov	DWORD PTR $T136518[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 12		; 0000000cH
 	test	eax, eax
 	je	SHORT $LN33@createMapC
@@ -6901,11 +6901,11 @@ $LN34@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136510[ebp], eax
+	mov	DWORD PTR $T136522[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 13		; 0000000dH
 	test	eax, eax
 	je	SHORT $LN35@createMapC
-	push	OFFSET $SG117124
+	push	OFFSET $SG117135
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1090519040		; 41000000H
 	mov	ecx, eax
@@ -6936,13 +6936,13 @@ $LL6@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136514[ebp], eax
+	mov	DWORD PTR $T136526[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 14		; 0000000eH
 	test	eax, eax
 	je	SHORT $LN37@createMapC
 	mov	ecx, DWORD PTR [esi-4]
 	fld	DWORD PTR [ecx+24]
-	push	OFFSET $SG117132
+	push	OFFSET $SG117143
 	fadd	QWORD PTR __real@4034000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -6977,7 +6977,7 @@ $LN38@createMapC:
 	push	56					; 00000038H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136518[ebp], eax
+	mov	DWORD PTR $T136530[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 15		; 0000000fH
 	test	eax, eax
 	je	SHORT $LN39@createMapC
@@ -7008,18 +7008,18 @@ $LN3@createMapC:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T136522[ebp], edi
+	mov	DWORD PTR $T136534[ebp], edi
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 16		; 00000010H
 	cmp	edi, eax
 	je	SHORT $LN41@createMapC
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T136523[ebp], esp
+	mov	DWORD PTR $T136535[ebp], esp
 	push	25					; 00000019H
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], eax
-	push	OFFSET $SG117147
+	push	OFFSET $SG117158
 	mov	BYTE PTR [ecx], al
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -7045,12 +7045,12 @@ $LN41@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136527[ebp], eax
+	mov	DWORD PTR $T136539[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 17		; 00000011H
 	test	eax, eax
 	je	SHORT $LN43@createMapC
 	fld	DWORD PTR _yPos$[ebp]
-	push	OFFSET $SG117152
+	push	OFFSET $SG117163
 	fadd	QWORD PTR __real@4014000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -7082,12 +7082,12 @@ $LN44@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136531[ebp], eax
+	mov	DWORD PTR $T136543[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 18		; 00000012H
 	test	eax, eax
 	je	SHORT $LN45@createMapC
 	fld	DWORD PTR _yPos$[ebp]
-	push	OFFSET $SG117157
+	push	OFFSET $SG117168
 	fadd	QWORD PTR __real@403e000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -7119,12 +7119,12 @@ $LN46@createMapC:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136535[ebp], eax
+	mov	DWORD PTR $T136547[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 19		; 00000013H
 	test	eax, eax
 	je	SHORT $LN47@createMapC
 	fld	DWORD PTR _yPos$[ebp]
-	push	OFFSET $SG117162
+	push	OFFSET $SG117173
 	fadd	QWORD PTR __real@403e000000000000
 	sub	esp, 8
 	mov	ecx, eax
@@ -7163,7 +7163,7 @@ $LN48@createMapC:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T136539[ebp], eax
+	mov	DWORD PTR $T136551[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 20		; 00000014H
 	test	eax, eax
 	je	SHORT $LN49@createMapC
@@ -7198,127 +7198,127 @@ $LN50@createMapC:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$0:
-	mov	eax, DWORD PTR $T136458[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$1:
-	mov	eax, DWORD PTR $T136462[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$2:
-	mov	eax, DWORD PTR $T136466[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$3:
 	mov	eax, DWORD PTR $T136470[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$4:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$1:
 	mov	eax, DWORD PTR $T136474[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$5:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$2:
 	mov	eax, DWORD PTR $T136478[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$6:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$3:
 	mov	eax, DWORD PTR $T136482[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$7:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$4:
 	mov	eax, DWORD PTR $T136486[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$8:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$5:
 	mov	eax, DWORD PTR $T136490[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$9:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$6:
 	mov	eax, DWORD PTR $T136494[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$10:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$7:
 	mov	eax, DWORD PTR $T136498[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$11:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$8:
 	mov	eax, DWORD PTR $T136502[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$12:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$9:
 	mov	eax, DWORD PTR $T136506[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$13:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$10:
 	mov	eax, DWORD PTR $T136510[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$14:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$11:
 	mov	eax, DWORD PTR $T136514[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$15:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$12:
 	mov	eax, DWORD PTR $T136518[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$16:
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$13:
 	mov	eax, DWORD PTR $T136522[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$14:
+	mov	eax, DWORD PTR $T136526[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$15:
+	mov	eax, DWORD PTR $T136530[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$16:
+	mov	eax, DWORD PTR $T136534[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
 __unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$18:
-	mov	eax, DWORD PTR $T136527[ebp]
+	mov	eax, DWORD PTR $T136539[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$19:
-	mov	eax, DWORD PTR $T136531[ebp]
+	mov	eax, DWORD PTR $T136543[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$20:
-	mov	eax, DWORD PTR $T136535[ebp]
+	mov	eax, DWORD PTR $T136547[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?createMapChunkWindow@@YAPAVframe@@XZ$21:
-	mov	eax, DWORD PTR $T136539[ebp]
+	mov	eax, DWORD PTR $T136551[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -7367,7 +7367,7 @@ __ehfuncinfo$?setChunkWindow@@YAXPAVMapChunk@@@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-_rec$117175 = -316					; size = 8
+_rec$117186 = -316					; size = 8
 _chunk$GSCopy$ = -308					; size = 4
 _areaName$ = -304					; size = 28
 _Temp$ = -276						; size = 255
@@ -7409,7 +7409,7 @@ _chunk$ = 8						; size = 4
 	fstp	QWORD PTR [esp]
 	push	eax
 	push	ecx
-	push	OFFSET $SG117172
+	push	OFFSET $SG117183
 	push	edx
 	call	ebx
 ; Line 587
@@ -7426,15 +7426,15 @@ _chunk$ = 8						; size = 4
 ; Line 592
 	mov	ecx, DWORD PTR [edi+232]
 	push	ecx
-	lea	edx, DWORD PTR _rec$117175[ebp]
+	lea	edx, DWORD PTR _rec$117186[ebp]
 	mov	DWORD PTR __$EHRec$[ebp+12], eax
 	push	edx
 	mov	ecx, OFFSET ?gAreaDB@@3VAreaDB@@A	; gAreaDB
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
 	call	?getByAreaID@AreaDB@@QAE?AVRecord@DBCFile@@I@Z ; AreaDB::getByAreaID
 ; Line 593
-	mov	eax, DWORD PTR _rec$117175[ebp]
-	mov	ecx, DWORD PTR _rec$117175[ebp+4]
+	mov	eax, DWORD PTR _rec$117186[ebp]
+	mov	ecx, DWORD PTR _rec$117186[ebp+4]
 	mov	eax, DWORD PTR [eax+44]
 	mov	ecx, DWORD PTR [ecx+48]
 	add	ecx, eax
@@ -7456,7 +7456,7 @@ $LL85@setChunkWi:
 __catch$?setChunkWindow@@YAXPAVMapChunk@@@Z$0:
 ; Line 597
 	push	0
-	push	OFFSET $SG117177
+	push	OFFSET $SG117188
 	lea	ecx, DWORD PTR _areaName$[ebp]
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 ; Line 598
@@ -7477,7 +7477,7 @@ $LN59@setChunkWi:
 	push	edx
 	push	eax
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG117178
+	push	OFFSET $SG117189
 	push	eax
 	call	ebx
 	add	esp, 16					; 00000010H
@@ -7490,7 +7490,7 @@ $LN59@setChunkWi:
 	mov	edx, DWORD PTR [edi+228]
 	push	edx
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG117179
+	push	OFFSET $SG117190
 	push	eax
 	call	ebx
 	add	esp, 12					; 0000000cH
@@ -7520,7 +7520,7 @@ $LL3@setChunkWi:
 	mov	edx, DWORD PTR [edi+196]
 	push	edx
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG117184
+	push	OFFSET $SG117195
 	push	eax
 	call	ebx
 	add	esp, 12					; 0000000cH
@@ -7533,7 +7533,7 @@ $LL3@setChunkWi:
 	mov	edx, DWORD PTR [edi+156]
 	push	edx
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG117185
+	push	OFFSET $SG117196
 	push	eax
 	call	ebx
 	add	esp, 12					; 0000000cH
@@ -7624,10 +7624,10 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV20@@Z
 _TEXT	SEGMENT
-$T137168 = -16						; size = 4
+$T137180 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
-__Vptr$137165 = 12					; size = 4
+__Vptr$137177 = 12					; size = 4
 __Pdest$ = 12						; size = 4
 __Src$ = 16						; size = 4
 ??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV20@@Z PROC ; std::_Cons_val<std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > const &>, COMDAT
@@ -7647,8 +7647,8 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR __Vptr$137165[ebp], ecx
-	mov	DWORD PTR $T137168[ebp], ecx
+	mov	DWORD PTR __Vptr$137177[ebp], ecx
+	mov	DWORD PTR $T137180[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -7673,9 +7673,9 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABV32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV20@@Z$0:
-	mov	eax, DWORD PTR __Vptr$137165[ebp]
+	mov	eax, DWORD PTR __Vptr$137177[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T137168[ebp]
+	mov	ecx, DWORD PTR $T137180[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -7750,7 +7750,7 @@ __ehfuncinfo$?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$al
 xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@$$QAV32@@Z
 _TEXT	SEGMENT
-$T137419 = -16						; size = 4
+$T137431 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
@@ -7772,7 +7772,7 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 202
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR $T137419[ebp], ecx
+	mov	DWORD PTR $T137431[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -7797,7 +7797,7 @@ text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@$$QAV32@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T137419[ebp]
+	mov	ecx, DWORD PTR $T137431[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -7816,7 +7816,7 @@ PUBLIC	??$_Destroy_range@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Destroy_range@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@std@@YAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@@Z
 _TEXT	SEGMENT
-__Cat$137544 = -4					; size = 1
+__Cat$137556 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Al$ = 16						; size = 4
@@ -7826,7 +7826,7 @@ __Al$ = 16						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 88
-	mov	eax, DWORD PTR __Cat$137544[ebp]
+	mov	eax, DWORD PTR __Cat$137556[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
@@ -7859,7 +7859,7 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@V32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@$$QAV20@@Z
 _TEXT	SEGMENT
-$T137667 = -16						; size = 4
+$T137679 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
 __Pdest$ = 12						; size = 4
@@ -7881,7 +7881,7 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR $T137667[ebp], ecx
+	mov	DWORD PTR $T137679[ebp], ecx
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	ecx, eax
@@ -7906,7 +7906,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@V32@@std@@YAXAAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@$$QAV20@@Z$0:
 	mov	eax, DWORD PTR __Pdest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T137667[ebp]
+	mov	ecx, DWORD PTR $T137679[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -7926,7 +7926,7 @@ PUBLIC	?_Destroy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@
 ;	COMDAT ?_Destroy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@0@Z
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
-__Cat$137726 = 12					; size = 1
+__Cat$137738 = 12					; size = 1
 __Last$ = 12						; size = 4
 ?_Destroy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@0@Z PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::_Destroy, COMDAT
 ; _this$ = ecx
@@ -7935,7 +7935,7 @@ __Last$ = 12						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1270
-	mov	eax, DWORD PTR __Cat$137726[ebp]
+	mov	eax, DWORD PTR __Cat$137738[ebp]
 	mov	edx, DWORD PTR __First$[ebp]
 	push	eax
 	add	ecx, 12					; 0000000cH
@@ -7983,7 +7983,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 __Next$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
-$T137901 = 8						; size = 4
+$T137913 = 8						; size = 4
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -8022,7 +8022,7 @@ $LL6@Uninit_mov:
 	cmp	edi, DWORD PTR __Last$[ebp]
 	je	SHORT $LN4@Uninit_mov
 ; Line 431
-	mov	DWORD PTR $T137901[ebp], esi
+	mov	DWORD PTR $T137913[ebp], esi
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
 	cmp	esi, ebx
 	je	SHORT $LN20@Uninit_mov
@@ -8082,7 +8082,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Uninit_move@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV12@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V12@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@00AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z$2:
 	mov	eax, DWORD PTR __Dest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T137901[ebp]
+	mov	ecx, DWORD PTR $T137913[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -8101,7 +8101,7 @@ PUBLIC	?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ
 _TEXT	SEGMENT
-__Cat$137979 = -4					; size = 1
+__Cat$137991 = -4					; size = 1
 ?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::_Tidy, COMDAT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\vector
@@ -8116,7 +8116,7 @@ __Cat$137979 = -4					; size = 1
 	test	eax, eax
 	je	SHORT $LN12@Tidy@2
 ; Line 1305
-	mov	ecx, DWORD PTR __Cat$137979[ebp]
+	mov	ecx, DWORD PTR __Cat$137991[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR [esi+4]
 	lea	edx, DWORD PTR [esi+12]
@@ -8147,7 +8147,7 @@ PUBLIC	??$_Uninitialized_move@PAV?$basic_string@DU?$char_traits@D@std@@V?$alloca
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV12@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@00AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@@Z
 _TEXT	SEGMENT
-__Cat$137995 = -4					; size = 1
+__Cat$138007 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -8159,7 +8159,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$137995[ebp]
+	mov	eax, DWORD PTR __Cat$138007[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -8182,7 +8182,7 @@ PUBLIC	??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@
 ; Function compile flags: /Ogtp
 ;	COMDAT ??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
 _TEXT	SEGMENT
-__Cat$138044 = -4					; size = 1
+__Cat$138056 = -4					; size = 1
 ??1?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >, COMDAT
 ; _this$ = ecx
 ; File c:\program files (x86)\microsoft visual studio 10.0\vc\include\vector
@@ -8196,7 +8196,7 @@ __Cat$138044 = -4					; size = 1
 	mov	eax, DWORD PTR [esi]
 	test	eax, eax
 	je	SHORT $LN14@vector@2
-	mov	ecx, DWORD PTR __Cat$138044[ebp]
+	mov	ecx, DWORD PTR __Cat$138056[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR [esi+4]
 	lea	edx, DWORD PTR [esi+12]
@@ -8225,7 +8225,7 @@ PUBLIC	??$_Umove@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$138067 = 16					; size = 1
+__Cat$138079 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@PAV21@00@Z PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::_Umove<std::basic_string<char,std::char_traits<char>,std::allocator<char> > *>, COMDAT
 ; _this$ = ecx
@@ -8233,7 +8233,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$138067[ebp]
+	mov	eax, DWORD PTR __Cat$138079[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -8280,10 +8280,10 @@ __ehfuncinfo$?reserve@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocat
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$122612 = -20					; size = 4
+__Ptr$122625 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$138155 = 8					; size = 1
-__Cat$138124 = 8					; size = 1
+__Cat$138167 = 8					; size = 1
+__Cat$138136 = 8					; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXI@Z PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::reserve, COMDAT
 ; _this$ = ecx
@@ -8333,7 +8333,7 @@ $LN5@reserve:
 	mov	ecx, edi
 	call	?allocate@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@I@Z ; std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::allocate
 ; Line 754
-	mov	ebx, DWORD PTR __Cat$138124[ebp]
+	mov	ebx, DWORD PTR __Cat$138136[ebp]
 	mov	ecx, DWORD PTR [esi+4]
 	mov	edx, DWORD PTR [esi]
 	push	ebx
@@ -8342,7 +8342,7 @@ $LN5@reserve:
 	push	eax
 	push	ecx
 	push	edx
-	mov	DWORD PTR __Ptr$122612[ebp], eax
+	mov	DWORD PTR __Ptr$122625[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV12@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V12@@std@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAV10@00AAV?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >
 ; Line 760
@@ -8361,7 +8361,7 @@ $LN5@reserve:
 	test	ebx, ebx
 	je	SHORT $LN41@reserve
 ; Line 763
-	mov	ecx, DWORD PTR __Cat$138155[ebp]
+	mov	ecx, DWORD PTR __Cat$138167[ebp]
 	push	ecx
 	lea	eax, DWORD PTR [esi+12]
 	push	eax
@@ -8379,7 +8379,7 @@ $LN41@reserve:
 	mov	eax, DWORD PTR __Count$[ebp]
 	lea	ecx, DWORD PTR [eax*8]
 	sub	ecx, eax
-	mov	eax, DWORD PTR __Ptr$122612[ebp]
+	mov	eax, DWORD PTR __Ptr$122625[ebp]
 	lea	edx, DWORD PTR [eax+ecx*4]
 ; Line 770
 	lea	ecx, DWORD PTR [edi*8]
@@ -8402,7 +8402,7 @@ $LN3@reserve:
 	ret	4
 __catch$?reserve@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$122612[ebp]
+	mov	eax, DWORD PTR __Ptr$122625[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -8521,11 +8521,11 @@ __ehfuncinfo$?push_back@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$alloc
 xdata$x	ENDS
 ;	COMDAT ?push_back@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z
 _TEXT	SEGMENT
-$T138658 = -16						; size = 4
-$T138417 = -16						; size = 4
+$T138670 = -16						; size = 4
+$T138429 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-__Vptr$138695 = 8					; size = 4
-$T138455 = 8						; size = 4
+__Vptr$138707 = 8					; size = 4
+$T138467 = 8						; size = 4
 __Val$ = 8						; size = 4
 ?push_back@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z PROC ; std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::push_back, COMDAT
 ; _this$ = ecx
@@ -8577,8 +8577,8 @@ $LN3@push_back:
 	sub	eax, esi
 	lea	eax, DWORD PTR [ecx+eax*4]
 	mov	ecx, DWORD PTR [edi+4]
-	mov	DWORD PTR $T138455[ebp], ecx
-	mov	DWORD PTR $T138417[ebp], ecx
+	mov	DWORD PTR $T138467[ebp], ecx
+	mov	DWORD PTR $T138429[ebp], ecx
 	xor	edx, edx
 	mov	DWORD PTR __$EHRec$[ebp+8], edx
 	cmp	ecx, edx
@@ -8599,8 +8599,8 @@ $LN4@push_back:
 $LN1@push_back:
 ; Line 995
 	mov	ecx, DWORD PTR [edi+4]
-	mov	DWORD PTR __Vptr$138695[ebp], ecx
-	mov	DWORD PTR $T138658[ebp], ecx
+	mov	DWORD PTR __Vptr$138707[ebp], ecx
+	mov	DWORD PTR $T138670[ebp], ecx
 	xor	edx, edx
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	cmp	ecx, edx
@@ -8629,17 +8629,17 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?push_back@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z$0:
-	mov	eax, DWORD PTR $T138455[ebp]
+	mov	eax, DWORD PTR $T138467[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T138417[ebp]
+	mov	ecx, DWORD PTR $T138429[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
 	ret	0
 __unwindfunclet$?push_back@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z$1:
-	mov	eax, DWORD PTR __Vptr$138695[ebp]
+	mov	eax, DWORD PTR __Vptr$138707[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T138658[ebp]
+	mov	ecx, DWORD PTR $T138670[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -8704,8 +8704,8 @@ __$EHRec$ = -12						; size = 12
 	mov	BYTE PTR _tString$[ebp], al
 ; Line 59
 	mov	ebx, DWORD PTR __imp__fopen
-	push	OFFSET $SG116346
-	push	OFFSET $SG116347
+	push	OFFSET $SG116357
+	push	OFFSET $SG116358
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	call	ebx
 ; Line 60
@@ -8768,8 +8768,8 @@ $LN15@LoadTextur:
 	push	esi
 	call	DWORD PTR __imp__fclose
 ; Line 72
-	push	OFFSET $SG116355
-	push	OFFSET $SG116356
+	push	OFFSET $SG116366
+	push	OFFSET $SG116367
 	call	ebx
 	mov	ebx, eax
 ; Line 73
@@ -8864,8 +8864,8 @@ $LN11@LoadTextur:
 	push	ebx
 	call	DWORD PTR __imp__fclose
 ; Line 94
-	push	OFFSET $SG116367
-	push	OFFSET $SG116368
+	push	OFFSET $SG116378
+	push	OFFSET $SG116379
 	call	DWORD PTR __imp__fopen
 	mov	ebx, eax
 ; Line 96
@@ -9025,12 +9025,12 @@ __ehfuncinfo$?CreateTilesetLoader@@YAPAVframe@@XZ DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-$T138976 = -28						; size = 4
+$T138988 = -28						; size = 4
 tv537 = -24						; size = 4
 tv482 = -24						; size = 4
-$T138978 = -24						; size = 4
-$T138977 = -24						; size = 4
-$T138972 = -24						; size = 4
+$T138990 = -24						; size = 4
+$T138989 = -24						; size = 4
+$T138984 = -24						; size = 4
 tv539 = -20						; size = 4
 tv560 = -16						; size = 4
 tv557 = -16						; size = 4
@@ -9060,13 +9060,13 @@ __$EHRec$ = -12						; size = 12
 	push	60					; 0000003cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T138972[ebp], eax
+	mov	DWORD PTR $T138984[ebp], eax
 	xor	esi, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], esi
 	cmp	eax, esi
 	je	SHORT $LN6@CreateTile
 	fild	DWORD PTR ?video@@3VVideo@@A+56
-	push	OFFSET $SG116990
+	push	OFFSET $SG117001
 	fld	QWORD PTR __real@3fe0000000000000
 	sub	esp, 16					; 00000010H
 	mov	DWORD PTR [esp+12], 1133215744		; 438b8000H
@@ -9100,17 +9100,17 @@ $LL3@CreateTile:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 4
-	mov	DWORD PTR $T138976[ebp], edi
+	mov	DWORD PTR $T138988[ebp], edi
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	test	edi, edi
 	je	$LN8@CreateTile
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T138977[ebp], esp
+	mov	DWORD PTR $T138989[ebp], esp
 	push	46					; 0000002eH
 	mov	DWORD PTR [ecx+20], ebx
 	mov	DWORD PTR [ecx+16], 0
-	push	OFFSET $SG117001
+	push	OFFSET $SG117012
 	mov	BYTE PTR [ecx], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -9118,11 +9118,11 @@ $LL3@CreateTile:
 	push	eax
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T138978[ebp], esp
+	mov	DWORD PTR $T138990[ebp], esp
 	push	44					; 0000002cH
 	mov	DWORD PTR [ecx+20], ebx
 	mov	DWORD PTR [ecx+16], 0
-	push	OFFSET $SG117002
+	push	OFFSET $SG117013
 	mov	BYTE PTR [ecx], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, OFFSET ?video@@3VVideo@@A+16
@@ -9202,13 +9202,13 @@ $LN80@CreateTile:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?CreateTilesetLoader@@YAPAVframe@@XZ$0:
-	mov	eax, DWORD PTR $T138972[ebp]
+	mov	eax, DWORD PTR $T138984[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?CreateTilesetLoader@@YAPAVframe@@XZ$1:
-	mov	eax, DWORD PTR $T138976[ebp]
+	mov	eax, DWORD PTR $T138988[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -9254,16 +9254,16 @@ __unwindtable$?CreateTextureFilter@@YAPAVframe@@XZ DD 0ffffffffH
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T139261 = -24						; size = 4
+$T139257 = -24						; size = 4
+$T139253 = -24						; size = 4
 $T139249 = -24						; size = 4
-$T139245 = -24						; size = 4
-$T139241 = -24						; size = 4
-$T139237 = -24						; size = 4
 tv474 = -20						; size = 4
 tv456 = -20						; size = 4
 tv454 = -20						; size = 4
 tv410 = -20						; size = 4
-$T139233 = -20						; size = 4
-$T139229 = -20						; size = 4
+$T139245 = -20						; size = 4
+$T139241 = -20						; size = 4
 tv494 = -16						; size = 4
 tv492 = -16						; size = 4
 tv476 = -16						; size = 4
@@ -9293,13 +9293,13 @@ __$EHRec$ = -12						; size = 12
 	push	60					; 0000003cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T139229[ebp], eax
+	mov	DWORD PTR $T139241[ebp], eax
 	xor	ebx, ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], ebx
 	cmp	eax, ebx
 	je	SHORT $LN9@CreateText@2
 	fild	DWORD PTR ?video@@3VVideo@@A+56
-	push	OFFSET $SG117019
+	push	OFFSET $SG117030
 	fld	QWORD PTR __real@3fe0000000000000
 	sub	esp, 16					; 00000010H
 	mov	DWORD PTR [esp+12], 1142784000		; 441d8000H
@@ -9333,11 +9333,11 @@ $LN10@CreateText@2:
 	mov	BYTE PTR [eax+46], 1
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T139233[ebp], eax
+	mov	DWORD PTR $T139245[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	cmp	eax, ebx
 	je	SHORT $LN11@CreateText@2
-	push	OFFSET $SG117024
+	push	OFFSET $SG117035
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1104150528		; 41d00000H
 	mov	ecx, eax
@@ -9369,7 +9369,7 @@ $LN6@CreateText@2:
 	call	??2@YAPAXI@Z				; operator new
 	mov	ecx, eax
 	add	esp, 4
-	mov	DWORD PTR $T139237[ebp], ecx
+	mov	DWORD PTR $T139249[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 	test	ecx, ecx
 	je	SHORT $LN13@CreateText@2
@@ -9429,11 +9429,11 @@ $LN14@CreateText@2:
 	push	76					; 0000004cH
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T139241[ebp], eax
+	mov	DWORD PTR $T139253[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
 	test	eax, eax
 	je	SHORT $LN15@CreateText@2
-	push	OFFSET $SG117037
+	push	OFFSET $SG117048
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1130299392		; 435f0000H
 	mov	ecx, eax
@@ -9459,11 +9459,11 @@ $LN16@CreateText@2:
 	push	336					; 00000150H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T139245[ebp], eax
+	mov	DWORD PTR $T139257[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
 	test	eax, eax
 	je	SHORT $LN17@CreateText@2
-	push	OFFSET $SG117042
+	push	OFFSET $SG117053
 	sub	esp, 8
 	mov	DWORD PTR [esp+4], 1132331008		; 437e0000H
 	mov	ecx, eax
@@ -9497,7 +9497,7 @@ $LL3@CreateText@2:
 	call	??2@YAPAXI@Z				; operator new
 	mov	ecx, eax
 	add	esp, 4
-	mov	DWORD PTR $T139249[ebp], ecx
+	mov	DWORD PTR $T139261[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 5
 	test	ecx, ecx
 	je	SHORT $LN19@CreateText@2
@@ -9569,37 +9569,37 @@ $LN20@CreateText@2:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$0:
-	mov	eax, DWORD PTR $T139229[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$1:
-	mov	eax, DWORD PTR $T139233[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$2:
-	mov	eax, DWORD PTR $T139237[ebp]
-	push	eax
-	call	??3@YAXPAX@Z				; operator delete
-	pop	ecx
-	ret	0
-__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$3:
 	mov	eax, DWORD PTR $T139241[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$4:
+__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$1:
 	mov	eax, DWORD PTR $T139245[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
-__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$5:
+__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$2:
 	mov	eax, DWORD PTR $T139249[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$3:
+	mov	eax, DWORD PTR $T139253[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$4:
+	mov	eax, DWORD PTR $T139257[ebp]
+	push	eax
+	call	??3@YAXPAX@Z				; operator delete
+	pop	ecx
+	ret	0
+__unwindfunclet$?CreateTextureFilter@@YAPAVframe@@XZ$5:
+	mov	eax, DWORD PTR $T139261[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -9662,7 +9662,7 @@ text$yc	SEGMENT
 text$yc	ENDS
 ;	COMDAT ??__FtextureNames@@YAXXZ
 text$yd	SEGMENT
-__Cat$139491 = -4					; size = 1
+__Cat$139503 = -4					; size = 1
 ??__FtextureNames@@YAXXZ PROC				; `dynamic atexit destructor for 'textureNames'', COMDAT
 	push	ebp
 	mov	ebp, esp
@@ -9670,7 +9670,7 @@ __Cat$139491 = -4					; size = 1
 	mov	eax, DWORD PTR ?textureNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A
 	test	eax, eax
 	je	SHORT $LN16@dynamic
-	mov	ecx, DWORD PTR __Cat$139491[ebp]
+	mov	ecx, DWORD PTR __Cat$139503[ebp]
 	mov	edx, DWORD PTR ?textureNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+4
 	push	ecx
 	push	OFFSET ?textureNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+12
@@ -9693,7 +9693,7 @@ $LN16@dynamic:
 text$yd	ENDS
 ;	COMDAT ??__FtilesetNames@@YAXXZ
 text$yd	SEGMENT
-__Cat$139563 = -4					; size = 1
+__Cat$139575 = -4					; size = 1
 ??__FtilesetNames@@YAXXZ PROC				; `dynamic atexit destructor for 'tilesetNames'', COMDAT
 	push	ebp
 	mov	ebp, esp
@@ -9701,7 +9701,7 @@ __Cat$139563 = -4					; size = 1
 	mov	eax, DWORD PTR ?tilesetNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A
 	test	eax, eax
 	je	SHORT $LN16@dynamic@2
-	mov	ecx, DWORD PTR __Cat$139563[ebp]
+	mov	ecx, DWORD PTR __Cat$139575[ebp]
 	mov	edx, DWORD PTR ?tilesetNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+4
 	push	ecx
 	push	OFFSET ?tilesetNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+12
@@ -9724,7 +9724,7 @@ $LN16@dynamic@2:
 text$yd	ENDS
 ;	COMDAT ??__FtilesetDirectories@@YAXXZ
 text$yd	SEGMENT
-__Cat$139635 = -4					; size = 1
+__Cat$139647 = -4					; size = 1
 ??__FtilesetDirectories@@YAXXZ PROC			; `dynamic atexit destructor for 'tilesetDirectories'', COMDAT
 	push	ebp
 	mov	ebp, esp
@@ -9732,7 +9732,7 @@ __Cat$139635 = -4					; size = 1
 	mov	eax, DWORD PTR ?tilesetDirectories@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A
 	test	eax, eax
 	je	SHORT $LN16@dynamic@3
-	mov	ecx, DWORD PTR __Cat$139635[ebp]
+	mov	ecx, DWORD PTR __Cat$139647[ebp]
 	mov	edx, DWORD PTR ?tilesetDirectories@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+4
 	push	ecx
 	push	OFFSET ?tilesetDirectories@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+12
@@ -9755,7 +9755,7 @@ $LN16@dynamic@3:
 text$yd	ENDS
 ;	COMDAT ??__FfilterNames@@YAXXZ
 text$yd	SEGMENT
-__Cat$139707 = -4					; size = 1
+__Cat$139719 = -4					; size = 1
 ??__FfilterNames@@YAXXZ PROC				; `dynamic atexit destructor for 'filterNames'', COMDAT
 	push	ebp
 	mov	ebp, esp
@@ -9763,7 +9763,7 @@ __Cat$139707 = -4					; size = 1
 	mov	eax, DWORD PTR ?filterNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A
 	test	eax, eax
 	je	SHORT $LN16@dynamic@4
-	mov	ecx, DWORD PTR __Cat$139707[ebp]
+	mov	ecx, DWORD PTR __Cat$139719[ebp]
 	mov	edx, DWORD PTR ?filterNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+4
 	push	ecx
 	push	OFFSET ?filterNames@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A+12

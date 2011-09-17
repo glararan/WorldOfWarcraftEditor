@@ -4,7 +4,6 @@
 #include <cassert>
 #include <algorithm>
 #include "GroundEffects.h"
-using namespace std;
 
 #define HEIGHT_TOP		1000
 #define HEIGHT_MID		600
@@ -14,8 +13,8 @@ using namespace std;
 #define HEIGHT_DEEP		-250
 #define MAPCHUNK_RADIUS	47.140452079103168293389624140323
 
-bool DrawMapContour=false;
-bool drawFlags=false;
+bool DrawMapContour = false;
+bool drawFlags = false;
 
 /*
 White	1.00	1.00	1.00
@@ -33,16 +32,16 @@ void HeightColor(float height, Vec3D *Color)
 	
 	if(height>HEIGHT_TOP)
 	{
-		Color->x=1.0;
-		Color->y=1.0;
-		Color->z=1.0;
+		Color->x = 1.0;
+		Color->y = 1.0;
+		Color->z = 1.0;
 	}
-	else if(height>HEIGHT_MID)
+	else if(height > HEIGHT_MID)
 	{
 		Amount=(height-HEIGHT_MID)/(HEIGHT_TOP-HEIGHT_MID);
-		Color->x=.75f+Amount*0.25f;
-		Color->y=0.5f+0.5f*Amount;
-		Color->z=Amount;
+		Color->x = .75f+Amount*0.25f;
+		Color->y = 0.5f+0.5f*Amount;
+		Color->z = Amount;
 	}
 	else if(height>HEIGHT_LOW)
 	{

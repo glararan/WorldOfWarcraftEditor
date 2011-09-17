@@ -88,16 +88,16 @@ _skycolors DD	02H
 	DD	06H
 	DD	07H
 	DD	07H
-$SG82585 DB	'World\Maps\%s\lights.lit', 00H
+$SG82587 DB	'World\Maps\%s\lights.lit', 00H
 	ORG $+3
-$SG82588 DB	'World\Maps\Kalimdor\lights.lit', 00H
+$SG82590 DB	'World\Maps\Kalimdor\lights.lit', 00H
 	ORG $+1
-$SG82746 DB	'Environments\Stars\Stars.mdx', 00H
+$SG82748 DB	'Environments\Stars\Stars.mdx', 00H
 	ORG $+7
-$SG82808 DB	'[World of Warcraft Studio - Editor] - Sky %d %d is out o'
+$SG82810 DB	'[World of Warcraft Studio - Editor] - Sky %d %d is out o'
 	DB	'f bounds!', 0aH, 00H
 	ORG $+1
-$SG82823 DB	'[no sky]', 00H
+$SG82825 DB	'[no sky]', 00H
 CONST	ENDS
 ;	COMDAT ?end@?$_Iosb@H@std@@2W4_Seekdir@12@B
 CONST	SEGMENT
@@ -1207,23 +1207,23 @@ __real@3fc921fb60000000 DQ 03fc921fb60000000r	; 0.19635
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T97651 = -216						; size = 12
+$T97653 = -216						; size = 12
 tv974 = -204						; size = 4
 tv1015 = -200						; size = 4
 tv1022 = -196						; size = 4
 tv981 = -192						; size = 4
 _this$GSCopy$ = -188					; size = 4
 tv998 = -184						; size = 4
-_h$82560 = -184						; size = 4
+_h$82562 = -184						; size = 4
 tv1688 = -180						; size = 4
 tv1679 = -180						; size = 4
-_xa$97766 = -180					; size = 4
-_xa$97736 = -180					; size = 4
+_xa$97768 = -180					; size = 4
+_xa$97738 = -180					; size = 4
 tv1471 = -176						; size = 4
-_ya$97767 = -176					; size = 4
-_ya$97737 = -176					; size = 4
-$T97768 = -176						; size = 4
-$T97738 = -176						; size = 4
+_ya$97769 = -176					; size = 4
+_ya$97739 = -176					; size = 4
+$T97770 = -176						; size = 4
+$T97740 = -176						; size = 4
 _basepos1$ = -172					; size = 84
 _basepos2$ = -88					; size = 84
 __$ArrayPad$ = -4					; size = 4
@@ -1291,20 +1291,20 @@ __$ArrayPad$ = -4					; size = 4
 ; Line 140
 	mov	ebx, DWORD PTR __imp__glVertex3fv@4
 	xor	edi, edi
-	mov	DWORD PTR _h$82560[ebp], edi
+	mov	DWORD PTR _h$82562[ebp], edi
 	jmp	SHORT $LN9@draw
 	npad	11
 $LL96@draw:
 	xor	esi, esi
 $LN9@draw:
 ; Line 145
-	fild	DWORD PTR _h$82560[ebp]
+	fild	DWORD PTR _h$82562[ebp]
 	fmul	QWORD PTR __real@3fc921fb60000000
-	fstp	DWORD PTR $T97738[ebp]
-	fld	DWORD PTR $T97738[ebp]
+	fstp	DWORD PTR $T97740[ebp]
+	fld	DWORD PTR $T97740[ebp]
 	call	__CIsin
 	fstp	DWORD PTR tv981[ebp]
-	fld	DWORD PTR $T97738[ebp]
+	fld	DWORD PTR $T97740[ebp]
 	call	__CIcos
 	fstp	DWORD PTR tv974[ebp]
 	inc	edi
@@ -1312,11 +1312,11 @@ $LN9@draw:
 ; Line 146
 	fild	DWORD PTR tv998[ebp]
 	fmul	QWORD PTR __real@3fc921fb60000000
-	fstp	DWORD PTR $T97768[ebp]
-	fld	DWORD PTR $T97768[ebp]
+	fstp	DWORD PTR $T97770[ebp]
+	fld	DWORD PTR $T97770[ebp]
 	call	__CIsin
 	fstp	DWORD PTR tv1022[ebp]
-	fld	DWORD PTR $T97768[ebp]
+	fld	DWORD PTR $T97770[ebp]
 	call	__CIcos
 	fstp	DWORD PTR tv1015[ebp]
 	mov	edi, OFFSET _angles
@@ -1332,19 +1332,19 @@ $LL6@draw:
 	fstp	DWORD PTR tv1688[ebp]
 	fld	DWORD PTR tv1688[ebp]
 	fmul	QWORD PTR __real@4079000000000000
-	fstp	DWORD PTR $T97651[ebp]
+	fstp	DWORD PTR $T97653[ebp]
 	fld	DWORD PTR tv1471[ebp]
 	call	__CIsin
 	fstp	DWORD PTR tv1679[ebp]
 	fld	DWORD PTR tv1679[ebp]
-	mov	eax, DWORD PTR $T97651[ebp]
+	mov	eax, DWORD PTR $T97653[ebp]
 	fmul	QWORD PTR __real@4079000000000000
 	xor	edx, edx
 	mov	DWORD PTR _basepos1$[ebp+esi], eax
 	mov	DWORD PTR _basepos1$[ebp+esi+8], edx
-	fstp	DWORD PTR $T97651[ebp+4]
+	fstp	DWORD PTR $T97653[ebp+4]
 	mov	DWORD PTR _basepos2$[ebp+esi], eax
-	mov	ecx, DWORD PTR $T97651[ebp+4]
+	mov	ecx, DWORD PTR $T97653[ebp+4]
 	mov	DWORD PTR _basepos1$[ebp+esi+4], ecx
 ; Line 145
 	fld	DWORD PTR _basepos1$[ebp+esi]
@@ -1355,18 +1355,18 @@ $LL6@draw:
 	fxch	ST(1)
 	add	edi, 4
 	add	esi, 12					; 0000000cH
-	fstp	DWORD PTR _xa$97736[ebp]
+	fstp	DWORD PTR _xa$97738[ebp]
 	fld	DWORD PTR _basepos1$[ebp+esi-4]
 	fsub	ST(0), ST(1)
-	fstp	DWORD PTR _ya$97737[ebp]
+	fstp	DWORD PTR _ya$97739[ebp]
 	fld	DWORD PTR tv974[ebp]
 	fld	ST(0)
-	fld	DWORD PTR _xa$97736[ebp]
+	fld	DWORD PTR _xa$97738[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR tv981[ebp]
 	fld	ST(0)
-	fld	DWORD PTR _ya$97737[ebp]
+	fld	DWORD PTR _ya$97739[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
@@ -1382,18 +1382,18 @@ $LL6@draw:
 ; Line 146
 	fld	DWORD PTR _basepos2$[ebp+esi-12]
 	fsub	ST(0), ST(1)
-	fstp	DWORD PTR _xa$97766[ebp]
+	fstp	DWORD PTR _xa$97768[ebp]
 	fld	DWORD PTR _basepos2$[ebp+esi-4]
 	fsub	ST(0), ST(1)
-	fstp	DWORD PTR _ya$97767[ebp]
+	fstp	DWORD PTR _ya$97769[ebp]
 	fld	DWORD PTR tv1015[ebp]
 	fld	ST(0)
-	fld	DWORD PTR _xa$97766[ebp]
+	fld	DWORD PTR _xa$97768[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fld	DWORD PTR tv1022[ebp]
 	fld	ST(0)
-	fld	DWORD PTR _ya$97767[ebp]
+	fld	DWORD PTR _ya$97769[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(4)
@@ -1450,7 +1450,7 @@ $LL3@draw:
 	jl	SHORT $LL3@draw
 ; Line 140
 	mov	edi, DWORD PTR tv998[ebp]
-	mov	DWORD PTR _h$82560[ebp], edi
+	mov	DWORD PTR _h$82562[ebp], edi
 	cmp	edi, 32					; 00000020H
 	jl	$LL96@draw
 ; Line 159
@@ -1865,24 +1865,24 @@ __real@3ff0000000000000 DQ 03ff0000000000000r	; 1
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T97850 = -36						; size = 12
-$T97847 = -36						; size = 12
-$T97844 = -36						; size = 12
-$T97841 = -36						; size = 12
-$T97838 = -36						; size = 12
-$T97837 = -36						; size = 12
-$T97851 = -24						; size = 12
-$T97848 = -24						; size = 12
-$T97845 = -24						; size = 12
-$T97842 = -24						; size = 12
-$T97839 = -24						; size = 12
-$T97836 = -24						; size = 12
-$T97852 = -12						; size = 12
-$T97849 = -12						; size = 12
-$T97846 = -12						; size = 12
-$T97843 = -12						; size = 12
-$T97840 = -12						; size = 12
-$T97835 = -12						; size = 12
+$T97852 = -36						; size = 12
+$T97849 = -36						; size = 12
+$T97846 = -36						; size = 12
+$T97843 = -36						; size = 12
+$T97840 = -36						; size = 12
+$T97839 = -36						; size = 12
+$T97853 = -24						; size = 12
+$T97850 = -24						; size = 12
+$T97847 = -24						; size = 12
+$T97844 = -24						; size = 12
+$T97841 = -24						; size = 12
+$T97838 = -24						; size = 12
+$T97854 = -12						; size = 12
+$T97851 = -12						; size = 12
+$T97848 = -12						; size = 12
+$T97845 = -12						; size = 12
+$T97842 = -12						; size = 12
+$T97837 = -12						; size = 12
 _a$ = 8							; size = 4
 _b$ = 12						; size = 4
 _ir$ = 16						; size = 4
@@ -1945,207 +1945,207 @@ _r$ = 16						; size = 4
 ; Line 424
 	fld	ST(1)
 	fmul	DWORD PTR [edx+24]
-	fstp	DWORD PTR $T97836[ebp]
+	fstp	DWORD PTR $T97838[ebp]
 	fld	DWORD PTR [edx+28]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97836[ebp+4]
+	fstp	DWORD PTR $T97838[ebp+4]
 	fld	DWORD PTR [edx+32]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97836[ebp+8]
+	fstp	DWORD PTR $T97838[ebp+8]
 	fld	DWORD PTR [eax+24]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97835[ebp]
+	fstp	DWORD PTR $T97837[ebp]
 	fld	DWORD PTR [eax+28]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97835[ebp+4]
+	fstp	DWORD PTR $T97837[ebp+4]
 	fld	DWORD PTR [eax+32]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97835[ebp+8]
-	fld	DWORD PTR $T97835[ebp]
-	fadd	DWORD PTR $T97836[ebp]
-	fstp	DWORD PTR $T97837[ebp]
-	fld	DWORD PTR $T97835[ebp+4]
-	mov	esi, DWORD PTR $T97837[ebp]
-	fadd	DWORD PTR $T97836[ebp+4]
-	mov	DWORD PTR [ecx+24], esi
-	fstp	DWORD PTR $T97837[ebp+4]
-	fld	DWORD PTR $T97835[ebp+8]
-	mov	esi, DWORD PTR $T97837[ebp+4]
-	fadd	DWORD PTR $T97836[ebp+8]
-	mov	DWORD PTR [ecx+28], esi
 	fstp	DWORD PTR $T97837[ebp+8]
-	mov	esi, DWORD PTR $T97837[ebp+8]
+	fld	DWORD PTR $T97837[ebp]
+	fadd	DWORD PTR $T97838[ebp]
+	fstp	DWORD PTR $T97839[ebp]
+	fld	DWORD PTR $T97837[ebp+4]
+	mov	esi, DWORD PTR $T97839[ebp]
+	fadd	DWORD PTR $T97838[ebp+4]
+	mov	DWORD PTR [ecx+24], esi
+	fstp	DWORD PTR $T97839[ebp+4]
+	fld	DWORD PTR $T97837[ebp+8]
+	mov	esi, DWORD PTR $T97839[ebp+4]
+	fadd	DWORD PTR $T97838[ebp+8]
+	mov	DWORD PTR [ecx+28], esi
+	fstp	DWORD PTR $T97839[ebp+8]
+	mov	esi, DWORD PTR $T97839[ebp+8]
 	mov	DWORD PTR [ecx+32], esi
 ; Line 425
 	fld	DWORD PTR [edx+36]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97839[ebp]
+	fstp	DWORD PTR $T97841[ebp]
 	fld	DWORD PTR [edx+40]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97839[ebp+4]
+	fstp	DWORD PTR $T97841[ebp+4]
 	fld	DWORD PTR [edx+44]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97839[ebp+8]
+	fstp	DWORD PTR $T97841[ebp+8]
 	fld	DWORD PTR [eax+36]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97838[ebp]
+	fstp	DWORD PTR $T97840[ebp]
 	fld	DWORD PTR [eax+40]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97838[ebp+4]
+	fstp	DWORD PTR $T97840[ebp+4]
 	fld	DWORD PTR [eax+44]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97838[ebp+8]
-	fld	DWORD PTR $T97838[ebp]
-	fadd	DWORD PTR $T97839[ebp]
-	fstp	DWORD PTR $T97840[ebp]
-	fld	DWORD PTR $T97838[ebp+4]
-	mov	esi, DWORD PTR $T97840[ebp]
-	fadd	DWORD PTR $T97839[ebp+4]
-	mov	DWORD PTR [ecx+36], esi
-	fstp	DWORD PTR $T97840[ebp+4]
-	fld	DWORD PTR $T97838[ebp+8]
-	mov	esi, DWORD PTR $T97840[ebp+4]
-	fadd	DWORD PTR $T97839[ebp+8]
-	mov	DWORD PTR [ecx+40], esi
 	fstp	DWORD PTR $T97840[ebp+8]
-	mov	esi, DWORD PTR $T97840[ebp+8]
+	fld	DWORD PTR $T97840[ebp]
+	fadd	DWORD PTR $T97841[ebp]
+	fstp	DWORD PTR $T97842[ebp]
+	fld	DWORD PTR $T97840[ebp+4]
+	mov	esi, DWORD PTR $T97842[ebp]
+	fadd	DWORD PTR $T97841[ebp+4]
+	mov	DWORD PTR [ecx+36], esi
+	fstp	DWORD PTR $T97842[ebp+4]
+	fld	DWORD PTR $T97840[ebp+8]
+	mov	esi, DWORD PTR $T97842[ebp+4]
+	fadd	DWORD PTR $T97841[ebp+8]
+	mov	DWORD PTR [ecx+40], esi
+	fstp	DWORD PTR $T97842[ebp+8]
+	mov	esi, DWORD PTR $T97842[ebp+8]
 	mov	DWORD PTR [ecx+44], esi
 ; Line 426
 	fld	DWORD PTR [edx+48]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97842[ebp]
+	fstp	DWORD PTR $T97844[ebp]
 	fld	DWORD PTR [edx+52]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97842[ebp+4]
+	fstp	DWORD PTR $T97844[ebp+4]
 	fld	DWORD PTR [edx+56]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97842[ebp+8]
+	fstp	DWORD PTR $T97844[ebp+8]
 	fld	ST(0)
 	fmul	DWORD PTR [eax+48]
-	fstp	DWORD PTR $T97841[ebp]
+	fstp	DWORD PTR $T97843[ebp]
 	fld	DWORD PTR [eax+52]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97841[ebp+4]
+	fstp	DWORD PTR $T97843[ebp+4]
 	fld	DWORD PTR [eax+56]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97841[ebp+8]
-	fld	DWORD PTR $T97841[ebp]
-	fadd	DWORD PTR $T97842[ebp]
-	fstp	DWORD PTR $T97843[ebp]
-	fld	DWORD PTR $T97841[ebp+4]
-	mov	esi, DWORD PTR $T97843[ebp]
-	fadd	DWORD PTR $T97842[ebp+4]
-	mov	DWORD PTR [ecx+48], esi
-	fstp	DWORD PTR $T97843[ebp+4]
-	fld	DWORD PTR $T97841[ebp+8]
-	mov	esi, DWORD PTR $T97843[ebp+4]
-	fadd	DWORD PTR $T97842[ebp+8]
-	mov	DWORD PTR [ecx+52], esi
 	fstp	DWORD PTR $T97843[ebp+8]
-	mov	esi, DWORD PTR $T97843[ebp+8]
+	fld	DWORD PTR $T97843[ebp]
+	fadd	DWORD PTR $T97844[ebp]
+	fstp	DWORD PTR $T97845[ebp]
+	fld	DWORD PTR $T97843[ebp+4]
+	mov	esi, DWORD PTR $T97845[ebp]
+	fadd	DWORD PTR $T97844[ebp+4]
+	mov	DWORD PTR [ecx+48], esi
+	fstp	DWORD PTR $T97845[ebp+4]
+	fld	DWORD PTR $T97843[ebp+8]
+	mov	esi, DWORD PTR $T97845[ebp+4]
+	fadd	DWORD PTR $T97844[ebp+8]
+	mov	DWORD PTR [ecx+52], esi
+	fstp	DWORD PTR $T97845[ebp+8]
+	mov	esi, DWORD PTR $T97845[ebp+8]
 	mov	DWORD PTR [ecx+56], esi
 ; Line 427
 	fld	DWORD PTR [edx+60]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97845[ebp]
+	fstp	DWORD PTR $T97847[ebp]
 	fld	DWORD PTR [edx+64]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97845[ebp+4]
+	fstp	DWORD PTR $T97847[ebp+4]
 	fld	DWORD PTR [edx+68]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97845[ebp+8]
+	fstp	DWORD PTR $T97847[ebp+8]
 	fld	DWORD PTR [eax+60]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97844[ebp]
+	fstp	DWORD PTR $T97846[ebp]
 	fld	DWORD PTR [eax+64]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97844[ebp+4]
+	fstp	DWORD PTR $T97846[ebp+4]
 	fld	DWORD PTR [eax+68]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97844[ebp+8]
-	fld	DWORD PTR $T97844[ebp]
-	fadd	DWORD PTR $T97845[ebp]
-	fstp	DWORD PTR $T97846[ebp]
-	fld	DWORD PTR $T97844[ebp+4]
-	mov	esi, DWORD PTR $T97846[ebp]
-	fadd	DWORD PTR $T97845[ebp+4]
-	mov	DWORD PTR [ecx+60], esi
-	fstp	DWORD PTR $T97846[ebp+4]
-	fld	DWORD PTR $T97844[ebp+8]
-	mov	esi, DWORD PTR $T97846[ebp+4]
-	fadd	DWORD PTR $T97845[ebp+8]
-	mov	DWORD PTR [ecx+64], esi
 	fstp	DWORD PTR $T97846[ebp+8]
-	mov	esi, DWORD PTR $T97846[ebp+8]
+	fld	DWORD PTR $T97846[ebp]
+	fadd	DWORD PTR $T97847[ebp]
+	fstp	DWORD PTR $T97848[ebp]
+	fld	DWORD PTR $T97846[ebp+4]
+	mov	esi, DWORD PTR $T97848[ebp]
+	fadd	DWORD PTR $T97847[ebp+4]
+	mov	DWORD PTR [ecx+60], esi
+	fstp	DWORD PTR $T97848[ebp+4]
+	fld	DWORD PTR $T97846[ebp+8]
+	mov	esi, DWORD PTR $T97848[ebp+4]
+	fadd	DWORD PTR $T97847[ebp+8]
+	mov	DWORD PTR [ecx+64], esi
+	fstp	DWORD PTR $T97848[ebp+8]
+	mov	esi, DWORD PTR $T97848[ebp+8]
 ; Line 428
 	fld	ST(1)
 	mov	DWORD PTR [ecx+68], esi
 	fmul	DWORD PTR [edx+72]
-	fstp	DWORD PTR $T97848[ebp]
+	fstp	DWORD PTR $T97850[ebp]
 	fld	DWORD PTR [edx+76]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97848[ebp+4]
+	fstp	DWORD PTR $T97850[ebp+4]
 	fld	DWORD PTR [edx+80]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97848[ebp+8]
+	fstp	DWORD PTR $T97850[ebp+8]
 	fld	DWORD PTR [eax+72]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97847[ebp]
+	fstp	DWORD PTR $T97849[ebp]
 	fld	DWORD PTR [eax+76]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97847[ebp+4]
+	fstp	DWORD PTR $T97849[ebp+4]
 	fld	DWORD PTR [eax+80]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97847[ebp+8]
-	fld	DWORD PTR $T97847[ebp]
-	fadd	DWORD PTR $T97848[ebp]
-	fstp	DWORD PTR $T97849[ebp]
-	fld	DWORD PTR $T97847[ebp+4]
-	mov	esi, DWORD PTR $T97849[ebp]
-	fadd	DWORD PTR $T97848[ebp+4]
-	mov	DWORD PTR [ecx+72], esi
-	fstp	DWORD PTR $T97849[ebp+4]
-	fld	DWORD PTR $T97847[ebp+8]
-	mov	esi, DWORD PTR $T97849[ebp+4]
-	fadd	DWORD PTR $T97848[ebp+8]
-	mov	DWORD PTR [ecx+76], esi
 	fstp	DWORD PTR $T97849[ebp+8]
-	mov	esi, DWORD PTR $T97849[ebp+8]
+	fld	DWORD PTR $T97849[ebp]
+	fadd	DWORD PTR $T97850[ebp]
+	fstp	DWORD PTR $T97851[ebp]
+	fld	DWORD PTR $T97849[ebp+4]
+	mov	esi, DWORD PTR $T97851[ebp]
+	fadd	DWORD PTR $T97850[ebp+4]
+	mov	DWORD PTR [ecx+72], esi
+	fstp	DWORD PTR $T97851[ebp+4]
+	fld	DWORD PTR $T97849[ebp+8]
+	mov	esi, DWORD PTR $T97851[ebp+4]
+	fadd	DWORD PTR $T97850[ebp+8]
+	mov	DWORD PTR [ecx+76], esi
+	fstp	DWORD PTR $T97851[ebp+8]
+	mov	esi, DWORD PTR $T97851[ebp+8]
 	mov	DWORD PTR [ecx+80], esi
 ; Line 429
 	fld	DWORD PTR [edx+84]
 	fmul	ST(0), ST(2)
 	pop	esi
-	fstp	DWORD PTR $T97851[ebp]
+	fstp	DWORD PTR $T97853[ebp]
 	fld	DWORD PTR [edx+88]
 	fmul	ST(0), ST(2)
-	fstp	DWORD PTR $T97851[ebp+4]
+	fstp	DWORD PTR $T97853[ebp+4]
 	fld	DWORD PTR [edx+92]
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T97851[ebp+8]
+	fstp	DWORD PTR $T97853[ebp+8]
 	fld	DWORD PTR [eax+84]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97850[ebp]
+	fstp	DWORD PTR $T97852[ebp]
 	fld	DWORD PTR [eax+88]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T97850[ebp+4]
-	fmul	DWORD PTR [eax+92]
-	fstp	DWORD PTR $T97850[ebp+8]
-	fld	DWORD PTR $T97850[ebp]
-	fadd	DWORD PTR $T97851[ebp]
-	fstp	DWORD PTR $T97852[ebp]
-	fld	DWORD PTR $T97850[ebp+4]
-	mov	eax, DWORD PTR $T97852[ebp]
-	fadd	DWORD PTR $T97851[ebp+4]
-	mov	DWORD PTR [ecx+84], eax
 	fstp	DWORD PTR $T97852[ebp+4]
-	fld	DWORD PTR $T97850[ebp+8]
-	mov	edx, DWORD PTR $T97852[ebp+4]
-	fadd	DWORD PTR $T97851[ebp+8]
-	mov	DWORD PTR [ecx+88], edx
+	fmul	DWORD PTR [eax+92]
 	fstp	DWORD PTR $T97852[ebp+8]
-	mov	eax, DWORD PTR $T97852[ebp+8]
+	fld	DWORD PTR $T97852[ebp]
+	fadd	DWORD PTR $T97853[ebp]
+	fstp	DWORD PTR $T97854[ebp]
+	fld	DWORD PTR $T97852[ebp+4]
+	mov	eax, DWORD PTR $T97854[ebp]
+	fadd	DWORD PTR $T97853[ebp+4]
+	mov	DWORD PTR [ecx+84], eax
+	fstp	DWORD PTR $T97854[ebp+4]
+	fld	DWORD PTR $T97852[ebp+8]
+	mov	edx, DWORD PTR $T97854[ebp+4]
+	fadd	DWORD PTR $T97853[ebp+8]
+	mov	DWORD PTR [ecx+88], edx
+	fstp	DWORD PTR $T97854[ebp+8]
+	mov	eax, DWORD PTR $T97854[ebp+8]
 	mov	DWORD PTR [ecx+92], eax
 ; Line 430
 	mov	esp, ebp
@@ -3363,8 +3363,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@USkyColor@@@std@@YAPAUSkyColor@@IPAU1@@Z
 _TEXT	SEGMENT
-$T98348 = -12						; size = 12
-$T98353 = 8						; size = 4
+$T98350 = -12						; size = 12
+$T98355 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@USkyColor@@@std@@YAPAUSkyColor@@IPAU1@@Z PROC ; std::_Allocate<SkyColor>, COMDAT
@@ -3391,15 +3391,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	eax, DWORD PTR $T98353[ebp]
+	lea	eax, DWORD PTR $T98355[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T98348[ebp]
-	mov	DWORD PTR $T98353[ebp], 0
+	lea	ecx, DWORD PTR $T98350[ebp]
+	mov	DWORD PTR $T98355[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T98348[ebp]
+	lea	ecx, DWORD PTR $T98350[ebp]
 	push	ecx
-	mov	DWORD PTR $T98348[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T98350[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -3414,8 +3414,8 @@ PUBLIC	??$_Allocate@VSky@@@std@@YAPAVSky@@IPAV1@@Z	; std::_Allocate<Sky>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@VSky@@@std@@YAPAVSky@@IPAV1@@Z
 _TEXT	SEGMENT
-$T98358 = -12						; size = 12
-$T98362 = 8						; size = 4
+$T98360 = -12						; size = 12
+$T98364 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@VSky@@@std@@YAPAVSky@@IPAV1@@Z PROC	; std::_Allocate<Sky>, COMDAT
@@ -3441,15 +3441,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	eax, DWORD PTR $T98362[ebp]
+	lea	eax, DWORD PTR $T98364[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T98358[ebp]
-	mov	DWORD PTR $T98362[ebp], 0
+	lea	ecx, DWORD PTR $T98360[ebp]
+	mov	DWORD PTR $T98364[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T98358[ebp]
+	lea	ecx, DWORD PTR $T98360[ebp]
 	push	ecx
-	mov	DWORD PTR $T98358[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T98360[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -3464,8 +3464,8 @@ PUBLIC	??$_Allocate@UOutdoorLightStats@@@std@@YAPAUOutdoorLightStats@@IPAU1@@Z ;
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@UOutdoorLightStats@@@std@@YAPAUOutdoorLightStats@@IPAU1@@Z
 _TEXT	SEGMENT
-$T98367 = -12						; size = 12
-$T98371 = 8						; size = 4
+$T98369 = -12						; size = 12
+$T98373 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@UOutdoorLightStats@@@std@@YAPAUOutdoorLightStats@@IPAU1@@Z PROC ; std::_Allocate<OutdoorLightStats>, COMDAT
@@ -3492,15 +3492,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@3
 $LN1@Allocate@3:
 ; Line 37
-	lea	ecx, DWORD PTR $T98371[ebp]
+	lea	ecx, DWORD PTR $T98373[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T98367[ebp]
-	mov	DWORD PTR $T98371[ebp], 0
+	lea	ecx, DWORD PTR $T98369[ebp]
+	mov	DWORD PTR $T98373[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T98367[ebp]
+	lea	edx, DWORD PTR $T98369[ebp]
 	push	edx
-	mov	DWORD PTR $T98367[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T98369[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@3:
 $LN5@Allocate@3:
@@ -3515,8 +3515,8 @@ PUBLIC	??$_Allocate@D@std@@YAPADIPAD@Z			; std::_Allocate<char>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T98376 = -12						; size = 12
-$T98380 = 8						; size = 4
+$T98378 = -12						; size = 12
+$T98382 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -3541,15 +3541,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@4
 $LN1@Allocate@4:
 ; Line 37
-	lea	eax, DWORD PTR $T98380[ebp]
+	lea	eax, DWORD PTR $T98382[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T98376[ebp]
-	mov	DWORD PTR $T98380[ebp], 0
+	lea	ecx, DWORD PTR $T98378[ebp]
+	mov	DWORD PTR $T98382[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T98376[ebp]
+	lea	ecx, DWORD PTR $T98378[ebp]
 	push	ecx
-	mov	DWORD PTR $T98376[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T98378[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@4:
 $LN5@Allocate@4:
@@ -4184,15 +4184,15 @@ _TEXT	ENDS
 PUBLIC	?colorFor@Sky@@QBE?AVVec3D@@HH@Z		; Sky::colorFor
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T98517 = -36						; size = 12
+$T98519 = -36						; size = 12
 _c1$ = -24						; size = 12
-$T98516 = -12						; size = 12
+$T98518 = -12						; size = 12
 _c2$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
 _r$ = 12						; size = 4
 tv671 = 16						; size = 4
 tv668 = 16						; size = 4
-$T98608 = 16						; size = 4
+$T98610 = 16						; size = 4
 _tt$ = 16						; size = 4
 _t$ = 16						; size = 4
 ?colorFor@Sky@@QBE?AVVec3D@@HH@Z PROC			; Sky::colorFor
@@ -4335,33 +4335,33 @@ $LN1@colorFor:
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T98517[ebp]
+	fstp	DWORD PTR $T98519[ebp]
 	fld	DWORD PTR _c2$[ebp+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T98517[ebp+4]
+	fstp	DWORD PTR $T98519[ebp+4]
 	fld	DWORD PTR _c2$[ebp+8]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T98517[ebp+8]
+	fstp	DWORD PTR $T98519[ebp+8]
 	fld1
 	fsubrp	ST(1), ST(0)
-	fstp	DWORD PTR $T98608[ebp]
-	fld	DWORD PTR $T98608[ebp]
+	fstp	DWORD PTR $T98610[ebp]
+	fld	DWORD PTR $T98610[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _c1$[ebp]
-	fstp	DWORD PTR $T98516[ebp]
+	fstp	DWORD PTR $T98518[ebp]
 	fld	ST(0)
 	fmul	DWORD PTR _c1$[ebp+4]
-	fstp	DWORD PTR $T98516[ebp+4]
+	fstp	DWORD PTR $T98518[ebp+4]
 	fmul	DWORD PTR _c1$[ebp+8]
-	fstp	DWORD PTR $T98516[ebp+8]
-	fld	DWORD PTR $T98516[ebp]
-	fadd	DWORD PTR $T98517[ebp]
+	fstp	DWORD PTR $T98518[ebp+8]
+	fld	DWORD PTR $T98518[ebp]
+	fadd	DWORD PTR $T98519[ebp]
 	fstp	DWORD PTR [eax]
-	fld	DWORD PTR $T98516[ebp+4]
-	fadd	DWORD PTR $T98517[ebp+4]
+	fld	DWORD PTR $T98518[ebp+4]
+	fadd	DWORD PTR $T98519[ebp+4]
 	fstp	DWORD PTR [eax+4]
-	fld	DWORD PTR $T98516[ebp+8]
-	fadd	DWORD PTR $T98517[ebp+8]
+	fld	DWORD PTR $T98518[ebp+8]
+	fadd	DWORD PTR $T98519[ebp+8]
 	fstp	DWORD PTR [eax+8]
 ; Line 123
 	mov	esp, ebp
@@ -4372,13 +4372,13 @@ _TEXT	ENDS
 PUBLIC	?findSkyWeights@Skies@@QAEXVVec3D@@@Z		; Skies::findSkyWeights
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T98626 = -28						; size = 12
+$T98628 = -28						; size = 12
 tv474 = -16						; size = 4
 tv467 = -16						; size = 4
-_r$82776 = -16						; size = 4
-_dist$82767 = -16					; size = 4
+_r$82778 = -16						; size = 4
+_dist$82769 = -16					; size = 4
 tv535 = -12						; size = 4
-_i$82762 = -8						; size = 4
+_i$82764 = -8						; size = 4
 tv549 = -4						; size = 4
 _pos$ = 8						; size = 12
 ?findSkyWeights@Skies@@QAEXVVec3D@@@Z PROC		; Skies::findSkyWeights
@@ -4409,7 +4409,7 @@ _pos$ = 8						; size = 12
 	mov	DWORD PTR [esi+20], eax
 ; Line 220
 	dec	eax
-	mov	DWORD PTR _i$82762[ebp], eax
+	mov	DWORD PTR _i$82764[ebp], eax
 	js	$LN11@findSkyWei
 ; Line 217
 	lea	edi, DWORD PTR [eax+1]
@@ -4429,16 +4429,16 @@ $LN13@findSkyWei:
 	fld	DWORD PTR _pos$[ebp]
 	fsub	DWORD PTR [edi+edx-780]
 	lea	edi, DWORD PTR [edi+edx-780]
-	fstp	DWORD PTR $T98626[ebp]
+	fstp	DWORD PTR $T98628[ebp]
 	fld	DWORD PTR _pos$[ebp+4]
 	fsub	DWORD PTR [edi+4]
-	fstp	DWORD PTR $T98626[ebp+4]
+	fstp	DWORD PTR $T98628[ebp+4]
 	fld	DWORD PTR _pos$[ebp+8]
 	fsub	DWORD PTR [edi+8]
-	fstp	DWORD PTR $T98626[ebp+8]
-	fld	DWORD PTR $T98626[ebp]
-	fld	DWORD PTR $T98626[ebp+4]
-	fld	DWORD PTR $T98626[ebp+8]
+	fstp	DWORD PTR $T98628[ebp+8]
+	fld	DWORD PTR $T98628[ebp]
+	fld	DWORD PTR $T98628[ebp+4]
+	fld	DWORD PTR $T98628[ebp+8]
 	fld	ST(1)
 	fmulp	ST(2), ST(0)
 	fld	ST(2)
@@ -4452,16 +4452,16 @@ $LN13@findSkyWei:
 	call	__CIsqrt
 	fstp	DWORD PTR tv467[ebp]
 	fld	DWORD PTR tv467[ebp]
-	fstp	DWORD PTR _dist$82767[ebp]
+	fstp	DWORD PTR _dist$82769[ebp]
 ; Line 224
-	fld	DWORD PTR _dist$82767[ebp]
+	fld	DWORD PTR _dist$82769[ebp]
 	fld	DWORD PTR [edi+12]
 	fcomp	ST(1)
 	fnstsw	ax
 	test	ah, 65					; 00000041H
 	jne	SHORT $LN10@findSkyWei
 ; Line 228
-	mov	eax, DWORD PTR _i$82762[ebp]
+	mov	eax, DWORD PTR _i$82764[ebp]
 	fstp	ST(0)
 	mov	DWORD PTR [edi+772], 1065353216		; 3f800000H
 ; Line 229
@@ -4514,8 +4514,8 @@ $LN10@findSkyWei:
 	fld	DWORD PTR [edi+16]
 	fsub	DWORD PTR [edi+12]
 	fdivp	ST(1), ST(0)
-	fstp	DWORD PTR _r$82776[ebp]
-	fld	DWORD PTR _r$82776[ebp]
+	fstp	DWORD PTR _r$82778[ebp]
+	fld	DWORD PTR _r$82778[ebp]
 	fld	ST(0)
 	fld1
 	fsubrp	ST(1), ST(0)
@@ -4563,11 +4563,11 @@ $LN55@findSkyWei:
 	fstp	ST(0)
 $LN12@findSkyWei:
 ; Line 220
-	mov	eax, DWORD PTR _i$82762[ebp]
+	mov	eax, DWORD PTR _i$82764[ebp]
 	sub	DWORD PTR tv549[ebp], 780		; 0000030cH
 	dec	eax
 	dec	ebx
-	mov	DWORD PTR _i$82762[ebp], eax
+	mov	DWORD PTR _i$82764[ebp], eax
 	mov	DWORD PTR tv535[ebp], ebx
 	test	eax, eax
 	jns	$LL46@findSkyWei
@@ -4591,14 +4591,14 @@ __real@3f800000 DD 03f800000r			; 1
 ; Function compile flags: /Ogtp
 CONST	ENDS
 _TEXT	SEGMENT
-$T98702 = -76						; size = 12
-$T98701 = -64						; size = 12
-$T98700 = -52						; size = 12
-$T98699 = -40						; size = 12
-$T98703 = -28						; size = 12
-$T98754 = -16						; size = 4
+$T98704 = -76						; size = 12
+$T98703 = -64						; size = 12
+$T98702 = -52						; size = 12
+$T98701 = -40						; size = 12
+$T98705 = -28						; size = 12
+$T98756 = -16						; size = 4
 _this$ = -12						; size = 4
-_j$82794 = -8						; size = 4
+_j$82796 = -8						; size = 4
 tv645 = -4						; size = 4
 _pos$ = 8						; size = 12
 _t$ = 20						; size = 4
@@ -4651,7 +4651,7 @@ $LL12@initSky:
 	mov	eax, edx
 	shr	eax, 31					; 0000001fH
 	add	eax, edx
-	mov	DWORD PTR _j$82794[ebp], esi
+	mov	DWORD PTR _j$82796[ebp], esi
 	je	$LN7@initSky
 	mov	DWORD PTR tv645[ebp], esi
 $LL49@initSky:
@@ -4672,7 +4672,7 @@ $LL5@initSky:
 	push	ecx
 	add	ebx, edx
 	push	esi
-	lea	edx, DWORD PTR $T98699[ebp]
+	lea	edx, DWORD PTR $T98701[ebp]
 	push	edx
 	mov	ecx, ebx
 	call	?colorFor@Sky@@QBE?AVVec3D@@HH@Z	; Sky::colorFor
@@ -4684,7 +4684,7 @@ $LL5@initSky:
 	mov	eax, DWORD PTR _t$[ebp]
 	push	eax
 	push	esi
-	lea	ecx, DWORD PTR $T98700[ebp]
+	lea	ecx, DWORD PTR $T98702[ebp]
 	push	ecx
 	mov	ecx, ebx
 	call	?colorFor@Sky@@QBE?AVVec3D@@HH@Z	; Sky::colorFor
@@ -4696,7 +4696,7 @@ $LL5@initSky:
 	mov	edx, DWORD PTR _t$[ebp]
 	push	edx
 	push	esi
-	lea	eax, DWORD PTR $T98701[ebp]
+	lea	eax, DWORD PTR $T98703[ebp]
 	push	eax
 	mov	ecx, ebx
 	call	?colorFor@Sky@@QBE?AVVec3D@@HH@Z	; Sky::colorFor
@@ -4710,39 +4710,39 @@ $LL5@initSky:
 	mov	ecx, DWORD PTR [ebx+772]
 	push	edx
 	push	esi
-	lea	eax, DWORD PTR $T98702[ebp]
-	mov	DWORD PTR $T98754[ebp], ecx
+	lea	eax, DWORD PTR $T98704[ebp]
+	mov	DWORD PTR $T98756[ebp], ecx
 	push	eax
 	mov	ecx, ebx
 	call	?colorFor@Sky@@QBE?AVVec3D@@HH@Z	; Sky::colorFor
 	fld	DWORD PTR [eax]
-	fld	DWORD PTR $T98754[ebp]
+	fld	DWORD PTR $T98756[ebp]
 	fld	ST(0)
 	fmulp	ST(2), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T98703[ebp]
+	fstp	DWORD PTR $T98705[ebp]
 	fld	DWORD PTR [eax+4]
 	fmul	ST(0), ST(1)
-	fstp	DWORD PTR $T98703[ebp+4]
+	fstp	DWORD PTR $T98705[ebp+4]
 	fmul	DWORD PTR [eax+8]
-	fstp	DWORD PTR $T98703[ebp+8]
+	fstp	DWORD PTR $T98705[ebp+8]
 	fld	DWORD PTR [edi-8]
-	fadd	DWORD PTR $T98703[ebp]
+	fadd	DWORD PTR $T98705[ebp]
 	fstp	DWORD PTR [edi-8]
 	fld	DWORD PTR [edi-4]
-	fadd	DWORD PTR $T98703[ebp+4]
+	fadd	DWORD PTR $T98705[ebp+4]
 	fstp	DWORD PTR [edi-4]
 	fld	DWORD PTR [edi]
-	fadd	DWORD PTR $T98703[ebp+8]
+	fadd	DWORD PTR $T98705[ebp+8]
 	fstp	DWORD PTR [edi]
 ; Line 267
 	jmp	SHORT $LN4@initSky
 $LN1@initSky:
 ; Line 263
-	mov	ecx, DWORD PTR _j$82794[ebp]
+	mov	ecx, DWORD PTR _j$82796[ebp]
 	push	esi
 	push	ecx
-	push	OFFSET $SG82808
+	push	OFFSET $SG82810
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 12					; 0000000cH
 $LN4@initSky:
@@ -4757,7 +4757,7 @@ $LN8@initSky:
 ; Line 255
 	mov	edi, DWORD PTR [ebx]
 	mov	ecx, DWORD PTR [ebx+4]
-	inc	DWORD PTR _j$82794[ebp]
+	inc	DWORD PTR _j$82796[ebp]
 	add	DWORD PTR tv645[ebp], 780		; 0000030cH
 	sub	ecx, edi
 	mov	eax, -1475706711			; a80a80a9H
@@ -4767,7 +4767,7 @@ $LN8@initSky:
 	mov	eax, edx
 	shr	eax, 31					; 0000001fH
 	add	eax, edx
-	cmp	DWORD PTR _j$82794[ebp], eax
+	cmp	DWORD PTR _j$82796[ebp], eax
 	jb	$LL49@initSky
 $LN7@initSky:
 ; Line 270
@@ -4789,7 +4789,7 @@ _TEXT	SEGMENT
 	cmp	eax, -1
 	jne	SHORT $LN2@getSkyName
 ; Line 334
-	mov	eax, OFFSET $SG82823
+	mov	eax, OFFSET $SG82825
 ; Line 337
 	ret	0
 $LN2@getSkyName:
@@ -5191,8 +5191,8 @@ PUBLIC	?allocate@?$allocator@USkyColor@@@std@@QAEPAUSkyColor@@I@Z ; std::allocat
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@USkyColor@@@std@@QAEPAUSkyColor@@I@Z
 _TEXT	SEGMENT
-$T99000 = -12						; size = 12
-$T98992 = 8						; size = 4
+$T99002 = -12						; size = 12
+$T98994 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@USkyColor@@@std@@QAEPAUSkyColor@@I@Z PROC ; std::allocator<SkyColor>::allocate, COMDAT
 ; _this$ = ecx
@@ -5215,15 +5215,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	eax, DWORD PTR $T98992[ebp]
+	lea	eax, DWORD PTR $T98994[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T99000[ebp]
-	mov	DWORD PTR $T98992[ebp], 0
+	lea	ecx, DWORD PTR $T99002[ebp]
+	mov	DWORD PTR $T98994[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T99000[ebp]
+	lea	ecx, DWORD PTR $T99002[ebp]
 	push	ecx
-	mov	DWORD PTR $T99000[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T99002[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -5238,8 +5238,8 @@ PUBLIC	?allocate@?$allocator@VSky@@@std@@QAEPAVSky@@I@Z ; std::allocator<Sky>::a
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@VSky@@@std@@QAEPAVSky@@I@Z
 _TEXT	SEGMENT
-$T99023 = -12						; size = 12
-$T99015 = 8						; size = 4
+$T99025 = -12						; size = 12
+$T99017 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@VSky@@@std@@QAEPAVSky@@I@Z PROC	; std::allocator<Sky>::allocate, COMDAT
 ; _this$ = ecx
@@ -5261,15 +5261,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	eax, DWORD PTR $T99015[ebp]
+	lea	eax, DWORD PTR $T99017[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T99023[ebp]
-	mov	DWORD PTR $T99015[ebp], 0
+	lea	ecx, DWORD PTR $T99025[ebp]
+	mov	DWORD PTR $T99017[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T99023[ebp]
+	lea	ecx, DWORD PTR $T99025[ebp]
 	push	ecx
-	mov	DWORD PTR $T99023[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T99025[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -5284,8 +5284,8 @@ PUBLIC	?allocate@?$allocator@UOutdoorLightStats@@@std@@QAEPAUOutdoorLightStats@@
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@UOutdoorLightStats@@@std@@QAEPAUOutdoorLightStats@@I@Z
 _TEXT	SEGMENT
-$T99046 = -12						; size = 12
-$T99038 = 8						; size = 4
+$T99048 = -12						; size = 12
+$T99040 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@UOutdoorLightStats@@@std@@QAEPAUOutdoorLightStats@@I@Z PROC ; std::allocator<OutdoorLightStats>::allocate, COMDAT
 ; _this$ = ecx
@@ -5308,15 +5308,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@3
 $LN3@allocate@3:
-	lea	ecx, DWORD PTR $T99038[ebp]
+	lea	ecx, DWORD PTR $T99040[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T99046[ebp]
-	mov	DWORD PTR $T99038[ebp], 0
+	lea	ecx, DWORD PTR $T99048[ebp]
+	mov	DWORD PTR $T99040[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T99046[ebp]
+	lea	edx, DWORD PTR $T99048[ebp]
 	push	edx
-	mov	DWORD PTR $T99046[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T99048[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@3:
 $LN1@allocate@3:
@@ -5331,8 +5331,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T99069 = -12						; size = 12
-$T99061 = 8						; size = 4
+$T99071 = -12						; size = 12
+$T99063 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -5353,15 +5353,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@4
 $LN3@allocate@4:
-	lea	eax, DWORD PTR $T99061[ebp]
+	lea	eax, DWORD PTR $T99063[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T99069[ebp]
-	mov	DWORD PTR $T99061[ebp], 0
+	lea	ecx, DWORD PTR $T99071[ebp]
+	mov	DWORD PTR $T99063[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T99069[ebp]
+	lea	ecx, DWORD PTR $T99071[ebp]
 	push	ecx
-	mov	DWORD PTR $T99069[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T99071[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@4:
 $LN1@allocate@4:
@@ -6172,9 +6172,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T99645 = -40						; size = 12
+$T99647 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T99622 = -24						; size = 4
+$T99624 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -6250,15 +6250,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T99622[ebp]
+	lea	ecx, DWORD PTR $T99624[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T99645[ebp]
-	mov	DWORD PTR $T99622[ebp], 0
+	lea	ecx, DWORD PTR $T99647[ebp]
+	mov	DWORD PTR $T99624[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T99645[ebp]
+	lea	edx, DWORD PTR $T99647[ebp]
 	push	edx
-	mov	DWORD PTR $T99645[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T99647[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -6579,7 +6579,7 @@ PUBLIC	??$_Copy_impl@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00@Z ; std::_Co
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Copy_impl@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00@Z
 _TEXT	SEGMENT
-__Cat$100008 = -4					; size = 1
+__Cat$100010 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -6590,7 +6590,7 @@ __Dest$ = 16						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 2177
-	mov	eax, DWORD PTR __Cat$100008[ebp]
+	mov	eax, DWORD PTR __Cat$100010[ebp]
 	mov	ecx, DWORD PTR __Dest$[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
@@ -6610,7 +6610,7 @@ PUBLIC	??$_Move@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00@Z ; std::_Move<Sk
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Move@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00@Z
 _TEXT	SEGMENT
-__Cat$100015 = -4					; size = 1
+__Cat$100017 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -6620,7 +6620,7 @@ __Dest$ = 16						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 2547
-	mov	eax, DWORD PTR __Cat$100015[ebp]
+	mov	eax, DWORD PTR __Cat$100017[ebp]
 	mov	ecx, DWORD PTR __Dest$[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
@@ -7040,7 +7040,7 @@ PUBLIC	??$_Uninitialized_copy@PAUSkyColor@@PAU1@V?$allocator@USkyColor@@@std@@@s
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_copy@PAUSkyColor@@PAU1@V?$allocator@USkyColor@@@std@@@std@@YAPAUSkyColor@@PAU1@00AAV?$allocator@USkyColor@@@0@@Z
 _TEXT	SEGMENT
-__Cat$100546 = -4					; size = 1
+__Cat$100548 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -7051,7 +7051,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 414
-	mov	eax, DWORD PTR __Cat$100546[ebp]
+	mov	eax, DWORD PTR __Cat$100548[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -7414,7 +7414,7 @@ PUBLIC	??$_Uninitialized_move@PAUSkyColor@@PAU1@V?$allocator@USkyColor@@@std@@@s
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAUSkyColor@@PAU1@V?$allocator@USkyColor@@@std@@@std@@YAPAUSkyColor@@PAU1@00AAV?$allocator@USkyColor@@@0@@Z
 _TEXT	SEGMENT
-__Cat$101005 = -4					; size = 1
+__Cat$101007 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -7426,7 +7426,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$101005[ebp]
+	mov	eax, DWORD PTR __Cat$101007[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -7449,7 +7449,7 @@ PUBLIC	??$_Uninitialized_move@PAUOutdoorLightStats@@PAU1@V?$allocator@UOutdoorLi
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAUOutdoorLightStats@@PAU1@V?$allocator@UOutdoorLightStats@@@std@@@std@@YAPAUOutdoorLightStats@@PAU1@00AAV?$allocator@UOutdoorLightStats@@@0@@Z
 _TEXT	SEGMENT
-__Cat$101015 = -4					; size = 1
+__Cat$101017 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -7460,7 +7460,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$101015[ebp]
+	mov	eax, DWORD PTR __Cat$101017[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -7483,7 +7483,7 @@ PUBLIC	??$_Uninitialized_copy@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_copy@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@std@@PAUSkyColor@@V?$allocator@USkyColor@@@2@@std@@YAPAUSkyColor@@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@0@0PAU1@AAV?$allocator@USkyColor@@@0@@Z
 _TEXT	SEGMENT
-__Cat$101026 = -4					; size = 1
+__Cat$101028 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -7494,7 +7494,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 414
-	mov	eax, DWORD PTR __Cat$101026[ebp]
+	mov	eax, DWORD PTR __Cat$101028[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -7518,7 +7518,7 @@ PUBLIC	??$_Ucopy@PAUSkyColor@@@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$101038 = 16					; size = 1
+__Cat$101040 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Ucopy@PAUSkyColor@@@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@IAEPAUSkyColor@@PAU2@00@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::_Ucopy<SkyColor *>, COMDAT
 ; _this$ = ecx
@@ -7527,7 +7527,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1318
-	mov	eax, DWORD PTR __Cat$101038[ebp]
+	mov	eax, DWORD PTR __Cat$101040[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -7609,7 +7609,7 @@ PUBLIC	??$_Umove@PAUSkyColor@@@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$101068 = 16					; size = 1
+__Cat$101070 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAUSkyColor@@@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@IAEPAUSkyColor@@PAU2@00@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::_Umove<SkyColor *>, COMDAT
 ; _this$ = ecx
@@ -7617,7 +7617,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$101068[ebp]
+	mov	eax, DWORD PTR __Cat$101070[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -7641,7 +7641,7 @@ PUBLIC	??$_Umove@PAUOutdoorLightStats@@@?$vector@UOutdoorLightStats@@V?$allocato
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$101087 = 16					; size = 1
+__Cat$101089 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAUOutdoorLightStats@@@?$vector@UOutdoorLightStats@@V?$allocator@UOutdoorLightStats@@@std@@@std@@IAEPAUOutdoorLightStats@@PAU2@00@Z PROC ; std::vector<OutdoorLightStats,std::allocator<OutdoorLightStats> >::_Umove<OutdoorLightStats *>, COMDAT
 ; _this$ = ecx
@@ -7649,7 +7649,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$101087[ebp]
+	mov	eax, DWORD PTR __Cat$101089[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -7673,7 +7673,7 @@ PUBLIC	??$_Ucopy@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocato
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$101104 = 16					; size = 1
+__Cat$101106 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Ucopy@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@std@@@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@IAEPAUSkyColor@@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@1@0PAU2@@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::_Ucopy<std::_Vector_const_iterator<std::_Vector_val<SkyColor,std::allocator<SkyColor> > > >, COMDAT
 ; _this$ = ecx
@@ -7681,7 +7681,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1318
-	mov	eax, DWORD PTR __Cat$101104[ebp]
+	mov	eax, DWORD PTR __Cat$101106[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -7702,7 +7702,7 @@ PUBLIC	?erase@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE?AV?$_V
 ; Function compile flags: /Ogtp
 ;	COMDAT ?erase@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@2@V?$_Vector_const_iterator@V?$_Vector_val@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@@2@0@Z
 _TEXT	SEGMENT
-__Cat$101183 = 8					; size = 1
+__Cat$101185 = 8					; size = 1
 ___$ReturnUdt$ = 8					; size = 4
 __First_arg$ = 12					; size = 4
 __Last_arg$ = 16					; size = 4
@@ -7724,7 +7724,7 @@ __Last_arg$ = 16					; size = 4
 ; Line 1207
 	mov	ecx, DWORD PTR [esi+4]
 	push	ebx
-	mov	ebx, DWORD PTR __Cat$101183[ebp]
+	mov	ebx, DWORD PTR __Cat$101185[ebp]
 	push	ebx
 	push	eax
 	push	ecx
@@ -7872,9 +7872,9 @@ __ehfuncinfo$?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QA
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$88709 = -20					; size = 4
+__Ptr$88711 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$101362 = 8					; size = 1
+__Cat$101364 = 8					; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXI@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::reserve, COMDAT
 ; _this$ = ecx
@@ -7918,7 +7918,7 @@ $LN5@reserve:
 	mov	ecx, edi
 	call	?allocate@?$allocator@USkyColor@@@std@@QAEPAUSkyColor@@I@Z ; std::allocator<SkyColor>::allocate
 ; Line 754
-	mov	edx, DWORD PTR __Cat$101362[ebp]
+	mov	edx, DWORD PTR __Cat$101364[ebp]
 	mov	ecx, DWORD PTR [esi]
 	push	edx
 	push	0
@@ -7928,7 +7928,7 @@ $LN5@reserve:
 	push	ebx
 	push	eax
 	push	ecx
-	mov	DWORD PTR __Ptr$88709[ebp], ebx
+	mov	DWORD PTR __Ptr$88711[ebp], ebx
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAUSkyColor@@PAU1@V?$allocator@USkyColor@@@std@@U1@@std@@YAPAUSkyColor@@PAU1@00AAV?$allocator@USkyColor@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<SkyColor *,SkyColor *,std::allocator<SkyColor>,SkyColor>
 ; Line 760
@@ -7968,7 +7968,7 @@ $LN3@reserve:
 	ret	4
 __catch$?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$88709[ebp]
+	mov	eax, DWORD PTR __Ptr$88711[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -8021,9 +8021,9 @@ __ehfuncinfo$?reserve@?$vector@UOutdoorLightStats@@V?$allocator@UOutdoorLightSta
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@UOutdoorLightStats@@V?$allocator@UOutdoorLightStats@@@std@@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$88782 = -20					; size = 4
+__Ptr$88784 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$101446 = 8					; size = 1
+__Cat$101448 = 8					; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@UOutdoorLightStats@@V?$allocator@UOutdoorLightStats@@@std@@@std@@QAEXI@Z PROC ; std::vector<OutdoorLightStats,std::allocator<OutdoorLightStats> >::reserve, COMDAT
 ; _this$ = ecx
@@ -8072,7 +8072,7 @@ $LN5@reserve@2:
 	mov	ecx, edi
 	call	?allocate@?$allocator@UOutdoorLightStats@@@std@@QAEPAUOutdoorLightStats@@I@Z ; std::allocator<OutdoorLightStats>::allocate
 ; Line 754
-	mov	ebx, DWORD PTR __Cat$101446[ebp]
+	mov	ebx, DWORD PTR __Cat$101448[ebp]
 	mov	ecx, DWORD PTR [esi+4]
 	mov	edx, DWORD PTR [esi]
 	push	ebx
@@ -8081,7 +8081,7 @@ $LN5@reserve@2:
 	push	eax
 	push	ecx
 	push	edx
-	mov	DWORD PTR __Ptr$88782[ebp], eax
+	mov	DWORD PTR __Ptr$88784[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAUOutdoorLightStats@@PAU1@V?$allocator@UOutdoorLightStats@@@std@@U1@@std@@YAPAUOutdoorLightStats@@PAU1@00AAV?$allocator@UOutdoorLightStats@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<OutdoorLightStats *,OutdoorLightStats *,std::allocator<OutdoorLightStats>,OutdoorLightStats>
 ; Line 760
@@ -8106,7 +8106,7 @@ $LN35@reserve@2:
 ; Line 769
 	mov	eax, DWORD PTR __Count$[ebp]
 	lea	ecx, DWORD PTR [eax+eax*2]
-	mov	eax, DWORD PTR __Ptr$88782[ebp]
+	mov	eax, DWORD PTR __Ptr$88784[ebp]
 	shl	ecx, 5
 ; Line 770
 	lea	edx, DWORD PTR [edi+edi*2]
@@ -8130,7 +8130,7 @@ $LN3@reserve@2:
 	ret	4
 __catch$?reserve@?$vector@UOutdoorLightStats@@V?$allocator@UOutdoorLightStats@@@std@@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	eax, DWORD PTR __Ptr$88782[ebp]
+	mov	eax, DWORD PTR __Ptr$88784[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -8185,7 +8185,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$101596 = 8					; size = 1
+__Cat$101598 = 8					; size = 1
 __Right$ = 8						; size = 4
 ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >, COMDAT
 ; _this$ = ecx
@@ -8233,7 +8233,7 @@ $LN18@vector@2:
 	push	esi
 	call	?allocate@?$allocator@USkyColor@@@std@@QAEPAUSkyColor@@I@Z ; std::allocator<SkyColor>::allocate
 ; Line 539
-	mov	edx, DWORD PTR __Cat$101596[ebp]
+	mov	edx, DWORD PTR __Cat$101598[ebp]
 	push	edx
 	shl	esi, 4
 	lea	edx, DWORD PTR [edi+12]
@@ -8291,7 +8291,7 @@ PUBLIC	?clear@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXXZ ; s
 ; Function compile flags: /Ogtp
 ;	COMDAT ?clear@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXXZ
 _TEXT	SEGMENT
-__Cat$101803 = -4					; size = 1
+__Cat$101805 = -4					; size = 1
 ?clear@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXXZ PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::clear, COMDAT
 ; _this$ = ecx
 ; Line 1217
@@ -8305,7 +8305,7 @@ __Cat$101803 = -4					; size = 1
 	mov	ecx, DWORD PTR [esi]
 	cmp	ecx, eax
 	je	SHORT $LN19@clear
-	mov	edx, DWORD PTR __Cat$101803[ebp]
+	mov	edx, DWORD PTR __Cat$101805[ebp]
 	push	edx
 	push	ecx
 	push	eax
@@ -8564,10 +8564,10 @@ PUBLIC	??4?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEAAV01@ABV01
 ; Function compile flags: /Ogtp
 ;	COMDAT ??4?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEAAV01@ABV01@@Z
 _TEXT	SEGMENT
-__Cat$102344 = 8					; size = 1
-__Cat$102321 = 8					; size = 1
-__Cat$102294 = 8					; size = 1
-__Cat$102267 = 8					; size = 1
+__Cat$102346 = 8					; size = 1
+__Cat$102323 = 8					; size = 1
+__Cat$102296 = 8					; size = 1
+__Cat$102269 = 8					; size = 1
 __Right$ = 8						; size = 4
 ??4?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEAAV01@ABV01@@Z PROC ; std::vector<SkyColor,std::allocator<SkyColor> >::operator=, COMDAT
 ; _this$ = ecx
@@ -8593,7 +8593,7 @@ __Right$ = 8						; size = 4
 	mov	ecx, DWORD PTR [esi]
 	cmp	ecx, eax
 	je	$LN103@operator@2
-	mov	edx, DWORD PTR __Cat$102267[ebp]
+	mov	edx, DWORD PTR __Cat$102269[ebp]
 	push	edx
 	push	ecx
 	push	eax
@@ -8618,7 +8618,7 @@ $LN8@operator@2:
 	cmp	ecx, eax
 	ja	SHORT $LN6@operator@2
 ; Line 719
-	mov	eax, DWORD PTR __Cat$102294[ebp]
+	mov	eax, DWORD PTR __Cat$102296[ebp]
 	push	eax
 	mov	eax, DWORD PTR [edi]
 	push	edx
@@ -8652,14 +8652,14 @@ $LN6@operator@2:
 	add	eax, eax
 	lea	ebx, DWORD PTR [ecx+eax*8]
 ; Line 726
-	mov	eax, DWORD PTR __Cat$102321[ebp]
+	mov	eax, DWORD PTR __Cat$102323[ebp]
 	push	eax
 	push	edx
 	push	ebx
 	push	ecx
 	call	??$_Copy_impl@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Copy_impl<SkyColor *,SkyColor *>
 ; Line 727
-	mov	ecx, DWORD PTR __Cat$102344[ebp]
+	mov	ecx, DWORD PTR __Cat$102346[ebp]
 	mov	eax, DWORD PTR [esi+4]
 	mov	edi, DWORD PTR [edi+4]
 	push	ecx
@@ -8736,7 +8736,7 @@ __ehfuncinfo$?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@$$QAV3@@Z DD 0199305
 xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@$$QAV3@@Z
 _TEXT	SEGMENT
-$T102365 = -16						; size = 4
+$T102367 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
@@ -8758,7 +8758,7 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 202
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR $T102365[ebp], ecx
+	mov	DWORD PTR $T102367[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN3@construct@7
@@ -8779,7 +8779,7 @@ text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@$$QAV3@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T102365[ebp]
+	mov	ecx, DWORD PTR $T102367[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -8819,7 +8819,7 @@ __ehfuncinfo$??0Sky@@QAE@AAVMPQFile@@@Z DD 019930522H
 xdata$x	ENDS
 _TEXT	SEGMENT
 _this$GSCopy$ = -96					; size = 4
-$T102384 = -92						; size = 12
+$T102386 = -92						; size = 12
 _li$ = -80						; size = 64
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
@@ -8868,26 +8868,26 @@ _f$ = 8							; size = 4
 	fld	QWORD PTR __real@4042000000000000
 	fdiv	ST(1), ST(0)
 	fxch	ST(1)
-	fstp	DWORD PTR $T102384[ebp]
+	fstp	DWORD PTR $T102386[ebp]
 	fld	DWORD PTR _li$[ebp+16]
 	fdiv	ST(0), ST(1)
-	mov	edx, DWORD PTR $T102384[ebp]
+	mov	edx, DWORD PTR $T102386[ebp]
 	mov	DWORD PTR [esi], edx
 ; Line 31
 	lea	edx, DWORD PTR _li$[ebp+32]
 	push	edx
 	push	32					; 00000020H
-	fstp	DWORD PTR $T102384[ebp+4]
+	fstp	DWORD PTR $T102386[ebp+4]
 	fld	DWORD PTR _li$[ebp+20]
 	fdiv	ST(0), ST(1)
-	mov	eax, DWORD PTR $T102384[ebp+4]
+	mov	eax, DWORD PTR $T102386[ebp+4]
 	mov	DWORD PTR [esi+4], eax
 	lea	eax, DWORD PTR [esi+740]
 	push	eax
-	fstp	DWORD PTR $T102384[ebp+8]
+	fstp	DWORD PTR $T102386[ebp+8]
 	fld	DWORD PTR _li$[ebp+24]
 	fdiv	ST(0), ST(1)
-	mov	ecx, DWORD PTR $T102384[ebp+8]
+	mov	ecx, DWORD PTR $T102386[ebp+8]
 	mov	DWORD PTR [esi+8], ecx
 	fstp	DWORD PTR [esi+12]
 	fdivr	DWORD PTR _li$[ebp+28]
@@ -9152,7 +9152,7 @@ __ehfuncinfo$??$construct@AAVSky@@@?$allocator@VSky@@@std@@QAEXPAVSky@@AAV2@@Z D
 xdata$x	ENDS
 ;	COMDAT ??$construct@AAVSky@@@?$allocator@VSky@@@std@@QAEXPAVSky@@AAV2@@Z
 _TEXT	SEGMENT
-$T102698 = -16						; size = 4
+$T102700 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
@@ -9174,7 +9174,7 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 208
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR $T102698[ebp], ecx
+	mov	DWORD PTR $T102700[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN3@construct@8
@@ -9195,7 +9195,7 @@ text$x	SEGMENT
 __unwindfunclet$??$construct@AAVSky@@@?$allocator@VSky@@@std@@QAEXPAVSky@@AAV2@@Z$0:
 	mov	eax, DWORD PTR __Ptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T102698[ebp]
+	mov	ecx, DWORD PTR $T102700[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -9227,7 +9227,7 @@ __ehfuncinfo$??$_Construct@VSky@@ABV1@@std@@YAXPAVSky@@ABV1@@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??$_Construct@VSky@@ABV1@@std@@YAXPAVSky@@ABV1@@Z
 _TEXT	SEGMENT
-$T102717 = -16						; size = 4
+$T102719 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Vptr$ = 8						; size = 4
 __Ptr$ = 8						; size = 4
@@ -9251,7 +9251,7 @@ __Val$ = 12						; size = 4
 	mov	ecx, DWORD PTR __Ptr$[ebp]
 	mov	DWORD PTR __Vptr$[ebp], ecx
 ; Line 48
-	mov	DWORD PTR $T102717[ebp], ecx
+	mov	DWORD PTR $T102719[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN3@Construct@3
@@ -9272,7 +9272,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Construct@VSky@@ABV1@@std@@YAXPAVSky@@ABV1@@Z$0:
 	mov	eax, DWORD PTR __Vptr$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T102717[ebp]
+	mov	ecx, DWORD PTR $T102719[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -9304,7 +9304,7 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@V3@@std@@YAXAAV?$alloca
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@V3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@$$QAV2@@Z
 _TEXT	SEGMENT
-$T102752 = -16						; size = 4
+$T102754 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
 __Pdest$ = 12						; size = 4
@@ -9326,7 +9326,7 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR $T102752[ebp], ecx
+	mov	DWORD PTR $T102754[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN7@Cons_val@7
@@ -9347,7 +9347,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@V3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@$$QAV2@@Z$0:
 	mov	eax, DWORD PTR __Pdest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T102752[ebp]
+	mov	ecx, DWORD PTR $T102754[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -9366,15 +9366,15 @@ PUBLIC	??4Sky@@QAEAAV0@ABV0@@Z				; Sky::operator=
 ; Function compile flags: /Ogtp
 ;	COMDAT ??4Sky@@QAEAAV0@ABV0@@Z
 _TEXT	SEGMENT
-_$S1$94673 = -16					; size = 4
+_$S1$94675 = -16					; size = 4
 _this$ = -12						; size = 4
 tv1082 = -8						; size = 4
 tv936 = -4						; size = 4
-__Cat$103326 = 8					; size = 1
-__Cat$103299 = 8					; size = 1
-__Cat$103292 = 8					; size = 1
-__Cat$103278 = 8					; size = 1
-__Cat$103254 = 8					; size = 1
+__Cat$103328 = 8					; size = 1
+__Cat$103301 = 8					; size = 1
+__Cat$103294 = 8					; size = 1
+__Cat$103280 = 8					; size = 1
+__Cat$103256 = 8					; size = 1
 ___that$ = 8						; size = 4
 ??4Sky@@QAEAAV0@ABV0@@Z PROC				; Sky::operator=, COMDAT
 ; _this$ = ecx
@@ -9399,7 +9399,7 @@ ___that$ = 8						; size = 4
 	sub	ecx, eax
 	push	edi
 	mov	DWORD PTR _this$[ebp], eax
-	mov	DWORD PTR _$S1$94673[ebp], 0
+	mov	DWORD PTR _$S1$94675[ebp], 0
 	mov	DWORD PTR tv936[ebp], edx
 	lea	esi, DWORD PTR [eax+24]
 	mov	DWORD PTR tv1082[ebp], ecx
@@ -9421,7 +9421,7 @@ $LN9@operator@3:
 	mov	ecx, DWORD PTR [esi]
 	cmp	edx, ecx
 	je	$LN8@operator@3
-	mov	eax, DWORD PTR __Cat$103254[ebp]
+	mov	eax, DWORD PTR __Cat$103256[ebp]
 	push	eax
 	push	edx
 	push	ecx
@@ -9435,7 +9435,7 @@ $LN21@operator@3:
 	sar	eax, 4
 	cmp	ecx, eax
 	ja	SHORT $LN19@operator@3
-	mov	ecx, DWORD PTR __Cat$103278[ebp]
+	mov	ecx, DWORD PTR __Cat$103280[ebp]
 	push	ecx
 	push	edx
 	push	edi
@@ -9460,13 +9460,13 @@ $LN19@operator@3:
 	mov	ecx, DWORD PTR [ecx]
 	add	eax, eax
 	lea	edi, DWORD PTR [ecx+eax*8]
-	mov	eax, DWORD PTR __Cat$103292[ebp]
+	mov	eax, DWORD PTR __Cat$103294[ebp]
 	push	eax
 	push	edx
 	push	edi
 	push	ecx
 	call	??$_Copy_impl@PAUSkyColor@@PAU1@@std@@YAPAUSkyColor@@PAU1@00U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Copy_impl<SkyColor *,SkyColor *>
-	mov	edx, DWORD PTR __Cat$103299[ebp]
+	mov	edx, DWORD PTR __Cat$103301[ebp]
 	mov	eax, DWORD PTR [esi]
 	mov	ecx, DWORD PTR tv1082[ebp]
 	mov	ecx, DWORD PTR [esi+ecx]
@@ -9505,7 +9505,7 @@ $LN110@operator@3:
 	shl	edi, 4
 	add	edi, eax
 	mov	DWORD PTR [ebx-4], edi
-	mov	edi, DWORD PTR __Cat$103326[ebp]
+	mov	edi, DWORD PTR __Cat$103328[ebp]
 	push	edi
 	mov	DWORD PTR [esi-4], eax
 	mov	DWORD PTR [esi], eax
@@ -9523,12 +9523,12 @@ $LN149@operator@3:
 $LN145@operator@3:
 	mov	eax, DWORD PTR _this$[ebp]
 $LN8@operator@3:
-	mov	ecx, DWORD PTR _$S1$94673[ebp]
+	mov	ecx, DWORD PTR _$S1$94675[ebp]
 	mov	edx, DWORD PTR tv936[ebp]
 	inc	ecx
 	add	edx, 16					; 00000010H
 	add	esi, 16					; 00000010H
-	mov	DWORD PTR _$S1$94673[ebp], ecx
+	mov	DWORD PTR _$S1$94675[ebp], ecx
 	mov	DWORD PTR tv936[ebp], edx
 	cmp	ecx, 36					; 00000024H
 	jb	$LL147@operator@3
@@ -9869,18 +9869,18 @@ EXTRN	?seek@MPQFile@@QAEXH@Z:PROC			; MPQFile::seek
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
 _addr$ = -384						; size = 4
-_sc$82517 = -380					; size = 16
+_sc$82519 = -380					; size = 16
 tv999 = -364						; size = 4
-_l$82513 = -360						; size = 4
+_l$82515 = -360						; size = 4
 _this$GSCopy$ = -356					; size = 4
-_k$82499 = -352						; size = 4
+_k$82501 = -352						; size = 4
 _f$GSCopy$ = -348					; size = 4
-_i$82505 = -344						; size = 4
+_i$82507 = -344						; size = 4
 tv874 = -340						; size = 4
 tv972 = -336						; size = 4
 tv969 = -336						; size = 4
 tv966 = -336						; size = 4
-_p$82509 = -336						; size = 4
+_p$82511 = -336						; size = 4
 _buf$ = -332						; size = 256
 _ll$ = -76						; size = 72
 __$ArrayPad$ = -4					; size = 4
@@ -9906,7 +9906,7 @@ _f$ = 8							; size = 4
 	mov	DWORD PTR _this$GSCopy$[ebp], ecx
 	mov	DWORD PTR _f$GSCopy$[ebp], ebx
 	mov	DWORD PTR _addr$[ebp], eax
-	mov	DWORD PTR _k$82499[ebp], edi
+	mov	DWORD PTR _k$82501[ebp], edi
 ; Line 48
 	mov	DWORD PTR tv999[ebp], eax
 	npad	1
@@ -9940,7 +9940,7 @@ $LN9@init@2:
 	lea	eax, DWORD PTR [eax+eax*8]
 	mov	ecx, edx
 	lea	edx, DWORD PTR [ecx+eax*8+596]
-	mov	DWORD PTR _i$82505[ebp], esi
+	mov	DWORD PTR _i$82507[ebp], esi
 	mov	DWORD PTR tv874[ebp], edx
 $LL8@init@2:
 ; Line 53
@@ -9964,7 +9964,7 @@ $LN5@init@2:
 	mov	edx, DWORD PTR _buf$[ebp]
 	mov	DWORD PTR [ecx], edx
 ; Line 63
-	mov	DWORD PTR _l$82513[ebp], 0
+	mov	DWORD PTR _l$82515[ebp], 0
 	test	eax, eax
 	jle	$LN7@init@2
 	fld	QWORD PTR __real@406fe00000000000
@@ -9986,22 +9986,22 @@ $LN3@init@2:
 ; Line 67
 	add	ebx, 8
 ; Line 68
-	lea	edx, DWORD PTR _sc$82517[ebp]
-	mov	DWORD PTR _sc$82517[ebp+12], esi
-	fstp	DWORD PTR _sc$82517[ebp+8]
+	lea	edx, DWORD PTR _sc$82519[ebp]
+	mov	DWORD PTR _sc$82519[ebp+12], esi
+	fstp	DWORD PTR _sc$82519[ebp+8]
 	fild	DWORD PTR tv969[ebp]
 	mov	DWORD PTR tv966[ebp], eax
 	mov	eax, DWORD PTR [edi+4]
 	fdiv	ST(0), ST(1)
-	fstp	DWORD PTR _sc$82517[ebp+4]
+	fstp	DWORD PTR _sc$82519[ebp+4]
 	fild	DWORD PTR tv966[ebp]
-	mov	DWORD PTR _p$82509[ebp], ebx
+	mov	DWORD PTR _p$82511[ebp], ebx
 	fdiv	ST(0), ST(1)
-	fstp	DWORD PTR _sc$82517[ebp]
+	fstp	DWORD PTR _sc$82519[ebp]
 	cmp	edx, eax
 	jae	$LN151@init@2
 	mov	edx, DWORD PTR [edi]
-	lea	ecx, DWORD PTR _sc$82517[ebp]
+	lea	ecx, DWORD PTR _sc$82519[ebp]
 	cmp	edx, ecx
 	ja	SHORT $LN151@init@2
 	mov	esi, ecx
@@ -10038,7 +10038,7 @@ $LN57@init@2:
 	mov	ecx, edi
 	call	?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXI@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::reserve
 	fld	QWORD PTR __real@406fe00000000000
-	mov	ebx, DWORD PTR _p$82509[ebp]
+	mov	ebx, DWORD PTR _p$82511[ebp]
 $LN38@init@2:
 	mov	eax, DWORD PTR [edi+4]
 	and	esi, -16				; fffffff0H
@@ -10088,26 +10088,26 @@ $LN108@init@2:
 	mov	ecx, edi
 	call	?reserve@?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAEXI@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::reserve
 	fld	QWORD PTR __real@406fe00000000000
-	mov	ebx, DWORD PTR _p$82509[ebp]
+	mov	ebx, DWORD PTR _p$82511[ebp]
 $LN152@init@2:
 	mov	eax, DWORD PTR [edi+4]
 	test	eax, eax
 	je	SHORT $LN131@init@2
-	mov	edx, DWORD PTR _sc$82517[ebp]
-	mov	ecx, DWORD PTR _sc$82517[ebp+4]
+	mov	edx, DWORD PTR _sc$82519[ebp]
+	mov	ecx, DWORD PTR _sc$82519[ebp+4]
 	mov	DWORD PTR [eax], edx
-	mov	edx, DWORD PTR _sc$82517[ebp+8]
+	mov	edx, DWORD PTR _sc$82519[ebp+8]
 	mov	DWORD PTR [eax+4], ecx
 	mov	DWORD PTR [eax+8], edx
 	mov	DWORD PTR [eax+12], esi
 $LN131@init@2:
 ; Line 63
-	mov	eax, DWORD PTR _l$82513[ebp]
-	mov	ecx, DWORD PTR _i$82505[ebp]
+	mov	eax, DWORD PTR _l$82515[ebp]
+	mov	ecx, DWORD PTR _i$82507[ebp]
 ; Line 68
 	add	DWORD PTR [edi+4], 16			; 00000010H
 	inc	eax
-	mov	DWORD PTR _l$82513[ebp], eax
+	mov	DWORD PTR _l$82515[ebp], eax
 	cmp	eax, DWORD PTR _ll$[ebp+ecx*4]
 	jl	$LN3@init@2
 ; Line 63
@@ -10119,16 +10119,16 @@ $LN7@init@2:
 	mov	ebx, DWORD PTR _f$GSCopy$[ebp]
 	inc	esi
 	add	edi, 16					; 00000010H
-	mov	DWORD PTR _i$82505[ebp], esi
+	mov	DWORD PTR _i$82507[ebp], esi
 	cmp	esi, 18					; 00000012H
 	jl	$LL8@init@2
-	mov	edi, DWORD PTR _k$82499[ebp]
+	mov	edi, DWORD PTR _k$82501[ebp]
 $LN12@init@2:
 ; Line 44
 	mov	eax, DWORD PTR tv999[ebp]
 	inc	edi
 	add	eax, 5616				; 000015f0H
-	mov	DWORD PTR _k$82499[ebp], edi
+	mov	DWORD PTR _k$82501[ebp], edi
 	mov	DWORD PTR tv999[ebp], eax
 	cmp	edi, 4
 	jl	$LL155@init@2
@@ -10179,7 +10179,7 @@ __ehfuncinfo$??0OutdoorLighting@@QAE@PAD@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-_ols$82879 = -1180					; size = 96
+_ols$82881 = -1180					; size = 96
 _this$GSCopy$ = -1084					; size = 4
 _n$ = -1080						; size = 4
 _d$ = -1076						; size = 4
@@ -10253,33 +10253,33 @@ $LL2@OutdoorLig:
 ; Line 518
 	lea	edx, DWORD PTR _f$[ebp]
 	push	edx
-	lea	ecx, DWORD PTR _ols$82879[ebp]
-	mov	DWORD PTR _ols$82879[ebp+24], ebx
-	mov	DWORD PTR _ols$82879[ebp+28], ebx
-	mov	DWORD PTR _ols$82879[ebp+32], ebx
-	mov	DWORD PTR _ols$82879[ebp+36], ebx
-	mov	DWORD PTR _ols$82879[ebp+40], ebx
-	mov	DWORD PTR _ols$82879[ebp+44], ebx
-	mov	DWORD PTR _ols$82879[ebp+48], ebx
-	mov	DWORD PTR _ols$82879[ebp+52], ebx
-	mov	DWORD PTR _ols$82879[ebp+56], ebx
-	mov	DWORD PTR _ols$82879[ebp+60], ebx
-	mov	DWORD PTR _ols$82879[ebp+64], ebx
-	mov	DWORD PTR _ols$82879[ebp+68], ebx
-	mov	DWORD PTR _ols$82879[ebp+72], ebx
-	mov	DWORD PTR _ols$82879[ebp+76], ebx
-	mov	DWORD PTR _ols$82879[ebp+80], ebx
-	mov	DWORD PTR _ols$82879[ebp+84], ebx
-	mov	DWORD PTR _ols$82879[ebp+88], ebx
-	mov	DWORD PTR _ols$82879[ebp+92], ebx
+	lea	ecx, DWORD PTR _ols$82881[ebp]
+	mov	DWORD PTR _ols$82881[ebp+24], ebx
+	mov	DWORD PTR _ols$82881[ebp+28], ebx
+	mov	DWORD PTR _ols$82881[ebp+32], ebx
+	mov	DWORD PTR _ols$82881[ebp+36], ebx
+	mov	DWORD PTR _ols$82881[ebp+40], ebx
+	mov	DWORD PTR _ols$82881[ebp+44], ebx
+	mov	DWORD PTR _ols$82881[ebp+48], ebx
+	mov	DWORD PTR _ols$82881[ebp+52], ebx
+	mov	DWORD PTR _ols$82881[ebp+56], ebx
+	mov	DWORD PTR _ols$82881[ebp+60], ebx
+	mov	DWORD PTR _ols$82881[ebp+64], ebx
+	mov	DWORD PTR _ols$82881[ebp+68], ebx
+	mov	DWORD PTR _ols$82881[ebp+72], ebx
+	mov	DWORD PTR _ols$82881[ebp+76], ebx
+	mov	DWORD PTR _ols$82881[ebp+80], ebx
+	mov	DWORD PTR _ols$82881[ebp+84], ebx
+	mov	DWORD PTR _ols$82881[ebp+88], ebx
+	mov	DWORD PTR _ols$82881[ebp+92], ebx
 	call	?init@OutdoorLightStats@@QAEXAAVMPQFile@@@Z ; OutdoorLightStats::init
 ; Line 520
 	mov	ecx, DWORD PTR [esi+4]
-	lea	eax, DWORD PTR _ols$82879[ebp]
+	lea	eax, DWORD PTR _ols$82881[ebp]
 	cmp	eax, ecx
 	jae	SHORT $LN34@OutdoorLig
 	mov	eax, DWORD PTR [esi]
-	lea	edx, DWORD PTR _ols$82879[ebp]
+	lea	edx, DWORD PTR _ols$82881[ebp]
 	cmp	eax, edx
 	ja	SHORT $LN34@OutdoorLig
 	mov	ecx, edx
@@ -10314,7 +10314,7 @@ $LN31@OutdoorLig:
 	mov	ecx, DWORD PTR [esi+4]
 	cmp	ecx, ebx
 	je	SHORT $LN69@OutdoorLig
-	lea	eax, DWORD PTR _ols$82879[ebp]
+	lea	eax, DWORD PTR _ols$82881[ebp]
 $LN78@OutdoorLig:
 	push	eax
 	call	??0OutdoorLightStats@@QAE@ABU0@@Z
@@ -10382,7 +10382,7 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@AAV3@@std@@YAXAAV?$allo
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@AAV3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@AAV2@@Z
 _TEXT	SEGMENT
-$T104258 = -16						; size = 4
+$T104260 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
 __Pdest$ = 12						; size = 4
@@ -10404,7 +10404,7 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR $T104258[ebp], ecx
+	mov	DWORD PTR $T104260[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN7@Cons_val@8
@@ -10425,7 +10425,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@AAV3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@AAV2@@Z$0:
 	mov	eax, DWORD PTR __Pdest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T104258[ebp]
+	mov	ecx, DWORD PTR $T104260[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -10457,9 +10457,9 @@ __ehfuncinfo$?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@ABV3@@Z DD 019930522
 xdata$x	ENDS
 ;	COMDAT ?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@ABV3@@Z
 _TEXT	SEGMENT
-$T104289 = -16						; size = 4
+$T104291 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-__Vptr$104286 = 8					; size = 4
+__Vptr$104288 = 8					; size = 4
 __Ptr$ = 8						; size = 4
 __Val$ = 12						; size = 4
 ?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@ABV3@@Z PROC ; std::allocator<Sky>::construct, COMDAT
@@ -10480,8 +10480,8 @@ __Val$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 197
 	mov	ecx, DWORD PTR __Ptr$[ebp]
-	mov	DWORD PTR __Vptr$104286[ebp], ecx
-	mov	DWORD PTR $T104289[ebp], ecx
+	mov	DWORD PTR __Vptr$104288[ebp], ecx
+	mov	DWORD PTR $T104291[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN5@construct@9
@@ -10500,9 +10500,9 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?construct@?$allocator@VSky@@@std@@QAEXPAVSky@@ABV3@@Z$0:
-	mov	eax, DWORD PTR __Vptr$104286[ebp]
+	mov	eax, DWORD PTR __Vptr$104288[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T104289[ebp]
+	mov	ecx, DWORD PTR $T104291[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -10535,7 +10535,7 @@ __ehfuncinfo$??$iter_swap@PAVSky@@PAV1@@std@@YAXPAVSky@@0@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??$iter_swap@PAVSky@@PAV1@@std@@YAXPAVSky@@0@Z
 _TEXT	SEGMENT
-__Tmp$104321 = -796					; size = 780
+__Tmp$104323 = -796					; size = 780
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 __Left$ = 8						; size = 4
@@ -10562,20 +10562,20 @@ __Right$ = 12						; size = 4
 	mov	edi, DWORD PTR __Right$[ebp]
 ; Line 2146
 	push	esi
-	lea	ecx, DWORD PTR __Tmp$104321[ebp]
+	lea	ecx, DWORD PTR __Tmp$104323[ebp]
 	call	??0Sky@@QAE@ABV0@@Z
 	push	edi
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	eax, DWORD PTR __Tmp$104321[ebp]
+	lea	eax, DWORD PTR __Tmp$104323[ebp]
 	push	eax
 	mov	ecx, edi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Tmp$104321[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$104323[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -10595,7 +10595,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$iter_swap@PAVSky@@PAV1@@std@@YAXPAVSky@@0@Z$0:
-	lea	ecx, DWORD PTR __Tmp$104321[ebp]
+	lea	ecx, DWORD PTR __Tmp$104323[ebp]
 	jmp	??1Sky@@QAE@XZ
 __ehhandler$??$iter_swap@PAVSky@@PAV1@@std@@YAXPAVSky@@0@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -10804,7 +10804,7 @@ PUBLIC	??$_Move_backward@PAVSky@@PAV1@@std@@YAPAVSky@@PAV1@00@Z ; std::_Move_bac
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Move_backward@PAVSky@@PAV1@@std@@YAPAVSky@@PAV1@00@Z
 _TEXT	SEGMENT
-__Cat$104427 = -4					; size = 1
+__Cat$104429 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -10815,7 +10815,7 @@ __Dest$ = 16						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 2652
-	mov	eax, DWORD PTR __Cat$104427[ebp]
+	mov	eax, DWORD PTR __Cat$104429[ebp]
 	mov	ecx, DWORD PTR __Dest$[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
@@ -10891,10 +10891,10 @@ __ehfuncinfo$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@ABV3@@std@@YAXAAV?$allo
 xdata$x	ENDS
 ;	COMDAT ??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@ABV3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@ABV2@@Z
 _TEXT	SEGMENT
-$T104474 = -16						; size = 4
+$T104478 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Alval$ = 8						; size = 4
-__Vptr$104471 = 12					; size = 4
+__Vptr$104475 = 12					; size = 4
 __Pdest$ = 12						; size = 4
 __Src$ = 16						; size = 4
 ??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@ABV3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@ABV2@@Z PROC ; std::_Cons_val<std::allocator<Sky>,Sky,Sky const &>, COMDAT
@@ -10914,8 +10914,8 @@ __Src$ = 16						; size = 4
 	mov	DWORD PTR fs:0, eax
 ; Line 280
 	mov	ecx, DWORD PTR __Pdest$[ebp]
-	mov	DWORD PTR __Vptr$104471[ebp], ecx
-	mov	DWORD PTR $T104474[ebp], ecx
+	mov	DWORD PTR __Vptr$104475[ebp], ecx
+	mov	DWORD PTR $T104478[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	ecx, ecx
 	je	SHORT $LN9@Cons_val@9
@@ -10934,9 +10934,9 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Cons_val@V?$allocator@VSky@@@std@@VSky@@ABV3@@std@@YAXAAV?$allocator@VSky@@@0@PAVSky@@ABV2@@Z$0:
-	mov	eax, DWORD PTR __Vptr$104471[ebp]
+	mov	eax, DWORD PTR __Vptr$104475[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T104474[ebp]
+	mov	ecx, DWORD PTR $T104478[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -11090,7 +11090,7 @@ xdata$x	ENDS
 ;	COMDAT ??$_Make_heap@PAVSky@@HV1@@std@@YAXPAVSky@@0PAH0@Z
 _TEXT	SEGMENT
 __First$GSCopy$ = -800					; size = 4
-__Val$94449 = -796					; size = 780
+__Val$94451 = -796					; size = 780
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 __First$ = 8						; size = 4
@@ -11145,12 +11145,12 @@ ___formal$ = 20						; size = 4
 $LL2@Make_heap:
 	sub	edi, 780				; 0000030cH
 	push	edi
-	lea	ecx, DWORD PTR __Val$94449[ebp]
+	lea	ecx, DWORD PTR __Val$94451[ebp]
 	dec	esi
 	call	??0Sky@@QAE@ABV0@@Z
 ; Line 2639
 	mov	ecx, DWORD PTR __First$GSCopy$[ebp]
-	lea	eax, DWORD PTR __Val$94449[ebp]
+	lea	eax, DWORD PTR __Val$94451[ebp]
 	push	eax
 	push	ebx
 	push	esi
@@ -11162,7 +11162,7 @@ $LL2@Make_heap:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	edx, DWORD PTR __Val$94449[ebp+20]
+	lea	edx, DWORD PTR __Val$94451[ebp+20]
 	push	edx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11186,7 +11186,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Make_heap@PAVSky@@HV1@@std@@YAXPAVSky@@0PAH0@Z$0:
-	lea	ecx, DWORD PTR __Val$94449[ebp]
+	lea	ecx, DWORD PTR __Val$94451[ebp]
 	jmp	??1Sky@@QAE@XZ
 __ehhandler$??$_Make_heap@PAVSky@@HV1@@std@@YAXPAVSky@@0PAH0@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -11220,9 +11220,9 @@ __ehfuncinfo$??$_Insertion_sort1@PAVSky@@V1@@std@@YAXPAVSky@@00@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??$_Insertion_sort1@PAVSky@@V1@@std@@YAXPAVSky@@00@Z
 _TEXT	SEGMENT
-__Cat$104560 = -800					; size = 1
+__Cat$104562 = -800					; size = 1
 __First$GSCopy$ = -800					; size = 4
-__Val$94489 = -796					; size = 780
+__Val$94491 = -796					; size = 780
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 __First$ = 8						; size = 4
@@ -11261,16 +11261,16 @@ ___formal$ = 16						; size = 4
 $LL7@Insertion_:
 ; Line 3498
 	push	edi
-	lea	ecx, DWORD PTR __Val$94489[ebp]
+	lea	ecx, DWORD PTR __Val$94491[ebp]
 	mov	ebx, edi
 	call	??0Sky@@QAE@ABV0@@Z
 ; Line 3500
-	cmp	BYTE PTR __Val$94489[ebp+776], 0
+	cmp	BYTE PTR __Val$94491[ebp+776], 0
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	jne	SHORT $LN5@Insertion_
 	cmp	BYTE PTR [esi+776], 0
 	jne	SHORT $LN46@Insertion_
-	fld	DWORD PTR __Val$94489[ebp+16]
+	fld	DWORD PTR __Val$94491[ebp+16]
 	fld	DWORD PTR [esi+16]
 	fcompp
 	fnstsw	ax
@@ -11278,7 +11278,7 @@ $LL7@Insertion_:
 	jne	SHORT $LN5@Insertion_
 $LN46@Insertion_:
 ; Line 3502
-	mov	eax, DWORD PTR __Cat$104560[ebp]
+	mov	eax, DWORD PTR __Cat$104562[ebp]
 	push	eax
 	lea	ecx, DWORD PTR [edi+780]
 	push	ecx
@@ -11287,7 +11287,7 @@ $LN46@Insertion_:
 	call	??$_Move_backward@PAVSky@@PAV1@@std@@YAPAVSky@@PAV1@00U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Move_backward<Sky *,Sky *>
 	add	esp, 16					; 00000010H
 ; Line 3503
-	lea	edx, DWORD PTR __Val$94489[ebp]
+	lea	edx, DWORD PTR __Val$94491[ebp]
 	push	edx
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
@@ -11299,11 +11299,11 @@ $LN5@Insertion_:
 $LL3@Insertion_:
 ; Line 3509
 	sub	esi, 780				; 0000030cH
-	cmp	BYTE PTR __Val$94489[ebp+776], 0
+	cmp	BYTE PTR __Val$94491[ebp+776], 0
 	jne	SHORT $LN48@Insertion_
 	cmp	BYTE PTR [esi+776], 0
 	jne	SHORT $LN47@Insertion_
-	fld	DWORD PTR __Val$94489[ebp+16]
+	fld	DWORD PTR __Val$94491[ebp+16]
 	fld	DWORD PTR [esi+16]
 	fcompp
 	fnstsw	ax
@@ -11318,7 +11318,7 @@ $LN47@Insertion_:
 	jmp	SHORT $LL3@Insertion_
 $LN48@Insertion_:
 ; Line 3511
-	lea	eax, DWORD PTR __Val$94489[ebp]
+	lea	eax, DWORD PTR __Val$94491[ebp]
 	push	eax
 	mov	ecx, ebx
 	call	??4Sky@@QAEAAV0@ABV0@@Z
@@ -11328,7 +11328,7 @@ $LN4@Insertion_:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Val$94489[ebp+20]
+	lea	ecx, DWORD PTR __Val$94491[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11353,7 +11353,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Insertion_sort1@PAVSky@@V1@@std@@YAXPAVSky@@00@Z$0:
-	lea	ecx, DWORD PTR __Val$94489[ebp]
+	lea	ecx, DWORD PTR __Val$94491[ebp]
 	jmp	??1Sky@@QAE@XZ
 __ehhandler$??$_Insertion_sort1@PAVSky@@V1@@std@@YAXPAVSky@@00@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -11511,25 +11511,25 @@ __unwindtable$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@
 xdata$x	ENDS
 ;	COMDAT ??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z
 _TEXT	SEGMENT
-$T104998 = -1612					; size = 4
+$T105000 = -1612					; size = 4
 ___$ReturnUdt$GSCopy$ = -1608				; size = 4
 __First$GSCopy$ = -1604					; size = 4
 __Last$GSCopy$ = -1600					; size = 4
 tv1570 = -1596						; size = 4
-$T104997 = -1596					; size = 4
-$T104757 = -1596					; size = 4
+$T104999 = -1596					; size = 4
+$T104759 = -1596					; size = 4
 __Glast$ = -1592					; size = 4
 __Gfirst$ = -1588					; size = 4
 tv1588 = -1581						; size = 1
 tv1433 = -1581						; size = 1
 __Plast$ = -1580					; size = 4
-__Tmp$105174 = -1576					; size = 780
-__Tmp$105117 = -796					; size = 780
-__Tmp$105057 = -796					; size = 780
-__Tmp$104996 = -796					; size = 780
-__Tmp$104935 = -796					; size = 780
-__Tmp$104842 = -796					; size = 780
-__Tmp$104756 = -796					; size = 780
+__Tmp$105176 = -1576					; size = 780
+__Tmp$105119 = -796					; size = 780
+__Tmp$105059 = -796					; size = 780
+__Tmp$104998 = -796					; size = 780
+__Tmp$104937 = -796					; size = 780
+__Tmp$104844 = -796					; size = 780
+__Tmp$104758 = -796					; size = 780
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -11695,22 +11695,22 @@ $LN246@Unguarded_:
 	mov	eax, edx
 	add	edx, 780				; 0000030cH
 	push	eax
-	lea	ecx, DWORD PTR __Tmp$104756[ebp]
-	mov	DWORD PTR $T104757[ebp], eax
+	lea	ecx, DWORD PTR __Tmp$104758[ebp]
+	mov	DWORD PTR $T104759[ebp], eax
 	mov	DWORD PTR __Plast$[ebp], edx
 	call	??0Sky@@QAE@ABV0@@Z
-	mov	ecx, DWORD PTR $T104757[ebp]
+	mov	ecx, DWORD PTR $T104759[ebp]
 	push	esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	edx, DWORD PTR __Tmp$104756[ebp]
+	lea	edx, DWORD PTR __Tmp$104758[ebp]
 	push	edx
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	eax, DWORD PTR __Tmp$104756[ebp+20]
+	lea	eax, DWORD PTR __Tmp$104758[ebp+20]
 	push	eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11764,45 +11764,45 @@ $LN248@Unguarded_:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$104842[ebp], ecx
+	mov	DWORD PTR __Tmp$104844[ebp], ecx
 	mov	ecx, DWORD PTR [ebx+12]
-	mov	DWORD PTR __Tmp$104842[ebp+8], eax
+	mov	DWORD PTR __Tmp$104844[ebp+8], eax
 	push	16					; 00000010H
 	lea	eax, DWORD PTR [ebx+20]
-	mov	DWORD PTR __Tmp$104842[ebp+12], ecx
-	mov	DWORD PTR __Tmp$104842[ebp+4], edx
+	mov	DWORD PTR __Tmp$104844[ebp+12], ecx
+	mov	DWORD PTR __Tmp$104844[ebp+4], edx
 	mov	edx, DWORD PTR [ebx+16]
 	push	eax
-	lea	ecx, DWORD PTR __Tmp$104842[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$104844[ebp+20]
 	push	ecx
-	mov	DWORD PTR __Tmp$104842[ebp+16], edx
+	mov	DWORD PTR __Tmp$104844[ebp+16], edx
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
 	mov	edx, DWORD PTR [ebx+772]
 	mov	al, BYTE PTR [ebx+776]
 	lea	esi, DWORD PTR [ebx+596]
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$104842[ebp+596]
+	lea	edi, DWORD PTR __Tmp$104844[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [ebx+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$104842[ebp+740]
+	lea	edi, DWORD PTR __Tmp$104844[ebp+740]
 	rep movsd
-	mov	DWORD PTR __Tmp$104842[ebp+772], edx
-	mov	BYTE PTR __Tmp$104842[ebp+776], al
+	mov	DWORD PTR __Tmp$104844[ebp+772], edx
+	mov	BYTE PTR __Tmp$104844[ebp+776], al
 	mov	esi, DWORD PTR tv1570[ebp]
 	add	esi, -16				; fffffff0H
 	push	esi
 	mov	ecx, ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	ecx, DWORD PTR __Tmp$104842[ebp]
+	lea	ecx, DWORD PTR __Tmp$104844[ebp]
 	push	ecx
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	edx, DWORD PTR __Tmp$104842[ebp+20]
+	lea	edx, DWORD PTR __Tmp$104844[ebp+20]
 	push	edx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11835,44 +11835,44 @@ $LN274@Unguarded_:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$104935[ebp], eax
+	mov	DWORD PTR __Tmp$104937[ebp], eax
 	mov	eax, DWORD PTR [ebx+12]
-	mov	DWORD PTR __Tmp$104935[ebp+8], edx
+	mov	DWORD PTR __Tmp$104937[ebp+8], edx
 	push	16					; 00000010H
 	lea	edx, DWORD PTR [ebx+20]
-	mov	DWORD PTR __Tmp$104935[ebp+12], eax
-	mov	DWORD PTR __Tmp$104935[ebp+4], ecx
+	mov	DWORD PTR __Tmp$104937[ebp+12], eax
+	mov	DWORD PTR __Tmp$104937[ebp+4], ecx
 	mov	ecx, DWORD PTR [ebx+16]
 	push	edx
-	lea	eax, DWORD PTR __Tmp$104935[ebp+20]
+	lea	eax, DWORD PTR __Tmp$104937[ebp+20]
 	push	eax
-	mov	DWORD PTR __Tmp$104935[ebp+16], ecx
+	mov	DWORD PTR __Tmp$104937[ebp+16], ecx
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
 	mov	dl, BYTE PTR [ebx+776]
 	lea	esi, DWORD PTR [ebx+596]
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$104935[ebp+596]
+	lea	edi, DWORD PTR __Tmp$104937[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [ebx+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$104935[ebp+740]
+	lea	edi, DWORD PTR __Tmp$104937[ebp+740]
 	rep movsd
 	mov	ecx, DWORD PTR [ebx+772]
-	mov	DWORD PTR __Tmp$104935[ebp+772], ecx
-	mov	BYTE PTR __Tmp$104935[ebp+776], dl
+	mov	DWORD PTR __Tmp$104937[ebp+772], ecx
+	mov	BYTE PTR __Tmp$104937[ebp+776], dl
 	mov	esi, DWORD PTR __Plast$[ebp]
 	push	esi
 	mov	ecx, ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	eax, DWORD PTR __Tmp$104935[ebp]
+	lea	eax, DWORD PTR __Tmp$104937[ebp]
 	push	eax
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Tmp$104935[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$104937[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11889,50 +11889,50 @@ $LN140@Unguarded_:
 	mov	edx, DWORD PTR [edi]
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$104996[ebp], edx
+	mov	DWORD PTR __Tmp$104998[ebp], edx
 	mov	edx, DWORD PTR [edi+12]
-	mov	DWORD PTR __Tmp$104996[ebp+8], ecx
+	mov	DWORD PTR __Tmp$104998[ebp+8], ecx
 	push	16					; 00000010H
 	lea	ecx, DWORD PTR [edi+20]
-	mov	DWORD PTR __Tmp$104996[ebp+12], edx
-	mov	DWORD PTR __Tmp$104996[ebp+4], eax
+	mov	DWORD PTR __Tmp$104998[ebp+12], edx
+	mov	DWORD PTR __Tmp$104998[ebp+4], eax
 	mov	eax, DWORD PTR [edi+16]
 	push	ecx
-	lea	edx, DWORD PTR __Tmp$104996[ebp+20]
-	mov	DWORD PTR $T104998[ebp], esi
+	lea	edx, DWORD PTR __Tmp$104998[ebp+20]
+	mov	DWORD PTR $T105000[ebp], esi
 	add	esi, 780				; 0000030cH
 	push	edx
-	mov	DWORD PTR $T104997[ebp], edi
+	mov	DWORD PTR $T104999[ebp], edi
 	add	ebx, 780				; 0000030cH
 	mov	DWORD PTR __Gfirst$[ebp], esi
-	mov	DWORD PTR __Tmp$104996[ebp+16], eax
+	mov	DWORD PTR __Tmp$104998[ebp+16], eax
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
-	mov	eax, DWORD PTR $T104997[ebp]
+	mov	eax, DWORD PTR $T104999[ebp]
 	mov	dl, BYTE PTR [eax+776]
 	lea	esi, DWORD PTR [edi+596]
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$104996[ebp+596]
+	lea	edi, DWORD PTR __Tmp$104998[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [eax+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$104996[ebp+740]
+	lea	edi, DWORD PTR __Tmp$104998[ebp+740]
 	rep movsd
 	mov	ecx, DWORD PTR [eax+772]
-	mov	DWORD PTR __Tmp$104996[ebp+772], ecx
-	mov	BYTE PTR __Tmp$104996[ebp+776], dl
-	mov	esi, DWORD PTR $T104998[ebp]
+	mov	DWORD PTR __Tmp$104998[ebp+772], ecx
+	mov	BYTE PTR __Tmp$104998[ebp+776], dl
+	mov	esi, DWORD PTR $T105000[ebp]
 	push	esi
 	mov	ecx, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 3
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	eax, DWORD PTR __Tmp$104996[ebp]
+	lea	eax, DWORD PTR __Tmp$104998[ebp]
 	push	eax
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Tmp$104996[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$104998[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -11956,44 +11956,44 @@ $LN6@Unguarded_:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$105057[ebp], edx
+	mov	DWORD PTR __Tmp$105059[ebp], edx
 	mov	edx, DWORD PTR [edi+12]
-	mov	DWORD PTR __Tmp$105057[ebp+8], ecx
+	mov	DWORD PTR __Tmp$105059[ebp+8], ecx
 	push	16					; 00000010H
 	lea	ecx, DWORD PTR [edi+20]
-	mov	DWORD PTR __Tmp$105057[ebp+12], edx
-	mov	DWORD PTR __Tmp$105057[ebp+4], eax
+	mov	DWORD PTR __Tmp$105059[ebp+12], edx
+	mov	DWORD PTR __Tmp$105059[ebp+4], eax
 	mov	eax, DWORD PTR [edi+16]
 	push	ecx
-	lea	edx, DWORD PTR __Tmp$105057[ebp+20]
+	lea	edx, DWORD PTR __Tmp$105059[ebp+20]
 	push	edx
-	mov	DWORD PTR __Tmp$105057[ebp+16], eax
+	mov	DWORD PTR __Tmp$105059[ebp+16], eax
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
 	mov	eax, DWORD PTR __Glast$[ebp]
 	mov	dl, BYTE PTR [eax+776]
 	lea	esi, DWORD PTR [edi+596]
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$105057[ebp+596]
+	lea	edi, DWORD PTR __Tmp$105059[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [eax+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$105057[ebp+740]
+	lea	edi, DWORD PTR __Tmp$105059[ebp+740]
 	rep movsd
 	mov	ecx, DWORD PTR [eax+772]
-	mov	DWORD PTR __Tmp$105057[ebp+772], ecx
-	mov	BYTE PTR __Tmp$105057[ebp+776], dl
+	mov	DWORD PTR __Tmp$105059[ebp+772], ecx
+	mov	BYTE PTR __Tmp$105059[ebp+776], dl
 	push	ebx
 	mov	ecx, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 4
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	eax, DWORD PTR __Tmp$105057[ebp]
+	lea	eax, DWORD PTR __Tmp$105059[ebp]
 	push	eax
 	mov	ecx, ebx
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Tmp$105057[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$105059[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -12008,44 +12008,44 @@ $LN176@Unguarded_:
 	mov	edx, DWORD PTR [ebx]
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$105117[ebp], edx
+	mov	DWORD PTR __Tmp$105119[ebp], edx
 	mov	edx, DWORD PTR [ebx+12]
-	mov	DWORD PTR __Tmp$105117[ebp+8], ecx
+	mov	DWORD PTR __Tmp$105119[ebp+8], ecx
 	push	16					; 00000010H
 	lea	ecx, DWORD PTR [ebx+20]
-	mov	DWORD PTR __Tmp$105117[ebp+12], edx
-	mov	DWORD PTR __Tmp$105117[ebp+4], eax
+	mov	DWORD PTR __Tmp$105119[ebp+12], edx
+	mov	DWORD PTR __Tmp$105119[ebp+4], eax
 	mov	eax, DWORD PTR [ebx+16]
 	push	ecx
-	lea	edx, DWORD PTR __Tmp$105117[ebp+20]
+	lea	edx, DWORD PTR __Tmp$105119[ebp+20]
 	push	edx
-	mov	DWORD PTR __Tmp$105117[ebp+16], eax
+	mov	DWORD PTR __Tmp$105119[ebp+16], eax
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
 	mov	eax, DWORD PTR [ebx+772]
 	lea	esi, DWORD PTR [ebx+596]
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$105117[ebp+596]
+	lea	edi, DWORD PTR __Tmp$105119[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [ebx+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$105117[ebp+740]
+	lea	edi, DWORD PTR __Tmp$105119[ebp+740]
 	rep movsd
 	mov	cl, BYTE PTR [ebx+776]
-	mov	DWORD PTR __Tmp$105117[ebp+772], eax
-	mov	BYTE PTR __Tmp$105117[ebp+776], cl
+	mov	DWORD PTR __Tmp$105119[ebp+772], eax
+	mov	BYTE PTR __Tmp$105119[ebp+776], cl
 	mov	esi, DWORD PTR __Plast$[ebp]
 	push	esi
 	mov	ecx, ebx
 	mov	DWORD PTR __$EHRec$[ebp+8], 5
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	edx, DWORD PTR __Tmp$105117[ebp]
+	lea	edx, DWORD PTR __Tmp$105119[ebp]
 	push	edx
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	eax, DWORD PTR __Tmp$105117[ebp+20]
+	lea	eax, DWORD PTR __Tmp$105119[ebp+20]
 	push	eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -12062,45 +12062,45 @@ $LN3@Unguarded_:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	OFFSET ??0?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@ABV01@@Z ; std::vector<SkyColor,std::allocator<SkyColor> >::vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
-	mov	DWORD PTR __Tmp$105174[ebp], ecx
+	mov	DWORD PTR __Tmp$105176[ebp], ecx
 	mov	ecx, DWORD PTR [esi+12]
-	mov	DWORD PTR __Tmp$105174[ebp+8], eax
+	mov	DWORD PTR __Tmp$105176[ebp+8], eax
 	push	16					; 00000010H
 	lea	eax, DWORD PTR [esi+20]
-	mov	DWORD PTR __Tmp$105174[ebp+12], ecx
-	mov	DWORD PTR __Tmp$105174[ebp+4], edx
+	mov	DWORD PTR __Tmp$105176[ebp+12], ecx
+	mov	DWORD PTR __Tmp$105176[ebp+4], edx
 	mov	edx, DWORD PTR [esi+16]
 	push	eax
-	lea	ecx, DWORD PTR __Tmp$105174[ebp+20]
+	lea	ecx, DWORD PTR __Tmp$105176[ebp+20]
 	push	ecx
-	mov	DWORD PTR __Tmp$105174[ebp+16], edx
+	mov	DWORD PTR __Tmp$105176[ebp+16], edx
 	call	??__C@YGXPAX0IHP6EX00@ZP6EX0@Z@Z
 	mov	eax, DWORD PTR __Gfirst$[ebp]
 	mov	edx, DWORD PTR [eax+772]
 	add	esi, 596				; 00000254H
 	mov	ecx, 36					; 00000024H
-	lea	edi, DWORD PTR __Tmp$105174[ebp+596]
+	lea	edi, DWORD PTR __Tmp$105176[ebp+596]
 	rep movsd
 	lea	esi, DWORD PTR [eax+740]
 	mov	ecx, 8
-	lea	edi, DWORD PTR __Tmp$105174[ebp+740]
+	lea	edi, DWORD PTR __Tmp$105176[ebp+740]
 	rep movsd
 	mov	cl, BYTE PTR [eax+776]
-	mov	DWORD PTR __Tmp$105174[ebp+772], edx
-	mov	BYTE PTR __Tmp$105174[ebp+776], cl
+	mov	DWORD PTR __Tmp$105176[ebp+772], edx
+	mov	BYTE PTR __Tmp$105176[ebp+776], cl
 	mov	esi, DWORD PTR __Glast$[ebp]
 	push	esi
 	mov	ecx, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 6
 	call	??4Sky@@QAEAAV0@ABV0@@Z
-	lea	edx, DWORD PTR __Tmp$105174[ebp]
+	lea	edx, DWORD PTR __Tmp$105176[ebp]
 	push	edx
 	mov	ecx, esi
 	call	??4Sky@@QAEAAV0@ABV0@@Z
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	eax, DWORD PTR __Tmp$105174[ebp+20]
+	lea	eax, DWORD PTR __Tmp$105176[ebp+20]
 	push	eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -12132,25 +12132,25 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$0:
-	lea	ecx, DWORD PTR __Tmp$104756[ebp]
+	lea	ecx, DWORD PTR __Tmp$104758[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$2:
-	lea	ecx, DWORD PTR __Tmp$104842[ebp]
+	lea	ecx, DWORD PTR __Tmp$104844[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$4:
-	lea	ecx, DWORD PTR __Tmp$104935[ebp]
+	lea	ecx, DWORD PTR __Tmp$104937[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$6:
-	lea	ecx, DWORD PTR __Tmp$104996[ebp]
+	lea	ecx, DWORD PTR __Tmp$104998[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$8:
-	lea	ecx, DWORD PTR __Tmp$105057[ebp]
+	lea	ecx, DWORD PTR __Tmp$105059[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$10:
-	lea	ecx, DWORD PTR __Tmp$105117[ebp]
+	lea	ecx, DWORD PTR __Tmp$105119[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z$12:
-	lea	ecx, DWORD PTR __Tmp$105174[ebp]
+	lea	ecx, DWORD PTR __Tmp$105176[ebp]
 	jmp	??1Sky@@QAE@XZ
 __ehhandler$??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -12350,7 +12350,7 @@ xdata$x	ENDS
 _TEXT	SEGMENT
 __Next$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
-$T105378 = 8						; size = 4
+$T105380 = 8						; size = 4
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -12389,7 +12389,7 @@ $LL6@Uninit_mov@3:
 	cmp	edi, DWORD PTR __Last$[ebp]
 	je	SHORT $LN4@Uninit_mov@3
 ; Line 431
-	mov	DWORD PTR $T105378[ebp], esi
+	mov	DWORD PTR $T105380[ebp], esi
 	mov	BYTE PTR __$EHRec$[ebp+12], 1
 	cmp	esi, ebx
 	je	SHORT $LN20@Uninit_mov@3
@@ -12446,7 +12446,7 @@ text$x	SEGMENT
 __unwindfunclet$??$_Uninit_move@PAVSky@@PAV1@V?$allocator@VSky@@@std@@V1@@std@@YAPAVSky@@PAV1@00AAV?$allocator@VSky@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z$2:
 	mov	eax, DWORD PTR __Dest$[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T105378[ebp]
+	mov	ecx, DWORD PTR $T105380[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -12479,7 +12479,7 @@ __ehfuncinfo$??$_Sort_heap@PAVSky@@@std@@YAXPAVSky@@0@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??$_Sort_heap@PAVSky@@@std@@YAXPAVSky@@0@Z
 _TEXT	SEGMENT
-__Val$105467 = -796					; size = 780
+__Val$105469 = -796					; size = 780
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 __First$ = 8						; size = 4
@@ -12520,7 +12520,7 @@ $LL3@Sort_heap:
 ; Line 2685
 	lea	ebx, DWORD PTR [edi+esi-780]
 	push	ebx
-	lea	ecx, DWORD PTR __Val$105467[ebp]
+	lea	ecx, DWORD PTR __Val$105469[ebp]
 	call	??0Sky@@QAE@ABV0@@Z
 	push	edi
 	mov	ecx, ebx
@@ -12532,7 +12532,7 @@ $LL3@Sort_heap:
 	add	edx, esi
 	sar	edx, 9
 	mov	eax, edx
-	lea	ecx, DWORD PTR __Val$105467[ebp]
+	lea	ecx, DWORD PTR __Val$105469[ebp]
 	push	ecx
 	shr	eax, 31					; 0000001fH
 	add	eax, edx
@@ -12544,7 +12544,7 @@ $LL3@Sort_heap:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	ecx, DWORD PTR __Val$105467[ebp+20]
+	lea	ecx, DWORD PTR __Val$105469[ebp+20]
 	push	ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -12575,7 +12575,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??$_Sort_heap@PAVSky@@@std@@YAXPAVSky@@0@Z$0:
-	lea	ecx, DWORD PTR __Val$105467[ebp]
+	lea	ecx, DWORD PTR __Val$105469[ebp]
 	jmp	??1Sky@@QAE@XZ
 __ehhandler$??$_Sort_heap@PAVSky@@@std@@YAXPAVSky@@0@Z:
 	mov	edx, DWORD PTR [esp+8]
@@ -12632,7 +12632,7 @@ PUBLIC	??$_Uninitialized_move@PAVSky@@PAV1@V?$allocator@VSky@@@std@@@std@@YAPAVS
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Uninitialized_move@PAVSky@@PAV1@V?$allocator@VSky@@@std@@@std@@YAPAVSky@@PAV1@00AAV?$allocator@VSky@@@0@@Z
 _TEXT	SEGMENT
-__Cat$105567 = -4					; size = 1
+__Cat$105569 = -4					; size = 1
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
 __Dest$ = 16						; size = 4
@@ -12644,7 +12644,7 @@ __Al$ = 20						; size = 4
 	mov	ebp, esp
 	push	ecx
 ; Line 471
-	mov	eax, DWORD PTR __Cat$105567[ebp]
+	mov	eax, DWORD PTR __Cat$105569[ebp]
 	mov	ecx, DWORD PTR __Al$[ebp]
 	mov	edx, DWORD PTR __Dest$[ebp]
 	push	eax
@@ -12724,7 +12724,7 @@ PUBLIC	??$_Umove@PAVSky@@@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@IAEPAVSk
 _TEXT	SEGMENT
 __First$ = 8						; size = 4
 __Last$ = 12						; size = 4
-__Cat$105686 = 16					; size = 1
+__Cat$105688 = 16					; size = 1
 __Ptr$ = 16						; size = 4
 ??$_Umove@PAVSky@@@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@IAEPAVSky@@PAV2@00@Z PROC ; std::vector<Sky,std::allocator<Sky> >::_Umove<Sky *>, COMDAT
 ; _this$ = ecx
@@ -12732,7 +12732,7 @@ __Ptr$ = 16						; size = 4
 	push	ebp
 	mov	ebp, esp
 ; Line 1325
-	mov	eax, DWORD PTR __Cat$105686[ebp]
+	mov	eax, DWORD PTR __Cat$105688[ebp]
 	mov	edx, DWORD PTR __Last$[ebp]
 	push	eax
 	mov	eax, DWORD PTR __First$[ebp]
@@ -12754,7 +12754,7 @@ PUBLIC	??$_Sort@PAVSky@@H@std@@YAXPAVSky@@0H@Z		; std::_Sort<Sky *,int>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Sort@PAVSky@@H@std@@YAXPAVSky@@0H@Z
 _TEXT	SEGMENT
-__Mid$93358 = -8					; size = 8
+__Mid$93360 = -8					; size = 8
 __First$ = 8						; size = 4
 tv181 = 12						; size = 4
 __Last$ = 12						; size = 4
@@ -12788,7 +12788,7 @@ $LL7@Sort:
 	jle	$LN6@Sort
 ; Line 3614
 	push	edi
-	lea	eax, DWORD PTR __Mid$93358[ebp]
+	lea	eax, DWORD PTR __Mid$93360[ebp]
 	push	ebx
 	push	eax
 	call	??$_Unguarded_partition@PAVSky@@@std@@YA?AU?$pair@PAVSky@@PAV1@@0@PAVSky@@0@Z ; std::_Unguarded_partition<Sky *>
@@ -12804,11 +12804,11 @@ $LL7@Sort:
 	add	esi, eax
 ; Line 3617
 	mov	ecx, edi
-	sub	ecx, DWORD PTR __Mid$93358[ebp+4]
+	sub	ecx, DWORD PTR __Mid$93360[ebp+4]
 	mov	eax, -1475706711			; a80a80a9H
 	imul	ecx
 	add	edx, ecx
-	mov	ecx, DWORD PTR __Mid$93358[ebp]
+	mov	ecx, DWORD PTR __Mid$93360[ebp]
 	sar	edx, 9
 	mov	eax, edx
 	shr	eax, 31					; 0000001fH
@@ -12827,24 +12827,24 @@ $LL7@Sort:
 	push	esi
 	cmp	ecx, DWORD PTR tv181[ebp]
 	jge	SHORT $LN5@Sort
-	mov	edx, DWORD PTR __Mid$93358[ebp]
+	mov	edx, DWORD PTR __Mid$93360[ebp]
 	mov	eax, DWORD PTR __First$[ebp]
 	push	edx
 	push	eax
 	call	??$_Sort@PAVSky@@H@std@@YAXPAVSky@@0H@Z	; std::_Sort<Sky *,int>
 ; Line 3620
-	mov	ebx, DWORD PTR __Mid$93358[ebp+4]
+	mov	ebx, DWORD PTR __Mid$93360[ebp+4]
 	mov	DWORD PTR __First$[ebp], ebx
 ; Line 3622
 	jmp	SHORT $LN34@Sort
 $LN5@Sort:
 ; Line 3624
-	mov	ecx, DWORD PTR __Mid$93358[ebp+4]
+	mov	ecx, DWORD PTR __Mid$93360[ebp+4]
 	push	edi
 	push	ecx
 	call	??$_Sort@PAVSky@@H@std@@YAXPAVSky@@0H@Z	; std::_Sort<Sky *,int>
 ; Line 3625
-	mov	edi, DWORD PTR __Mid$93358[ebp]
+	mov	edi, DWORD PTR __Mid$93360[ebp]
 	mov	ebx, DWORD PTR __First$[ebp]
 $LN34@Sort:
 ; Line 3611
@@ -12996,9 +12996,9 @@ __ehfuncinfo$?reserve@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXI@Z DD 0
 xdata$x	ENDS
 ;	COMDAT ?reserve@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXI@Z
 _TEXT	SEGMENT
-__Ptr$88746 = -20					; size = 4
+__Ptr$88748 = -20					; size = 4
 __$EHRec$ = -16						; size = 16
-__Cat$105920 = 8					; size = 1
+__Cat$105922 = 8					; size = 1
 __Count$ = 8						; size = 4
 ?reserve@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXI@Z PROC ; std::vector<Sky,std::allocator<Sky> >::reserve, COMDAT
 ; _this$ = ecx
@@ -13048,7 +13048,7 @@ $LN5@reserve@3:
 	mov	ecx, edi
 	call	?allocate@?$allocator@VSky@@@std@@QAEPAVSky@@I@Z ; std::allocator<Sky>::allocate
 ; Line 754
-	mov	ebx, DWORD PTR __Cat$105920[ebp]
+	mov	ebx, DWORD PTR __Cat$105922[ebp]
 	mov	ecx, DWORD PTR [esi+4]
 	mov	edx, DWORD PTR [esi]
 	push	ebx
@@ -13057,7 +13057,7 @@ $LN5@reserve@3:
 	push	eax
 	push	ecx
 	push	edx
-	mov	DWORD PTR __Ptr$88746[ebp], eax
+	mov	DWORD PTR __Ptr$88748[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+12], 0
 	call	??$_Uninit_move@PAVSky@@PAV1@V?$allocator@VSky@@@std@@V1@@std@@YAPAVSky@@PAV1@00AAV?$allocator@VSky@@@0@0U_Nonscalar_ptr_iterator_tag@0@@Z ; std::_Uninit_move<Sky *,Sky *,std::allocator<Sky>,Sky>
 ; Line 760
@@ -13091,7 +13091,7 @@ $LN35@reserve@3:
 	mov	eax, DWORD PTR __Count$[ebp]
 ; Line 770
 	imul	edi, 780				; 0000030cH
-	mov	ecx, DWORD PTR __Ptr$88746[ebp]
+	mov	ecx, DWORD PTR __Ptr$88748[ebp]
 	imul	eax, 780				; 0000030cH
 	add	eax, ecx
 	add	edi, ecx
@@ -13112,7 +13112,7 @@ $LN3@reserve@3:
 	ret	4
 __catch$?reserve@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXI@Z$0:
 ; Line 756
-	mov	edx, DWORD PTR __Ptr$88746[ebp]
+	mov	edx, DWORD PTR __Ptr$88748[ebp]
 	push	edx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -13350,11 +13350,11 @@ __ehfuncinfo$?push_back@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXABVSky
 xdata$x	ENDS
 ;	COMDAT ?push_back@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXABVSky@@@Z
 _TEXT	SEGMENT
-$T106192 = -16						; size = 4
-$T106129 = -16						; size = 4
+$T106194 = -16						; size = 4
+$T106131 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-__Vptr$106189 = 8					; size = 4
-$T106137 = 8						; size = 4
+__Vptr$106191 = 8					; size = 4
+$T106139 = 8						; size = 4
 __Val$ = 8						; size = 4
 ?push_back@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXABVSky@@@Z PROC ; std::vector<Sky,std::allocator<Sky> >::push_back, COMDAT
 ; _this$ = ecx
@@ -13404,8 +13404,8 @@ $LN3@push_back@3:
 	mov	ecx, DWORD PTR [edi+4]
 	imul	esi, 780				; 0000030cH
 	add	esi, DWORD PTR [edi]
-	mov	DWORD PTR $T106137[ebp], ecx
-	mov	DWORD PTR $T106129[ebp], ecx
+	mov	DWORD PTR $T106139[ebp], ecx
+	mov	DWORD PTR $T106131[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 ; Line 988
 	jmp	SHORT $LN51@push_back@3
@@ -13420,8 +13420,8 @@ $LN4@push_back@3:
 $LN1@push_back@3:
 ; Line 995
 	mov	ecx, DWORD PTR [edi+4]
-	mov	DWORD PTR __Vptr$106189[ebp], ecx
-	mov	DWORD PTR $T106192[ebp], ecx
+	mov	DWORD PTR __Vptr$106191[ebp], ecx
+	mov	DWORD PTR $T106194[ebp], ecx
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
 $LN51@push_back@3:
 	test	ecx, ecx
@@ -13444,17 +13444,17 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?push_back@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXABVSky@@@Z$0:
-	mov	eax, DWORD PTR $T106137[ebp]
+	mov	eax, DWORD PTR $T106139[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T106129[ebp]
+	mov	ecx, DWORD PTR $T106131[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
 	ret	0
 __unwindfunclet$?push_back@?$vector@VSky@@V?$allocator@VSky@@@std@@@std@@QAEXABVSky@@@Z$1:
-	mov	eax, DWORD PTR __Vptr$106189[ebp]
+	mov	eax, DWORD PTR __Vptr$106191[ebp]
 	push	eax
-	mov	ecx, DWORD PTR $T106192[ebp]
+	mov	ecx, DWORD PTR $T106194[ebp]
 	push	ecx
 	call	??3@YAXPAX0@Z				; operator delete
 	add	esp, 8
@@ -13489,10 +13489,10 @@ __ehfuncinfo$?loadFrom@Skies@@AAE_NPBD_N@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-$T106218 = -1864					; size = 4
-$T106219 = -1860					; size = 4
+$T106220 = -1864					; size = 4
+$T106221 = -1860					; size = 4
 _ns$ = -1856						; size = 4
-_s$82603 = -1852					; size = 780
+_s$82605 = -1852					; size = 780
 _f$ = -1072						; size = 1056
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
@@ -13563,10 +13563,10 @@ $LL6@loadFrom:
 ; Line 188
 	lea	ecx, DWORD PTR _f$[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR _s$82603[ebp]
+	lea	ecx, DWORD PTR _s$82605[ebp]
 	call	??0Sky@@QAE@AAVMPQFile@@@Z		; Sky::Sky
 ; Line 189
-	lea	edx, DWORD PTR _s$82603[ebp]
+	lea	edx, DWORD PTR _s$82605[ebp]
 	push	edx
 	mov	ecx, esi
 	mov	BYTE PTR __$EHRec$[ebp+8], 1
@@ -13575,7 +13575,7 @@ $LL6@loadFrom:
 	push	OFFSET ??1?$vector@USkyColor@@V?$allocator@USkyColor@@@std@@@std@@QAE@XZ ; std::vector<SkyColor,std::allocator<SkyColor> >::~vector<SkyColor,std::allocator<SkyColor> >
 	push	36					; 00000024H
 	push	16					; 00000010H
-	lea	eax, DWORD PTR _s$82603[ebp+20]
+	lea	eax, DWORD PTR _s$82605[ebp+20]
 	push	eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 0
 	call	??_M@YGXPAXIHP6EX0@Z@Z
@@ -13631,7 +13631,7 @@ $LN1@loadFrom:
 	call	??2@YAPAXI@Z				; operator new
 	mov	edi, eax
 	add	esp, 16					; 00000010H
-	mov	DWORD PTR $T106218[ebp], edi
+	mov	DWORD PTR $T106220[ebp], edi
 	xor	eax, eax
 	mov	BYTE PTR __$EHRec$[ebp+8], 2
 	cmp	edi, eax
@@ -13639,11 +13639,11 @@ $LN1@loadFrom:
 	push	1
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
-	mov	DWORD PTR $T106219[ebp], esp
+	mov	DWORD PTR $T106221[ebp], esp
 	push	28					; 0000001cH
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], eax
-	push	OFFSET $SG82746
+	push	OFFSET $SG82748
 	mov	BYTE PTR [ecx], al
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	mov	ecx, edi
@@ -13675,10 +13675,10 @@ __unwindfunclet$?loadFrom@Skies@@AAE_NPBD_N@Z$0:
 	lea	ecx, DWORD PTR _f$[ebp]
 	jmp	??1MPQFile@@QAE@XZ			; MPQFile::~MPQFile
 __unwindfunclet$?loadFrom@Skies@@AAE_NPBD_N@Z$1:
-	lea	ecx, DWORD PTR _s$82603[ebp]
+	lea	ecx, DWORD PTR _s$82605[ebp]
 	jmp	??1Sky@@QAE@XZ
 __unwindfunclet$?loadFrom@Skies@@AAE_NPBD_N@Z$2:
-	mov	eax, DWORD PTR $T106218[ebp]
+	mov	eax, DWORD PTR $T106220[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -13757,7 +13757,7 @@ $LL14@Skies@2:
 ; Line 165
 	push	edx
 	lea	eax, DWORD PTR _fn$[ebp]
-	push	OFFSET $SG82585
+	push	OFFSET $SG82587
 	push	eax
 	call	??$sprintf_s@$0BAA@@@YAHAAY0BAA@DPBDZZ	; sprintf_s<256>
 	add	esp, 12					; 0000000cH
@@ -13776,7 +13776,7 @@ $LL14@Skies@2:
 	cmp	BYTE PTR _force$[ebp], bl
 	je	SHORT $LN24@Skies@2
 	push	1
-	push	OFFSET $SG82588
+	push	OFFSET $SG82590
 	mov	ecx, esi
 	call	?loadFrom@Skies@@AAE_NPBD_N@Z		; Skies::loadFrom
 $LN24@Skies@2:

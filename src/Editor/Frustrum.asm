@@ -557,12 +557,12 @@ tv1297 = -72						; size = 4
 tv1289 = -72						; size = 4
 tv1273 = -72						; size = 4
 tv1266 = -72						; size = 4
-_len$93047 = -72					; size = 4
-_len$93036 = -72					; size = 4
-_len$93025 = -72					; size = 4
-_len$93014 = -72					; size = 4
-_len$93003 = -72					; size = 4
-_len$92993 = -72					; size = 4
+_len$93049 = -72					; size = 4
+_len$93038 = -72					; size = 4
+_len$93027 = -72					; size = 4
+_len$93016 = -72					; size = 4
+_len$93005 = -72					; size = 4
+_len$92995 = -72					; size = 4
 _mat$ = -68						; size = 64
 __$ArrayPad$ = -4					; size = 4
 ?retrieve@Frustum@@QAEXXZ PROC				; Frustum::retrieve
@@ -634,9 +634,9 @@ __$ArrayPad$ = -4					; size = 4
 	call	__CIsqrt
 	fstp	DWORD PTR tv1393[ebp]
 	fld	DWORD PTR tv1393[ebp]
-	fstp	DWORD PTR _len$92993[ebp]
+	fstp	DWORD PTR _len$92995[ebp]
 	fld	DWORD PTR tv803[ebp]
-	fld	DWORD PTR _len$92993[ebp]
+	fld	DWORD PTR _len$92995[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -690,9 +690,9 @@ __$ArrayPad$ = -4					; size = 4
 	call	__CIsqrt
 	fstp	DWORD PTR tv1364[ebp]
 	fld	DWORD PTR tv1364[ebp]
-	fstp	DWORD PTR _len$93003[ebp]
+	fstp	DWORD PTR _len$93005[ebp]
 	fld	DWORD PTR [esi+16]
-	fld	DWORD PTR _len$93003[ebp]
+	fld	DWORD PTR _len$93005[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -738,9 +738,9 @@ __$ArrayPad$ = -4					; size = 4
 	call	__CIsqrt
 	fstp	DWORD PTR tv1341[ebp]
 	fld	DWORD PTR tv1341[ebp]
-	fstp	DWORD PTR _len$93014[ebp]
+	fstp	DWORD PTR _len$93016[ebp]
 	fld	DWORD PTR [esi+32]
-	fld	DWORD PTR _len$93014[ebp]
+	fld	DWORD PTR _len$93016[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -786,9 +786,9 @@ __$ArrayPad$ = -4					; size = 4
 	call	__CIsqrt
 	fstp	DWORD PTR tv1315[ebp]
 	fld	DWORD PTR tv1315[ebp]
-	fstp	DWORD PTR _len$93025[ebp]
+	fstp	DWORD PTR _len$93027[ebp]
 	fld	DWORD PTR [esi+48]
-	fld	DWORD PTR _len$93025[ebp]
+	fld	DWORD PTR _len$93027[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -834,9 +834,9 @@ __$ArrayPad$ = -4					; size = 4
 	call	__CIsqrt
 	fstp	DWORD PTR tv1289[ebp]
 	fld	DWORD PTR tv1289[ebp]
-	fstp	DWORD PTR _len$93036[ebp]
+	fstp	DWORD PTR _len$93038[ebp]
 	fld	DWORD PTR [esi+64]
-	fld	DWORD PTR _len$93036[ebp]
+	fld	DWORD PTR _len$93038[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -884,11 +884,11 @@ __$ArrayPad$ = -4					; size = 4
 	fld	DWORD PTR tv1266[ebp]
 ; Line 65
 	mov	ecx, DWORD PTR __$ArrayPad$[ebp]
-	fstp	DWORD PTR _len$93047[ebp]
+	fstp	DWORD PTR _len$93049[ebp]
 	pop	edi
 	fld	DWORD PTR [esi+80]
 	xor	ecx, ebp
-	fld	DWORD PTR _len$93047[ebp]
+	fld	DWORD PTR _len$93049[ebp]
 	fld	ST(0)
 	fdivp	ST(2), ST(0)
 	fxch	ST(1)
@@ -972,7 +972,7 @@ PUBLIC	?intersects@Frustum@@QBE_NABVVec3D@@0@Z		; Frustum::intersects
 EXTRN	?gWorld@@3PAVWorld@@A:DWORD			; gWorld
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T93074 = -116						; size = 12
+$T93076 = -116						; size = 12
 tv972 = -104						; size = 4
 tv955 = -104						; size = 4
 _points$ = -100						; size = 96
@@ -1018,7 +1018,7 @@ _v2$ = 12						; size = 4
 	fsub	DWORD PTR [edi+252]
 	mov	DWORD PTR _points$[ebp+24], ebx
 ; Line 86
-	mov	DWORD PTR $T93074[ebp+4], esi
+	mov	DWORD PTR $T93076[ebp+4], esi
 	fstp	DWORD PTR tv972[ebp]
 	mov	edi, DWORD PTR tv972[ebp]
 ; Line 90
@@ -1046,7 +1046,7 @@ _v2$ = 12						; size = 4
 	mov	esi, DWORD PTR [edx]
 	mov	edx, DWORD PTR [edx+8]
 	mov	DWORD PTR _points$[ebp+60], ebx
-	mov	ebx, DWORD PTR $T93074[ebp+4]
+	mov	ebx, DWORD PTR $T93076[ebp+4]
 	mov	DWORD PTR _points$[ebp+80], eax
 	mov	eax, esi
 	mov	DWORD PTR _points$[ebp+76], edi
@@ -1175,7 +1175,7 @@ PUBLIC	?intersectsSphere@Frustum@@QBE_NABVVec3D@@M@Z	; Frustum::intersectsSphere
 _TEXT	SEGMENT
 tv395 = 8						; size = 4
 tv230 = 8						; size = 4
-_distance$81196 = 8					; size = 4
+_distance$81198 = 8					; size = 4
 _v$ = 8							; size = 4
 _rad$ = 12						; size = 4
 ?intersectsSphere@Frustum@@QBE_NABVVec3D@@M@Z PROC	; Frustum::intersectsSphere
@@ -1204,9 +1204,9 @@ $LN5@intersects@2:
 	fmul	DWORD PTR [esi+8]
 	faddp	ST(1), ST(0)
 	fadd	DWORD PTR [ecx+4]
-	fstp	DWORD PTR _distance$81196[ebp]
+	fstp	DWORD PTR _distance$81198[ebp]
 ; Line 113
-	fld	DWORD PTR _distance$81196[ebp]
+	fld	DWORD PTR _distance$81198[ebp]
 	fcom	ST(1)
 	fnstsw	ax
 	test	ah, 5

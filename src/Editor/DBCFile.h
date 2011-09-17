@@ -4,10 +4,12 @@
 #include <cassert>
 #include <string>
 
+using namespace std;
+
 class DBCFile
 {
 public:
-	DBCFile(const std::string &filename);
+	DBCFile(const string &filename);
 	~DBCFile();
 
 	// Open database. It must be openened before it can be used.
@@ -17,13 +19,13 @@ public:
 	class Exception
 	{
 	public:
-		Exception(const std::string &message): message(message)
+		Exception(const string &message): message(message)
 		{ }
 		virtual ~Exception()
 		{ }
-		const std::string &getMessage() {return message;}
+		const string &getMessage() {return message;}
 	private:
-		std::string message;
+		string message;
 	};
 
 	class NotFound: public Exception
@@ -46,17 +48,17 @@ public:
 		float getFloat(size_t field) const
 		{
 			assert(field < file.fieldCount);
-			return *reinterpret_cast<float*>(offset+field*4);
+			return *reinterpret_cast<float*>(offset + field * 4);
 		}
 		unsigned int getUInt(size_t field) const
 		{
 			assert(field < file.fieldCount);
-			return *reinterpret_cast<unsigned int*>(offset+field*4);
+			return *reinterpret_cast<unsigned int*>(offset + field * 4);
 		}
 		int getInt(size_t field) const
 		{
 			assert(field < file.fieldCount);
-			return *reinterpret_cast<int*>(offset+field*4);
+			return *reinterpret_cast<int*>(offset + field * 4);
 		}
 		const char *getString(size_t field) const
 		{
@@ -115,7 +117,7 @@ public:
 	size_t getRecordCount() const { return recordCount;}
 	size_t getFieldCount() const { return fieldCount; }
 private:
-	std::string filename;
+	string filename;
 	size_t recordSize;
 	size_t recordCount;
 	size_t fieldCount;

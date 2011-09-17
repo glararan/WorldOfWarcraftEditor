@@ -72,11 +72,12 @@ PUBLIC	?beg@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::beg
 PUBLIC	?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::cur
 PUBLIC	?end@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::end
 CONST	SEGMENT
-$SG97809 DB	'[World of Warcraft Studio - Editor] - Opening DBC %s', 0aH
+$SG97820 DB	'[World of Warcraft Studio - Editor] - Opening DBC : %s', 0aH
 	DB	00H
-	ORG $+2
-$SG97820 DB	'[World of Warcraft Studio - Editor] - Closed & Read in D'
-	DB	'BC %s', 0aH, 00H
+$SG97831 DB	'Critical Error: An error occured while trying to read th'
+	DB	'e DBCFile : %s.', 00H
+$SG97836 DB	'[World of Warcraft Studio - Editor] - Closed & Read in D'
+	DB	'BC : %s', 0aH, 00H
 CONST	ENDS
 ;	COMDAT ?end@?$_Iosb@H@std@@2W4_Seekdir@12@B
 CONST	SEGMENT
@@ -537,7 +538,7 @@ _offset$ = 12						; size = 4
 ??0Record@DBCFile@@AAE@AAV1@PAE@Z PROC			; DBCFile::Record::Record, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 61
+; Line 71
 	push	ebp
 	mov	ebp, esp
 	mov	edx, DWORD PTR _file$[ebp]
@@ -557,7 +558,7 @@ _file$ = 8						; size = 4
 _offset$ = 12						; size = 4
 ??0Iterator@DBCFile@@QAE@AAV1@PAE@Z PROC		; DBCFile::Iterator::Iterator, COMDAT
 ; _this$ = ecx
-; Line 74
+; Line 84
 	push	ebp
 	mov	ebp, esp
 	mov	edx, DWORD PTR _file$[ebp]
@@ -569,6 +570,18 @@ _offset$ = 12						; size = 4
 	ret	8
 ??0Iterator@DBCFile@@QAE@AAV1@PAE@Z ENDP		; DBCFile::Iterator::Iterator
 _TEXT	ENDS
+PUBLIC	?isEof@MPQFile@@QAE_NXZ				; MPQFile::isEof
+; Function compile flags: /Ogtp
+;	COMDAT ?isEof@MPQFile@@QAE_NXZ
+_TEXT	SEGMENT
+?isEof@MPQFile@@QAE_NXZ PROC				; MPQFile::isEof, COMDAT
+; _this$ = ecx
+; File c:\programovani\wow editor\test\src\editor\mpq.h
+; Line 50
+	mov	al, BYTE PTR [ecx+1024]
+	ret	0
+?isEof@MPQFile@@QAE_NXZ ENDP				; MPQFile::isEof
+_TEXT	ENDS
 PUBLIC	?getRecord@DBCFile@@QAE?AVRecord@1@I@Z		; DBCFile::getRecord
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
@@ -577,17 +590,17 @@ _id$ = 12						; size = 4
 ?getRecord@DBCFile@@QAE?AVRecord@1@I@Z PROC		; DBCFile::getRecord
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.cpp
-; Line 43
+; Line 64
 	push	ebp
 	mov	ebp, esp
-; Line 45
+; Line 66
 	mov	edx, DWORD PTR [ecx+28]
 	imul	edx, DWORD PTR _id$[ebp]
 	add	edx, DWORD PTR [ecx+44]
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	mov	DWORD PTR [eax], edx
 	mov	DWORD PTR [eax+4], ecx
-; Line 46
+; Line 67
 	pop	ebp
 	ret	8
 ?getRecord@DBCFile@@QAE?AVRecord@1@I@Z ENDP		; DBCFile::getRecord
@@ -598,15 +611,15 @@ _TEXT	SEGMENT
 ___$ReturnUdt$ = 8					; size = 4
 ?begin@DBCFile@@QAE?AVIterator@1@XZ PROC		; DBCFile::begin
 ; _this$ = ecx
-; Line 49
+; Line 70
 	push	ebp
 	mov	ebp, esp
-; Line 51
+; Line 72
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	mov	edx, DWORD PTR [ecx+44]
 	mov	DWORD PTR [eax], edx
 	mov	DWORD PTR [eax+4], ecx
-; Line 52
+; Line 73
 	pop	ebp
 	ret	4
 ?begin@DBCFile@@QAE?AVIterator@1@XZ ENDP		; DBCFile::begin
@@ -617,15 +630,15 @@ _TEXT	SEGMENT
 ___$ReturnUdt$ = 8					; size = 4
 ?end@DBCFile@@QAE?AVIterator@1@XZ PROC			; DBCFile::end
 ; _this$ = ecx
-; Line 54
+; Line 75
 	push	ebp
 	mov	ebp, esp
-; Line 56
+; Line 77
 	mov	eax, DWORD PTR ___$ReturnUdt$[ebp]
 	mov	edx, DWORD PTR [ecx+48]
 	mov	DWORD PTR [eax], edx
 	mov	DWORD PTR [eax+4], ecx
-; Line 57
+; Line 78
 	pop	ebp
 	ret	4
 ?end@DBCFile@@QAE?AVIterator@1@XZ ENDP			; DBCFile::end
@@ -825,8 +838,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T103401 = -12						; size = 12
-$T103406 = 8						; size = 4
+$T103423 = -12						; size = 12
+$T103428 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -852,15 +865,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	eax, DWORD PTR $T103406[ebp]
+	lea	eax, DWORD PTR $T103428[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T103401[ebp]
-	mov	DWORD PTR $T103406[ebp], 0
+	lea	ecx, DWORD PTR $T103423[ebp]
+	mov	DWORD PTR $T103428[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T103401[ebp]
+	lea	ecx, DWORD PTR $T103423[ebp]
 	push	ecx
-	mov	DWORD PTR $T103401[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T103423[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -962,8 +975,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T103463 = -12						; size = 12
-$T103461 = 8						; size = 4
+$T103485 = -12						; size = 12
+$T103483 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -985,15 +998,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	eax, DWORD PTR $T103461[ebp]
+	lea	eax, DWORD PTR $T103483[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T103463[ebp]
-	mov	DWORD PTR $T103461[ebp], 0
+	lea	ecx, DWORD PTR $T103485[ebp]
+	mov	DWORD PTR $T103483[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T103463[ebp]
+	lea	ecx, DWORD PTR $T103485[ebp]
 	push	ecx
-	mov	DWORD PTR $T103463[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T103485[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -1005,7 +1018,7 @@ $LN12@allocate:
 ?allocate@?$allocator@D@std@@QAEPADI@Z ENDP		; std::allocator<char>::allocate
 _TEXT	ENDS
 PUBLIC	__$ArrayPad$
-PUBLIC	?open@DBCFile@@QAEXXZ				; DBCFile::open
+PUBLIC	?open@DBCFile@@QAE_NXZ				; DBCFile::open
 EXTRN	??1MPQFile@@QAE@XZ:PROC				; MPQFile::~MPQFile
 EXTRN	?close@MPQFile@@QAEXXZ:PROC			; MPQFile::close
 EXTRN	??_U@YAPAXI@Z:PROC				; operator new[]
@@ -1016,11 +1029,11 @@ EXTRN	___security_cookie:DWORD
 EXTRN	___CxxFrameHandler3:PROC
 EXTRN	@__security_check_cookie@4:PROC
 xdata$x	SEGMENT
-__unwindtable$?open@DBCFile@@QAEXXZ DD 0ffffffffH
-	DD	FLAT:__unwindfunclet$?open@DBCFile@@QAEXXZ$0
-__ehfuncinfo$?open@DBCFile@@QAEXXZ DD 019930522H
+__unwindtable$?open@DBCFile@@QAE_NXZ DD 0ffffffffH
+	DD	FLAT:__unwindfunclet$?open@DBCFile@@QAE_NXZ$0
+__ehfuncinfo$?open@DBCFile@@QAE_NXZ DD 019930522H
 	DD	01H
-	DD	FLAT:__unwindtable$?open@DBCFile@@QAEXXZ
+	DD	FLAT:__unwindtable$?open@DBCFile@@QAE_NXZ
 	DD	2 DUP(00H)
 	DD	2 DUP(00H)
 	DD	00H
@@ -1028,95 +1041,111 @@ __ehfuncinfo$?open@DBCFile@@QAEXXZ DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-_header$ = -1092					; size = 4
-_es$ = -1088						; size = 4
-_na$ = -1084						; size = 4
-_ss$ = -1080						; size = 4
-_nb$ = -1076						; size = 4
+_es$ = -1092						; size = 4
+_nb$ = -1088						; size = 4
+_ss$ = -1084						; size = 4
+_na$ = -1080						; size = 4
+_header$ = -1076					; size = 4
 _f$ = -1072						; size = 1056
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
-?open@DBCFile@@QAEXXZ PROC				; DBCFile::open
+?open@DBCFile@@QAE_NXZ PROC				; DBCFile::open
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.cpp
-; Line 12
+; Line 14
 	push	ebp
 	mov	ebp, esp
 	push	-1
-	push	__ehhandler$?open@DBCFile@@QAEXXZ
+	push	__ehhandler$?open@DBCFile@@QAE_NXZ
 	mov	eax, DWORD PTR fs:0
 	push	eax
 	sub	esp, 1080				; 00000438H
 	mov	eax, DWORD PTR ___security_cookie
 	xor	eax, ebp
 	mov	DWORD PTR __$ArrayPad$[ebp], eax
+	push	ebx
 	push	esi
 	push	eax
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	esi, ecx
-; Line 13
-	cmp	DWORD PTR [esi+20], 16			; 00000010H
-	jb	SHORT $LN8@open
+; Line 15
+	mov	ebx, 16					; 00000010H
+	cmp	DWORD PTR [esi+20], ebx
+	jb	SHORT $LN11@open
 	mov	eax, DWORD PTR [esi]
-	jmp	SHORT $LN9@open
-$LN8@open:
+	jmp	SHORT $LN12@open
+$LN11@open:
 	mov	eax, esi
-$LN9@open:
+$LN12@open:
 	push	eax
-	push	OFFSET $SG97809
+	push	OFFSET $SG97820
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
-; Line 14
-	cmp	DWORD PTR [esi+20], 16			; 00000010H
-	jb	SHORT $LN14@open
+; Line 16
+	cmp	DWORD PTR [esi+20], ebx
+	jb	SHORT $LN17@open
 	mov	eax, DWORD PTR [esi]
-	jmp	SHORT $LN15@open
-$LN14@open:
+	jmp	SHORT $LN18@open
+$LN17@open:
 	mov	eax, esi
-$LN15@open:
+$LN18@open:
 	push	eax
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	??0MPQFile@@QAE@PBD@Z			; MPQFile::MPQFile
-; Line 18
+; Line 20
+	cmp	BYTE PTR _f$[ebp+1024], 1
+	mov	DWORD PTR __$EHRec$[ebp+8], 0
+; Line 21
+	lea	ecx, DWORD PTR _f$[ebp]
+	je	$LN34@open
+; Line 26
 	push	4
 	lea	eax, DWORD PTR _header$[ebp]
 	push	eax
-	lea	ecx, DWORD PTR _f$[ebp]
-	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 20
+; Line 28
+	mov	eax, DWORD PTR _header$[ebp]
+	cmp	al, 87					; 00000057H
+	jne	$LN1@open
+	cmp	ah, 68					; 00000044H
+	jne	$LN1@open
+	cmp	BYTE PTR _header$[ebp+2], 66		; 00000042H
+	jne	$LN1@open
+	cmp	BYTE PTR _header$[ebp+3], 67		; 00000043H
+	jne	$LN1@open
+; Line 38
 	push	4
 	lea	ecx, DWORD PTR _na$[ebp]
 	push	ecx
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 21
+; Line 39
 	push	4
 	lea	edx, DWORD PTR _nb$[ebp]
 	push	edx
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 22
+; Line 40
 	push	4
 	lea	eax, DWORD PTR _es$[ebp]
 	push	eax
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 23
+; Line 41
 	push	4
 	lea	ecx, DWORD PTR _ss$[ebp]
 	push	ecx
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 25
+; Line 43
 	mov	eax, DWORD PTR _es$[ebp]
-; Line 26
+; Line 44
 	mov	ecx, DWORD PTR _na$[ebp]
-; Line 27
+; Line 45
 	mov	edx, DWORD PTR _nb$[ebp]
 	mov	DWORD PTR [esi+28], eax
-; Line 31
+; Line 50
 	imul	eax, ecx
 	mov	DWORD PTR [esi+36], edx
 	mov	edx, DWORD PTR _ss$[ebp]
@@ -1125,12 +1154,12 @@ $LN15@open:
 	mov	DWORD PTR [esi+32], ecx
 	mov	DWORD PTR [esi+40], edx
 	call	??_U@YAPAXI@Z				; operator new[]
-; Line 32
+; Line 51
 	mov	ecx, DWORD PTR [esi+28]
 	imul	ecx, DWORD PTR [esi+32]
 	lea	edx, DWORD PTR [ecx+eax]
 	mov	DWORD PTR [esi+48], edx
-; Line 33
+; Line 52
 	mov	edx, DWORD PTR [esi+40]
 	add	esp, 4
 	add	edx, ecx
@@ -1139,26 +1168,52 @@ $LN15@open:
 	lea	ecx, DWORD PTR _f$[ebp]
 	mov	DWORD PTR [esi+44], eax
 	call	?read@MPQFile@@QAEIPAXI@Z		; MPQFile::read
-; Line 34
+; Line 53
 	lea	ecx, DWORD PTR _f$[ebp]
 	call	?close@MPQFile@@QAEXXZ			; MPQFile::close
-; Line 35
-	cmp	DWORD PTR [esi+20], 16			; 00000010H
-	jb	SHORT $LN20@open
+; Line 54
+	cmp	DWORD PTR [esi+20], ebx
+	jb	SHORT $LN31@open
 	mov	esi, DWORD PTR [esi]
-$LN20@open:
+$LN31@open:
 	push	esi
-	push	OFFSET $SG97820
+	push	OFFSET $SG97836
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
-; Line 36
+; Line 56
 	lea	ecx, DWORD PTR _f$[ebp]
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	call	??1MPQFile@@QAE@XZ			; MPQFile::~MPQFile
+	mov	al, 1
+	jmp	SHORT $LN4@open
+$LN1@open:
+; Line 30
+	lea	ecx, DWORD PTR _f$[ebp]
+	call	?close@MPQFile@@QAEXXZ			; MPQFile::close
+; Line 31
+	mov	DWORD PTR [esi+44], 0
+; Line 32
+	cmp	DWORD PTR [esi+20], ebx
+	jb	SHORT $LN25@open
+	mov	esi, DWORD PTR [esi]
+$LN25@open:
+	push	esi
+	push	OFFSET $SG97831
+	call	?gLog@@YAXPADZZ				; gLog
+	add	esp, 8
+; Line 33
+	lea	ecx, DWORD PTR _f$[ebp]
+$LN34@open:
+	mov	DWORD PTR __$EHRec$[ebp+8], -1
+	call	??1MPQFile@@QAE@XZ			; MPQFile::~MPQFile
+	xor	al, al
+$LN4@open:
+; Line 57
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
 	pop	ecx
 	pop	esi
+	pop	ebx
 	mov	ecx, DWORD PTR __$ArrayPad$[ebp]
 	xor	ecx, ebp
 	call	@__security_check_cookie@4
@@ -1167,22 +1222,22 @@ $LN20@open:
 	ret	0
 _TEXT	ENDS
 text$x	SEGMENT
-__unwindfunclet$?open@DBCFile@@QAEXXZ$0:
+__unwindfunclet$?open@DBCFile@@QAE_NXZ$0:
 	lea	ecx, DWORD PTR _f$[ebp]
 	jmp	??1MPQFile@@QAE@XZ			; MPQFile::~MPQFile
-__ehhandler$?open@DBCFile@@QAEXXZ:
+__ehhandler$?open@DBCFile@@QAE_NXZ:
 	mov	edx, DWORD PTR [esp+8]
 	lea	eax, DWORD PTR [edx+12]
-	mov	ecx, DWORD PTR [edx-1088]
+	mov	ecx, DWORD PTR [edx-1092]
 	xor	ecx, eax
 	call	@__security_check_cookie@4
 	mov	ecx, DWORD PTR [edx-4]
 	xor	ecx, eax
 	call	@__security_check_cookie@4
-	mov	eax, OFFSET __ehfuncinfo$?open@DBCFile@@QAEXXZ
+	mov	eax, OFFSET __ehfuncinfo$?open@DBCFile@@QAE_NXZ
 	jmp	___CxxFrameHandler3
 text$x	ENDS
-?open@DBCFile@@QAEXXZ ENDP				; DBCFile::open
+?open@DBCFile@@QAE_NXZ ENDP				; DBCFile::open
 PUBLIC	?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX_NI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::_Tidy
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX_NI@Z
@@ -1370,9 +1425,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T103711 = -40						; size = 12
+$T103755 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T103689 = -24						; size = 4
+$T103733 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -1448,15 +1503,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T103689[ebp]
+	lea	ecx, DWORD PTR $T103733[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T103711[ebp]
-	mov	DWORD PTR $T103689[ebp], 0
+	lea	ecx, DWORD PTR $T103755[ebp]
+	mov	DWORD PTR $T103733[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T103711[ebp]
+	lea	edx, DWORD PTR $T103755[ebp]
 	push	edx
-	mov	DWORD PTR $T103711[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T103755[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -1704,15 +1759,15 @@ _TEXT	SEGMENT
 ??1DBCFile@@QAE@XZ PROC					; DBCFile::~DBCFile
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.cpp
-; Line 38
+; Line 59
 	push	esi
 	mov	esi, ecx
-; Line 39
+; Line 60
 	mov	eax, DWORD PTR [esi+44]
 	push	eax
 	call	??_V@YAXPAX@Z				; operator delete[]
 	add	esp, 4
-; Line 40
+; Line 61
 	cmp	DWORD PTR [esi+20], 16			; 00000010H
 	jb	SHORT $LN14@DBCFile
 	mov	ecx, DWORD PTR [esi]
@@ -1916,7 +1971,7 @@ _filename$ = 8						; size = 4
 ??0DBCFile@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; DBCFile::DBCFile
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.cpp
-; Line 8
+; Line 10
 	push	ebp
 	mov	ebp, esp
 	mov	eax, DWORD PTR _filename$[ebp]
@@ -1929,8 +1984,9 @@ _filename$ = 8						; size = 4
 	push	eax
 	mov	BYTE PTR [esi], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
+; Line 11
 	mov	DWORD PTR [esi+44], 0
-; Line 10
+; Line 12
 	mov	eax, esi
 	pop	esi
 	pop	ebp

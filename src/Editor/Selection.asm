@@ -1105,8 +1105,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@PAVnameEntry@@@std@@YAPAPAVnameEntry@@IPAPAV1@@Z
 _TEXT	SEGMENT
-$T128867 = -12						; size = 12
-$T128872 = 8						; size = 4
+$T128869 = -12						; size = 12
+$T128874 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@PAVnameEntry@@@std@@YAPAPAVnameEntry@@IPAPAV1@@Z PROC ; std::_Allocate<nameEntry *>, COMDAT
@@ -1133,15 +1133,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	ecx, DWORD PTR $T128872[ebp]
+	lea	ecx, DWORD PTR $T128874[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T128867[ebp]
-	mov	DWORD PTR $T128872[ebp], 0
+	lea	ecx, DWORD PTR $T128869[ebp]
+	mov	DWORD PTR $T128874[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T128867[ebp]
+	lea	edx, DWORD PTR $T128869[ebp]
 	push	edx
-	mov	DWORD PTR $T128867[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T128869[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -1156,8 +1156,8 @@ PUBLIC	??$_Allocate@D@std@@YAPADIPAD@Z			; std::_Allocate<char>
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T128877 = -12						; size = 12
-$T128881 = 8						; size = 4
+$T128879 = -12						; size = 12
+$T128883 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -1182,15 +1182,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	eax, DWORD PTR $T128881[ebp]
+	lea	eax, DWORD PTR $T128883[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T128877[ebp]
-	mov	DWORD PTR $T128881[ebp], 0
+	lea	ecx, DWORD PTR $T128879[ebp]
+	mov	DWORD PTR $T128883[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T128877[ebp]
+	lea	ecx, DWORD PTR $T128879[ebp]
 	push	ecx
-	mov	DWORD PTR $T128877[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T128879[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -1512,8 +1512,8 @@ PUBLIC	?allocate@?$allocator@PAVnameEntry@@@std@@QAEPAPAVnameEntry@@I@Z ; std::a
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@PAVnameEntry@@@std@@QAEPAPAVnameEntry@@I@Z
 _TEXT	SEGMENT
-$T129023 = -12						; size = 12
-$T129015 = 8						; size = 4
+$T129025 = -12						; size = 12
+$T129017 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@PAVnameEntry@@@std@@QAEPAPAVnameEntry@@I@Z PROC ; std::allocator<nameEntry *>::allocate, COMDAT
 ; _this$ = ecx
@@ -1536,15 +1536,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	ecx, DWORD PTR $T129015[ebp]
+	lea	ecx, DWORD PTR $T129017[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T129023[ebp]
-	mov	DWORD PTR $T129015[ebp], 0
+	lea	ecx, DWORD PTR $T129025[ebp]
+	mov	DWORD PTR $T129017[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T129023[ebp]
+	lea	edx, DWORD PTR $T129025[ebp]
 	push	edx
-	mov	DWORD PTR $T129023[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129025[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -1559,8 +1559,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T129040 = -12						; size = 12
-$T129038 = 8						; size = 4
+$T129042 = -12						; size = 12
+$T129040 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -1581,15 +1581,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	eax, DWORD PTR $T129038[ebp]
+	lea	eax, DWORD PTR $T129040[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T129040[ebp]
-	mov	DWORD PTR $T129038[ebp], 0
+	lea	ecx, DWORD PTR $T129042[ebp]
+	mov	DWORD PTR $T129040[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T129040[ebp]
+	lea	ecx, DWORD PTR $T129042[ebp]
 	push	ecx
-	mov	DWORD PTR $T129040[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129042[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -1889,9 +1889,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T129304 = -40						; size = 12
+$T129306 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T129281 = -24						; size = 4
+$T129283 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -1967,15 +1967,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T129281[ebp]
+	lea	ecx, DWORD PTR $T129283[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T129304[ebp]
-	mov	DWORD PTR $T129281[ebp], 0
+	lea	ecx, DWORD PTR $T129306[ebp]
+	mov	DWORD PTR $T129283[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T129304[ebp]
+	lea	edx, DWORD PTR $T129306[ebp]
 	push	edx
-	mov	DWORD PTR $T129304[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T129306[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -3505,9 +3505,9 @@ __ehfuncinfo$?add@nameEntryManager@@QAEIPAVModelInstance@@@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ?add@nameEntryManager@@QAEIPAVModelInstance@@@Z
 _TEXT	SEGMENT
-$T131351 = -16						; size = 4
+$T131353 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-$T131349 = 8						; size = 4
+$T131351 = 8						; size = 4
 _mod$ = 8						; size = 4
 ?add@nameEntryManager@@QAEIPAVModelInstance@@@Z PROC	; nameEntryManager::add, COMDAT
 ; _this$ = ecx
@@ -3530,7 +3530,7 @@ _mod$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131351[ebp], eax
+	mov	DWORD PTR $T131353[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN3@add
@@ -3542,11 +3542,11 @@ _mod$ = 8						; size = 4
 $LN3@add:
 	xor	eax, eax
 $LN4@add:
-	lea	edx, DWORD PTR $T131349[ebp]
+	lea	edx, DWORD PTR $T131351[ebp]
 	push	edx
 	lea	ecx, DWORD PTR [esi+4]
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131349[ebp], eax
+	mov	DWORD PTR $T131351[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 ; Line 65
 	inc	DWORD PTR [esi]
@@ -3565,7 +3565,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?add@nameEntryManager@@QAEIPAVModelInstance@@@Z$0:
-	mov	eax, DWORD PTR $T131351[ebp]
+	mov	eax, DWORD PTR $T131353[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -3596,9 +3596,9 @@ __ehfuncinfo$?add@nameEntryManager@@QAEIPAVWMOInstance@@@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ?add@nameEntryManager@@QAEIPAVWMOInstance@@@Z
 _TEXT	SEGMENT
-$T131365 = -16						; size = 4
+$T131367 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-$T131363 = 8						; size = 4
+$T131365 = 8						; size = 4
 _wmo$ = 8						; size = 4
 ?add@nameEntryManager@@QAEIPAVWMOInstance@@@Z PROC	; nameEntryManager::add, COMDAT
 ; _this$ = ecx
@@ -3621,7 +3621,7 @@ _wmo$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131365[ebp], eax
+	mov	DWORD PTR $T131367[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN3@add@2
@@ -3633,11 +3633,11 @@ _wmo$ = 8						; size = 4
 $LN3@add@2:
 	xor	eax, eax
 $LN4@add@2:
-	lea	edx, DWORD PTR $T131363[ebp]
+	lea	edx, DWORD PTR $T131365[ebp]
 	push	edx
 	lea	ecx, DWORD PTR [esi+4]
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131363[ebp], eax
+	mov	DWORD PTR $T131365[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 ; Line 72
 	inc	DWORD PTR [esi]
@@ -3656,7 +3656,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?add@nameEntryManager@@QAEIPAVWMOInstance@@@Z$0:
-	mov	eax, DWORD PTR $T131365[ebp]
+	mov	eax, DWORD PTR $T131367[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -3687,9 +3687,9 @@ __ehfuncinfo$?add@nameEntryManager@@QAEIPAVMapChunk@@@Z DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ?add@nameEntryManager@@QAEIPAVMapChunk@@@Z
 _TEXT	SEGMENT
-$T131379 = -16						; size = 4
+$T131381 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
-$T131377 = 8						; size = 4
+$T131379 = 8						; size = 4
 _chunk$ = 8						; size = 4
 ?add@nameEntryManager@@QAEIPAVMapChunk@@@Z PROC		; nameEntryManager::add, COMDAT
 ; _this$ = ecx
@@ -3712,7 +3712,7 @@ _chunk$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131379[ebp], eax
+	mov	DWORD PTR $T131381[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN3@add@3
@@ -3724,11 +3724,11 @@ _chunk$ = 8						; size = 4
 $LN3@add@3:
 	xor	eax, eax
 $LN4@add@3:
-	lea	edx, DWORD PTR $T131377[ebp]
+	lea	edx, DWORD PTR $T131379[ebp]
 	push	edx
 	lea	ecx, DWORD PTR [esi+4]
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131377[ebp], eax
+	mov	DWORD PTR $T131379[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 ; Line 79
 	inc	DWORD PTR [esi]
@@ -3747,7 +3747,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?add@nameEntryManager@@QAEIPAVMapChunk@@@Z$0:
-	mov	eax, DWORD PTR $T131379[ebp]
+	mov	eax, DWORD PTR $T131381[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -3781,8 +3781,8 @@ __ehfuncinfo$?addFake@nameEntryManager@@QAEXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ?addFake@nameEntryManager@@QAEXXZ
 _TEXT	SEGMENT
+$T131395 = -16						; size = 4
 $T131393 = -16						; size = 4
-$T131391 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ?addFake@nameEntryManager@@QAEXXZ PROC			; nameEntryManager::addFake, COMDAT
 ; _this$ = ecx
@@ -3808,7 +3808,7 @@ __$EHRec$ = -12						; size = 12
 	call	??2@YAPAXI@Z				; operator new
 	mov	esi, eax
 	add	esp, 4
-	mov	DWORD PTR $T131393[ebp], esi
+	mov	DWORD PTR $T131395[ebp], esi
 	xor	eax, eax
 	mov	DWORD PTR __$EHRec$[ebp+8], eax
 	cmp	esi, eax
@@ -3826,11 +3826,11 @@ __$EHRec$ = -12						; size = 12
 $LN3@addFake:
 	xor	esi, esi
 $LN4@addFake:
-	lea	eax, DWORD PTR $T131391[ebp]
+	lea	eax, DWORD PTR $T131393[ebp]
 	push	eax
 	lea	ecx, DWORD PTR [edi+4]
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131391[ebp], esi
+	mov	DWORD PTR $T131393[ebp], esi
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 ; Line 86
 	inc	DWORD PTR [edi]
@@ -3847,13 +3847,13 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$?addFake@nameEntryManager@@QAEXXZ$0:
-	mov	eax, DWORD PTR $T131393[ebp]
+	mov	eax, DWORD PTR $T131395[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$?addFake@nameEntryManager@@QAEXXZ$1:
-	mov	ecx, DWORD PTR $T131393[ebp]
+	mov	ecx, DWORD PTR $T131395[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$?addFake@nameEntryManager@@QAEXXZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -3949,8 +3949,8 @@ __ehfuncinfo$?addNameModel@@YAIPAVModelInstance@@@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T131598 = -16						; size = 4
 $T131596 = -16						; size = 4
-$T131594 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 _model$ = 8						; size = 4
 ?addNameModel@@YAIPAVModelInstance@@@Z PROC		; addNameModel
@@ -3972,7 +3972,7 @@ _model$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131596[ebp], eax
+	mov	DWORD PTR $T131598[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN5@addNameMod
@@ -3984,11 +3984,11 @@ _model$ = 8						; size = 4
 $LN5@addNameMod:
 	xor	eax, eax
 $LN6@addNameMod:
-	lea	edx, DWORD PTR $T131594[ebp]
+	lea	edx, DWORD PTR $T131596[ebp]
 	push	edx
 	mov	ecx, OFFSET ?SelectionNames@@3VnameEntryManager@@A+4
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131594[ebp], eax
+	mov	DWORD PTR $T131596[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 	mov	eax, DWORD PTR ?SelectionNames@@3VnameEntryManager@@A
 	inc	eax
@@ -4004,7 +4004,7 @@ $LN6@addNameMod:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?addNameModel@@YAIPAVModelInstance@@@Z$0:
-	mov	eax, DWORD PTR $T131596[ebp]
+	mov	eax, DWORD PTR $T131598[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -4033,8 +4033,8 @@ __ehfuncinfo$?addNameWMO@@YAIPAVWMOInstance@@@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T131617 = -16						; size = 4
 $T131615 = -16						; size = 4
-$T131613 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 _wmo$ = 8						; size = 4
 ?addNameWMO@@YAIPAVWMOInstance@@@Z PROC			; addNameWMO
@@ -4055,7 +4055,7 @@ _wmo$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131615[ebp], eax
+	mov	DWORD PTR $T131617[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN5@addNameWMO
@@ -4067,11 +4067,11 @@ _wmo$ = 8						; size = 4
 $LN5@addNameWMO:
 	xor	eax, eax
 $LN6@addNameWMO:
-	lea	edx, DWORD PTR $T131613[ebp]
+	lea	edx, DWORD PTR $T131615[ebp]
 	push	edx
 	mov	ecx, OFFSET ?SelectionNames@@3VnameEntryManager@@A+4
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131613[ebp], eax
+	mov	DWORD PTR $T131615[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 	mov	eax, DWORD PTR ?SelectionNames@@3VnameEntryManager@@A
 	inc	eax
@@ -4087,7 +4087,7 @@ $LN6@addNameWMO:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?addNameWMO@@YAIPAVWMOInstance@@@Z$0:
-	mov	eax, DWORD PTR $T131615[ebp]
+	mov	eax, DWORD PTR $T131617[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -4116,8 +4116,8 @@ __ehfuncinfo$?addNameMapChunk@@YAIPAVMapChunk@@@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
+$T131636 = -16						; size = 4
 $T131634 = -16						; size = 4
-$T131632 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 _chunk$ = 8						; size = 4
 ?addNameMapChunk@@YAIPAVMapChunk@@@Z PROC		; addNameMapChunk
@@ -4138,7 +4138,7 @@ _chunk$ = 8						; size = 4
 	push	36					; 00000024H
 	call	??2@YAPAXI@Z				; operator new
 	add	esp, 4
-	mov	DWORD PTR $T131634[ebp], eax
+	mov	DWORD PTR $T131636[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	test	eax, eax
 	je	SHORT $LN5@addNameMap
@@ -4150,11 +4150,11 @@ _chunk$ = 8						; size = 4
 $LN5@addNameMap:
 	xor	eax, eax
 $LN6@addNameMap:
-	lea	edx, DWORD PTR $T131632[ebp]
+	lea	edx, DWORD PTR $T131634[ebp]
 	push	edx
 	mov	ecx, OFFSET ?SelectionNames@@3VnameEntryManager@@A+4
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
-	mov	DWORD PTR $T131632[ebp], eax
+	mov	DWORD PTR $T131634[ebp], eax
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 	mov	eax, DWORD PTR ?SelectionNames@@3VnameEntryManager@@A
 	inc	eax
@@ -4170,7 +4170,7 @@ $LN6@addNameMap:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?addNameMapChunk@@YAIPAVMapChunk@@@Z$0:
-	mov	eax, DWORD PTR $T131634[ebp]
+	mov	eax, DWORD PTR $T131636[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
@@ -4206,8 +4206,8 @@ __ehfuncinfo$??__ESelectionNames@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__ESelectionNames@@YAXXZ
 text$yc	SEGMENT
+$T131884 = -16						; size = 4
 $T131882 = -16						; size = 4
-$T131880 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??__ESelectionNames@@YAXXZ PROC				; `dynamic initializer for 'SelectionNames'', COMDAT
 ; File c:\programovani\wow editor\test\src\editor\selection.cpp
@@ -4232,7 +4232,7 @@ __$EHRec$ = -12						; size = 12
 	call	??2@YAPAXI@Z				; operator new
 	mov	esi, eax
 	add	esp, 4
-	mov	DWORD PTR $T131882[ebp], esi
+	mov	DWORD PTR $T131884[ebp], esi
 	cmp	esi, ebx
 	je	SHORT $LN16@dynamic
 	mov	DWORD PTR [esi+20], 15			; 0000000fH
@@ -4248,11 +4248,11 @@ __$EHRec$ = -12						; size = 12
 $LN16@dynamic:
 	xor	esi, esi
 $LN17@dynamic:
-	lea	eax, DWORD PTR $T131880[ebp]
+	lea	eax, DWORD PTR $T131882[ebp]
 	push	eax
 	mov	ecx, OFFSET ?SelectionNames@@3VnameEntryManager@@A+4
 	mov	BYTE PTR __$EHRec$[ebp+8], bl
-	mov	DWORD PTR $T131880[ebp], esi
+	mov	DWORD PTR $T131882[ebp], esi
 	call	?push_back@?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAEX$$QAPAVnameEntry@@@Z ; std::vector<nameEntry *,std::allocator<nameEntry *> >::push_back
 	inc	DWORD PTR ?SelectionNames@@3VnameEntryManager@@A
 	push	OFFSET ??__FSelectionNames@@YAXXZ	; `dynamic atexit destructor for 'SelectionNames''
@@ -4273,13 +4273,13 @@ __unwindfunclet$??__ESelectionNames@@YAXXZ$0:
 	mov	ecx, OFFSET ?SelectionNames@@3VnameEntryManager@@A+4
 	jmp	??1?$vector@PAVnameEntry@@V?$allocator@PAVnameEntry@@@std@@@std@@QAE@XZ ; std::vector<nameEntry *,std::allocator<nameEntry *> >::~vector<nameEntry *,std::allocator<nameEntry *> >
 __unwindfunclet$??__ESelectionNames@@YAXXZ$1:
-	mov	eax, DWORD PTR $T131882[ebp]
+	mov	eax, DWORD PTR $T131884[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	pop	ecx
 	ret	0
 __unwindfunclet$??__ESelectionNames@@YAXXZ$2:
-	mov	ecx, DWORD PTR $T131882[ebp]
+	mov	ecx, DWORD PTR $T131884[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$??__ESelectionNames@@YAXXZ:
 	mov	edx, DWORD PTR [esp+8]

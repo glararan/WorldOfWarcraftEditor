@@ -150,7 +150,7 @@ void Video::init(int xres, int yres, bool fullscreen)
 	primary = SDL_SetVideoMode(xres, yres, 24, flags);
 #endif
 	if (!primary) {
-		printf("SDL Error: %s\n",SDL_GetError());
+		printf("SDL Error: %s\n", SDL_GetError());
 		exit(1);
 	}
 
@@ -173,6 +173,8 @@ void Video::init(int xres, int yres, bool fullscreen)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	SDL_WM_SetCaption(APP_TITLE " : " APP_VERSION, NULL);
 }
 
 void Video::close()

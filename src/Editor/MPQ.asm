@@ -73,57 +73,56 @@ PUBLIC	?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::cur
 PUBLIC	?end@?$_Iosb@H@std@@2W4_Seekdir@12@B		; std::_Iosb<int>::end
 PUBLIC	?_EEM_DS@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@2HB ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::_EEM_DS
 CONST	SEGMENT
-$SG98077 DB	'[World of Warcraft Studio - Editor] - Opening %s', 0aH, 00H
-	ORG $+6
-$SG98084 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive ''%s'': Does file really exist?', 0aH, 00H
-	ORG $+1
-$SG98107 DB	'rb', 00H
+$SG98079 DB	'[World of Warcraft Studio - Editor] - Opening : %s', 0aH
+	DB	00H
+$SG98109 DB	'rb', 00H
 	ORG $+1
 $SG98086 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive ''%s'': Bad file format', 0aH, 00H
-	ORG $+1
-$SG98112 DB	'%s\data\%s', 00H
-	ORG $+1
-$SG98088 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive ''%s'': Seeking in file failed', 0aH, 00H
-	ORG $+2
-$SG98113 DB	'rb', 00H
-	ORG $+1
-$SG98090 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive ''%s'': Read error in archive', 0aH, 00H
+	DB	'ive : ''%s'': Does file really exist?', 0aH, 00H
 	ORG $+3
-$SG98105 DB	'%s\%s', 00H
-	ORG $+2
-$SG98276 DB	'[World of Warcraft Studio - Editor] - File %s found insi'
-	DB	'de %s', 0aH, 00H
-	ORG $+1
-$SG98337 DB	'wb', 00H
+$SG98088 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
+	DB	'ive : ''%s'': Bad file format', 0aH, 00H
+	ORG $+3
+$SG98090 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
+	DB	'ive : ''%s'': Seeking in file failed', 0aH, 00H
+$SG98114 DB	'%s\data\%s', 00H
 	ORG $+1
 $SG98092 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive ''%s'': Maybe not enough memory', 0aH, 00H
-	ORG $+5
+	DB	'ive : ''%s'': Read error in archive', 0aH, 00H
+	ORG $+1
+$SG98115 DB	'rb', 00H
+	ORG $+1
 $SG98094 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
-	DB	'ive %s', 0aH, 00H
-$SG98104 DB	'[World of Warcraft Studio - Editor] - Attempting to Load'
-	DB	' File %s', 0aH, 00H
-	ORG $+6
-$SG98109 DB	'[World of Warcraft Studio - Editor] - File %s found in r'
-	DB	'oot directory', 0aH, 00H
+	DB	'ive : ''%s'': Maybe not enough memory', 0aH, 00H
+	ORG $+3
+$SG98096 DB	'[World of Warcraft Studio - Editor] - Error opening arch'
+	DB	'ive : %s', 0aH, 00H
+	ORG $+2
+$SG98338 DB	'wb', 00H
 	ORG $+1
-$SG98115 DB	'[World of Warcraft Studio - Editor] - File %s found in d'
-	DB	'ata directory', 0aH, 00H
-	ORG $+1
-$SG98278 DB	'[World of Warcraft Studio - Editor] - Invalid File of si'
-	DB	'ze 1 for file %s (damn Blizzard :-p)', 0aH, 00H
+$SG98106 DB	'[World of Warcraft Studio - Editor] - Attempting to Load'
+	DB	' File : %s', 0aH, 00H
+$SG98107 DB	'%s\%s', 00H
 	ORG $+2
-$SG98282 DB	'[World of Warcraft Studio - Editor] - Unable to find fil'
-	DB	'e %s', 0aH, 00H
-	ORG $+2
-$SG98293 DB	'%s\%s', 00H
-	ORG $+2
-$SG98339 DB	'[World of Warcraft Studio - Editor] - Saving File %s', 0aH
+$SG98340 DB	'[World of Warcraft Studio - Editor] - Saving File : %s', 0aH
 	DB	00H
+	ORG $+4
+$SG98111 DB	'[World of Warcraft Studio - Editor] - File : %s found in'
+	DB	' root directory', 0aH, 00H
+	ORG $+3
+$SG98283 DB	'[World of Warcraft Studio - Editor] - Unable to find fil'
+	DB	'e %s', 0aH, 00H
+	ORG $+6
+$SG98117 DB	'[World of Warcraft Studio - Editor] - File : %s found in'
+	DB	' data directory', 0aH, 00H
+	ORG $+3
+$SG98294 DB	'%s\%s', 00H
+	ORG $+6
+$SG98277 DB	'[World of Warcraft Studio - Editor] - File : %s found in'
+	DB	'side : %s', 0aH, 00H
+	ORG $+5
+$SG98279 DB	'[World of Warcraft Studio - Editor] - Invalid File of si'
+	DB	'ze 1 for file : %s (damn Blizzard :-p)', 0aH, 00H
 CONST	ENDS
 ;	COMDAT ?_EEM_DS@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@2HB
 CONST	SEGMENT
@@ -653,26 +652,26 @@ _rpos$ = 12						; size = 4
 _bytes$ = 12						; size = 4
 ?read@MPQFile@@QAEIPAXI@Z PROC				; MPQFile::read
 ; _this$ = ecx
-; Line 174
+; Line 166
 	push	ebp
 	mov	ebp, esp
 	push	esi
 	mov	esi, ecx
-; Line 175
+; Line 167
 	cmp	BYTE PTR [esi+1024], 0
 	je	SHORT $LN2@read
 	xor	eax, eax
 	pop	esi
-; Line 189
+; Line 181
 	pop	ebp
 	ret	8
 $LN2@read:
-; Line 177
+; Line 169
 	mov	eax, DWORD PTR [esi+1032]
 	push	ebx
 	push	edi
 	mov	edi, DWORD PTR _bytes$[ebp]
-; Line 178
+; Line 170
 	xor	ebx, ebx
 	lea	ecx, DWORD PTR [eax+edi]
 	mov	DWORD PTR _rpos$[ebp], ecx
@@ -682,13 +681,13 @@ $LN2@read:
 	cmp	ecx, DWORD PTR [esi+1040]
 	jbe	SHORT $LN1@read
 $LN5@read:
-; Line 180
+; Line 172
 	mov	edi, DWORD PTR [esi+1040]
 	sub	edi, eax
-; Line 181
+; Line 173
 	mov	BYTE PTR [esi+1024], 1
 $LN1@read:
-; Line 184
+; Line 176
 	mov	ecx, DWORD PTR [esi+1028]
 	mov	edx, DWORD PTR _dest$[ebp]
 	push	edi
@@ -696,17 +695,17 @@ $LN1@read:
 	push	ecx
 	push	edx
 	call	_memcpy
-; Line 186
+; Line 178
 	mov	eax, DWORD PTR _rpos$[ebp]
 	add	esp, 12					; 0000000cH
 	mov	DWORD PTR [esi+1032], eax
-; Line 188
+; Line 180
 	mov	eax, edi
 	pop	edi
 	mov	DWORD PTR [esi+1036], ebx
 	pop	ebx
 	pop	esi
-; Line 189
+; Line 181
 	pop	ebp
 	ret	8
 ?read@MPQFile@@QAEIPAXI@Z ENDP				; MPQFile::read
@@ -717,15 +716,15 @@ _TEXT	SEGMENT
 _offset$ = 8						; size = 4
 ?seek@MPQFile@@QAEXH@Z PROC				; MPQFile::seek
 ; _this$ = ecx
-; Line 192
+; Line 184
 	push	ebp
 	mov	ebp, esp
-; Line 193
+; Line 185
 	mov	eax, DWORD PTR _offset$[ebp]
 	cdq
 	mov	DWORD PTR [ecx+1032], eax
 	mov	DWORD PTR [ecx+1036], edx
-; Line 194
+; Line 186
 	cmp	edx, DWORD PTR [ecx+1044]
 	jl	SHORT $LN3@seek
 	jg	SHORT $LN5@seek
@@ -734,14 +733,14 @@ _offset$ = 8						; size = 4
 $LN5@seek:
 	mov	eax, 1
 	mov	BYTE PTR [ecx+1024], al
-; Line 195
+; Line 187
 	pop	ebp
 	ret	4
 $LN3@seek:
-; Line 194
+; Line 186
 	xor	eax, eax
 	mov	BYTE PTR [ecx+1024], al
-; Line 195
+; Line 187
 	pop	ebp
 	ret	4
 ?seek@MPQFile@@QAEXH@Z ENDP				; MPQFile::seek
@@ -752,15 +751,15 @@ _TEXT	SEGMENT
 _offset$ = 8						; size = 4
 ?seekRelative@MPQFile@@QAEXH@Z PROC			; MPQFile::seekRelative
 ; _this$ = ecx
-; Line 198
+; Line 190
 	push	ebp
 	mov	ebp, esp
-; Line 199
+; Line 191
 	mov	eax, DWORD PTR _offset$[ebp]
 	cdq
 	add	DWORD PTR [ecx+1032], eax
 	adc	DWORD PTR [ecx+1036], edx
-; Line 200
+; Line 192
 	mov	eax, DWORD PTR [ecx+1036]
 	cmp	eax, DWORD PTR [ecx+1044]
 	jl	SHORT $LN3@seekRelati
@@ -771,14 +770,14 @@ _offset$ = 8						; size = 4
 $LN5@seekRelati:
 	mov	eax, 1
 	mov	BYTE PTR [ecx+1024], al
-; Line 201
+; Line 193
 	pop	ebp
 	ret	4
 $LN3@seekRelati:
-; Line 200
+; Line 192
 	xor	eax, eax
 	mov	BYTE PTR [ecx+1024], al
-; Line 201
+; Line 193
 	pop	ebp
 	ret	4
 ?seekRelative@MPQFile@@QAEXH@Z ENDP			; MPQFile::seekRelative
@@ -789,10 +788,10 @@ EXTRN	??_V@YAXPAX@Z:PROC				; operator delete[]
 _TEXT	SEGMENT
 ?close@MPQFile@@QAEXXZ PROC				; MPQFile::close
 ; _this$ = ecx
-; Line 204
+; Line 196
 	push	esi
 	mov	esi, ecx
-; Line 205
+; Line 197
 	mov	eax, DWORD PTR [esi+1028]
 	test	eax, eax
 	je	SHORT $LN4@close
@@ -800,11 +799,11 @@ _TEXT	SEGMENT
 	call	??_V@YAXPAX@Z				; operator delete[]
 	add	esp, 4
 $LN4@close:
-; Line 207
+; Line 199
 	mov	BYTE PTR [esi+1024], 1
 	mov	DWORD PTR [esi+1028], 0
 	pop	esi
-; Line 208
+; Line 200
 	ret	0
 ?close@MPQFile@@QAEXXZ ENDP				; MPQFile::close
 _TEXT	ENDS
@@ -819,32 +818,32 @@ EXTRN	?CreatePath@@YAXPBD@Z:PROC			; CreatePath
 _TEXT	SEGMENT
 ?SaveFile@MPQFile@@QAEXXZ PROC				; MPQFile::SaveFile
 ; _this$ = ecx
-; Line 211
+; Line 203
 	push	esi
 	mov	esi, ecx
 	push	edi
-; Line 214
+; Line 206
 	push	esi
 	call	?CreatePath@@YAXPBD@Z			; CreatePath
-; Line 216
-	push	OFFSET $SG98337
+; Line 208
+	push	OFFSET $SG98338
 	push	esi
 	call	DWORD PTR __imp__fopen
 	mov	edi, eax
 	add	esp, 12					; 0000000cH
-; Line 218
+; Line 210
 	test	edi, edi
 	je	SHORT $LN1@SaveFile
-; Line 220
+; Line 212
 	push	esi
-	push	OFFSET $SG98339
+	push	OFFSET $SG98340
 	call	?gLog@@YAXPADZZ				; gLog
-; Line 221
+; Line 213
 	push	0
 	push	0
 	push	edi
 	call	DWORD PTR __imp__fseek
-; Line 222
+; Line 214
 	mov	eax, DWORD PTR [esi+1040]
 	mov	ecx, DWORD PTR [esi+1028]
 	push	edi
@@ -852,14 +851,14 @@ _TEXT	SEGMENT
 	push	1
 	push	ecx
 	call	DWORD PTR __imp__fwrite
-; Line 223
+; Line 215
 	push	edi
 	call	DWORD PTR __imp__fclose
 	add	esp, 40					; 00000028H
-; Line 224
+; Line 216
 	mov	BYTE PTR [esi+1048], 1
 $LN1@SaveFile:
-; Line 227
+; Line 219
 	pop	edi
 	pop	esi
 	ret	0
@@ -1138,8 +1137,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@PAVMPQArchive@@@std@@YAPAPAVMPQArchive@@IPAPAV1@@Z
 _TEXT	SEGMENT
-$T104799 = -12						; size = 12
-$T104804 = 8						; size = 4
+$T104800 = -12						; size = 12
+$T104805 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@PAVMPQArchive@@@std@@YAPAPAVMPQArchive@@IPAPAV1@@Z PROC ; std::_Allocate<MPQArchive *>, COMDAT
@@ -1166,15 +1165,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	ecx, DWORD PTR $T104804[ebp]
+	lea	ecx, DWORD PTR $T104805[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104799[ebp]
-	mov	DWORD PTR $T104804[ebp], 0
+	lea	ecx, DWORD PTR $T104800[ebp]
+	mov	DWORD PTR $T104805[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104799[ebp]
+	lea	edx, DWORD PTR $T104800[ebp]
 	push	edx
-	mov	DWORD PTR $T104799[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104800[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -1189,8 +1188,8 @@ PUBLIC	??$_Allocate@PAPAVMPQArchive@@@std@@YAPAPAPAVMPQArchive@@IPAPAPAV1@@Z ; s
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@PAPAVMPQArchive@@@std@@YAPAPAPAVMPQArchive@@IPAPAPAV1@@Z
 _TEXT	SEGMENT
-$T104809 = -12						; size = 12
-$T104813 = 8						; size = 4
+$T104810 = -12						; size = 12
+$T104814 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@PAPAVMPQArchive@@@std@@YAPAPAPAVMPQArchive@@IPAPAPAV1@@Z PROC ; std::_Allocate<MPQArchive * *>, COMDAT
@@ -1216,15 +1215,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@2
 $LN1@Allocate@2:
 ; Line 37
-	lea	ecx, DWORD PTR $T104813[ebp]
+	lea	ecx, DWORD PTR $T104814[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104809[ebp]
-	mov	DWORD PTR $T104813[ebp], 0
+	lea	ecx, DWORD PTR $T104810[ebp]
+	mov	DWORD PTR $T104814[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104809[ebp]
+	lea	edx, DWORD PTR $T104810[ebp]
 	push	edx
-	mov	DWORD PTR $T104809[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104810[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@2:
 $LN5@Allocate@2:
@@ -1239,8 +1238,8 @@ PUBLIC	??$_Allocate@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@IPAU10@
 ; Function compile flags: /Ogtp
 ;	COMDAT ??$_Allocate@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@IPAU10@@Z
 _TEXT	SEGMENT
-$T104818 = -12						; size = 12
-$T104822 = 8						; size = 4
+$T104819 = -12						; size = 12
+$T104823 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@IPAU10@@Z PROC ; std::_Allocate<std::_Container_proxy>, COMDAT
@@ -1266,15 +1265,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate@3
 $LN1@Allocate@3:
 ; Line 37
-	lea	ecx, DWORD PTR $T104822[ebp]
+	lea	ecx, DWORD PTR $T104823[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104818[ebp]
-	mov	DWORD PTR $T104822[ebp], 0
+	lea	ecx, DWORD PTR $T104819[ebp]
+	mov	DWORD PTR $T104823[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104818[ebp]
+	lea	edx, DWORD PTR $T104819[ebp]
 	push	edx
-	mov	DWORD PTR $T104818[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104819[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate@3:
 $LN5@Allocate@3:
@@ -1562,10 +1561,10 @@ _TEXT	SEGMENT
 ??1MPQFile@@QAE@XZ PROC					; MPQFile::~MPQFile
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\mpq.cpp
-; Line 169
+; Line 161
 	push	esi
 	mov	esi, ecx
-; Line 170
+; Line 162
 	mov	eax, DWORD PTR [esi+1028]
 	test	eax, eax
 	je	SHORT $LN6@MPQFile
@@ -1576,7 +1575,7 @@ $LN6@MPQFile:
 	mov	BYTE PTR [esi+1024], 1
 	mov	DWORD PTR [esi+1028], 0
 	pop	esi
-; Line 171
+; Line 163
 	ret	0
 ??1MPQFile@@QAE@XZ ENDP					; MPQFile::~MPQFile
 _TEXT	ENDS
@@ -1632,8 +1631,8 @@ PUBLIC	?allocate@?$allocator@PAVMPQArchive@@@std@@QAEPAPAVMPQArchive@@I@Z ; std:
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@PAVMPQArchive@@@std@@QAEPAPAVMPQArchive@@I@Z
 _TEXT	SEGMENT
-$T104927 = -12						; size = 12
-$T104919 = 8						; size = 4
+$T104928 = -12						; size = 12
+$T104920 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@PAVMPQArchive@@@std@@QAEPAPAVMPQArchive@@I@Z PROC ; std::allocator<MPQArchive *>::allocate, COMDAT
 ; _this$ = ecx
@@ -1656,15 +1655,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	ecx, DWORD PTR $T104919[ebp]
+	lea	ecx, DWORD PTR $T104920[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104927[ebp]
-	mov	DWORD PTR $T104919[ebp], 0
+	lea	ecx, DWORD PTR $T104928[ebp]
+	mov	DWORD PTR $T104920[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104927[ebp]
+	lea	edx, DWORD PTR $T104928[ebp]
 	push	edx
-	mov	DWORD PTR $T104927[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104928[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -1713,8 +1712,8 @@ PUBLIC	?allocate@?$allocator@PAPAVMPQArchive@@@std@@QAEPAPAPAVMPQArchive@@I@Z ; 
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@PAPAVMPQArchive@@@std@@QAEPAPAPAVMPQArchive@@I@Z
 _TEXT	SEGMENT
-$T104966 = -12						; size = 12
-$T104958 = 8						; size = 4
+$T104967 = -12						; size = 12
+$T104959 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@PAPAVMPQArchive@@@std@@QAEPAPAPAVMPQArchive@@I@Z PROC ; std::allocator<MPQArchive * *>::allocate, COMDAT
 ; _this$ = ecx
@@ -1737,15 +1736,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@2
 $LN3@allocate@2:
-	lea	ecx, DWORD PTR $T104958[ebp]
+	lea	ecx, DWORD PTR $T104959[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104966[ebp]
-	mov	DWORD PTR $T104958[ebp], 0
+	lea	ecx, DWORD PTR $T104967[ebp]
+	mov	DWORD PTR $T104959[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104966[ebp]
+	lea	edx, DWORD PTR $T104967[ebp]
 	push	edx
-	mov	DWORD PTR $T104966[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104967[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@2:
 $LN1@allocate@2:
@@ -1760,8 +1759,8 @@ PUBLIC	?allocate@?$allocator@U_Container_proxy@std@@@std@@QAEPAU_Container_proxy
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@U_Container_proxy@std@@@std@@QAEPAU_Container_proxy@2@I@Z
 _TEXT	SEGMENT
-$T104989 = -12						; size = 12
-$T104981 = 8						; size = 4
+$T104990 = -12						; size = 12
+$T104982 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@U_Container_proxy@std@@@std@@QAEPAU_Container_proxy@2@I@Z PROC ; std::allocator<std::_Container_proxy>::allocate, COMDAT
 ; _this$ = ecx
@@ -1783,15 +1782,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate@3
 $LN3@allocate@3:
-	lea	ecx, DWORD PTR $T104981[ebp]
+	lea	ecx, DWORD PTR $T104982[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T104989[ebp]
-	mov	DWORD PTR $T104981[ebp], 0
+	lea	ecx, DWORD PTR $T104990[ebp]
+	mov	DWORD PTR $T104982[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T104989[ebp]
+	lea	edx, DWORD PTR $T104990[ebp]
 	push	edx
-	mov	DWORD PTR $T104989[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T104990[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate@3:
 $LN1@allocate@3:
@@ -1806,7 +1805,7 @@ PUBLIC	?_Setcont@?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchi
 ; Function compile flags: /Ogtp
 ;	COMDAT ?_Setcont@?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAEXPBV?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@@Z
 _TEXT	SEGMENT
-__Lock$105006 = 8					; size = 4
+__Lock$105007 = 8					; size = 4
 __Pdeque$ = 8						; size = 4
 ?_Setcont@?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAEXPBV?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@@Z PROC ; std::_Deque_const_iterator<MPQArchive *,std::allocator<MPQArchive *> >::_Setcont, COMDAT
 ; _this$ = ecx
@@ -1819,9 +1818,9 @@ __Pdeque$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN4@Setcont
 	push	3
-	lea	ecx, DWORD PTR __Lock$105006[ebp]
+	lea	ecx, DWORD PTR __Lock$105007[ebp]
 	call	DWORD PTR __imp_??0_Lockit@std@@QAE@H@Z
-	lea	ecx, DWORD PTR __Lock$105006[ebp]
+	lea	ecx, DWORD PTR __Lock$105007[ebp]
 	call	DWORD PTR __imp_??1_Lockit@std@@QAE@XZ
 ; Line 543
 	pop	ebp
@@ -2021,7 +2020,7 @@ PUBLIC	??0?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@st
 ;	COMDAT ??0?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@IPBU_Container_base12@1@@Z
 _TEXT	SEGMENT
 __Off$ = 8						; size = 4
-__Lock$105135 = 12					; size = 4
+__Lock$105136 = 12					; size = 4
 __Pdeque$ = 12						; size = 4
 ??0?$_Deque_const_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@IPBU_Container_base12@1@@Z PROC ; std::_Deque_const_iterator<MPQArchive *,std::allocator<MPQArchive *> >::_Deque_const_iterator<MPQArchive *,std::allocator<MPQArchive *> >, COMDAT
 ; _this$ = ecx
@@ -2037,9 +2036,9 @@ __Pdeque$ = 12						; size = 4
 	test	eax, eax
 	jne	SHORT $LN8@Deque_cons
 	push	3
-	lea	ecx, DWORD PTR __Lock$105135[ebp]
+	lea	ecx, DWORD PTR __Lock$105136[ebp]
 	call	DWORD PTR __imp_??0_Lockit@std@@QAE@H@Z
-	lea	ecx, DWORD PTR __Lock$105135[ebp]
+	lea	ecx, DWORD PTR __Lock$105136[ebp]
 	call	DWORD PTR __imp_??1_Lockit@std@@QAE@XZ
 ; Line 313
 	mov	eax, DWORD PTR __Off$[ebp]
@@ -2183,8 +2182,8 @@ _TEXT	SEGMENT
 __Myboff$ = -16						; size = 4
 tv516 = -12						; size = 4
 tv509 = -12						; size = 4
-__Count$105324 = -12					; size = 4
-$T105305 = -8						; size = 4
+__Count$105325 = -12					; size = 4
+$T105306 = -8						; size = 4
 __Newmap$ = -4						; size = 4
 __Count$ = 8						; size = 4
 ?_Growmap@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@IAEXI@Z PROC ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::_Growmap, COMDAT
@@ -2243,14 +2242,14 @@ $LN4@Growmap:
 	mov	edx, DWORD PTR [ebx+4]
 	lea	esi, DWORD PTR [edi*4]
 	lea	ecx, DWORD PTR [esi+edx]
-	mov	DWORD PTR $T105305[ebp], ecx
+	mov	DWORD PTR $T105306[ebp], ecx
 	mov	ecx, DWORD PTR [ebx+8]
 	add	ecx, ecx
 	add	ecx, ecx
-	sub	ecx, DWORD PTR $T105305[ebp]
+	sub	ecx, DWORD PTR $T105306[ebp]
 	mov	DWORD PTR __Newmap$[ebp], eax
 	add	ecx, edx
-	mov	edx, DWORD PTR $T105305[ebp]
+	mov	edx, DWORD PTR $T105306[ebp]
 	sar	ecx, 2
 	add	ecx, ecx
 	add	ecx, ecx
@@ -2269,10 +2268,10 @@ $LN4@Growmap:
 	cmp	edi, edx
 	ja	SHORT $LN3@Growmap
 	sar	esi, 2
-	mov	DWORD PTR __Count$105324[ebp], esi
+	mov	DWORD PTR __Count$105325[ebp], esi
 ; Line 1611
 	mov	esi, edx
-	mov	edx, DWORD PTR __Count$105324[ebp]
+	mov	edx, DWORD PTR __Count$105325[ebp]
 	add	edx, edx
 	add	edx, edx
 	push	edx
@@ -2381,9 +2380,9 @@ __ehfuncinfo$??0?$_Deque_val@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@s
 xdata$x	ENDS
 ;	COMDAT ??0?$_Deque_val@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@V?$allocator@PAVMPQArchive@@@1@@Z
 _TEXT	SEGMENT
-$T105553 = -32						; size = 12
+$T105554 = -32						; size = 12
 _this$ = -20						; size = 4
-$T105537 = -16						; size = 4
+$T105538 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 __Al$ = 8						; size = 1
 ??0?$_Deque_val@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@V?$allocator@PAVMPQArchive@@@1@@Z PROC ; std::_Deque_val<MPQArchive *,std::allocator<MPQArchive *> >::_Deque_val<MPQArchive *,std::allocator<MPQArchive *> >, COMDAT
@@ -2444,15 +2443,15 @@ __Al$ = 8						; size = 1
 	ret	4
 ; Line 731
 $LN14@Deque_val:
-	lea	ecx, DWORD PTR $T105537[ebp]
+	lea	ecx, DWORD PTR $T105538[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T105553[ebp]
-	mov	DWORD PTR $T105537[ebp], edi
+	lea	ecx, DWORD PTR $T105554[ebp]
+	mov	DWORD PTR $T105538[ebp], edi
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T105553[ebp]
+	lea	edx, DWORD PTR $T105554[ebp]
 	push	edx
-	mov	DWORD PTR $T105553[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T105554[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN41@Deque_val:
 $LN40@Deque_val:
@@ -2499,7 +2498,7 @@ PUBLIC	??0?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@st
 ;	COMDAT ??0?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@IPBU_Container_base12@1@@Z
 _TEXT	SEGMENT
 __Off$ = 8						; size = 4
-__Lock$105683 = 12					; size = 4
+__Lock$105684 = 12					; size = 4
 __Pdeque$ = 12						; size = 4
 ??0?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@IPBU_Container_base12@1@@Z PROC ; std::_Deque_iterator<MPQArchive *,std::allocator<MPQArchive *> >::_Deque_iterator<MPQArchive *,std::allocator<MPQArchive *> >, COMDAT
 ; _this$ = ecx
@@ -2514,9 +2513,9 @@ __Pdeque$ = 12						; size = 4
 	test	eax, eax
 	jne	SHORT $LN10@Deque_iter
 	push	3
-	lea	ecx, DWORD PTR __Lock$105683[ebp]
+	lea	ecx, DWORD PTR __Lock$105684[ebp]
 	call	DWORD PTR __imp_??0_Lockit@std@@QAE@H@Z
-	lea	ecx, DWORD PTR __Lock$105683[ebp]
+	lea	ecx, DWORD PTR __Lock$105684[ebp]
 	call	DWORD PTR __imp_??1_Lockit@std@@QAE@XZ
 	mov	eax, DWORD PTR __Off$[ebp]
 	mov	DWORD PTR [esi+8], eax
@@ -2576,9 +2575,9 @@ __ehfuncinfo$??0?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@Q
 xdata$x	ENDS
 ;	COMDAT ??0?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@XZ
 _TEXT	SEGMENT
-$T105807 = -32						; size = 12
+$T105808 = -32						; size = 12
 _this$ = -20						; size = 4
-$T105724 = -16						; size = 4
+$T105725 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??0?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE@XZ PROC ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::deque<MPQArchive *,std::allocator<MPQArchive *> >, COMDAT
 ; _this$ = ecx
@@ -2631,15 +2630,15 @@ __$EHRec$ = -12						; size = 12
 	ret	0
 ; Line 799
 $LN19@deque:
-	lea	ecx, DWORD PTR $T105724[ebp]
+	lea	ecx, DWORD PTR $T105725[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T105807[ebp]
-	mov	DWORD PTR $T105724[ebp], edi
+	lea	ecx, DWORD PTR $T105808[ebp]
+	mov	DWORD PTR $T105725[ebp], edi
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T105807[ebp]
+	lea	edx, DWORD PTR $T105808[ebp]
 	push	edx
-	mov	DWORD PTR $T105807[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T105808[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN47@deque:
 $LN46@deque:
@@ -2709,8 +2708,8 @@ PUBLIC	?push_front@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std
 ; Function compile flags: /Ogtp
 ;	COMDAT ?push_front@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAEXABQAVMPQArchive@@@Z
 _TEXT	SEGMENT
-$T106005 = -16						; size = 12
-$T105983 = -4						; size = 4
+$T106006 = -16						; size = 12
+$T105984 = -4						; size = 4
 __Val$ = 8						; size = 4
 ?push_front@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAEXABQAVMPQArchive@@@Z PROC ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::push_front, COMDAT
 ; _this$ = ecx
@@ -2778,15 +2777,15 @@ $LN29@push_front:
 	ret	4
 ; Line 1225
 $LN11@push_front:
-	lea	eax, DWORD PTR $T105983[ebp]
+	lea	eax, DWORD PTR $T105984[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T106005[ebp]
-	mov	DWORD PTR $T105983[ebp], 0
+	lea	ecx, DWORD PTR $T106006[ebp]
+	mov	DWORD PTR $T105984[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T106005[ebp]
+	lea	ecx, DWORD PTR $T106006[ebp]
 	push	ecx
-	mov	DWORD PTR $T106005[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T106006[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN38@push_front:
 $LN37@push_front:
@@ -2868,7 +2867,7 @@ PUBLIC	??0MPQArchive@@QAE@PBD@Z			; MPQArchive::MPQArchive
 EXTRN	_libmpq__archive_open:PROC
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-$T106106 = 8						; size = 4
+$T106107 = 8						; size = 4
 _filename$ = 8						; size = 4
 ??0MPQArchive@@QAE@PBD@Z PROC				; MPQArchive::MPQArchive
 ; _this$ = ecx
@@ -2889,7 +2888,7 @@ _filename$ = 8						; size = 4
 	call	_libmpq__archive_open
 ; Line 15
 	push	edi
-	push	OFFSET $SG98077
+	push	OFFSET $SG98079
 	mov	ebx, eax
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 24					; 00000018H
@@ -2904,7 +2903,7 @@ _filename$ = 8						; size = 4
 $LN6@MPQArchive:
 ; Line 20
 	push	edi
-	push	OFFSET $SG98084
+	push	OFFSET $SG98086
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2917,7 +2916,7 @@ $LN6@MPQArchive:
 $LN5@MPQArchive:
 ; Line 24
 	push	edi
-	push	OFFSET $SG98086
+	push	OFFSET $SG98088
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2930,7 +2929,7 @@ $LN5@MPQArchive:
 $LN4@MPQArchive:
 ; Line 28
 	push	edi
-	push	OFFSET $SG98088
+	push	OFFSET $SG98090
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2943,7 +2942,7 @@ $LN4@MPQArchive:
 $LN3@MPQArchive:
 ; Line 32
 	push	edi
-	push	OFFSET $SG98090
+	push	OFFSET $SG98092
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2956,7 +2955,7 @@ $LN3@MPQArchive:
 $LN2@MPQArchive:
 ; Line 36
 	push	edi
-	push	OFFSET $SG98092
+	push	OFFSET $SG98094
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2969,7 +2968,7 @@ $LN2@MPQArchive:
 $LN1@MPQArchive:
 ; Line 40
 	push	edi
-	push	OFFSET $SG98094
+	push	OFFSET $SG98096
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 8
 	pop	edi
@@ -2981,10 +2980,10 @@ $LN1@MPQArchive:
 	ret	4
 $LN9@MPQArchive:
 ; Line 45
-	lea	eax, DWORD PTR $T106106[ebp]
+	lea	eax, DWORD PTR $T106107[ebp]
 	push	eax
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
-	mov	DWORD PTR $T106106[ebp], esi
+	mov	DWORD PTR $T106107[ebp], esi
 	call	?push_front@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAEXABQAVMPQArchive@@@Z ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::push_front
 	pop	edi
 ; Line 46
@@ -3017,19 +3016,19 @@ EXTRN	__imp__sprintf:PROC
 EXTRN	?wowpath@@3PADA:BYTE				; wowpath
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-_transferred$98274 = -1072				; size = 8
-$T106115 = -1064					; size = 12
-_i$98248 = -1052					; size = 12
-_fileno$98272 = -1040					; size = 4
-__Mycont$106167 = -1036					; size = 4
-_mpq_a$98271 = -1036					; size = 4
+_transferred$98276 = -1072				; size = 8
+$T106116 = -1064					; size = 12
+_i$98250 = -1052					; size = 12
+_fileno$98274 = -1040					; size = 4
+__Mycont$106168 = -1036					; size = 4
+_mpq_a$98273 = -1036					; size = 4
 _filename$GSCopy$ = -1032				; size = 4
 _Temp$ = -1028						; size = 1024
 __$ArrayPad$ = -4					; size = 4
 _filename$ = 8						; size = 4
 ??0MPQFile@@QAE@PBD@Z PROC				; MPQFile::MPQFile
 ; _this$ = ecx
-; Line 59
+; Line 55
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 1072				; 00000430H
@@ -3043,10 +3042,10 @@ _filename$ = 8						; size = 4
 	push	edi
 	xor	eax, eax
 	lea	edi, DWORD PTR [esi+1040]
-; Line 62
+; Line 58
 	push	ebx
-	push	OFFSET $SG98104
-; Line 87
+	push	OFFSET $SG98106
+; Line 83
 	mov	DWORD PTR _filename$GSCopy$[ebp], ebx
 	mov	BYTE PTR [esi+1024], 0
 	mov	DWORD PTR [esi+1028], eax
@@ -3058,7 +3057,7 @@ _filename$ = 8						; size = 4
 	push	ebx
 	push	OFFSET ?wowpath@@3PADA			; wowpath
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG98105
+	push	OFFSET $SG98107
 	push	eax
 	call	DWORD PTR __imp__sprintf
 	lea	eax, DWORD PTR _Temp$[ebp]
@@ -3068,48 +3067,48 @@ _filename$ = 8						; size = 4
 	sub	edx, ecx
 	npad	7
 $LL10@MPQFile@2:
-; Line 64
+; Line 60
 	mov	cl, BYTE PTR [eax]
 	mov	BYTE PTR [edx+eax], cl
 	inc	eax
 	test	cl, cl
 	jne	SHORT $LL10@MPQFile@2
-; Line 66
+; Line 62
 	lea	edx, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG98107
+	push	OFFSET $SG98109
 	push	edx
 	call	DWORD PTR __imp__fopen
 	mov	ebx, eax
 	add	esp, 8
-; Line 68
+; Line 64
 	test	ebx, ebx
 	je	SHORT $LN7@MPQFile@2
-; Line 70
+; Line 66
 	mov	eax, DWORD PTR _filename$GSCopy$[ebp]
 	push	eax
-	push	OFFSET $SG98109
+	push	OFFSET $SG98111
 	call	?gLog@@YAXPADZZ				; gLog
-; Line 71
+; Line 67
 	push	2
 	push	0
 	push	ebx
 	call	DWORD PTR __imp__fseek
-; Line 72
+; Line 68
 	push	ebx
 	call	DWORD PTR __imp__ftell
 	cdq
-; Line 74
+; Line 70
 	push	eax
 	mov	DWORD PTR [edi], eax
 	mov	DWORD PTR [edi+4], edx
 	call	??_U@YAPAXI@Z				; operator new[]
-; Line 75
+; Line 71
 	push	0
 	push	0
 	push	ebx
 	mov	DWORD PTR [esi+1028], eax
 	call	DWORD PTR __imp__fseek
-; Line 76
+; Line 72
 	mov	edx, DWORD PTR [edi]
 	mov	eax, DWORD PTR [esi+1028]
 	push	ebx
@@ -3118,83 +3117,83 @@ $LL10@MPQFile@2:
 	push	eax
 $LN38@MPQFile@2:
 	call	DWORD PTR __imp__fread
-; Line 77
+; Line 73
 	push	ebx
 	call	DWORD PTR __imp__fclose
 	add	esp, 60					; 0000003cH
-; Line 78
+; Line 74
 	mov	BYTE PTR [esi+1048], 1
-; Line 79
+; Line 75
 	jmp	$LN35@MPQFile@2
 $LN7@MPQFile@2:
-; Line 82
+; Line 78
 	mov	ecx, DWORD PTR _filename$GSCopy$[ebp]
 	push	ecx
 	push	OFFSET ?wowpath@@3PADA			; wowpath
 	lea	edx, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG98112
+	push	OFFSET $SG98114
 	push	edx
 	call	DWORD PTR __imp__sprintf
-; Line 83
+; Line 79
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG98113
+	push	OFFSET $SG98115
 	push	eax
 	call	DWORD PTR __imp__fopen
 	mov	ebx, eax
 	add	esp, 24					; 00000018H
-; Line 85
+; Line 81
 	test	ebx, ebx
 	je	SHORT $LN6@MPQFile@2
-; Line 87
+; Line 83
 	mov	ecx, DWORD PTR _filename$GSCopy$[ebp]
 	push	ecx
-	push	OFFSET $SG98115
+	push	OFFSET $SG98117
 	call	?gLog@@YAXPADZZ				; gLog
-; Line 88
+; Line 84
 	push	2
 	push	0
 	push	ebx
 	call	DWORD PTR __imp__fseek
-; Line 89
+; Line 85
 	push	ebx
 	call	DWORD PTR __imp__ftell
 	cdq
-; Line 91
+; Line 87
 	push	eax
 	mov	DWORD PTR [edi], eax
 	mov	DWORD PTR [edi+4], edx
 	call	??_U@YAPAXI@Z				; operator new[]
-; Line 92
+; Line 88
 	push	0
 	push	0
 	push	ebx
 	mov	DWORD PTR [esi+1028], eax
 	call	DWORD PTR __imp__fseek
-; Line 93
+; Line 89
 	mov	eax, DWORD PTR [edi]
 	mov	ecx, DWORD PTR [esi+1028]
 	push	ebx
 	push	eax
 	push	1
 	push	ecx
-; Line 96
+; Line 92
 	jmp	$LN38@MPQFile@2
 $LN6@MPQFile@2:
-; Line 99
-	lea	edx, DWORD PTR _i$98248[ebp]
+; Line 95
+	lea	edx, DWORD PTR _i$98250[ebp]
 	push	edx
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	call	?begin@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE?AV?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@XZ ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::begin
-	lea	eax, DWORD PTR $T106115[ebp]
+	lea	eax, DWORD PTR $T106116[ebp]
 	push	eax
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	call	?end@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE?AV?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@XZ ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::end
-	mov	ebx, DWORD PTR _i$98248[ebp+8]
+	mov	ebx, DWORD PTR _i$98250[ebp+8]
 	cmp	ebx, DWORD PTR [eax+8]
 	je	SHORT $LN34@MPQFile@2
 $LL13@MPQFile@2:
-; Line 101
-	mov	eax, DWORD PTR _i$98248[ebp]
+; Line 97
+	mov	eax, DWORD PTR _i$98250[ebp]
 	test	eax, eax
 	jne	SHORT $LN28@MPQFile@2
 	xor	edx, edx
@@ -3203,7 +3202,7 @@ $LN28@MPQFile@2:
 	mov	edx, DWORD PTR [eax]
 $LN36@MPQFile@2:
 	mov	eax, ebx
-	mov	DWORD PTR __Mycont$106167[ebp], edx
+	mov	DWORD PTR __Mycont$106168[ebp], edx
 	mov	edx, DWORD PTR [edx+8]
 	mov	ecx, ebx
 	shr	eax, 2
@@ -3212,24 +3211,24 @@ $LN36@MPQFile@2:
 	ja	SHORT $LN23@MPQFile@2
 	sub	eax, edx
 $LN23@MPQFile@2:
-	mov	edx, DWORD PTR __Mycont$106167[ebp]
+	mov	edx, DWORD PTR __Mycont$106168[ebp]
 	mov	edx, DWORD PTR [edx+4]
 	mov	eax, DWORD PTR [edx+eax*4]
 	mov	ecx, DWORD PTR [eax+ecx*4]
 	mov	eax, DWORD PTR [ecx]
-; Line 103
+; Line 99
 	mov	ecx, DWORD PTR _filename$GSCopy$[ebp]
-	lea	edx, DWORD PTR _fileno$98272[ebp]
+	lea	edx, DWORD PTR _fileno$98274[ebp]
 	push	edx
 	push	ecx
 	push	eax
-	mov	DWORD PTR _mpq_a$98271[ebp], eax
+	mov	DWORD PTR _mpq_a$98273[ebp], eax
 	call	_libmpq__file_number
 	add	esp, 12					; 0000000cH
 	test	eax, eax
 	je	SHORT $LN2@MPQFile@2
-; Line 99
-	lea	edx, DWORD PTR $T106115[ebp]
+; Line 95
+	lea	edx, DWORD PTR $T106116[ebp]
 	push	edx
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	inc	ebx
@@ -3237,18 +3236,18 @@ $LN23@MPQFile@2:
 	cmp	ebx, DWORD PTR [eax+8]
 	jne	SHORT $LL13@MPQFile@2
 $LN34@MPQFile@2:
-; Line 126
+; Line 122
 	mov	ecx, DWORD PTR _filename$GSCopy$[ebp]
 	push	ecx
-	push	OFFSET $SG98282
+	push	OFFSET $SG98283
 $LN37@MPQFile@2:
 	call	?gLog@@YAXPADZZ				; gLog
-; Line 128
+; Line 124
 	mov	DWORD PTR [esi+1028], 0
 	mov	BYTE PTR [esi+1024], 1
 	add	esp, 8
 $LN35@MPQFile@2:
-; Line 129
+; Line 125
 	mov	ecx, DWORD PTR __$ArrayPad$[ebp]
 	pop	edi
 	mov	eax, esi
@@ -3260,56 +3259,56 @@ $LN35@MPQFile@2:
 	pop	ebp
 	ret	4
 $LN2@MPQFile@2:
-; Line 107
-	mov	eax, DWORD PTR _fileno$98272[ebp]
-	mov	ecx, DWORD PTR _mpq_a$98271[ebp]
+; Line 103
+	mov	eax, DWORD PTR _fileno$98274[ebp]
+	mov	ecx, DWORD PTR _mpq_a$98273[ebp]
 	push	edi
 	push	eax
 	push	ecx
 	call	_libmpq__file_unpacked_size
-; Line 109
+; Line 105
 	mov	ebx, DWORD PTR _filename$GSCopy$[ebp]
 	movsx	edx, BYTE PTR [ebx+259]
 	push	edx
 	push	ebx
-	push	OFFSET $SG98276
+	push	OFFSET $SG98277
 	call	?gLog@@YAXPADZZ				; gLog
 	add	esp, 24					; 00000018H
-; Line 112
+; Line 108
 	cmp	DWORD PTR [edi+4], 0
 	jg	SHORT $LN1@MPQFile@2
 	jl	SHORT $LN33@MPQFile@2
 	cmp	DWORD PTR [edi], 1
 	ja	SHORT $LN1@MPQFile@2
 $LN33@MPQFile@2:
-; Line 114
+; Line 110
 	push	ebx
-	push	OFFSET $SG98278
-; Line 117
+	push	OFFSET $SG98279
+; Line 113
 	jmp	SHORT $LN37@MPQFile@2
 $LN1@MPQFile@2:
-; Line 119
+; Line 115
 	mov	eax, DWORD PTR [edi]
 	push	eax
 	call	??_U@YAPAXI@Z				; operator new[]
-; Line 122
+; Line 118
 	mov	edx, DWORD PTR [edi+4]
-	lea	ecx, DWORD PTR _transferred$98274[ebp]
+	lea	ecx, DWORD PTR _transferred$98276[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR [edi]
 	push	edx
-	mov	edx, DWORD PTR _fileno$98272[ebp]
+	mov	edx, DWORD PTR _fileno$98274[ebp]
 	push	ecx
 	push	eax
 	mov	DWORD PTR [esi+1028], eax
-	mov	eax, DWORD PTR _mpq_a$98271[ebp]
+	mov	eax, DWORD PTR _mpq_a$98273[ebp]
 	push	edx
 	push	eax
 	call	_libmpq__file_read
 	add	esp, 28					; 0000001cH
-; Line 123
+; Line 119
 	mov	BYTE PTR [esi+1048], 0
-; Line 124
+; Line 120
 	jmp	$LN35@MPQFile@2
 ??0MPQFile@@QAE@PBD@Z ENDP				; MPQFile::MPQFile
 _TEXT	ENDS
@@ -3318,18 +3317,18 @@ PUBLIC	__$ArrayPad$
 PUBLIC	??0MPQFile@@QAE@PBD_N@Z				; MPQFile::MPQFile
 ; Function compile flags: /Ogtp
 _TEXT	SEGMENT
-_transferred$98304 = -1068				; size = 8
-$T106187 = -1060					; size = 12
-_i$98294 = -1048					; size = 12
+_transferred$98305 = -1068				; size = 8
+$T106188 = -1060					; size = 12
+_i$98295 = -1048					; size = 12
 _filename$GSCopy$ = -1036				; size = 4
-_fileno$98302 = -1032					; size = 4
+_fileno$98303 = -1032					; size = 4
 _Temp$ = -1028						; size = 1024
 __$ArrayPad$ = -4					; size = 4
 _filename$ = 8						; size = 4
 _Fake$ = 12						; size = 1
 ??0MPQFile@@QAE@PBD_N@Z PROC				; MPQFile::MPQFile
 ; _this$ = ecx
-; Line 136
+; Line 128
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 1068				; 0000042cH
@@ -3340,15 +3339,15 @@ _Fake$ = 12						; size = 1
 	push	ebx
 	push	esi
 	push	edi
-; Line 139
+; Line 131
 	push	eax
 	mov	esi, ecx
 	xor	ebx, ebx
 	push	OFFSET ?wowpath@@3PADA			; wowpath
-; Line 144
+; Line 136
 	mov	DWORD PTR _filename$GSCopy$[ebp], eax
 	lea	eax, DWORD PTR _Temp$[ebp]
-	push	OFFSET $SG98293
+	push	OFFSET $SG98294
 	push	eax
 	mov	BYTE PTR [esi+1024], 0
 	mov	DWORD PTR [esi+1028], ebx
@@ -3364,28 +3363,28 @@ _Fake$ = 12						; size = 1
 	sub	edx, ecx
 	npad	1
 $LL8@MPQFile@3:
-; Line 140
+; Line 132
 	mov	cl, BYTE PTR [eax]
 	mov	BYTE PTR [edx+eax], cl
 	inc	eax
 	test	cl, cl
 	jne	SHORT $LL8@MPQFile@3
-; Line 142
-	lea	edx, DWORD PTR _i$98294[ebp]
+; Line 134
+	lea	edx, DWORD PTR _i$98295[ebp]
 	push	edx
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	call	?begin@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE?AV?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@XZ ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::begin
-	lea	eax, DWORD PTR $T106187[ebp]
+	lea	eax, DWORD PTR $T106188[ebp]
 	push	eax
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	call	?end@?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@QAE?AV?$_Deque_iterator@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@2@XZ ; std::deque<MPQArchive *,std::allocator<MPQArchive *> >::end
-	mov	edi, DWORD PTR _i$98294[ebp+8]
+	mov	edi, DWORD PTR _i$98295[ebp+8]
 	cmp	edi, DWORD PTR [eax+8]
 	je	SHORT $LN3@MPQFile@3
 	npad	9
 $LL11@MPQFile@3:
-; Line 144
-	mov	eax, DWORD PTR _i$98294[ebp]
+; Line 136
+	mov	eax, DWORD PTR _i$98295[ebp]
 	cmp	eax, ebx
 	je	SHORT $LN27@MPQFile@3
 	mov	ebx, DWORD PTR [eax]
@@ -3402,10 +3401,10 @@ $LN21@MPQFile@3:
 	mov	edx, DWORD PTR [ebx+4]
 	mov	eax, DWORD PTR [edx+eax*4]
 	mov	ecx, DWORD PTR [eax+ecx*4]
-; Line 146
+; Line 138
 	mov	eax, DWORD PTR _filename$GSCopy$[ebp]
 	mov	ebx, DWORD PTR [ecx]
-	lea	edx, DWORD PTR _fileno$98302[ebp]
+	lea	edx, DWORD PTR _fileno$98303[ebp]
 	push	edx
 	push	eax
 	push	ebx
@@ -3413,8 +3412,8 @@ $LN21@MPQFile@3:
 	add	esp, 12					; 0000000cH
 	test	eax, eax
 	je	SHORT $LN2@MPQFile@3
-; Line 142
-	lea	ecx, DWORD PTR $T106187[ebp]
+; Line 134
+	lea	ecx, DWORD PTR $T106188[ebp]
 	push	ecx
 	mov	ecx, OFFSET ?gOpenArchives@@3V?$deque@PAVMPQArchive@@V?$allocator@PAVMPQArchive@@@std@@@std@@A ; gOpenArchives
 	inc	edi
@@ -3423,13 +3422,13 @@ $LN21@MPQFile@3:
 	cmp	edi, DWORD PTR [eax+8]
 	jne	SHORT $LL11@MPQFile@3
 $LN3@MPQFile@3:
-; Line 165
+; Line 157
 	mov	DWORD PTR [esi+1028], ebx
 $LN33@MPQFile@3:
-; Line 164
+; Line 156
 	mov	BYTE PTR [esi+1024], 1
 $LN34@MPQFile@3:
-; Line 166
+; Line 158
 	mov	ecx, DWORD PTR __$ArrayPad$[ebp]
 	pop	edi
 	mov	eax, esi
@@ -3441,37 +3440,37 @@ $LN34@MPQFile@3:
 	pop	ebp
 	ret	8
 $LN2@MPQFile@3:
-; Line 149
-	mov	edx, DWORD PTR _fileno$98302[ebp]
+; Line 141
+	mov	edx, DWORD PTR _fileno$98303[ebp]
 	lea	edi, DWORD PTR [esi+1040]
 	push	edi
 	push	edx
 	push	ebx
 	call	_libmpq__file_unpacked_size
 	add	esp, 12					; 0000000cH
-; Line 152
+; Line 144
 	cmp	DWORD PTR [edi+4], 0
 	jg	SHORT $LN1@MPQFile@3
 	jl	SHORT $LN31@MPQFile@3
 	cmp	DWORD PTR [edi], 1
 	ja	SHORT $LN1@MPQFile@3
 $LN31@MPQFile@3:
-; Line 155
+; Line 147
 	mov	DWORD PTR [esi+1028], 0
-; Line 156
+; Line 148
 	jmp	SHORT $LN33@MPQFile@3
 $LN1@MPQFile@3:
-; Line 158
+; Line 150
 	mov	eax, DWORD PTR [edi]
 	push	eax
 	call	??_U@YAPAXI@Z				; operator new[]
-; Line 160
+; Line 152
 	mov	edx, DWORD PTR [edi+4]
-	lea	ecx, DWORD PTR _transferred$98304[ebp]
+	lea	ecx, DWORD PTR _transferred$98305[ebp]
 	push	ecx
 	mov	ecx, DWORD PTR [edi]
 	push	edx
-	mov	edx, DWORD PTR _fileno$98302[ebp]
+	mov	edx, DWORD PTR _fileno$98303[ebp]
 	push	ecx
 	push	eax
 	push	edx
@@ -3479,9 +3478,9 @@ $LN1@MPQFile@3:
 	mov	DWORD PTR [esi+1028], eax
 	call	_libmpq__file_read
 	add	esp, 28					; 0000001cH
-; Line 161
+; Line 153
 	mov	BYTE PTR [esi+1048], 0
-; Line 162
+; Line 154
 	jmp	SHORT $LN34@MPQFile@3
 ??0MPQFile@@QAE@PBD_N@Z ENDP				; MPQFile::MPQFile
 _TEXT	ENDS
@@ -3524,8 +3523,8 @@ __ehfuncinfo$??__EgOpenArchives@@YAXXZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??__EgOpenArchives@@YAXXZ
 text$yc	SEGMENT
-$T106457 = -28						; size = 12
-$T106319 = -16						; size = 4
+$T106458 = -28						; size = 12
+$T106320 = -16						; size = 4
 __$EHRec$ = -12						; size = 12
 ??__EgOpenArchives@@YAXXZ PROC				; `dynamic initializer for 'gOpenArchives'', COMDAT
 ; File c:\programovani\wow editor\test\src\editor\mpq.cpp
@@ -3572,15 +3571,15 @@ __$EHRec$ = -12						; size = 12
 	pop	ebp
 	ret	0
 $LN21@dynamic:
-	lea	ecx, DWORD PTR $T106319[ebp]
+	lea	ecx, DWORD PTR $T106320[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T106457[ebp]
-	mov	DWORD PTR $T106319[ebp], esi
+	lea	ecx, DWORD PTR $T106458[ebp]
+	mov	DWORD PTR $T106320[ebp], esi
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T106457[ebp]
+	lea	edx, DWORD PTR $T106458[ebp]
 	push	edx
-	mov	DWORD PTR $T106457[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T106458[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN50@dynamic:
 $LN49@dynamic:

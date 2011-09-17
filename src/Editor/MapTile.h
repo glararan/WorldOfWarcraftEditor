@@ -16,6 +16,8 @@
 #include <string>
 #include "MapHeaders.h"
 
+using namespace std;
+
 class MapTile;
 class MapChunk;
 
@@ -26,13 +28,13 @@ class World;
 #define	FLAG_LQ_OCEAN	8
 #define	FLAG_LQ_MAGMA	16
 
-const int mapbufsize = 9*9 + 8*8;
+const int mapbufsize = 9 * 9 + 8 * 8;
 
 class MapNode
 {
 public:
 
-	MapNode(int x, int y, int s):px(x),py(y),size(s) {}
+	MapNode(int x, int y, int s): px(x), py(y), size(s) {}
 
 	int px, py, size;
 
@@ -46,7 +48,6 @@ public:
 	virtual void drawColor();
 	void setup(MapTile *t);
 	void cleanup();
-
 };
 
 struct MapChunkHeader
@@ -100,7 +101,6 @@ public:
 
 	unsigned int Flags;
 	
-
 	unsigned int areaID;
 
 	bool haswater;
@@ -108,7 +108,7 @@ public:
 	bool hasholes;
 	float waterlevel[2];
 
-	bool	deleted;
+	bool deleted;
 
 	int				tex[4];
 	TextureID		textures[4];
@@ -171,45 +171,44 @@ public:
 
 class MapTile
 {
-	std::string fname;
+	string fname;
 	
 	MPQFile	*theFile;
 
-	bool	chunksLoaded;
-	int		nextChunk;
+	bool chunksLoaded;
+	int	nextChunk;
 	size_t mcnk_offsets[256], mcnk_sizes[256];
-	void	loadChunk();
-	void	finishChunkLoad();
+	void loadChunk();
+	void finishChunkLoad();
 
-	bool	texturesLoaded;
-	char	*textureBuffer;
-	char	*texturePos;
-	size_t	textureSize;
+	bool texturesLoaded;
+	char *textureBuffer;
+	char *texturePos;
+	size_t textureSize;
 
 	void loadTexture();
 	void finishTextureLoad();
 
-	bool	modelsLoaded;
-	char	*modelBuffer;
-	char	*modelPos;
-	size_t	modelSize;
-	int		curModelID;
+	bool modelsLoaded;
+	char *modelBuffer;
+	char *modelPos;
+	size_t modelSize;
+	int	curModelID;
 	
-	uint32	modelNum;
-	MDDF	*modelInstances;
+	uint32 modelNum;
+	MDDF *modelInstances;
 	
 	void loadModel();
 	void loadModelInstances(int id);
 
-	bool	wmosLoaded;
-	char	*wmoBuffer;
-	char	*wmoPos;
-	size_t	wmoSize;
+	bool wmosLoaded;
+	char *wmoBuffer;
+	char *wmoPos;
+	size_t wmoSize;
 	
-	uint32	wmoNum;
-	MODF	*wmoInstances;
+	uint32 wmoNum;
+	MODF *wmoInstances;
 	
-
 	void loadWMO();
 	void loadWMOInstances();
 	
@@ -220,25 +219,22 @@ public:
 	{
 		if(!texturesLoaded)
 		{
-			for(int i=0;i<2;i++)
+			for(int i = 0; i < 2; i++)
 				loadTexture();
 		}		
 		else if(!chunksLoaded)
-		{
-			//loadChunk();
 			loadChunk();
-		}
 		else if(!wmosLoaded)
 			loadWMO();
 		else if(!modelsLoaded)
 			loadModel();		
 	};
-	std::vector<std::string> textures;
-	std::vector<std::string> wmos;
-	std::vector<std::string> models;
+	vector<std::string> textures;
+	vector<std::string> wmos;
+	vector<std::string> models;
 
-	std::vector<WMOInstance> wmois;
-	std::vector<ModelInstance> modelis;
+	vector<WMOInstance> wmois;
+	vector<ModelInstance> modelis;
 	int nWMO;
 	int nMDX;
 
@@ -281,39 +277,39 @@ public:
 int indexMapBuf(int x, int y);
 
 // 8x8x2 version with triangle strips, size = 8*18 + 7*2
-const int stripsize = 8*18 + 7*2;
+const int stripsize = 8 * 18 + 7 * 2;
 template <class V>
 void stripify(V *in, V *out)
 {
-	for (int row=0; row<8; row++)
+	for (int row = 0; row < 8; row++)
 	{
 		V *thisrow = &in[indexMapBuf(0,row*2)];
 		V *nextrow = &in[indexMapBuf(0,(row+1)*2)];
 
 		if (row>0) *out++ = thisrow[0];
-		for (int col=0; col<9; col++)
+		for (int col = 0; col < 9; col++)
 		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
 		}
-		if (row<7) *out++ = nextrow[8];
+		if (row < 7) *out++ = nextrow[8];
 	}
 }
 
 // high res version, size = 16*18 + 7*2 + 8*2
-const int stripsize2 = 16*18 + 7*2 + 8*2;
+const int stripsize2 = 16 * 18 + 7 * 2 + 8 * 2;
 template <class V>
 
 void stripify2(V *in, V *out)
 {
-	for (int row=0; row<8; row++)
+	for(int row = 0; row < 8; row++)
 	{ 
-		V *thisrow = &in[indexMapBuf(0,row*2)];
-		V *nextrow = &in[indexMapBuf(0,row*2+1)];
-		V *overrow = &in[indexMapBuf(0,(row+1)*2)];
+		V *thisrow = &in[indexMapBuf(0,row * 2)];
+		V *nextrow = &in[indexMapBuf(0,row * 2 + 1)];
+		V *overrow = &in[indexMapBuf(0,(row + 1) * 2)];
 
-		if (row>0) *out++ = thisrow[0];// jump end
-		for (int col=0; col<8; col++)
+		if (row > 0) *out++ = thisrow[0];// jump end
+		for (int col = 0; col < 8; col++)
 		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
@@ -323,13 +319,13 @@ void stripify2(V *in, V *out)
 		*out++ = overrow[8];// jump start
 		*out++ = thisrow[0];// jump end
 		*out++ = thisrow[0];
-		for (int col=0; col<8; col++)
+		for (int col = 0; col < 8; col++)
 		{
 			*out++ = overrow[col];
 			*out++ = nextrow[col];
 		}
-		if (row<8) *out++ = overrow[8];
-		if (row<7) *out++ = overrow[8];// jump start
+		if (row < 8) *out++ = overrow[8];
+		if (row < 7) *out++ = overrow[8];// jump start
 	}
 }
 

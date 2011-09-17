@@ -77,7 +77,7 @@ PUBLIC	?Region@AreaDB@@2IB				; AreaDB::Region
 PUBLIC	?Flags@AreaDB@@2IB				; AreaDB::Flags
 PUBLIC	?Name@AreaDB@@2IB				; AreaDB::Name
 CONST	SEGMENT
-$SG23536 DB	'DBFilesClient\AreaTable.dbc', 00H
+$SG23545 DB	'DBFilesClient\AreaTable.dbc', 00H
 CONST	ENDS
 ;	COMDAT ?Name@AreaDB@@2IB
 CONST	SEGMENT
@@ -581,14 +581,14 @@ _field$ = 8						; size = 4
 ?getUInt@Record@DBCFile@@QBEII@Z PROC			; DBCFile::Record::getUInt, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 44
+; Line 54
 	push	ebp
 	mov	ebp, esp
-; Line 46
+; Line 56
 	mov	eax, DWORD PTR [ecx]
 	mov	ecx, DWORD PTR _field$[ebp]
 	mov	eax, DWORD PTR [eax+ecx*4]
-; Line 47
+; Line 57
 	pop	ebp
 	ret	4
 ?getUInt@Record@DBCFile@@QBEII@Z ENDP			; DBCFile::Record::getUInt
@@ -599,13 +599,13 @@ PUBLIC	??EIterator@DBCFile@@QAEAAV01@XZ		; DBCFile::Iterator::operator++
 _TEXT	SEGMENT
 ??EIterator@DBCFile@@QAEAAV01@XZ PROC			; DBCFile::Iterator::operator++, COMDAT
 ; _this$ = ecx
-; Line 77
+; Line 87
 	mov	eax, ecx
-; Line 78
+; Line 88
 	mov	ecx, DWORD PTR [eax+4]
 	mov	edx, DWORD PTR [ecx+28]
 	add	DWORD PTR [eax], edx
-; Line 80
+; Line 90
 	ret	0
 ??EIterator@DBCFile@@QAEAAV01@XZ ENDP			; DBCFile::Iterator::operator++
 _TEXT	ENDS
@@ -615,7 +615,7 @@ PUBLIC	??DIterator@DBCFile@@QBEABVRecord@1@XZ		; DBCFile::Iterator::operator*
 _TEXT	SEGMENT
 ??DIterator@DBCFile@@QBEABVRecord@1@XZ PROC		; DBCFile::Iterator::operator*, COMDAT
 ; _this$ = ecx
-; Line 82
+; Line 92
 	mov	eax, ecx
 	ret	0
 ??DIterator@DBCFile@@QBEABVRecord@1@XZ ENDP		; DBCFile::Iterator::operator*
@@ -626,9 +626,9 @@ PUBLIC	??CIterator@DBCFile@@QBEPBVRecord@1@XZ		; DBCFile::Iterator::operator->
 _TEXT	SEGMENT
 ??CIterator@DBCFile@@QBEPBVRecord@1@XZ PROC		; DBCFile::Iterator::operator->, COMDAT
 ; _this$ = ecx
-; Line 83
+; Line 94
 	mov	eax, ecx
-; Line 85
+; Line 96
 	ret	0
 ??CIterator@DBCFile@@QBEPBVRecord@1@XZ ENDP		; DBCFile::Iterator::operator->
 _TEXT	ENDS
@@ -639,16 +639,16 @@ _TEXT	SEGMENT
 _b$ = 8							; size = 4
 ??9Iterator@DBCFile@@QBE_NABV01@@Z PROC			; DBCFile::Iterator::operator!=, COMDAT
 ; _this$ = ecx
-; Line 92
+; Line 103
 	push	ebp
 	mov	ebp, esp
-; Line 93
+; Line 104
 	mov	eax, DWORD PTR [ecx]
 	mov	edx, DWORD PTR _b$[ebp]
 	xor	ecx, ecx
 	cmp	eax, DWORD PTR [edx]
 	setne	al
-; Line 94
+; Line 105
 	pop	ebp
 	ret	4
 ??9Iterator@DBCFile@@QBE_NABV01@@Z ENDP			; DBCFile::Iterator::operator!=
@@ -922,8 +922,8 @@ __TI2?AVbad_alloc@std@@ DD 00H
 xdata$x	ENDS
 ;	COMDAT ??$_Allocate@D@std@@YAPADIPAD@Z
 _TEXT	SEGMENT
-$T29051 = -12						; size = 12
-$T29056 = 8						; size = 4
+$T29077 = -12						; size = 12
+$T29082 = 8						; size = 4
 __Count$ = 8						; size = 4
 ___formal$ = 12						; size = 4
 ??$_Allocate@D@std@@YAPADIPAD@Z PROC			; std::_Allocate<char>, COMDAT
@@ -949,15 +949,15 @@ ___formal$ = 12						; size = 4
 	jne	SHORT $LN5@Allocate
 $LN1@Allocate:
 ; Line 37
-	lea	eax, DWORD PTR $T29056[ebp]
+	lea	eax, DWORD PTR $T29082[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T29051[ebp]
-	mov	DWORD PTR $T29056[ebp], 0
+	lea	ecx, DWORD PTR $T29077[ebp]
+	mov	DWORD PTR $T29082[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T29051[ebp]
+	lea	ecx, DWORD PTR $T29077[ebp]
 	push	ecx
-	mov	DWORD PTR $T29051[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T29077[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN10@Allocate:
 $LN5@Allocate:
@@ -1042,8 +1042,8 @@ PUBLIC	?allocate@?$allocator@D@std@@QAEPADI@Z		; std::allocator<char>::allocate
 ; Function compile flags: /Ogtp
 ;	COMDAT ?allocate@?$allocator@D@std@@QAEPADI@Z
 _TEXT	SEGMENT
-$T29103 = -12						; size = 12
-$T29101 = 8						; size = 4
+$T29129 = -12						; size = 12
+$T29127 = 8						; size = 4
 __Count$ = 8						; size = 4
 ?allocate@?$allocator@D@std@@QAEPADI@Z PROC		; std::allocator<char>::allocate, COMDAT
 ; _this$ = ecx
@@ -1065,15 +1065,15 @@ __Count$ = 8						; size = 4
 	test	eax, eax
 	jne	SHORT $LN1@allocate
 $LN3@allocate:
-	lea	eax, DWORD PTR $T29101[ebp]
+	lea	eax, DWORD PTR $T29127[ebp]
 	push	eax
-	lea	ecx, DWORD PTR $T29103[ebp]
-	mov	DWORD PTR $T29101[ebp], 0
+	lea	ecx, DWORD PTR $T29129[ebp]
+	mov	DWORD PTR $T29127[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	ecx, DWORD PTR $T29103[ebp]
+	lea	ecx, DWORD PTR $T29129[ebp]
 	push	ecx
-	mov	DWORD PTR $T29103[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T29129[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN13@allocate:
 $LN1@allocate:
@@ -1274,9 +1274,9 @@ __tryblocktable$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@s
 xdata$x	ENDS
 ;	COMDAT ?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z
 _TEXT	SEGMENT
-$T29290 = -40						; size = 12
+$T29316 = -40						; size = 12
 __Newres$ = -28						; size = 4
-$T29273 = -24						; size = 4
+$T29299 = -24						; size = 4
 _this$ = -20						; size = 4
 __$EHRec$ = -16						; size = 16
 __Ptr$ = 8						; size = 4
@@ -1352,15 +1352,15 @@ $LN47@Copy:
 	mov	DWORD PTR __Ptr$[ebp], eax
 	jmp	SHORT $LN19@Copy
 $LN46@Copy:
-	lea	ecx, DWORD PTR $T29273[ebp]
+	lea	ecx, DWORD PTR $T29299[ebp]
 	push	ecx
-	lea	ecx, DWORD PTR $T29290[ebp]
-	mov	DWORD PTR $T29273[ebp], 0
+	lea	ecx, DWORD PTR $T29316[ebp]
+	mov	DWORD PTR $T29299[ebp], 0
 	call	DWORD PTR __imp_??0exception@std@@QAE@ABQBD@Z
 	push	OFFSET __TI2?AVbad_alloc@std@@
-	lea	edx, DWORD PTR $T29290[ebp]
+	lea	edx, DWORD PTR $T29316[ebp]
 	push	edx
-	mov	DWORD PTR $T29290[ebp], OFFSET ??_7bad_alloc@std@@6B@
+	mov	DWORD PTR $T29316[ebp], OFFSET ??_7bad_alloc@std@@6B@
 	call	__CxxThrowException@8
 $LN112@Copy:
 __catch$?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXII@Z$0:
@@ -1655,7 +1655,7 @@ _TEXT	SEGMENT
 ??1Exception@DBCFile@@UAE@XZ PROC			; DBCFile::Exception::~Exception, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 22
+; Line 25
 	push	esi
 	mov	esi, ecx
 	mov	DWORD PTR [esi], OFFSET ??_7Exception@DBCFile@@6B@
@@ -2093,7 +2093,7 @@ _message$ = 8						; size = 4
 ??0Exception@DBCFile@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z PROC ; DBCFile::Exception::Exception, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 20
+; Line 23
 	push	ebp
 	mov	ebp, esp
 	mov	eax, DWORD PTR _message$[ebp]
@@ -2223,13 +2223,13 @@ __ehfuncinfo$??0NotFound@DBCFile@@QAE@XZ DD 019930522H
 xdata$x	ENDS
 ;	COMDAT ??0NotFound@DBCFile@@QAE@XZ
 _TEXT	SEGMENT
-$T23461 = -44						; size = 28
+$T23465 = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ??0NotFound@DBCFile@@QAE@XZ PROC			; DBCFile::NotFound::NotFound, COMDAT
 ; _this$ = ecx
 ; File c:\programovani\wow editor\test\src\editor\dbcfile.h
-; Line 31
+; Line 35
 	push	ebp
 	mov	ebp, esp
 	push	-1
@@ -2249,25 +2249,25 @@ __$EHRec$ = -12						; size = 12
 	mov	esi, ecx
 	xor	ebx, ebx
 	push	OFFSET ??_C@_0BC@CKAHAFFG@Key?5was?5not?5found?$AA@
-	lea	ecx, DWORD PTR $T23461[ebp]
-	mov	DWORD PTR $T23461[ebp+20], 15		; 0000000fH
-	mov	DWORD PTR $T23461[ebp+16], ebx
-	mov	BYTE PTR $T23461[ebp], bl
+	lea	ecx, DWORD PTR $T23465[ebp]
+	mov	DWORD PTR $T23465[ebp+20], 15		; 0000000fH
+	mov	DWORD PTR $T23465[ebp+16], ebx
+	mov	BYTE PTR $T23465[ebp], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	push	-1
 	lea	ecx, DWORD PTR [esi+4]
 	mov	DWORD PTR [esi], OFFSET ??_7Exception@DBCFile@@6B@
 	push	ebx
-	lea	eax, DWORD PTR $T23461[ebp]
+	lea	eax, DWORD PTR $T23465[ebp]
 	mov	DWORD PTR [ecx+20], 15			; 0000000fH
 	mov	DWORD PTR [ecx+16], ebx
 	push	eax
 	mov	DWORD PTR __$EHRec$[ebp+8], ebx
 	mov	BYTE PTR [ecx], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	cmp	DWORD PTR $T23461[ebp+20], 16		; 00000010H
+	cmp	DWORD PTR $T23465[ebp+20], 16		; 00000010H
 	jb	SHORT $LN86@NotFound
-	mov	ecx, DWORD PTR $T23461[ebp]
+	mov	ecx, DWORD PTR $T23465[ebp]
 	push	ecx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -2289,7 +2289,7 @@ _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
 __unwindfunclet$??0NotFound@DBCFile@@QAE@XZ$0:
-	lea	ecx, DWORD PTR $T23461[ebp]
+	lea	ecx, DWORD PTR $T23465[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$??0NotFound@DBCFile@@QAE@XZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -2378,7 +2378,7 @@ __ehfuncinfo$??0AreaDB@@QAE@XZ DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-$T23535 = -44						; size = 28
+$T23544 = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ??0AreaDB@@QAE@XZ PROC					; AreaDB::AreaDB
@@ -2401,20 +2401,20 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	push	27					; 0000001bH
 	mov	esi, ecx
-	push	OFFSET $SG23536
-	lea	ecx, DWORD PTR $T23535[ebp]
-	mov	DWORD PTR $T23535[ebp+20], 15		; 0000000fH
-	mov	DWORD PTR $T23535[ebp+16], 0
-	mov	BYTE PTR $T23535[ebp], 0
+	push	OFFSET $SG23545
+	lea	ecx, DWORD PTR $T23544[ebp]
+	mov	DWORD PTR $T23544[ebp+20], 15		; 0000000fH
+	mov	DWORD PTR $T23544[ebp+16], 0
+	mov	BYTE PTR $T23544[ebp], 0
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	lea	eax, DWORD PTR $T23535[ebp]
+	lea	eax, DWORD PTR $T23544[ebp]
 	push	eax
 	mov	ecx, esi
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	call	??0DBCFile@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z ; DBCFile::DBCFile
-	cmp	DWORD PTR $T23535[ebp+20], 16		; 00000010H
+	cmp	DWORD PTR $T23544[ebp+20], 16		; 00000010H
 	jb	SHORT $LN57@AreaDB
-	mov	ecx, DWORD PTR $T23535[ebp]
+	mov	ecx, DWORD PTR $T23544[ebp]
 	push	ecx
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
@@ -2434,7 +2434,7 @@ $LN57@AreaDB:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$??0AreaDB@@QAE@XZ$0:
-	lea	ecx, DWORD PTR $T23535[ebp]
+	lea	ecx, DWORD PTR $T23544[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$??0AreaDB@@QAE@XZ:
 	mov	edx, DWORD PTR [esp+8]
@@ -2506,10 +2506,10 @@ __ehfuncinfo$?getByAreaID@AreaDB@@QAE?AVRecord@DBCFile@@I@Z DD 019930522H
 ; Function compile flags: /Ogtp
 xdata$x	ENDS
 _TEXT	SEGMENT
-$T31240 = -92						; size = 8
-_i$23545 = -84						; size = 8
-$T23559 = -76						; size = 32
-$T31662 = -44						; size = 28
+$T31266 = -92						; size = 8
+_i$23554 = -84						; size = 8
+$T23584 = -76						; size = 32
+$T31688 = -44						; size = 28
 __$ArrayPad$ = -16					; size = 4
 __$EHRec$ = -12						; size = 12
 ___$ReturnUdt$ = 8					; size = 4
@@ -2536,15 +2536,15 @@ _id$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 	mov	edi, DWORD PTR ___$ReturnUdt$[ebp]
 ; Line 14
-	lea	eax, DWORD PTR _i$23545[ebp]
+	lea	eax, DWORD PTR _i$23554[ebp]
 	push	eax
 	mov	esi, ecx
 	call	?begin@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::begin
-	lea	ecx, DWORD PTR $T31240[ebp]
+	lea	ecx, DWORD PTR $T31266[ebp]
 	push	ecx
 	mov	ecx, esi
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$23545[ebp]
+	mov	ecx, DWORD PTR _i$23554[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	je	SHORT $LN2@getByAreaI
 	mov	ebx, DWORD PTR _id$[ebp]
@@ -2554,14 +2554,14 @@ $LL7@getByAreaI:
 	cmp	DWORD PTR [ecx], ebx
 	je	$LN103@getByAreaI
 ; Line 14
-	mov	edx, DWORD PTR _i$23545[ebp+4]
+	mov	edx, DWORD PTR _i$23554[ebp+4]
 	add	ecx, DWORD PTR [edx+28]
-	lea	eax, DWORD PTR $T31240[ebp]
-	mov	DWORD PTR _i$23545[ebp], ecx
+	lea	eax, DWORD PTR $T31266[ebp]
+	mov	DWORD PTR _i$23554[ebp], ecx
 	push	eax
 	mov	ecx, esi
 	call	?end@DBCFile@@QAE?AVIterator@1@XZ	; DBCFile::end
-	mov	ecx, DWORD PTR _i$23545[ebp]
+	mov	ecx, DWORD PTR _i$23554[ebp]
 	cmp	ecx, DWORD PTR [eax]
 	jne	SHORT $LL7@getByAreaI
 $LN2@getByAreaI:
@@ -2570,43 +2570,43 @@ $LN2@getByAreaI:
 	xor	ebx, ebx
 	mov	esi, 15					; 0000000fH
 	push	OFFSET ??_C@_0BC@CKAHAFFG@Key?5was?5not?5found?$AA@
-	lea	ecx, DWORD PTR $T31662[ebp]
-	mov	DWORD PTR $T31662[ebp+20], esi
-	mov	DWORD PTR $T31662[ebp+16], ebx
-	mov	BYTE PTR $T31662[ebp], bl
+	lea	ecx, DWORD PTR $T31688[ebp]
+	mov	DWORD PTR $T31688[ebp+20], esi
+	mov	DWORD PTR $T31688[ebp+16], ebx
+	mov	BYTE PTR $T31688[ebp], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
 	push	-1
 	push	ebx
-	lea	edx, DWORD PTR $T31662[ebp]
+	lea	edx, DWORD PTR $T31688[ebp]
 	push	edx
-	lea	ecx, DWORD PTR $T23559[ebp+4]
+	lea	ecx, DWORD PTR $T23584[ebp+4]
 	mov	DWORD PTR __$EHRec$[ebp+8], ebx
-	mov	DWORD PTR $T23559[ebp], OFFSET ??_7Exception@DBCFile@@6B@
-	mov	DWORD PTR $T23559[ebp+24], esi
-	mov	DWORD PTR $T23559[ebp+20], ebx
-	mov	BYTE PTR $T23559[ebp+4], bl
+	mov	DWORD PTR $T23584[ebp], OFFSET ??_7Exception@DBCFile@@6B@
+	mov	DWORD PTR $T23584[ebp+24], esi
+	mov	DWORD PTR $T23584[ebp+20], ebx
+	mov	BYTE PTR $T23584[ebp+4], bl
 	call	?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::assign
-	cmp	DWORD PTR $T31662[ebp+20], 16		; 00000010H
+	cmp	DWORD PTR $T31688[ebp+20], 16		; 00000010H
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	jb	SHORT $LN90@getByAreaI
-	mov	eax, DWORD PTR $T31662[ebp]
+	mov	eax, DWORD PTR $T31688[ebp]
 	push	eax
 	call	??3@YAXPAX@Z				; operator delete
 	add	esp, 4
 $LN90@getByAreaI:
 	push	OFFSET __TI2?AVNotFound@DBCFile@@
-	lea	ecx, DWORD PTR $T23559[ebp]
+	lea	ecx, DWORD PTR $T23584[ebp]
 	push	ecx
-	mov	DWORD PTR $T31662[ebp+20], esi
-	mov	DWORD PTR $T31662[ebp+16], ebx
-	mov	BYTE PTR $T31662[ebp], bl
-	mov	DWORD PTR $T23559[ebp], OFFSET ??_7NotFound@DBCFile@@6B@
+	mov	DWORD PTR $T31688[ebp+20], esi
+	mov	DWORD PTR $T31688[ebp+16], ebx
+	mov	BYTE PTR $T31688[ebp], bl
+	mov	DWORD PTR $T23584[ebp], OFFSET ??_7NotFound@DBCFile@@6B@
 	call	__CxxThrowException@8
 $LN107@getByAreaI:
 $LN103@getByAreaI:
 ; Line 18
 	mov	DWORD PTR [edi], ecx
-	mov	ecx, DWORD PTR _i$23545[ebp+4]
+	mov	ecx, DWORD PTR _i$23554[ebp+4]
 	mov	DWORD PTR [edi+4], ecx
 	mov	eax, edi
 ; Line 21
@@ -2626,7 +2626,7 @@ $LN106@getByAreaI:
 _TEXT	ENDS
 text$x	SEGMENT
 __unwindfunclet$?getByAreaID@AreaDB@@QAE?AVRecord@DBCFile@@I@Z$0:
-	lea	ecx, DWORD PTR $T31662[ebp]
+	lea	ecx, DWORD PTR $T31688[ebp]
 	jmp	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::~basic_string<char,std::char_traits<char>,std::allocator<char> >
 __ehhandler$?getByAreaID@AreaDB@@QAE?AVRecord@DBCFile@@I@Z:
 	mov	edx, DWORD PTR [esp+8]
