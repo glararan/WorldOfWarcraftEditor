@@ -17,7 +17,7 @@
 
 #include "MapViewer.h"
 #include "Menu.h"
-#include "Areadb.h"
+#include "AreaDB.h"
 
 #include "Shaders.h"
 
@@ -153,9 +153,9 @@ int checkConfig2()
 // ##################
 void GraphicCard()
 {
-	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VENDOR));
-	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_RENDERER));
-	gLog("[World of Warcraft Studio - Editor] - %s\n", glGetString(GL_VERSION));
+	gLog("[World of Warcraft Studio - Editor] - %s\n", (char*)glGetString(GL_VENDOR));
+	gLog("[World of Warcraft Studio - Editor] - %s\n", (char*)glGetString(GL_RENDERER));
+	gLog("[World of Warcraft Studio - Editor] - %s\n", (char*)glGetString(GL_VERSION));
 }
 
 vector<AppState*> gStates;
@@ -174,23 +174,28 @@ float gFPS;
 
 GLuint ftex;
 Font *f16, *f24, *f32;
-freetype::font_data arialn13,arial12,arial14,arial16,morpheus;	
+freetype::font_data arialn13, arial12, arial14, arial16, morpheus;
+const char* arialtga = "Data\\Fonts\\ARIAL.TGA";
+const char* arialinfo = "Data\\Fonts\\ARIAL.INFO";
+const char* arialttf = "Data\\Fonts\\ARIAL.TTF";
+const char* morpheusttf = "Fonts\\MORPHEUS.TTF";
+const char* arialnttf = "Fonts\\ARIALN.TTF";
 AreaDB gAreaDB;
 
 void InitFonts()
 {
-	ftex = loadTGA("Data\\fonts\\arial.tga",false);
+	ftex = loadTGA(arialtga, false);
 
-	f16 = new Font(ftex, 256, 256, 16, "Data\\fonts\\arial.info");
-	f24 = new Font(ftex, 256, 256, 24, "Data\\fonts\\arial.info");
-	f32 = new Font(ftex, 256, 256, 32, "Data\\fonts\\arial.info");
+	f16 = new Font(ftex, 256, 256, 16, arialinfo);
+	f24 = new Font(ftex, 256, 256, 24, arialinfo);
+	f32 = new Font(ftex, 256, 256, 32, arialinfo);
 
-	morpheus.initMPQ("Data\\fonts\\morpheus.ttf",40);
-	arialn13.initMPQ("Data\\fonts\\arialn.ttf",13);
+	morpheus.InitMPQ(morpheusttf, 40);
+	arialn13.InitMPQ(arialnttf, 13);
 	
-	arial12.init("Data\\fonts\\arial.ttf",12);
-	arial14.init("Data\\fonts\\arial.ttf",14);
-	arial16.init("Data\\fonts\\arial.ttf",16);
+	arial12.Init(arialttf, 12);
+	arial14.Init(arialttf, 14);
+	arial16.Init(arialttf, 16);
 }
 
 void deleteFonts()
@@ -399,6 +404,7 @@ bool fillArchiveNameVector(vector<string>& pArchiveNames)
 
 void CreateStrips();
 void InitGroundEffects();
+void InitAreaDB();
 int main(int argc, char *argv[])
 {
 	srand((unsigned int)time(0));
@@ -490,307 +496,6 @@ int main(int argc, char *argv[])
 
 	checkConfig2();
 
-	/*deque<string> archiveNames;
-	switch(loadExpansion())
-	{
-	case 1: // TBC
-		{
-			archiveNames.push_back("common.MPQ");
-			archiveNames.push_back("expansion.MPQ");
-			archiveNames.push_back("patch.MPQ");
-			archiveNames.push_back("patch-2.MPQ");
-
-			switch(loadGameVersion())
-			{
-			case 1: // enGB
-				{
-					archiveNames.push_back("enGB\\locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\expansion-locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\patch-enGB.MPQ");
-					archiveNames.push_back("enGB\\patch-enGB-2.MPQ");
-
-					break;
-				}
-
-			case 2: // enUS
-				{
-					archiveNames.push_back("enUS\\locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\expansion-locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\patch-enUS.MPQ");
-					archiveNames.push_back("enUS\\patch-enUS-2.MPQ");
-
-					break;
-				}
-
-			case 3: // deDE
-				{
-					archiveNames.push_back("deDE\\locale-edeDE.MPQ");
-					archiveNames.push_back("deDE\\expansion-locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\patch-deDE.MPQ");
-					archiveNames.push_back("deDE\\patch-deDE-2.MPQ");
-
-					break;
-				}
-
-			case 4: // esES
-				{
-					archiveNames.push_back("esES\\locale-esES.MPQ");
-					archiveNames.push_back("esES\\expansion-locale-esES.MPQ");
-					archiveNames.push_back("esES\\patch-esES.MPQ");
-					archiveNames.push_back("esES\\patch-esES-2.MPQ");
-
-					break;
-				}
-
-			case 5: // frFR
-				{
-					archiveNames.push_back("frFR\\locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\expansion-locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\patch-frFR.MPQ");
-					archiveNames.push_back("frFR\\patch-frFR-2.MPQ");
-
-					break;
-				}
-
-			case 6: // ruRU
-				{
-					archiveNames.push_back("ruRU\\locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\expansion-locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\patch-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\patch-ruRU-2.MPQ");
-
-					break;
-				}
-
-			default: // ERROR
-				{
-					gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-					exit(1);
-
-					break;
-				}
-
-			} // End switch
-
-			char* locales[] = {"", "enGB", "enUS", "deDE", "esES", "frFR", "ruRU"};
-			char temp[255];
-			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
-
-			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
-			{
-				gLog_const((*it).c_str());
-			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for TBC\n");
-
-			break;
-		}
-
-	case 2: // WotLK
-		{
-			archiveNames.push_back("common.MPQ");
-			archiveNames.push_back("common-2.MPQ");
-			archiveNames.push_back("expansion.MPQ");
-			archiveNames.push_back("lichking.MPQ");
-			archiveNames.push_back("patch.MPQ");
-			archiveNames.push_back("patch-2.MPQ");
-
-			switch(loadGameVersion())
-			{
-			case 1: // enGB
-				{
-					archiveNames.push_back("enGB\\locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\expansion-locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\lichking-locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\patch-enGB.MPQ");
-					archiveNames.push_back("enGB\\patch-enGB-2.MPQ");
-
-					break;
-				}
-
-			case 2: // enUS
-				{
-					archiveNames.push_back("enUS\\locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\expansion-locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\lichking-locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\patch-enUS.MPQ");
-					archiveNames.push_back("enUS\\patch-enUS-2.MPQ");
-
-					break;
-				}
-
-			case 3: // deDE
-				{
-					archiveNames.push_back("deDE\\locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\expansion-locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\lichking-locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\patch-deDE.MPQ");
-					archiveNames.push_back("deDE\\patch-deDE-2.MPQ");
-
-					break;
-				}
-
-			case 4: // esES
-				{
-					archiveNames.push_back("esES\\locale-esES.MPQ");
-					archiveNames.push_back("esES\\expansion-locale-esES.MPQ");
-					archiveNames.push_back("esES\\lichking-locale-esES.MPQ");
-					archiveNames.push_back("esES\\patch-esES.MPQ");
-					archiveNames.push_back("esES\\patch-esES-2.MPQ");
-
-					break;
-				}
-
-			case 5: // frFR
-				{
-					archiveNames.push_back("frFR\\locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\expansion-locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\lichking-locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\patch-frFR.MPQ");
-					archiveNames.push_back("frFR\\patch-frFR-2.MPQ");
-
-					break;
-				}
-
-			case 6: // ruRU
-				{
-					archiveNames.push_back("ruRU\\locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\expansion-locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\lichking-locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\patch-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\patch-ruRU-2.MPQ");
-
-					break;
-				}
-
-			default: // ERROR
-				{
-					gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-					exit(1);
-
-					break;
-				}
-
-			} // End switch
-
-			char* locales[] = {"", "enGB", "enUS", "deDE", "esES", "frFR", "ruRU"};
-			char temp[255];
-			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
-
-			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
-			{
-				gLog_const((*it).c_str());
-			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for WotLK\n");
-
-			break;
-		}
-
-	case 3: // Cataclysm
-		{
-			archiveNames.push_back("art.MPQ");
-			archiveNames.push_back("expansion1.MPQ");
-			archiveNames.push_back("expansion2.MPQ");
-			archiveNames.push_back("expansion3.MPQ");
-			archiveNames.push_back("sound.MPQ");
-			archiveNames.push_back("world.MPQ");
-
-			switch(loadGameVersion())
-			{
-			case 1: // enGB
-				{
-					archiveNames.push_back("enGB\\locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\expansion1-locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\expansion2-locale-enGB.MPQ");
-					archiveNames.push_back("enGB\\expansion3-locale-enGB.MPQ");
-
-					break;
-				}
-
-			case 2: // enUS
-				{
-					archiveNames.push_back("enUS\\locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\expansion1-locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\expansion2-locale-enUS.MPQ");
-					archiveNames.push_back("enUS\\expansion3-locale-enUS.MPQ");
-
-					break;
-				}
-			
-			case 3: // deDE
-				{
-					archiveNames.push_back("deDE\\locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\expansion1-locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\expansion2-locale-deDE.MPQ");
-					archiveNames.push_back("deDE\\expansion3-locale-deDE.MPQ");
-
-					break;
-				}
-
-			case 4: // esES
-				{
-					archiveNames.push_back("esES\\locale-esES.MPQ");
-					archiveNames.push_back("esES\\expansion1-locale-esES.MPQ");
-					archiveNames.push_back("esES\\expansion2-locale-esES.MPQ");
-					archiveNames.push_back("esES\\expansion3-locale-esES.MPQ");
-
-					break;
-				}
-
-			case 5: // frFR
-				{
-					archiveNames.push_back("frFR\\locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\expansion1-locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\expansion2-locale-frFR.MPQ");
-					archiveNames.push_back("frFR\\expansion3-locale-frFR.MPQ");
-
-					break;
-				}
-
-			case 6: // ruRU
-				{
-					archiveNames.push_back("ruRU\\locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\expansion1-locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\expansion2-locale-ruRU.MPQ");
-					archiveNames.push_back("ruRU\\expansion3-locale-ruRU.MPQ");
-
-					break;
-				}
-
-			default: // ERROR
-				{
-					gLog("[World of Warcraft Studio - Editor] - Can't load GameVersion.\n");
-					exit(1);
-
-					break;
-				}
-
-			} // End switch
-
-			char* locales[] = {"", "enGB", "enUS", "deDE", "esES", "frFR", "ruRU"};
-			char temp[255];
-			sprintf(temp, "%s\\local-%s.MPQ", locales[loadGameVersion()], locales[loadGameVersion()]);
-
-			for(deque<string>::iterator it = archiveNames.begin(); it != archiveNames.end(); it++)
-			{
-				gLog_const((*it).c_str());
-			}
-
-			gLog("[World of Warcraft Studio - Editor] - Loading MPQ archives for Cataclysm\n");
-
-			break;
-		}
-	
-	default: // ERROR
-		{
-			gLog("[World of Warcraft Studio - Editor] - Expansion isn't - The Burning Crusade or Wrath of the Lich King or Cataclysm. Select one of third expansion.\n");
-			exit(1);
-			break;
-		}
-
-	}*/
-
 	vector<string> archiveNames;
 	fillArchiveNameVector(archiveNames);
 	for(size_t i = 0; i < archiveNames.size(); ++i)
@@ -812,6 +517,7 @@ int main(int argc, char *argv[])
 	InitGroundEffects();
 	gLog("[World of Warcraft Studio - Editor] - Initializing Fonts\n");
 	InitFonts();
+	gLog("[World of Warcraft Studio - Editor] - Main Initializing complete\n");
 
 	float ftime;
 	uint32 t, last_t, frames = 0, time = 0, fcount = 0, ft = 0;
@@ -896,8 +602,8 @@ int main(int argc, char *argv[])
             float fps = (float)fcount / (float)ft * 1000.0f;
 			gFPS = fps;
 			char buf[32];
-			sprintf_s(buf, APP_TITLE " - %.2f fps",fps);
-			SDL_WM_SetCaption(buf,NULL);
+			sprintf_s(buf, APP_TITLE " - %.2f fps", fps);
+			SDL_WM_SetCaption(buf, NULL);
             ft = 0;
 			fcount = 0;
 		}

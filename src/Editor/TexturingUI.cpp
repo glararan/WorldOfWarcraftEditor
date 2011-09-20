@@ -136,8 +136,8 @@ std::map<GLuint, ManagedItem*>::iterator FindCurTexture()
 	video.textures.add(CurTextureName);
 
 	//now find where it is
-	for(std::map<GLuint, ManagedItem*>::iterator i=video.textures.items.begin();i!=video.textures.items.end();i++)
-		if(strcmp(CurTextureName,i->second->name.c_str())==0)
+	for(std::map<GLuint, ManagedItem*>::iterator i = video.textures.items.begin(); i != video.textures.items.end(); i++)
+		if(strcmp(CurTextureName,i->second->name.c_str()) == 0)
 			return i;
 }
 

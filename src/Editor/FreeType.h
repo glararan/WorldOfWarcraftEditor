@@ -45,8 +45,8 @@ struct font_data
 
 	//The init function will create a font of
 	//of the height h from the file fname.
-	void init(const char * fname, unsigned int h);
-	void initMPQ(const char * fname, unsigned int h);
+	void Init(const char* fname, unsigned int h);
+	void InitMPQ(const char* fname, unsigned int h);
 
 	//Free all the resources assosiated with the font.
 	void clean();

@@ -7,6 +7,8 @@
 
 #include "World.h"
 
+using namespace std;
+
 struct Clickable
 {
 	int x0, y0, x1, y1;
@@ -16,15 +18,21 @@ struct Clickable
 
 struct MapEntry: public Clickable
 {
-	std::string name, description;
+	unsigned int id;
+	unsigned int instanceType;
+	unsigned int expansion;
+	
+	string directory;
+	string name;
+
 	Font *font;
 };
 
 struct Bookmark: public Clickable
 {
-	std::string basename, name, label;
+	string basename, name, label;
 	Vec3D pos;
-	float ah,av;
+	float ah, av;
 };
 
 enum Commands
@@ -35,14 +43,14 @@ enum Commands
 	CMD_BACK_TO_MENU,
 };
 
-class Menu :public AppState
+class Menu : public AppState
 {
-	int sel,cmd,x,y,cz,cx;
+	int sel, cmd, x, y, cz, cx;
 
 	World *world;
 
-	std::vector<MapEntry> maps;
-	std::vector<Bookmark> bookmarks;
+	vector<MapEntry> maps;
+	vector<Bookmark> bookmarks;
 
 	bool setpos;
 	float ah,av;

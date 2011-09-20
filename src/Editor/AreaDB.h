@@ -23,3 +23,19 @@ private:
 };
 
 #endif
+
+struct AreaTable
+{
+	unsigned int ID;          // 0
+	unsigned int mapid;       // 1
+	unsigned int zone;        // 2
+	unsigned int exploreFlag; // 3
+	unsigned int flags;       // 4
+	                          // 5-9 unsed
+	int   area_level;         // 10
+	const char* area_name[16];// 11 - 26
+	                          // 27 unused
+	unsigned int team;        // 28
+};
+
+void InitAreaDB();

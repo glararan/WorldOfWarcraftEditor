@@ -7,17 +7,19 @@ namespace freetype
 
 ///This function gets the first power of 2 >= the
 ///int that we pass it.
-inline int next_p2 (int a)
+inline int next_p2(int a)
 {
 	int rval = 1;
-	while(rval < a) rval <<= 1;
+
+	while(rval < a)
+		rval <<= 1;
+
 	return rval;
 }
 
 ///Create a display list coresponding to the give character.
-int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int fontsize)
+int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base, int fontsize)
 {
-
 	//The first thing we do is get FreeType to render our character
 	//into a bitmap.  This actually requires a couple of FreeType commands:
 
@@ -61,11 +63,12 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int f
 	//will be 0 if we are in the padding zone, and whatever
 	//is the the Freetype bitmap otherwise.
 	memset(expanded_data, 0, width * height * 2);
+
 	for(int j = 0; j < height; j++)
 	{
 		for(int i = 0; i < width; i++)
 		{
-			expanded_data[2 * (i + j * width)] = expanded_data[2 * (i + j * width) + 1]= 
+			expanded_data[2 * (i + j * width)] = expanded_data[2 * (i + j * width) + 1] = 
 				(i >= bitmap.width || j >= bitmap.rows) ?
 				0 : (unsigned char)min((float)(bitmap.buffer[i + bitmap.width*j]) * 1.5f, 255.0f);
 		}
@@ -127,7 +130,7 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int f
 	glTexCoord2f(1, 0); glVertex2f(width, 0);
 	glEnd();
 	glPopMatrix();
-	glTranslatef(face->glyph->advance.x >> 6 , 0, 0);
+	glTranslatef(face->glyph->advance.x >> 6, 0, 0);
 
 	//increment the raster position as if we were a bitmap font.
 	//(only needed if you want to calculate text length)
@@ -141,7 +144,7 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base,int f
 	return face->glyph->advance.x >> 6;
 }
 
-void font_data::init(const char * fname, unsigned int h)
+void font_data::Init(const char* fname, unsigned int h)
 {
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
@@ -150,7 +153,7 @@ void font_data::init(const char * fname, unsigned int h)
 
 	//Create and initilize a freetype font library.
 	FT_Library library;
-	if (FT_Init_FreeType(&library)) 
+	if(FT_Init_FreeType(&library)) 
 	{
 		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_Init_FreeType failed\n");
 		throw runtime_error("FT_Init_FreeType failed");
@@ -163,7 +166,7 @@ void font_data::init(const char * fname, unsigned int h)
 	//This is where we load in the font information from the file.
 	//Of all the places where the code might die, this is the most likely,
 	//as FT_New_Face will die if the font file does not exist or is somehow broken.
-	if (FT_New_Face(library, fname, 0, &face)) 
+	if(FT_New_Face(library, fname, 0, &face)) 
 	{
 		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
 		throw runtime_error("FT_New_Face failed (there is probably a problem with your font file)");
@@ -178,7 +181,7 @@ void font_data::init(const char * fname, unsigned int h)
 	//Here we ask opengl to allocate resources for
 	//all the textures and displays lists which we
 	//are about to create.  
-	list_base=glGenLists(128);
+	list_base = glGenLists(128);
 	glGenTextures( 128, textures );
 
 	//This is where we actually create each of the fonts display lists.
@@ -193,7 +196,7 @@ void font_data::init(const char * fname, unsigned int h)
 	FT_Done_FreeType(library);
 }
 
-void font_data::initMPQ(const char * fname, unsigned int h)
+void font_data::InitMPQ(const char* fname, unsigned int h)
 {
 	//Allocate some memory to store the texture ids.
 	textures = new GLuint[128];
@@ -233,11 +236,11 @@ void font_data::initMPQ(const char * fname, unsigned int h)
 	//all the textures and displays lists which we
 	//are about to create.  
 	list_base = glGenLists(128);
-	glGenTextures( 128, textures );
+	glGenTextures(128, textures);
 
 	//This is where we actually create each of the fonts display lists.
 	for(unsigned char i = 0; i < 128; i++)
-		charWidths[i] = make_dlist(face, i, list_base, textures,h);
+		charWidths[i] = make_dlist(face, i, list_base, textures, h);
 
 	//We don't need the face information now that the display
 	//lists have been created, so we free the assosiated resources.
@@ -319,6 +322,7 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 			start_line = c + 1;
 		}
 	}
+
 	if(start_line)
 	{
 		string line;

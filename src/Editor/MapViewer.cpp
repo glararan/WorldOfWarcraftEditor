@@ -14,42 +14,42 @@ using namespace std;
 
 int MouseX;
 int MouseY;
-float mh,mv,rh,rv;
+float mh, mv, rh, rv;
 
 bool MoveObj;
 
 Vec3D ObjMove;
 Vec3D ObjRot;
 
-bool Selecting=false;
-bool TestSelection=false;
-bool DetailSelection=true;
+bool Selecting = false;
+bool TestSelection = false;
+bool DetailSelection = true;
 nameEntry *Selection;
 nameEntry *CurSelection;
 unsigned int Sel;
 
-bool LShiftDown=false;
-bool RShiftDown=false;
-bool LAltDown=false;
-bool RAltDown=false;
-bool LCtrlDown=false;
-bool RCtrlDown=false;
+bool LShiftDown = false;
+bool RShiftDown = false;
+bool LAltDown = false;
+bool RAltDown = false;
+bool LCtrlDown = false;
+bool RCtrlDown = false;
 
-bool leftMouse=false;
-bool leftClicked=false;
-bool TileMode=false;
-bool painting=false;
+bool leftMouse = false;
+bool leftClicked = false;
+bool TileMode = false;
+bool painting = false;
 
-float BrushRadius=10.0f;
-int BrushType=2;
-float brushPressure=0.9f;
-float brushLevel=255.0f;
+float BrushRadius = 10.0f;
+int BrushType = 2;
+float brushPressure  =0.9f;
+float brushLevel = 255.0f;
 
-int terrainMode=0;
+int terrainMode = 0;
 
 brush textureBrush;
 
-bool Saving=false;
+bool Saving = false;
 
 frame *LastClicked;
 
@@ -65,12 +65,12 @@ void setTextureBrushRadius(float f)
 
 void setTextureBrushPressure(float f)
 {
-	brushPressure=f;
+	brushPressure = f;
 }
 
 void setTextureBrushLevel(float f)
 {
-	brushLevel=(1.0f-f)*255.0f;
+	brushLevel = (1.0 - f) * 255.0f;
 }
 
 MapViewer::MapViewer(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
@@ -104,52 +104,52 @@ MapViewer::MapViewer(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 	world->l_linear = 0.7f;
 	world->l_quadratic = 0.03f;
 
-	tileFrames.x=0;
-	tileFrames.y=0;
-	tileFrames.height=(float)video.yres;
-	tileFrames.width=(float)video.xres;
+	tileFrames.x = 0;
+	tileFrames.y = 0;
+	tileFrames.height = (float)video.yres;
+	tileFrames.width = (float)video.xres;
 
 	window *W1;
-	W1=new window(video.xres-182.0f,2.0f,180.0f,100.0f);
-	W1->movable=true;
+	W1=new window(video.xres - 182.0f, 2.0f, 180.0f, 100.0f);
+	W1->movable = true;
 	
 	tileFrames.addChild(W1);
 
 	textUI *T1;
-	T1=new textUI(6.0f+145.0f/2,2,"Brush Settings");
+	T1=new textUI(6.0f + 145.0f/2, 2, "Brush Settings");
 	T1->setFont(&arial14);
 	T1->setJustify(UI_JUSTIFY_CENTER);
 	W1->addChild(T1);
 	
 	gradient *G1;
-	G1=new gradient;	
-	G1->width=20.0f;
-	G1->x=W1->width-4-G1->width;
-	G1->y=4.0f;
-	G1->height=92.0f;
-	G1->setMaxColor(1.0f,1.0f,1.0f,1.0f);
-	G1->setMinColor(0.0f,0.0f,0.0f,1.0f);
-	G1->horiz=false;
-	G1->setClickColor(1.0f,0.0f,0.0f,1.0f);
+	G1 = new gradient;	
+	G1->width = 20.0f;
+	G1->x = W1->width-4-G1->width;
+	G1->y = 4.0f;
+	G1->height = 92.0f;
+	G1->setMaxColor(1.0f, 1.0f, 1.0f, 1.0f);
+	G1->setMinColor(0.0f, 0.0f, 0.0f, 1.0f);
+	G1->horiz = false;
+	G1->setClickColor(1.0f, 0.0f, 0.0f, 1.0f);
 	G1->setClickFunc(setTextureBrushLevel);
 	G1->setValue(0.0f);
 	
 	W1->addChild(G1);
 
-	slider	*S1;
-	S1=new slider(6.0f,33.0f,145.0f,1.0f,0.0f);
+	slider *S1;
+	S1 = new slider(6.0f,33.0f,145.0f,1.0f,0.0f);
 	S1->setFunc(setTextureBrushHardness);
 	S1->setValue(0.5f);
 	S1->setText("Hardness: %.2f");
 	W1->addChild(S1);
 
-	S1=new slider(6.0f,59.0f,145.0f,49.0f,1.0f);
+	S1 = new slider(6.0f, 59.0f, 145.0f, 49.0f, 1.0f);
 	S1->setFunc(setTextureBrushRadius);
 	S1->setValue(0.5f);
 	S1->setText("Radius: %.1f");
 	W1->addChild(S1);
 
-	S1=new slider(6.0f,85.0f,145.0f,0.99f,0.01f);
+	S1 = new slider(6.0f, 85.0f, 145.0f, 0.99f, 0.01f);
 	S1->setFunc(setTextureBrushPressure);
 	S1->setValue(0.90f);
 	S1->setText("Pressure: %.2f");
@@ -161,7 +161,7 @@ MapViewer::MapViewer(World *w, float ah0, float av0): world(w), ah(ah0), av(av0)
 	tileFrames.addChild(CreateTextureFilter());
 	//tileFrames.addChild(createMapChunkWindow());
 	
-	lastBrushUpdate=0;
+	lastBrushUpdate = 0;
 	textureBrush.init();
 }
 
@@ -175,108 +175,109 @@ extern ManagedItem	*selectedTexture;
 void MapViewer::tick(float t, float dt)
 {
 	world->onTheFlyLoading();
-	if(dt>1)
-		dt=1;
+	if(dt > 1)
+		dt = 1;
+
 	if(SDL_GetAppState()&SDL_APPINPUTFOCUS)
 	{
-		if(world->LowerTerrain<0)
+		if(world->LowerTerrain < 0)
 		{
-			world->LowerTerrain+=5.0f*dt;
-			if(world->LowerTerrain>0)
-				world->LowerTerrain=0.0f;
+			world->LowerTerrain += 5.0f * dt;
+			if(world->LowerTerrain > 0)
+				world->LowerTerrain = 0.0f;
 		}
 
-		Vec3D dir(1,0,0);
-		Vec3D dirUp(1,0,0);
-		Vec3D dirRight(0,0,1);
-		rotate(0,0, &dir.x,&dir.y, av*PI/180.0f);
-		rotate(0,0, &dir.x,&dir.z, ah*PI/180.0f);
+		Vec3D dir(1, 0, 0);
+		Vec3D dirUp(1, 0, 0);
+		Vec3D dirRight(0, 0, 1);
+		rotate(0, 0, &dir.x, &dir.y, av * PI/180.0f);
+		rotate(0, 0, &dir.x, &dir.z, ah * PI/180.0f);
 
-		if(LShiftDown||RShiftDown)
+		if(LShiftDown || RShiftDown)
 		{
-			dirUp.x=0;
-			dirUp.y=1;
-			dirRight*=0;
+			dirUp.x = 0;
+			dirUp.y = 1;
+			dirRight *= 0;
 		}
-		else if(LCtrlDown||RCtrlDown)
+		else if(LCtrlDown || RCtrlDown)
 		{
-			dirUp.x=0;
-			dirUp.y=1;
-			rotate(0,0, &dirUp.x,&dirUp.y, av*PI/180.0f);
-			rotate(0,0, &dirRight.x,&dirRight.y, av*PI/180.0f);
-			rotate(0,0, &dirUp.x,&dirUp.z, ah*PI/180.0f);
-			rotate(0,0, &dirRight.x,&dirRight.z, ah*PI/180.0f);
+			dirUp.x = 0;
+			dirUp.y = 1;
+			rotate(0, 0, &dirUp.x, &dirUp.y, av * PI/180.0f);
+			rotate(0, 0, &dirRight.x, &dirRight.y, av * PI/180.0f);
+			rotate(0, 0, &dirUp.x, &dirUp.z, ah * PI/180.0f);
+			rotate(0, 0, &dirRight.x, &dirRight.z, ah * PI/180.0f);
 			
 		}
 		else
 		{
-			rotate(0,0, &dirUp.x,&dirUp.z, ah*PI/180.0f);
-			rotate(0,0, &dirRight.x,&dirRight.z, ah*PI/180.0f);
+			rotate(0, 0, &dirUp.x, &dirUp.z, ah * PI/180.0f);
+			rotate(0, 0, &dirRight.x, &dirRight.z, ah * PI/180.0f);
 		}
 
-		if(CurSelection!=0)
+		if(CurSelection != 0)
 		{
-			ObjPos=CurSelection->data.model->pos-world->camera;
-				rotate(0,0, &ObjPos.x,&ObjPos.y, av*PI/180.0f);
-				rotate(0,0, &ObjPos.x,&ObjPos.z, ah*PI/180.0f);
-				ObjPos.x=abs(ObjPos.x);
+			ObjPos = CurSelection->data.model->pos-world->camera;
+				rotate(0, 0, &ObjPos.x, &ObjPos.y, av * PI/180.0f);
+				rotate(0, 0, &ObjPos.x, &ObjPos.z, ah * PI/180.0f);
+				ObjPos.x = abs(ObjPos.x);
 		}
 
-		if(MoveObj&&(CurSelection!=0)&&(CurSelection->type==ENTRY_MODEL))
+		if(MoveObj && (CurSelection != 0) && (CurSelection->type == ENTRY_MODEL))
 		{
-			if(LAltDown||RAltDown)
+			if(LAltDown || RAltDown)
 			{
 				float ScaleAmount;
-				ScaleAmount=pow(2.0f,mv*4.0f);
-				CurSelection->data.model->sc*=ScaleAmount;
-				if(CurSelection->data.model->sc>63.9)
-					CurSelection->data.model->sc=63.9f;
-				else if (CurSelection->data.model->sc<0.00098)
-					CurSelection->data.model->sc=0.00098f;
+				ScaleAmount = pow(2.0f, mv * 4.0f);
+				CurSelection->data.model->sc *= ScaleAmount;
+				if(CurSelection->data.model->sc > 63.9)
+					CurSelection->data.model->sc = 63.9f;
+				else if(CurSelection->data.model->sc < 0.00098)
+					CurSelection->data.model->sc = 0.00098f;
 			}
 			else
 			{
-				ObjPos.x=40.0f;
-				CurSelection->data.model->pos+=mv*dirUp*ObjPos.x;
-				CurSelection->data.model->pos-=mh*dirRight*ObjPos.x;
+				ObjPos.x = 40.0f;
+				CurSelection->data.model->pos += mv * dirUp * ObjPos.x;
+				CurSelection->data.model->pos -= mh * dirRight * ObjPos.x;
 			}
 		}
 
-		if(look&&(CurSelection!=0))
+		if(look && (CurSelection != 0))
 		{
-			if((LShiftDown||RShiftDown)&&(CurSelection->type==ENTRY_MODEL))
+			if((LShiftDown || RShiftDown) && (CurSelection->type == ENTRY_MODEL))
 			{
-				CurSelection->data.model->dir.y+=rh+rv;
+				CurSelection->data.model->dir.y += rh + rv;
 
-				if(CurSelection->data.model->dir.y>360.0f)
-					CurSelection->data.model->dir.y-=360.0f;
-				else if(CurSelection->data.model->dir.y<-360.0f)
-					CurSelection->data.model->dir.y+=360.0f;			
+				if(CurSelection->data.model->dir.y > 360.0f)
+					CurSelection->data.model->dir.y -= 360.0f;
+				else if(CurSelection->data.model->dir.y <- 360.0f)
+					CurSelection->data.model->dir.y += 360.0f;			
 			}
-			else if((LCtrlDown||RCtrlDown)&&(CurSelection->type==ENTRY_MODEL))
+			else if((LCtrlDown || RCtrlDown) && (CurSelection->type == ENTRY_MODEL))
 			{
-				CurSelection->data.model->dir.x+=rh+rv;
+				CurSelection->data.model->dir.x += rh + rv;
 
-				if(CurSelection->data.model->dir.x>360.0f)
-					CurSelection->data.model->dir.x-=360.0f;
-				else if(CurSelection->data.model->dir.x<-360.0f)
-					CurSelection->data.model->dir.x+=360.0f;
+				if(CurSelection->data.model->dir.x > 360.0f)
+					CurSelection->data.model->dir.x -= 360.0f;
+				else if(CurSelection->data.model->dir.x <- 360.0f)
+					CurSelection->data.model->dir.x += 360.0f;
 			}
-			else if((LAltDown||RAltDown)&&(CurSelection->type==ENTRY_MODEL))
+			else if((LAltDown || RAltDown)&&(CurSelection->type == ENTRY_MODEL))
 			{
-				CurSelection->data.model->dir.z+=rh+rv;
+				CurSelection->data.model->dir.z += rh + rv;
 
-				if(CurSelection->data.model->dir.z>360.0f)
-					CurSelection->data.model->dir.z-=360.0f;
-				else if(CurSelection->data.model->dir.z<-360.0f)
-					CurSelection->data.model->dir.z+=360.0f;
+				if(CurSelection->data.model->dir.z > 360.0f)
+					CurSelection->data.model->dir.z -= 360.0f;
+				else if(CurSelection->data.model->dir.z <- 360.0f)
+					CurSelection->data.model->dir.z += 360.0f;
 			}
 		}
 
-		mh=0;
-		mv=0;
-		rh=0;
-		rv=0;
+		mh = 0;
+		mv = 0;
+		rh = 0;
+		rv = 0;
 
 		if(leftMouse&&Selection&&Selection->type==ENTRY_MAPCHUNK)
 		{

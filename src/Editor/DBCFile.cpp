@@ -6,50 +6,50 @@
 
 #include <cstdio>
 
-DBCFile::DBCFile(const string &filename) : filename(filename)
+DBCFile::DBCFile(const string &filename) : filename(filename), data(0)
 {
-	data = NULL;
+	
 }
+
 bool DBCFile::open()
 {
 	gLog("[World of Warcraft Studio - Editor] - Opening DBC : %s\n", filename.c_str());
     MPQFile f(filename.c_str());
 
-    // Need some error checking, otherwise an unhandled exception error occurs
-    // if people screw with the data path.
-    if (f.isEof() == true)
-        return false;
-
-    unsigned char header[4];
+    char header[4];
     unsigned int na, nb, es, ss;
 
-    f.read(header, 4); // File Header
+    if(f.read(header, 4) != 4)
+		return false;
 
-    if (header[0] != 'W' || header[1] != 'D' || header[2] != 'B' || header[3] != 'C')
+    if(header[0] != 'W' || header[1] != 'D' || header[2] != 'B' || header[3] != 'C')
     {
-        f.close();
-        data = NULL;
+		f.close();
         gLog("Critical Error: An error occured while trying to read the DBCFile : %s.", filename.c_str());
         return false;
     }
 
-    //assert(header[0]=='W' && header[1]=='D' && header[2]=='B' && header[3] == 'C');
-
-    f.read(&na, 4); // Number of records
-    f.read(&nb, 4); // Number of fields
-    f.read(&es, 4); // Size of a record
-    f.read(&ss, 4); // String size
+	// Number of records      Number of fields       Size of a record       String size
+    if(f.read(&na, 4) != 4 && f.read(&nb, 4) != 4 && f.read(&es, 4) != 4 && f.read(&ss, 4) != 4)
+		return false;
 
     recordSize = es;
     recordCount = na;
     fieldCount = nb;
     stringSize = ss;
-    //assert(fieldCount*4 == recordSize);
-    assert(fieldCount*4 >= recordSize);
+
+	gLog("Test");
+    
+	if(fieldCount * 4 != recordSize)
+		return false;
 
     data = new unsigned char[recordSize * recordCount + stringSize];
     stringTable = data + recordSize * recordCount;
-    f.read(data, recordSize * recordCount + stringSize);
+
+	size_t data_size = recordSize * recordCount + stringSize;
+    if(f.read(data, data_size) != data_size)
+		return false;
+
     f.close();
 	gLog("[World of Warcraft Studio - Editor] - Closed & Read in DBC : %s\n", filename.c_str());
 

@@ -5,38 +5,44 @@
 
 #include <fstream>
 
-using namespace std;
-
 Menu::Menu()
-{	DBCFile f("DBFilesClient\\Map.dbc");
-	f.open();
-	int y=0;
-	
-	for(DBCFile::Iterator i=f.begin(); i!=f.end(); ++i)
-	{
-		MapEntry e;
+{
+	DBCFile MapDBC("DBFilesClient\\Map.dbc");
+	MapDBC.open();
 
-		e.name = i->getString(1);
-		e.description = i->getString(3);
+	int y = 0;
+	
+	for(DBCFile::Iterator i = MapDBC.begin(); i != MapDBC.end(); ++i)
+	{
+		MapEntry dbcM;
+
+		dbcM.id = i->getUInt(0);
+		dbcM.instanceType = i->getUInt(3);
+		dbcM.expansion = i->getUInt(63);
+
+		dbcM.directory = i->getString(2);
+		dbcM.name = i->getString(6);
 
 		int size;
-		e.x0 = 5;
-		e.y0 = y;
-		if (e.name=="Azeroth" || e.name=="Kalimdor" || e.name=="Outland" || e.name=="Northrend")
+		dbcM.x0 = 5;
+		dbcM.y0 = y;
+		if(dbcM.directory == "Azeroth" || dbcM.directory == "Kalimdor" || dbcM.directory == "Outland" || dbcM.directory == "Northrend")
 		{
 			size = 24;
-			e.font = f24;
-		} else {
+			dbcM.font = f24;
+		}
+		else
+		{
 			size = 16;
-			e.font = f16;
+			dbcM.font = f16;
 		}
 
-		e.y1 = e.y0 + size;
+		dbcM.y1 = dbcM.y0 + size;
 		y += size;
 
-		e.x1 = e.x0 + e.font->textwidth(e.name.c_str());
+		dbcM.x1 = dbcM.x0 + dbcM.font->textwidth(dbcM.name.c_str());
 		
-		maps.push_back(e);
+		maps.push_back(dbcM);
 	}
 
 	sel = -1;
@@ -373,7 +379,7 @@ void Menu::display(float t, float dt)
 		glColor4f(1,1,1,1);
 		if (sel != -1)
 		{
-			f32->shprint(video.xres/2-f32->textwidth(maps[sel].description.c_str())/2, video.yres-40, maps[sel].description.c_str());
+			f32->shprint(video.xres/2-f32->textwidth(maps[sel].directory.c_str())/2, video.yres-40, maps[sel].directory.c_str());
 		}
 	}
 }
