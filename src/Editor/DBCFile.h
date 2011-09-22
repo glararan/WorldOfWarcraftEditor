@@ -69,7 +69,7 @@ public:
 		}
 	private:
 		Record(DBCFile &file, unsigned char *offset): file(file), offset(offset) {}
-		unsigned char *offset;
+		unsigned char* offset;
 		DBCFile &file;
 
 		friend class DBCFile;
@@ -80,7 +80,7 @@ public:
 	class Iterator
 	{
 	public:
-		Iterator(DBCFile &file, unsigned char *offset): 
+		Iterator(DBCFile &file, unsigned char* offset): 
 			record(file, offset) {}
 		/// Advance (prefix only)
 		Iterator & operator++()
@@ -122,8 +122,8 @@ private:
 	size_t recordCount;
 	size_t fieldCount;
 	size_t stringSize;
-	unsigned char *data;
-	unsigned char *stringTable;
+	unsigned char* data;
+	unsigned char* stringTable;
 };
 
 #endif

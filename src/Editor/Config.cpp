@@ -14,6 +14,7 @@ string trim(string const& source, char const* delims = " \t\r\n")
     result.erase(0, index);
   else
     result.erase();
+
   return result;
 }
 
@@ -29,10 +30,13 @@ ConfigFile::ConfigFile(string const& configFile)
   while(getline(file, line))
   {
 
-    if(!line.length()) continue;
+    if(!line.length())
+		continue;
 
-    if(line[0] == '#') continue;
-    if(line[0] == ';') continue;
+    if(line[0] == '#')
+		continue;
+    if(line[0] == ';')
+		continue;
 
     if(line[0] == '[')
 	{
@@ -51,9 +55,10 @@ ConfigFile::ConfigFile(string const& configFile)
 Chameleon const& ConfigFile::Value(string const& section, string const& entry) const
 {
 
-  map<std::string,Chameleon>::const_iterator ci = content_.find(section + '/' + entry);
+  map<string,Chameleon>::const_iterator ci = content_.find(section + '/' + entry);
 
-  if (ci == content_.end()) throw "does not exist";
+  if(ci == content_.end())
+	  throw "does not exist";
 
   return ci->second;
 }
@@ -78,6 +83,6 @@ Chameleon const& ConfigFile::Value(string const& section, string const& entry, s
   }
   catch(const char *)
   {
-    return content_.insert(std::make_pair(section + '/' + entry, Chameleon(value))).first->second;
+    return content_.insert(make_pair(section + '/' + entry, Chameleon(value))).first->second;
   }
 }

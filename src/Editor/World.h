@@ -16,9 +16,9 @@ const float detail_size = 8.0f;
 
 class World
 {
-	MapTile *maptilecache[MAPTILECACHESIZE];
-	MapTile *current[5][5];
-	int ex,ez;
+	MapTile* maptilecache[MAPTILECACHESIZE];
+	MapTile* current[5][5];
+	int ex, ez;
 
 public:
 	float LowerTerrain;
@@ -29,14 +29,14 @@ public:
 	
 	GLuint Dist;
 	
-	std::string basename;
+	string basename;
 
 	bool maps[64][64];
 	GLuint lowrestiles[64][64];
 	bool autoheight;
 
-	std::vector<std::string> gwmos;
-	std::vector<WMOInstance> gwmois;
+	vector<string> gwmos;
+	vector<WMOInstance> gwmois;
 	int gnWMO, nMaps;
 
 	float mapdrawdistance, modeldrawdistance, doodaddrawdistance, highresdistance;
@@ -46,22 +46,22 @@ public:
 
 	float l_const, l_linear, l_quadratic;
 
-	Skies *skies;
-	float time,animtime;
+	Skies* skies;
+	float time, animtime;
 
     bool hadSky;
 
-	bool thirdperson,lighting,drawmodels,drawdoodads,drawterrain,drawwmo,loading,drawhighres,drawfog,drawlines;
+	bool thirdperson, lighting, drawmodels, drawdoodads, drawterrain, drawwmo, loading, drawhighres, drawfog, drawlines;
 	bool uselowlod;
 
 	GLuint detailtexcoords, alphatexcoords;
 
-	short *mapstrip,*mapstrip2;
+	short *mapstrip, *mapstrip2;
 
 	TextureID water;
 	Vec3D camera, lookat;
 	Frustum frustum;
-	int cx,cz;
+	int cx, cz;
 	bool oob;
 
 	WMOManager wmomanager;
@@ -99,15 +99,15 @@ public:
 	/// Get the tile on wich the camera currently is on
 	unsigned int getAreaID();
 
-	void drawSelection(int cursorX,int cursorY);
-	void drawSelectionChunk(int cursorX,int cursorY);
+	void drawSelection(int cursorX, int cursorY);
+	void drawSelectionChunk(int cursorX, int cursorY);
 	void drawTileMode(float ah);
 	
 	int getSelection();
 
-	GLuint	CurTex;
-	GLuint getSelectTex(){return CurTex;};
-	bool GetVertex(float x,float z, Vec3D *V);
+	GLuint CurTex;
+	GLuint getSelectTex(){ return CurTex; }
+	bool GetVertex(float x, float z, Vec3D* V);
 	void changeTerrain(float x, float z, float change, float radius, int BrushType);
 	void flattenTerrain(float x, float z, float h, float remain, float radius, int BrushType);	
 	void blurTerrain(float x, float z, float remain, float radius, int BrushType);
@@ -115,10 +115,10 @@ public:
 	void eraseTextures(float x, float z);
 	void saveMap();
 
-	float minX,maxX,minY,maxY;
+	float minX, maxX, minY, maxY;
 };
 
-extern World *gWorld;
+extern World* gWorld;
 
 void lightingDefaults();
 void myFakeLighting();

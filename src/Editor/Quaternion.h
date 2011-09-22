@@ -7,9 +7,9 @@
 class Vec4D
 {
 public:
-	float x,y,z,w;
+	float x, y, z, w;
 
-	Vec4D(float x0=0.0f, float y0=0.0f, float z0=0.0f, float w0=0.0f) : x(x0), y(y0), z(z0), w(w0) {}
+	Vec4D(float x0 = 0.0f, float y0 = 0.0f, float z0 = 0.0f, float w0 = 0.0f) : x(x0), y(y0), z(z0), w(w0) {}
 
 	Vec4D(const Vec4D& v) : x(v.x), y(v.y), z(v.z), w(v.w) {}
 
@@ -26,19 +26,19 @@ public:
 
 	const Vec4D operator+ (const Vec4D &v) const
 	{
-		Vec4D r(x+v.x,y+v.y,z+v.z,w+v.w);
+		Vec4D r(x + v.x, y + v.y, z + v.z, w + v.w);
         return r;
 	}
 
 	const Vec4D operator- (const Vec4D &v) const
 	{
-		Vec4D r(x-v.x,y-v.y,z-v.z,w-v.w);
+		Vec4D r(x - v.x, y - v.y, z - v.z, w - v.w);
 		return r;
 	}
 
 	const Vec4D operator* (float d) const
 	{
-		Vec4D r(x*d,y*d,z*d,w*d);
+		Vec4D r(x * d, y * d, z * d, w * d);
         return r;
 	}
 
@@ -76,17 +76,17 @@ public:
 
 	float operator* (const Vec4D &v) const
 	{
-        return x*v.x + y*v.y + z*v.z + w*v.w;
+        return x * v.x + y * v.y + z * v.z + w * v.w;
 	}
 
 	float lengthSquared() const
 	{
-		return x*x+y*y+z*z+w*w;
+		return x * x + y * y + z * z + w * w;
 	}
 
 	float length() const
 	{
-        return sqrt(x*x+y*y+z*z+w*w);
+        return sqrt(x * x + y * y + z * z + w * w);
 	}
 
 	Vec4D& normalize()
@@ -102,14 +102,14 @@ public:
 
 	Vec3D xyz() const
 	{
-		return Vec3D(x,y,z);
+		return Vec3D(x, y, z);
 	}
 };
 
-class Quaternion: public Vec4D
+class Quaternion : public Vec4D
 {
 public:
-	Quaternion(float x0=0.0f, float y0=0.0f, float z0=0.0f, float w0=1.0f): Vec4D(x0,y0,z0,w0) {}
+	Quaternion(float x0 = 0.0f, float y0 = 0.0f, float z0 = 0.0f, float w0 = 1.0f) : Vec4D(x0, y0, z0, w0) {}
 
 	Quaternion(const Vec4D& v) : Vec4D(v) {}
 
@@ -118,7 +118,7 @@ public:
 	static const Quaternion slerp(const float r, const Quaternion &v1, const Quaternion &v2)
 	{
 		// SLERP
-		float dot = v1*v2;
+		float dot = v1 * v2;
 
 		if (fabs(dot) > 0.9995f)
 		{
@@ -135,7 +135,7 @@ public:
 
 	static const Quaternion lerp(const float r, const Quaternion &v1, const Quaternion &v2)
 	{
-		return v1*(1.0f-r) + v2*r;
+		return v1 * (1.0f - r) + v2 * r;
 	}
 };
 

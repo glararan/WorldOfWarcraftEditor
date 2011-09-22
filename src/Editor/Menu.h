@@ -7,8 +7,6 @@
 
 #include "World.h"
 
-using namespace std;
-
 struct Clickable
 {
 	int x0, y0, x1, y1;
@@ -25,7 +23,7 @@ struct MapEntry: public Clickable
 	string directory;
 	string name;
 
-	Font *font;
+	Font* font;
 };
 
 struct Bookmark: public Clickable
@@ -47,7 +45,7 @@ class Menu : public AppState
 {
 	int sel, cmd, x, y, cz, cx;
 
-	World *world;
+	World* world;
 
 	vector<MapEntry> maps;
 	vector<Bookmark> bookmarks;
@@ -55,7 +53,7 @@ class Menu : public AppState
 	bool setpos;
 	float ah,av;
 
-	Model *bg;
+	Model* bg;
 	float mt;
 
 	int lastbg;
@@ -68,15 +66,15 @@ public:
 	void tick(float t, float dt);
 	void display(float t, float dt);
 
-	void keypressed(SDL_KeyboardEvent *e);
-	void mousemove(SDL_MouseMotionEvent *e);
-	void mouseclick(SDL_MouseButtonEvent *e);
+	void keypressed(SDL_KeyboardEvent* e);
+	void mousemove(SDL_MouseMotionEvent* e);
+	void mouseclick(SDL_MouseButtonEvent* e);
 
 	void refreshBookmarks();
 
 	void randBackground();
 
-	void shprint(Font *f, int x, int y, char *text);
+	void shprint(Font* f, int x, int y, char* text);
 };
 
 #endif

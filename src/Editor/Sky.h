@@ -24,7 +24,7 @@ public:
     Sky(MPQFile &f);
 	void init(MPQFile &f);
 
-	std::vector<SkyColor> colorRows[36];
+	vector<SkyColor> colorRows[36];
 	int mmin[36];
 
 	char name[32];
@@ -36,9 +36,12 @@ public:
 
     bool operator<(const Sky& s) const
 	{
-		if (global) return false;
-		else if (s.global) return true;
-		else return r2 < s.r2;
+		if(global)
+			return false;
+		else if(s.global)
+			return true;
+		else
+			return r2 < s.r2;
 	}
 };
 
@@ -67,10 +70,10 @@ enum SkyColorNames
 
 class Skies
 {
-	std::vector<Sky> skies;
+	vector<Sky> skies;
 	int numSkies;
 	int cs;
-	Model *stars;
+	Model* stars;
 	char skyname[128];
 
 	bool loadFrom(const char* fname, bool forced);
@@ -88,7 +91,7 @@ public:
 
 	bool drawSky(const Vec3D &pos);
 	bool hasSkies() { return numSkies > 0; }
-	char *getSkyName();
+	char* getSkyName();
 
 	void setupLighting();
 
@@ -109,16 +112,16 @@ struct OutdoorLightStats
 
 	void init(MPQFile &f);
 
-	void interpolate(OutdoorLightStats *a, OutdoorLightStats *b, float r);
+	void interpolate(OutdoorLightStats* a, OutdoorLightStats* b, float r);
 	void setupLighting();
     // void setupFog(); // TODO: add fog maybe?
 };
 
 class OutdoorLighting
 {
-	std::vector<OutdoorLightStats> lightStats;
+	vector<OutdoorLightStats> lightStats;
 public:
-	OutdoorLighting(char *fname);
+	OutdoorLighting(char* fname);
 
 	OutdoorLightStats getLightStats(int time);
 };

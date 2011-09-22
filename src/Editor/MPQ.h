@@ -29,19 +29,19 @@ class MPQFile
 	char fname[1024];
 	//MPQHANDLE handle;
 	bool eof;
-	char *buffer;
+	char* buffer;
 	libmpq__off_t pointer, size;
 
 	bool External;
 
 	// disable copying
 	MPQFile(const MPQFile &f) {}
-	void operator = (const MPQFile &f) {}
+	void operator= (const MPQFile &f) {}
 
 public:
 	MPQFile(const char* filename);	// filenames are not case sensitive
 	MPQFile(const char* filename, bool Fake);
-	~MPQFile();
+	~MPQFile() { close(); }
 	size_t read(void* dest, size_t bytes);
 	size_t getSize() { return size; }
 	size_t getPos() { return pointer; }
@@ -51,9 +51,9 @@ public:
 	void seek(int offset);
 	void seekRelative(int offset);
 	void close();
-	bool isExternal(){return External;};
+	bool isExternal() { return External; }
 	
-	void setBuffer(char *Buf, unsigned int Size)
+	void setBuffer(char* Buf, unsigned int Size)
 	{
 		if(buffer)
 			delete buffer;
@@ -63,7 +63,7 @@ public:
 	void SaveFile();
 };
 
-inline void flipcc(char *fcc)
+inline void flipcc(char* fcc)
 {
 	char t;
 	t = fcc[0];

@@ -37,7 +37,7 @@ public:
 
 	bool calc;
 	void calcMatrix(Bone* allbones, int anim, int time);
-	void init(MPQFile &f, ModelBoneDef &b, int *global);
+	void init(MPQFile &f, ModelBoneDef &b, int* global);
 };
 
 class TextureAnim
@@ -48,7 +48,7 @@ public:
 	Vec3D tval, rval, sval;
 
 	void calc(int anim, int time);
-	void init(MPQFile &f, ModelTexAnimDef &mta, int *global);
+	void init(MPQFile &f, ModelTexAnimDef &mta, int* global);
 	void setup();
 };
 
@@ -57,7 +57,7 @@ struct ModelColor
 	Animated<Vec3D> color;
 	AnimatedShort opacity;
 
-	void init(MPQFile &f, ModelColorDef &mcd, int *global);
+	void init(MPQFile &f, ModelColorDef &mcd, int* global);
 };
 
 struct ModelTransparency
@@ -88,18 +88,18 @@ struct ModelRenderPass
 	int16 texanim, color, opacity, blendmode;
 	int16 order;
 
-	bool init(Model *m);
+	bool init(Model* m);
 	void deinit();
 
 	bool operator< (const ModelRenderPass &m) const
 	{
 		//return !trans;
-		if (order<m.order)
+		if (order < m.order)
 			return true;
-		else if (order>m.order)
+		else if (order > m.order)
 			return false;
 		else
-			return blendmode == m.blendmode ? (p<m.p) : blendmode < m.blendmode;
+			return blendmode == m.blendmode ? (p < m.p) : blendmode < m.blendmode;
 	}
 };
 
@@ -112,10 +112,10 @@ struct ModelCamera
 	Animated<Vec3D> tPos, tTarget;
 	Animated<float> rot;
 
-	void init(MPQFile &f, ModelCameraDef &mcd, int *global);
-	void setup(int time=0);
+	void init(MPQFile &f, ModelCameraDef &mcd, int* global);
+	void setup(int time = 0);
 
-	ModelCamera():ok(false) {}
+	ModelCamera() : ok(false) {}
 };
 
 struct ModelLight
@@ -125,7 +125,7 @@ struct ModelLight
 	Animated<Vec3D> diffColor, ambColor;
 	Animated<float> diffIntensity, ambIntensity;
 
-	void init(MPQFile &f, ModelLightDef &mld, int *global);
+	void init(MPQFile &f, ModelLightDef &mld, int* global);
 	void setup(int time, GLuint l);
 };
 
@@ -145,14 +145,14 @@ class Model: public ManagedItem
 
 	void init(MPQFile &f);
 
-	TextureAnim *texanims;
-	ModelAnimation *anims;
-	int *globalSequences;
-	ModelColor *colors;
-	ModelTransparency *transparency;
-	ModelLight *lights;
-	ParticleSystem *particleSystems;
-	RibbonEmitter *ribbons;
+	TextureAnim* texanims;
+	ModelAnimation* anims;
+	int* globalSequences;
+	ModelColor* colors;
+	ModelTransparency* transparency;
+	ModelLight* lights;
+	ParticleSystem* particleSystems;
+	RibbonEmitter* ribbons;
 
 	void drawModel();
 	void drawModelTileMode();
@@ -165,9 +165,9 @@ class Model: public ManagedItem
 	void initAnimated(MPQFile &f);
 	void initStatic(MPQFile &f);
 
-	ModelVertex *origVertices;
-	Vec3D *vertices, *normals;
-	uint16 *indices;
+	ModelVertex* origVertices;
+	Vec3D* vertices, *normals;
+	uint16* indices;
 	size_t nIndices;
 	std::vector<ModelRenderPass> passes;
 
@@ -178,12 +178,12 @@ class Model: public ManagedItem
 	void lightsOff(GLuint lbase);
 
 	bool Reloaded;
-	Model	*reloadModel;
+	Model* reloadModel;
 
 public:
 	ModelCamera cam;
-	Bone *bones;
-	TextureID *textures;
+	Bone* bones;
+	TextureID* textures;
 	ModelHeader header;
 
 	bool ok;
@@ -194,9 +194,9 @@ public:
 	bool animcalc;
 	int anim, animtime;
 
-	Model(std::string name, bool forceAnim=false);	
+	Model(string name, bool forceAnim = false);	
 	~Model();
-	void reload(std::string name);
+	void reload(string name);
 	void draw();
 	void drawTileMode();
 	void drawHighlight();
@@ -206,10 +206,10 @@ public:
 	friend struct ModelRenderPass;
 };
 
-class ModelManager: public SimpleManager
+class ModelManager : public SimpleManager
 {
 public:
-	int add(std::string name);
+	int add(string name);
 
 	ModelManager() : v(0) {}
 
@@ -223,7 +223,7 @@ public:
 class ModelInstance
 {
 public:
-	Model *model;
+	Model* model;
 	
 	int id;
 	unsigned int nameID;
@@ -232,7 +232,7 @@ public:
 	Vec3D pos, dir;
 	unsigned int d1, scale;
 
-	float frot,w,sc;
+	float frot, w, sc;
 
 	int light;
 	Vec3D ldir;
@@ -240,9 +240,9 @@ public:
 
 	~ModelInstance();
 	ModelInstance();
-	ModelInstance(Model *m, MPQFile &f);
-	ModelInstance(Model *m, MDDF *d);
-    void init2(Model *m, MPQFile &f);
+	ModelInstance(Model* m, MPQFile &f);
+	ModelInstance(Model* m, MDDF* d);
+    void init2(Model* m, MPQFile &f);
 	void draw();
 	void drawMapTile();
 	void drawHighlight();
@@ -253,7 +253,7 @@ public:
 void ResetUniques();
 int	GetUniques();
 
-int addModelToList(Model *m, MPQFile &f);
+int addModelToList(Model* m, MPQFile &f);
 void removeModelFromList(int id);
 void drawModelList();
 void drawModelListSelect();

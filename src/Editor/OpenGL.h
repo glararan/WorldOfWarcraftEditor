@@ -9,7 +9,7 @@
 #include "Revision.h"
 /// XXX this really needs to be refactored into a singleton class
 
-extern std::vector<AppState*> gStates;
+extern vector<AppState*> gStates;
 extern bool gPop;
 
 void gLog(char* str, ...);
@@ -22,7 +22,7 @@ extern float gFPS;
 float frand();
 float randfloat(float lower, float upper);
 int randint(int lower, int upper);
-void fixname(std::string &name);
+void fixname(string &name);
 void fixnamen(char *name, size_t len);
 
 extern int fullscreen;

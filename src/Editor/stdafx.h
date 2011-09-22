@@ -1,2 +1,2 @@
 // stdafx.h
-#pragma once
+//#pragma once

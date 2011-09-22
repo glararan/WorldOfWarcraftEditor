@@ -6,8 +6,6 @@
 
 #include "Chameleon.h"
 
-using namespace std;
-
 class ConfigFile
 {
   map<string, Chameleon> content_;

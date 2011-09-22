@@ -18,28 +18,28 @@ struct Particle
 	Vec4D color;
 };
 
-typedef std::list<Particle> ParticleList;
+typedef list<Particle> ParticleList;
 
 class ParticleEmitter
 {
 protected:
-	ParticleSystem *sys;
+	ParticleSystem* sys;
 public:
-	ParticleEmitter(ParticleSystem *sys): sys(sys) {}
+	ParticleEmitter(ParticleSystem* sys) : sys(sys) {}
 	virtual Particle newParticle(int anim, int time) = 0;
 };
 
-class PlaneParticleEmitter: public ParticleEmitter
+class PlaneParticleEmitter : public ParticleEmitter
 {
 public:
-	PlaneParticleEmitter(ParticleSystem *sys): ParticleEmitter(sys) {}
+	PlaneParticleEmitter(ParticleSystem* sys): ParticleEmitter(sys) {}
 	Particle newParticle(int anim, int time);
 };
 
-class SphereParticleEmitter: public ParticleEmitter
+class SphereParticleEmitter : public ParticleEmitter
 {
 public:
-	SphereParticleEmitter(ParticleSystem *sys): ParticleEmitter(sys) {}
+	SphereParticleEmitter(ParticleSystem* sys) : ParticleEmitter(sys) {}
 	Particle newParticle(int anim, int time);
 };
 
@@ -56,29 +56,29 @@ class ParticleSystem
 	float mid, slowdown, rotation;
 	Vec3D pos;
 	GLuint texture;
-	ParticleEmitter *emitter;
+	ParticleEmitter* emitter;
 	ParticleList particles;
-	int blend,order,type;
-	int manim,mtime;
+	int blend, order, type;
+	int manim, mtime;
 	int rows, cols;
-	std::vector<TexCoordSet> tiles;
-	void initTile(Vec2D *tc, int num);
+	vector<TexCoordSet> tiles;
+	void initTile(Vec2D* tc, int num);
 	bool billboard;
 
 	float rem;
 	//bool transform;
 
 	// unknown parameters omitted for now ...
-	Bone *parent;
+	Bone* parent;
 
 public:
-	Model *model;
+	Model* model;
 	float tofs;
 
-	ParticleSystem(): emitter(0) {};
+	ParticleSystem() : emitter(0) {};
 	~ParticleSystem() { delete emitter; }
 
-	void init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals);
+	void init(MPQFile &f, ModelParticleEmitterDef &mta, int* globals);
 	void update(float dt);
 
 	void setup(int anim, int time);
@@ -92,7 +92,7 @@ public:
 struct RibbonSegment
 {
 	Vec3D pos, up, back;
-	float len,len0;
+	float len, len0;
 };
 
 class RibbonEmitter
@@ -101,7 +101,7 @@ class RibbonEmitter
 	AnimatedShort opacity;
 	Animated<float> above, below;
 
-	Bone *parent;
+	Bone* parent;
 	float f1, f2;
 
 	Vec3D pos;
@@ -116,12 +116,12 @@ class RibbonEmitter
 
 	GLuint texture;
 
-	std::list<RibbonSegment> segs;
+	list<RibbonSegment> segs;
 
 public:
-	Model *model;
+	Model* model;
 
-	void init(MPQFile &f, ModelRibbonEmitterDef &mta, int *globals);
+	void init(MPQFile &f, ModelRibbonEmitterDef &mta, int* globals);
 	void setup(int anim, int time);
 	void draw();
 };

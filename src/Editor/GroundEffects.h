@@ -1,7 +1,7 @@
 struct GroundEffectDoodad
 {
 	unsigned int id;
-	const char	 *Model;
+	const char*  Model;
 	unsigned int flags;
 };
 

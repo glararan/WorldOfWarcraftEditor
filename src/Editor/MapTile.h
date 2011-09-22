@@ -16,17 +16,15 @@
 #include <string>
 #include "MapHeaders.h"
 
-using namespace std;
-
 class MapTile;
 class MapChunk;
 
 class World;
-#define FLAG_SHADOW		1
-#define	FLAG_IMPASS		2
-#define	FLAG_LQ_RIVER	4
-#define	FLAG_LQ_OCEAN	8
-#define	FLAG_LQ_MAGMA	16
+#define FLAG_SHADOW   1
+#define	FLAG_IMPASS   2
+#define	FLAG_LQ_RIVER 4
+#define	FLAG_LQ_OCEAN 8
+#define	FLAG_LQ_MAGMA 16
 
 const int mapbufsize = 9 * 9 + 8 * 8;
 
@@ -34,19 +32,19 @@ class MapNode
 {
 public:
 
-	MapNode(int x, int y, int s): px(x), py(y), size(s) {}
+	MapNode(int x, int y, int s) : px(x), py(y), size(s) {}
 
 	int px, py, size;
 
 	Vec3D vmin, vmax, vcenter;
 
-	MapNode *children[4];
-	MapTile *mt;
+	MapNode* children[4];
+	MapTile* mt;
 
 	virtual void draw();
 	virtual void drawSelect();
 	virtual void drawColor();
-	void setup(MapTile *t);
+	void setup(MapTile* t);
 	void cleanup();
 };
 
@@ -98,9 +96,7 @@ public:
 	float r;
 
 	unsigned int nameID;
-
 	unsigned int Flags;
-	
 	unsigned int areaID;
 
 	bool haswater;
@@ -110,11 +106,11 @@ public:
 
 	bool deleted;
 
-	int				tex[4];
-	TextureID		textures[4];
-	unsigned int	texFlags[4];
-	unsigned int	effectID[4];
-	unsigned char amap[3][64*64];
+	int          tex[4];
+	TextureID    textures[4];
+	unsigned int texFlags[4];
+	unsigned int effectID[4];
+	unsigned char amap[3][64 * 64];
 	TextureID alphamaps[3];
 	TextureID shadow;
 
@@ -125,9 +121,9 @@ public:
 	short *strip;
 	int striplen;
 
-	Liquid *lq;
+	Liquid* lq;
 
-	MapChunk():MapNode(0,0,0){};
+	MapChunk() : MapNode(0, 0, 0){};
 
 	void init(MapTile* mt, MPQFile &f);
 	void destroy();
@@ -150,7 +146,7 @@ public:
 	Vec3D tn[mapbufsize], tv[mapbufsize], tm[mapbufsize];
 	Vec4D ts[mapbufsize];
 
-	void getSelectionCoord(float *x,float *z);
+	void getSelectionCoord(float* x, float* z);
 	float getSelectionHeight();
 	void changeTerrain(float x, float z, float change, float radius, int BrushType);
 	void flattenTerrain(float x, float z, float h, float remain, float radius, int BrushType);
@@ -160,7 +156,7 @@ public:
 	int addTexture(GLuint texture);
 	void eraseTextures();
 
-	bool GetVertex(float x,float z, Vec3D *V);
+	bool GetVertex(float x, float z, Vec3D* V);
 
 	void loadTextures();
 //	char getAlpha(float x,float y);
@@ -173,7 +169,7 @@ class MapTile
 {
 	string fname;
 	
-	MPQFile	*theFile;
+	MPQFile* theFile;
 
 	bool chunksLoaded;
 	int	nextChunk;
@@ -182,16 +178,16 @@ class MapTile
 	void finishChunkLoad();
 
 	bool texturesLoaded;
-	char *textureBuffer;
-	char *texturePos;
+	char* textureBuffer;
+	char* texturePos;
 	size_t textureSize;
 
 	void loadTexture();
 	void finishTextureLoad();
 
 	bool modelsLoaded;
-	char *modelBuffer;
-	char *modelPos;
+	char* modelBuffer;
+	char* modelPos;
 	size_t modelSize;
 	int	curModelID;
 	
@@ -202,19 +198,19 @@ class MapTile
 	void loadModelInstances(int id);
 
 	bool wmosLoaded;
-	char *wmoBuffer;
-	char *wmoPos;
+	char* wmoBuffer;
+	char* wmoPos;
 	size_t wmoSize;
 	
 	uint32 wmoNum;
-	MODF *wmoInstances;
+	MODF* wmoInstances;
 	
 	void loadWMO();
 	void loadWMOInstances();
 	
 public:
 	void finishLoading();
-	bool isLoaded(){return texturesLoaded&modelsLoaded&wmosLoaded;};
+	bool isLoaded(){ return texturesLoaded&modelsLoaded&wmosLoaded; }
 	void partialLoad()
 	{
 		if(!texturesLoaded)
@@ -229,9 +225,9 @@ public:
 		else if(!modelsLoaded)
 			loadModel();		
 	};
-	vector<std::string> textures;
-	vector<std::string> wmos;
-	vector<std::string> models;
+	vector<string> textures;
+	vector<string> wmos;
+	vector<string> models;
 
 	vector<WMOInstance> wmois;
 	vector<ModelInstance> modelis;
@@ -266,12 +262,12 @@ public:
 	void drawModelsSelect();
 	void drawTextures();
 
-	bool GetVertex(float x,float z, Vec3D *V);
+	bool GetVertex(float x, float z, Vec3D* V);
 	
 	void saveTile();
 
 	/// Get chunk for sub offset x,z
-	MapChunk *getChunk(unsigned int x, unsigned int z);
+	MapChunk* getChunk(unsigned int x, unsigned int z);
 };
 
 int indexMapBuf(int x, int y);
@@ -279,20 +275,22 @@ int indexMapBuf(int x, int y);
 // 8x8x2 version with triangle strips, size = 8*18 + 7*2
 const int stripsize = 8 * 18 + 7 * 2;
 template <class V>
-void stripify(V *in, V *out)
+void stripify(V* in, V* out)
 {
 	for (int row = 0; row < 8; row++)
 	{
-		V *thisrow = &in[indexMapBuf(0,row*2)];
-		V *nextrow = &in[indexMapBuf(0,(row+1)*2)];
+		V* thisrow = &in[indexMapBuf(0, row * 2)];
+		V* nextrow = &in[indexMapBuf(0, (row + 1) * 2)];
 
-		if (row>0) *out++ = thisrow[0];
-		for (int col = 0; col < 9; col++)
+		if(row > 0)
+			*out++ = thisrow[0];
+		for(int col = 0; col < 9; col++)
 		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
 		}
-		if (row < 7) *out++ = nextrow[8];
+		if(row < 7)
+			*out++ = nextrow[8];
 	}
 }
 
@@ -300,16 +298,17 @@ void stripify(V *in, V *out)
 const int stripsize2 = 16 * 18 + 7 * 2 + 8 * 2;
 template <class V>
 
-void stripify2(V *in, V *out)
+void stripify2(V* in, V* out)
 {
 	for(int row = 0; row < 8; row++)
 	{ 
-		V *thisrow = &in[indexMapBuf(0,row * 2)];
-		V *nextrow = &in[indexMapBuf(0,row * 2 + 1)];
-		V *overrow = &in[indexMapBuf(0,(row + 1) * 2)];
+		V* thisrow = &in[indexMapBuf(0, row * 2)];
+		V* nextrow = &in[indexMapBuf(0, row * 2 + 1)];
+		V* overrow = &in[indexMapBuf(0, (row + 1) * 2)];
 
-		if (row > 0) *out++ = thisrow[0];// jump end
-		for (int col = 0; col < 8; col++)
+		if (row > 0)
+			*out++ = thisrow[0];// jump end
+		for(int col = 0; col < 8; col++)
 		{
 			*out++ = thisrow[col];
 			*out++ = nextrow[col];
@@ -319,13 +318,15 @@ void stripify2(V *in, V *out)
 		*out++ = overrow[8];// jump start
 		*out++ = thisrow[0];// jump end
 		*out++ = thisrow[0];
-		for (int col = 0; col < 8; col++)
+		for(int col = 0; col < 8; col++)
 		{
 			*out++ = overrow[col];
 			*out++ = nextrow[col];
 		}
-		if (row < 8) *out++ = overrow[8];
-		if (row < 7) *out++ = overrow[8];// jump start
+		if(row < 8)
+			*out++ = overrow[8];
+		if(row < 7)
+			*out++ = overrow[8];// jump start
 	}
 }
 

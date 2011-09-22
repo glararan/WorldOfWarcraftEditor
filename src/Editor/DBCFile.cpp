@@ -4,8 +4,6 @@
 #undef min
 #undef max
 
-#include <cstdio>
-
 DBCFile::DBCFile(const string &filename) : filename(filename), data(0)
 {
 	

@@ -12,7 +12,7 @@ class ManagedItem
 	int refcount;
 public:
 	string name;
-	ManagedItem(string n): name(n), refcount(0) {}
+	ManagedItem(string n) : name(n), refcount(0) {}
 	virtual ~ManagedItem() {}
 
 	void addref()
@@ -43,7 +43,7 @@ public:
 	{
 		if (items[id]->delref())
 		{
-			ManagedItem *i = items[id];
+			ManagedItem* i = items[id];
 			doDelete(id);
 			names.erase(names.find(i->name));
 			items.erase(items.find(id));

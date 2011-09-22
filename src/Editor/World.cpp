@@ -2,9 +2,7 @@
 
 #include <cassert>
 
-using namespace std;
-
-World *gWorld=0;
+World* gWorld = 0;
 #define BUFSIZE 8192
 unsigned int SelectBuffer[BUFSIZE];
 
@@ -14,7 +12,7 @@ World::World(const char* name):basename(name)
 
 	gLog("\n[World of Warcraft Studio - Editor] - Loading world %s\n", name);
 
-	for (int i=0; i<MAPTILECACHESIZE; i++) maptilecache[i] = 0;
+	for (int i = 0; i < MAPTILECACHESIZE; i++) maptilecache[i] = 0;
 
 	autoheight = false;
 

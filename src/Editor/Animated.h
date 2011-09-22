@@ -10,8 +10,6 @@
 #include "Vec3D.h"
 #include "Quaternion.h"
 
-using namespace std;
-
 // interpolation functions
 template<class T>
 
@@ -92,7 +90,7 @@ public:
 
 	bool used;
 	int type, seq;
-	int *globals;
+	int* globals;
 
 	vector<AnimRange> ranges;
 	vector<int> times;
@@ -128,14 +126,14 @@ public:
 				size_t pos = 0;
 				for(size_t i = range.first; i < range.second; i++)
 				{
-					if(time >= times[i] && time < times[i+1])
+					if(time >= times[i] && time < times[i + 1])
 					{
 						pos = i;
 						break;
 					}
 				}
 				t1 = times[pos];
-				t2 = times[pos+1];
+				t2 = times[pos + 1];
 				float r = (time-t1)/(float)(t2-t1);
 
 				if (type == INTERPOLATION_LINEAR)
@@ -170,9 +168,9 @@ public:
 		used = type != INTERPOLATION_NONE;
 
 		// ranges
-		if (b.nRanges > 0)
+		if(b.nRanges > 0)
 		{
-			uint32 *pranges = (uint32*)(f.getBuffer() + b.ofsRanges);
+			uint32* pranges = (uint32*)(f.getBuffer() + b.ofsRanges);
 			for(size_t i = 0, k = 0; i < b.nRanges; i++)
 			{
 				AnimRange r;
@@ -191,12 +189,12 @@ public:
 
 		// times
 		assert(b.nTimes == b.nKeys);
-		uint32 *ptimes = (uint32*)(f.getBuffer() + b.ofsTimes);
-		for(size_t i=0; i<b.nTimes; i++)
+		uint32* ptimes = (uint32*)(f.getBuffer() + b.ofsTimes);
+		for(size_t i = 0; i < b.nTimes; i++)
 			times.push_back(ptimes[i]);
 
 		// keyframes
-		D *keys = (D*)(f.getBuffer() + b.ofsKeys);
+		D* keys = (D*)(f.getBuffer() + b.ofsKeys);
 		switch (type)
 		{
 			case INTERPOLATION_NONE:
@@ -220,13 +218,13 @@ public:
 		{
 			case INTERPOLATION_NONE:
 			case INTERPOLATION_LINEAR:
-				for (size_t i = 0; i < data.size(); i++)
+				for(size_t i = 0; i < data.size(); i++)
 				{
                     data[i] = fixfunc(data[i]);
 				}
 				break;
 			case INTERPOLATION_HERMITE:
-				for (size_t i = 0; i < data.size(); i++)
+				for(size_t i = 0; i < data.size(); i++)
 				{
                     data[i] = fixfunc(data[i]);
                     in[i] = fixfunc(in[i]);

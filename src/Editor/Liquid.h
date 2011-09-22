@@ -24,17 +24,17 @@ class Liquid
 	float texRepeats;
 
 	void initGeometry(MPQFile &f);
-	void initTextures(char *basename, int first, int last);
+	void initTextures(char* basename, int first, int last);
 
 	int type;
-	std::vector<GLuint> textures;
+	vector<GLuint> textures;
 	Vec3D col;
 	int tmpflag;
 	bool trans;
 
-	Vec3D *verts;
-	unsigned char *color;
-	unsigned char *waterFlags;
+	Vec3D* verts;
+	unsigned char* color;
+	unsigned char* waterFlags;
 
 public:
 

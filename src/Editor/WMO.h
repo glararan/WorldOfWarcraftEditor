@@ -18,31 +18,31 @@ class Liquid;
 
 class WMOGroup
 {
-	WMO *wmo;
+	WMO* wmo;
 	int flags;
-	Vec3D v1,v2;
+	Vec3D v1, v2;
 	int nTriangles, nVertices;
-	GLuint dl,dl_light;
+	GLuint dl, dl_light;
 	Vec3D center;
 	float rad;
 	int num;
 	int fog;
 	int nDoodads;
 	short *ddr;
-	Liquid *lq;
+	Liquid* lq;
 public:
 	bool ok;
-	Vec3D b1,b2;
+	Vec3D b1, b2;
 	Vec3D vmin, vmax;
 	bool indoor, hascv;
 	bool visible;
 
 	bool outdoorLights;
-	std::string name;
+	string name;
 
 	WMOGroup() : dl(0) {}
 	~WMOGroup();
-	void init(WMO *wmo, MPQFile &f, int num, char *names);
+	void init(WMO* wmo, MPQFile &f, int num, char* names);
 	void initDisplayList();
 	void initLighting(int nLR, short *useLights);
 	void draw(const Vec3D& ofs, const float rot);
@@ -63,7 +63,7 @@ struct WMOMaterial
 	int nameEnd;
 	unsigned int col2;
 	int d4;
-	float f1,f2;
+	float f1, f2;
 	int dx[5];
 	// read up to here -_-
 	TextureID tex;
@@ -87,7 +87,7 @@ struct WMOLight
 
 struct WMOPV
 {
-	Vec3D a,b,c,d;
+	Vec3D a, b, c, d;
 };
 
 struct WMOPR
@@ -129,37 +129,37 @@ class WMO: public ManagedItem
 {
 private:
 	bool Reloaded;
-	WMO	*reloadWMO;
+	WMO* reloadWMO;
 public:
-	std::string	WMOName;
-	WMOGroup *groups;
+	string WMOName;
+	WMOGroup* groups;
 	int nTextures, nGroups, nP, nLights, nModels, nDoodads, nDoodadSets, nX;
 	WMOMaterial *mat;
 	Vec3D extents[2];
 	bool ok;
-	std::vector<std::string> textures;
-	std::vector<std::string> models;
-	std::vector<ModelInstance> modelis;
+	vector<string> textures;
+	vector<string> models;
+	vector<ModelInstance> modelis;
+	
+	vector<WMOLight> lights;
+	vector<WMOPV> pvs;
+	vector<WMOPR> prs;
 
-	std::vector<WMOLight> lights;
-	std::vector<WMOPV> pvs;
-	std::vector<WMOPR> prs;
+	vector<WMOFog> fogs;
 
-	std::vector<WMOFog> fogs;
+	vector<WMODoodadSet> doodadsets;
 
-	std::vector<WMODoodadSet> doodadsets;
-
-	Model *skybox;
+	Model* skybox;
 	int sbid;
 
-	WMO(std::string name);
+	WMO(string name);
 	~WMO();
-	void reload(std::string name)
+	void reload(string name)
 	{
 		if(Reloaded)
 			delete reloadWMO;
-		Reloaded=true;
-		reloadWMO=new WMO(name);
+		Reloaded = true;
+		reloadWMO = new WMO(name);
 	}
 	void draw(int doodadset, const Vec3D& ofs, const float rot);
 	void drawSelect(int doodadset, const Vec3D& ofs, const float rot);
@@ -170,24 +170,24 @@ public:
 class WMOManager: public SimpleManager
 {
 public:
-	int add(std::string name);
+	int add(string name);
 	void reload();
 };
 
 class WMOInstance
 {
-	static std::set<int> ids;
+	static set<int> ids;
 public:
-	WMO *wmo;
+	WMO* wmo;
 	Vec3D pos;
-	Vec3D	extents[2];
-	Vec3D	dir;
+	Vec3D extents[2];
+	Vec3D dir;
 	int id, d2, d3;
 	int doodadset;
 	unsigned int nameID;
 
-	WMOInstance(WMO *wmo, MPQFile &f);
-	WMOInstance(WMO *wmo, MODF *d);
+	WMOInstance(WMO* wmo, MPQFile &f);
+	WMOInstance(WMO* wmo, MODF* d);
 	void draw();
 	void drawSelect();
 	//void drawPortals();

@@ -475,7 +475,7 @@ textUI			*chunkTextureFlags[4];
 textUI			*chunkTextureEffectID[4];
 */
 
-frame *createMapChunkWindow()
+frame *CreateMapChunkWindow()
 {
 	window *chunkSettingsWindow,*chunkTextureWindow,*chunkEffectWindow;
 	windowMapChunk=new closeWindowUI(video.xres/2.0f-316.0f,video.yres/2.0f-162.0f,634.0f,337.0f,"Map Chunk Settings");

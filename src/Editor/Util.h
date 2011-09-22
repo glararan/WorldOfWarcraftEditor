@@ -36,8 +36,6 @@
 // Our other utility headers
 #include "Vec3D.h"
 
-using namespace std;
-
 float frand();
 float randfloat(float lower, float upper);
 int randint(int lower, int upper);

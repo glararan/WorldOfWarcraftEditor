@@ -21,7 +21,7 @@ public:
 
 	charinfo chars[256];
 
-	Font(unsigned int tex, int tw, int th, int size, const char *infofile);
+	Font(unsigned int tex, int tw, int th, int size, const char* infofile);
 	~Font();
 
 	void drawtext(int x, int y, const char *text);
