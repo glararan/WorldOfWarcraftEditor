@@ -1023,7 +1023,7 @@ void Model::drawModelTileMode()
 	}
 	// done with all render ops
 
-	glAlphaFunc GL_GREATER, 0.0f);
+	glAlphaFunc(GL_GREATER, 0.0f);
 	glDisable(GL_ALPHA_TEST);
 
 	GLfloat czero[4] = {0, 0, 0, 1};

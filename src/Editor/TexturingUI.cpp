@@ -61,7 +61,7 @@ void LoadTextureNames()
 	{
 		fgets(Temp, 512, fid);
 		int i = 0;
-		while(Temp[i] ! =0 && Temp[i] != 10)
+		while(Temp[i] != 0 && Temp[i] != 10)
 			i++;
 
 		Temp[i] = 0;
