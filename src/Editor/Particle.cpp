@@ -9,30 +9,32 @@ Vec4D fromARGB(uint32 color)
 	const float r = ((color & 0x00FF0000) >> 16) / 255.0f;
 	const float g = ((color & 0x0000FF00) >>  8) / 255.0f;
 	const float b = ((color & 0x000000FF)      ) / 255.0f;
-    return Vec4D(r,g,b,a);
+    return Vec4D(r, g, b, a);
 }
 
 template<class T>
 T lifeRamp(float life, float mid, const T &a, const T &b, const T &c)
 {
-	if (life<=mid) return interpolate<T>(life / mid,a,b);
-	else return interpolate<T>((life-mid) / (1.0f-mid),b,c);
+	if(life <= mid)
+		return interpolate<T>(life / mid, a, b);
+	else
+		return interpolate<T>((life - mid) / (1.0f-mid), b, c);
 }
 
-void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals)
+void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int* globals)
 {
-	speed.init	 (mta.params[0], f, globals);
-	variation.init(mta.params[1], f, globals);
-	spread.init	 (mta.params[2], f, globals);
-	lat.init	 (mta.params[3], f, globals);
-	gravity.init (mta.params[4], f, globals);
-	lifespan.init(mta.params[5], f, globals);
-	rate.init	 (mta.params[6], f, globals);
-	areal.init	 (mta.params[7], f, globals);
-	areaw.init	 (mta.params[8], f, globals);
-	grav2.init	 (mta.params[9], f, globals);
+	speed.init	   (mta.params[0], f, globals);
+	variation.init (mta.params[1], f, globals);
+	spread.init	   (mta.params[2], f, globals);
+	lat.init	   (mta.params[3], f, globals);
+	gravity.init   (mta.params[4], f, globals);
+	lifespan.init  (mta.params[5], f, globals);
+	rate.init	   (mta.params[6], f, globals);
+	areal.init	   (mta.params[7], f, globals);
+	areaw.init	   (mta.params[8], f, globals);
+	grav2.init	   (mta.params[9], f, globals);
 
-	for (size_t i=0; i<3; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
 		colors[i] = fromARGB(mta.p.colors[i]);
 		sizes[i] = mta.p.sizes[i];// * mta.p.scales[i];
@@ -70,24 +72,24 @@ void ParticleSystem::init(MPQFile &f, ModelParticleEmitterDef &mta, int *globals
 	tofs = frand();
 
 	// init tiles
-	for (int i=0; i<rows*cols; i++)
+	for(int i = 0; i < rows * cols; i++)
 	{
 		TexCoordSet tc;
-		initTile(tc.tc,i);
+		initTile(tc.tc, i);
 		tiles.push_back(tc);
 	}
 }
 
-void ParticleSystem::initTile(Vec2D *tc, int num)
+void ParticleSystem::initTile(Vec2D* tc, int num)
 {
 	Vec2D otc[4];
-	Vec2D a,b;
+	Vec2D a, b;
 	int x = num % cols;
 	int y = num / cols;
 	a.x = x * (1.0f / cols);
-	b.x = (x+1) * (1.0f / cols);
+	b.x = (x + 1) * (1.0f / cols);
 	a.y = y * (1.0f / rows);
-	b.y = (y+1) * (1.0f / rows);
+	b.y = (y + 1) * (1.0f / rows);
 
 	otc[0] = a;
 	otc[2] = b;
@@ -96,9 +98,9 @@ void ParticleSystem::initTile(Vec2D *tc, int num)
 	otc[3].x = a.x;
 	otc[3].y = b.y;
 
-	for (int i=0; i<4; i++)
+	for(int i = 0; i < 4; i++)
 	{
-		tc[(i+4-order) & 3] = otc[i];
+		tc[(i + 4-order) & 3] = otc[i];
 	}
 }
 
@@ -108,24 +110,25 @@ void ParticleSystem::update(float dt)
 	float grav = gravity.getValue(manim, mtime);
 
 	// spawn new particles
-	if (emitter)
+	if(emitter)
 	{
 		float frate = rate.getValue(manim, mtime);
 		float flife = 1.0f;
 		//flife = lifespan.getValue(manim, mtime);
 
 		float ftospawn = (dt * frate / flife) + rem;
-		if (ftospawn < 1.0f)
+		if(ftospawn < 1.0f)
 		{
 			rem = ftospawn;
-			if (rem<0) rem = 0;
+			if(rem < 0)
+				rem = 0;
 		}
 		else
 		{
 			int tospawn = (int)ftospawn;
 			rem = ftospawn - (float)tospawn;
 			//rem = 0;
-			for (int i=0; i<tospawn; i++)
+			for(int i = 0; i < tospawn; i++)
 			{
 				Particle p = emitter->newParticle(manim, mtime);
 				// sanity check:
@@ -136,15 +139,14 @@ void ParticleSystem::update(float dt)
 
 	float mspeed = 1.0f;
 
-	for (ParticleList::iterator it = particles.begin(); it != particles.end(); )
+	for(ParticleList::iterator it = particles.begin(); it != particles.end(); )
 	{
 		Particle &p = *it;
 		p.speed += p.down * grav * dt;
 
-		if (slowdown>0)
-		{
+		if(slowdown > 0)
 			mspeed = expf(-1.0f * slowdown * p.life);
-		}
+
 		p.pos += p.speed * mspeed * dt;
 
 		p.life += dt;
@@ -154,8 +156,10 @@ void ParticleSystem::update(float dt)
 		p.color = lifeRamp<Vec4D>(rlife, mid, colors[0], colors[1], colors[2]);
 
 		// kill off old particles
-		if (rlife >= 1.0f) particles.erase(it++);
-		else ++it;
+		if(rlife >= 1.0f)
+			particles.erase(it++);
+		else
+			++it;
 	}
 }
 
@@ -201,10 +205,10 @@ void ParticleSystem::draw()
 	glEnable(GL_TEXTURE_2D);
 	*/
 
-	Vec3D bv0,bv1,bv2,bv3;
+	Vec3D bv0, bv1, bv2, bv3;
 
 	// setup blend mode
-	switch (blend)
+	switch(blend)
 	{
 	case 0:
 		glDisable(GL_BLEND);
@@ -241,16 +245,16 @@ void ParticleSystem::draw()
 	Matrix mbb;
 	mbb.unit();
 
-	if (billboard)
+	if(billboard)
 	{
 		// get a billboard matrix
 		Matrix mtrans;
 		glGetFloatv(GL_MODELVIEW_MATRIX, &(mtrans.m[0][0]));
 		mtrans.transpose();
 		mtrans.invert();
-		Vec3D camera = mtrans * Vec3D(0,0,0);
+		Vec3D camera = mtrans * Vec3D(0, 0, 0);
 		Vec3D look = (camera - pos).normalize();
-		Vec3D up = ((mtrans * Vec3D(0,1,0)) - camera).normalize();
+		Vec3D up = ((mtrans * Vec3D(0, 1, 0)) - camera).normalize();
 		Vec3D right = (up % look).normalize();
 		up = (look % right).normalize();
 		// calculate the billboard matrix
@@ -265,30 +269,30 @@ void ParticleSystem::draw()
 		mbb.m[2][0] = look.z;
 	}
 
-	if (type==0 || type==2)
+	if(type == 0 || type == 2)
 	{
 		// TODO: figure out type 2 (deeprun tram subway sign)
 		// - doesn't seem to be any different from 0 -_-
 		// regular particles
 		float f = 0.707106781f; // sqrt(2)/2
-		if (billboard)
+		if(billboard)
 		{
-			bv0 = mbb * Vec3D(0,-f,+f);
-			bv1 = mbb * Vec3D(0,+f,+f);
-			bv2 = mbb * Vec3D(0,+f,-f);
-			bv3 = mbb * Vec3D(0,-f,-f);
+			bv0 = mbb * Vec3D(0, -f, +f);
+			bv1 = mbb * Vec3D(0, +f, +f);
+			bv2 = mbb * Vec3D(0, +f, -f);
+			bv3 = mbb * Vec3D(0, -f, -f);
 		}
 		else
 		{
-			bv0 = Vec3D(-f,0,+f);
-			bv1 = Vec3D(+f,0,+f);
-			bv2 = Vec3D(+f,0,-f);
-			bv3 = Vec3D(-f,0,-f);
+			bv0 = Vec3D(-f, 0, +f);
+			bv1 = Vec3D(+f, 0, +f);
+			bv2 = Vec3D(+f, 0, -f);
+			bv3 = Vec3D(-f, 0, -f);
 		}
 		// TODO: per-particle rotation in a non-expensive way?? :|
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		for(ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
 		{
 			glColor4fv(it->color);
 
@@ -306,14 +310,14 @@ void ParticleSystem::draw()
 		}
 		glEnd();
 	}
-	else if (type==1)
+	else if(type == 1)
 	{
 		// particles from origin to position
-		bv0 = mbb * Vec3D(0,-1.0f,0);
-		bv1 = mbb * Vec3D(0,+1.0f,0);
+		bv0 = mbb * Vec3D(0, -1.0f, 0);
+		bv1 = mbb * Vec3D(0, +1.0f, 0);
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		for(ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
 		{
 			glColor4fv(it->color);
 
@@ -335,7 +339,7 @@ void ParticleSystem::draw()
 	glEnable(GL_LIGHTING);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_TRUE);
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 	glPopName();
 }
 
@@ -358,10 +362,10 @@ void ParticleSystem::drawHighlight()
 	glEnable(GL_TEXTURE_2D);
 	*/
 
-	Vec3D bv0,bv1,bv2,bv3;
+	Vec3D bv0, bv1, bv2, bv3;
 
 	// setup blend mode
-	switch (blend)
+	switch(blend)
 	{
 	case 0:
 		glDisable(GL_BLEND);
@@ -399,7 +403,7 @@ void ParticleSystem::drawHighlight()
 	mbb.unit();
 
 	ModelHighlight();
-	if (billboard)
+	if(billboard)
 	{
 		// get a billboard matrix
 		Matrix mtrans;
@@ -408,7 +412,7 @@ void ParticleSystem::drawHighlight()
 		mtrans.invert();
 		Vec3D camera = mtrans * Vec3D(0,0,0);
 		Vec3D look = (camera - pos).normalize();
-		Vec3D up = ((mtrans * Vec3D(0,1,0)) - camera).normalize();
+		Vec3D up = ((mtrans * Vec3D(0, 1, 0)) - camera).normalize();
 		Vec3D right = (up % look).normalize();
 		up = (look % right).normalize();
 		// calculate the billboard matrix
@@ -423,33 +427,33 @@ void ParticleSystem::drawHighlight()
 		mbb.m[2][0] = look.z;
 	}
 
-	if (type==0 || type==2)
+	if(type == 0 || type == 2)
 	{
 		// TODO: figure out type 2 (deeprun tram subway sign)
 		// - doesn't seem to be any different from 0 -_-
 		// regular particles
 		float f = 0.707106781f; // sqrt(2)/2
-		if (billboard)
+		if(billboard)
 		{
-			bv0 = mbb * Vec3D(0,-f,+f);
-			bv1 = mbb * Vec3D(0,+f,+f);
-			bv2 = mbb * Vec3D(0,+f,-f);
-			bv3 = mbb * Vec3D(0,-f,-f);
+			bv0 = mbb * Vec3D(0, -f, +f);
+			bv1 = mbb * Vec3D(0, +f, +f);
+			bv2 = mbb * Vec3D(0, +f, -f);
+			bv3 = mbb * Vec3D(0, -f, -f);
 		}
 		else
 		{
-			bv0 = Vec3D(-f,0,+f);
-			bv1 = Vec3D(+f,0,+f);
-			bv2 = Vec3D(+f,0,-f);
-			bv3 = Vec3D(-f,0,-f);
+			bv0 = Vec3D(-f, 0, +f);
+			bv1 = Vec3D(+f, 0, +f);
+			bv2 = Vec3D(+f, 0, -f);
+			bv3 = Vec3D(-f, 0, -f);
 		}
 		// TODO: per-particle rotation in a non-expensive way?? :|
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		for(ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
 		{
 			//glColor4fv(it->color);
-			glColor4f(1.0f,0.25f,0.25f,it->color.w*0.5f);
+			glColor4f(1.0f, 0.25f, 0.25f, it->color.w * 0.5f);
 
 			glTexCoord2fv(tiles[it->tile].tc[0]);
 			glVertex3fv(it->pos + bv0 * it->size);
@@ -465,14 +469,14 @@ void ParticleSystem::drawHighlight()
 		}
 		glEnd();
 	}
-	else if (type==1)
+	else if(type == 1)
 	{
 		// particles from origin to position
-		bv0 = mbb * Vec3D(0,-1.0f,0);
-		bv1 = mbb * Vec3D(0,+1.0f,0);
+		bv0 = mbb * Vec3D(0, -1.0f, 0);
+		bv1 = mbb * Vec3D(0, +1.0f, 0);
 
 		glBegin(GL_QUADS);
-		for (ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
+		for(ParticleList::iterator it = particles.begin(); it != particles.end(); ++it)
 		{
 			glColor4fv(it->color);
 
@@ -490,11 +494,12 @@ void ParticleSystem::drawHighlight()
 		}
 		glEnd();
 	}
+
 	ModelUnhighlight();
 	glEnable(GL_LIGHTING);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_TRUE);
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 	glPopName();
 }
 
@@ -507,11 +512,11 @@ Particle PlaneParticleEmitter::newParticle(int anim, int time)
 	float spd = sys->speed.getValue(anim, time);
 	float var = sys->variation.getValue(anim, time);
 
-	p.pos = sys->pos + Vec3D(randfloat(-l,l), 0, randfloat(-w,w));
+	p.pos = sys->pos + Vec3D(randfloat(-l, l), 0, randfloat(-w, w));
 	p.pos = sys->parent->mat * p.pos;
 
 	Vec3D dir = sys->parent->mrot * Vec3D(0,1,0);
-	p.down = Vec3D(0,-1.0f,0); // dir * -1.0f;
+	p.down = Vec3D(0, -1.0f, 0); // dir * -1.0f;
 	//p.speed = dir.normalize() * randfloat(spd1,spd2);   // ?
 	p.speed = dir.normalize() * spd * (1.0f+randfloat(-var,var));
 
@@ -532,12 +537,12 @@ Particle SphereParticleEmitter::newParticle(int anim, int time)
 	float spd = sys->speed.getValue(anim, time);
 	float var = sys->variation.getValue(anim, time);
 
-	float t = randfloat(0,2*PI);
+	float t = randfloat(0,2 * PI);
 
 	// TODO: fix shpere emitters to work properly
 
 	//Vec3D bdir(l*cosf(t), 0, w*sinf(t));
-	Vec3D bdir(0, l*cosf(t), w*sinf(t));
+	Vec3D bdir(0, l * cosf(t), w * sinf(t));
 
 	/*
 	float theta_range = sys->spread.getValue(anim, time);
@@ -552,26 +557,26 @@ Particle SphereParticleEmitter::newParticle(int anim, int time)
 	p.pos = sys->pos + bdir;
 	p.pos = sys->parent->mat * p.pos;
 
-	if (bdir.lengthSquared()==0)
-		p.speed = Vec3D(0,0,0);
+	if(bdir.lengthSquared() == 0)
+		p.speed = Vec3D(0, 0, 0);
 	else
 	{
 		Vec3D dir = sys->parent->mrot * (bdir.normalize());
-		p.speed = dir.normalize() * spd * (1.0f+randfloat(-var,var));   // ?
+		p.speed = dir.normalize() * spd * (1.0f + randfloat(-var, var));   // ?
 	}
 
-	p.down = sys->parent->mrot * Vec3D(0,-1.0f,0);
+	p.down = sys->parent->mrot * Vec3D(0, -1.0f, 0);
 
 	p.life = 0;
 	p.maxlife = sys->lifespan.getValue(anim, time);
 
 	p.origin = p.pos;
 
-	p.tile = randint(0, sys->rows*sys->cols-1);
+	p.tile = randint(0, sys->rows * sys->cols-1);
 	return p;
 }
 
-void RibbonEmitter::init(MPQFile &f, ModelRibbonEmitterDef &mta, int *globals)
+void RibbonEmitter::init(MPQFile &f, ModelRibbonEmitterDef &mta, int* globals)
 {
 	color.init(mta.color, f, globals);
 	opacity.init(mta.opacity, f, globals);
@@ -579,7 +584,7 @@ void RibbonEmitter::init(MPQFile &f, ModelRibbonEmitterDef &mta, int *globals)
 	below.init(mta.below, f, globals);
 
 	parent = model->bones + mta.bone;
-	int *texlist = (int*)(f.getBuffer() + mta.ofsTextures);
+	int* texlist = (int*)(f.getBuffer() + mta.ofsTextures);
 	// just use the first texture for now; most models I've checked only had one
 	texture = model->textures[texlist[0]];
 
@@ -601,7 +606,7 @@ void RibbonEmitter::init(MPQFile &f, ModelRibbonEmitterDef &mta, int *globals)
 void RibbonEmitter::setup(int anim, int time)
 {
 	Vec3D ntpos = parent->mat * pos;
-	Vec3D ntup = parent->mat * (pos + Vec3D(0,0,1));
+	Vec3D ntup = parent->mat * (pos + Vec3D(0, 0, 1));
 	ntup -= ntpos;
 	ntup.normalize();
 	float dlen = (ntpos-tpos).length();
@@ -611,10 +616,10 @@ void RibbonEmitter::setup(int anim, int time)
 
 	// move first segment
 	RibbonSegment &first = *segs.begin();
-	if (first.len > seglen)
+	if(first.len > seglen)
 	{
 		// add new segment
-		first.back = (tpos-ntpos).normalize();
+		first.back = (tpos - ntpos).normalize();
 		first.len0 = first.len;
 		RibbonSegment newseg;
 		newseg.pos = ntpos;
@@ -632,12 +637,12 @@ void RibbonEmitter::setup(int anim, int time)
 	// kill stuff from the end
 	float l = 0;
 	bool erasemode = false;
-	for (std::list<RibbonSegment>::iterator it = segs.begin(); it != segs.end(); )
+	for(list<RibbonSegment>::iterator it = segs.begin(); it != segs.end();)
 	{
-		if (!erasemode)
+		if(!erasemode)
 		{
 			l += it->len;
-			if (l > length)
+			if(l > length)
 			{
 				it->len = l - length;
 				erasemode = true;
@@ -645,9 +650,7 @@ void RibbonEmitter::setup(int anim, int time)
 			++it;
 		}
 		else
-		{
 			segs.erase(it++);
-		}
 	}
 
 	tpos = ntpos;
@@ -684,32 +687,32 @@ void RibbonEmitter::draw()
 	glColor4fv(tcolor);
 
 	glBegin(GL_QUAD_STRIP);
-	std::list<RibbonSegment>::iterator it = segs.begin();
+	list<RibbonSegment>::iterator it = segs.begin();
 	float l = 0;
-	for (; it != segs.end(); ++it)
+	for(; it != segs.end(); ++it)
 	{
         float u = l/length;
 
-		glTexCoord2f(u,0);
+		glTexCoord2f(u, 0);
 		glVertex3fv(it->pos + tabove * it->up);
-		glTexCoord2f(u,1);
+		glTexCoord2f(u, 1);
 		glVertex3fv(it->pos - tbelow * it->up);
 
 		l += it->len;
 	}
 
-	if (segs.size() > 1)
+	if(segs.size() > 1)
 	{
 		// last segment...?
 		--it;
-		glTexCoord2f(1,0);
+		glTexCoord2f(1, 0);
 		glVertex3fv(it->pos + tabove * it->up + (it->len/it->len0) * it->back);
-		glTexCoord2f(1,1);
+		glTexCoord2f(1, 1);
 		glVertex3fv(it->pos - tbelow * it->up + (it->len/it->len0) * it->back);
 	}
 	glEnd();
 
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 	glEnable(GL_LIGHTING);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_TRUE);

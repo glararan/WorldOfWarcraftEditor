@@ -1,18 +1,18 @@
 #include "World.h"
-
 #include <cassert>
 
 World* gWorld = 0;
 #define BUFSIZE 8192
 unsigned int SelectBuffer[BUFSIZE];
 
-World::World(const char* name):basename(name)
+World::World(const char* name) : basename(name)
 {
 	//::gWorld = this;
 
 	gLog("\n[World of Warcraft Studio - Editor] - Loading world %s\n", name);
 
-	for (int i = 0; i < MAPTILECACHESIZE; i++) maptilecache[i] = 0;
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
+		maptilecache[i] = 0;
 
 	autoheight = false;
 
@@ -20,7 +20,7 @@ World::World(const char* name):basename(name)
 	skies = 0;
 	ol = 0;
 
-	zoom=0.25;
+	zoom = 0.25;
 
 	// don't load map objects while still on the menu screen
 	//initDisplay();
@@ -28,19 +28,17 @@ World::World(const char* name):basename(name)
 
 void World::init()
 {
-	for (int j=0; j<64; j++)
+	for(int j = 0; j < 64; j++)
 	{
-		for (int i=0; i<64; i++)
-		{
+		for(int i = 0; i < 64; i++)
 			lowrestiles[j][i] = 0;
-		}
 	}
 
 	gnWMO = 0;
 	nMaps = 0;
 	water = 0;
 	char fn[256];
-	sprintf_s(fn,"World\\Maps\\%s\\%s.wdt", basename.c_str(), basename.c_str());
+	sprintf_s(fn, "World\\Maps\\%s\\%s.wdt", basename.c_str(), basename.c_str());
 
 	time = 1450;
 	animtime = 0;
@@ -50,16 +48,16 @@ void World::init()
 
 	drawfog = false;
 
-	memset(maps,0,sizeof(maps));
+	memset(maps, 0, sizeof(maps));
 
 	MPQFile f(fn);
 
 	char fourcc[5];
 	size_t size;
 
-	while (!f.isEof())
+	while(!f.isEof())
 	{
-		f.read(fourcc,4);
+		f.read(fourcc, 4);
 		f.read(&size, 4);
 
 		flipcc(fourcc);
@@ -67,23 +65,26 @@ void World::init()
 
 		size_t nextpos = f.getPos() + size;
 
-		if (!strcmp(fourcc,"MAIN"))
+		if(!strcmp(fourcc, "MAIN"))
 		{
-			for (int j=0; j<64; j++)
+			for(int j = 0; j < 64; j++)
 			{
-				for (int i=0; i<64; i++)
+				for(int i = 0; i < 64; i++)
 				{
 					int d;
 					f.read(&d, 4);
-					if (d) {
+					if(d)
+					{
 						maps[j][i] = true;
 						nMaps++;
-					} else maps[j][i] = false;
+					}
+					else
+						maps[j][i] = false;
 					f.read(&d, 4);
 				}
 			}
 		}
-		else if (!strcmp(fourcc,"MODF"))
+		else if(!strcmp(fourcc, "MODF"))
 		{
 			// global wmo instance data
 			gnWMO = (int)size / 64;
@@ -97,7 +98,8 @@ void World::init()
 	mapstrip2 = 0;
 
 	minimap = 0;
-	if (nMaps) initMinimap();
+	if(nMaps)
+		initMinimap();
 }
 
 void World::initMinimap()
@@ -106,28 +108,28 @@ void World::initMinimap()
 
 	// zomg, data on the stack!!1
 	//int texbuf[512][512];
-	unsigned int *texbuf = new unsigned int[512*512];
-	memset(texbuf,0,512*512*4);
+	unsigned int* texbuf = new unsigned int[512 * 512];
+	memset(texbuf, 0, 512 * 512 * 4);
 
 	// as alpha is unused, maybe I should try 24bpp? :(
-	short tilebuf[17*17];
+	short tilebuf[17 * 17];
 
 	int ofsbuf[64][64];
 
 	char fn[256];
-	sprintf_s(fn,"World\\Maps\\%s\\%s.wdl", basename.c_str(), basename.c_str());
+	sprintf_s(fn, "World\\Maps\\%s\\%s.wdl", basename.c_str(), basename.c_str());
 
 	MPQFile f(fn);
 	f.seek(0x14);
-	f.read(ofsbuf,64*64*4);
+	f.read(ofsbuf, 64 * 64 * 4);
 
-	for (int j=0; j<64; j++)
+	for(int j = 0; j < 64; j++)
 	{
-		for (int i=0; i<64; i++)
+		for(int i = 0; i < 64; i++)
 		{
-			if (ofsbuf[j][i])
+			if(ofsbuf[j][i])
 			{
-				f.seek(ofsbuf[j][i]+8);
+				f.seek(ofsbuf[j][i] + 8);
 				// read height values ^_^
 
 				/*
@@ -143,22 +145,24 @@ void World::initMinimap()
 				yay for consistency.
 				I'm only using the 17x17 map here.
 				*/
-				f.read(tilebuf,17*17*2);
+				f.read(tilebuf, 17 * 17 * 2);
 
 				// make minimap
 				// for a 512x512 minimap texture, and 64x64 tiles, one tile is 8x8 pixels
-				for (int z=0; z<8; z++)
+				for(int z = 0; z < 8; z++)
 				{
-					for (int x=0; x<8; x++)
+					for(int x = 0; x < 8; x++)
 					{
-						short hval = tilebuf[(z*2)*17+x*2]; // for now
+						short hval = tilebuf[(z * 2) * 17 + x * 2]; // for now
 
 						// make rgb from height value
-						unsigned char r,g,b;
-						if (hval < 0)
+						unsigned char r, g, b;
+						if(hval < 0)
 						{
 							// water = blue
-							if (hval < -511) hval = -511;
+							if(hval < -511)
+								hval = -511;
+
 							hval /= -2;
 							r = g = 0;
 							b = 255 - hval;
@@ -177,10 +181,10 @@ void World::initMinimap()
 							// brown: 137, 84, 21	600-1200
 							// gray: 96, 96, 96		1200-1600
 							// white: 255, 255, 255
-							unsigned char r1,r2,g1,g2,b1,b2;
+							unsigned char r1, r2, g1, g2, b1, b2;
 							float t;
 
-							if (hval < 600)
+							if(hval < 600)
 							{
 								r1 = 20;
 								r2 = 137;
@@ -190,7 +194,7 @@ void World::initMinimap()
 								b2 = 21;
 								t = hval / 600.0f;
 							}
-							else if (hval < 1200)
+							else if(hval < 1200)
 							{
 								r2 = 96;
 								r1 = 137;
@@ -214,12 +218,12 @@ void World::initMinimap()
 
 							// TODO: add a regular palette here
 
-							r = (unsigned char)(r2*t + r1*(1.0f-t));
-							g = (unsigned char)(g2*t + g1*(1.0f-t));
-							b = (unsigned char)(b2*t + b1*(1.0f-t));
+							r = (unsigned char)(r2 * t + r1 * (1.0f - t));
+							g = (unsigned char)(g2 * t + g1 * (1.0f - t));
+							b = (unsigned char)(b2 * t + b1 * (1.0f - t));
 						}
 
-						texbuf[(j*8+z)*512 + i*8+x] = (r) | (g<<8) | (b<<16) | (255 << 24);
+						texbuf[(j * 8 + z) * 512 + i * 8+x] = (r) | (g << 8) | (b << 16) | (255 << 24);
 					}
 				}
 			}
@@ -235,8 +239,8 @@ void World::initMinimap()
 
 	glBindTexture(GL_TEXTURE_2D, minimap);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 512, 512, 0, GL_RGBA, GL_UNSIGNED_BYTE, texbuf);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
 	delete[] texbuf;
 	f.close();
@@ -245,39 +249,37 @@ void World::initMinimap()
 void World::initLowresTerrain()
 {
 	char fn[256];
-	sprintf_s(fn,"World\\Maps\\%s\\%s.wdl", basename.c_str(), basename.c_str());
-	short tilebuf[17*17];
-	short tilebuf2[16*16];
+	sprintf_s(fn, "World\\Maps\\%s\\%s.wdl", basename.c_str(), basename.c_str());
+	short tilebuf[17 * 17];
+	short tilebuf2[16 * 16];
 	Vec3D lowres[17][17];
 	Vec3D lowsub[16][16];
 	int ofsbuf[64][64];
 
 	MPQFile f(fn);
 	f.seek(0x14);
-	f.read(ofsbuf,64*64*4);
+	f.read(ofsbuf, 64 * 64 * 4);
 
-	for (int j=0; j<64; j++)
+	for(int j = 0; j < 64; j++)
 	{
-		for (int i=0; i<64; i++)
+		for(int i = 0; i < 64; i++)
 		{
-			if (ofsbuf[j][i]) {
-				f.seek(ofsbuf[j][i]+8);
-				f.read(tilebuf,17*17*2);
-				f.read(tilebuf2,16*16*2);
+			if(ofsbuf[j][i])
+			{
+				f.seek(ofsbuf[j][i] + 8);
+				f.read(tilebuf, 17 * 17 * 2);
+				f.read(tilebuf2, 16 * 16 * 2);
 			
-				for (int y=0; y<17; y++)
+				for(int y = 0; y < 17; y++)
 				{
-					for (int x=0; x<17; x++)
-					{
-						lowres[y][x] = Vec3D(TILESIZE*(i+x/16.0f), tilebuf[y*17+x], TILESIZE*(j+y/16.0f));
-					}
+					for(int x = 0; x < 17; x++)
+						lowres[y][x] = Vec3D(TILESIZE * (i + x/16.0f), tilebuf[y * 17 + x], TILESIZE * (j + y/16.0f));
 				}
-				for (int y=0; y<16; y++)
+
+				for (int y = 0; y < 16; y++)
 				{
-					for (int x=0; x<16; x++)
-					{
-						lowsub[y][x] = Vec3D(TILESIZE*(i+(x+0.5f)/16.0f), tilebuf2[y*16+x], TILESIZE*(j+(y+0.5f)/16.0f));
-					}
+					for (int x = 0; x < 16; x++)
+						lowsub[y][x] = Vec3D(TILESIZE * (i + (x + 0.5f)/16.0f), tilebuf2[y * 16 + x], TILESIZE * (j + (y + 0.5f)/16.0f));
 				}
 
 				GLuint dl;
@@ -301,14 +303,14 @@ void World::initLowresTerrain()
 				*/
 				// draw tiles 17*17+16*16
 				glBegin(GL_TRIANGLES);
-				for (int y=0; y<16; y++)
+				for(int y = 0; y < 16; y++)
 				{
-					for (int x=0; x<16; x++)
+					for(int x = 0; x < 16; x++)
 					{
-						glVertex3fv(lowres[y][x]);		glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y][x+1]);
-						glVertex3fv(lowres[y][x+1]);	glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y+1][x+1]);
-						glVertex3fv(lowres[y+1][x+1]);	glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y+1][x]);
-						glVertex3fv(lowres[y+1][x]);	glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y][x]);
+						glVertex3fv(lowres[y][x]);		   glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y][x + 1]);
+						glVertex3fv(lowres[y][x + 1]);	   glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y + 1][x + 1]);
+						glVertex3fv(lowres[y + 1][x + 1]); glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y + 1][x]);
+						glVertex3fv(lowres[y + 1][x]);	   glVertex3fv(lowsub[y][x]);	glVertex3fv(lowres[y][x]);
 					}
 				}
 				glEnd();
@@ -319,27 +321,28 @@ void World::initLowresTerrain()
 	}
 }
 
-GLuint gdetailtexcoords=0, galphatexcoords=0;
+GLuint gdetailtexcoords = 0, galphatexcoords = 0;
 
 void initGlobalVBOs()
 {
-	if (gdetailtexcoords==0 && galphatexcoords==0) {
-
+	if(gdetailtexcoords == 0 && galphatexcoords == 0)
+	{
 		GLuint detailtexcoords, alphatexcoords;
 
 		Vec2D temp[mapbufsize], *vt;
-		float tx,ty;
+		float tx, ty;
 		
 		// init texture coordinates for detail map:
 		vt = temp;
 		const float detail_half = 0.5f * detail_size / 8.0f;
-		for (int j=0; j<17; j++)
+		for(int j = 0; j < 17; j++)
 		{
-			for (int i=0; i<((j%2)?8:9); i++)
+			for (int i = 0; i < ((j%2) ? 8 : 9); i++)
 			{
 				tx = detail_size / 8.0f * i;
 				ty = detail_size / 8.0f * j * 0.5f;
-				if (j%2) {
+				if(j%2)
+				{
 					// offset by half
 					tx += detail_half;
 				}
@@ -349,31 +352,30 @@ void initGlobalVBOs()
 
 		glGenBuffersARB(1, &detailtexcoords);
 		glBindBufferARB(GL_ARRAY_BUFFER_ARB, detailtexcoords);
-		glBufferDataARB(GL_ARRAY_BUFFER_ARB, mapbufsize*2*sizeof(float), temp, GL_STATIC_DRAW_ARB);
+		glBufferDataARB(GL_ARRAY_BUFFER_ARB, mapbufsize * 2 * sizeof(float), temp, GL_STATIC_DRAW_ARB);
 
 		// init texture coordinates for alpha map:
 		vt = temp;
 		const float alpha_half = 0.5f * (62.0f/64.0f) / 8.0f;
-		for (int j=0; j<17; j++)
+		for(int j = 0; j < 17; j++)
 		{
-			for (int i=0; i<((j%2)?8:9); i++)
+			for(int i = 0; i < ((j%2) ? 8 : 9); i++)
 			{
 				tx = (62.0f/64.0f) / 8.0f * i;
 				ty = (62.0f/64.0f) / 8.0f * j * 0.5f;
-				if (j%2) {
+				if(j%2)
 					// offset by half
 					tx += alpha_half;
-				}
+
 				*vt++ = Vec2D(tx, ty);
 			}
 		}
 
 		glGenBuffersARB(1, &alphatexcoords);
 		glBindBufferARB(GL_ARRAY_BUFFER_ARB, alphatexcoords);
-		glBufferDataARB(GL_ARRAY_BUFFER_ARB, mapbufsize*2*sizeof(float), temp, GL_STATIC_DRAW_ARB);
+		glBufferDataARB(GL_ARRAY_BUFFER_ARB, mapbufsize * 2 * sizeof(float), temp, GL_STATIC_DRAW_ARB);
 
 		glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-
 		gdetailtexcoords=detailtexcoords;
 		galphatexcoords=alphatexcoords;
 	}
@@ -386,13 +388,17 @@ void World::initDisplay()
 
 	// default strip indices
 	short *defstrip = new short[stripsize];
-	for (int i=0; i<stripsize; i++) defstrip[i] = i; // note: this is ugly and should be handled in stripify
+	for(int i = 0; i < stripsize; i++)
+		defstrip[i] = i; // note: this is ugly and should be handled in stripify
+
 	mapstrip = new short[stripsize];
 	stripify<short>(defstrip, mapstrip);
 	delete[] defstrip;
 
 	defstrip = new short[stripsize2];
-	for (int i=0; i<stripsize2; i++) defstrip[i] = i; // note: this is ugly and should be handled in stripify
+	for(int i = 0; i < stripsize2; i++)
+		defstrip[i] = i; // note: this is ugly and should be handled in stripify
+
 	mapstrip2 = new short[stripsize2];
 	stripify2<short>(defstrip, mapstrip2);
 	delete[] defstrip;
@@ -408,12 +414,11 @@ void World::initDisplay()
 
 	oob = false;
 
-	if (gnWMO > 0) initWMOs();
+	if(gnWMO > 0)
+		initWMOs();
 
-	skies = new Skies(basename.c_str(), gnWMO==0);
-
+	skies = new Skies(basename.c_str(), gnWMO == 0);
 	ol = new OutdoorLighting("World\\dnc.db");
-
 	initLowresTerrain();
 }
 
@@ -421,15 +426,16 @@ void World::initWMOs()
 {
 	gnWMO = 0;
 	char fn[256];
-	sprintf_s(fn,"World\\Maps\\%s\\%s.wdt", basename.c_str(), basename.c_str());
+	sprintf_s(fn, "World\\Maps\\%s\\%s.wdt", basename.c_str(), basename.c_str());
 
 	MPQFile f(fn);
 
 	char fourcc[5];
 	size_t size;
 
-	while (!f.isEof()) {
-		f.read(fourcc,4);
+	while(!f.isEof())
+	{
+		f.read(fourcc, 4);
 		f.read(&size, 4);
 
 		flipcc(fourcc);
@@ -437,17 +443,18 @@ void World::initWMOs()
 
 		size_t nextpos = f.getPos() + size;
 
-		if (!strcmp(fourcc,"MWMO"))
+		if(!strcmp(fourcc, "MWMO"))
 		{
 			// global map objects
-			if (size) {
-				char *buf = new char[size];
+			if(size)
+			{
+				char* buf = new char[size];
 				f.read(buf, size);
-				char *p=buf;
-				while (p<buf+size)
+				char* p = buf;
+				while(p < buf + size)
 				{
 					string path(p);
-					p+=strlen(p)+1;
+					p += strlen(p) + 1;
 					
 					wmomanager.add(path);
 					gwmos.push_back(path);
@@ -455,19 +462,19 @@ void World::initWMOs()
 				delete[] buf;
 			}
 		}
-		else if (!strcmp(fourcc,"MODF"))
+		else if(!strcmp(fourcc, "MODF"))
 		{
 			// global wmo instance data
 			gnWMO = (int)size / 64;
-			for (int i=0; i<gnWMO; i++)
+			for (int i = 0; i < gnWMO; i++)
 			{
 				int id;
 				f.read(&id, 4);
-				WMO *wmo = (WMO*)wmomanager.items[wmomanager.get(gwmos[id])];
+				WMO* wmo = (WMO*)wmomanager.items[wmomanager.get(gwmos[id])];
 				WMOInstance inst(wmo, f);
 				gwmois.push_back(inst);
-				if(i==0)
-					camera=inst.pos;
+				if(i == 0)
+					camera = inst.pos;
 			}
 		}
 		f.seek((int)nextpos);
@@ -477,138 +484,144 @@ void World::initWMOs()
 
 World::~World()
 {
-	for (int j=0; j<64; j++)
+	for(int j = 0; j < 64; j++)
 	{
-		for (int i=0; i<64; i++)
+		for(int i = 0; i < 64; i++)
 		{
-			if (lowrestiles[j][i]!=0) glDeleteLists(lowrestiles[j][i],1);
+			if(lowrestiles[j][i] != 0)
+				glDeleteLists(lowrestiles[j][i], 1);
 		}
 	}
 
-	for (int i=0; i<MAPTILECACHESIZE; i++)
-	{
-		if (maptilecache[i] != 0) delete maptilecache[i];
-	}
+	for (int i = 0; i < MAPTILECACHESIZE; i++)
+		if(maptilecache[i] != 0)
+			delete maptilecache[i];
 
 	for (vector<string>::iterator it = gwmos.begin(); it != gwmos.end(); ++it)
-	{
 		wmomanager.delbyname(*it);
-	}
 
-	if (minimap) glDeleteTextures(1, &minimap);
+	if(minimap)
+		glDeleteTextures(1, &minimap);
 
 	// temp code until I figure out water properly
-	if (water) video.textures.del(water);
-
-	if (skies) delete skies;
-	if (ol) delete ol;
-
-	if (mapstrip) delete[] mapstrip;
-	if (mapstrip2) delete[] mapstrip2;
+	if(water)
+		video.textures.del(water);
+	if(skies)
+		delete skies;
+	if(ol)
+		delete ol;
+	if(mapstrip)
+		delete[] mapstrip;
+	if(mapstrip2)
+		delete[] mapstrip2;
 
 	gLog("[World of Warcraft Studio - Editor] - Unloaded world %s\n", basename.c_str());
 }
 
 bool oktile(int i, int j)
 {
-	return i>=0 && j >= 0 && i<64 && j<64;
+	return i >= 0 && j >= 0 && i < 64 && j < 64;
 }
 
-int	nextTileLoad=0;
+int	nextTileLoad = 0;
 void World::enterTile(int x, int z)
 {
-	if (!oktile(x,z))
+	if(!oktile(x, z))
 	{
 		oob = true;
 		return;
-	} else oob = !maps[z][x];
+	}
+	else
+		oob = !maps[z][x];
 
 	cx = x;
 	cz = z;
-	int time=SDL_GetTicks();;
-	for (int j=0; j<5; j++)
+	int time = SDL_GetTicks();;
+	for (int j  =0; j < 5; j++)
 	{
-		for (int i=0; i<5; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			if(((i==0)||(i==4)||(j==0)||(j==4))&&!tileLoaded(x-2+i,z-2+j))
+			if(((i == 0) || (i == 4) || (j==0) || (j == 4)) && !tileLoaded(x - 2 + i, z - 2 + j))
 			{
 				if(nextTileLoad<time)
-				{
-					current[j][i] = loadTile(x-2+i, z-2+j);
+					current[j][i] = loadTile(x - 2 + i, z - 2 + j);
 					//nextTileLoad=time+2000;
-				}
 				else
 					current[j][i] = 0;
 			}
 			else
-				current[j][i] = loadTile(x-2+i, z-2+j);
+				current[j][i] = loadTile(x - 2 + i, z - 2 + j);
 		}
 	}
-	if (autoheight && current[2][2]!=0 && current[2][2]->ok)
+	if(autoheight && current[2][2] !=0 && current[2][2]->ok)
 	{
 		//Vec3D vc = (current[1][1]->topnode.vmax + current[1][1]->topnode.vmin) * 0.5f;
 		Vec3D vc = current[2][2]->topnode.vmax;
-		if (vc.y < 0) vc.y = 0;
-		camera.y = vc.y + 50.0f;
+		if(vc.y < 0)
+			vc.y = 0;
 
+		camera.y = vc.y + 50.0f;
 		autoheight = false;
 	}
 }
 
 void World::enterTileInit(int x, int z)
 {
-	if (!oktile(x,z))
+	if(!oktile(x,z))
 	{
 		oob = true;
 		return;
-	} else oob = !maps[z][x];
+	}
+	else
+		oob = !maps[z][x];
 
 	cx = x;
 	cz = z;
-	for (int j=0; j<5; j++) 
-		for (int i=0; i<5; i++)
+	for(int j = 0; j < 5; j++) 
+		for (int i = 0; i < 5; i++)
 			current[j][i] = 0;
-	for (int j=1; j<4; j++)
+
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
+		for(int i = 1; i < 4; i++)
 		{
-				current[j][i] = loadTile(x-2+i, z-2+j);
+				current[j][i] = loadTile(x - 2 + i, z - 2 + j);
 				if(current[j][i])
 					current[j][i]->finishLoading();
 		}
 	}
-	if (autoheight && current[2][2]!=0 && current[2][2]->ok)
+
+	if(autoheight && current[2][2] !=0 && current[2][2]->ok)
 	{
 		//Vec3D vc = (current[1][1]->topnode.vmax + current[1][1]->topnode.vmin) * 0.5f;
 		Vec3D vc = current[2][2]->topnode.vmax;
-		if (vc.y < 0) vc.y = 0;
-		camera.y = vc.y + 50.0f;
+		if(vc.y < 0)
+			vc.y = 0;
 
+		camera.y = vc.y + 50.0f;
 		autoheight = false;
 	}
 }
 
 void World::reloadTile(int x, int z)
 {
-	if (!oktile(x,z) || !maps[z][x])
-	{
+	if(!oktile(x,z) || !maps[z][x])
 		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return;
-	}
 
-	for (int i=0; i<MAPTILECACHESIZE; i++)
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
 	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
 		{
             //k we found the tile time to remove it then readd it
 			delete maptilecache[i];
 			char name[256];
-			sprintf_s(name,"World\\Maps\\%s\\%s_%d_%d.adt", basename.c_str(), basename.c_str(), x, z);
+			sprintf_s(name, "World\\Maps\\%s\\%s_%d_%d.adt", basename.c_str(), basename.c_str(), x, z);
 
-			maptilecache[i] = new MapTile(x,z,name);
+			maptilecache[i] = new MapTile(x, z, name);
 
 			//Now to treat it like we just rentered the current tile
-			enterTile(cx,cz);
+			enterTile(cx, cz);
             return;
 		}
 	}
@@ -616,14 +629,13 @@ void World::reloadTile(int x, int z)
 
 void World::saveTile(int x, int z)
 {
-	if (!oktile(x,z) || !maps[z][x])
-	{
+	if(!oktile(x,z) || !maps[z][x])
 		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return;
-	}
-	for (int i=0; i<MAPTILECACHESIZE; i++)
+
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
 	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
 		{
 			gLog("[World of Warcraft Studio - Editor] - Saving Tile?\n");
 			maptilecache[i]->saveTile();
@@ -633,50 +645,46 @@ void World::saveTile(int x, int z)
 
 bool World::tileLoaded(int x, int z)
 {
-	if (!oktile(x,z) || !maps[z][x])
-	{
+	if(!oktile(x,z) || !maps[z][x])
 		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return true;
-	}
 
 	int firstnull = MAPTILECACHESIZE;
-	for (int i=0; i<MAPTILECACHESIZE; i++)
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
 	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
-		{
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
             return true;
-		}
-		if (maptilecache[i] == 0 && i < firstnull) firstnull = i;
+		if(maptilecache[i] == 0 && i < firstnull)
+			firstnull = i;
 	}
+
 	return false;
 }
 
-MapTile *World::loadTile(int x, int z)
+MapTile* World::loadTile(int x, int z)
 {
-	if (!oktile(x,z) || !maps[z][x])
-	{
+	if(!oktile(x,z) || !maps[z][x])
 		//gLog("[World of Warcraft Studio - Editor] - Tile %d,%d not in map\n", x, z);
 		return 0;
-	}
 
 	int firstnull = MAPTILECACHESIZE;
-	for (int i=0; i<MAPTILECACHESIZE; i++)
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
 	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
-		{
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x == x) && (maptilecache[i]->z == z))
             return maptilecache[i];
-		}
-		if (maptilecache[i] == 0 && i < firstnull) firstnull = i;
+		if(maptilecache[i] == 0 && i < firstnull)
+			firstnull = i;
 	}
 	// ok we need to find a place in the cache
-	if (firstnull == MAPTILECACHESIZE)
+	if(firstnull == MAPTILECACHESIZE)
 	{
 		int score, maxscore = 0, maxidx = 0;
 		// oh shit we need to throw away a tile
-		for (int i=0; i<MAPTILECACHESIZE; i++)
+		for(int i = 0; i < MAPTILECACHESIZE; i++)
 		{
 			score = abs(maptilecache[i]->x - cx) + abs(maptilecache[i]->z - cz);
-			if (score>maxscore) {
+			if(score>maxscore)
+			{
 				maxscore = score;
 				maxidx = i;
 			}
@@ -690,9 +698,9 @@ MapTile *World::loadTile(int x, int z)
 	// TODO: make a loader thread  or something :(
 
 	char name[256];
-	sprintf_s(name,"World\\Maps\\%s\\%s_%d_%d.adt", basename.c_str(), basename.c_str(), x, z);
+	sprintf_s(name, "World\\Maps\\%s\\%s_%d_%d.adt", basename.c_str(), basename.c_str(), x, z);
 
-	maptilecache[firstnull] = new MapTile(x,z,name);
+	maptilecache[firstnull] = new MapTile(x, z, name);
 	return maptilecache[firstnull];
 }
 
@@ -730,7 +738,7 @@ void myFakeLighting()
 
 void World::outdoorLighting()
 {
-	Vec4D black(0,0,0,0);
+	Vec4D black(0, 0, 0, 0);
 	Vec4D ambient(skies->colorSet[LIGHT_GLOBAL_AMBIENT], 1);
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient);
 
@@ -758,7 +766,7 @@ void World::outdoorLighting()
 
 void World::outdoorLighting2()
 {
-	Vec4D black(0,0,0,0);
+	Vec4D black(0, 0, 0, 0);
 	Vec4D ambient(skies->colorSet[LIGHT_GLOBAL_AMBIENT], 1);
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient);
 
@@ -790,25 +798,18 @@ void World::outdoorLights(bool on)
 	di = 1;
 	ni = 0;
 
-	if (on) {
+	if(on)
+	{
 		Vec4D ambient(skies->colorSet[LIGHT_GLOBAL_AMBIENT], 1);
 		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient);
-		if (di>0)
-		{
+		if(di > 0)
 			glEnable(GL_LIGHT0);
-		}
 		else
-		{
 			glDisable(GL_LIGHT0);
-		}
-		if (ni>0)
-		{
+		if(ni > 0)
 			glEnable(GL_LIGHT1);
-		}
 		else
-		{
 			glDisable(GL_LIGHT1);
-		}
 	}
 	else
 	{
@@ -821,9 +822,8 @@ void World::outdoorLights(bool on)
 
 void World::setupFog()
 {
-	if (drawfog)
+	if(drawfog)
 	{
-
 		//float fogdist = 357.0f; // minimum draw distance in wow
 		//float fogdist = 777.0f; // maximum draw distance in wow
 		
@@ -851,49 +851,49 @@ void World::setupFog()
 }
 
 bool primaryLoaded;
-int	loadingTile=0;
-int	update=0;
+int	loadingTile = 0;
+int	update = 0;
 
 void World::onTheFlyLoading()
 {
 	//On the fly loading
-	primaryLoaded=true;
-	for (int j=1; j<4; j++)
+	primaryLoaded = true;
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
+		for(int i = 1; i < 4; i++)
 		{
-			if (oktile(i,j) && current[j][i] != 0) 
-				primaryLoaded&=current[j][i]->isLoaded();
+			if(oktile(i,j ) && current[j][i] != 0) 
+				primaryLoaded &= current[j][i]->isLoaded();
 		}
 	}
 
 	update++;
-	if(update==30)
+	if(update == 30)
 	{
-		enterTile(cx,cz);
+		enterTile(cx, cz);
 		update=0;
 	}
 	
 
 	if(!primaryLoaded)
 	{
-		for(loadingTile=0;loadingTile<9;loadingTile++)
+		for(loadingTile = 0; loadingTile < 9; loadingTile++)
 		{
-			if (oktile(loadingTile%3+1,loadingTile/3+1) && current[loadingTile/3+1][loadingTile%3+1] != 0) 
+			if(oktile(loadingTile%3 + 1, loadingTile/3 + 1) && current[loadingTile/3 + 1][loadingTile%3 + 1] != 0) 
 			{
-				if(!current[loadingTile/3+1][loadingTile%3+1]->isLoaded())
-					current[loadingTile/3+1][loadingTile%3+1]->partialLoad();
+				if(!current[loadingTile/3 + 1][loadingTile%3 + 1]->isLoaded())
+					current[loadingTile/3 + 1][loadingTile%3 + 1]->partialLoad();
 			}
 		}
 	}
 	else
 	{	
-		primaryLoaded=true;
-		for (int j=0; j<5; j++)
+		primaryLoaded = true;
+		for(int j = 0; j < 5; j++)
 		{
-			for (int i=0; i<5; i++)
+			for(int i = 0; i < 5; i++)
 			{
-				if (oktile(i,j) && current[j][i] != 0) 
+				if(oktile(i, j) && current[j][i] != 0) 
 					primaryLoaded&=current[j][i]->isLoaded();
 			}
 		}
@@ -901,28 +901,29 @@ void World::onTheFlyLoading()
 		if(primaryLoaded)
 			return;
 		
-		bool workDone=false;
-		do{
-			if (oktile(loadingTile%5,loadingTile/5) && current[loadingTile/5][loadingTile%5] != 0) 
+		bool workDone = false;
+		do
+		{
+			if(oktile(loadingTile%5, loadingTile/5) && current[loadingTile/5][loadingTile%5] != 0) 
 			{
 				if(!current[loadingTile/5][loadingTile%5]->isLoaded())
 				{
 					current[loadingTile/5][loadingTile%5]->partialLoad();		
-					workDone=true;
+					workDone = true;
 				}
 			}
 
-			int i,j;
+			int i, j;
 			do
 			{
 				loadingTile++;
-				i=loadingTile%5;
-				j=loadingTile/5;
+				i = loadingTile%5;
+				j = loadingTile/5;
 			}
-			while((i!=0)&&(i!=4)&&(j!=0)&&(j!=4));
+			while((i != 0) && (i != 4) && (j != 0) && (j != 4));
 
-			if(loadingTile==25)
-				loadingTile=0;
+			if(loadingTile == 25)
+				loadingTile = 0;
 		}
 		while(!workDone);
 	}
@@ -947,25 +948,25 @@ void World::draw()
 	//glMatrixMode(GL_MODELVIEW);
 	//glLoadIdentity();
 
-	gluLookAt(camera.x,camera.y,camera.z, lookat.x,lookat.y,lookat.z, 0, 1, 0);
+	gluLookAt(camera.x, camera.y, camera.z, lookat.x, lookat.y, lookat.z, 0, 1, 0);
 
 	// camera is set up
 	frustum.retrieve();
 
-	if (thirdperson)
+	if(thirdperson)
 	{
-		Vec3D l = (lookat-camera).normalize();
-		Vec3D nc = camera + Vec3D(0,300,0);
-		Vec3D rt = (Vec3D(0,1,0) % l).normalize();
+		Vec3D l = (lookat - camera).normalize();
+		Vec3D nc = camera + Vec3D(0, 300, 0);
+		Vec3D rt = (Vec3D(0, 1, 0) % l).normalize();
 		Vec3D up = (l % rt).normalize();
 		float fl = 256.0f;
 		Vec3D fp = camera + l * fl;
 		glLoadIdentity();
-		gluLookAt(nc.x,nc.y,nc.z, camera.x,camera.y,camera.z, 1, 0, 0);
+		gluLookAt(nc.x, nc.y, nc.z, camera.x, camera.y, camera.z, 1, 0, 0);
 	}
 
 	glDisable(GL_LIGHTING);
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 
     //int tt = 1440;
 	//if (modelmanager.v>0)
@@ -974,27 +975,29 @@ void World::draw()
 	//}
 
 	hadSky = false;
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
+		for(int i = 1; i < 4; i++)
 		{
-			if (oktile(i,j) && current[j][i] != 0)
+			if(oktile(i, j) && current[j][i] != 0)
 				current[j][i]->drawSky();
-			if (hadSky)
+			if(hadSky)
 				break;
 		}
-		if (hadSky)
+		if(hadSky)
 			break;
 	}
-	if (gnWMO && !hadSky)
+
+	if(gnWMO && !hadSky)
 	{
-		for (int i=0; i<gnWMO; i++)
+		for(int i = 0; i < gnWMO; i++)
 		{
 			gwmois[i].wmo->drawSkybox();
-			if (hadSky)
+			if(hadSky)
 				break;
 		}
 	}
+
 	glEnable(GL_CULL_FACE);
 	glDisable(GL_BLEND);
 	glDisable(GL_TEXTURE_2D);
@@ -1005,14 +1008,15 @@ void World::draw()
 	outdoorLightStats = ol->getLightStats(daytime);
 	skies->initSky(camera, daytime);
 
-	if (!hadSky)
+	if(!hadSky)
 		hadSky = skies->drawSky(camera);
 
 	// clearing the depth buffer only - color buffer is/has been overwritten anyway
 	// unless there is no sky OR skybox
 	GLbitfield clearmask = GL_DEPTH_BUFFER_BIT;
-	if (!hadSky)
+	if(!hadSky)
 		clearmask |= GL_COLOR_BUFFER_BIT;
+
 	glClear(clearmask); 
 
 	glDisable(GL_TEXTURE_2D);
@@ -1024,7 +1028,7 @@ void World::draw()
 	setupFog();
 
 	// Draw verylowres heightmap
-	if (drawfog && drawterrain)
+	if(drawfog && drawterrain)
 	{
 		glEnable(GL_CULL_FACE);
 		glDisable(GL_DEPTH_TEST);
@@ -1033,17 +1037,15 @@ void World::draw()
 		//glColor3f(0,1,0);
 		//glDisable(GL_FOG);
 		const int lrr = 2;
-		for (int i=cx-lrr; i<=cx+lrr; i++)
+		for(int i = cx - lrr; i <= cx + lrr; i++)
 		{
-			for (int j=cz-lrr; j<=cz+lrr; j++)
+			for(int j = cz-lrr; j <= cz + lrr; j++)
 			{
 				// TODO: some annoying visual artifacts when the verylowres terrain overlaps
 				// maptiles that are close (1-off) - figure out how to fix.
 				// still less annoying than hoels in the horizon when only 2-off verylowres tiles are drawn
-				if ( !(i==cx&&j==cz) && oktile(i,j) && lowrestiles[j][i])
-				{
+				if(!(i == cx && j == cz) && oktile(i, j) && lowrestiles[j][i])
 					glCallList(lowrestiles[j][i]);
-				}
 			}
 		}
 		//glEnable(GL_FOG);
@@ -1060,7 +1062,7 @@ void World::draw()
 	glEnable(GL_COLOR_MATERIAL);
 	//glColorMaterial(GL_FRONT, GL_DIFFUSE);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 
 	glEnable(GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1083,22 +1085,23 @@ void World::draw()
 	//uselowlod=false;
 	// height map w/ a zillion texture passes
 	glPushMatrix();
-	glTranslatef(0.0f,LowerTerrain,0.0f);
-	if (drawterrain)
+	glTranslatef(0.0f, LowerTerrain, 0.0f);
+	if(drawterrain)
 	{
-		for (int j=1; j<4; j++)
+		for(int j = 1; j < 4; j++)
 		{
-			for (int i=1; i<4; i++)
+			for(int i = 1; i < 4; i++)
 			{
 				uselowlod = drawfog;// && i==1 && j==1;
-				if (oktile(i,j) && current[j][i] != 0)
+				if(oktile(i, j) && current[j][i] != 0)
 					current[j][i]->draw();
 			}
 		}
 	}
+
 	glPopMatrix();
 
-	if (drawlines)
+	if(drawlines)
 	{
 		glDisable(GL_COLOR_MATERIAL);
 		glActiveTextureARB(GL_TEXTURE0_ARB);
@@ -1113,12 +1116,12 @@ void World::draw()
 		//glDisable(GL_DEPTH_TEST);
 
 		setupFog();
-		for (int j=1; j<4; j++)
+		for(int j = 1; j < 4; j++)
 		{
-			for (int i=1; i<4; i++)
+			for(int i = 1; i < 4; i++)
 			{
 				//uselowlod = drawfog;// && i==1 && j==1;
-				if (oktile(i,j) && current[j][i] != 0)
+				if(oktile(i, j) && current[j][i] != 0)
 					current[j][i]->drawLines();
 			}
 		}
@@ -1142,7 +1145,7 @@ void World::draw()
 	glDisable(GL_ALPHA_TEST);
 
 	// TEMP: for fucking around with lighting
-	for (int i=0; i<8; i++)
+	for(int i = 0; i < 8; i++)
 	{
 		GLuint light = GL_LIGHT0 + i;
 		glLightf(light, GL_CONSTANT_ATTENUATION, l_const);
@@ -1150,35 +1153,31 @@ void World::draw()
 		glLightf(light, GL_QUADRATIC_ATTENUATION, l_quadratic);
 	}
 
-	if (gnWMO)
+	if(gnWMO)
 	{
 		oob = false;
-		for (int i=0; i<gnWMO; i++)
-		{
+		for(int i = 0; i < gnWMO; i++)
 			gwmois[i].draw();
-		}
 	}
 	
 	// map objects
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
-		{
-			if (oktile(i,j) && drawwmo && current[j][i] != 0) current[j][i]->drawObjects();
-		}
+		for(int i = 1; i < 4; i++)
+			if(oktile(i, j) && drawwmo && current[j][i] != 0)
+				current[j][i]->drawObjects();
 	}
 
 	outdoorLights(true);
 	setupFog();
 
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 	//models
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
-		{
-			if (oktile(i,j) && drawmodels && current[j][i] != 0) current[j][i]->drawModels();
-		}
+		for(int i = 1; i < 4; i++)
+			if (oktile(i, j) && drawmodels && current[j][i] != 0)
+				current[j][i]->drawModels();
 	}
 
 	drawModelList();
@@ -1192,14 +1191,15 @@ void World::draw()
 	// gosh darn alpha blended evil
 	LoadGLSettings();
 	setupFog();
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
+		for(int i = 1; i < 4; i++)
 		{
-			if (drawterrain && oktile(i,j) && current[j][i] != 0)	current[j][i]->drawWater();
+			if(drawterrain && oktile(i, j) && current[j][i] != 0)
+				current[j][i]->drawWater();
 		}
 	}
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 	glEnable(GL_BLEND);
 
 	/*
@@ -1224,10 +1224,9 @@ void World::draw()
 	glColor4f(1,1,1,1);
 	glDisable(GL_COLOR_MATERIAL);
 
-	if (current[2][2] != 0 || oob)
+	if(current[2][2] != 0 || oob)
 	{
-		if (oob || (camera.x<current[2][2]->xbase) || (camera.x>(current[2][2]->xbase+TILESIZE))
-			|| (camera.z<current[2][2]->zbase) || (camera.z>(current[2][2]->zbase+TILESIZE)) )
+		if(oob || (camera.x < current[2][2]->xbase) || (camera.x > (current[2][2]->xbase + TILESIZE)) || (camera.z < current[2][2]->zbase) || (camera.z > (current[2][2]->zbase + TILESIZE)))
 		{
 			ex = (int)(camera.x / TILESIZE);
 			ez = (int)(camera.z / TILESIZE);
@@ -1244,39 +1243,39 @@ void reportModelTimes();
 
 void startTimer()
 {
-	startTime[numTimers]=SDL_GetTicks();
+	startTime[numTimers] = SDL_GetTicks();
 	numTimers++;
 }
 
 void stopTimer()
 {
-	int endTime=SDL_GetTicks();
+	int endTime = SDL_GetTicks();
 	numTimers--;
-	gLog("[World of Warcraft Studio - Editor] - %d ms\n",endTime-startTime[numTimers]);
+	gLog("[World of Warcraft Studio - Editor] - %d ms\n", endTime - startTime[numTimers]);
 }
 
 int stopTimer2()
 {
-	int endTime=SDL_GetTicks();
+	int endTime = SDL_GetTicks();
 	numTimers--;
-	return endTime-startTime[numTimers];
+
+	return endTime - startTime[numTimers];
 }
 
-void World::drawSelection(int cursorX,int cursorY)
+void World::drawSelection(int cursorX, int cursorY)
 {
 	startTimer();
 
 	startTimer();
 	GLint viewport[4];
-	glSelectBuffer(BUFSIZE,SelectBuffer);
+	glSelectBuffer(BUFSIZE, SelectBuffer);
 	glRenderMode(GL_SELECT);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	
 	glGetIntegerv(GL_VIEWPORT,viewport);
-	gluPickMatrix(cursorX,viewport[3]-cursorY,
-			7,7,viewport);
+	gluPickMatrix(cursorX, viewport[3] - cursorY, 7, 7, viewport);
 	video.set3D_select();
 
 	WMOInstance::reset();
@@ -1289,22 +1288,23 @@ void World::drawSelection(int cursorX,int cursorY)
 	modeldrawdistance2 = modeldrawdistance * modeldrawdistance;
 	doodaddrawdistance2 = doodaddrawdistance * doodaddrawdistance;
 
-	gluLookAt(camera.x,camera.y,camera.z, lookat.x,lookat.y,lookat.z, 0, 1, 0);
+	gluLookAt(camera.x, camera.y, camera.z, lookat.x, lookat.y, lookat.z, 0, 1, 0);
 
 	// camera is set up
 	frustum.retrieve();
 
-	if (thirdperson)
+	if(thirdperson)
 	{
-		Vec3D l = (lookat-camera).normalize();
-		Vec3D nc = camera + Vec3D(0,300,0);
-		Vec3D rt = (Vec3D(0,1,0) % l).normalize();
+		Vec3D l = (lookat - camera).normalize();
+		Vec3D nc = camera + Vec3D(0, 300, 0);
+		Vec3D rt = (Vec3D(0, 1, 0) % l).normalize();
 		Vec3D up = (l % rt).normalize();
 		float fl = 256.0f;
 		Vec3D fp = camera + l * fl;
 		glLoadIdentity();
-		gluLookAt(nc.x,nc.y,nc.z, camera.x,camera.y,camera.z, 1, 0, 0);
+		gluLookAt(nc.x, nc.y, nc.z, camera.x, camera.y, camera.z, 1, 0, 0);
 	}
+
 	glClear(GL_DEPTH_BUFFER_BIT); 
 	glInitNames();
 	gLog("[World of Warcraft Studio - Editor] - Initialization Time ");
@@ -1312,42 +1312,43 @@ void World::drawSelection(int cursorX,int cursorY)
     
 	startTimer();
 	// height map w/ a zillion texture passes
-	if (drawterrain)
+	if(drawterrain)
 	{
-		for (int j=1; j<4; j++)
+		for(int j = 1; j < 4; j++)
 		{
-			for (int i=1; i<4; i++)
+			for(int i = 1; i < 4; i++)
 			{
 				uselowlod = drawfog;// && i==1 && j==1;
-				if (oktile(i,j) && current[j][i] != 0) current[j][i]->drawSelect();
+				if(oktile(i, j) && current[j][i] != 0)
+					current[j][i]->drawSelect();
 			}
 		}
 	}
+
 	gLog("[World of Warcraft Studio - Editor] - Terrain Time ");
 	stopTimer();
 
 	startTimer();
-	if (gnWMO)
+	if(gnWMO)
 	{
 		oob = false;
-		for (int i=0; i<gnWMO; i++)
-		{
+		for(int i = 0; i < gnWMO; i++)
 			gwmois[i].drawSelect();
-		}
 	}
+
 	gLog("[World of Warcraft Studio - Editor] - WMO Time ");
 	stopTimer();
 
 	startTimer();
     
 	// map objects
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
-		{
-			if (oktile(i,j) && drawwmo && current[j][i] != 0) current[j][i]->drawObjectsSelect();
-		}
+		for(int i=1; i<4; i++)
+			if(oktile(i, j) && drawwmo && current[j][i] != 0)
+				current[j][i]->drawObjectsSelect();
 	}
+
 	gLog("[World of Warcraft Studio - Editor] - Map Objects ");
 	stopTimer();
 
@@ -1357,12 +1358,11 @@ void World::drawSelection(int cursorX,int cursorY)
 	startTimer();
 	//glColor4f(1,1,1,1);
 	//models
-	for (int j=1; j<4; j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for (int i=1; i<4; i++)
-		{
-			if (oktile(i,j) && drawmodels && current[j][i] != 0) current[j][i]->drawModelsSelect();
-		}
+		for(int i = 1; i < 4; i++)
+			if(oktile(i, j) && drawmodels && current[j][i] != 0)
+				current[j][i]->drawModelsSelect();
 	}
 	//drawModelList();
 	gLog("[World of Warcraft Studio - Editor] - Model ");
@@ -1373,22 +1373,22 @@ void World::drawSelection(int cursorX,int cursorY)
 	stopTimer();
 }
 
-extern nameEntry *Selection;
+extern nameEntry* Selection;
 
-void World::drawSelectionChunk(int cursorX,int cursorY)
+void World::drawSelectionChunk(int cursorX, int cursorY)
 {
-	if(!Selection||(Selection->type!=ENTRY_MAPCHUNK))
+	if(!Selection || (Selection->type != ENTRY_MAPCHUNK))
 		return;
+
 	GLint viewport[4];
-	glSelectBuffer(BUFSIZE,SelectBuffer);
+	glSelectBuffer(BUFSIZE, SelectBuffer);
 	glRenderMode(GL_SELECT);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	
 	glGetIntegerv(GL_VIEWPORT,viewport);
-	gluPickMatrix(cursorX,viewport[3]-cursorY,
-			7,7,viewport);
+	gluPickMatrix(cursorX, viewport[3] - cursorY, 7, 7, viewport);
 	video.set3D_select();
 
 	WMOInstance::reset();
@@ -1401,22 +1401,23 @@ void World::drawSelectionChunk(int cursorX,int cursorY)
 	modeldrawdistance2 = modeldrawdistance * modeldrawdistance;
 	doodaddrawdistance2 = doodaddrawdistance * doodaddrawdistance;
 
-	gluLookAt(camera.x,camera.y,camera.z, lookat.x,lookat.y,lookat.z, 0, 1, 0);
+	gluLookAt(camera.x, camera.y, camera.z, lookat.x, lookat.y, lookat.z, 0, 1, 0);
 
 	// camera is set up
 	frustum.retrieve();
 
-	if (thirdperson)
+	if(thirdperson)
 	{
 		Vec3D l = (lookat-camera).normalize();
-		Vec3D nc = camera + Vec3D(0,300,0);
-		Vec3D rt = (Vec3D(0,1,0) % l).normalize();
+		Vec3D nc = camera + Vec3D(0, 300, 0);
+		Vec3D rt = (Vec3D(0, 1, 0) % l).normalize();
 		Vec3D up = (l % rt).normalize();
 		float fl = 256.0f;
 		Vec3D fp = camera + l * fl;
 		glLoadIdentity();
-		gluLookAt(nc.x,nc.y,nc.z, camera.x,camera.y,camera.z, 1, 0, 0);
+		gluLookAt(nc.x, nc.y, nc.z, camera.x, camera.y, camera.z, 1, 0, 0);
 	}
+
 	glClear(GL_DEPTH_BUFFER_BIT); 
 	glInitNames();
 	Selection->data.mapchunk->drawSelect2();
@@ -1425,25 +1426,25 @@ void World::drawSelectionChunk(int cursorX,int cursorY)
 int World::getSelection()
 {
 	hits = glRenderMode(GL_RENDER);
-	GLint 	CurMin=0;
-	Dist=4294967295;
-	CurTex=0;
-	int Offset=0,Entries;
+	GLint CurMin = 0;
+	Dist = 4294967295;
+	CurTex = 0;
+	int Offset = 0, Entries;
 
-	for(int i=0;i<hits;i++)
+	for(int i = 0; i < hits; i++)
 	{
-		Entries=SelectBuffer[Offset];
-		if(SelectBuffer[Offset+1]<Dist)
+		Entries = SelectBuffer[Offset];
+		if(SelectBuffer[Offset + 1]<Dist)
 		{			
-			Dist=SelectBuffer[Offset+1];
-			CurMin=SelectBuffer[Offset+3];
-			if(Entries>1)
-				CurTex=SelectBuffer[Offset+4];
+			Dist = SelectBuffer[Offset + 1];
+			CurMin = SelectBuffer[Offset + 3];
+			if(Entries > 1)
+				CurTex = SelectBuffer[Offset + 4];
 			else
-				CurTex=0xFFFFFFFF;
+				CurTex = 0xFFFFFFFF;
 		}
 
-		Offset+=3+Entries;
+		Offset += 3 + Entries;
 		
 	}
 	//if(CurMin==-1)
@@ -1453,16 +1454,15 @@ int World::getSelection()
 
 void World::tick(float dt)
 {
-	if (loading)
+	if(loading)
 	{
-		if (ex!=-1 && ez!=-1)
-		{
-			enterTile(ex,ez);
-		}
+		if(ex != -1 && ez != -1)
+			enterTile(ex, ez);
+
 		ex = ez = -1;
 		loading = false;
 	}
-	while (dt > 0.1f)
+	while(dt > 0.1f)
 	{
 		modelmanager.updateEmitters(0.1f);
 		dt -= 0.1f;
@@ -1472,21 +1472,22 @@ void World::tick(float dt)
 
 unsigned int World::getAreaID()
 {
-	MapTile *curTile;
+	MapTile* curTile;
 
-	int mtx,mtz,mcx,mcz;
-	mtx = (int) (camera.x / TILESIZE);
-	mtz = (int) (camera.z / TILESIZE);
-	mcx = (int) (fmod(camera.x, TILESIZE) / CHUNKSIZE);
-	mcz = (int) (fmod(camera.z, TILESIZE) / CHUNKSIZE);
+	int mtx, mtz, mcx, mcz;
+	mtx = (int)(camera.x / TILESIZE);
+	mtz = (int)(camera.z / TILESIZE);
+	mcx = (int)(fmod(camera.x, TILESIZE) / CHUNKSIZE);
+	mcz = (int)(fmod(camera.z, TILESIZE) / CHUNKSIZE);
 
-	if ((mtx<cx-1) || (mtx>cx+1) || (mtz<cz-1) || (mtz>cz+1)) return 0;
+	if((mtx < cx - 1) || (mtx > cx + 1) || (mtz < cz -1) || (mtz > cz + 1))
+		return 0;
 	
-	curTile = current[mtz-cz+2][mtx-cx+2];
+	curTile = current[mtz - cz + 2][mtx - cx + 2];
 	if(curTile == 0)
 		return 0;
 
-	MapChunk *curChunk = curTile->getChunk(mcx, mcz);
+	MapChunk* curChunk = curTile->getChunk(mcx, mcz);
 
 	if(curChunk == 0)
 		return 0;
@@ -1496,20 +1497,20 @@ unsigned int World::getAreaID()
 
 void World::drawTileMode(float ah)
 {
-	glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT); 
+	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT); 
 	glEnable(GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glPushMatrix();
-	glScalef(zoom,zoom,1.0f);
+	glScalef(zoom, zoom, 1.0f);
 
 	glPushMatrix();
-	glTranslatef(-camera.x/CHUNKSIZE,-camera.z/CHUNKSIZE,0);
+	glTranslatef(-camera.x/CHUNKSIZE, -camera.z/CHUNKSIZE, 0);
 
-	minX=camera.x/CHUNKSIZE-2.0f*video.ratio/zoom;
-	maxX=camera.x/CHUNKSIZE+2.0f*video.ratio/zoom;
-	minY=camera.z/CHUNKSIZE-2.0f/zoom;
-	maxY=camera.z/CHUNKSIZE+2.0f/zoom;
+	minX = camera.x/CHUNKSIZE - 2.0f * video.ratio/zoom;
+	maxX = camera.x/CHUNKSIZE + 2.0f * video.ratio/zoom;
+	minY = camera.z/CHUNKSIZE - 2.0f / zoom;
+	maxY = camera.z/CHUNKSIZE + 2.0f / zoom;
 	
 	glEnableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
@@ -1517,16 +1518,13 @@ void World::drawTileMode(float ah)
 	glDisable(GL_CULL_FACE);
 	glDepthMask(GL_FALSE);
 
-	for(int y=1;y<4;y++)
+	for(int y = 1; y < 4; y++)
 	{
-		for(int x=1;x<4;x++)
+		for(int x = 1; x < 4; x++)
 		{
-            if (oktile(x,y) && current[y][x] != 0)
-			{
+            if(oktile(x, y) && current[y][x] != 0)
 				//glTranslatef(16*x-16,16*y-16,0);
 				current[y][x]->drawTextures();
-			
-			}
 		}
 	}
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -1535,30 +1533,30 @@ void World::drawTileMode(float ah)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	glPopMatrix();
-	if (drawlines)
+	if(drawlines)
 	{
-		glTranslatef(fmod(-camera.x/CHUNKSIZE,16),fmod(-camera.z/CHUNKSIZE,16),0);
-		for(int x=-32;x<=48;x++)
+		glTranslatef(fmod(-camera.x/CHUNKSIZE, 16), fmod(-camera.z/CHUNKSIZE, 16), 0);
+		for(int x = -32; x <= 48; x++)
 		{
-			if(x%16==0)
-				glColor4f(0.0f,1.0f,0.0f,0.5f);
+			if(x%16 == 0)
+				glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
 			else
-				glColor4f(1.0f,0.0f,0.0f,0.5f);
+				glColor4f(1.0f, 0.0f, 0.0f, 0.5f);
+
 			glBegin(GL_LINES);
-			glVertex3f(-32.0f,(float)x,-1);
-			glVertex3f(48.0f,(float)x,-1);
-			glVertex3f((float)x,-32.0f,-1);
-			glVertex3f((float)x,48.0f,-1);
+			glVertex3f(-32.0f, (float)x, -1);
+			glVertex3f(48.0f, (float)x, -1);
+			glVertex3f((float)x, -32.0f, -1);
+			glVertex3f((float)x, 48.0f, -1);
 			glEnd();
 		}
 	}
 	
 	glPopMatrix();	
 
-	if (current[2][2] != 0 || oob)
+	if(current[2][2] != 0 || oob)
 	{
-		if (oob || (camera.x<current[2][2]->xbase) || (camera.x>(current[2][2]->xbase+TILESIZE))
-			|| (camera.z<current[2][2]->zbase) || (camera.z>(current[2][2]->zbase+TILESIZE)) )
+		if(oob || (camera.x < current[2][2]->xbase) || (camera.x > (current[2][2]->xbase + TILESIZE)) || (camera.z < current[2][2]->zbase) || (camera.z > (current[2][2]->zbase + TILESIZE)))
 		{
 			ex = (int)(camera.x / TILESIZE);
 			ez = (int)(camera.z / TILESIZE);
@@ -1568,188 +1566,158 @@ void World::drawTileMode(float ah)
 	}
 }
 
-bool World::GetVertex(float x,float z, Vec3D *V)
+bool World::GetVertex(float x, float z, Vec3D* V)
 {
-	int newX,newZ;
+	int newX, newZ;
 	newX = (int)(x / TILESIZE);
 	newZ = (int)(z / TILESIZE);
 
-	if(!oktile(newX,newZ)|| !maps[newZ][newX])
+	if(!oktile(newX, newZ) || !maps[newZ][newX])
 		return false;
 
-	for (int i=0; i<MAPTILECACHESIZE; i++)
-	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x == newX) && (maptilecache[i]->z == newZ)) 
-		{
-			return maptilecache[i]->GetVertex(x,z,V);
-		}
-	}
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x == newX) && (maptilecache[i]->z == newZ))
+			return maptilecache[i]->GetVertex(x, z, V);
+
 	return false;
 
 }
 
 void World::changeTerrain(float x, float z, float change, float radius, int BrushType)
 {
-	for(int j=1;j<4;j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
-					current[j][i]->chunks[t/16][t%16].changeTerrain(x,z,change,radius,BrushType);
-			}
-		}
+		for(int i = 1;i < 4; i++)
+            if(oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
+					current[j][i]->chunks[t/16][t%16].changeTerrain(x, z, change, radius, BrushType);
 	}
-	for(int j=1;j<4;j++)
+
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
+		for(int i = 1; i < 4; i++)
+            if(oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
 					current[j][i]->chunks[t/16][t%16].recalcNorms();
-			}
-		}
 	}
 }
+
 void World::flattenTerrain(float x, float z, float h, float remain, float radius, int BrushType)
 {
-	for(int j=1;j<4;j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
-					current[j][i]->chunks[t/16][t%16].flattenTerrain(x,z,h,remain,radius,BrushType);
-			}
-		}
+		for(int i = 1; i < 4; i++)
+            if(oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
+					current[j][i]->chunks[t/16][t%16].flattenTerrain(x, z, h, remain, radius, BrushType);
 	}
-	for(int j=1;j<4;j++)
+
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
+		for(int i = 1; i < 4; i++)
+            if (oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
 					current[j][i]->chunks[t/16][t%16].recalcNorms();
-			}
-		}
 	}
 }
 
 void World::blurTerrain(float x, float z, float remain, float radius, int BrushType)
 {
-	for(int j=1;j<4;j++)
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
+		for(int i = 1; i < 4; i++)
+            if (oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
 					current[j][i]->chunks[t/16][t%16].blurTerrain(x, z, remain, radius, BrushType);
-			}
-		}
 	}
-	for(int j=1;j<4;j++)
+
+	for(int j = 1; j < 4; j++)
 	{
-		for(int i=1;i<4;i++)
-		{
-            if (oktile(i,j) && current[j][i] != 0)
-			{
-				for(int t=0;t<256;t++)
+		for(int i = 1; i < 4; i++)
+            if(oktile(i, j) && current[j][i] != 0)
+				for(int t = 0; t < 256; t++)
 					current[j][i]->chunks[t/16][t%16].recalcNorms();
-			}
-		}
 	}
 }
 
-void World::paintTexture(float x, float z, brush *Brush, float strength, float pressure, int texture)
+void World::paintTexture(float x, float z, brush* Brush, float strength, float pressure, int texture)
 {
-	int newX,newZ;
+	int newX, newZ;
 	newX = (int)(x / TILESIZE);
 	newZ = (int)(z / TILESIZE);
 
-	if(!oktile(newX,newZ)|| !maps[newZ][newX])
+	if(!oktile(newX, newZ) || !maps[newZ][newX])
 		return;
 
-	for (int i=0; i<MAPTILECACHESIZE; i++)
-	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x >= newX-1) && (maptilecache[i]->x <= newX+1) && (maptilecache[i]->z >= newZ-1) && (maptilecache[i]->z <= newZ+1)) 
-		{
-			for(int t=0;t<256;t++)
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x >= newX-1) && (maptilecache[i]->x <= newX + 1) && (maptilecache[i]->z >= newZ - 1) && (maptilecache[i]->z <= newZ + 1))
+			for(int t = 0; t < 256; t++)
 				maptilecache[i]->chunks[t/16][t%16].paintTexture(x, z, Brush, strength, pressure, texture);
-		}
-	}
 
 	return;
 }
 
 void World::eraseTextures(float x, float z)
 {
-	int newX,newZ;
+	int newX, newZ;
 	newX = (int)(x / TILESIZE);
 	newZ = (int)(z / TILESIZE);
 
-	if(!oktile(newX,newZ)|| !maps[newZ][newX])
+	if(!oktile(newX, newZ)|| !maps[newZ][newX])
 		return;
 
-	for (int i=0; i<MAPTILECACHESIZE; i++)
-	{
-		if ((maptilecache[i] != 0)  && (maptilecache[i]->x >= newX-1) && (maptilecache[i]->x <= newX+1) && (maptilecache[i]->z >= newZ-1) && (maptilecache[i]->z <= newZ+1)) 
-		{
-			for(int t=0;t<256;t++)
-				if((maptilecache[i]->chunks[t/16][t%16].xbase<x)&&(maptilecache[i]->chunks[t/16][t%16].xbase+CHUNKSIZE>x)&&(maptilecache[i]->chunks[t/16][t%16].zbase<z)&&(maptilecache[i]->chunks[t/16][t%16].zbase+CHUNKSIZE>z))
+	for(int i = 0; i < MAPTILECACHESIZE; i++)
+		if((maptilecache[i] != 0)  && (maptilecache[i]->x >= newX - 1) && (maptilecache[i]->x <= newX + 1) && (maptilecache[i]->z >= newZ - 1) && (maptilecache[i]->z <= newZ + 1)) 
+			for(int t = 0; t < 256; t++)
+				if((maptilecache[i]->chunks[t/16][t%16].xbase < x) && (maptilecache[i]->chunks[t/16][t%16].xbase + CHUNKSIZE > x) && (maptilecache[i]->chunks[t/16][t%16].zbase < z) && (maptilecache[i]->chunks[t/16][t%16].zbase + CHUNKSIZE > z))
 					maptilecache[i]->chunks[t/16][t%16].eraseTextures();
-		}
-	}
 
 	return;
 }
 
 void World::saveMap()
 {
-	unsigned char image[256*256*3];
+	unsigned char image[256 * 256 * 3];
 	char tfname[255];
-	MapTile *ATile;
-	FILE *fid;
+	MapTile* ATile;
+	FILE* fid;
 	glEnable(GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glReadBuffer(GL_BACK);
 
-	minX=-64*16;
-	maxX=64*16;
-	minY=-64*16;
-	maxY=64*16;
+	minX = -64 * 16;
+	maxX = 64 * 16;
+	minY = -64 * 16;
+	maxY = 64 * 16;
 
 	glEnableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	for(int y=21;y<43;y++)
+	for(int y = 21; y < 43; y++)
 	{
-		for(int x=12;x<39;x++)
+		for(int x = 12; x < 39; x++)
 		{
-			if ((!oktile(x,y))|| (maps[y][x] == 0))
+			if((!oktile(x, y)) || (maps[y][x] == 0))
 				continue;
-			ATile=loadTile(x,y);
+
+			ATile = loadTile(x, y);
 			ATile->finishLoading();
-			glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT); 
+			glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT); 
 
 			glPushMatrix();
-			glScalef(0.08333333f,0.08333333f,1.0f);
+			glScalef(0.08333333f, 0.08333333f, 1.0f);
 
 			//glTranslatef(-camera.x/CHUNKSIZE,-camera.z/CHUNKSIZE,0);
-			glTranslatef((float)-ATile->x*16-8,(float)-ATile->z*16-8,0);
+			glTranslatef((float) - ATile->x * 16 - 8, (float) - ATile->z * 16 - 8, 0);
 	
 			ATile->drawTextures();
 			glPopMatrix();
-			glReadPixels(video.xres/2-128,video.yres/2-128,256,256,GL_RGB,GL_UNSIGNED_BYTE,image);
+			glReadPixels(video.xres/2 - 128, video.yres/2 - 128, 256, 256, GL_RGB, GL_UNSIGNED_BYTE, image);
 			SDL_GL_SwapBuffers();
-			sprintf_s(tfname,"%s_map_%d_%d.raw",basename.c_str(),ATile->x,ATile->z);
-			fid=fopen(tfname,"wb");
-			fwrite(image,256*3,256,fid);
+			sprintf_s(tfname, "%s_map_%d_%d.raw", basename.c_str(), ATile->x, ATile->z);
+			fid=fopen(tfname, "wb");
+			fwrite(image, 256 * 3, 256, fid);
 			fclose(fid);
 		}
 	}
@@ -1759,10 +1727,9 @@ void World::saveMap()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	if (current[2][2] != 0 || oob)
+	if(current[2][2] != 0 || oob)
 	{
-		if (oob || (camera.x<current[2][2]->xbase) || (camera.x>(current[2][2]->xbase+TILESIZE))
-			|| (camera.z<current[2][2]->zbase) || (camera.z>(current[2][2]->zbase+TILESIZE)) )
+		if(oob || (camera.x < current[2][2]->xbase) || (camera.x > (current[2][2]->xbase + TILESIZE)) || (camera.z < current[2][2]->zbase) || (camera.z > (current[2][2]->zbase + TILESIZE)))
 		{
 			ex = (int)(camera.x / TILESIZE);
 			ez = (int)(camera.z / TILESIZE);

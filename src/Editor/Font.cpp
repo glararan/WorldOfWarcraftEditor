@@ -4,12 +4,10 @@
 #include <fstream>
 #include "OpenGL.h"
 
-using namespace std;
-
 Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile) : tex(tex), size(size), tw(tw), th(th)
 {
 	ifstream in(infofile);
-	if (!in.is_open())
+	if(!in.is_open())
 	{
 		gLog("Error opening font %s\n", infofile);
 		exit(1);
@@ -19,12 +17,14 @@ Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile) : t
 
 	memset(chars, 0, 256 * sizeof(charinfo));
 
-	while (!in.eof())
+	while(!in.eof())
 	{
 		int line[7];
-		for (int i = 0; i < 7; i++) in >> line[i];
+		for(int i = 0; i < 7; i++)
+			in >> line[i];
 
-		if (line[1] != size) continue;
+		if (line[1] != size)
+			continue;
 
 		charinfo ci;
 		ci.baseline = line[2];
@@ -40,6 +40,7 @@ Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile) : t
 
 		chars[line[0]] = ci;
 	}
+
 	charinfo space;
 	space.baseline = 0;
 	space.h = size;
@@ -47,7 +48,7 @@ Font::Font(unsigned int tex, int tw, int th, int size, const char* infofile) : t
 	space.x = space.y = 0;
 	space.tx1 = space.tx2 = space.ty1 = space.ty2 = 0;
 	chars[32] = space;
-	Scale=1.0;
+	Scale = 1.0;
 }
 
 Font::~Font()
@@ -56,9 +57,10 @@ Font::~Font()
 
 void Font::drawchar(float x, float y, const char ch)
 {
-	if (ch == 32) return;
+	if(ch == 32)
+		return;
 
-	charinfo *c = &chars[ch];
+	charinfo* c = &chars[ch];
 
     glBegin(GL_QUADS);
 
@@ -78,21 +80,21 @@ void Font::drawchar(float x, float y, const char ch)
 }
 
 // ASSUME: ortho mode
-void Font::drawtext(int x, int y, const char *text)
+void Font::drawtext(int x, int y, const char* text)
 {
 	glBindTexture(GL_TEXTURE_2D, tex);
 
-    float base = y + size*Scale;
+    float base = y + size * Scale;
 	float xpos = (float)x;
-    const char *c = text;
+    const char* c = text;
 
-	while (*c != 0)
+	while(*c != 0)
 	{
 
-		if (*c != '\n' && *c != '\r')
+		if(*c != '\n' && *c != '\r')
 		{
 			drawchar(xpos, base - chars[*c].baseline * Scale, *c);
-			xpos += max(Scale*chars[*c].w, 0.5f) + Scale * 2;
+			xpos += max(Scale * chars[*c].w, 0.5f) + Scale * 2;
 		}
 		else
 		{
@@ -103,7 +105,7 @@ void Font::drawtext(int x, int y, const char *text)
 	}
 }
 
-void Font::shdrawtext(int x, int y, const char *text)
+void Font::shdrawtext(int x, int y, const char* text)
 {
 	GLfloat col[4];
 	glGetFloatv(GL_CURRENT_COLOR, col);
@@ -115,7 +117,7 @@ void Font::shdrawtext(int x, int y, const char *text)
 	drawtext(x, y, text);
 }
 
-void Font::print(int x, int y, const char *str, ...)
+void Font::print(int x, int y, const char* str, ...)
 {
 	char buf[1024];
 
@@ -141,10 +143,10 @@ void Font::shprint(int x, int y, const char *str, ...)
 	shdrawtext(x, y, buf);
 }
 
-int Font::textwidth(const char *text)
+int Font::textwidth(const char* text)
 {
 	int w = 0, maxw = 0;
-    const char *c = text;
+    const char* c = text;
 	while(*c != 0)
 	{
 		if(*c != '\n' && *c != '\r')
@@ -158,7 +160,9 @@ int Font::textwidth(const char *text)
 		}
 		c++;
 	}
-	if (w > maxw) maxw = w;
+	if (w > maxw)
+		maxw = w;
+
 	return maxw;
 }
 

@@ -213,7 +213,7 @@ void MPQFile::SaveFile()
 	{
 		gLog("[World of Warcraft Studio - Editor] - Saving File : %s\n", fname);
 		fseek(fd, 0, SEEK_SET);
-		fwrite(buffer, 1, size,fd);
+		fwrite(buffer, 1, size, fd);
 		fclose(fd);
 		External = true;
 		return;

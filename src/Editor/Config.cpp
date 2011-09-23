@@ -29,7 +29,6 @@ ConfigFile::ConfigFile(string const& configFile)
   int posEqual;
   while(getline(file, line))
   {
-
     if(!line.length())
 		continue;
 
@@ -45,8 +44,8 @@ ConfigFile::ConfigFile(string const& configFile)
     }
 
     posEqual = line.find('=');
-    name  = trim(line.substr(0,posEqual));
-    value = trim(line.substr(posEqual+1));
+    name  = trim(line.substr(0, posEqual));
+    value = trim(line.substr(posEqual + 1));
 
     content_[inSection + '/' + name] = Chameleon(value);
   }
@@ -55,7 +54,7 @@ ConfigFile::ConfigFile(string const& configFile)
 Chameleon const& ConfigFile::Value(string const& section, string const& entry) const
 {
 
-  map<string,Chameleon>::const_iterator ci = content_.find(section + '/' + entry);
+  map<string, Chameleon>::const_iterator ci = content_.find(section + '/' + entry);
 
   if(ci == content_.end())
 	  throw "does not exist";

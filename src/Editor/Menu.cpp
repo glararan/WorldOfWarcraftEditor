@@ -2,6 +2,7 @@
 #include "MPQ.h"
 #include "MapViewer.h"
 #include "DBCFile.h"
+#include "Revision.h"
 
 #include <fstream>
 
@@ -69,18 +70,23 @@ Menu::~Menu()
 
 void Menu::randBackground()
 {
-	if (bg) delete bg;
+	if(bg)
+		delete bg;
+
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 	
-	char *ui[] = {"MainMenu"};
-	int dark[] = {0,0,1,1,0,0,0};
+	char* ui[] = {"MainMenu"};
+	int dark[] = {0, 0, 1, 1, 0, 0, 0};
 	int randnum;
-	do {
-		randnum = randint(0,6);
-	} while (randnum == lastbg);
+
+	do
+	{
+		randnum = randint(0, 6);
+	}
+	while(randnum == lastbg);
 	// randnum = 0
-	char *randui = ui[randnum];
-	darken = dark[randnum]!=0;
+	char* randui = ui[randnum];
+	darken = dark[randnum] != 0;
     char path[256];
 	sprintf_s(path, "Interface\\Glues\\Models\\UI_%s\\UI_%s.mdx", randui, randui);
 	
@@ -99,58 +105,59 @@ void Menu::tick(float t, float dt)
 {
 	mt += dt * 1000.0f;
 	globalTime = (int)mt;
-	if (bg) bg->updateEmitters(dt);
+	if(bg)
+		bg->updateEmitters(dt);
 
-	if (bg==0) randBackground();
+	if(bg == 0)
+		randBackground();
 
-	if (cmd==CMD_DO_LOAD_WORLD)
+	if(cmd == CMD_DO_LOAD_WORLD)
 	{
-
-		if (fullscreen) SDL_ShowCursor(SDL_DISABLE);
+		if(fullscreen)
+			SDL_ShowCursor(SDL_DISABLE);
 
 		gWorld = world;
-
 		world->initDisplay();
 		// calc coordinates
 
-		if (setpos)
+		if(setpos)
 		{
-			cz=0;
-			cx=0;
+			cz = 0;
+			cx = 0;
 
-			if (world->nMaps > 0)
+			if(world->nMaps > 0)
 			{
-
 				float fx = (x/12.0f);
 				float fz = (y/12.0f);
 
 				cx = (int)fx;
 				cz = (int)fz;
 
-				world->camera = Vec3D(fx * TILESIZE,0,fz * TILESIZE);
+				world->camera = Vec3D(fx * TILESIZE, 0, fz * TILESIZE);
 				world->autoheight = true;
 
 			}
 			else
 			{
 				Vec3D p;
-				if (world->gwmois.size()>=1) p = world->gwmois[0].pos;
-				else p = Vec3D(0,0,0); // empty map? :|
+				if(world->gwmois.size() >= 1)
+					p = world->gwmois[0].pos;
+				else
+					p = Vec3D(0, 0, 0); // empty map? :|
 				
-				cx = (int) (p.x / TILESIZE);
-				cz = (int) (p.z / TILESIZE);
+				cx = (int)(p.x / TILESIZE);
+				cz = (int)(p.z / TILESIZE);
 
-				world->camera = p + Vec3D(0,25.0f,0);
+				world->camera = p + Vec3D(0, 25.0f, 0);
 			}
-			world->lookat = world->camera + Vec3D(0,0,-1.0f);
+			world->lookat = world->camera + Vec3D(0, 0, -1.0f);
 
 			ah = -90.0f;
 			av = -30.0f;
 		}
 
 		world->enterTileInit(cx,cz);
-		
-		MapViewer *t = new MapViewer(world,ah,av);
+		MapViewer* t = new MapViewer(world, ah, av);
 
 		gStates.push_back(t);
 
@@ -162,14 +169,14 @@ void Menu::tick(float t, float dt)
 		delete bg;
 		bg = 0;
 	}
-	else if (cmd == CMD_BACK_TO_MENU)
+	else if(cmd == CMD_BACK_TO_MENU)
 	{
-		/*if (fullscreen)*/ SDL_ShowCursor(SDL_ENABLE);
+		/*if (fullscreen)*/
+		SDL_ShowCursor(SDL_ENABLE);
 		cmd = CMD_SELECT;
 		refreshBookmarks();
 		setpos = true;
 		gWorld = 0;
-
 		// reentry
         //randBackground();
 	}
@@ -180,14 +187,15 @@ void Menu::display(float t, float dt)
 	video.clearScreen();
 	glDisable(GL_FOG);
 	//video.set3D();
-	if (bg) {
-		Vec4D la(0.1f,0.1f,0.1f,1);
+	if(bg)
+	{
+		Vec4D la(0.1f, 0.1f, 0.1f, 1);
 		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, la);
 
 		glEnable(GL_COLOR_MATERIAL);
 		glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-		glColor4f(1,1,1,1);
-		for (int i=0; i<8; i++)
+		glColor4f(1, 1, 1, 1);
+		for(int i = 0; i < 8; i++)
 		{
 			GLuint light = GL_LIGHT0 + i;
 			glLightf(light, GL_CONSTANT_ATTENUATION, 0);
@@ -195,6 +203,7 @@ void Menu::display(float t, float dt)
 			glLightf(light, GL_QUADRATIC_ATTENUATION, 0.03f);
 			glDisable(light);
 		}
+
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_NORMAL_ARRAY);
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -208,25 +217,25 @@ void Menu::display(float t, float dt)
 
 	video.set2D();
 	glEnable(GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_LIGHTING);
 
-	if (darken)
+	if(darken)
 	{
 		glDisable(GL_TEXTURE_2D);
 		// background is too light so tame it down a bit
-		glColor4f(0,0,0,0.35f);
+		glColor4f(0, 0, 0, 0.35f);
 		glBegin(GL_QUADS);
-		glVertex2i(0,0);
-		glVertex2i(video.xres,0);
-		glVertex2i(video.xres,video.yres);
-		glVertex2i(0,video.yres);
+		glVertex2i(0, 0);
+		glVertex2i(video.xres, 0);
+		glVertex2i(video.xres, video.yres);
+		glVertex2i(0, video.yres);
 		glEnd();
 	}
 
-	glColor4f(1,1,1,1);
+	glColor4f(1, 1, 1, 1);
 
 	glEnable(GL_TEXTURE_2D);
 
@@ -234,168 +243,155 @@ void Menu::display(float t, float dt)
 	int basey = 0;
 	int tilesize = 12;
 
-	if (cmd==CMD_LOAD_WORLD)
+	if(cmd == CMD_LOAD_WORLD)
 	{
-		const char *loadstr = "Loading...";
+		const char* loadstr = "Loading...";
 
 		//f32->shprint(400, 360, "Loading...");
 
-		f32->shprint(video.xres/2 - f32->textwidth(loadstr)/2, video.yres/2-16, loadstr);
+		f32->shprint(video.xres/2 - f32->textwidth(loadstr)/2, video.yres/2 - 16, loadstr);
 
 		cmd = CMD_DO_LOAD_WORLD;
 	}
-	else if (cmd==CMD_SELECT)
+	else if(cmd == CMD_SELECT)
 	{
-
-		if ((sel != -1) && (world!=0))
+		if((sel != -1) && (world != 0))
 		{
-
-			if (world->minimap)
+			if(world->minimap)
 			{
 				// minimap time! ^_^
 				const int len = 768;
-				glColor4f(1,1,1,1);
+				glColor4f(1, 1, 1, 1);
 				glBindTexture(GL_TEXTURE_2D, world->minimap);
 				glBegin(GL_QUADS);
-				glTexCoord2f(0,0);
-				glVertex2i(basex,basey);
-				glTexCoord2f(1,0);
-				glVertex2i(basex+len,basey);
-				glTexCoord2f(1,1);
-				glVertex2i(basex+len,basey+len);
-				glTexCoord2f(0,1);
-				glVertex2i(basex,basey+len);
+				glTexCoord2f(0, 0);
+				glVertex2i(basex, basey);
+				glTexCoord2f(1, 0);
+				glVertex2i(basex + len, basey);
+				glTexCoord2f(1, 1);
+				glVertex2i(basex + len, basey + len);
+				glTexCoord2f(0, 1);
+				glVertex2i(basex, basey + len);
 				glEnd();
 			}
 
 			glDisable(GL_TEXTURE_2D);
-			for (int j=0; j<64; j++)
+			for(int j = 0; j < 64; j++)
 			{
-				for (int i=0; i<64; i++)
+				for(int i = 0; i < 64; i++)
 				{
-					if (world->maps[j][i])
+					if(world->maps[j][i])
 					{
-						glColor4f(0.7f,0.9f,0.8f,0.2f);
+						glColor4f(0.7f, 0.9f, 0.8f, 0.2f);
 						glBegin(GL_QUADS);
-						glVertex2i(basex+i*tilesize, basey+j*tilesize);
-						glVertex2i(basex+(i+1)*tilesize, basey+j*tilesize);
-						glVertex2i(basex+(i+1)*tilesize, basey+(j+1)*tilesize);
-						glVertex2i(basex+i*tilesize, basey+(j+1)*tilesize);
+						glVertex2i(basex + i * tilesize, basey + j * tilesize);
+						glVertex2i(basex + (i + 1)*tilesize, basey + j * tilesize);
+						glVertex2i(basex + (i + 1)*tilesize, basey + (j + 1) * tilesize);
+						glVertex2i(basex + i * tilesize, basey + (j + 1) * tilesize);
 						glEnd();
 					}
 				}
 			}
+
 			glEnable(GL_TEXTURE_2D);
 
-			glColor4f(1,1,1,1);
-			if (world->nMaps == 0)
-			{
+			glColor4f(1, 1, 1, 1);
+			if(world->nMaps == 0)
 				f16->shprint(400, 360, "Click to enter");
-			} else {
+			else
 				f16->shprint(400, 0, "Select your starting point");
-			}
-		} else {
-
-
+		}
+		else
+		{
 			// intro text
-			glColor4f(1,1,1,1);
-
-		
-			
+			glColor4f(1, 1, 1, 1);
 			//f32->shprint(300,0,"World of Warcraft map viewer");
-			int w=freetype::width(morpheus,"World of Warcraft Editor");
-			freetype::shprint(morpheus,video.xres/2.0f-w/2.0f,1.0f," ");
-			freetype::shprint(morpheus,video.xres/2.0f-w/2.0f,1.0f,"World of Warcraft Editor");
+			int w = freetype::width(morpheus, "World of Warcraft Editor");
+			freetype::shprint(morpheus, video.xres/2.0f - w/2.0f, 1.0f, " ");
+			freetype::shprint(morpheus, video.xres/2.0f - w/2.0f, 1.0f, "World of Warcraft Editor");
 
 			f16->shprint(video.xres - 20 - f16->textwidth(APP_VERSION), 10, APP_VERSION);
 			
 			f24->shprint(680, 74, "Controls");
-			f16->shprint(620,110, "F1 - Toggle Models\n"
-								"F2 - Toggle Doodads\n"
-								"F3 - Toggle Terrain\n"
-								"F4 - Toggle Stats\n"
-								"Shift + F4 - Toggle Selecting\n"
-								"F5 - Save Bookmark\n"
-								"F6 - Toggle Map objects\n"
-								"F7 - Toggle Chunk lines\n"
-								"F8 - Toggle Detailed info\n"
-								"F9 - Toggle Map contour\n"
-								"F10 - Reload Textures\n"
-								"F11 - Reload Models\n"
-								"F12 - Reload WMOs\n"
-								"H - Disable highres terrain\n"
-								"I - Toggle invert mouse\n"
-								"J - Reload ADT Tile\n"
-								"K - Save ADT Tile\n"
-								"T - Changes Terrain Mode\n"
-								"Y - Changes Brush Type\n"
-								"M - Minimap\n"
-								"U - New minimap\n"
-								"Ctrl + Shift + P - Save Map to RAW\n"
-								"Esc - Back/Exit\n"
-								"WASD - Move\n"
-								"R - Quick 180 degree turn\n"
-								"F - Toggle Fog\n"
-								"G - Toggle Drawing of Chunk flag info\n"
-								"+,- - Adjust Fog distance\n"
-								"O,P - Slower/Faster Movement\n"
-								"B,N - Slower/Faster Time\n"
-								"\n"
-								"Terrain Mode - Raise/Lower\n"
-								"  Left Click + Shift - Raise Terrain\n"
-								"  Left Click + Alt - Lower Terrain\n"
-								"Terrain Mode - Flatten/Blur\n"
-								"  Left Click + Shift - Flatten Terrain\n"
-								"  Left Click + Alt - Blur Terrain\n"
+			f16->shprint(620, 110, "F1 - Toggle Models\n"
+								   "F2 - Toggle Doodads\n"
+								   "F3 - Toggle Terrain\n"
+								   "F4 - Toggle Stats\n"
+								   "Shift + F4 - Toggle Selecting\n"
+								   "F5 - Save Bookmark\n"
+								   "F6 - Toggle Map objects\n"
+								   "F7 - Toggle Chunk lines\n"
+								   "F8 - Toggle Detailed info\n"
+								   "F9 - Toggle Map contour\n"
+								   "F10 - Reload Textures\n"
+								   "F11 - Reload Models\n"
+								   "F12 - Reload WMOs\n"
+								   "H - Disable highres terrain\n"
+								   "I - Toggle invert mouse\n"
+								   "J - Reload ADT Tile\n"
+								   "K - Save ADT Tile\n"
+								   "T - Changes Terrain Mode\n"
+								   "Y - Changes Brush Type\n"
+								   "M - Minimap\n"
+								   "U - New minimap\n"
+								   "Ctrl + Shift + P - Save Map to RAW\n"
+								   "Esc - Back/Exit\n"
+								   "WASD - Move\n"
+								   "R - Quick 180 degree turn\n"
+								   "F - Toggle Fog\n"
+								   "G - Toggle Drawing of Chunk flag info\n"
+								   "+,- - Adjust Fog distance\n"
+								   "O,P - Slower/Faster Movement\n"
+								   "B,N - Slower/Faster Time\n"
+								   "\n"
+								   "Terrain Mode - Raise/Lower\n"
+								   "  Left Click + Shift - Raise Terrain\n"
+								   "  Left Click + Alt - Lower Terrain\n"
+								   "Terrain Mode - Flatten/Blur\n"
+								   "  Left Click + Shift - Flatten Terrain\n"
+								   "  Left Click + Alt - Blur Terrain\n"
 			);
 
 #ifdef SFMPQAPI
 			f16->shprint(300, video.yres - 40, "World of Warcraft is (C) Blizzard Entertainment\n"
-				"World of Warcraft Studio - Editor is (C) gLararaN, Chipsi."
+				"World of Warcraft Studio - Editor is (C) " + CODERS + "."
 			);
 #else
 			f16->shprint(300, video.yres - 20, "World of Warcraft is (C) Blizzard Entertainment");
 #endif
 
 			f24->shprint(360, 74, "Bookmarks");
-			for (unsigned int i=0; i<bookmarks.size(); i++)
-			{
+			for(unsigned int i = 0; i < bookmarks.size(); i++)
 				f16->shdrawtext(bookmarks[i].x0, bookmarks[i].y0, bookmarks[i].label.c_str());
-			}
-
 		}
 
-		for (unsigned int i=0; i<maps.size(); i++)
+		for(unsigned int i = 0; i < maps.size(); i++)
 		{
-			if (i==sel) glColor4f(0,1,1,1);
-			else glColor4f(1,1,1,1);
+			if(i == sel)
+				glColor4f(0, 1, 1, 1);
+			else
+				glColor4f(1, 1, 1, 1);
 
 			//f16->print(0, i*16, maps[i].name.c_str());
-
 			maps[i].font->shprint(maps[i].x0, maps[i].y0, maps[i].name.c_str());
-
 		}
 
-		glColor4f(1,1,1,1);
+		glColor4f(1, 1, 1, 1);
 		if (sel != -1)
-		{
-			f32->shprint(video.xres/2-f32->textwidth(maps[sel].directory.c_str())/2, video.yres-40, maps[sel].directory.c_str());
-		}
+			f32->shprint(video.xres/2 - f32->textwidth(maps[sel].directory.c_str())/2, video.yres - 40, maps[sel].directory.c_str());
 	}
 }
 
-void Menu::keypressed(SDL_KeyboardEvent *e)
+void Menu::keypressed(SDL_KeyboardEvent* e)
 {
-	if (e->type == SDL_KEYDOWN)
+	if(e->type == SDL_KEYDOWN)
 	{
-		if (e->keysym.sym == SDLK_ESCAPE)
-		{
+		if(e->keysym.sym == SDLK_ESCAPE)
 		    gPop = true;
-		}
 	}
 }
 
-void Menu::mousemove(SDL_MouseMotionEvent *e)
+void Menu::mousemove(SDL_MouseMotionEvent* e)
 {
 
 }
@@ -406,30 +402,32 @@ bool Clickable::hit(int x, int y)
 }
 
 
-void Menu::mouseclick(SDL_MouseButtonEvent *e)
+void Menu::mouseclick(SDL_MouseButtonEvent* e)
 {
 	//int y = e->y;
 	//unsigned int s = y / 16;
 	//if (s < maps.size()) sel = s;
 
-	if (cmd != 0) return;
+	if(cmd != 0)
+		return;
 
 	int osel = sel;
 
-	if ((e->x >= 200) && (e->x < 200+12*64))
+	if((e->x >= 200) && (e->x < 200 + 12 * 64))
 	{
-		if (sel!=-1 && world !=0 && (e->y<12*64))
+		if(sel != -1 && world != 0 && (e->y < 12 * 64))
 		{
 			x = e->x - 200;
 			y = e->y;
 			cmd = CMD_LOAD_WORLD;
 		}
 
-		if (sel==-1) {
+		if(sel==-1)
+		{
 			// bookmarks
-			for (unsigned int i=0; i<bookmarks.size(); i++)
+			for(unsigned int i = 0; i < bookmarks.size(); i++)
 			{
-				if (bookmarks[i].hit(e->x, e->y))
+				if(bookmarks[i].hit(e->x, e->y))
 				{
 					cmd = CMD_LOAD_WORLD;
 					setpos = false;
@@ -448,32 +446,33 @@ void Menu::mouseclick(SDL_MouseButtonEvent *e)
 			}
 
 		}
-
 	}
 	else
 	{
 		bool found = false;
 
-		for (unsigned int i=0; i<maps.size(); i++)
+		for(unsigned int i = 0; i < maps.size(); i++)
 		{
-			if (maps[i].hit(e->x, e->y))
+			if(maps[i].hit(e->x, e->y))
 			{
 				sel = i;
 				found = true;
 			}
 		}
 
-		if (found)
+		if(found)
 		{
-			if (sel != osel)
+			if(sel != osel)
 			{
-				if (world != 0) delete world;
+				if(world != 0)
+					delete world;
 				world = new World(maps[sel].name.c_str());
 			}
 		}
 		else
 		{
-			if (world != 0) delete world;
+			if(world != 0)
+				delete world;
 			sel = -1;
 			world = 0;
 		}
@@ -491,17 +490,19 @@ void Menu::refreshBookmarks()
 	int y = 110;
 	const int x = 300;
 
-	while (!f.eof())
+	while(!f.eof())
 	{
 		Bookmark b;
 		f >> b.basename >> b.pos.x >> b.pos.y >> b.pos.z >> b.ah >> b.av;
-		if (f.eof()) break;
+		if(f.eof())
+			break;
 
 		char c;
 		do
 		{
             f >> c;
-		} while (c == ' ');
+		}
+		while(c == ' ');
 		b.name = "";
 		char cc[2];
 		cc[0] = c;
@@ -513,23 +514,24 @@ void Menu::refreshBookmarks()
 
 		// check for the basename
 		bool mapfound = false;
-		for (unsigned int i=0; i<maps.size(); i++)
+		for(unsigned int i = 0; i < maps.size(); i++)
 		{
-			if (maps[i].name == b.basename)
+			if(maps[i].name == b.basename)
 			{
 				mapfound = true;
 				break;
 			}
 		}
-		if (!mapfound) continue;
+		if(!mapfound)
+			continue;
 
-		sprintf_s(buf,"(%s) %s", b.basename.c_str(), b.name.c_str());
+		sprintf_s(buf, "(%s) %s", b.basename.c_str(), b.name.c_str());
 		b.label = buf;
 
 		b.x0 = x;
 		b.x1 = x + f16->textwidth(b.label.c_str());
 		b.y0 = y;
-		b.y1 = y+16;
+		b.y1 = y + 16;
 		y += 16;
 
 		bookmarks.push_back(b);

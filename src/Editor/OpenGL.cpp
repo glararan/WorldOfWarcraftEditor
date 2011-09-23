@@ -21,8 +21,6 @@
 
 #include "Shaders.h"
 
-using namespace std;
-
 int fullscreen = 0;
 
 // ##################
@@ -46,7 +44,6 @@ int checkConfig()
 		}
 		else
 			gLog("[World of Warcraft Studio - Editor] - Config have content\n##############################################################\n"); // Config isn't empty
-
 	}
 	else
 	{
@@ -102,7 +99,7 @@ int loadLanguage()
 // ##################
 int checkConfig2()
 {
-	FILE *EditorPTR;
+	FILE* EditorPTR;
 
 	EditorPTR = fopen(CONFIG_FILE, "r");
 
@@ -113,7 +110,6 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Expansion isn't selected\n"); 
 			exit(1);
 		}
-		
 		else
 			gLog("[World of Warcraft Studio - Editor] - Expansion: %d\n", loadExpansion());
 
@@ -130,7 +126,6 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Game Version isn't selected\n");
 			exit(1);
 		}
-		
 		else
 			gLog("[World of Warcraft Studio - Editor] - GameVersion: %d\n", loadGameVersion());
 
@@ -140,11 +135,10 @@ int checkConfig2()
 			gLog("[World of Warcraft Studio - Editor] - Language isn't selected\n");
 			exit(1);
 		}
-		
 		else
 			gLog("[World of Warcraft Studio - Editor] - Language: %d\n", loadLanguage());
-
 	}
+
 	return 0;
 }
 
@@ -214,18 +208,18 @@ void gLog(char* str, ...)
 {
 	if (glogfirst)
 	{
-		flog = fopen("World Of Warcraft Studio - Editor.log","w");
+		flog = fopen("World Of Warcraft Studio - Editor.log", "w");
 		fclose(flog);
 		glogfirst = false;
 	}
 
-	flog = fopen("World Of Warcraft Studio - Editor.log","a");
+	flog = fopen("World Of Warcraft Studio - Editor.log", "a");
 
 	va_list ap;
 
-	va_start (ap, str);
-	vfprintf (flog, str, ap);
-	va_end (ap);
+	va_start(ap, str);
+	vfprintf(flog, str, ap);
+	va_end(ap);
 
 	fclose(flog);
 }
@@ -236,9 +230,9 @@ void gLog_const(const char* str, ...)
 
 	va_list ap;
 
-	va_start (ap, str);
-	vfprintf (flog, str, ap);
-	va_end (ap);
+	va_start(ap, str);
+	vfprintf(flog, str, ap);
+	va_end(ap);
 
 	fclose(flog);
 }
@@ -247,17 +241,17 @@ void getGamePath()
 {
 #ifdef _WIN32
 	HKEY key;
-	DWORD t,s;
+	DWORD t, s;
 	LONG l;
 	s = 1024;
-	memset(gamepath,0,s);
-	l = RegOpenKeyEx(HKEY_LOCAL_MACHINE,"SOFTWARE\\Blizzard Entertainment\\World of Warcraft",0,KEY_QUERY_VALUE,&key);
-	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)gamepath,&s);
-	l = RegQueryValueEx(key,"InstallPath",0,&t,(LPBYTE)wowpath,&s);
+	memset(gamepath, 0, s);
+	l = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Blizzard Entertainment\\World of Warcraft", 0, KEY_QUERY_VALUE, &key);
+	l = RegQueryValueEx(key, "InstallPath", 0, &t, (LPBYTE)gamepath, &s);
+	l = RegQueryValueEx(key, "InstallPath", 0, &t, (LPBYTE)wowpath, &s);
 	RegCloseKey(key);
-	strcat_s(gamepath,"Data\\");
+	strcat_s(gamepath, "Data\\");
 #else
-	strcpy(gamepath,"data/");
+	strcpy(gamepath, "data/");
 #endif
 }
 
@@ -268,13 +262,9 @@ bool scan_patches(char* scanmatch, vector<string>& pArchiveNames)
 	for(i = 1; i <= 99; i++)
 	{
 		if(i != 1)
-		{
 			sprintf(path, "%s-%d.MPQ", scanmatch, i);
-		}
 		else
-		{
 			sprintf(path, "%s.MPQ", scanmatch);
-		}
 
 #ifdef _WIN32
 		if(FILE* h = fopen(path, "rb"))
@@ -310,6 +300,7 @@ bool fillArchiveNameVector(vector<string>& pArchiveNames)
 			continue;
 		if((status.st_mode & S_IFDIR) == 0)
 			continue;
+
 		gLog("[World of Warcraft Studio - Editor] - Found locales '%s'\n", i->c_str());
 		locales.push_back(*i);
 	}
@@ -405,7 +396,7 @@ bool fillArchiveNameVector(vector<string>& pArchiveNames)
 void CreateStrips();
 void InitGroundEffects();
 void InitAreaDB();
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	srand((unsigned int)time(0));
 
@@ -414,66 +405,56 @@ int main(int argc, char *argv[])
 
 	bool usePatch = true;
 
-	for (int i = 1; i < argc; ++i)
+	for(int i = 1; i < argc; ++i)
 	{
-		if (!strcmp(argv[i],"-f")) 
+		if(!strcmp(argv[i], "-f")) 
 			fullscreen = 1;
-		
-		else if (!strcmp(argv[i],"-w")) 
+		else if(!strcmp(argv[i], "-w")) 
 			fullscreen = 0;
-		
-		else if (!strcmp(argv[i],"-1024") || !strcmp(argv[i],"-1024x768"))
+		else if(!strcmp(argv[i], "-1024") || !strcmp(argv[i], "-1024x768"))
 		{
 			xres = 1024;
 			yres = 768;
 		}
-		
-		else if (!strcmp(argv[i],"-1280") || !strcmp(argv[i],"-1280x1024"))
+		else if(!strcmp(argv[i], "-1280") || !strcmp(argv[i], "-1280x1024"))
 		{
 			xres = 1280;
 			yres = 1024;
 		}
-		
-		else if (!strcmp(argv[i],"-1280x960"))
+		else if(!strcmp(argv[i], "-1280x960"))
 		{
 			xres = 1280;
 			yres = 960;
 		}
-		
-		else if (!strcmp(argv[i],"-1400") || !strcmp(argv[i],"-1400x1050"))
+		else if(!strcmp(argv[i], "-1400") || !strcmp(argv[i], "-1400x1050"))
 		{
 			xres = 1400;
 			yres = 1050;
 		}
-		
-		else if (!strcmp(argv[i],"-1280x800"))
+		else if(!strcmp(argv[i], "-1280x800"))
 		{
 			xres = 1280;
 			yres = 800;
 		}
-		
-		else if (!strcmp(argv[i],"-1600") || !strcmp(argv[i],"-1600x1200"))
+		else if(!strcmp(argv[i], "-1600") || !strcmp(argv[i], "-1600x1200"))
 		{
 			xres = 1600;
 			yres = 1200;
 		}
-		
-		else if (!strcmp(argv[i],"-1920") || !strcmp(argv[i],"-1920x1200"))
+		else if(!strcmp(argv[i], "-1920") || !strcmp(argv[i], "-1920x1200"))
 		{
 			xres = 1920;
 			yres = 1200;
 		}
-		
-		else if (!strcmp(argv[i],"-2048") || !strcmp(argv[i],"-2048x1536"))
+		else if(!strcmp(argv[i], "-2048") || !strcmp(argv[i], "-2048x1536"))
 		{
 			xres = 2048;
 			yres = 1536;
 		}
 		
-		else if (!strcmp(argv[i],"-p"))
+		else if(!strcmp(argv[i], "-p"))
 			usePatch = true;
-		
-		else if (!strcmp(argv[i],"-np"))
+		else if(!strcmp(argv[i], "-np"))
 			usePatch = false;
 	}
 
@@ -499,9 +480,7 @@ int main(int argc, char *argv[])
 	vector<string> archiveNames;
 	fillArchiveNameVector(archiveNames);
 	for(size_t i = 0; i < archiveNames.size(); ++i)
-	{
 		MPQArchive *archive = new MPQArchive(archiveNames[i].c_str());
-	}
 
 	if(gOpenArchives.empty())
 	{
@@ -551,33 +530,29 @@ int main(int argc, char *argv[])
 		as = gStates[gStates.size()-1];
 
 		SDL_Event event;
-		while ( SDL_PollEvent(&event) )
+		while(SDL_PollEvent(&event))
 		{
-			if ( event.type == SDL_QUIT )
+			if(event.type == SDL_QUIT)
 				done = true;
-
-			else if ( event.type == SDL_MOUSEMOTION)
+			else if(event.type == SDL_MOUSEMOTION)
 			{
 				if(SDL_GetAppState()&SDL_APPMOUSEFOCUS)
 					as->mousemove(&event.motion);
 			}
-			
-			else if ( (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP)&&(SDL_GetAppState()&SDL_APPINPUTFOCUS))
+			else if((event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) && (SDL_GetAppState()&SDL_APPINPUTFOCUS))
 			{	
 				if(event.button.type == SDL_MOUSEBUTTONUP)
 					as->mouseclick(&event.button);
 				else if(SDL_GetAppState()&SDL_APPMOUSEFOCUS)
 					as->mouseclick(&event.button);
 			}
-			
-			else if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+			else if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 			{
 				if(SDL_GetAppState()&SDL_APPINPUTFOCUS)
 					as->keypressed(&event.key);
 			}
-			
-			else if (event.type == SDL_VIDEORESIZE)
-				video.resize(event.resize.w,event.resize.h);
+			else if(event.type == SDL_VIDEORESIZE)
+				video.resize(event.resize.w, event.resize.h);
 		}
 
 		if(SDL_GetAppState()&SDL_APPACTIVE)
@@ -586,7 +561,7 @@ int main(int argc, char *argv[])
 			as->display(ftime, dt / 1000.0f);
 		}
 
-		if (gPop) 
+		if(gPop) 
 		{
 			gPop = false;
 			gStates.pop_back();
@@ -597,7 +572,7 @@ int main(int argc, char *argv[])
 		fcount++;
 		ft += dt;
 		
-		if (ft >= 1000)
+		if(ft >= 1000)
 		{
             float fps = (float)fcount / (float)ft * 1000.0f;
 			gFPS = fps;
@@ -609,7 +584,6 @@ int main(int argc, char *argv[])
 		}
 
 		video.flip();
-
 	}
 	gLog("[World of Warcraft Studio - Editor] - Exited Main Loop\n");
 
@@ -617,7 +591,7 @@ int main(int argc, char *argv[])
 	
 	video.close();
 
-	for (deque<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it)
+	for(deque<MPQArchive*>::iterator it = archives.begin(); it != archives.end(); ++it)
         (*it)->close();
 		
 	archives.clear();
@@ -632,35 +606,33 @@ float frand()
     return rand() / (float)RAND_MAX;
 }
 
-float randfloat (float lower, float upper)
+float randfloat(float lower, float upper)
 {
-	return lower + (upper-lower)*(rand()/(float)RAND_MAX);
+	return lower + (upper-lower) * (rand()/(float)RAND_MAX);
 }
 
-int randint (int lower, int upper)
+int randint(int lower, int upper)
 {
-    return lower + (int)((upper+1-lower)*frand());
+    return lower + (int)((upper + 1 - lower) * frand());
 }
 
-void fixnamen(char *name, size_t len)
+void fixnamen(char* name, size_t len)
 {
-	for (size_t i = 0; i < len; i++)
+	for(size_t i = 0; i < len; i++)
 	{
-		if (i > 0 && name[i] >= 'A' && name[i] <= 'Z' && isalpha(name[i-1]))
+		if(i > 0 && name[i] >= 'A' && name[i] <= 'Z' && isalpha(name[i-1]))
 			name[i] |= 0x20;
-
-		else if ((i == 0 || !isalpha(name[i-1])) && name[i] >= 'a' && name[i] <= 'z')
+		else if((i == 0 || !isalpha(name[i-1])) && name[i] >= 'a' && name[i] <= 'z')
 			name[i] &= ~0x20;
 	}
 }
 
 void fixname(string &name)
 {
-	for (size_t i = 0; i < name.length(); ++i)
+	for(size_t i = 0; i < name.length(); ++i)
 	{
 		if (i > 0 && name[i] >= 'A' && name[i] <= 'Z' && isalpha(name[i-1]))
 			name[i] |= 0x20;
-
 		else if ((i == 0 || !isalpha(name[i-1])) && name[i] >= 'a' && name[i] <= 'z')
 			name[i] &= ~0x20;
 	}

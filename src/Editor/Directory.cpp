@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <shlobj.h> 
 
-void ConvertStringToWChar (LPCTSTR str, WCHAR *buffer)
+void ConvertStringToWChar(LPCTSTR str, WCHAR* buffer)
 {
 	int i;
        for (int i = 0; str[i]; i++)
@@ -10,7 +10,7 @@ void ConvertStringToWChar (LPCTSTR str, WCHAR *buffer)
 	buffer[i] = 0;
 }
 
-void CreatePath(const char *fname)
+void CreatePath(const char* fname)
 {
 	int	i;
 	char path[MAX_PATH];
@@ -20,7 +20,7 @@ void CreatePath(const char *fname)
 
 	i = strlen(path);
 
-	while(path[i] != '\\'&&i>0)
+	while(path[i] != '\\' && i > 0)
 		i--;
 	path[i] = 0;
 

@@ -18,7 +18,7 @@ inline int next_p2(int a)
 }
 
 ///Create a display list coresponding to the give character.
-int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base, int fontsize)
+int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint* tex_base, int fontsize)
 {
 	//The first thing we do is get FreeType to render our character
 	//into a bitmap.  This actually requires a couple of FreeType commands:
@@ -43,7 +43,7 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base, int 
     FT_BitmapGlyph bitmap_glyph = (FT_BitmapGlyph)glyph;
 
 	//This reference will make accessing the bitmap easier
-	FT_Bitmap& bitmap=bitmap_glyph->bitmap;
+	FT_Bitmap& bitmap = bitmap_glyph->bitmap;
 
 	//Use our helper function to get the widths of
 	//the bitmap data that we will need in order to create
@@ -68,13 +68,11 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base, int 
 	{
 		for(int i = 0; i < width; i++)
 		{
-			expanded_data[2 * (i + j * width)] = expanded_data[2 * (i + j * width) + 1] = 
-				(i >= bitmap.width || j >= bitmap.rows) ?
-				0 : (unsigned char)min((float)(bitmap.buffer[i + bitmap.width*j]) * 1.5f, 255.0f);
+			expanded_data[2 * (i + j * width)] = expanded_data[2 * (i + j * width) + 1] = (i >= bitmap.width || j >= bitmap.rows) ? 0 : (unsigned char)min((float)(bitmap.buffer[i + bitmap.width * j]) * 1.5f, 255.0f);
 		}
 	}
 
-	FILE *fid;
+	FILE* fid;
 	char Temp[128];
 
 	//Now we just setup some texture paramaters.
@@ -94,9 +92,7 @@ int make_dlist (FT_Face face, char ch, GLuint list_base, GLuint * tex_base, int 
 
 	//So now we can create the display list
 	glNewList(list_base + ch, GL_COMPILE);
-
 	glBindTexture(GL_TEXTURE_2D, tex_base[ch]);
-
 	glPushMatrix();
 	
 	//first we need to move over a little so that
@@ -182,7 +178,7 @@ void font_data::Init(const char* fname, unsigned int h)
 	//all the textures and displays lists which we
 	//are about to create.  
 	list_base = glGenLists(128);
-	glGenTextures( 128, textures );
+	glGenTextures(128, textures);
 
 	//This is where we actually create each of the fonts display lists.
 	for(unsigned char i = 0; i < 128; i++)
@@ -220,7 +216,7 @@ void font_data::InitMPQ(const char* fname, unsigned int h)
 	//as FT_New_Face will die if the font file does not exist or is somehow broken.
 	MPQFile	f(fname);
 
-	if(FT_New_Memory_Face(library, (FT_Byte *)f.getBuffer(), f.getSize(), 0, &face)) 
+	if(FT_New_Memory_Face(library, (FT_Byte*)f.getBuffer(), f.getSize(), 0, &face)) 
 	{
 		gLog("[World of Warcraft Studio - Editor] - ERROR: FT_New_Face failed (there is probably a problem with your font file)\n");
 		throw runtime_error("FT_New_Memory_Face failed (there is probably a problem with your font file)");
@@ -285,22 +281,22 @@ inline void pop_projection_matrix()
 
 ///Much like Nehe's glPrint function, but modified to work
 ///with freetype fonts.
-void print(const font_data &ft_font, float x, float y, const char *fmt, ...) 
+void print(const font_data &ft_font, float x, float y, const char* fmt, ...) 
 {
 	// We want a coordinate system where things coresponding to window pixels.
 	//pushScreenCoordinateMatrix();					
 	GLuint font = ft_font.list_base;
 	float h = ft_font.h/.63f;						//We make the height about 1.5* that of
 	
-	char text[256];								// Holds Our String
+	char text[256];									// Holds Our String
 	va_list	ap;										// Pointer To List Of Arguments
 
 	if(fmt == NULL)									// If There's No Text
-		*text=0;											// Do Nothing
+		*text = 0;									// Do Nothing
 	else
 	{
 		va_start(ap, fmt);									// Parses The String For Variables
-	    vsprintf(text, fmt, ap);						// And Converts Symbols To Actual Numbers
+	    vsprintf(text, fmt, ap);							// And Converts Symbols To Actual Numbers
 		va_end(ap);											// Results Are Stored In Text
 	}
 
@@ -310,14 +306,14 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	//a regular expression library such as the one avliable from
 	//boost.org (I've only done it out by hand to avoid complicating
 	//this tutorial with unnecessary library dependencies).
-	const char *start_line = text;
+	const char* start_line = text;
 	vector<string> lines;
-	for(const char *c = text; *c; c++)
+	for(const char* c = text; *c; c++)
 	{
 		if(*c == '\n')
 		{
 			string line;
-			for(const char *n = start_line; n < c; n++) line.append(1, *n);
+			for(const char* n = start_line; n < c; n++) line.append(1, *n);
 			lines.push_back(line);
 			start_line = c + 1;
 		}
@@ -326,8 +322,8 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	if(start_line)
 	{
 		string line;
-		const char *c;
-		for(const char *n = start_line; n < c; n++) line.append(1, *n);
+		const char* c;
+		for(const char* n = start_line; n < c; n++) line.append(1, *n);
 		lines.push_back(line);
 	}
 
@@ -375,7 +371,7 @@ void print(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	//pop_projection_matrix();
 }
 
-void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...)
+void shprint(const font_data &ft_font, float x, float y, const char* fmt, ...)
 {	
 	char text[256];								// Holds Our String
 	va_list	ap;										// Pointer To List Of Arguments
@@ -398,7 +394,7 @@ void shprint(const font_data &ft_font, float x, float y, const char *fmt, ...)
 	print(ft_font, x, y, text);
 }
 
-int width(const font_data &ft_font, const char *fmt, ...)
+int width(const font_data &ft_font, const char* fmt, ...)
 {
 	GLuint font = ft_font.list_base;
 	float h = ft_font.h/.63f;						//We make the height about 1.5* that of
@@ -421,9 +417,9 @@ int width(const font_data &ft_font, const char *fmt, ...)
 	//a regular expression library such as the one avliable from
 	//boost.org (I've only done it out by hand to avoid complicating
 	//this tutorial with unnecessary library dependencies).
-	const char *start_line = text;
+	const char* start_line = text;
 	vector<string> lines;
-	for(const char *c = text; *c; c++)
+	for(const char* c = text; *c; c++)
 	{
 		if(*c == '\n')
 		{
@@ -436,16 +432,16 @@ int width(const font_data &ft_font, const char *fmt, ...)
 	if(start_line)
 	{
 		string line;
-		const char *c;
-		for(const char *n = start_line; n < c; n++) line.append(1, *n);
+		const char* c;
+		for(const char* n = start_line; n < c; n++) line.append(1, *n);
 		lines.push_back(line);
 	}
 
 	int maxWidth = 0;
 	
-	for(int i = 0;i < lines.size(); i++)
+	for(int i = 0; i < lines.size(); i++)
 	{
-		int	curWidth=0;
+		int	curWidth = 0;
 		for(int j = 0; j < lines[i].size(); j++)
 			curWidth += ft_font.charWidths[lines[i].c_str()[j]];
 		if(curWidth > maxWidth)

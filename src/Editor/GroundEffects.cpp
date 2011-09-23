@@ -5,8 +5,6 @@
 #include "GroundEffects.h"
 #include "DBCFile.h"
 
-using namespace std;
-
 struct ToLower
 {
     char operator() (char c) const  { return tolower(c); }

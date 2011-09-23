@@ -110,8 +110,8 @@ void Liquid::initGeometry(MPQFile &f)
 {
 	// assume: f is at the appropriate starting position
 
-	LiquidVertex *map = (LiquidVertex*) f.getPointer();
-	unsigned char *flags = (unsigned char*) (f.getPointer() + (xtiles + 1) * (ytiles + 1) * sizeof(LiquidVertex));
+	LiquidVertex* map = (LiquidVertex*)f.getPointer();
+	unsigned char* flags = (unsigned char*)(f.getPointer() + (xtiles + 1) * (ytiles + 1) * sizeof(LiquidVertex));
 	
 	//waterFlags=new unsigned char[(xtiles+1)*(ytiles+1)];
 	//memcpy(waterFlags,flags,(xtiles+1)*(ytiles+1));
@@ -125,7 +125,10 @@ void Liquid::initGeometry(MPQFile &f)
 		{
 			size_t p = j * (xtiles + 1) + i;
 			float h = map[p].h;
-			if(h > 100000) h = pos.y;
+
+			if(h > 100000)
+				h = pos.y;
+
             verts[p] = Vec3D(pos.x + tilesize * i, h, pos.z + ydir * tilesize * j);
 			//color[p]= map[p].c[0];
 		}
@@ -267,14 +270,14 @@ GLuint waterFogShader;
 
 void loadWaterShader()
 {
-	FILE *shader;
+	FILE* shader;
 	shader = fopen("Data\\shaders\\water.ps", "r");
 	if(shader == 0)
 		gLog("[World of Warcraft Studio - Editor] - Unable to open water shader\n");
 	else
 	{
 		char buffer[8192];
-		int length=fread(buffer, 1, 8192, shader);
+		int length = fread(buffer, 1, 8192, shader);
 		fclose(shader);
 		glGenPrograms(1, &waterShader);
 		if(waterShader == 0)
@@ -288,21 +291,20 @@ void loadWaterShader()
 			glGetIntegerv(GL_PROGRAM_ERROR_POSITION_ARB, &errorPos);
 
 			if((errorPos == -1) && (isNative == 1))
-			{
 				gLog("[World of Warcraft Studio - Editor] - Water Shader Loaded successfully\n");
-			}
 			else
 			{
 				int i, j;
-				const GLubyte *stringy;
+				const GLubyte* stringy;
 				char localbuffer[256];
 				gLog("[World of Warcraft Studio - Editor] - Water Shader Fragment program failed to load \nReason:\n");
 				stringy = glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
-				gLog((char *)stringy);
+				gLog((char*)stringy);
 				for(i = errorPos, j = 0; (i < length) && (j < 128); i++, j++)
 				{
 					localbuffer[j] = buffer[i];
 				}
+
 				localbuffer[j] = 0;
 				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
 				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n", localbuffer);
@@ -318,9 +320,10 @@ void loadWaterShader()
 	else
 	{
 		char buffer[8192];
-		int length=fread(buffer, 1, 8192, shader);
+		int length = fread(buffer, 1, 8192, shader);
 		fclose(shader);
 		glGenPrograms(1, &waterFogShader);
+
 		if(waterShader == 0)
 			gLog("[World of Warcraft Studio - Editor] - Failed to get program ID for water fog shader.\n");
 		else
@@ -339,15 +342,16 @@ void loadWaterShader()
 			else
 			{
 				int i, j;
-				const GLubyte *stringy;
+				const GLubyte* stringy;
 				char localbuffer[256];
 				gLog("[World of Warcraft Studio - Editor] - Water Fog Shader Fragment program failed to load \nReason:\n");
 				stringy = glGetString(GL_PROGRAM_ERROR_STRING_ARB);	//This is only available in ARB
-				gLog((char *)stringy);
+				gLog((char*)stringy);
 				for(i = errorPos, j = 0; (i < length) && (j < 128); i++, j++)
 				{
 					localbuffer[j] = buffer[i];
 				}
+
 				localbuffer[j] = 0;
 				gLog("[World of Warcraft Studio - Editor] - START DUMP :\n");
 				gLog("[World of Warcraft Studio - Editor] - %sEND DUMP\n", localbuffer);
@@ -423,7 +427,7 @@ void Liquid::draw()
 	}
 }
 
-void Liquid::initTextures(char *basename, int first, int last)
+void Liquid::initTextures(char* basename, int first, int last)
 {
 	char buf[256];
 	for(int i = first; i <= last; i++)
@@ -435,7 +439,7 @@ void Liquid::initTextures(char *basename, int first, int last)
 
 Liquid::~Liquid()
 {
-	for (size_t i = 0; i < textures.size(); i++)
+	for(size_t i = 0; i < textures.size(); i++)
 	{
 		video.textures.del(textures[i]);
 	}
